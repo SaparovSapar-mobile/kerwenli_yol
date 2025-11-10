@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 
 class HomePartsCard extends StatelessWidget {
-  const HomePartsCard({super.key, required this.text});
+  const HomePartsCard({
+    super.key,
+    required this.text,
+    required this.isFirst,
+    required this.isLast,
+  });
 
   final String text;
+  final bool isFirst, isLast;
 
   @override
   Widget build(BuildContext context) {
@@ -11,6 +17,7 @@ class HomePartsCard extends StatelessWidget {
       width: 60,
       height: 74,
       padding: EdgeInsets.all(5),
+      margin: EdgeInsets.only(left: isFirst ? 10 : 0, right: isLast ? 10 : 0),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
         border: Border.all(color: Colors.black),

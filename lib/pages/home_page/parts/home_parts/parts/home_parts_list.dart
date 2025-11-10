@@ -11,7 +11,11 @@ class HomePartsList extends StatelessWidget {
       height: 74,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) => HomePartsCard(text: homeParts[index]),
+        itemBuilder: (context, index) => HomePartsCard(
+          text: homeParts[index],
+          isFirst: index == 0,
+          isLast: index == homeParts.length - 1,
+        ),
         separatorBuilder: (context, index) => SizedBox(width: 5),
         itemCount: homeParts.length,
       ),
