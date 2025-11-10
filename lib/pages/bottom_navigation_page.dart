@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/methods/pages/bottom_navigation.dart';
 import 'package:kerwenli_yol/helpers/methods/pages/home_page.dart';
 import 'package:kerwenli_yol/pages/bookmark_page.dart';
-import 'package:kerwenli_yol/pages/home_page.dart';
+import 'package:kerwenli_yol/pages/home_page/home_page.dart';
 import 'package:kerwenli_yol/pages/search_page.dart';
 import 'package:kerwenli_yol/pages/settings_page.dart';
 import 'package:kerwenli_yol/providers/pages/bottom_navigation.dart';

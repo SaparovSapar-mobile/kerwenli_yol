@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:kerwenli_yol/examples.dart';
-import 'package:kerwenli_yol/pages/parts/home_carousel_slider/parts/home_carousel_slider_card.dart';
+import 'package:kerwenli_yol/pages/home_page/parts/home_carousel_slider/parts/home_carousel_slider_card.dart';
 
 class HomeCarouselSlider extends StatelessWidget {
   const HomeCarouselSlider({super.key});
