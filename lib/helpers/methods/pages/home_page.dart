@@ -6,7 +6,13 @@ AppBar homePageAppBar(BuildContext context) {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Image.asset('assets/images/appbar_logo.png', height: 44),
-        Icon(Icons.notifications),
+        Row(
+          children: [
+            CircleAvatar(child: Icon(Icons.info)),
+            SizedBox(width: 10),
+            CircleAvatar(child: Icon(Icons.notifications)),
+          ],
+        ),
       ],
     ),
   );
