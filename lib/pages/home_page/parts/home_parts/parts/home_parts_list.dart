@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kerwenli_yol/examples.dart';
+import 'package:kerwenli_yol/pages/home_page/parts/home_parts/parts/home_parts_card.dart';
 
 class HomePartsList extends StatelessWidget {
   const HomePartsList({super.key});
@@ -10,7 +11,7 @@ class HomePartsList extends StatelessWidget {
       height: 74,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) => Text(homeParts[index]),
+        itemBuilder: (context, index) => HomePartsCard(text: homeParts[index]),
         separatorBuilder: (context, index) => SizedBox(width: 5),
         itemCount: homeParts.length,
       ),
