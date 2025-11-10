@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:kerwenli_yol/helpers/methods/bottom_navigation.dart';
+import 'package:kerwenli_yol/helpers/methods/pages/bottom_navigation.dart';
+import 'package:kerwenli_yol/helpers/methods/pages/home_page.dart';
 import 'package:kerwenli_yol/pages/bookmark_page.dart';
 import 'package:kerwenli_yol/pages/home_page.dart';
 import 'package:kerwenli_yol/pages/search_page.dart';
@@ -13,6 +14,7 @@ class BottomNavigationPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     int selectedIndex = ref.watch(selectedBottomIndexProvider);
+    AppBar appBar = homePageAppBar(context);
 
     List<Widget> pages = [
       const HomePage(),
@@ -21,8 +23,26 @@ class BottomNavigationPage extends ConsumerWidget {
       const SettingsPage(),
     ];
 
+    switch (selectedIndex) {
+      case 0:
+        appBar = homePageAppBar(context);
+        break;
+      case 1:
+        appBar = homePageAppBar(context);
+        break;
+      case 2:
+        appBar = homePageAppBar(context);
+        break;
+      case 3:
+        appBar = homePageAppBar(context);
+        break;
+      default:
+        appBar = homePageAppBar(context);
+    }
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
+      appBar: appBar,
       body: IndexedStack(index: selectedIndex, children: pages),
       bottomNavigationBar: Theme(
         data: ThemeData(
