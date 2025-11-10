@@ -38,14 +38,16 @@ dependencies:
   flutter_dotenv: ^6.0.0
   http: ^1.5.0
   connectivity_plus: ^7.0.0
-  flutter_riverpod: ^3.0.3
+  flutter_riverpod: ^2.6.1
   sqflite: ^2.4.2
   shared_preferences: ^2.5.3
+  shared_preferences_riverpod: ^0.3.0
   equatable: ^2.0.7
   intl: ^0.20.2
   flutter_localizations:
     sdk: flutter
   cached_network_image: ^3.4.1
+  flutter_native_splash: ^2.4.7
 
 dev_dependencies:
   flutter_test:
