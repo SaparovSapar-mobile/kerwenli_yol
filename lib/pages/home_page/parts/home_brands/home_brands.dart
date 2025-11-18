@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kerwenli_yol/pages/home_page/parts/home_parts/parts/home_parts_list.dart';
+import 'package:kerwenli_yol/pages/home_page/parts/home_brands/parts/home_brands_list.dart';
 import 'package:kerwenli_yol/pages/parts/more_button.dart';
 
 class HomeBrands extends StatelessWidget {
@@ -11,7 +11,7 @@ class HomeBrands extends StatelessWidget {
       children: [
         MoreButton(text: 'Türkmenistanyň markalary'),
         SizedBox(height: 5),
-        HomePartsList(),
+        HomeBrandsList(),
       ],
     );
   }
