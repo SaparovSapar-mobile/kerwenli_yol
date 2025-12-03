@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kerwenli_yol/enums/theme.dart';
 import 'package:kerwenli_yol/l10n/app_localizations.dart';
 import 'package:kerwenli_yol/pages/bottom_navigation_page.dart';
 import 'package:kerwenli_yol/providers/settings.dart';
+import 'package:kerwenli_yol/styles/theme/theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
@@ -24,10 +26,27 @@ class MyApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // ---------- Lang Provider ----------------
     String language = ref.watch(langProvider);
+
+    // ---------- Theme Provider Start --------------
+    ThemeMode? themeMode = ThemeMode.system;
+    int theme = ref.watch(themeProvider);
+
+    if (theme == ThemeType.system) {
+      themeMode = ThemeMode.system;
+    } else if (theme == ThemeType.white) {
+      themeMode = ThemeMode.light;
+    } else {
+      themeMode = ThemeMode.dark;
+    }
+    // ---------- Theme Provider End --------------
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      themeMode: themeMode,
+      theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       locale: Locale(language),
