@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
+import 'package:kerwenli_yol/styles/theme/parts/app_bar_theme.dart';
 
 class AppTheme {
   AppTheme._();
@@ -9,6 +10,7 @@ class AppTheme {
     brightness: Brightness.light,
     fontFamily: "Inter",
     textTheme: appTextTheme,
+    appBarTheme: AppAppBarTheme.lightAppBarTheme,
   );
 
   static final ThemeData darkTheme = ThemeData(
@@ -16,6 +18,7 @@ class AppTheme {
     brightness: Brightness.light,
     fontFamily: "Inter",
     textTheme: appTextTheme,
+    appBarTheme: AppAppBarTheme.darkAppBarTheme,
   );
 }
 
