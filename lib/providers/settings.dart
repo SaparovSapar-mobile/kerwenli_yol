@@ -15,3 +15,9 @@ final themeProvider = createPrefProvider<int>(
   prefKey: "theme",
   defaultValue: ThemeType.system,
 );
+
+final isFirstTimeProvider = createPrefProvider<bool>(
+  prefs: (_) => prefs,
+  prefKey: "is_first_time",
+  defaultValue: true,
+);

@@ -15,7 +15,7 @@ class AppTheme {
 
   static final ThemeData darkTheme = ThemeData(
     useMaterial3: true,
-    brightness: Brightness.light,
+    brightness: Brightness.dark,
     fontFamily: "Inter",
     textTheme: appTextTheme,
     appBarTheme: AppAppBarTheme.darkAppBarTheme,

@@ -1,10 +1,11 @@
+import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/enums/theme.dart';
 import 'package:kerwenli_yol/l10n/app_localizations.dart';
-import 'package:kerwenli_yol/pages/bottom_navigation_page.dart';
+import 'package:kerwenli_yol/pages/home.dart';
 import 'package:kerwenli_yol/providers/settings.dart';
 import 'package:kerwenli_yol/styles/theme/theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -42,15 +43,22 @@ class MyApp extends ConsumerWidget {
     }
     // ---------- Theme Provider End --------------
 
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      themeMode: themeMode,
-      theme: AppTheme.lightTheme,
-      darkTheme: AppTheme.darkTheme,
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
-      supportedLocales: AppLocalizations.supportedLocales,
-      locale: Locale(language),
-      home: BottomNavigationPage(),
+    return ThemeProvider(
+      initTheme: AppTheme.lightTheme,
+      builder: (p0, theme) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          themeMode: themeMode,
+          // theme: AppTheme.lightTheme,
+          // darkTheme: AppTheme.darkTheme,
+          theme: theme,
+          darkTheme: theme,
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
+          locale: Locale(language),
+          home: AppHome(),
+        );
+      },
     );
   }
 }
