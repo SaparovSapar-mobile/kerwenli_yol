@@ -1,28 +1,43 @@
 import 'package:flutter/material.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
 
-final ThemeData appTheme = ThemeData(
-  fontFamily: "Inter",
-  textTheme: TextTheme(
-    // Display
-    headlineLarge: AppTextStyles.bold24,
-    headlineMedium: AppTextStyles.semiBold24,
-    headlineSmall: AppTextStyles.medium24,
+class AppTheme {
+  AppTheme._();
 
-    titleLarge: AppTextStyles.bold20,
-    titleMedium: AppTextStyles.semiBold20,
-    titleSmall: AppTextStyles.medium20,
+  static final ThemeData lightTheme = ThemeData(
+    useMaterial3: true,
+    brightness: Brightness.light,
+    fontFamily: "Inter",
+    textTheme: appTextTheme,
+  );
 
-    // Text L
-    bodyLarge: AppTextStyles.bold16,
-    bodyMedium: AppTextStyles.semiBold16,
-    bodySmall: AppTextStyles.regular16,
+  static final ThemeData darkTheme = ThemeData(
+    useMaterial3: true,
+    brightness: Brightness.light,
+    fontFamily: "Inter",
+    textTheme: appTextTheme,
+  );
+}
 
-    // Text M
-    labelLarge: AppTextStyles.bold14,
-    labelMedium: AppTextStyles.semiBold14,
-    labelSmall: AppTextStyles.regular14,
-  ),
+TextTheme appTextTheme = TextTheme(
+  // Display
+  headlineLarge: AppTextStyles.bold24,
+  headlineMedium: AppTextStyles.semiBold24,
+  headlineSmall: AppTextStyles.medium24,
+
+  titleLarge: AppTextStyles.bold20,
+  titleMedium: AppTextStyles.semiBold20,
+  titleSmall: AppTextStyles.medium20,
+
+  // Text L
+  bodyLarge: AppTextStyles.bold16,
+  bodyMedium: AppTextStyles.semiBold16,
+  bodySmall: AppTextStyles.regular16,
+
+  // Text M
+  labelLarge: AppTextStyles.bold14,
+  labelMedium: AppTextStyles.semiBold14,
+  labelSmall: AppTextStyles.regular14,
 );
 
 // final ThemeData appTheme = ThemeData(
