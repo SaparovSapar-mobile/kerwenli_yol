@@ -31,8 +31,8 @@ class LightColors {
   static const Color bgBlogLight = Color(0xFFFFFFFF); // #FFFFFF
 
   // ---------- DARK BACKGROUND ----------
-  static const Color bgPageDark = Color(0xFF3D3C3C); // #3D3C3C
-  static const Color bgBlogDark = Color(0xFF333333); // #333333
+  // static const Color bgPageDark = Color(0xFF3D3C3C); // #3D3C3C
+  // static const Color bgBlogDark = Color(0xFF333333); // #333333
 
   // ---------- TEXT COLORS (LIGHT BACKGROUND) ----------
   static const Color textTitleLight = Color(0xFF262626); // #262626

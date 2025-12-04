@@ -27,8 +27,8 @@ class DarkColors {
   static const Color loadingBackground = Color(0xFFF4F2F2); // #F4F2F2
 
   // ---------- LIGHT BACKGROUND ----------
-  static const Color bgPageLight = Color(0xFFF6F8FD); // #F6F8FD
-  static const Color bgBlogLight = Color(0xFFFFFFFF); // #FFFFFF
+  // static const Color bgPageLight = Color(0xFFF6F8FD); // #F6F8FD
+  // static const Color bgBlogLight = Color(0xFFFFFFFF); // #FFFFFF
 
   // ---------- DARK BACKGROUND ----------
   static const Color bgPageDark = Color(0xFF3D3C3C); // #3D3C3C

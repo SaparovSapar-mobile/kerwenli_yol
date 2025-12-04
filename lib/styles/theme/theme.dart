@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
+import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
 import 'package:kerwenli_yol/styles/theme/parts/app_bar_theme.dart';
 
@@ -9,6 +11,7 @@ class AppTheme {
     useMaterial3: true,
     brightness: Brightness.light,
     fontFamily: "Inter",
+    scaffoldBackgroundColor: LightColors.bgBlogLight,
     textTheme: appTextTheme,
     appBarTheme: AppAppBarTheme.lightAppBarTheme,
   );
@@ -17,6 +20,7 @@ class AppTheme {
     useMaterial3: true,
     brightness: Brightness.dark,
     fontFamily: "Inter",
+    scaffoldBackgroundColor: DarkColors.bgBlogDark,
     textTheme: appTextTheme,
     appBarTheme: AppAppBarTheme.darkAppBarTheme,
   );
