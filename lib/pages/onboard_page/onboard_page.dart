@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
+import 'package:kerwenli_yol/pages/onboard_page/parts/onboard_next_button.dart';
 import 'package:kerwenli_yol/pages/onboard_page/parts/onboard_part.dart';
 import 'package:kerwenli_yol/pages/onboard_page/parts/theme_switcher_button.dart';
 import 'package:kerwenli_yol/pages/parts/dotss_indicator.dart';
@@ -61,11 +62,13 @@ class _OnboardPageState extends ConsumerState<OnboardPage> {
               ),
             ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 DotssIndicator(
                   lenght: pages.length,
                   pageProvider: onboardPageIndexProvider,
                 ),
+                OnboardNextButton(pageCtrl: _pageController),
               ],
             ),
           ],
