@@ -41,6 +41,7 @@ class OnboardLoginOrRegisterPart extends ConsumerWidget {
         PrimaryButton(text: 'Agza bolmak', onPressed: () {}),
         SizedBox(height: 10),
         BgPageLightButton(text: 'Gezelenç', onPressed: () {}),
+        SizedBox(height: 80),
       ],
     );
   }
