@@ -29,18 +29,15 @@ class OnboardPart extends ConsumerWidget {
     TextStyle descStyle = AppTextStyles.regular16.copyWith(color: descColor);
 
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.max,
       children: [
         Image.asset('assets/images/$image', height: 267.16),
-        Flexible(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(title, style: titleStyle),
-              SizedBox(height: 10),
-              Text(desc, style: descStyle),
-            ],
-          ),
-        ),
+        Expanded(child: SizedBox.shrink()),
+        Text(title, style: titleStyle),
+        SizedBox(height: 10),
+        Text(desc, style: descStyle),
+        SizedBox(height: 30),
       ],
     );
   }
