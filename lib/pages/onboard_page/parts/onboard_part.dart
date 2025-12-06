@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kerwenli_yol/helpers/functions/theme.dart';
+import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
+import 'package:kerwenli_yol/styles/colors/light_colors.dart';
+import 'package:kerwenli_yol/styles/text_styles.dart';
 
-class OnboardPart extends StatelessWidget {
+class OnboardPart extends ConsumerWidget {
   const OnboardPart({
     super.key,
     required this.image,
@@ -11,11 +16,26 @@ class OnboardPart extends StatelessWidget {
   final String image, title, desc;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    bool isLight = isLightTheme(context, ref);
+    Color titleColor = isLight
+        ? LightColors.textTitleLight
+        : DarkColors.textTitleDark;
+    Color descColor = isLight
+        ? LightColors.textDescriptionLight
+        : DarkColors.textDescriptionDark;
+
+    TextStyle titleStyle = AppTextStyles.semiBold20.copyWith(color: titleColor);
+    TextStyle descStyle = AppTextStyles.regular16.copyWith(color: descColor);
+
     return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [Image.asset('assets/images/$image', height: 267)],
+      children: [
+        Image.asset('assets/images/$image', height: 267.16),
+        SizedBox(height: 237.84),
+        Text(title, style: titleStyle),
+        SizedBox(height: 10),
+        Text(desc, style: descStyle),
+      ],
     );
   }
 }

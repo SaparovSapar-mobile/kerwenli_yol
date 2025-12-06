@@ -1,10 +1,9 @@
-import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
+import 'package:kerwenli_yol/pages/onboard_page/parts/onboard_part.dart';
 import 'package:kerwenli_yol/pages/onboard_page/parts/theme_switcher_button.dart';
-import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
-import 'package:kerwenli_yol/styles/colors/light_colors.dart';
+import 'package:kerwenli_yol/providers/pages/onboard.dart';
 
 class OnboardPage extends ConsumerStatefulWidget {
   const OnboardPage({super.key});
@@ -24,25 +23,42 @@ class _OnboardPageState extends ConsumerState<OnboardPage> {
 
   @override
   Widget build(BuildContext context) {
-    bool isLight = isLightTheme(context, ref);
-    Color bgColor = isLight ? LightColors.bgBlogLight : DarkColors.bgBlogDark;
+    List<Widget> pages = [
+      OnboardPart(
+        image: 'onboard_1.png',
+        title: 'Welcome to App',
+        desc: 'The world full of amazing things to discover...',
+      ),
+      OnboardPart(
+        image: 'onboard_2.png',
+        title: 'Welcome to App',
+        desc: 'The world full of amazing things to discover...',
+      ),
+    ];
 
-    return ThemeSwitchingArea(
-      child: Scaffold(
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          leading: null,
-          toolbarHeight: 40,
-          backgroundColor: bgColor,
+    return Scaffold(
+      body: Padding(
+        padding: EdgeInsets.only(
+          left: 30,
+          right: 30,
+          bottom: 60,
+          top: screenProperties(context).topSafeArea + 40,
         ),
-        body: Padding(
-          padding: const EdgeInsets.only(left: 30, right: 30, bottom: 60),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              ThemeSwitcher(builder: (context) => ThemeSwitcherButton()),
-            ],
-          ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            ThemeSwitcherButton(),
+            Expanded(
+              child: PageView.builder(
+                controller: _pageController,
+                itemCount: pages.length,
+                itemBuilder: (BuildContext context, int index) => pages[index],
+                onPageChanged: (value) {
+                  ref.read(onboardPageIndexProvider.notifier).state = value;
+                },
+              ),
+            ),
+          ],
         ),
       ),
     );

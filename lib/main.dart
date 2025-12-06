@@ -1,4 +1,3 @@
-import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -43,22 +42,15 @@ class MyApp extends ConsumerWidget {
     }
     // ---------- Theme Provider End --------------
 
-    return ThemeProvider(
-      initTheme: AppTheme.lightTheme,
-      builder: (p0, theme) {
-        return MaterialApp(
-          debugShowCheckedModeBanner: false,
-          themeMode: themeMode,
-          // theme: AppTheme.lightTheme,
-          // darkTheme: AppTheme.darkTheme,
-          theme: theme,
-          darkTheme: theme,
-          localizationsDelegates: AppLocalizations.localizationsDelegates,
-          supportedLocales: AppLocalizations.supportedLocales,
-          locale: Locale(language),
-          home: AppHome(),
-        );
-      },
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      themeMode: themeMode,
+      theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+      locale: Locale(language),
+      home: AppHome(),
     );
   }
 }
