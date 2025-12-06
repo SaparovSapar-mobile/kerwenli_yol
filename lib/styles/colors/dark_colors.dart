@@ -36,7 +36,7 @@ class DarkColors {
 
   // ---------- TEXT COLORS (LIGHT BACKGROUND) ----------
   static const Color textTitleLight = Color(0xFF262626); // #262626
-  // static const Color textDescriptionLight = Color(0xFF90979F); // #90979F
+  static const Color textDescriptionLight = Color(0xFF90979F); // #90979F
 
   // ---------- TEXT COLORS (DARK BACKGROUND) ----------
   static const Color textTitleDark = Color(0xFFF6F6F6); // #F6F6F6
