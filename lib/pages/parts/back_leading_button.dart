@@ -12,11 +12,11 @@ class BackLeadingButton extends ConsumerWidget {
     bool isLight = isLightTheme(context, ref);
     Color iconColor = isLight
         ? LightColors.textTitleLight
-        : DarkColors.textTitleLight;
+        : DarkColors.textTitleDark;
 
     return IconButton(
       onPressed: () => Navigator.pop(context),
-      icon: Icon(Icons.arrow_back_ios_new, color: iconColor, size: 24),
+      icon: Icon(Icons.arrow_back_ios_new, color: iconColor, size: 20),
     );
   }
 }

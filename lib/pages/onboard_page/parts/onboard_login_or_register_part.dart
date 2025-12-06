@@ -5,6 +5,7 @@ import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/pages/bottom_navigation_page.dart';
 import 'package:kerwenli_yol/pages/parts/bg_page_light_button.dart';
 import 'package:kerwenli_yol/pages/parts/primary_button.dart';
+import 'package:kerwenli_yol/pages/register_page/register_page.dart';
 import 'package:kerwenli_yol/providers/settings.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
@@ -41,7 +42,11 @@ class OnboardLoginOrRegisterPart extends ConsumerWidget {
         SizedBox(height: 10),
         Text(desc, style: descStyle, textAlign: TextAlign.center),
         SizedBox(height: 47),
-        PrimaryButton(text: 'Agza bolmak', onPressed: () {}),
+        PrimaryButton(
+          text: 'Agza bolmak',
+          onPressed: () =>
+              goToPage(context, RegisterPage(), AxisDirection.left),
+        ),
         SizedBox(height: 10),
         BgPageLightButton(
           text: 'Gezelenç',
