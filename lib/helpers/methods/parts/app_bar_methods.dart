@@ -7,7 +7,16 @@ import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 PreferredSize appBarBottomLine() {
   return PreferredSize(
     preferredSize: Size.fromHeight(4),
-    child: Consumer(
+    child: AppBarBottomLine(),
+  );
+}
+
+class AppBarBottomLine extends StatelessWidget {
+  const AppBarBottomLine({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Consumer(
       builder: (context, ref, widget) {
         bool isLight = isLightTheme(context, ref);
         Color lineColor = isLight
@@ -16,6 +25,6 @@ PreferredSize appBarBottomLine() {
 
         return Divider(height: 4, color: lineColor);
       },
-    ),
-  );
+    );
+  }
 }
