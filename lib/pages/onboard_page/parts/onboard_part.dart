@@ -31,10 +31,16 @@ class OnboardPart extends ConsumerWidget {
     return Column(
       children: [
         Image.asset('assets/images/$image', height: 267.16),
-        SizedBox(height: 237.84),
-        Text(title, style: titleStyle),
-        SizedBox(height: 10),
-        Text(desc, style: descStyle),
+        Flexible(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(title, style: titleStyle),
+              SizedBox(height: 10),
+              Text(desc, style: descStyle),
+            ],
+          ),
+        ),
       ],
     );
   }
