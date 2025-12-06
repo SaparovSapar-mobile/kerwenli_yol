@@ -27,7 +27,7 @@ class DarkColors {
   static const Color loadingBackground = Color(0xFFF4F2F2); // #F4F2F2
 
   // ---------- LIGHT BACKGROUND ----------
-  // static const Color bgPageLight = Color(0xFFF6F8FD); // #F6F8FD
+  static const Color bgPageLight = Color(0xFFF6F8FD); // #F6F8FD
   // static const Color bgBlogLight = Color(0xFFFFFFFF); // #FFFFFF
 
   // ---------- DARK BACKGROUND ----------
@@ -35,7 +35,7 @@ class DarkColors {
   static const Color bgBlogDark = Color(0xFF333333); // #333333
 
   // ---------- TEXT COLORS (LIGHT BACKGROUND) ----------
-  // static const Color textTitleLight = Color(0xFF262626); // #262626
+  static const Color textTitleLight = Color(0xFF262626); // #262626
   // static const Color textDescriptionLight = Color(0xFF90979F); // #90979F
 
   // ---------- TEXT COLORS (DARK BACKGROUND) ----------

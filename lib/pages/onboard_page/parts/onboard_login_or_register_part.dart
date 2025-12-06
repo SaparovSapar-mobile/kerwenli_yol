@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
+import 'package:kerwenli_yol/pages/parts/bg_page_light_button.dart';
 import 'package:kerwenli_yol/pages/parts/primary_button.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
@@ -38,6 +39,8 @@ class OnboardLoginOrRegisterPart extends ConsumerWidget {
         Text(desc, style: descStyle, textAlign: TextAlign.center),
         SizedBox(height: 47),
         PrimaryButton(text: 'Agza bolmak', onPressed: () {}),
+        SizedBox(height: 10),
+        BgPageLightButton(text: 'Gezelenç', onPressed: () {}),
       ],
     );
   }
