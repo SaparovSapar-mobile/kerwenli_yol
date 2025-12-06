@@ -18,19 +18,16 @@ class OnboardNextButton extends ConsumerWidget {
         ? LightColors.textTitleDark
         : DarkColors.textTitleDark;
 
-    int page = ref.watch(onboardPageIndexProvider);
-
     return GestureDetector(
       onTap: () {
-        if (page == 0) {
-          ref.read(onboardPageIndexProvider.notifier).state = 1;
-          pageCtrl.animateToPage(
-            1,
-            duration: const Duration(milliseconds: 300),
-            curve: Curves.linear,
-          );
-          return;
-        }
+        int page = ref.read(onboardPageIndexProvider);
+        ref.read(onboardPageIndexProvider.notifier).state = page + 1;
+
+        pageCtrl.animateToPage(
+          page + 1,
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.linear,
+        );
 
         // ref.read(isFirstTimeProvider.notifier).update(false);
         // Navigator.pushReplacement(

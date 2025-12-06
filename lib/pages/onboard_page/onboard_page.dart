@@ -26,6 +26,8 @@ class _OnboardPageState extends ConsumerState<OnboardPage> {
 
   @override
   Widget build(BuildContext context) {
+    int onboardPage = ref.watch(onboardPageIndexProvider);
+
     List<Widget> pages = [
       OnboardPart(
         image: 'onboard_1.png',
@@ -67,16 +69,19 @@ class _OnboardPageState extends ConsumerState<OnboardPage> {
                 },
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                DotssIndicator(
-                  lenght: pages.length,
-                  pageProvider: onboardPageIndexProvider,
-                ),
-                OnboardNextButton(pageCtrl: _pageController),
-              ],
-            ),
+            if (onboardPage != 2)
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  DotssIndicator(
+                    lenght: pages.length,
+                    pageProvider: onboardPageIndexProvider,
+                  ),
+                  OnboardNextButton(pageCtrl: _pageController),
+                ],
+              )
+            else
+              const SizedBox.shrink(),
           ],
         ),
       ),
