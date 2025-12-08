@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kerwenli_yol/pages/parts/inputs/confirm_password_input.dart';
 import 'package:kerwenli_yol/pages/parts/inputs/name_input.dart';
 import 'package:kerwenli_yol/pages/parts/inputs/password_input.dart';
+import 'package:kerwenli_yol/pages/parts/inputs/phone_input.dart';
 import 'package:kerwenli_yol/pages/parts/primary_button.dart';
 
 class RegisterWithPhone extends StatelessWidget {
@@ -9,7 +10,7 @@ class RegisterWithPhone extends StatelessWidget {
     super.key,
     required this.formKey,
     required this.nameCtrl,
-    required this.phoneCtr,
+    required this.phoneCtrl,
     required this.passwordCtrl,
     required this.confirmPasswordCtrl,
     required this.formBgColor,
@@ -17,7 +18,7 @@ class RegisterWithPhone extends StatelessWidget {
 
   final GlobalKey<FormState> formKey;
   final TextEditingController nameCtrl,
-      phoneCtr,
+      phoneCtrl,
       passwordCtrl,
       confirmPasswordCtrl;
   final Color formBgColor;
@@ -38,6 +39,7 @@ class RegisterWithPhone extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 NameInput(ctrl: nameCtrl),
+                PhoneInput(ctrl: phoneCtrl),
                 PasswordInput(ctrl: passwordCtrl),
                 ConfirmPasswordInput(
                   ctrl: passwordCtrl,

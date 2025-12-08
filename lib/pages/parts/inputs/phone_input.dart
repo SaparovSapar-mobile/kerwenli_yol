@@ -8,6 +8,11 @@ class PhoneInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InputPart(labelText: 'Telefon belgiňiz', ctrl: ctrl);
+    return InputPart(
+      labelText: 'Telefon belgiňiz',
+      ctrl: ctrl,
+      keyboardType: TextInputType.phone,
+      prefixText: '+993 | ',
+    );
   }
 }

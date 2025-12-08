@@ -15,9 +15,11 @@ class InputPart extends ConsumerWidget {
     this.showInputProvider,
     this.showClearInputProvider,
     this.readOnly,
+    this.prefixText,
   });
 
   final String labelText;
+  final String? prefixText;
   final int? maxLength, maxLines;
   final TextEditingController ctrl;
   final TextInputType? keyboardType;
@@ -50,6 +52,7 @@ class InputPart extends ConsumerWidget {
         helperText: '',
         counterText: '',
         labelText: labelText,
+        prefixText: prefixText,
         suffixIcon: showInputProvider != null
             ? ShowInputButton(
                 showInput: showInput,

@@ -78,7 +78,7 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
                 formBgColor: formBgColor,
                 formKey: formKey,
                 nameCtrl: _fullNameCtrl,
-                phoneCtr: _phoneCtrl,
+                phoneCtrl: _phoneCtrl,
                 passwordCtrl: _passwordCtrl,
               ),
               RegisterWithEmail(),
