@@ -10,17 +10,38 @@ import 'package:kerwenli_yol/pages/register_page/parts/register_with_phone.dart'
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 
-class RegisterPage extends ConsumerWidget {
+class RegisterPage extends ConsumerStatefulWidget {
   const RegisterPage({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<RegisterPage> createState() => _RegisterPageState();
+}
+
+class _RegisterPageState extends ConsumerState<RegisterPage> {
+  final TextEditingController _emailCtrl = TextEditingController();
+  final TextEditingController _phoneCtrl = TextEditingController();
+  final TextEditingController _passwordCtrl = TextEditingController();
+  final TextEditingController _fullNameCtrl = TextEditingController();
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
+  @override
+  void dispose() {
+    _emailCtrl.dispose();
+    _phoneCtrl.dispose();
+    _passwordCtrl.dispose();
+    _fullNameCtrl.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     bool isLight = isLightTheme(context, ref);
     Color bgColor = isLight ? LightColors.bgBlogLight : DarkColors.bgBlogDark;
 
     return DefaultTabController(
       length: 2,
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         appBar: AppBar(
           leading: BackLeadingButton(),
           title: Text('Agza bolmak'),
@@ -43,9 +64,17 @@ class RegisterPage extends ConsumerWidget {
           ),
         ),
         body: Padding(
-          padding: EdgeInsetsGeometry.symmetric(horizontal: 16),
+          padding: EdgeInsetsGeometry.only(left: 16, right: 16),
           child: TabBarView(
-            children: [RegisterWithPhone(), RegisterWithEmail()],
+            children: [
+              RegisterWithPhone(
+                formKey: formKey,
+                nameCtrl: _fullNameCtrl,
+                phoneCtr: _phoneCtrl,
+                passwordCtrl: _passwordCtrl,
+              ),
+              RegisterWithEmail(),
+            ],
           ),
         ),
       ),

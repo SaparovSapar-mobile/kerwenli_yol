@@ -31,7 +31,7 @@ class AppInputDecorationTheme {
       color: DarkColors.textTitleLight,
     ),
     labelStyle: AppTextStyles.medium14.copyWith(
-      color: DarkColors.textTitleLight,
+      color: DarkColors.textDescriptionDark,
     ),
     enabledBorder: outlineInputDarkBorder,
     focusedBorder: outlineInputDarkBorder,

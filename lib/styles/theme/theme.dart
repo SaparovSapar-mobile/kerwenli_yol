@@ -4,6 +4,7 @@ import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
 import 'package:kerwenli_yol/styles/theme/parts/app_bar_theme.dart';
 import 'package:kerwenli_yol/styles/theme/parts/app_input_decoration_theme.dart';
+import 'package:kerwenli_yol/styles/theme/parts/app_text_selection_theme.dart';
 
 class AppTheme {
   AppTheme._();
@@ -16,6 +17,7 @@ class AppTheme {
     textTheme: appTextTheme,
     appBarTheme: AppAppBarTheme.lightAppBarTheme,
     inputDecorationTheme: AppInputDecorationTheme.lightInputDecorationTheme,
+    textSelectionTheme: AppTextSelectionTheme.lightTextSelectionTheme,
   );
 
   static final ThemeData darkTheme = ThemeData(
@@ -26,6 +28,7 @@ class AppTheme {
     textTheme: appTextTheme,
     appBarTheme: AppAppBarTheme.darkAppBarTheme,
     inputDecorationTheme: AppInputDecorationTheme.darkInputDecorationTheme,
+    textSelectionTheme: AppTextSelectionTheme.darkTextSelectionTheme,
   );
 }
 
