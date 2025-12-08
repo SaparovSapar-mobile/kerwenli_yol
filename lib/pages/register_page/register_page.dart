@@ -37,6 +37,9 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
   Widget build(BuildContext context) {
     bool isLight = isLightTheme(context, ref);
     Color bgColor = isLight ? LightColors.bgBlogLight : DarkColors.bgBlogDark;
+    Color formBgColor = isLight
+        ? LightColors.bgPageLight
+        : DarkColors.bgPageDark;
 
     return DefaultTabController(
       length: 2,
@@ -53,12 +56,13 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
             ),
           ],
           bottom: PreferredSize(
-            preferredSize: const Size.fromHeight(78),
+            preferredSize: const Size.fromHeight(94),
             child: Column(
               children: [
                 AppBarBottomLine(),
                 SizedBox(height: 24),
                 SelectionButton(title1: 'Telefon Belgi', title2: 'Email'),
+                SizedBox(height: 16),
               ],
             ),
           ),
@@ -68,6 +72,7 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
           child: TabBarView(
             children: [
               RegisterWithPhone(
+                formBgColor: formBgColor,
                 formKey: formKey,
                 nameCtrl: _fullNameCtrl,
                 phoneCtr: _phoneCtrl,

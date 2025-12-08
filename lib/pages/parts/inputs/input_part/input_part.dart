@@ -41,6 +41,7 @@ class InputPart extends ConsumerWidget {
     return TextFormField(
       readOnly: readOnly ?? false,
       obscureText: showInputProvider != null ? !showInput : false,
+      obscuringCharacter: '*',
       controller: ctrl,
       maxLength: maxLength,
       maxLines: maxLines ?? 1,
