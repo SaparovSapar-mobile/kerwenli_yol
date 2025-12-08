@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kerwenli_yol/pages/parts/inputs/confirm_password_input.dart';
 import 'package:kerwenli_yol/pages/parts/inputs/name_input.dart';
 import 'package:kerwenli_yol/pages/parts/inputs/password_input.dart';
+import 'package:kerwenli_yol/pages/parts/primary_button.dart';
 
 class RegisterWithPhone extends StatelessWidget {
   const RegisterWithPhone({
@@ -25,23 +26,29 @@ class RegisterWithPhone extends StatelessWidget {
   Widget build(BuildContext context) {
     return Form(
       key: formKey,
-      child: Container(
-        padding: EdgeInsets.all(16),
-        decoration: BoxDecoration(
-          color: formBgColor,
-          borderRadius: BorderRadius.circular(12),
-        ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            NameInput(ctrl: nameCtrl),
-            PasswordInput(ctrl: passwordCtrl),
-            ConfirmPasswordInput(
-              ctrl: passwordCtrl,
-              confirmCtrl: confirmPasswordCtrl,
+      child: Column(
+        children: [
+          Container(
+            padding: EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: formBgColor,
+              borderRadius: BorderRadius.circular(12),
             ),
-          ],
-        ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                NameInput(ctrl: nameCtrl),
+                PasswordInput(ctrl: passwordCtrl),
+                ConfirmPasswordInput(
+                  ctrl: passwordCtrl,
+                  confirmCtrl: confirmPasswordCtrl,
+                ),
+              ],
+            ),
+          ),
+          SizedBox(height: 16),
+          PrimaryButton(text: 'Kod ugratmak', onPressed: () {}),
+        ],
       ),
     );
   }
