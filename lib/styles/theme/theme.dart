@@ -3,6 +3,7 @@ import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
 import 'package:kerwenli_yol/styles/theme/parts/app_bar_theme.dart';
+import 'package:kerwenli_yol/styles/theme/parts/app_input_decoration_theme.dart';
 
 class AppTheme {
   AppTheme._();
@@ -14,6 +15,7 @@ class AppTheme {
     scaffoldBackgroundColor: LightColors.bgBlogLight,
     textTheme: appTextTheme,
     appBarTheme: AppAppBarTheme.lightAppBarTheme,
+    inputDecorationTheme: AppInputDecorationTheme.lightInputDecorationTheme,
   );
 
   static final ThemeData darkTheme = ThemeData(
@@ -23,6 +25,7 @@ class AppTheme {
     scaffoldBackgroundColor: DarkColors.bgBlogDark,
     textTheme: appTextTheme,
     appBarTheme: AppAppBarTheme.darkAppBarTheme,
+    inputDecorationTheme: AppInputDecorationTheme.darkInputDecorationTheme,
   );
 }
 
