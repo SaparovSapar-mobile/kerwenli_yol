@@ -23,7 +23,8 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
   final TextEditingController _passwordCtrl = TextEditingController();
   final TextEditingController _confirmPasswordCtrl = TextEditingController();
   final TextEditingController _fullNameCtrl = TextEditingController();
-  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> formKeyForPhone = GlobalKey<FormState>();
+  final GlobalKey<FormState> formKeyForEmail = GlobalKey<FormState>();
 
   @override
   void dispose() {
@@ -76,12 +77,19 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
               RegisterWithPhone(
                 confirmPasswordCtrl: _confirmPasswordCtrl,
                 formBgColor: formBgColor,
-                formKey: formKey,
+                formKey: formKeyForPhone,
                 nameCtrl: _fullNameCtrl,
                 phoneCtrl: _phoneCtrl,
                 passwordCtrl: _passwordCtrl,
               ),
-              RegisterWithEmail(),
+              RegisterWithEmail(
+                confirmPasswordCtrl: _confirmPasswordCtrl,
+                formBgColor: formBgColor,
+                formKey: formKeyForEmail,
+                nameCtrl: _fullNameCtrl,
+                emailCtrl: _emailCtrl,
+                passwordCtrl: _passwordCtrl,
+              ),
             ],
           ),
         ),
