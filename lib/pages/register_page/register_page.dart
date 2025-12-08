@@ -21,6 +21,7 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
   final TextEditingController _emailCtrl = TextEditingController();
   final TextEditingController _phoneCtrl = TextEditingController();
   final TextEditingController _passwordCtrl = TextEditingController();
+  final TextEditingController _confirmPasswordCtrl = TextEditingController();
   final TextEditingController _fullNameCtrl = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
@@ -30,6 +31,7 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
     _phoneCtrl.dispose();
     _passwordCtrl.dispose();
     _fullNameCtrl.dispose();
+    _confirmPasswordCtrl.dispose();
     super.dispose();
   }
 
@@ -72,6 +74,7 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
           child: TabBarView(
             children: [
               RegisterWithPhone(
+                confirmPasswordCtrl: _confirmPasswordCtrl,
                 formBgColor: formBgColor,
                 formKey: formKey,
                 nameCtrl: _fullNameCtrl,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kerwenli_yol/pages/parts/inputs/confirm_password_input.dart';
 import 'package:kerwenli_yol/pages/parts/inputs/name_input.dart';
 import 'package:kerwenli_yol/pages/parts/inputs/password_input.dart';
 
@@ -9,11 +10,15 @@ class RegisterWithPhone extends StatelessWidget {
     required this.nameCtrl,
     required this.phoneCtr,
     required this.passwordCtrl,
+    required this.confirmPasswordCtrl,
     required this.formBgColor,
   });
 
   final GlobalKey<FormState> formKey;
-  final TextEditingController nameCtrl, phoneCtr, passwordCtrl;
+  final TextEditingController nameCtrl,
+      phoneCtr,
+      passwordCtrl,
+      confirmPasswordCtrl;
   final Color formBgColor;
 
   @override
@@ -31,6 +36,10 @@ class RegisterWithPhone extends StatelessWidget {
           children: [
             NameInput(ctrl: nameCtrl),
             PasswordInput(ctrl: passwordCtrl),
+            ConfirmPasswordInput(
+              ctrl: passwordCtrl,
+              confirmCtrl: confirmPasswordCtrl,
+            ),
           ],
         ),
       ),
