@@ -13,7 +13,7 @@ class EmailInput extends StatelessWidget {
     return InputPart(
       labelText: 'Email',
       ctrl: ctrl,
-      showClearInputProvider: clearNameProvider,
+      showClearInputProvider: clearEmailProvider,
       validationFunc: (value) {
         if (value == null || value == '' || !validateEmail(value)) {
           return '';
