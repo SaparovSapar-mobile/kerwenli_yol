@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kerwenli_yol/pages/parts/inputs/confirm_password_input.dart';
+import 'package:kerwenli_yol/pages/parts/inputs/email_input.dart';
 import 'package:kerwenli_yol/pages/parts/inputs/name_input.dart';
 import 'package:kerwenli_yol/pages/parts/inputs/password_input.dart';
 import 'package:kerwenli_yol/pages/parts/primary_button.dart';
@@ -38,6 +39,7 @@ class RegisterWithEmail extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 NameInput(ctrl: nameCtrl),
+                EmailInput(ctrl: emailCtrl),
                 PasswordInput(ctrl: passwordCtrl),
                 ConfirmPasswordInput(
                   ctrl: passwordCtrl,
