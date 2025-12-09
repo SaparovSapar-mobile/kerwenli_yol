@@ -4,6 +4,7 @@ import 'package:kerwenli_yol/pages/parts/inputs/name_input.dart';
 import 'package:kerwenli_yol/pages/parts/inputs/password_input.dart';
 import 'package:kerwenli_yol/pages/parts/inputs/phone_input.dart';
 import 'package:kerwenli_yol/pages/parts/primary_button.dart';
+import 'package:kerwenli_yol/pages/register_page/parts/confirm_privacy_policy_button.dart';
 
 class RegisterWithPhone extends StatelessWidget {
   const RegisterWithPhone({
@@ -45,6 +46,8 @@ class RegisterWithPhone extends StatelessWidget {
                   ctrl: passwordCtrl,
                   confirmCtrl: confirmPasswordCtrl,
                 ),
+                SizedBox(height: 30),
+                ConfirmPrivacyPolicyButton(),
               ],
             ),
           ),
