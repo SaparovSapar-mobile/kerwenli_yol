@@ -5,6 +5,7 @@ import 'package:kerwenli_yol/helpers/methods/parts/app_bar_methods.dart';
 import 'package:kerwenli_yol/pages/check_otp_page/parts/otp_input.dart';
 import 'package:kerwenli_yol/pages/onboard_page/parts/theme_switcher_button.dart';
 import 'package:kerwenli_yol/pages/parts/back_leading_button.dart';
+import 'package:kerwenli_yol/pages/parts/primary_button.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
@@ -43,6 +44,8 @@ class CheckOtpPage extends ConsumerWidget {
             Text(text, style: textStyle),
             SizedBox(height: 24),
             OtpInput(),
+            SizedBox(height: 16),
+            PrimaryButton(text: 'Tassykalamk', onPressed: () {}),
           ],
         ),
       ),
