@@ -5,3 +5,5 @@ var clearEmailProvider = StateProvider.autoDispose<bool>((ref) => false);
 var clearPhoneProvider = StateProvider.autoDispose<bool>((ref) => false);
 
 var showPassProvider = StateProvider.autoDispose<bool>((ref) => false);
+
+var otpCodeProvider = StateProvider<String>((ref) => '');
