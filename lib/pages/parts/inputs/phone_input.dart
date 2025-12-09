@@ -16,7 +16,7 @@ class PhoneInput extends StatelessWidget {
       prefixText: '+993 | ',
       showClearInputProvider: clearPhoneProvider,
       validationFunc: (value) {
-        if (value == null || value == '') {
+        if (value == null || value.length < 8) {
           return '';
         }
         return null;
