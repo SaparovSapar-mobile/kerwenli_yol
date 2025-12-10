@@ -57,10 +57,12 @@ class _ResendOtpButtonState extends ConsumerState<ResendOtpButton> {
     TextStyle textStyle = AppTextStyles.semiBold14;
 
     return TextButton(
-      onPressed: () {
-        widget.onResend(); // dışarıdan çağırılan fonksiyon
-        startTimer(); // tekrar sayaç başlasın
-      },
+      onPressed: _seconds > 0
+          ? null
+          : () {
+              widget.onResend(); // dışarıdan çağırılan fonksiyon
+              startTimer(); // tekrar sayaç başlasın
+            },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
