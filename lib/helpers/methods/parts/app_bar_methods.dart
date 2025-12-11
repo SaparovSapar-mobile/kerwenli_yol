@@ -12,7 +12,9 @@ PreferredSize appBarBottomLine() {
 }
 
 class AppBarBottomLine extends StatelessWidget {
-  const AppBarBottomLine({super.key});
+  const AppBarBottomLine({super.key, this.thickness});
+
+  final double? thickness;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +25,7 @@ class AppBarBottomLine extends StatelessWidget {
             ? LightColors.bgPageLight
             : DarkColors.bgPageDark;
 
-        return Divider(height: 4, color: lineColor);
+        return Divider(color: lineColor, thickness: thickness ?? 4);
       },
     );
   }

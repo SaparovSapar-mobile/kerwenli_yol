@@ -10,7 +10,7 @@ class HomePageTop extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Padding(
-      padding: EdgeInsetsGeometry.symmetric(vertical: 7.5, horizontal: 20),
+      padding: EdgeInsetsGeometry.only(left: 20, right: 20, bottom: 7.5),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

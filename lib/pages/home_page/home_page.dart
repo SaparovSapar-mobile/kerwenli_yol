@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kerwenli_yol/helpers/methods/parts/app_bar_methods.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_page_top/home_page_top.dart';
 
 class HomePage extends StatelessWidget {
@@ -9,6 +10,7 @@ class HomePage extends StatelessWidget {
     return Column(
       children: [
         HomePageTop(),
+        AppBarBottomLine(thickness: 10),
         // ListView(
         //   children: [
         //     HomeCarouselSlider(),

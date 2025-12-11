@@ -9,7 +9,7 @@ import 'package:kerwenli_yol/styles/text_styles.dart';
 AppBar homePageAppBar(BuildContext context) {
   return AppBar(
     bottom: PreferredSize(
-      preferredSize: Size.fromHeight(10),
+      preferredSize: Size.fromHeight(14),
       child: Consumer(
         builder: (context, ref, widget) {
           bool isLight = isLightTheme(context, ref);
@@ -46,7 +46,7 @@ AppBar homePageAppBar(BuildContext context) {
                   ],
                 ),
                 SizedBox(height: 10),
-                AppBarBottomLine(),
+                AppBarBottomLine(thickness: 2),
               ],
             ),
           );
