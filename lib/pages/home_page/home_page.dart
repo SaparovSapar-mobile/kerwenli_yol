@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:kerwenli_yol/pages/home_page/parts/home_carousel_slider/home_carousel_slider.dart';
-import 'package:kerwenli_yol/pages/home_page/parts/home_parts/home_parts.dart';
+import 'package:kerwenli_yol/pages/home_page/parts/home_page_top/home_page_top.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
+    return Column(
       children: [
-        HomeCarouselSlider(),
-        HomeParts(),
-        SizedBox(height: 10),
-        // HomeBrands(),
+        HomePageTop(),
+        // ListView(
+        //   children: [
+        //     HomeCarouselSlider(),
+        //     HomeParts(),
+        //     SizedBox(height: 10),
+        //     // HomeBrands(),
+        //   ],
+        // ),
       ],
     );
   }

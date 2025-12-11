@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kerwenli_yol/helpers/functions/navigation.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/helpers/methods/parts/app_bar_methods.dart';
+import 'package:kerwenli_yol/pages/bottom_navigation_page.dart';
 import 'package:kerwenli_yol/pages/check_otp_page/parts/otp_input.dart';
 import 'package:kerwenli_yol/pages/onboard_page/parts/theme_switcher_button.dart';
 import 'package:kerwenli_yol/pages/parts/back_leading_button.dart';
@@ -45,7 +47,11 @@ class CheckOtpPage extends ConsumerWidget {
             SizedBox(height: 24),
             OtpInput(),
             SizedBox(height: 16),
-            PrimaryButton(text: 'Tassykalamk', onPressed: () {}),
+            PrimaryButton(
+              text: 'Tassykalamk',
+              onPressed: () =>
+                  goToPage(context, BottomNavigationPage(), AxisDirection.left),
+            ),
           ],
         ),
       ),
