@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:kerwenli_yol/helpers/functions/navigation.dart';
-import 'package:kerwenli_yol/pages/check_otp_page/check_otp_page.dart';
 import 'package:kerwenli_yol/pages/parts/inputs/confirm_password_input.dart';
 import 'package:kerwenli_yol/pages/parts/inputs/name_input.dart';
 import 'package:kerwenli_yol/pages/parts/inputs/password_input.dart';
 import 'package:kerwenli_yol/pages/parts/inputs/phone_input.dart';
-import 'package:kerwenli_yol/pages/parts/primary_button.dart';
 import 'package:kerwenli_yol/pages/register_page/parts/confirm_privacy_policy_button.dart';
+import 'package:kerwenli_yol/pages/register_page/parts/send_otp_button.dart';
 
 class RegisterWithPhone extends StatelessWidget {
   const RegisterWithPhone({
@@ -54,13 +52,12 @@ class RegisterWithPhone extends StatelessWidget {
             ),
           ),
           SizedBox(height: 16),
-          PrimaryButton(
-            text: 'Kod ugratmak',
-            onPressed: () => goToPage(
-              context,
-              CheckOtpPage(text: 'Telefon belgiňize gelen kody giriziň'),
-              AxisDirection.left,
-            ),
+          SendOtpButton(
+            passwordCtrl: passwordCtrl,
+            fullNameCtrl: nameCtrl,
+            phoneCtrl: phoneCtrl,
+            formKeyForPhone: formKey,
+            text: 'Telefon belgiňize gelen kody giriziň',
           ),
         ],
       ),

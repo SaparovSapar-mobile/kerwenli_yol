@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:kerwenli_yol/helpers/functions/navigation.dart';
-import 'package:kerwenli_yol/pages/check_otp_page/check_otp_page.dart';
 import 'package:kerwenli_yol/pages/parts/inputs/confirm_password_input.dart';
 import 'package:kerwenli_yol/pages/parts/inputs/email_input.dart';
 import 'package:kerwenli_yol/pages/parts/inputs/name_input.dart';
 import 'package:kerwenli_yol/pages/parts/inputs/password_input.dart';
-import 'package:kerwenli_yol/pages/parts/primary_button.dart';
 import 'package:kerwenli_yol/pages/register_page/parts/confirm_privacy_policy_button.dart';
+import 'package:kerwenli_yol/pages/register_page/parts/send_otp_button.dart';
 
 class RegisterWithEmail extends StatelessWidget {
   const RegisterWithEmail({
@@ -54,13 +52,12 @@ class RegisterWithEmail extends StatelessWidget {
             ),
           ),
           SizedBox(height: 16),
-          PrimaryButton(
-            text: 'Kod ugratmak',
-            onPressed: () => goToPage(
-              context,
-              CheckOtpPage(text: 'Emailiňize gelen kody giriziň'),
-              AxisDirection.left,
-            ),
+          SendOtpButton(
+            passwordCtrl: passwordCtrl,
+            fullNameCtrl: nameCtrl,
+            emailCtrl: emailCtrl,
+            formKeyForEmail: formKey,
+            text: 'Emailiňize gelen kody giriziň',
           ),
         ],
       ),
