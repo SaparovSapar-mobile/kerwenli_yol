@@ -9,7 +9,7 @@ import 'package:kerwenli_yol/styles/text_styles.dart';
 AppBar homePageAppBar(BuildContext context) {
   return AppBar(
     bottom: PreferredSize(
-      preferredSize: Size.fromHeight(0),
+      preferredSize: Size.fromHeight(10),
       child: Consumer(
         builder: (context, ref, widget) {
           bool isLight = isLightTheme(context, ref);
@@ -29,18 +29,23 @@ AppBar homePageAppBar(BuildContext context) {
                 topRight: Radius.circular(20),
               ),
             ),
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            child: Column(
               children: [
-                Image.asset('assets/images/appbar_logo.png', height: 24),
                 Row(
-                  mainAxisSize: MainAxisSize.min,
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('09.11.2025 | ', style: dateStyle),
-                    Text('13° Ашхабад', style: dateStyle),
+                    Image.asset('assets/images/appbar_logo.png', height: 24),
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text('09.11.2025 | ', style: dateStyle),
+                        Text('13° Ашхабад', style: dateStyle),
+                      ],
+                    ),
                   ],
                 ),
+                SizedBox(height: 10),
                 AppBarBottomLine(),
               ],
             ),
