@@ -53,7 +53,7 @@ class HomeNewProductsCard extends ConsumerWidget {
             overflow: TextOverflow.ellipsis,
             style: nameStyle,
           ),
-          CompanyStatus(isOpen: false),
+          CompanyStatus(isOpen: product.isOpen),
           SizedBox(height: 2),
           HomeVipCompanyCardCategories(),
           SizedBox(height: 5),
