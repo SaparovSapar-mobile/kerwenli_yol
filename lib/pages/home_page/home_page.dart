@@ -6,6 +6,7 @@ import 'package:kerwenli_yol/pages/home_page/parts/home_leader_companies/home_le
 import 'package:kerwenli_yol/pages/home_page/parts/home_new_products/home_new_products.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_page_top/home_page_top.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/home_vip_companies.dart';
+import 'package:kerwenli_yol/pages/home_page/parts/home_virtuals/home_virtuals.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -25,6 +26,7 @@ class HomePage extends StatelessWidget {
               HomeLeaderCompanies(),
               HomeVipCompanies(),
               HomeNewProducts(),
+              HomeVirtuals(),
               // HomeParts(),
               SizedBox(height: 10),
               // HomeBrands(),
