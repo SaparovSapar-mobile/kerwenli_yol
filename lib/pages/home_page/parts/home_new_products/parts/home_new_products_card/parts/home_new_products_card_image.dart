@@ -13,6 +13,20 @@ class HomeNewProductsCardImage extends StatelessWidget {
   Widget build(BuildContext context) {
     const double cardRadius = 8;
 
+    List<String> cardToptypes = [];
+    if (product.forVip) {
+      cardToptypes.add(CardTopTextType.vip);
+    }
+    if (product.forNew) {
+      cardToptypes.add(CardTopTextType.taze);
+    }
+    if (product.forExport) {
+      cardToptypes.add(CardTopTextType.export);
+    }
+    if (product.forVirtual) {
+      cardToptypes.add(CardTopTextType.virtual);
+    }
+
     return SizedBox(
       width: 99,
       height: 110,
@@ -20,14 +34,7 @@ class HomeNewProductsCardImage extends StatelessWidget {
         clipBehavior: Clip.none,
         children: [
           // VIP label (arkada, sol üst)
-          CardTopTexts(
-            types: [
-              CardTopTextType.vip,
-              CardTopTextType.export,
-              CardTopTextType.taze,
-              CardTopTextType.virtual,
-            ],
-          ),
+          CardTopTexts(types: cardToptypes),
 
           // Main card
           ClipRRect(

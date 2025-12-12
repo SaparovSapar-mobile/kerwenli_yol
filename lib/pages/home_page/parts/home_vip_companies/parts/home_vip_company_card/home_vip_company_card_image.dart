@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kerwenli_yol/enums/card_top_text_type.dart';
 import 'package:kerwenli_yol/pages/parts/card_bookmark_button.dart';
-import 'package:kerwenli_yol/pages/parts/card_top_text.dart';
+import 'package:kerwenli_yol/pages/parts/card_top_texts/card_top_texts.dart';
 
 class HomeVipCompanyCardImage extends StatelessWidget {
   const HomeVipCompanyCardImage({super.key});
@@ -17,7 +17,7 @@ class HomeVipCompanyCardImage extends StatelessWidget {
         clipBehavior: Clip.none,
         children: [
           // VIP label (arkada, sol üst)
-          CardTopText(cardTopTextType: CardTopTextType.vip),
+          CardTopTexts(types: [CardTopTextType.vip]),
 
           // Main card
           ClipRRect(
