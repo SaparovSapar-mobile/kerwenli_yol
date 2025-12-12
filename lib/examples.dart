@@ -22,6 +22,7 @@ List<ExampleProductCard> homeProducts = [
     forExport: false,
     forVirtual: false,
     isOpen: false,
+    images: [1],
   ),
   ExampleProductCard(
     forVip: false,
@@ -29,6 +30,7 @@ List<ExampleProductCard> homeProducts = [
     forExport: false,
     forVirtual: true,
     isOpen: true,
+    images: [1, 2, 3],
   ),
   ExampleProductCard(
     forVip: true,
@@ -36,6 +38,7 @@ List<ExampleProductCard> homeProducts = [
     forExport: true,
     forVirtual: false,
     isOpen: true,
+    images: [1, 2, 3],
   ),
   ExampleProductCard(
     forVip: true,
@@ -43,6 +46,7 @@ List<ExampleProductCard> homeProducts = [
     forExport: true,
     forVirtual: true,
     isOpen: false,
+    images: [1, 2, 3],
   ),
   ExampleProductCard(
     forVip: true,
@@ -50,6 +54,7 @@ List<ExampleProductCard> homeProducts = [
     forExport: false,
     forVirtual: false,
     isOpen: false,
+    images: [1, 2, 3],
   ),
   ExampleProductCard(
     forVip: true,
@@ -57,6 +62,7 @@ List<ExampleProductCard> homeProducts = [
     forExport: false,
     forVirtual: false,
     isOpen: false,
+    images: [1, 2, 3],
   ),
   ExampleProductCard(
     forVip: true,
@@ -64,6 +70,7 @@ List<ExampleProductCard> homeProducts = [
     forExport: false,
     forVirtual: false,
     isOpen: false,
+    images: [1, 2, 3],
   ),
   ExampleProductCard(
     forVip: true,
@@ -71,6 +78,7 @@ List<ExampleProductCard> homeProducts = [
     forExport: false,
     forVirtual: false,
     isOpen: false,
+    images: [1, 2, 3],
   ),
   ExampleProductCard(
     forVip: true,
@@ -78,11 +86,13 @@ List<ExampleProductCard> homeProducts = [
     forExport: false,
     forVirtual: false,
     isOpen: false,
+    images: [1, 2, 3],
   ),
 ];
 
 class ExampleProductCard {
   final bool forVip, forNew, forExport, forVirtual, isOpen;
+  final List<int> images;
 
   ExampleProductCard({
     required this.forVip,
@@ -90,5 +100,6 @@ class ExampleProductCard {
     required this.forExport,
     required this.forVirtual,
     required this.isOpen,
+    required this.images,
   });
 }
