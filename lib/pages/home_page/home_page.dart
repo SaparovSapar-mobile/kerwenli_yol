@@ -15,17 +15,7 @@ class HomePage extends StatelessWidget {
         Expanded(
           child: ListView(
             children: [
-              Padding(
-                padding: EdgeInsetsGeometry.symmetric(
-                  horizontal: 16,
-                  vertical: 10,
-                ),
-                child: HomeBanner(
-                  height: 122,
-                  width: double.infinity,
-                  borderRadius: 20,
-                ),
-              ),
+              HomeBanner(height: 122, width: double.infinity, borderRadius: 8),
               // HomeParts(),
               SizedBox(height: 10),
               // HomeBrands(),

@@ -8,22 +8,18 @@ class HomeBannerCard extends ConsumerWidget {
     required this.image,
     required this.height,
     required this.width,
-    required this.borderRadius,
   });
 
   final String image;
-  final double height, width, borderRadius;
+  final double height, width;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return GestureDetector(
       onTap: () {},
-      child: Container(
+      child: SizedBox(
         height: height,
         width: width,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(borderRadius),
-        ),
         child: ShowImage(image: image),
       ),
     );

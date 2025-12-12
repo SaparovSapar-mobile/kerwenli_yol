@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:animated_switcher_plus/animated_switcher_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:kerwenli_yol/examples.dart';
+import 'package:kerwenli_yol/pages/home_page/parts/home_banner/parts/banner_dots.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_banner/parts/home_banner_card.dart';
 
 class HomeBanner extends StatefulWidget {
@@ -45,16 +46,34 @@ class _MainPageBannerPartState extends State<HomeBanner> {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedSwitcherPlus.translationLeft(
-      duration: const Duration(milliseconds: 800),
-      switchInCurve: Curves.easeOut,
-      switchOutCurve: Curves.easeIn,
-      child: HomeBannerCard(
-        key: ValueKey(_currentIndex),
-        borderRadius: widget.borderRadius,
-        height: widget.height,
-        width: widget.width,
-        image: homeBanners[_currentIndex],
+    return Padding(
+      padding: const EdgeInsets.only(left: 16, top: 10, right: 16, bottom: 10),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(widget.borderRadius),
+        clipBehavior: Clip.hardEdge, // veya Clip.antiAlias
+        child: Stack(
+          children: [
+            AnimatedSwitcherPlus.translationLeft(
+              duration: const Duration(milliseconds: 800),
+              switchInCurve: Curves.easeOut,
+              switchOutCurve: Curves.easeIn,
+              child: HomeBannerCard(
+                key: ValueKey(_currentIndex),
+                height: widget.height,
+                width: widget.width,
+                image: homeBanners[_currentIndex],
+              ),
+            ),
+            Positioned(
+              left: 4,
+              bottom: 4,
+              child: BannerDots(
+                lenght: homeBanners.length,
+                page: _currentIndex,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
