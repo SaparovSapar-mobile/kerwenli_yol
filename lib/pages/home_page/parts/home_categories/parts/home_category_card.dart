@@ -7,7 +7,9 @@ import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
 
 class HomeCategoryCard extends ConsumerWidget {
-  const HomeCategoryCard({super.key});
+  const HomeCategoryCard({super.key, this.isFirst, this.isLast});
+
+  final bool? isFirst, isLast;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -19,6 +21,9 @@ class HomeCategoryCard extends ConsumerWidget {
 
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 5, vertical: 9),
+      margin: isFirst != null && isLast != null
+          ? EdgeInsets.only(left: isFirst! ? 16 : 0, right: isLast! ? 16 : 0)
+          : null,
       decoration: BoxDecoration(
         color: bgColor,
         borderRadius: BorderRadius.circular(5),
