@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kerwenli_yol/helpers/methods/parts/app_bar_methods.dart';
-import 'package:kerwenli_yol/pages/home_page/parts/home_banner/home_banner.dart';
+import 'package:kerwenli_yol/pages/home_page/parts/home_banners/home_banners.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_page_top/home_page_top.dart';
 
 class HomePage extends StatelessWidget {
@@ -15,15 +15,7 @@ class HomePage extends StatelessWidget {
         Expanded(
           child: ListView(
             children: [
-              HomeBanner(
-                height: 122,
-                width: double.infinity,
-                borderRadius: 8,
-                paddingLeft: 16,
-                paddingTop: 10,
-                paddingRight: 16,
-                paddingBottom: 10,
-              ),
+              HomeBanners(),
               // HomeParts(),
               SizedBox(height: 10),
               // HomeBrands(),

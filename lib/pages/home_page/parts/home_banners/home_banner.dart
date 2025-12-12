@@ -2,8 +2,8 @@ import 'dart:async';
 import 'package:animated_switcher_plus/animated_switcher_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:kerwenli_yol/examples.dart';
-import 'package:kerwenli_yol/pages/home_page/parts/home_banner/parts/banner_dots.dart';
-import 'package:kerwenli_yol/pages/home_page/parts/home_banner/parts/home_banner_card.dart';
+import 'package:kerwenli_yol/pages/home_page/parts/home_banners/parts/banner_dots.dart';
+import 'package:kerwenli_yol/pages/home_page/parts/home_banners/parts/home_banner_card.dart';
 
 class HomeBanner extends StatefulWidget {
   const HomeBanner({
@@ -11,19 +11,9 @@ class HomeBanner extends StatefulWidget {
     required this.height,
     required this.width,
     required this.borderRadius,
-    required this.paddingLeft,
-    required this.paddingTop,
-    required this.paddingRight,
-    required this.paddingBottom,
   });
 
-  final double height,
-      width,
-      borderRadius,
-      paddingLeft,
-      paddingTop,
-      paddingRight,
-      paddingBottom;
+  final double height, width, borderRadius;
 
   @override
   State<HomeBanner> createState() => _MainPageBannerPartState();
@@ -56,13 +46,9 @@ class _MainPageBannerPartState extends State<HomeBanner> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(
-        left: widget.paddingLeft,
-        top: widget.paddingTop,
-        right: widget.paddingRight,
-        bottom: widget.paddingBottom,
-      ),
+    return SizedBox(
+      width: widget.width,
+      height: widget.height,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(widget.borderRadius),
         clipBehavior: Clip.hardEdge, // veya Clip.antiAlias
@@ -74,8 +60,6 @@ class _MainPageBannerPartState extends State<HomeBanner> {
               switchOutCurve: Curves.easeIn,
               child: HomeBannerCard(
                 key: ValueKey(_currentIndex),
-                height: widget.height,
-                width: widget.width,
                 image: homeBanners[_currentIndex],
               ),
             ),
