@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/parts/home_vip_company_bookmark_button.dart';
+import 'package:kerwenli_yol/pages/parts/card_bookmark_button.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/parts/vip_text.dart';
 
 class HomeVipCompanyCardImage extends StatelessWidget {
@@ -29,7 +29,7 @@ class HomeVipCompanyCardImage extends StatelessWidget {
               child: Stack(
                 children: [
                   // Bookmark box (sağ üst)
-                  HomeVipCompanyBookmarkButton(),
+                  CardBookmarkButton(),
 
                   // Company Image
                   Center(

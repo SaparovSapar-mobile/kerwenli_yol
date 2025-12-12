@@ -4,8 +4,8 @@ import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 
-class HomeVipCompanyBookmarkButton extends ConsumerWidget {
-  const HomeVipCompanyBookmarkButton({super.key});
+class CardBookmarkButton extends ConsumerWidget {
+  const CardBookmarkButton({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
