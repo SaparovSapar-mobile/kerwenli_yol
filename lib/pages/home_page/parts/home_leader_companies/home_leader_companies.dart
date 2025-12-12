@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kerwenli_yol/pages/home_page/parts/home_categories/parts/home_categories_list.dart';
+import 'package:kerwenli_yol/pages/home_page/parts/home_leader_companies/parts/home_leader_companies_list.dart';
 import 'package:kerwenli_yol/pages/parts/home_more_button.dart';
 
 class HomeLeaderCompanies extends StatelessWidget {
@@ -12,7 +12,7 @@ class HomeLeaderCompanies extends StatelessWidget {
       children: [
         HomeMoreButton(text: 'Öňde baryjy kärhanalar', onTap: () {}),
         SizedBox(height: 5),
-        HomeCategoriesList(),
+        HomeLeaderCompaniesList(),
       ],
     );
   }
