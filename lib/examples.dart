@@ -14,3 +14,71 @@ List<String> homeParts = [
   'Syýahat',
   'Hyzmatlar',
 ];
+
+List<ExampleProductCard> homeProducts = [
+  ExampleProductCard(
+    forVip: true,
+    forNew: false,
+    forExport: false,
+    forVirtual: false,
+  ),
+  ExampleProductCard(
+    forVip: false,
+    forNew: true,
+    forExport: false,
+    forVirtual: true,
+  ),
+  ExampleProductCard(
+    forVip: true,
+    forNew: false,
+    forExport: true,
+    forVirtual: false,
+  ),
+  ExampleProductCard(
+    forVip: true,
+    forNew: true,
+    forExport: true,
+    forVirtual: true,
+  ),
+  ExampleProductCard(
+    forVip: true,
+    forNew: false,
+    forExport: false,
+    forVirtual: false,
+  ),
+  ExampleProductCard(
+    forVip: true,
+    forNew: false,
+    forExport: false,
+    forVirtual: false,
+  ),
+  ExampleProductCard(
+    forVip: true,
+    forNew: false,
+    forExport: false,
+    forVirtual: false,
+  ),
+  ExampleProductCard(
+    forVip: true,
+    forNew: false,
+    forExport: false,
+    forVirtual: false,
+  ),
+  ExampleProductCard(
+    forVip: true,
+    forNew: false,
+    forExport: false,
+    forVirtual: false,
+  ),
+];
+
+class ExampleProductCard {
+  final bool forVip, forNew, forExport, forVirtual;
+
+  ExampleProductCard({
+    required this.forVip,
+    required this.forNew,
+    required this.forExport,
+    required this.forVirtual,
+  });
+}

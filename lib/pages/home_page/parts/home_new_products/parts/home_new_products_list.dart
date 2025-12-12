@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kerwenli_yol/examples.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_new_products/parts/home_new_products_card/home_new_products_card.dart';
 
 class HomeNewProductsList extends StatelessWidget {
@@ -10,10 +11,13 @@ class HomeNewProductsList extends StatelessWidget {
       height: 202,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) =>
-            HomeNewProductsCard(isFirst: index == 0, isLast: index == 9),
+        itemBuilder: (context, index) => HomeNewProductsCard(
+          isFirst: index == 0,
+          isLast: index == 9,
+          product: homeProducts[index],
+        ),
         separatorBuilder: (context, index) => SizedBox(width: 5),
-        itemCount: 10,
+        itemCount: homeProducts.length,
       ),
     );
   }

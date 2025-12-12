@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kerwenli_yol/examples.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_new_products/parts/home_new_products_card/parts/home_new_products_card_image.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/parts/company_status.dart';
@@ -11,9 +12,15 @@ import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
 
 class HomeNewProductsCard extends ConsumerWidget {
-  const HomeNewProductsCard({super.key, this.isFirst, this.isLast});
+  const HomeNewProductsCard({
+    super.key,
+    this.isFirst,
+    this.isLast,
+    required this.product,
+  });
 
   final bool? isFirst, isLast;
+  final ExampleProductCard product;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -38,7 +45,7 @@ class HomeNewProductsCard extends ConsumerWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          HomeNewProductsCardImage(),
+          HomeNewProductsCardImage(product: product),
           SizedBox(height: 5),
           Text(
             'Türkmenistanda öndürilen şokaladlary alyn',
