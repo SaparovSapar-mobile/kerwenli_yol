@@ -6,9 +6,17 @@ import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 
 class BannerDots extends ConsumerWidget {
-  const BannerDots({super.key, required this.lenght, required this.page});
+  const BannerDots({
+    super.key,
+    required this.lenght,
+    required this.page,
+    required this.dotsSize,
+    required this.dotsActiveWidth,
+    required this.dotsActiveHeight,
+  });
 
   final int lenght, page;
+  final double dotsSize, dotsActiveWidth, dotsActiveHeight;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -30,8 +38,8 @@ class BannerDots extends ConsumerWidget {
           spacing: const EdgeInsets.symmetric(vertical: 1, horizontal: 2.5),
           color: inactiveColor,
           activeColor: activeColor,
-          size: const Size.square(4.0),
-          activeSize: const Size(15.0, 6.0),
+          size: Size.square(dotsSize),
+          activeSize: Size(dotsActiveWidth, dotsActiveHeight),
           activeShape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(5.0),
           ),

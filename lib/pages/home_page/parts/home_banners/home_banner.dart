@@ -11,9 +11,21 @@ class HomeBanner extends StatefulWidget {
     required this.height,
     required this.width,
     required this.borderRadius,
+    required this.dotsLeft,
+    required this.dotsBottom,
+    required this.dotsSize,
+    required this.dotsActiveWidth,
+    required this.dotsActiveHeight,
   });
 
-  final double height, width, borderRadius;
+  final double height,
+      width,
+      borderRadius,
+      dotsLeft,
+      dotsBottom,
+      dotsSize,
+      dotsActiveWidth,
+      dotsActiveHeight;
 
   @override
   State<HomeBanner> createState() => _MainPageBannerPartState();
@@ -64,11 +76,14 @@ class _MainPageBannerPartState extends State<HomeBanner> {
               ),
             ),
             Positioned(
-              left: 4,
-              bottom: 4,
+              left: widget.dotsLeft,
+              bottom: widget.dotsBottom,
               child: BannerDots(
                 lenght: homeBanners.length,
                 page: _currentIndex,
+                dotsSize: widget.dotsSize,
+                dotsActiveWidth: widget.dotsActiveWidth,
+                dotsActiveHeight: widget.dotsActiveHeight,
               ),
             ),
           ],

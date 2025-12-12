@@ -14,7 +14,16 @@ class HomeBanners extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          HomeBanner(height: 122, width: double.infinity, borderRadius: 8),
+          HomeBanner(
+            height: 122,
+            width: double.infinity,
+            borderRadius: 8,
+            dotsLeft: 4,
+            dotsBottom: 4,
+            dotsSize: 4.0,
+            dotsActiveWidth: 9.0,
+            dotsActiveHeight: 4.0,
+          ),
           SizedBox(height: 10),
           Row(
             children: [
@@ -22,12 +31,22 @@ class HomeBanners extends StatelessWidget {
                 height: 64,
                 width: bottomBannersWidth,
                 borderRadius: 6,
+                dotsLeft: 3,
+                dotsBottom: 3,
+                dotsSize: 2.0,
+                dotsActiveWidth: 4.0,
+                dotsActiveHeight: 2.0,
               ),
               SizedBox(width: 10),
               HomeBanner(
                 height: 64,
                 width: bottomBannersWidth,
                 borderRadius: 6,
+                dotsLeft: 3,
+                dotsBottom: 3,
+                dotsSize: 2.0,
+                dotsActiveWidth: 4.0,
+                dotsActiveHeight: 2.0,
               ),
             ],
           ),
