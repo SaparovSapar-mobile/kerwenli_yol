@@ -11,9 +11,19 @@ class HomeBanner extends StatefulWidget {
     required this.height,
     required this.width,
     required this.borderRadius,
+    required this.paddingLeft,
+    required this.paddingTop,
+    required this.paddingRight,
+    required this.paddingBottom,
   });
 
-  final double height, width, borderRadius;
+  final double height,
+      width,
+      borderRadius,
+      paddingLeft,
+      paddingTop,
+      paddingRight,
+      paddingBottom;
 
   @override
   State<HomeBanner> createState() => _MainPageBannerPartState();
@@ -47,7 +57,12 @@ class _MainPageBannerPartState extends State<HomeBanner> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 16, top: 10, right: 16, bottom: 10),
+      padding: EdgeInsets.only(
+        left: widget.paddingLeft,
+        top: widget.paddingTop,
+        right: widget.paddingRight,
+        bottom: widget.paddingBottom,
+      ),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(widget.borderRadius),
         clipBehavior: Clip.hardEdge, // veya Clip.antiAlias
