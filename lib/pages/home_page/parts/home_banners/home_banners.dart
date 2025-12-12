@@ -10,7 +10,7 @@ class HomeBanners extends StatelessWidget {
     double bottomBannersWidth = (screenProperties(context).width - 42) / 2;
 
     return Padding(
-      padding: EdgeInsetsGeometry.symmetric(horizontal: 16),
+      padding: EdgeInsetsGeometry.symmetric(horizontal: 16, vertical: 10),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
