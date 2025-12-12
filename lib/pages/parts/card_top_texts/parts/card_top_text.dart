@@ -33,23 +33,20 @@ class CardTopText extends StatelessWidget {
         cardColor = const Color(0xFFFBB725);
     }
 
-    return Positioned(
-      top: -6,
-      child: Container(
-        width: 32,
-        height: 18,
-        alignment: Alignment.topCenter,
-        decoration: BoxDecoration(
-          color: cardColor,
-          borderRadius: BorderRadius.circular(2),
-        ),
-        child: Text(
-          text,
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 6,
-            fontWeight: FontWeight.w600,
-          ),
+    return Container(
+      height: 18,
+      alignment: Alignment.topCenter,
+      padding: EdgeInsets.symmetric(horizontal: 4.6),
+      decoration: BoxDecoration(
+        color: cardColor,
+        borderRadius: BorderRadius.circular(2),
+      ),
+      child: Text(
+        text,
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 6,
+          fontWeight: FontWeight.w600,
         ),
       ),
     );
