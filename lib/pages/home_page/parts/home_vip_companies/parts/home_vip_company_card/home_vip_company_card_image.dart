@@ -31,7 +31,7 @@ class HomeVipCompanyCardImage extends StatelessWidget {
                   // Bookmark box (sağ üst)
                   HomeVipCompanyBookmarkButton(),
 
-                  // Center placeholder icon
+                  // Company Image
                   Center(
                     child: Icon(
                       Icons.add_a_photo_outlined,

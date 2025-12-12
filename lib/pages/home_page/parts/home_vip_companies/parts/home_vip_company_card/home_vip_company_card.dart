@@ -4,6 +4,7 @@ import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/home_vip_company_card_image.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
+import 'package:kerwenli_yol/styles/text_styles.dart';
 
 class HomeVipCompanyCard extends ConsumerWidget {
   const HomeVipCompanyCard({super.key, this.isFirst, this.isLast});
@@ -16,6 +17,8 @@ class HomeVipCompanyCard extends ConsumerWidget {
     Color borderColor = isLight
         ? LightColors.bgPageLight
         : DarkColors.bgPageDark;
+
+    TextStyle nameStyle = AppTextStyles.medium10;
 
     return Container(
       width: 112,
@@ -30,7 +33,16 @@ class HomeVipCompanyCard extends ConsumerWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: [HomeVipCompanyCardImage()],
+        children: [
+          HomeVipCompanyCardImage(),
+          SizedBox(height: 5),
+          Text(
+            'Türkmenistanda öndürilen şokaladlary alyn',
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+            style: nameStyle,
+          ),
+        ],
       ),
     );
   }
