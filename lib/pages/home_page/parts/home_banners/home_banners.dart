@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
-import 'package:kerwenli_yol/pages/home_page/parts/home_banners/home_banner.dart';
+import 'package:kerwenli_yol/pages/home_page/parts/home_banners/parts/home_banner.dart';
 
 class HomeBanners extends StatelessWidget {
   const HomeBanners({super.key});
