@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kerwenli_yol/pages/parts/card_bookmark_button.dart';
-import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/parts/vip_text.dart';
+import 'package:kerwenli_yol/pages/parts/vip_text.dart';
 
 class HomeVipCompanyCardImage extends StatelessWidget {
   const HomeVipCompanyCardImage({super.key});
