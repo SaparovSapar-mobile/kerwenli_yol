@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kerwenli_yol/helpers/methods/parts/app_bar_methods.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_banners/home_banners.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_categories/home_categories.dart';
+import 'package:kerwenli_yol/pages/home_page/parts/home_graditutes/home_graditutes.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_leader_companies/home_leader_companies.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_media/home_media.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_new_products/home_new_products.dart';
@@ -33,7 +34,7 @@ class HomePage extends StatelessWidget {
               HomeMedia(),
               HomeSecondBanner(),
               HomePartners(),
-              SizedBox(height: 10),
+              HomeGraditutes(),
             ],
           ),
         ),
