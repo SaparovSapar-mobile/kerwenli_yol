@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kerwenli_yol/helpers/methods/parts/app_bar_methods.dart';
-import 'package:kerwenli_yol/pages/home_page/parts/home_partners/parts/home_partner_list.dart';
+import 'package:kerwenli_yol/pages/home_page/parts/home_graditutes/parts/home_graditute_list.dart';
 import 'package:kerwenli_yol/pages/parts/home_more_button.dart';
 
 class HomeGraditutes extends StatelessWidget {
@@ -13,7 +13,7 @@ class HomeGraditutes extends StatelessWidget {
       children: [
         HomeMoreButton(text: 'Minnetdarlyklar', onTap: () {}),
         SizedBox(height: 5),
-        HomePartnerList(),
+        HomeGradituteList(),
         SizedBox(height: 10),
         AppBarBottomLine(thickness: 10),
       ],
