@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kerwenli_yol/helpers/methods/parts/app_bar_methods.dart';
-import 'package:kerwenli_yol/pages/home_page/parts/home_media/parts/home_media_list.dart';
+import 'package:kerwenli_yol/pages/home_page/parts/home_partners/parts/home_partner_list.dart';
 import 'package:kerwenli_yol/pages/parts/home_more_button.dart';
 
 class HomePartners extends StatelessWidget {
@@ -13,7 +13,7 @@ class HomePartners extends StatelessWidget {
       children: [
         HomeMoreButton(text: 'Hyzmadaslarymyz', onTap: () {}),
         SizedBox(height: 5),
-        HomeMediaList(),
+        HomePartnerList(),
         SizedBox(height: 10),
         AppBarBottomLine(thickness: 10),
       ],
