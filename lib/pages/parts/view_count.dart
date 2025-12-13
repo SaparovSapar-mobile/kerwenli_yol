@@ -5,8 +5,8 @@ import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
 
-class HomeVipCompanyViewCount extends ConsumerWidget {
-  const HomeVipCompanyViewCount({super.key});
+class ViewCount extends ConsumerWidget {
+  const ViewCount({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
