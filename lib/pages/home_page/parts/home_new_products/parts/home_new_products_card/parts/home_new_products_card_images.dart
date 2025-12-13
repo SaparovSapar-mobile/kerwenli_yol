@@ -1,6 +1,4 @@
-import 'dart:async';
-
-import 'package:animated_switcher_plus/animated_switcher_plus.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:kerwenli_yol/enums/card_top_text_type.dart';
 import 'package:kerwenli_yol/examples.dart';
@@ -20,47 +18,19 @@ class HomeNewProductsCardImages extends StatefulWidget {
 
 class _HomeNewProductsCardImagesState extends State<HomeNewProductsCardImages> {
   int _currentIndex = 0;
-  late Timer _timer;
-
-  @override
-  void initState() {
-    super.initState();
-    _timer = Timer.periodic(const Duration(seconds: 3), (timer) {
-      _nextImage();
-    });
-  }
-
-  @override
-  void dispose() {
-    _timer.cancel();
-    super.dispose();
-  }
-
-  void _nextImage() {
-    setState(() {
-      int len = widget.product.images.length;
-      _currentIndex = (_currentIndex + 1) % len;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
     const double cardRadius = 8;
-    List<int> images = widget.product.images;
+    final images = widget.product.images;
+    final len = images.length;
 
-    List<String> cardToptypes = [];
-    if (widget.product.forVip) {
-      cardToptypes.add(CardTopTextType.vip);
-    }
-    if (widget.product.forNew) {
-      cardToptypes.add(CardTopTextType.taze);
-    }
-    if (widget.product.forExport) {
-      cardToptypes.add(CardTopTextType.export);
-    }
-    if (widget.product.forVirtual) {
-      cardToptypes.add(CardTopTextType.virtual);
-    }
+    /// Üst etiketler
+    final List<String> cardToptypes = [];
+    if (widget.product.forVip) cardToptypes.add(CardTopTextType.vip);
+    if (widget.product.forNew) cardToptypes.add(CardTopTextType.taze);
+    if (widget.product.forExport) cardToptypes.add(CardTopTextType.export);
+    if (widget.product.forVirtual) cardToptypes.add(CardTopTextType.virtual);
 
     return SizedBox(
       width: 99,
@@ -68,10 +38,10 @@ class _HomeNewProductsCardImagesState extends State<HomeNewProductsCardImages> {
       child: Stack(
         clipBehavior: Clip.none,
         children: [
-          // VIP label (arkada, sol üst)
+          /// VIP / NEW / EXPORT etiketleri
           CardTopTexts(types: cardToptypes),
 
-          // Main card
+          /// Main card
           SizedBox(
             width: 99,
             height: 110,
@@ -84,30 +54,45 @@ class _HomeNewProductsCardImagesState extends State<HomeNewProductsCardImages> {
                 ),
                 child: Stack(
                   children: [
-                    // Bookmark box (sağ üst)
-                    CardFavoriteButton(),
+                    /// Favorite button
+                    const CardFavoriteButton(),
 
-                    // Company Image
-                    AnimatedSwitcherPlus.translationLeft(
-                      duration: const Duration(milliseconds: 800),
-                      switchInCurve: Curves.easeOut,
-                      switchOutCurve: Curves.easeIn,
-                      child: Center(
-                        key: ValueKey(_currentIndex),
-                        child: Icon(
-                          Icons.add_a_photo_outlined,
-                          size: 14,
-                          color: Color(0xFF9CB7FF),
+                    /// Image carousel
+                    CarouselSlider.builder(
+                      itemCount: len,
+                      itemBuilder: (context, index, realIndex) {
+                        // Burada gerçek resim widget’ını koyabilirsin
+                        return Center(
+                          child: Icon(
+                            Icons.add_a_photo_outlined,
+                            size: 14,
+                            color: const Color(0xFF9CB7FF),
+                          ),
+                        );
+                      },
+                      options: CarouselOptions(
+                        height: 110,
+                        viewportFraction: 1,
+                        enableInfiniteScroll: len > 1,
+                        autoPlay: len > 1,
+                        autoPlayInterval: const Duration(seconds: 3),
+                        autoPlayAnimationDuration: const Duration(
+                          milliseconds: 800,
                         ),
+                        autoPlayCurve: Curves.easeOut,
+                        pauseAutoPlayOnTouch: true,
+                        onPageChanged: (index, reason) {
+                          setState(() => _currentIndex = index);
+                        },
                       ),
                     ),
 
-                    // Image dots
+                    /// Image dots
                     Positioned(
                       right: 4,
                       bottom: 4,
                       child: BannerDots(
-                        lenght: images.length,
+                        lenght: len,
                         page: _currentIndex,
                         dotsSize: 2.83,
                         dotsActiveWidth: 7.08,
