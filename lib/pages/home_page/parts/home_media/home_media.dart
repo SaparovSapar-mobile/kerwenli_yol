@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kerwenli_yol/helpers/methods/parts/app_bar_methods.dart';
-import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_companies_list.dart';
+import 'package:kerwenli_yol/pages/home_page/parts/home_media/parts/home_media_list.dart';
 import 'package:kerwenli_yol/pages/parts/home_more_button.dart';
 
 class HomeMedia extends StatelessWidget {
@@ -13,7 +13,7 @@ class HomeMedia extends StatelessWidget {
       children: [
         HomeMoreButton(text: 'Media', onTap: () {}),
         SizedBox(height: 5),
-        HomeVipCompaniesList(),
+        HomeMediaList(),
         SizedBox(height: 10),
         AppBarBottomLine(thickness: 10),
       ],
