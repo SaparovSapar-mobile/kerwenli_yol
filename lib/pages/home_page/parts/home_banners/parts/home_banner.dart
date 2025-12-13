@@ -1,5 +1,4 @@
-import 'dart:async';
-import 'package:animated_switcher_plus/animated_switcher_plus.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:kerwenli_yol/examples.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_banners/parts/banner_dots.dart';
@@ -28,58 +27,54 @@ class HomeBanner extends StatefulWidget {
       dotsActiveHeight;
 
   @override
-  State<HomeBanner> createState() => _MainPageBannerPartState();
+  State<HomeBanner> createState() => _HomeBannerState();
 }
 
-class _MainPageBannerPartState extends State<HomeBanner> {
+class _HomeBannerState extends State<HomeBanner> {
+  final CarouselSliderController _controller = CarouselSliderController();
+
   int _currentIndex = 0;
-  late Timer _timer;
-
-  @override
-  void initState() {
-    super.initState();
-    _timer = Timer.periodic(const Duration(seconds: 3), (timer) {
-      _nextImage();
-    });
-  }
-
-  @override
-  void dispose() {
-    _timer.cancel();
-    super.dispose();
-  }
-
-  void _nextImage() {
-    setState(() {
-      int len = homeBanners.length;
-      _currentIndex = (_currentIndex + 1) % len;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
+    final len = homeBanners.length;
+
     return SizedBox(
       width: widget.width,
       height: widget.height,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(widget.borderRadius),
-        clipBehavior: Clip.hardEdge, // veya Clip.antiAlias
+        clipBehavior: Clip.hardEdge,
         child: Stack(
           children: [
-            AnimatedSwitcherPlus.translationLeft(
-              duration: const Duration(milliseconds: 800),
-              switchInCurve: Curves.easeOut,
-              switchOutCurve: Curves.easeIn,
-              child: HomeBannerCard(
-                key: ValueKey(_currentIndex),
-                image: homeBanners[_currentIndex],
+            CarouselSlider.builder(
+              itemCount: len,
+              itemBuilder: (context, index, realIndex) {
+                return HomeBannerCard(image: homeBanners[index]);
+              },
+              options: CarouselOptions(
+                height: widget.height,
+                viewportFraction: 1.0, // tam ekran gibi
+                enableInfiniteScroll: len > 1,
+                autoPlay: len > 1,
+                autoPlayInterval: const Duration(seconds: 3),
+                autoPlayAnimationDuration: const Duration(milliseconds: 800),
+                autoPlayCurve: Curves.easeOut,
+                pauseAutoPlayOnTouch: true, // kullanıcı dokununca durur
+                pauseAutoPlayOnManualNavigate: true,
+                pauseAutoPlayInFiniteScroll: true,
+                onPageChanged: (index, reason) {
+                  setState(() => _currentIndex = index);
+                },
               ),
+              carouselController: _controller,
             ),
+
             Positioned(
               left: widget.dotsLeft,
               bottom: widget.dotsBottom,
               child: BannerDots(
-                lenght: homeBanners.length,
+                lenght: len,
                 page: _currentIndex,
                 dotsSize: widget.dotsSize,
                 dotsActiveWidth: widget.dotsActiveWidth,
