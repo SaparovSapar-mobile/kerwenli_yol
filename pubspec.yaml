@@ -52,7 +52,7 @@ dependencies:
   dots_indicator: ^4.0.1
   pinput: ^6.0.1
   animated_snack_bar: ^0.4.0
-  animated_switcher_plus: ^1.4.0
+  # animated_switcher_plus: ^1.4.0
 
 dev_dependencies:
   flutter_test:
