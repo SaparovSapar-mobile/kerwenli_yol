@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kerwenli_yol/pages/home_page/parts/home_partners/parts/home_partner_card.dart';
+import 'package:kerwenli_yol/pages/home_page/parts/home_graditutes/parts/home_graditute_card/home_graditute_card.dart';
 
 class HomeGradituteList extends StatelessWidget {
   const HomeGradituteList({super.key});
@@ -7,11 +7,11 @@ class HomeGradituteList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 56,
+      height: 106,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) =>
-            HomePartnerCard(isFirst: index == 0, isLast: index == 9),
+            HomeGradituteCard(isFirst: index == 0, isLast: index == 9),
         separatorBuilder: (context, index) => SizedBox(width: 5),
         itemCount: 10,
       ),
