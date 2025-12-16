@@ -24,7 +24,7 @@ class CategoriesList extends ConsumerWidget {
           padding: EdgeInsets.all(9),
           color: bgInnerColor,
           child: ListView.builder(
-            itemBuilder: (context, index) => CategoryCard(),
+            itemBuilder: (context, index) => CategoryCard(index: index),
             itemCount: 20,
           ),
         ),

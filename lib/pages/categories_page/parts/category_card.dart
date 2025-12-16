@@ -1,39 +1,58 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
+import 'package:kerwenli_yol/providers/pages/categories.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
 
 class CategoryCard extends ConsumerWidget {
-  const CategoryCard({super.key});
+  const CategoryCard({super.key, required this.index});
+
+  final int index;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     bool isLight = isLightTheme(context, ref);
-    Color bgColor = isLight ? LightColors.bgPageLight : DarkColors.bgPageDark;
+    Color leadingBgColor = isLight
+        ? LightColors.bgPageLight
+        : DarkColors.bgPageDark;
+    Color activeLeadingBgColor = isLight
+        ? LightColors.bgBlogLight
+        : DarkColors.bgBlogDark;
     Color iconColor = isLight
         ? LightColors.textTitleLight
         : DarkColors.textTitleDark;
 
     TextStyle titleStyle = AppTextStyles.medium12;
 
-    return ListTile(
-      leading: Container(
-        padding: EdgeInsets.all(5),
-        decoration: BoxDecoration(
-          color: bgColor,
-          borderRadius: BorderRadius.circular(4),
-        ),
-        child: Image.asset(
-          height: 16,
-          width: 16,
-          'assets/examples/category_icon.png',
-          fit: BoxFit.cover,
-        ),
+    int selectedCategory = ref.watch(selectedCategoryIndexProvider);
+    bool isActive = selectedCategory == index;
+
+    return Container(
+      decoration: BoxDecoration(
+        color: isActive ? leadingBgColor : activeLeadingBgColor,
+        borderRadius: BorderRadius.circular(8),
       ),
-      title: Text('Saglyk we bejeris merkezleri', style: titleStyle),
-      trailing: Icon(Icons.arrow_forward_ios, size: 16, color: iconColor),
+      child: ListTile(
+        onTap: () =>
+            ref.read(selectedCategoryIndexProvider.notifier).state = index,
+        leading: Container(
+          padding: EdgeInsets.all(5),
+          decoration: BoxDecoration(
+            color: isActive ? activeLeadingBgColor : leadingBgColor,
+            borderRadius: BorderRadius.circular(4),
+          ),
+          child: Image.asset(
+            height: 16,
+            width: 16,
+            'assets/examples/category_icon.png',
+            fit: BoxFit.cover,
+          ),
+        ),
+        title: Text('Saglyk we bejeris merkezleri', style: titleStyle),
+        trailing: Icon(Icons.arrow_forward_ios, size: 16, color: iconColor),
+      ),
     );
   }
 }
