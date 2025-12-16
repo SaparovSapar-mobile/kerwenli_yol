@@ -21,7 +21,7 @@ class HeaderCategories extends ConsumerWidget {
     return GestureDetector(
       onTap: () => Navigator.pop(context),
       child: Padding(
-        padding: EdgeInsetsGeometry.symmetric(horizontal: 16),
+        padding: EdgeInsetsGeometry.only(left: 16, right: 16, bottom: 7.5),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
