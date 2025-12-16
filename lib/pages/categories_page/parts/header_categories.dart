@@ -18,15 +18,15 @@ class HeaderCategories extends ConsumerWidget {
 
     TextStyle textStyle = AppTextStyles.semiBold16;
 
-    return Padding(
-      padding: EdgeInsetsGeometry.symmetric(horizontal: 16),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text('All Category', style: textStyle),
-          GestureDetector(
-            onTap: () {},
-            child: Container(
+    return GestureDetector(
+      onTap: () => Navigator.pop(context),
+      child: Padding(
+        padding: EdgeInsetsGeometry.symmetric(horizontal: 16),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text('All Category', style: textStyle),
+            Container(
               padding: EdgeInsets.all(8.5),
               decoration: BoxDecoration(
                 color: bgColor,
@@ -34,8 +34,8 @@ class HeaderCategories extends ConsumerWidget {
               ),
               child: Icon(Icons.close, color: iconColor, size: 18),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
