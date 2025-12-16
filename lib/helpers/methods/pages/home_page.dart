@@ -19,6 +19,10 @@ AppBar homePageAppBar(BuildContext context) {
 
           TextStyle dateStyle = AppTextStyles.medium12;
 
+          String appBarLogo = isLight
+              ? 'appbar_logo.png'
+              : 'dark_appbar_logo.png';
+
           return Container(
             padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
             width: double.infinity,
@@ -35,7 +39,7 @@ AppBar homePageAppBar(BuildContext context) {
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Image.asset('assets/images/appbar_logo.png', height: 24),
+                    Image.asset('assets/images/$appBarLogo', height: 24),
                     Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
