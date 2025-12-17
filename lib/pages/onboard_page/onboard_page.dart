@@ -6,7 +6,7 @@ import 'package:kerwenli_yol/pages/onboard_page/parts/onboard_next_button.dart';
 import 'package:kerwenli_yol/pages/onboard_page/parts/onboard_part.dart';
 import 'package:kerwenli_yol/pages/onboard_page/parts/theme_switcher_button.dart';
 import 'package:kerwenli_yol/pages/parts/dotss_indicator.dart';
-import 'package:kerwenli_yol/providers/pages/onboard.dart';
+import 'package:kerwenli_yol/providers/pages/onboard_page.dart';
 
 class OnboardPage extends ConsumerStatefulWidget {
   const OnboardPage({super.key});

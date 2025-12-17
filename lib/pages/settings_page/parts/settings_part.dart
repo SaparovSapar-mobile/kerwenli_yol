@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/pages/settings_page/parts/setting_part_card.dart';
+import 'package:kerwenli_yol/providers/pages/settings_page.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 
@@ -40,13 +41,13 @@ class SettingsPart extends ConsumerWidget {
             index: 2,
             text: 'Sesli bildirisler',
             icon: Icons.notifications,
-            onTap: () {},
+            settingProvider: openNotificationProvider,
           ),
           SettingPartCard(
             index: 3,
             text: 'Pin kod',
             icon: Icons.lock,
-            onTap: () {},
+            settingProvider: openPinProvider,
           ),
         ],
       ),
