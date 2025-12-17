@@ -19,7 +19,7 @@ class CategoriesList extends ConsumerWidget {
     return Expanded(
       child: Container(
         color: bgColor,
-        padding: EdgeInsets.all(16),
+        padding: EdgeInsets.symmetric(vertical: 14, horizontal: 10),
         child: Container(
           padding: EdgeInsets.all(9),
           color: bgInnerColor,

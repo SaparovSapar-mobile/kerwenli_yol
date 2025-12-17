@@ -27,7 +27,25 @@ class SettingsPart extends ConsumerWidget {
           SettingPartCard(
             index: 0,
             text: 'Diller',
-            icon: 'lang.png',
+            icon: Icons.translate,
+            onTap: () {},
+          ),
+          SettingPartCard(
+            index: 1,
+            text: 'Tema',
+            icon: Icons.bedtime,
+            onTap: () {},
+          ),
+          SettingPartCard(
+            index: 2,
+            text: 'Sesli bildirisler',
+            icon: Icons.notifications,
+            onTap: () {},
+          ),
+          SettingPartCard(
+            index: 3,
+            text: 'Pin kod',
+            icon: Icons.lock,
             onTap: () {},
           ),
         ],

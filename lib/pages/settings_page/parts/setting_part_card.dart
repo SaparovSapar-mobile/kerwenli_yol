@@ -16,7 +16,8 @@ class SettingPartCard extends ConsumerWidget {
   });
 
   final int index;
-  final String text, icon;
+  final String text;
+  final IconData icon;
   final void Function() onTap;
 
   @override
@@ -31,6 +32,7 @@ class SettingPartCard extends ConsumerWidget {
     Color iconColor = isLight
         ? LightColors.textTitleLight
         : DarkColors.textTitleDark;
+    Color leadingIconColor = isLight ? LightColors.primary : DarkColors.primary;
 
     TextStyle titleStyle = AppTextStyles.medium12;
 
@@ -61,12 +63,7 @@ class SettingPartCard extends ConsumerWidget {
             color: isActive ? activeLeadingBgColor : leadingBgColor,
             borderRadius: BorderRadius.circular(4),
           ),
-          child: Image.asset(
-            height: 16,
-            width: 16,
-            'assets/images/$icon',
-            fit: BoxFit.cover,
-          ),
+          child: Icon(icon, size: 16, color: leadingIconColor),
         ),
         title: Text(text, style: titleStyle),
         trailing: Icon(Icons.arrow_forward_ios, size: 16, color: iconColor),
