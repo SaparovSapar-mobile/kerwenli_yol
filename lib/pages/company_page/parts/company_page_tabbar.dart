@@ -15,15 +15,37 @@ class CompanyPageTabbar extends ConsumerWidget {
     Color unselectedLabelColor = isLight
         ? LightColors.textDescriptionLight
         : DarkColors.textDescriptionLight;
+    Color subBgColor = labelColor.withValues(alpha: .2);
 
     TextStyle labelStyle = AppTextStyles.semiBold12;
 
     return TabBar(
+      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 6.5),
       indicatorSize: TabBarIndicatorSize.tab,
       dividerColor: Colors.transparent,
+      indicator: BoxDecoration(
+        color: subBgColor,
+        borderRadius: BorderRadius.circular(8),
+      ),
+      overlayColor: WidgetStatePropertyAll(subBgColor),
       labelStyle: labelStyle.copyWith(color: labelColor),
       unselectedLabelStyle: labelStyle.copyWith(color: unselectedLabelColor),
-      tabs: [Text('Info'), Text('Products'), Text('Media')],
+      tabs: [
+        CompanyPageTabbarTab(text: 'Info'),
+        CompanyPageTabbarTab(text: 'Products'),
+        CompanyPageTabbarTab(text: 'Media'),
+      ],
     );
+  }
+}
+
+class CompanyPageTabbarTab extends StatelessWidget {
+  const CompanyPageTabbarTab({super.key, required this.text});
+
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(padding: EdgeInsetsGeometry.all(10), child: Text(text));
   }
 }
