@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/pages/settings_page/parts/about_part.dart';
 import 'package:kerwenli_yol/pages/settings_page/parts/account_part.dart';
+import 'package:kerwenli_yol/pages/settings_page/parts/setting_update_app_button.dart';
 import 'package:kerwenli_yol/pages/settings_page/parts/settings_part.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
@@ -25,6 +26,7 @@ class SettingsPage extends ConsumerWidget {
           AboutPart(),
           SizedBox(height: 10),
           AccountPart(),
+          SettingUpdateAppButton(index: 10),
         ],
       ),
     );
