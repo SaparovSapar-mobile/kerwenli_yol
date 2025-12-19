@@ -10,4 +10,16 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get home => 'Baş sahypa';
+
+  @override
+  String get pleaseEnterTheInformationCompletelyAndCorrectly => 'Maglumatlary doly we dogry giriziň.';
+
+  @override
+  String get iHaveReadTheRules => 'Düzgünler bilen tanyşdym';
+
+  @override
+  String get getToKnowTheRules => 'Düzgünler bilen tanyşyň';
+
+  @override
+  String get somethingWentWrong => 'Näsazlyk ýüze çykdy';
 }

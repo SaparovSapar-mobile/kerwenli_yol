@@ -10,4 +10,16 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get home => 'Главная';
+
+  @override
+  String get pleaseEnterTheInformationCompletelyAndCorrectly => 'Пожалуйста, введите информацию полностью и правильно.';
+
+  @override
+  String get iHaveReadTheRules => 'Я ознакомился с правилами';
+
+  @override
+  String get getToKnowTheRules => 'Ознакомьтесь с правилами';
+
+  @override
+  String get somethingWentWrong => 'Что-то пошло не так';
 }

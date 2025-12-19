@@ -1,3 +1,7 @@
 {
-    "home":"Home"
+    "home":"Home",
+    "pleaseEnterTheInformationCompletelyAndCorrectly":"Please enter the information completely and correctly.",
+    "iHaveReadTheRules":"I have read the rules",
+    "getToKnowTheRules":"Get to know the rules",
+    "somethingWentWrong":"Something went wrong"
 }

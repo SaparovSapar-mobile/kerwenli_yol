@@ -102,6 +102,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Home'**
   String get home;
+
+  /// No description provided for @pleaseEnterTheInformationCompletelyAndCorrectly.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter the information completely and correctly.'**
+  String get pleaseEnterTheInformationCompletelyAndCorrectly;
+
+  /// No description provided for @iHaveReadTheRules.
+  ///
+  /// In en, this message translates to:
+  /// **'I have read the rules'**
+  String get iHaveReadTheRules;
+
+  /// No description provided for @getToKnowTheRules.
+  ///
+  /// In en, this message translates to:
+  /// **'Get to know the rules'**
+  String get getToKnowTheRules;
+
+  /// No description provided for @somethingWentWrong.
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong'**
+  String get somethingWentWrong;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

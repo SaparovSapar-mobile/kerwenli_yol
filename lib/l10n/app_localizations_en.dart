@@ -10,4 +10,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get home => 'Home';
+
+  @override
+  String get pleaseEnterTheInformationCompletelyAndCorrectly => 'Please enter the information completely and correctly.';
+
+  @override
+  String get iHaveReadTheRules => 'I have read the rules';
+
+  @override
+  String get getToKnowTheRules => 'Get to know the rules';
+
+  @override
+  String get somethingWentWrong => 'Something went wrong';
 }

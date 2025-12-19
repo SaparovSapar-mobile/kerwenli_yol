@@ -1,3 +1,7 @@
 {
-    "home":"Главная"
+    "home":"Главная",
+    "pleaseEnterTheInformationCompletelyAndCorrectly":"Пожалуйста, введите информацию полностью и правильно.",
+    "iHaveReadTheRules":"Я ознакомился с правилами",
+    "getToKnowTheRules":"Ознакомьтесь с правилами",
+    "somethingWentWrong":"Что-то пошло не так"
 }

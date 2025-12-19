@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
+import 'package:kerwenli_yol/l10n/app_localizations.dart';
 import 'package:kerwenli_yol/providers/pages/register_page.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
@@ -11,6 +12,8 @@ class ConfirmPrivacyPolicyButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    AppLocalizations lang = AppLocalizations.of(context)!;
+
     bool isLight = isLightTheme(context, ref);
     Color activeColor = isLight ? LightColors.primary : DarkColors.primary;
     Color textColor = isLight
@@ -40,7 +43,7 @@ class ConfirmPrivacyPolicyButton extends ConsumerWidget {
         TextButton(
           style: TextButton.styleFrom(padding: EdgeInsets.only(left: 0)),
           onPressed: () {},
-          child: Text('Duzgunler bilen tanysdym', style: textStyle),
+          child: Text(lang.iHaveReadTheRules, style: textStyle),
         ),
       ],
     );
