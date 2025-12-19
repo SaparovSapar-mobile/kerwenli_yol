@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kerwenli_yol/helpers/methods/pages/home_page.dart';
+import 'package:kerwenli_yol/pages/company_page/parts/company_page_tabbar.dart';
 import 'package:kerwenli_yol/pages/company_page/parts/company_page_top.dart';
 
 class CompanyPage extends StatelessWidget {
@@ -7,10 +8,23 @@ class CompanyPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      appBar: homePageAppBar(context),
-      body: Column(children: [CompanyPageTop()]),
+    return DefaultTabController(
+      length: 3,
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        appBar: homePageAppBar(context),
+        body: Column(
+          children: [
+            CompanyPageTop(),
+            CompanyPageTabbar(),
+            Expanded(
+              child: TabBarView(
+                children: [Text('data'), Text('data'), Text('data')],
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
