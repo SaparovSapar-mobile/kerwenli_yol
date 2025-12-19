@@ -7,7 +7,7 @@ class CompanyPageTop extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsetsGeometry.only(left: 20, right: 20),
+      padding: EdgeInsetsGeometry.only(left: 16, right: 16),
       child: Row(children: [BackLeadingButton(text: 'VIP Karhanalar')]),
     );
   }

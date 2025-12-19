@@ -6,9 +6,10 @@ import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
 
 class BackLeadingButton extends ConsumerWidget {
-  const BackLeadingButton({super.key, this.text});
+  const BackLeadingButton({super.key, this.text, this.onPressed});
 
   final String? text;
+  final void Function()? onPressed;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -22,7 +23,7 @@ class BackLeadingButton extends ConsumerWidget {
     bool hasText = text != null;
 
     return IconButton(
-      onPressed: () => Navigator.pop(context),
+      onPressed: onPressed ?? () => Navigator.pop(context),
       icon: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
