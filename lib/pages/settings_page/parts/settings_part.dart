@@ -29,12 +29,14 @@ class SettingsPart extends ConsumerWidget {
             index: 0,
             text: 'Diller',
             icon: Icons.translate,
+            tralingText: 'Turkmen',
             onTap: () {},
           ),
           SettingPartCard(
             index: 1,
             text: 'Tema',
             icon: Icons.bedtime,
+            tralingText: 'Dark',
             onTap: () {},
           ),
           SettingPartCard(

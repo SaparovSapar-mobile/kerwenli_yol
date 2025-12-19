@@ -12,6 +12,7 @@ class SettingPartCard extends ConsumerWidget {
     super.key,
     required this.index,
     required this.text,
+    this.tralingText,
     required this.icon,
     this.onTap,
     this.settingProvider,
@@ -19,6 +20,7 @@ class SettingPartCard extends ConsumerWidget {
 
   final int index;
   final String text;
+  final String? tralingText;
   final IconData icon;
   final void Function()? onTap;
   final StateNotifierProvider<PrefNotifier<bool>, bool>? settingProvider;
@@ -38,6 +40,7 @@ class SettingPartCard extends ConsumerWidget {
     Color leadingIconColor = isLight ? LightColors.primary : DarkColors.primary;
 
     TextStyle titleStyle = AppTextStyles.medium12;
+    TextStyle tralingStyle = AppTextStyles.regular12;
 
     int selectedSetting = ref.watch(selectedSettingPartIndexProvider);
     bool isActive = selectedSetting == index;
@@ -94,7 +97,16 @@ class SettingPartCard extends ConsumerWidget {
                   },
                 ),
               )
-            : Icon(Icons.arrow_forward_ios, size: 16, color: iconColor),
+            : Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  tralingText != null
+                      ? Text(tralingText!, style: tralingStyle)
+                      : SizedBox.fromSize(),
+                  SizedBox(width: tralingText != null ? 5 : 0),
+                  Icon(Icons.arrow_forward_ios, size: 16, color: iconColor),
+                ],
+              ),
       ),
     );
   }
