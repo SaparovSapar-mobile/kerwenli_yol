@@ -3,9 +3,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
+import 'package:kerwenli_yol/styles/text_styles.dart';
 
 class BackLeadingButton extends ConsumerWidget {
-  const BackLeadingButton({super.key});
+  const BackLeadingButton({super.key, this.text});
+
+  final String? text;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -14,9 +17,28 @@ class BackLeadingButton extends ConsumerWidget {
         ? LightColors.textTitleLight
         : DarkColors.textTitleDark;
 
+    TextStyle textStyle = AppTextStyles.semiBold16;
+
+    bool hasText = text != null;
+
     return IconButton(
       onPressed: () => Navigator.pop(context),
-      icon: Icon(Icons.arrow_back_ios_new, color: iconColor, size: 20),
+      icon: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(Icons.arrow_back_ios_new, color: iconColor, size: 20),
+          SizedBox(width: hasText ? 10 : 0),
+          if (hasText)
+            Text(
+              text!,
+              style: textStyle,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            )
+          else
+            const SizedBox.shrink(),
+        ],
+      ),
     );
   }
 }
