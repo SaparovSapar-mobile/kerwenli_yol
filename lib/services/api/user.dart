@@ -25,6 +25,7 @@ class UserApiService {
 
       return response.statusCode == 200 && jsonData['status'];
     } catch (e) {
+      print('--------------- error: ${e.toString()}');
       rethrow;
     }
   }
