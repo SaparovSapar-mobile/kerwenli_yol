@@ -31,12 +31,12 @@ class OtpInput extends ConsumerWidget {
     );
 
     final pinTheme = PinTheme(
-      width: 56,
-      height: 50,
+      width: 40,
+      height: 40,
       textStyle: textStyle,
       decoration: BoxDecoration(
         color: bgColor,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(8),
         border: Border.all(color: borderColor),
       ),
     );
@@ -53,7 +53,7 @@ class OtpInput extends ConsumerWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Pinput(
-            length: 4,
+            length: 6,
             defaultPinTheme: pinTheme,
             focusedPinTheme: pinTheme.copyWith(
               decoration: pinTheme.decoration!.copyWith(
