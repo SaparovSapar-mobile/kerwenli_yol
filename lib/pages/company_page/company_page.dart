@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kerwenli_yol/helpers/methods/pages/home_page.dart';
+import 'package:kerwenli_yol/pages/company_page/parts/company_page_info/company_page_info.dart';
 import 'package:kerwenli_yol/pages/company_page/parts/company_page_tabbar.dart';
 import 'package:kerwenli_yol/pages/company_page/parts/company_page_top.dart';
 
@@ -19,7 +20,7 @@ class CompanyPage extends StatelessWidget {
             CompanyPageTabbar(),
             Expanded(
               child: TabBarView(
-                children: [Text('data'), Text('data'), Text('data')],
+                children: [CompanyPageInfo(), Text('data'), Text('data')],
               ),
             ),
           ],
