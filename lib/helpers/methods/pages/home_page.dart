@@ -24,7 +24,7 @@ AppBar homePageAppBar(BuildContext context) {
               : 'dark_appbar_logo.png';
 
           return Container(
-            padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+            padding: EdgeInsets.only(left: 16, top: 10, right: 16),
             width: double.infinity,
             decoration: BoxDecoration(
               color: bgColor,

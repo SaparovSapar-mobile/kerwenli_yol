@@ -54,7 +54,7 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
           backgroundColor: bgColor,
           actions: [
             Padding(
-              padding: const EdgeInsets.only(top: 10, right: 16),
+              padding: const EdgeInsets.only(top: 5, right: 16),
               child: ThemeSwitcherButton(),
             ),
           ],

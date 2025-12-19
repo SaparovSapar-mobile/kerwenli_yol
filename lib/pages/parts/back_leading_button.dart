@@ -23,6 +23,9 @@ class BackLeadingButton extends ConsumerWidget {
     bool hasText = text != null;
 
     return IconButton(
+      padding: EdgeInsets.zero,
+      constraints: const BoxConstraints(),
+      visualDensity: VisualDensity.compact,
       onPressed: onPressed ?? () => Navigator.pop(context),
       icon: Row(
         mainAxisSize: MainAxisSize.min,
