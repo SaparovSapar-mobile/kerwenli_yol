@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:kerwenli_yol/helpers/methods/static_data.dart';
 import 'package:kerwenli_yol/models/register_user.dart';
 
-class UserApiServices {
+class UserApiService {
   // === Register User ===
   Future<bool> registerUser(RegisterUserModel reqData) async {
     Uri uri = Uri.parse('$apiUrl/client/register');
