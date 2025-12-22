@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
+import 'package:kerwenli_yol/pages/company_page/parts/company_page_info/parts/company_page_about/company_page_about.dart';
 import 'package:kerwenli_yol/pages/company_page/parts/company_page_info/parts/company_page_info_card.dart';
 import 'package:kerwenli_yol/pages/company_page/parts/company_page_info/parts/company_page_info_tabbar.dart';
 import 'package:kerwenli_yol/pages/parts/card_bookmark_button.dart';
@@ -14,72 +15,109 @@ class CompanyPageInfo extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    bool isLight = isLightTheme(context, ref);
-    Color bgColor = isLight ? LightColors.bgPageLight : DarkColors.bgPageDark;
-    Color innerBgColor = isLight
+    final isLight = isLightTheme(context, ref);
+    final bgColor = isLight ? LightColors.bgPageLight : DarkColors.bgPageDark;
+    final innerBgColor = isLight
         ? LightColors.bgBlogLight
         : DarkColors.bgBlogDark;
 
     return DefaultTabController(
       length: 3,
-      child: Column(
-        children: [
-          Container(
-            color: bgColor,
-            padding: EdgeInsets.all(10),
-            child: Container(
-              padding: EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                color: innerBgColor,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Column(
-                children: [
-                  CompanyPageInfoCard(),
-                  SizedBox(height: 8.8),
-                  Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Expanded(
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
+      child: Container(
+        color: bgColor,
+        child: NestedScrollView(
+          headerSliverBuilder: (context, innerBoxIsScrolled) {
+            return [
+              // ÜST KART (scroll’a dahil)
+              SliverToBoxAdapter(
+                child: Container(
+                  padding: const EdgeInsets.all(10),
+                  child: Container(
+                    padding: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      color: innerBgColor,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Column(
+                      children: [
+                        CompanyPageInfoCard(),
+                        const SizedBox(height: 8.8),
+                        Row(
                           children: [
-                            CardBookmarkButton(
-                              width: 26,
-                              height: 26,
-                              iconSize: 16,
-                              bGColor: isLight
-                                  ? LightColors.bgPageLight
-                                  : DarkColors.bgPageDark,
+                            Expanded(
+                              child: Row(
+                                children: [
+                                  CardBookmarkButton(
+                                    width: 26,
+                                    height: 26,
+                                    iconSize: 16,
+                                    bGColor: bgColor,
+                                  ),
+                                  const SizedBox(width: 4),
+                                  CardVirtualButton(bGColor: bgColor),
+                                ],
+                              ),
                             ),
-                            SizedBox(width: 4),
-                            CardVirtualButton(
-                              bGColor: isLight
-                                  ? LightColors.bgPageLight
-                                  : DarkColors.bgPageDark,
-                            ),
+                            CompanySubscribeButton(),
                           ],
                         ),
-                      ),
-                      CompanySubscribeButton(),
-                    ],
+                      ],
+                    ),
                   ),
-                ],
+                ),
               ),
-            ),
+
+              // ✅ TabBar’ı SliverAppBar ile pinle (yükseklik sorunu bitiyor)
+              SliverAppBar(
+                pinned: true,
+                automaticallyImplyLeading: false,
+                backgroundColor: bgColor,
+                elevation: 0,
+                toolbarHeight: 0, // sadece TabBar görünsün
+                bottom: const PreferredSize(
+                  preferredSize: Size.fromHeight(
+                    48,
+                  ), // burası TabBar'ın min yüksekliği
+                  child: CompanyPageInfoTabbar(),
+                ),
+              ),
+            ];
+          },
+
+          // Tab içerikleri (scroll olacak)
+          body: const TabBarView(
+            children: [
+              _InnerTabScroll(child: CompanyPageAbout()),
+              _InnerTabScroll(
+                child: Padding(
+                  padding: EdgeInsets.all(16),
+                  child: Text('Info'),
+                ),
+              ),
+              _InnerTabScroll(
+                child: Padding(
+                  padding: EdgeInsets.all(16),
+                  child: Text('Mumkincilikler'),
+                ),
+              ),
+            ],
           ),
-          CompanyPageInfoTabbar(),
-          Expanded(
-            child: TabBarView(
-              children: [
-                Text('Biz Barada'),
-                Text('Info'),
-                Text('Mumkincilikler'),
-              ],
-            ),
-          ),
-        ],
+        ),
       ),
+    );
+  }
+}
+
+class _InnerTabScroll extends StatelessWidget {
+  const _InnerTabScroll({required this.child});
+
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      physics: BouncingScrollPhysics(),
+      child: child,
     );
   }
 }
