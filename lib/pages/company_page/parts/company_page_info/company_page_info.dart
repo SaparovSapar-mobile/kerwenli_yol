@@ -4,6 +4,7 @@ import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/pages/company_page/parts/company_page_info/parts/company_page_info_card.dart';
 import 'package:kerwenli_yol/pages/parts/card_bookmark_button.dart';
 import 'package:kerwenli_yol/pages/parts/card_virtual_button.dart';
+import 'package:kerwenli_yol/pages/parts/company_subscribe_button.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 
@@ -32,21 +33,30 @@ class CompanyPageInfo extends ConsumerWidget {
             CompanyPageInfoCard(),
             SizedBox(height: 8.8),
             Row(
+              mainAxisSize: MainAxisSize.max,
               children: [
-                CardBookmarkButton(
-                  width: 26,
-                  height: 26,
-                  iconSize: 16,
-                  bGColor: isLight
-                      ? LightColors.bgPageLight
-                      : DarkColors.bgPageDark,
+                Expanded(
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      CardBookmarkButton(
+                        width: 26,
+                        height: 26,
+                        iconSize: 16,
+                        bGColor: isLight
+                            ? LightColors.bgPageLight
+                            : DarkColors.bgPageDark,
+                      ),
+                      SizedBox(width: 4),
+                      CardVirtualButton(
+                        bGColor: isLight
+                            ? LightColors.bgPageLight
+                            : DarkColors.bgPageDark,
+                      ),
+                    ],
+                  ),
                 ),
-                SizedBox(width: 4),
-                CardVirtualButton(
-                  bGColor: isLight
-                      ? LightColors.bgPageLight
-                      : DarkColors.bgPageDark,
-                ),
+                CompanySubscribeButton(),
               ],
             ),
           ],
