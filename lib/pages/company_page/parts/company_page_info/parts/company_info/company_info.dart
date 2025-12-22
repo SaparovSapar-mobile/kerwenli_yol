@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/pages/company_page/parts/company_page_info/parts/company_info/parts/company_info_key_value.dart';
+import 'package:kerwenli_yol/pages/company_page/parts/company_page_info/parts/company_info/parts/work_hour.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
@@ -61,6 +62,10 @@ class CompanyInfo extends ConsumerWidget {
             SizedBox(height: 20),
             Text('Iş wagtymyz', style: textStyle),
             SizedBox(height: 15),
+            WorkHour(keyText: 'Duşenbe', valueText: '09:00-21:00'),
+            WorkHour(keyText: 'Sişenbe', valueText: '09:00-21:00'),
+            WorkHour(keyText: 'Çarşenbe', valueText: '09:00-21:00'),
+            WorkHour(keyText: 'Çarşenbe', valueText: '09:00-21:00'),
           ],
         ),
       ),
