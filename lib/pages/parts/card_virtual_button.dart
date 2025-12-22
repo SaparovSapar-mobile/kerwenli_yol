@@ -3,18 +3,18 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
+import 'package:kerwenli_yol/styles/text_styles.dart';
 
-class CardBookmarkButton extends ConsumerWidget {
-  const CardBookmarkButton({
+class CardVirtualButton extends ConsumerWidget {
+  const CardVirtualButton({
     super.key,
     this.bGColor,
-    this.width,
     this.height,
     this.iconSize,
   });
 
   final Color? bGColor;
-  final double? width, height, iconSize;
+  final double? height, iconSize;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -27,14 +27,28 @@ class CardBookmarkButton extends ConsumerWidget {
         ? LightColors.textTitleLight
         : DarkColors.textTitleDark;
 
+    TextStyle textStyle = AppTextStyles.bold12;
+
     return Container(
-      width: width ?? 21,
-      height: height ?? 21,
+      padding: EdgeInsets.all(5),
+      height: height ?? 26,
       decoration: BoxDecoration(
         color: bgColor,
         borderRadius: BorderRadius.circular(4),
       ),
-      child: Icon(Icons.bookmark, size: iconSize ?? 12, color: iconColor),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Image.asset(
+            'assets/images/virtual.png',
+            width: iconSize ?? 16,
+            height: iconSize ?? 16,
+            color: iconColor,
+          ),
+          SizedBox(width: 2),
+          Text('360°', style: textStyle),
+        ],
+      ),
     );
   }
 }
