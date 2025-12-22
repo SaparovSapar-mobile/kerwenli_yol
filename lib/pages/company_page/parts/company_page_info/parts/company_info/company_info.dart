@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/pages/company_page/parts/company_page_info/parts/company_info/parts/company_info_brands_list.dart';
 import 'package:kerwenli_yol/pages/company_page/parts/company_page_info/parts/company_info/parts/company_info_key_value.dart';
+import 'package:kerwenli_yol/pages/company_page/parts/company_page_info/parts/company_info/parts/company_info_sertificates_list.dart';
 import 'package:kerwenli_yol/pages/company_page/parts/company_page_info/parts/company_info/parts/work_hour.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
@@ -71,6 +72,10 @@ class CompanyInfo extends ConsumerWidget {
             Text('Brendlerimiz', style: textStyle),
             SizedBox(height: 15),
             CompanyInfoBrandsList(),
+            SizedBox(height: 20),
+            Text('Sylaglarymyz', style: textStyle),
+            SizedBox(height: 15),
+            CompanyInfoSertificatesList(),
           ],
         ),
       ),
