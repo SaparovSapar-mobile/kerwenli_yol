@@ -6,12 +6,17 @@ import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
 
 class HomeVipCompanyRating extends ConsumerWidget {
-  const HomeVipCompanyRating({super.key});
+  const HomeVipCompanyRating({super.key, this.bGColor});
+
+  final Color? bGColor;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     bool isLight = isLightTheme(context, ref);
     Color bgColor = isLight ? LightColors.bgPageLight : DarkColors.bgPageDark;
+    if (bGColor != null) {
+      bgColor = bGColor!;
+    }
     Color iconColor = isLight ? LightColors.vipCard : DarkColors.vipCard;
 
     TextStyle textStyle = AppTextStyles.medium10.copyWith(fontSize: 8);

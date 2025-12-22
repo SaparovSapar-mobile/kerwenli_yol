@@ -21,9 +21,11 @@ class HomeVipCompanyCardCategories extends ConsumerWidget {
         padding: EdgeInsets.all(2),
         decoration: BoxDecoration(color: bgColor),
         child: Row(
+          mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text('Category/sub category', style: textStyle),
+            SizedBox(width: 2),
             Icon(Icons.arrow_forward_ios, size: 6),
           ],
         ),

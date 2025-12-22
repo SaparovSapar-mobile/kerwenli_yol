@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
-import 'package:kerwenli_yol/pages/parts/show_image.dart';
+import 'package:kerwenli_yol/pages/company_page/parts/company_page_info/parts/company_page_info_card.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 
@@ -25,29 +25,7 @@ class CompanyPageInfo extends ConsumerWidget {
           color: innerBgColor,
           borderRadius: BorderRadius.circular(10),
         ),
-        child: Column(
-          children: [
-            Container(
-              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
-              decoration: BoxDecoration(
-                color: bgColor,
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Row(
-                children: [
-                  SizedBox(
-                    height: 80,
-                    width: 80,
-                    child: ShowImage(
-                      image: 'assets/examples/company_logo.png',
-                      borderRadius: 16,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
+        child: Column(children: [CompanyPageInfoCard()]),
       ),
     );
   }

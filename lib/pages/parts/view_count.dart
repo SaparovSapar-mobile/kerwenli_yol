@@ -6,12 +6,17 @@ import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
 
 class ViewCount extends ConsumerWidget {
-  const ViewCount({super.key});
+  const ViewCount({super.key, this.bGColor});
+
+  final Color? bGColor;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     bool isLight = isLightTheme(context, ref);
     Color bgColor = isLight ? LightColors.bgPageLight : DarkColors.bgPageDark;
+    if (bGColor != null) {
+      bgColor = bGColor!;
+    }
 
     TextStyle textStyle = AppTextStyles.medium10.copyWith(fontSize: 8);
 
