@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/pages/company_page/parts/company_page_info/parts/company_page_info_card.dart';
+import 'package:kerwenli_yol/pages/parts/card_bookmark_button.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 
@@ -25,7 +26,21 @@ class CompanyPageInfo extends ConsumerWidget {
           color: innerBgColor,
           borderRadius: BorderRadius.circular(10),
         ),
-        child: Column(children: [CompanyPageInfoCard()]),
+        child: Column(
+          children: [
+            CompanyPageInfoCard(),
+            SizedBox(height: 8.8),
+            Row(
+              children: [
+                CardBookmarkButton(
+                  bGColor: isLight
+                      ? LightColors.bgPageLight
+                      : DarkColors.bgPageDark,
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
