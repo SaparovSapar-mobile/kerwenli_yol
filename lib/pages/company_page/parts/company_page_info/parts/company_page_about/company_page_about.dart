@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_banners/parts/home_banner.dart';
+import 'package:kerwenli_yol/pages/parts/open_location_list_tile.dart';
 import 'package:kerwenli_yol/pages/parts/open_social_list_tile.dart';
 import 'package:kerwenli_yol/pages/parts/show_image.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
@@ -119,6 +120,8 @@ making it over 2000 years old. Richard McClintock, a Latin professor at Hampden.
                 borderRadius: 10,
               ),
             ),
+            SizedBox(height: 20),
+            OpenLocationListTile(),
           ],
         ),
       ),
