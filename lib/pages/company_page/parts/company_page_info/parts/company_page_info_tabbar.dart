@@ -21,19 +21,22 @@ class CompanyPageInfoTabbar extends ConsumerWidget {
 
     TextStyle labelStyle = AppTextStyles.semiBold12;
 
-    return TabBar(
-      labelPadding: EdgeInsets.all(10),
-      dividerColor: Colors.transparent,
-      padding: EdgeInsets.symmetric(horizontal: 16),
-      indicatorColor: labelColor,
-      overlayColor: WidgetStatePropertyAll(overlayColor),
-      labelStyle: labelStyle.copyWith(color: labelColor),
-      unselectedLabelStyle: labelStyle.copyWith(color: unselectedLabelColor),
-      tabs: [
-        Text('Biz barada'),
-        Text('Info'),
-        Text('Mumkincilikler', textAlign: TextAlign.center),
-      ],
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 3),
+      child: TabBar(
+        labelPadding: EdgeInsets.all(10),
+        dividerColor: Colors.transparent,
+        padding: EdgeInsets.symmetric(horizontal: 16),
+        indicatorColor: labelColor,
+        overlayColor: WidgetStatePropertyAll(overlayColor),
+        labelStyle: labelStyle.copyWith(color: labelColor),
+        unselectedLabelStyle: labelStyle.copyWith(color: unselectedLabelColor),
+        tabs: [
+          Text('Biz barada'),
+          Text('Info'),
+          Text('Mumkincilikler', textAlign: TextAlign.center),
+        ],
+      ),
     );
   }
 }

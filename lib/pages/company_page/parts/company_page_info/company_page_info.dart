@@ -17,6 +17,9 @@ class CompanyPageInfo extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final isLight = isLightTheme(context, ref);
     final bgColor = isLight ? LightColors.bgPageLight : DarkColors.bgPageDark;
+    final tabbarBgColor = isLight
+        ? LightColors.bgBlogLight
+        : DarkColors.bgBlogDark;
     final innerBgColor = isLight
         ? LightColors.bgBlogLight
         : DarkColors.bgBlogDark;
@@ -71,7 +74,7 @@ class CompanyPageInfo extends ConsumerWidget {
               SliverAppBar(
                 pinned: true,
                 automaticallyImplyLeading: false,
-                backgroundColor: bgColor,
+                backgroundColor: tabbarBgColor,
                 elevation: 0,
                 toolbarHeight: 0, // sadece TabBar görünsün
                 bottom: const PreferredSize(
@@ -115,9 +118,6 @@ class _InnerTabScroll extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      physics: BouncingScrollPhysics(),
-      child: child,
-    );
+    return SingleChildScrollView(child: child);
   }
 }
