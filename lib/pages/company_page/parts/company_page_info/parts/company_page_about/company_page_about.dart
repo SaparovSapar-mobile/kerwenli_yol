@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_banners/parts/home_banner.dart';
+import 'package:kerwenli_yol/pages/parts/open_social_list_tile.dart';
+import 'package:kerwenli_yol/pages/parts/show_image.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
@@ -55,6 +57,67 @@ Lorem Ipsum is not simply random text.
 It has roots in a piece of classical Latin literature from 45 BC,
 making it over 2000 years old. Richard McClintock, a Latin professor at Hampden...''',
               style: descStyle,
+            ),
+            SizedBox(height: 20),
+            Text('Habarlasmak ucin', style: textStyle),
+            OpenSocialListTile(
+              icon: 'phone.png',
+              text: '+11265124',
+              onTap: () {},
+            ),
+            OpenSocialListTile(
+              icon: 'call.png',
+              text: '+99363509004',
+              onTap: () {},
+            ),
+            OpenSocialListTile(
+              icon: 'mail.png',
+              text: 'tradingportalofficial@gmail.com',
+              onTap: () {},
+            ),
+            OpenSocialListTile(
+              icon: 'location.png',
+              text:
+                  'Söwda merkezi "Uniwermag" 3-nji gat,dükan belgi C42 Magtymguly 73, Aşgabat',
+              onTap: () {},
+            ),
+            SizedBox(height: 20),
+            Text('Social media salgylanmalar', style: textStyle),
+            OpenSocialListTile(
+              icon: 'tiktok.png',
+              text: 'tradingportalofficial@',
+              onTap: () {},
+            ),
+            OpenSocialListTile(
+              icon: 'telegram.png',
+              text: 'tradingportalofficial@',
+              onTap: () {},
+            ),
+            OpenSocialListTile(
+              icon: 'instagram.png',
+              text: 'tradingportalofficial@',
+              onTap: () {},
+            ),
+            OpenSocialListTile(
+              icon: 'linkedin.png',
+              text: 'tradingportalofficial@',
+              onTap: () {},
+            ),
+            OpenSocialListTile(
+              icon: 'whatsapp.png',
+              text: 'tradingportalofficial@',
+              onTap: () {},
+            ),
+            SizedBox(height: 20),
+            Text('Karta salgymyz', style: textStyle),
+            SizedBox(height: 10),
+            SizedBox(
+              width: double.maxFinite,
+              height: 150,
+              child: ShowImage(
+                image: 'assets/examples/cropped_map.png',
+                borderRadius: 10,
+              ),
             ),
           ],
         ),
