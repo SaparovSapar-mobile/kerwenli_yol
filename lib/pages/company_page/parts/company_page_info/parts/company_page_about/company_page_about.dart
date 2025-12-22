@@ -18,6 +18,7 @@ class CompanyPageAbout extends ConsumerWidget {
         : DarkColors.bgBlogDark;
 
     TextStyle textStyle = AppTextStyles.semiBold12;
+    TextStyle descStyle = AppTextStyles.regular12;
 
     return Container(
       padding: EdgeInsets.all(10),
@@ -46,7 +47,14 @@ class CompanyPageAbout extends ConsumerWidget {
               ),
             ),
             Text(
-              'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at HampdenContrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden...',
+              '''Contrary to popular belief, Lorem Ipsum is not simply random text.
+It has roots in a piece of classical Latin literature from 45 BC, 
+making it over 2000 years old. Richard McClintock,
+a Latin professor at HampdenContrary to popular belief,
+Lorem Ipsum is not simply random text.
+It has roots in a piece of classical Latin literature from 45 BC,
+making it over 2000 years old. Richard McClintock, a Latin professor at Hampden...''',
+              style: descStyle,
             ),
           ],
         ),
