@@ -5,7 +5,7 @@ late Database db;
 
 Future<void> createDB() async {
   var dbPath = await getDatabasesPath();
-  final path = '$dbPath/atm.db';
+  final path = '$dbPath/trading.db';
 
   db = await openDatabase(
     path,
