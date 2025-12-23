@@ -18,4 +18,8 @@ class UserModel {
       token: json['token'],
     );
   }
+
+  factory UserModel.defaultValue() {
+    return UserModel(id: '', email: '', name: '', phone: '', token: '');
+  }
 }
