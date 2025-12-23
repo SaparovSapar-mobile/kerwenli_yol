@@ -19,6 +19,18 @@ Future<void> createUser(UserModel user) async {
   }
 }
 
+Future<UserModel> getUser() async {
+  UserModel data = UserModel.defaultValue();
+
+  if (db.isOpen) {
+    List<Map<String, dynamic>>? maps = await db.rawQuery("SELECT * FROM user");
+    if (maps.isEmpty) return data;
+    UserModel user = UserModel.fromJson(maps.first);
+    data = user;
+  }
+  return data;
+}
+
 Future<void> deleteUser() async {
   if (db.isOpen) {
     await db.rawDelete('DELETE FROM user');
