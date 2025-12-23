@@ -29,6 +29,7 @@ class CheckOtpButton extends ConsumerWidget {
 
     return PrimaryButton(
       text: 'Tassykalamk',
+      btnPressProvider: checkOTPCodeBtnPressProvider,
       onPressed: () async {
         ref.read(checkOTPCodeBtnPressProvider.notifier).state = true;
 

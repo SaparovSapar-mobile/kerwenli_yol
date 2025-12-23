@@ -33,6 +33,7 @@ class SendOtpButton extends ConsumerWidget {
 
     return PrimaryButton(
       text: 'Kod ugratmak',
+      btnPressProvider: sendOTPCodeBtnPressProvider,
       onPressed: () async {
         GlobalKey<FormState> formKey = emailCtrl != null
             ? formKeyForEmail!
