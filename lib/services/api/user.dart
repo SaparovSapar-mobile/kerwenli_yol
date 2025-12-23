@@ -12,18 +12,12 @@ class UserApiService {
   Future<UserModel> loginUser(LoginUserModel reqData) async {
     Uri uri = Uri.parse('$apiUrl/client/login');
 
-    print('======================= loginUser');
-    print('uri: $uri');
-    print('reqData.toJson(): ${reqData.toJson()}');
-
     try {
       http.Response response = await http.post(
         uri,
         headers: {'Content-Type': 'application/json'},
         body: json.encode(reqData.toJson()),
       );
-      print('response.statusCode: ${response.statusCode}');
-      print('response.body: ${response.body}');
       var jsonData = json.decode(response.body);
 
       if (response.statusCode == 200 && jsonData['status']) {
@@ -37,7 +31,6 @@ class UserApiService {
       }
       return UserModel.defaultValue();
     } catch (e) {
-      print('--------------- error: ${e.toString()}');
       rethrow;
     }
   }
@@ -46,23 +39,16 @@ class UserApiService {
   Future<bool> verifyEmail(CheckOtpModel reqData) async {
     Uri uri = Uri.parse('$apiUrl/client/verify-email');
 
-    print('======================= verifyEmail');
-    print('uri: $uri');
-    print('reqData.toJson(): ${reqData.toJson()}');
-
     try {
       http.Response response = await http.post(
         uri,
         headers: {'Content-Type': 'application/json'},
         body: json.encode(reqData.toJson()),
       );
-      print('response.statusCode: ${response.statusCode}');
-      print('response.body: ${response.body}');
       var jsonData = json.decode(response.body);
 
       return response.statusCode == 200 && jsonData['status'];
     } catch (e) {
-      print('--------------- error: ${e.toString()}');
       rethrow;
     }
   }
