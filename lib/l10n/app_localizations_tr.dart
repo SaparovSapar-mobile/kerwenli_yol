@@ -22,4 +22,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get somethingWentWrong => 'Näsazlyk ýüze çykdy';
+
+  @override
+  String get thisUserAlreadyExists => 'Bu ulanyjy eýýäm bar';
 }

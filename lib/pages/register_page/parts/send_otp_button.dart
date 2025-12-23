@@ -61,7 +61,22 @@ class SendOtpButton extends ConsumerWidget {
           phone: phoneCtrl != null ? phoneCtrl!.text : '',
         );
 
-        if (!await ref.read(registerUserProvider(reqData).future)) {
+        ResultRegister result = await ref.read(
+          registerUserProvider(reqData).future,
+        );
+
+        // ====== check client already exists ============
+        if (result.message == 'email already registered' ||
+            result.message == 'phone already registered') {
+          if (context.mounted) {
+            showErrorSnackbar(context, lang.thisUserAlreadyExists);
+            ref.read(sendOTPCodeBtnPressProvider.notifier).state = false;
+          }
+          return;
+        }
+
+        // === check has some error ==========
+        if (!result.success) {
           if (context.mounted) {
             showErrorSnackbar(context, lang.somethingWentWrong);
             ref.read(sendOTPCodeBtnPressProvider.notifier).state = false;

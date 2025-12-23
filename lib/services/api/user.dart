@@ -6,7 +6,7 @@ import 'package:kerwenli_yol/models/register_user.dart';
 
 class UserApiService {
   // === Register User ===
-  Future<bool> registerUser(RegisterUserModel reqData) async {
+  Future<ResultRegister> registerUser(RegisterUserModel reqData) async {
     Uri uri = Uri.parse('$apiUrl/client/register');
 
     print('======================= registerUser');
@@ -23,7 +23,10 @@ class UserApiService {
       print('response.body: ${response.body}');
       var jsonData = json.decode(response.body);
 
-      return response.statusCode == 200 && jsonData['status'];
+      return ResultRegister(
+        success: response.statusCode == 200 && jsonData['status'],
+        message: jsonData['message'] ?? '',
+      );
     } catch (e) {
       print('--------------- error: ${e.toString()}');
       rethrow;

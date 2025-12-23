@@ -5,8 +5,8 @@ import 'package:kerwenli_yol/services/api/user.dart';
 final userApiProvider = Provider<UserApiService>((ref) => UserApiService());
 
 var registerUserProvider = FutureProvider.autoDispose
-    .family<bool, RegisterUserModel>((ref, arg) async {
-      bool result = false;
+    .family<ResultRegister, RegisterUserModel>((ref, arg) async {
+      ResultRegister result = ResultRegister.defaultResult();
 
       try {
         result = await ref.read(userApiProvider).registerUser(arg);

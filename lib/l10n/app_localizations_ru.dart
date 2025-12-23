@@ -22,4 +22,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get somethingWentWrong => 'Что-то пошло не так';
+
+  @override
+  String get thisUserAlreadyExists => 'Этот пользователь уже существует';
 }

@@ -3,5 +3,6 @@
     "pleaseEnterTheInformationCompletelyAndCorrectly":"Пожалуйста, введите информацию полностью и правильно.",
     "iHaveReadTheRules":"Я ознакомился с правилами",
     "getToKnowTheRules":"Ознакомьтесь с правилами",
-    "somethingWentWrong":"Что-то пошло не так"
+    "somethingWentWrong":"Что-то пошло не так",
+    "thisUserAlreadyExists":"Этот пользователь уже существует"
 }

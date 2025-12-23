@@ -126,6 +126,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Something went wrong'**
   String get somethingWentWrong;
+
+  /// No description provided for @thisUserAlreadyExists.
+  ///
+  /// In en, this message translates to:
+  /// **'This user already exists'**
+  String get thisUserAlreadyExists;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
