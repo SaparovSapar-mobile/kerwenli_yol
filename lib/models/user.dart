@@ -21,6 +21,17 @@ class UserModel {
     );
   }
 
+  factory UserModel.fromMap(Map<String, dynamic> json) {
+    return UserModel(
+      id: json['id'],
+      email: json['email'],
+      name: json['name'],
+      phone: json['phone'],
+      token: json['token'],
+      image: json['image'] ?? '',
+    );
+  }
+
   factory UserModel.defaultValue() {
     return UserModel(
       id: '',

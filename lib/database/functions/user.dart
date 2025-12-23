@@ -25,7 +25,7 @@ Future<UserModel> getUser() async {
   if (db.isOpen) {
     List<Map<String, dynamic>>? maps = await db.rawQuery("SELECT * FROM user");
     if (maps.isEmpty) return data;
-    UserModel user = UserModel.fromJson(maps.first);
+    UserModel user = UserModel.fromMap(maps.first);
     data = user;
   }
   return data;
