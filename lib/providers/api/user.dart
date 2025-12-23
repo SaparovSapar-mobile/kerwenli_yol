@@ -1,6 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/models/check_otp.dart';
+import 'package:kerwenli_yol/models/login_user.dart';
 import 'package:kerwenli_yol/models/register_user.dart';
+import 'package:kerwenli_yol/models/user.dart';
 import 'package:kerwenli_yol/services/api/user.dart';
 
 final userApiProvider = Provider<UserApiService>((ref) => UserApiService());
@@ -23,6 +25,18 @@ var verifyEmailProvider = FutureProvider.autoDispose
 
       try {
         result = await ref.read(userApiProvider).verifyEmail(arg);
+      } catch (e) {
+        rethrow;
+      }
+      return result;
+    });
+
+var loginUserProvider = FutureProvider.autoDispose
+    .family<UserModel, LoginUserModel>((ref, arg) async {
+      UserModel result = UserModel.defaultValue();
+
+      try {
+        result = await ref.read(userApiProvider).loginUser(arg);
       } catch (e) {
         rethrow;
       }
