@@ -54,11 +54,15 @@ class SendOtpButton extends ConsumerWidget {
 
         ref.read(sendOTPCodeBtnPressProvider.notifier).state = true;
 
+        String userEmail = emailCtrl != null ? emailCtrl!.text : '';
+        String userPhone = phoneCtrl != null ? phoneCtrl!.text : '';
+        String userPassword = passwordCtrl.text;
+
         RegisterUserModel reqData = RegisterUserModel(
-          email: emailCtrl != null ? emailCtrl!.text : '',
+          email: userEmail,
           name: fullNameCtrl.text,
-          password: passwordCtrl.text,
-          phone: phoneCtrl != null ? phoneCtrl!.text : '',
+          password: userPassword,
+          phone: userPhone,
         );
 
         ResultRegister result = await ref.read(
@@ -88,7 +92,16 @@ class SendOtpButton extends ConsumerWidget {
         FocusManager.instance.primaryFocus?.unfocus();
 
         if (context.mounted) {
-          goToPage(context, CheckOtpPage(text: text), AxisDirection.left);
+          goToPage(
+            context,
+            CheckOtpPage(
+              text: text,
+              email: userEmail,
+              phone: userPhone,
+              password: userPassword,
+            ),
+            AxisDirection.left,
+          );
         }
       },
     );
