@@ -11,6 +11,7 @@ import 'package:kerwenli_yol/pages/parts/primary_button.dart';
 import 'package:kerwenli_yol/providers/api/user.dart';
 import 'package:kerwenli_yol/providers/database/user.dart';
 import 'package:kerwenli_yol/providers/parts/inputs.dart';
+import 'package:kerwenli_yol/providers/settings.dart';
 
 class CheckOtpButton extends ConsumerWidget {
   const CheckOtpButton({
@@ -82,6 +83,13 @@ class CheckOtpButton extends ConsumerWidget {
         ref.read(checkOTPCodeBtnPressProvider.notifier).state = false;
         ref.invalidate(getUserProvider);
 
+        // ==== Ulanyjy programmany ilkinji gezek acyan bolsa==
+        bool isFirstTime = ref.read(isFirstTimeProvider);
+        if (isFirstTime) {
+          ref.read(isFirstTimeProvider.notifier).update(false);
+        }
+        // ==== Ulanyjy programmany ilkinji gezek acyan bolsa==
+
         if (context.mounted) {
           Navigator.pushAndRemoveUntil(
             context,
@@ -91,8 +99,6 @@ class CheckOtpButton extends ConsumerWidget {
             (Route<dynamic> route) => false,
           );
         }
-
-        // goToPage(context, BottomNavigationPage(), AxisDirection.left);
       },
     );
   }

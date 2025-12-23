@@ -28,15 +28,6 @@ class OnboardNextButton extends ConsumerWidget {
           duration: const Duration(milliseconds: 300),
           curve: Curves.linear,
         );
-
-        // ref.read(isFirstTimeProvider.notifier).update(false);
-        // Navigator.pushReplacement(
-        //   context,
-        //   CustomPageRoute(
-        //     child: const BottomNavigationPage(),
-        //     direction: AxisDirection.left,
-        //   ),
-        // );
       },
       child: Container(
         padding: EdgeInsets.all(13),

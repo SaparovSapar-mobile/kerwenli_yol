@@ -46,7 +46,9 @@ class PrimaryButton extends ConsumerWidget {
           ),
         ),
         onPressed: buttonPress ? null : onPressed,
-        child: Text(text, style: textStyle),
+        child: buttonPress
+            ? CircularProgressIndicator(color: LightColors.bgBlogLight)
+            : Text(text, style: textStyle),
       ),
     );
   }
