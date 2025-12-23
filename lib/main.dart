@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kerwenli_yol/database/config.dart';
 import 'package:kerwenli_yol/enums/theme.dart';
 import 'package:kerwenli_yol/l10n/app_localizations.dart';
 import 'package:kerwenli_yol/pages/home.dart';
@@ -17,6 +18,8 @@ void main() async {
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
+
+  await createDB(); // create database
   await dotenv.load(fileName: ".env"); // load .env file
   runApp(const ProviderScope(child: MyApp()));
 }
