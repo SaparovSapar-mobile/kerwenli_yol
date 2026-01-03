@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
+import 'package:kerwenli_yol/pages/company_page/parts/company_page_info/parts/company_features/parts/company_feature_part.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
@@ -29,7 +30,13 @@ class CompanyFeatures extends ConsumerWidget {
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [Text('Amatlyklary', style: textStyle)],
+          children: [
+            Text('Amatlyklary', style: textStyle),
+            SizedBox(height: 4),
+            CompanyFeaturePart(text: 'Mugt wifi', image: 'router.png'),
+            CompanyFeaturePart(text: 'Kart tölegi', image: 'card.png'),
+            CompanyFeaturePart(text: 'Awtoduralga', image: 'parking.png'),
+          ],
         ),
       ),
     );
