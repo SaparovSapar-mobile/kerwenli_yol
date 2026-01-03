@@ -4,8 +4,8 @@ import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 
-class ShareButton extends ConsumerWidget {
-  const ShareButton({super.key, this.iconSize, required this.onPressed});
+class MoreButton extends ConsumerWidget {
+  const MoreButton({super.key, this.iconSize, required this.onPressed});
 
   final double? iconSize;
   final void Function() onPressed;
@@ -19,7 +19,7 @@ class ShareButton extends ConsumerWidget {
 
     return IconButton(
       onPressed: onPressed,
-      icon: Icon(Icons.share, size: iconSize ?? 24, color: iconColor),
+      icon: Icon(Icons.more_vert, size: iconSize ?? 24, color: iconColor),
     );
   }
 }
