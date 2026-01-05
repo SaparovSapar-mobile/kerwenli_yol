@@ -24,22 +24,25 @@ class BottomSheetTitle extends ConsumerWidget {
     TextStyle textStyle = style ?? AppTextStyles.semiBold14;
     TextStyle titleStyle = textStyle.copyWith(color: iconColor);
 
-    return GestureDetector(
-      onTap: () => Navigator.pop(context),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Expanded(child: Text(text, style: titleStyle)),
-          Container(
-            padding: EdgeInsets.all(4),
-            decoration: BoxDecoration(
-              color: iconBgColor,
-              borderRadius: BorderRadius.circular(4),
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8),
+      child: GestureDetector(
+        onTap: () => Navigator.pop(context),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(child: Text(text, style: titleStyle)),
+            Container(
+              padding: EdgeInsets.all(4),
+              decoration: BoxDecoration(
+                color: iconBgColor,
+                borderRadius: BorderRadius.circular(4),
+              ),
+              child: Icon(Icons.close, color: iconColor, size: 16),
             ),
-            child: Icon(Icons.close, color: iconColor, size: 24),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
