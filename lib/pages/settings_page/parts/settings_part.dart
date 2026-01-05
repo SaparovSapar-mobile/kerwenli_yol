@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/pages/settings_page/parts/language_button.dart';
 import 'package:kerwenli_yol/pages/settings_page/parts/setting_part_card.dart';
+import 'package:kerwenli_yol/pages/settings_page/parts/theme_button.dart';
 import 'package:kerwenli_yol/providers/pages/settings_page.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
@@ -27,13 +28,7 @@ class SettingsPart extends ConsumerWidget {
           Text('Sazlamalar'),
           SizedBox(height: 5),
           LanguageButton(),
-          SettingPartCard(
-            index: 1,
-            text: 'Tema',
-            icon: Icons.bedtime,
-            tralingText: 'Dark',
-            onTap: () {},
-          ),
+          ThemeButton(),
           SettingPartCard(
             index: 2,
             text: 'Sesli bildirisler',
