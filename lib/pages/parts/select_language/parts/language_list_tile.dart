@@ -40,6 +40,7 @@ class LanguageListTile extends ConsumerWidget {
       child: ListTile(
         dense: true,
         visualDensity: VisualDensity.compact,
+        contentPadding: EdgeInsets.only(left: 5, right: 10),
         leading: Container(
           padding: EdgeInsets.all(4),
           decoration: BoxDecoration(
@@ -52,6 +53,12 @@ class LanguageListTile extends ConsumerWidget {
         trailing: isActive
             ? CircleAvatar(backgroundColor: tralingIconColor, radius: 3)
             : const SizedBox.shrink(),
+        onTap: () async {
+          await ref.read(langProvider.notifier).update(lang);
+          if (context.mounted) {
+            Navigator.pop(context);
+          }
+        },
       ),
     );
   }
