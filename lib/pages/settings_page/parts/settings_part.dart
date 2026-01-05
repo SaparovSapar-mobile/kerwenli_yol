@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
-import 'package:kerwenli_yol/helpers/methods/pages/bottom_sheets.dart';
+import 'package:kerwenli_yol/pages/settings_page/parts/language_button.dart';
 import 'package:kerwenli_yol/pages/settings_page/parts/setting_part_card.dart';
 import 'package:kerwenli_yol/providers/pages/settings_page.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
@@ -26,13 +26,7 @@ class SettingsPart extends ConsumerWidget {
         children: [
           Text('Sazlamalar'),
           SizedBox(height: 5),
-          SettingPartCard(
-            index: 0,
-            text: 'Diller',
-            icon: Icons.translate,
-            tralingText: 'Turkmen',
-            onTap: () => showLanguageBottomSheet(context),
-          ),
+          LanguageButton(),
           SettingPartCard(
             index: 1,
             text: 'Tema',
