@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
+import 'package:kerwenli_yol/helpers/methods/pages/bottom_sheets.dart';
 import 'package:kerwenli_yol/pages/settings_page/parts/setting_part_card.dart';
 import 'package:kerwenli_yol/providers/pages/settings_page.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
@@ -30,7 +31,7 @@ class SettingsPart extends ConsumerWidget {
             text: 'Diller',
             icon: Icons.translate,
             tralingText: 'Turkmen',
-            onTap: () {},
+            onTap: () => showLanguageBottomSheet(context),
           ),
           SettingPartCard(
             index: 1,
