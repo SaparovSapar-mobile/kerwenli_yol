@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kerwenli_yol/pages/parts/bottom_sheet_widget/bottom_sheet_widget.dart';
 import 'package:kerwenli_yol/pages/parts/bottom_sheet_widget/parts/bottom_sheet_title.dart';
 import 'package:kerwenli_yol/pages/parts/sort_bottom_sheet/parts/sort_list_tile.dart';
+import 'package:kerwenli_yol/pages/parts/sort_bottom_sheet/parts/sort_list_tile_with_icon.dart';
 import 'package:kerwenli_yol/providers/pages/companies_page.dart';
 import 'package:kerwenli_yol/providers/parts/grid_or_list.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
@@ -31,15 +32,17 @@ class SortBottomSheet extends StatelessWidget {
           alignment: Alignment.centerLeft,
           child: Text('Görnüşi', style: textStyle, textAlign: TextAlign.left),
         ),
-        SortListTile(
-          title: 'Maslahat berilýänler',
+        SortListTileWithIcon(
+          title: 'Grid',
           value: 0,
           sortOrFilterProvider: gridOrListsortProvider,
+          icon: Icons.window,
         ),
-        SortListTile(
-          title: 'Iň ýakyn',
+        SortListTileWithIcon(
+          title: 'List',
           value: 1,
           sortOrFilterProvider: gridOrListsortProvider,
+          icon: Icons.align_horizontal_left,
         ),
       ],
     );
