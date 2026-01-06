@@ -14,7 +14,7 @@ class FilterBottomSheet extends StatelessWidget {
         BottomSheetTitle(text: 'Filter'),
         FilterExpansionTile(),
         SizedBox(height: 16),
-        PrimaryButton(text: 'Filter', onPressed: () {}),
+        PrimaryButton(text: 'Filter', onPressed: () => Navigator.pop(context)),
       ],
     );
   }

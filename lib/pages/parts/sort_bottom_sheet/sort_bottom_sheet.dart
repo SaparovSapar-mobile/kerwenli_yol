@@ -46,7 +46,10 @@ class SortBottomSheet extends StatelessWidget {
           icon: Icons.align_horizontal_left,
         ),
         SizedBox(height: 16),
-        PrimaryButton(text: 'Tertiple', onPressed: () {}),
+        PrimaryButton(
+          text: 'Tertiple',
+          onPressed: () => Navigator.pop(context),
+        ),
       ],
     );
   }
