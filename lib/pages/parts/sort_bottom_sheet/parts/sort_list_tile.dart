@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
-import 'package:kerwenli_yol/providers/pages/companies_page.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
 
 class SortListTile extends ConsumerWidget {
-  const SortListTile({super.key, required this.value, required this.title});
+  const SortListTile({
+    super.key,
+    required this.value,
+    required this.title,
+    required this.sortOrFilterProvider,
+  });
 
   final int value;
   final String title;
+  final StateProvider<int> sortOrFilterProvider;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -22,7 +27,7 @@ class SortListTile extends ConsumerWidget {
 
     TextStyle titleStyle = AppTextStyles.medium14;
 
-    int companySortIndex = ref.watch(companySortIndexProvider);
+    int selectedIndex = ref.watch(sortOrFilterProvider);
 
     return Container(
       decoration: BoxDecoration(
@@ -34,10 +39,10 @@ class SortListTile extends ConsumerWidget {
         controlAffinity: ListTileControlAffinity.trailing,
         title: Text(title, style: titleStyle),
         value: value,
-        groupValue: companySortIndex,
+        groupValue: selectedIndex,
         onChanged: (v) {
           if (v != null) {
-            ref.read(companySortIndexProvider.notifier).state = v;
+            ref.read(sortOrFilterProvider.notifier).state = v;
           }
         },
       ),
