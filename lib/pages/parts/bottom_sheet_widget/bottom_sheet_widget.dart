@@ -21,7 +21,7 @@ class BottomSheetWidget extends ConsumerWidget {
         children: [
           const TopWidgetOfBottomNavigation(),
           Container(
-            padding: const EdgeInsets.all(10),
+            padding: const EdgeInsets.all(16),
             margin: const EdgeInsets.only(top: 5),
             decoration: bottomNavigationBoxDecoration(isLight),
             child: Column(mainAxisSize: MainAxisSize.min, children: children),

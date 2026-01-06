@@ -5,7 +5,7 @@ import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 BoxDecoration bottomNavigationBoxDecoration(bool isLight) => BoxDecoration(
   color: isLight ? LightColors.bgBlogLight : DarkColors.bgBlogDark,
   borderRadius: BorderRadius.only(
-    topLeft: Radius.circular(10),
-    topRight: Radius.circular(10),
+    topLeft: Radius.circular(20),
+    topRight: Radius.circular(20),
   ),
 );
