@@ -15,3 +15,10 @@ Future<void> showThemeBottomSheet(BuildContext context) async =>
       context: context,
       builder: (context) => const SelectTheme(),
     );
+
+Future<void> showSortBottomSheet(BuildContext context) async =>
+    await showModalBottomSheet(
+      backgroundColor: Colors.transparent,
+      context: context,
+      builder: (context) => const SelectTheme(),
+    );
