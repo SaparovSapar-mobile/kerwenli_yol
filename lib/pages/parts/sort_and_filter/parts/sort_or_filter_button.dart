@@ -27,7 +27,7 @@ class SortOrFilterButton extends ConsumerWidget {
 
     TextStyle textStyle = AppTextStyles.medium16;
 
-    return InkWell(
+    return GestureDetector(
       onTap: onTap,
       child: Container(
         padding: EdgeInsets.symmetric(vertical: 14, horizontal: 40),
