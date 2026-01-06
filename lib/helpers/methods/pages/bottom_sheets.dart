@@ -23,3 +23,10 @@ Future<void> showSortBottomSheet(BuildContext context) async =>
       context: context,
       builder: (context) => const SortBottomSheet(),
     );
+
+Future<void> showFilterBottomSheet(BuildContext context) async =>
+    await showModalBottomSheet(
+      backgroundColor: Colors.transparent,
+      context: context,
+      builder: (context) => const SortBottomSheet(),
+    );

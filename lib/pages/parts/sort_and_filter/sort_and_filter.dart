@@ -15,7 +15,10 @@ class SortAndFilter extends StatelessWidget {
           onTap: () => showSortBottomSheet(context),
         ),
         SizedBox(width: 15),
-        SortOrFilterButton(text: 'Filter', onTap: () {}),
+        SortOrFilterButton(
+          text: 'Filter',
+          onTap: () => showFilterBottomSheet(context),
+        ),
       ],
     );
   }
