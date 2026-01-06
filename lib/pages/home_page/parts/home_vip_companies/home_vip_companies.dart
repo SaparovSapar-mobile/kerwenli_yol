@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:kerwenli_yol/helpers/functions/navigation.dart';
 import 'package:kerwenli_yol/helpers/methods/parts/app_bar_methods.dart';
+import 'package:kerwenli_yol/pages/companies_page/companies_page.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_companies_list.dart';
 import 'package:kerwenli_yol/pages/parts/home_more_button.dart';
 
@@ -11,7 +13,10 @@ class HomeVipCompanies extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        HomeMoreButton(text: 'VIP Karhanalar', onTap: () {}),
+        HomeMoreButton(
+          text: 'VIP Karhanalar',
+          onTap: () => goToPage(context, CompaniesPage(), AxisDirection.left),
+        ),
         SizedBox(height: 5),
         HomeVipCompaniesList(),
         SizedBox(height: 10),
