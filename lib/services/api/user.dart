@@ -6,6 +6,7 @@ import 'package:kerwenli_yol/models/check_otp.dart';
 import 'package:kerwenli_yol/models/login_user.dart';
 import 'package:kerwenli_yol/models/register_user.dart';
 import 'package:kerwenli_yol/models/send_otp.dart';
+import 'package:kerwenli_yol/models/update_password.dart';
 import 'package:kerwenli_yol/models/user.dart';
 
 class UserApiService {
@@ -101,8 +102,8 @@ class UserApiService {
   }
 
   // === Update Passoword ===
-  Future<ResultRegister> updatePassword(SendOtpModel reqData) async {
-    Uri uri = Uri.parse('$apiUrl/client/forgot-password');
+  Future<ResultRegister> updatePassword(UpdatePasswordModel reqData) async {
+    Uri uri = Uri.parse('$apiUrl/client/reset-password');
 
     print('---------------------------------------------');
     print('reqData.toJson(): ${reqData.toJson()}');
