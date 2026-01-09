@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kerwenli_yol/pages/parts/inputs/phone_input.dart';
+import 'package:kerwenli_yol/pages/register_page/parts/send_otp_button.dart';
 
 class FpWithPhone extends StatelessWidget {
   const FpWithPhone({
@@ -28,11 +29,11 @@ class FpWithPhone extends StatelessWidget {
             child: PhoneInput(ctrl: phoneCtrl),
           ),
           SizedBox(height: 16),
-          // LoginButton(
-          //   passwordCtrl: passwordCtrl,
-          //   phoneCtrl: phoneCtrl,
-          //   formKeyForPhone: formKey,
-          // ),
+          SendOtpButton(
+            phoneCtrl: phoneCtrl,
+            formKeyForPhone: formKey,
+            text: 'Telefon belgiňize gelen kody giriziň',
+          ),
         ],
       ),
     );

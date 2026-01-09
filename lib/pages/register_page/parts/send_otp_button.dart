@@ -17,13 +17,12 @@ class SendOtpButton extends ConsumerWidget {
     this.formKeyForEmail,
     this.emailCtrl,
     this.phoneCtrl,
-    required this.passwordCtrl,
-    required this.fullNameCtrl,
+    this.passwordCtrl,
+    this.fullNameCtrl,
     required this.text,
   });
 
-  final TextEditingController? emailCtrl, phoneCtrl;
-  final TextEditingController passwordCtrl, fullNameCtrl;
+  final TextEditingController? emailCtrl, phoneCtrl, passwordCtrl, fullNameCtrl;
   final GlobalKey<FormState>? formKeyForPhone, formKeyForEmail;
   final String text;
 
@@ -47,21 +46,25 @@ class SendOtpButton extends ConsumerWidget {
           return;
         }
 
-        bool confirmPrivacy = ref.read(confirmPrivacyProvider);
-        if (!confirmPrivacy) {
-          showErrorSnackbar(context, lang.getToKnowTheRules);
-          return;
+        String userEmail = emailCtrl != null ? emailCtrl!.text : '';
+        String userPhone = phoneCtrl != null ? phoneCtrl!.text : '';
+        String userPassword = passwordCtrl == null ? '' : passwordCtrl!.text;
+        String fullName = fullNameCtrl == null ? '' : fullNameCtrl!.text;
+
+        // ===== Dine Register - de confirm Privacy Control edilyar ===
+        if (userPassword == '' || fullName == '') {
+          bool confirmPrivacy = ref.read(confirmPrivacyProvider);
+          if (!confirmPrivacy) {
+            showErrorSnackbar(context, lang.getToKnowTheRules);
+            return;
+          }
         }
 
         ref.read(sendOTPCodeBtnPressProvider.notifier).state = true;
 
-        String userEmail = emailCtrl != null ? emailCtrl!.text : '';
-        String userPhone = phoneCtrl != null ? phoneCtrl!.text : '';
-        String userPassword = passwordCtrl.text;
-
         RegisterUserModel reqData = RegisterUserModel(
           email: userEmail,
-          name: fullNameCtrl.text,
+          name: fullName,
           password: userPassword,
           phone: userPhone,
         );

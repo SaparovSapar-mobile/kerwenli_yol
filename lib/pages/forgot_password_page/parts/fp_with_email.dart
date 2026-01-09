@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kerwenli_yol/pages/parts/inputs/email_input.dart';
+import 'package:kerwenli_yol/pages/register_page/parts/send_otp_button.dart';
 
 class FpWithEmail extends StatelessWidget {
   const FpWithEmail({
@@ -28,11 +29,11 @@ class FpWithEmail extends StatelessWidget {
             child: EmailInput(ctrl: emailCtrl),
           ),
           SizedBox(height: 16),
-          // LoginButton(
-          //   passwordCtrl: passwordCtrl,
-          //   emailCtrl: emailCtrl,
-          //   formKeyForEmail: formKey,
-          // ),
+          SendOtpButton(
+            emailCtrl: emailCtrl,
+            formKeyForPhone: formKey,
+            text: 'Telefon belgiňize gelen kody giriziň',
+          ),
         ],
       ),
     );
