@@ -49,7 +49,7 @@ class RegisterWithPhone extends StatelessWidget {
                   ctrl: passwordCtrl,
                   confirmCtrl: confirmPasswordCtrl,
                 ),
-                SizedBox(height: 30),
+                SizedBox(height: 10),
                 ConfirmPrivacyPolicyButton(),
               ],
             ),

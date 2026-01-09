@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:kerwenli_yol/pages/login_page/parts/login_forgot_password_button.dart';
 import 'package:kerwenli_yol/pages/parts/inputs/email_input.dart';
 import 'package:kerwenli_yol/pages/parts/inputs/password_input.dart';
-import 'package:kerwenli_yol/pages/register_page/parts/confirm_privacy_policy_button.dart';
 
 class LoginWithEmail extends StatelessWidget {
   const LoginWithEmail({
@@ -34,7 +34,7 @@ class LoginWithEmail extends StatelessWidget {
                 EmailInput(ctrl: emailCtrl),
                 PasswordInput(ctrl: passwordCtrl),
                 SizedBox(height: 10),
-                ConfirmPrivacyPolicyButton(),
+                LoginForgotPasswordButton(),
               ],
             ),
           ),

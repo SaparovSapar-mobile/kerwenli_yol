@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:kerwenli_yol/pages/login_page/parts/login_forgot_password_button.dart';
 import 'package:kerwenli_yol/pages/parts/inputs/password_input.dart';
 import 'package:kerwenli_yol/pages/parts/inputs/phone_input.dart';
-import 'package:kerwenli_yol/pages/register_page/parts/confirm_privacy_policy_button.dart';
 
 class LoginWithPhone extends StatelessWidget {
   const LoginWithPhone({
@@ -33,8 +33,8 @@ class LoginWithPhone extends StatelessWidget {
               children: [
                 PhoneInput(ctrl: phoneCtrl),
                 PasswordInput(ctrl: passwordCtrl),
-                SizedBox(height: 30),
-                ConfirmPrivacyPolicyButton(),
+                SizedBox(height: 10),
+                LoginForgotPasswordButton(),
               ],
             ),
           ),
