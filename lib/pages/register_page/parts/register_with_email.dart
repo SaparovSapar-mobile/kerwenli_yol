@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:kerwenli_yol/helpers/functions/navigation.dart';
+import 'package:kerwenli_yol/pages/login_page/login_page.dart';
+import 'package:kerwenli_yol/pages/parts/bg_page_light_button.dart';
 import 'package:kerwenli_yol/pages/parts/inputs/confirm_password_input.dart';
 import 'package:kerwenli_yol/pages/parts/inputs/email_input.dart';
 import 'package:kerwenli_yol/pages/parts/inputs/name_input.dart';
@@ -58,6 +61,11 @@ class RegisterWithEmail extends StatelessWidget {
             emailCtrl: emailCtrl,
             formKeyForEmail: formKey,
             text: 'Emailiňize gelen kody giriziň',
+          ),
+          SizedBox(height: 10),
+          BgPageLightButton(
+            text: 'Ulgama Girmek',
+            onPressed: () => goToPage(context, LoginPage(), AxisDirection.left),
           ),
         ],
       ),

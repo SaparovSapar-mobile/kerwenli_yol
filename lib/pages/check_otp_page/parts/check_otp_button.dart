@@ -90,7 +90,6 @@ class CheckOtpButton extends ConsumerWidget {
           ref.read(isFirstTimeProvider.notifier).update(false);
         }
         // ==== Ulanyjy programmany ilkinji gezek acyan bolsa==
-
         if (context.mounted) {
           Navigator.pushAndRemoveUntil(
             context,
