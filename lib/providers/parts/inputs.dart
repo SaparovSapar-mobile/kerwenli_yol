@@ -15,3 +15,4 @@ var sendOTPCodeBtnPressProvider = StateProvider.autoDispose<bool>(
 var checkOTPCodeBtnPressProvider = StateProvider.autoDispose<bool>(
   (ref) => false,
 );
+var loginBtnPressProvider = StateProvider.autoDispose<bool>((ref) => false);
