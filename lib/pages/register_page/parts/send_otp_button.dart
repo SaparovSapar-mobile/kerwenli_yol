@@ -4,6 +4,7 @@ import 'package:kerwenli_yol/helpers/functions/navigation.dart';
 import 'package:kerwenli_yol/helpers/methods/snackbars.dart';
 import 'package:kerwenli_yol/l10n/app_localizations.dart';
 import 'package:kerwenli_yol/models/register_user.dart';
+import 'package:kerwenli_yol/models/send_otp.dart';
 import 'package:kerwenli_yol/pages/check_otp_page/check_otp_page.dart';
 import 'package:kerwenli_yol/pages/parts/primary_button.dart';
 import 'package:kerwenli_yol/providers/api/user.dart';
@@ -62,25 +63,35 @@ class SendOtpButton extends ConsumerWidget {
 
         ref.read(sendOTPCodeBtnPressProvider.notifier).state = true;
 
-        RegisterUserModel reqData = RegisterUserModel(
-          email: userEmail,
-          name: fullName,
-          password: userPassword,
-          phone: userPhone,
-        );
+        ResultRegister result = ResultRegister.defaultResult();
+        if (userPassword == '' || fullName == '') {
+          // ====== Ulanyjy Registr Boljak bolanda su yeri isleyar ===
+          RegisterUserModel reqData = RegisterUserModel(
+            email: userEmail,
+            name: fullName,
+            password: userPassword,
+            phone: userPhone,
+          );
 
-        ResultRegister result = await ref.read(
-          registerUserProvider(reqData).future,
-        );
+          result = await ref.read(registerUserProvider(reqData).future);
 
-        // ====== check client already exists ============
-        if (result.message == 'email already registered' ||
-            result.message == 'phone already registered') {
-          if (context.mounted) {
-            showErrorSnackbar(context, lang.thisUserAlreadyExists);
-            ref.read(sendOTPCodeBtnPressProvider.notifier).state = false;
+          // ====== check client already exists ============
+          if (result.message == 'email already registered' ||
+              result.message == 'phone already registered') {
+            if (context.mounted) {
+              showErrorSnackbar(context, lang.thisUserAlreadyExists);
+              ref.read(sendOTPCodeBtnPressProvider.notifier).state = false;
+            }
+            return;
           }
-          return;
+        } else {
+          // ====== Forgot Password ucin ========
+          SendOtpModel reqData = SendOtpModel(
+            email: userEmail,
+            phone: userPhone,
+          );
+
+          result = await ref.read(sendOtpProvider(reqData).future);
         }
 
         // === check has some error ==========
