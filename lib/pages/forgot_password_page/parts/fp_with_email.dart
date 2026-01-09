@@ -39,7 +39,7 @@ class FpWithEmail extends StatelessWidget {
           SizedBox(height: 16),
           SendOtpButton(
             emailCtrl: emailCtrl,
-            formKeyForPhone: formKey,
+            formKeyForEmail: formKey,
             text: 'Telefon belgiňize gelen kody giriziň',
             passwordCtrl: passwordCtrl,
           ),

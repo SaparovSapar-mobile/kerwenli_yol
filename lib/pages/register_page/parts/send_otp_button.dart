@@ -53,7 +53,7 @@ class SendOtpButton extends ConsumerWidget {
         String userPassword = passwordCtrl.text;
         String fullName = fullNameCtrl == null ? '' : fullNameCtrl!.text;
 
-        bool forRegister = fullName == '';
+        bool forRegister = fullName != '';
 
         // ===== Dine Register - de confirm Privacy Control edilyar ===
         if (forRegister) {
