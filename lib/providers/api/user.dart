@@ -3,6 +3,7 @@ import 'package:kerwenli_yol/models/check_otp.dart';
 import 'package:kerwenli_yol/models/login_user.dart';
 import 'package:kerwenli_yol/models/register_user.dart';
 import 'package:kerwenli_yol/models/send_otp.dart';
+import 'package:kerwenli_yol/models/update_password.dart';
 import 'package:kerwenli_yol/models/user.dart';
 import 'package:kerwenli_yol/services/api/user.dart';
 
@@ -26,6 +27,18 @@ var sendOtpProvider = FutureProvider.autoDispose
 
       try {
         result = await ref.read(userApiProvider).sendOtp(arg);
+      } catch (e) {
+        rethrow;
+      }
+      return result;
+    });
+
+var updatePasswordProvider = FutureProvider.autoDispose
+    .family<ResultRegister, UpdatePasswordModel>((ref, arg) async {
+      ResultRegister result = ResultRegister.defaultResult();
+
+      try {
+        result = await ref.read(userApiProvider).updatePassword(arg);
       } catch (e) {
         rethrow;
       }

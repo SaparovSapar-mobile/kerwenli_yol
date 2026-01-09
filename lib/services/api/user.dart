@@ -105,7 +105,7 @@ class UserApiService {
   Future<ResultRegister> updatePassword(UpdatePasswordModel reqData) async {
     Uri uri = Uri.parse('$apiUrl/client/reset-password');
 
-    print('---------------------------------------------');
+    print('--------------------------------------------- update password');
     print('reqData.toJson(): ${reqData.toJson()}');
 
     try {
