@@ -18,12 +18,13 @@ class SendOtpButton extends ConsumerWidget {
     this.formKeyForEmail,
     this.emailCtrl,
     this.phoneCtrl,
-    this.passwordCtrl,
+    required this.passwordCtrl,
     this.fullNameCtrl,
     required this.text,
   });
 
-  final TextEditingController? emailCtrl, phoneCtrl, passwordCtrl, fullNameCtrl;
+  final TextEditingController? emailCtrl, phoneCtrl, fullNameCtrl;
+  final TextEditingController passwordCtrl;
   final GlobalKey<FormState>? formKeyForPhone, formKeyForEmail;
   final String text;
 
@@ -49,11 +50,13 @@ class SendOtpButton extends ConsumerWidget {
 
         String userEmail = emailCtrl != null ? emailCtrl!.text : '';
         String userPhone = phoneCtrl != null ? phoneCtrl!.text : '';
-        String userPassword = passwordCtrl == null ? '' : passwordCtrl!.text;
+        String userPassword = passwordCtrl.text;
         String fullName = fullNameCtrl == null ? '' : fullNameCtrl!.text;
 
+        bool forRegister = fullName == '';
+
         // ===== Dine Register - de confirm Privacy Control edilyar ===
-        if (userPassword == '' || fullName == '') {
+        if (forRegister) {
           bool confirmPrivacy = ref.read(confirmPrivacyProvider);
           if (!confirmPrivacy) {
             showErrorSnackbar(context, lang.getToKnowTheRules);
@@ -64,7 +67,7 @@ class SendOtpButton extends ConsumerWidget {
         ref.read(sendOTPCodeBtnPressProvider.notifier).state = true;
 
         ResultRegister result = ResultRegister.defaultResult();
-        if (userPassword == '' || fullName == '') {
+        if (forRegister) {
           // ====== Ulanyjy Registr Boljak bolanda su yeri isleyar ===
           RegisterUserModel reqData = RegisterUserModel(
             email: userEmail,
@@ -114,6 +117,7 @@ class SendOtpButton extends ConsumerWidget {
               email: userEmail,
               phone: userPhone,
               password: userPassword,
+              forRegister: forRegister,
             ),
             AxisDirection.left,
           );

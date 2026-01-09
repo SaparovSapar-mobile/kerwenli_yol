@@ -20,6 +20,8 @@ class ForgotPasswordPage extends ConsumerStatefulWidget {
 class _ForgotPasswordPageState extends ConsumerState<ForgotPasswordPage> {
   final TextEditingController _emailCtrl = TextEditingController();
   final TextEditingController _phoneCtrl = TextEditingController();
+  final TextEditingController _passwordCtrl = TextEditingController();
+
   final GlobalKey<FormState> formKeyForPhone = GlobalKey<FormState>();
   final GlobalKey<FormState> formKeyForEmail = GlobalKey<FormState>();
 
@@ -27,6 +29,7 @@ class _ForgotPasswordPageState extends ConsumerState<ForgotPasswordPage> {
   void dispose() {
     _emailCtrl.dispose();
     _phoneCtrl.dispose();
+    _passwordCtrl.dispose();
     super.dispose();
   }
 
@@ -44,7 +47,7 @@ class _ForgotPasswordPageState extends ConsumerState<ForgotPasswordPage> {
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
           leading: BackLeadingButton(),
-          title: Text('Emailinizi ya-da Telefon Belginizi girizin'),
+          title: Text('Parolymy Unutdym'),
           backgroundColor: bgColor,
           actions: [
             Padding(
@@ -72,11 +75,13 @@ class _ForgotPasswordPageState extends ConsumerState<ForgotPasswordPage> {
                 formKey: formKeyForPhone,
                 phoneCtrl: _phoneCtrl,
                 formBgColor: formBgColor,
+                passwordCtrl: _passwordCtrl,
               ),
               FpWithEmail(
                 formKey: formKeyForEmail,
                 emailCtrl: _emailCtrl,
                 formBgColor: formBgColor,
+                passwordCtrl: _passwordCtrl,
               ),
             ],
           ),

@@ -17,9 +17,11 @@ class CheckOtpPage extends ConsumerWidget {
     required this.email,
     required this.phone,
     required this.password,
+    required this.forRegister,
   });
 
   final String text, email, phone, password;
+  final bool forRegister;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -51,7 +53,12 @@ class CheckOtpPage extends ConsumerWidget {
             SizedBox(height: 24),
             OtpInput(),
             SizedBox(height: 16),
-            CheckOtpButton(email: email, phone: phone, password: password),
+            CheckOtpButton(
+              email: email,
+              phone: phone,
+              password: password,
+              forRegister: forRegister,
+            ),
           ],
         ),
       ),

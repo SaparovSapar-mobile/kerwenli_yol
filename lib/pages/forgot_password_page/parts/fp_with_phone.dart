@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kerwenli_yol/pages/parts/inputs/password_input.dart';
 import 'package:kerwenli_yol/pages/parts/inputs/phone_input.dart';
 import 'package:kerwenli_yol/pages/register_page/parts/send_otp_button.dart';
 
@@ -7,11 +8,12 @@ class FpWithPhone extends StatelessWidget {
     super.key,
     required this.formKey,
     required this.phoneCtrl,
+    required this.passwordCtrl,
     required this.formBgColor,
   });
 
   final GlobalKey<FormState> formKey;
-  final TextEditingController phoneCtrl;
+  final TextEditingController phoneCtrl, passwordCtrl;
   final Color formBgColor;
 
   @override
@@ -26,13 +28,20 @@ class FpWithPhone extends StatelessWidget {
               color: formBgColor,
               borderRadius: BorderRadius.circular(12),
             ),
-            child: PhoneInput(ctrl: phoneCtrl),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                PhoneInput(ctrl: phoneCtrl),
+                PasswordInput(ctrl: passwordCtrl),
+              ],
+            ),
           ),
           SizedBox(height: 16),
           SendOtpButton(
             phoneCtrl: phoneCtrl,
             formKeyForPhone: formKey,
             text: 'Telefon belgiňize gelen kody giriziň',
+            passwordCtrl: passwordCtrl,
           ),
         ],
       ),
