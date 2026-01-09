@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:kerwenli_yol/helpers/functions/navigation.dart';
 import 'package:kerwenli_yol/pages/login_page/login_page.dart';
 import 'package:kerwenli_yol/pages/parts/bg_page_light_button.dart';
 import 'package:kerwenli_yol/pages/parts/inputs/confirm_password_input.dart';
@@ -65,7 +64,10 @@ class RegisterWithEmail extends StatelessWidget {
           SizedBox(height: 10),
           BgPageLightButton(
             text: 'Ulgama Girmek',
-            onPressed: () => goToPage(context, LoginPage(), AxisDirection.left),
+            onPressed: () => Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const LoginPage()),
+            ),
           ),
         ],
       ),

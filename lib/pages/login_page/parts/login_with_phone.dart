@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:kerwenli_yol/pages/login_page/parts/login_button.dart';
 import 'package:kerwenli_yol/pages/login_page/parts/login_forgot_password_button.dart';
+import 'package:kerwenli_yol/pages/parts/bg_page_light_button.dart';
 import 'package:kerwenli_yol/pages/parts/inputs/password_input.dart';
 import 'package:kerwenli_yol/pages/parts/inputs/phone_input.dart';
+import 'package:kerwenli_yol/pages/register_page/register_page.dart';
 
 class LoginWithPhone extends StatelessWidget {
   const LoginWithPhone({
@@ -33,12 +36,24 @@ class LoginWithPhone extends StatelessWidget {
               children: [
                 PhoneInput(ctrl: phoneCtrl),
                 PasswordInput(ctrl: passwordCtrl),
-                SizedBox(height: 10),
                 LoginForgotPasswordButton(),
               ],
             ),
           ),
           SizedBox(height: 16),
+          LoginButton(
+            passwordCtrl: passwordCtrl,
+            phoneCtrl: phoneCtrl,
+            formKeyForPhone: formKey,
+          ),
+          SizedBox(height: 10),
+          BgPageLightButton(
+            text: 'Agza Bolmak',
+            onPressed: () => Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const RegisterPage()),
+            ),
+          ),
         ],
       ),
     );
