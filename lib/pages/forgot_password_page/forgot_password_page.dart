@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/helpers/methods/parts/app_bar_methods.dart';
-import 'package:kerwenli_yol/pages/login_page/parts/login_with_email.dart';
-import 'package:kerwenli_yol/pages/login_page/parts/login_with_phone.dart';
+import 'package:kerwenli_yol/pages/forgot_password_page/parts/fp_with_email.dart';
+import 'package:kerwenli_yol/pages/forgot_password_page/parts/fp_with_phone.dart';
 import 'package:kerwenli_yol/pages/onboard_page/parts/theme_switcher_button.dart';
 import 'package:kerwenli_yol/pages/parts/back_leading_button.dart';
 import 'package:kerwenli_yol/pages/parts/selection_button.dart';
@@ -68,16 +68,14 @@ class _ForgotPasswordPageState extends ConsumerState<ForgotPasswordPage> {
           padding: EdgeInsetsGeometry.only(left: 16, right: 16),
           child: TabBarView(
             children: [
-              LoginWithPhone(
+              FpWithPhone(
                 formKey: formKeyForPhone,
                 phoneCtrl: _phoneCtrl,
-                passwordCtrl: _passwordCtrl,
                 formBgColor: formBgColor,
               ),
-              LoginWithEmail(
+              FpWithEmail(
                 formKey: formKeyForEmail,
                 emailCtrl: _emailCtrl,
-                passwordCtrl: _passwordCtrl,
                 formBgColor: formBgColor,
               ),
             ],
