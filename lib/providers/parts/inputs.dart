@@ -12,6 +12,7 @@ var otpCodeProvider = StateProvider<String>((ref) => '');
 var sendOTPCodeBtnPressProvider = StateProvider.autoDispose<bool>(
   (ref) => false,
 );
+var sendOTPBtnPressProvider = StateProvider.autoDispose<bool>((ref) => false);
 var checkOTPCodeBtnPressProvider = StateProvider.autoDispose<bool>(
   (ref) => false,
 );
