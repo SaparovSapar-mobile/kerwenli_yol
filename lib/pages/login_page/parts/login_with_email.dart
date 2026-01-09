@@ -44,7 +44,7 @@ class LoginWithEmail extends StatelessWidget {
           LoginButton(
             passwordCtrl: passwordCtrl,
             emailCtrl: emailCtrl,
-            formKeyForPhone: formKey,
+            formKeyForEmail: formKey,
           ),
           SizedBox(height: 10),
           BgPageLightButton(
