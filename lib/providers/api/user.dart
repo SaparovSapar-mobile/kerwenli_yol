@@ -2,6 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/models/check_otp.dart';
 import 'package:kerwenli_yol/models/login_user.dart';
 import 'package:kerwenli_yol/models/register_user.dart';
+import 'package:kerwenli_yol/models/send_otp.dart';
 import 'package:kerwenli_yol/models/user.dart';
 import 'package:kerwenli_yol/services/api/user.dart';
 
@@ -13,6 +14,18 @@ var registerUserProvider = FutureProvider.autoDispose
 
       try {
         result = await ref.read(userApiProvider).registerUser(arg);
+      } catch (e) {
+        rethrow;
+      }
+      return result;
+    });
+
+var sendOtpProvider = FutureProvider.autoDispose
+    .family<ResultRegister, SendOtpModel>((ref, arg) async {
+      ResultRegister result = ResultRegister.defaultResult();
+
+      try {
+        result = await ref.read(userApiProvider).sendOtp(arg);
       } catch (e) {
         rethrow;
       }
