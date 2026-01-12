@@ -80,16 +80,12 @@ class UserApiService {
   Future<ResultRegister> sendOtp(SendOtpModel reqData) async {
     Uri uri = Uri.parse('$apiUrl/client/forgot-password');
 
-    print('---------------------------------------------');
-    print('reqData.toJson(): ${reqData.toJson()}');
-
     try {
       http.Response response = await http.post(
         uri,
         headers: {'Content-Type': 'application/json'},
         body: json.encode(reqData.toJson()),
       );
-      print('response.body: ${response.body}');
       var jsonData = json.decode(response.body);
 
       return ResultRegister(
@@ -105,16 +101,12 @@ class UserApiService {
   Future<ResultRegister> updatePassword(UpdatePasswordModel reqData) async {
     Uri uri = Uri.parse('$apiUrl/client/reset-password');
 
-    print('--------------------------------------------- update password');
-    print('reqData.toJson(): ${reqData.toJson()}');
-
     try {
       http.Response response = await http.post(
         uri,
         headers: {'Content-Type': 'application/json'},
         body: json.encode(reqData.toJson()),
       );
-      print('response.body: ${response.body}');
       var jsonData = json.decode(response.body);
 
       return ResultRegister(
