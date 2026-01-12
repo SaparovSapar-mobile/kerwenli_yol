@@ -118,6 +118,7 @@ class SendOtpButton extends ConsumerWidget {
               phone: userPhone,
               password: userPassword,
               forRegister: forRegister,
+              fullName: fullName,
             ),
             AxisDirection.left,
           );

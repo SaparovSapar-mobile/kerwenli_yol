@@ -18,9 +18,10 @@ class CheckOtpPage extends ConsumerWidget {
     required this.phone,
     required this.password,
     required this.forRegister,
+    required this.fullName,
   });
 
-  final String text, email, phone, password;
+  final String text, email, phone, password, fullName;
   final bool forRegister;
 
   @override
@@ -51,7 +52,13 @@ class CheckOtpPage extends ConsumerWidget {
           children: [
             Text(text, style: textStyle),
             SizedBox(height: 24),
-            OtpInput(),
+            OtpInput(
+              forRegister: forRegister,
+              email: email,
+              phone: phone,
+              fullName: fullName,
+              password: password,
+            ),
             SizedBox(height: 16),
             CheckOtpButton(
               email: email,
