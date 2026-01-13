@@ -6,9 +6,10 @@ import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
 
 class HomeVipCompanyRating extends ConsumerWidget {
-  const HomeVipCompanyRating({super.key, this.bGColor});
+  const HomeVipCompanyRating({super.key, this.bGColor, this.fontSize});
 
   final Color? bGColor;
+  final double? fontSize;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -19,7 +20,9 @@ class HomeVipCompanyRating extends ConsumerWidget {
     }
     Color iconColor = isLight ? LightColors.vipCard : DarkColors.vipCard;
 
-    TextStyle textStyle = AppTextStyles.medium10.copyWith(fontSize: 8);
+    TextStyle textStyle = AppTextStyles.medium10.copyWith(
+      fontSize: fontSize ?? 8,
+    );
 
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 3, vertical: 2),
@@ -32,7 +35,7 @@ class HomeVipCompanyRating extends ConsumerWidget {
         children: [
           Text('4.7', style: textStyle),
           SizedBox(width: 5),
-          Icon(Icons.star, size: 8, color: iconColor),
+          Icon(Icons.star, size: fontSize ?? 8, color: iconColor),
         ],
       ),
     );
