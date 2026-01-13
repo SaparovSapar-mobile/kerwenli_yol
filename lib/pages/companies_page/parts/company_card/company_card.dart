@@ -43,7 +43,7 @@ class CompanyCard extends ConsumerWidget {
           ),
           CompanyStatus(isOpen: false, fontSize: 9),
           SizedBox(height: 2),
-          HomeVipCompanyCardCategories(),
+          HomeVipCompanyCardCategories(iconSize: 10),
           SizedBox(height: 5),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

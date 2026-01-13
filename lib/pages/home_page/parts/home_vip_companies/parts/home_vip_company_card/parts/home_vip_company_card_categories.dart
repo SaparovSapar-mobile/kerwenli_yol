@@ -6,14 +6,18 @@ import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
 
 class HomeVipCompanyCardCategories extends ConsumerWidget {
-  const HomeVipCompanyCardCategories({super.key});
+  const HomeVipCompanyCardCategories({super.key, this.iconSize});
+
+  final double? iconSize;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     bool isLight = isLightTheme(context, ref);
     Color bgColor = isLight ? LightColors.bgPageLight : DarkColors.bgPageDark;
 
-    TextStyle textStyle = AppTextStyles.medium10.copyWith(fontSize: 6);
+    TextStyle textStyle = AppTextStyles.medium10.copyWith(
+      fontSize: iconSize ?? 6,
+    );
 
     return GestureDetector(
       onTap: () {},
@@ -21,12 +25,11 @@ class HomeVipCompanyCardCategories extends ConsumerWidget {
         padding: EdgeInsets.all(2),
         decoration: BoxDecoration(color: bgColor),
         child: Row(
-          mainAxisSize: MainAxisSize.min,
+          mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text('Category/sub category', style: textStyle),
-            SizedBox(width: 2),
-            Icon(Icons.arrow_forward_ios, size: 6),
+            Icon(Icons.arrow_forward_ios, size: iconSize ?? 6),
           ],
         ),
       ),
