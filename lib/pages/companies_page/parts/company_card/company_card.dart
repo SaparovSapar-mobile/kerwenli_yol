@@ -24,7 +24,7 @@ class CompanyCard extends ConsumerWidget {
     TextStyle nameStyle = AppTextStyles.medium10;
 
     return Container(
-      padding: EdgeInsets.all(6),
+      padding: EdgeInsets.all(9),
       decoration: BoxDecoration(
         border: Border.all(color: borderColor),
         borderRadius: BorderRadius.circular(5),

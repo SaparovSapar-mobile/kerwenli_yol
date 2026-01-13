@@ -2,9 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:kerwenli_yol/enums/card_top_text_type.dart';
 
 class CardTopText extends StatelessWidget {
-  const CardTopText({super.key, required this.cardTopTextType});
+  const CardTopText({
+    super.key,
+    required this.cardTopTextType,
+    this.height,
+    this.fontSize,
+  });
 
   final String cardTopTextType;
+  final double? height, fontSize;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +40,7 @@ class CardTopText extends StatelessWidget {
     }
 
     return Container(
-      height: 18,
+      height: height ?? 18,
       alignment: Alignment.topCenter,
       padding: EdgeInsets.symmetric(horizontal: 4.6),
       decoration: BoxDecoration(
@@ -45,7 +51,7 @@ class CardTopText extends StatelessWidget {
         text,
         style: TextStyle(
           color: Colors.white,
-          fontSize: 6,
+          fontSize: fontSize ?? 6,
           fontWeight: FontWeight.w600,
         ),
       ),

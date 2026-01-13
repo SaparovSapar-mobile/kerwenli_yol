@@ -12,13 +12,17 @@ class CompanyCardImage extends StatelessWidget {
     const double cardRadius = 8;
 
     return SizedBox(
-      width: 99,
-      height: 110,
+      height: 156,
       child: Stack(
         clipBehavior: Clip.none,
         children: [
           // VIP label (arkada, sol üst)
-          CardTopTexts(types: cardTopTypes),
+          CardTopTexts(
+            types: cardTopTypes,
+            height: 27,
+            fontSize: 9,
+            topPosition: -10,
+          ),
 
           // Main card
           ClipRRect(
