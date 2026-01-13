@@ -26,7 +26,11 @@ class CompanyListCard extends ConsumerWidget {
       ),
       child: Row(
         children: [
-          CompanyCardImage(cardTopTypes: [CardTopTextType.vip]),
+          CompanyCardImage(
+            cardTopTypes: [CardTopTextType.vip],
+            height: 100,
+            width: 100,
+          ),
         ],
       ),
     );

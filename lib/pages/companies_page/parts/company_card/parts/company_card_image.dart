@@ -3,16 +3,23 @@ import 'package:kerwenli_yol/pages/parts/card_bookmark_button.dart';
 import 'package:kerwenli_yol/pages/parts/card_top_texts/card_top_texts.dart';
 
 class CompanyCardImage extends StatelessWidget {
-  const CompanyCardImage({super.key, required this.cardTopTypes});
+  const CompanyCardImage({
+    super.key,
+    required this.cardTopTypes,
+    this.height,
+    this.width,
+  });
 
   final List<String> cardTopTypes;
+  final double? height, width;
 
   @override
   Widget build(BuildContext context) {
     const double cardRadius = 10;
 
     return SizedBox(
-      height: 156,
+      height: height ?? 156,
+      width: width,
       child: Stack(
         clipBehavior: Clip.none,
         children: [
