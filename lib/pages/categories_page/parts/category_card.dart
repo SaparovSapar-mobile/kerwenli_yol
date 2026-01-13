@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
+import 'package:kerwenli_yol/models/category.dart';
 import 'package:kerwenli_yol/providers/pages/categories_page.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
 
 class CategoryCard extends ConsumerWidget {
-  const CategoryCard({super.key, required this.index});
+  const CategoryCard({super.key, required this.category});
 
-  final int index;
+  final CategoryModel category;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // ======= Colors ========
     bool isLight = isLightTheme(context, ref);
     Color leadingBgColor = isLight
         ? LightColors.bgPageLight
@@ -24,10 +26,12 @@ class CategoryCard extends ConsumerWidget {
         ? LightColors.textTitleLight
         : DarkColors.textTitleDark;
 
+    // ======= Text Styles ========
     TextStyle titleStyle = AppTextStyles.medium12;
 
-    int selectedCategory = ref.watch(selectedCategoryIndexProvider);
-    bool isActive = selectedCategory == index;
+    String selectedCategory = ref.watch(categoryProvider);
+    String categoryId = category.id;
+    bool isActive = selectedCategory == categoryId;
 
     return Container(
       decoration: BoxDecoration(
@@ -35,8 +39,7 @@ class CategoryCard extends ConsumerWidget {
         borderRadius: BorderRadius.circular(8),
       ),
       child: ListTile(
-        onTap: () =>
-            ref.read(selectedCategoryIndexProvider.notifier).state = index,
+        onTap: () => ref.read(categoryProvider.notifier).state = categoryId,
         leading: Container(
           padding: EdgeInsets.all(5),
           decoration: BoxDecoration(

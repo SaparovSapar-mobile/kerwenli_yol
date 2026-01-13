@@ -53,7 +53,8 @@ class CategoriesList extends ConsumerWidget {
                   }
 
                   return ListView.builder(
-                    itemBuilder: (context, index) => CategoryCard(index: index),
+                    itemBuilder: (context, index) =>
+                        CategoryCard(category: data[index]),
                     itemCount: data.length,
                   );
                 },

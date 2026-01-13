@@ -1,7 +1,9 @@
-class CategoryModel {
+import 'package:equatable/equatable.dart';
+
+class CategoryModel extends Equatable {
   final String id, nameTm, nameRu, nameEn, imageTm, imageRu, imageEn;
 
-  CategoryModel({
+  const CategoryModel({
     required this.id,
     required this.nameTm,
     required this.nameRu,
@@ -22,4 +24,15 @@ class CategoryModel {
       imageEn: json['image_en'] ?? '',
     );
   }
+
+  @override
+  List<Object?> get props => [
+    id,
+    nameTm,
+    nameRu,
+    nameEn,
+    imageTm,
+    imageRu,
+    imageEn,
+  ];
 }
