@@ -35,13 +35,21 @@ class CompanyCardImage extends StatelessWidget {
               child: Stack(
                 children: [
                   // Bookmark box (sağ üst)
-                  Positioned(right: 4, top: 4, child: CardBookmarkButton()),
+                  Positioned(
+                    right: 4,
+                    top: 4,
+                    child: CardBookmarkButton(
+                      width: 32,
+                      height: 32,
+                      iconSize: 18,
+                    ),
+                  ),
 
                   // Company Image
                   Center(
                     child: Icon(
                       Icons.add_a_photo_outlined,
-                      size: 14,
+                      size: 22,
                       color: Color(0xFF9CB7FF),
                     ),
                   ),
