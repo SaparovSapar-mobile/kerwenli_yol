@@ -11,10 +11,11 @@ class CardBookmarkButton extends ConsumerWidget {
     this.width,
     this.height,
     this.iconSize,
+    this.borderRadius,
   });
 
   final Color? bGColor;
-  final double? width, height, iconSize;
+  final double? width, height, iconSize, borderRadius;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

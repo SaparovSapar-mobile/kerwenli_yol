@@ -9,7 +9,7 @@ class CompanyCardImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const double cardRadius = 8;
+    const double cardRadius = 10;
 
     return SizedBox(
       height: 156,
@@ -36,12 +36,13 @@ class CompanyCardImage extends StatelessWidget {
                 children: [
                   // Bookmark box (sağ üst)
                   Positioned(
-                    right: 4,
-                    top: 4,
+                    right: 7,
+                    top: 7,
                     child: CardBookmarkButton(
                       width: 32,
                       height: 32,
                       iconSize: 18,
+                      borderRadius: 8,
                     ),
                   ),
 

@@ -27,7 +27,7 @@ class CompanyCard extends ConsumerWidget {
       padding: EdgeInsets.all(9),
       decoration: BoxDecoration(
         border: Border.all(color: borderColor),
-        borderRadius: BorderRadius.circular(5),
+        borderRadius: BorderRadius.circular(8),
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
