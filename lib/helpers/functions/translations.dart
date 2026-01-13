@@ -21,3 +21,23 @@ String translateText(
       return textTm;
   }
 }
+
+String translateImage(
+  WidgetRef ref,
+  String imageTm,
+  String imageRu,
+  String imageEn,
+) {
+  String lang = ref.watch(langProvider);
+
+  switch (lang) {
+    case LangType.tr:
+      return imageTm;
+    case LangType.ru:
+      return imageRu;
+    case LangType.en:
+      return imageEn;
+    default:
+      return imageTm;
+  }
+}

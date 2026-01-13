@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
+import 'package:kerwenli_yol/helpers/functions/translations.dart';
 import 'package:kerwenli_yol/models/category.dart';
 import 'package:kerwenli_yol/providers/pages/categories_page.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
@@ -33,6 +34,14 @@ class CategoryCard extends ConsumerWidget {
     String categoryId = category.id;
     bool isActive = selectedCategory == categoryId;
 
+    // ====== Name ======
+    String name = translateText(
+      ref,
+      category.nameTm,
+      category.nameRu,
+      category.nameEn,
+    );
+
     return Container(
       decoration: BoxDecoration(
         color: isActive ? leadingBgColor : activeLeadingBgColor,
@@ -53,7 +62,7 @@ class CategoryCard extends ConsumerWidget {
             fit: BoxFit.cover,
           ),
         ),
-        title: Text('Saglyk we bejeris merkezleri', style: titleStyle),
+        title: Text(name, style: titleStyle),
         trailing: Icon(Icons.arrow_forward_ios, size: 16, color: iconColor),
       ),
     );
