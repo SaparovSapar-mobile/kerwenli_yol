@@ -6,9 +6,10 @@ import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
 
 class ViewCount extends ConsumerWidget {
-  const ViewCount({super.key, this.bGColor});
+  const ViewCount({super.key, this.bGColor, this.fontSize});
 
   final Color? bGColor;
+  final double? fontSize;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -18,7 +19,9 @@ class ViewCount extends ConsumerWidget {
       bgColor = bGColor!;
     }
 
-    TextStyle textStyle = AppTextStyles.medium10.copyWith(fontSize: 8);
+    TextStyle textStyle = AppTextStyles.medium10.copyWith(
+      fontSize: fontSize ?? 8,
+    );
 
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 3, vertical: 2),
@@ -31,7 +34,7 @@ class ViewCount extends ConsumerWidget {
         children: [
           Text('10 K', style: textStyle),
           SizedBox(width: 5),
-          Icon(Icons.visibility, size: 8),
+          Icon(Icons.visibility, size: fontSize ?? 8),
         ],
       ),
     );
