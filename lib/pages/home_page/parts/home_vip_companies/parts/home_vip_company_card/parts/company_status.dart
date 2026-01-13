@@ -6,9 +6,10 @@ import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
 
 class CompanyStatus extends ConsumerWidget {
-  const CompanyStatus({super.key, required this.isOpen});
+  const CompanyStatus({super.key, required this.isOpen, this.fontSize});
 
   final bool isOpen;
+  final double? fontSize;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -24,7 +25,7 @@ class CompanyStatus extends ConsumerWidget {
     }
 
     TextStyle textStyle = AppTextStyles.medium10.copyWith(
-      fontSize: 6,
+      fontSize: fontSize ?? 6,
       color: textColor,
     );
 

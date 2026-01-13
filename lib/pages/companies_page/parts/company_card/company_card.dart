@@ -21,7 +21,7 @@ class CompanyCard extends ConsumerWidget {
         ? LightColors.bgPageLight
         : DarkColors.bgPageDark;
 
-    TextStyle nameStyle = AppTextStyles.medium10;
+    TextStyle nameStyle = AppTextStyles.medium16;
 
     return Container(
       padding: EdgeInsets.all(9),
@@ -41,7 +41,7 @@ class CompanyCard extends ConsumerWidget {
             overflow: TextOverflow.ellipsis,
             style: nameStyle,
           ),
-          CompanyStatus(isOpen: false),
+          CompanyStatus(isOpen: false, fontSize: 9),
           SizedBox(height: 2),
           HomeVipCompanyCardCategories(),
           SizedBox(height: 5),
