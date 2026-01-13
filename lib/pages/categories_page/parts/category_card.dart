@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/helpers/functions/translations.dart';
 import 'package:kerwenli_yol/models/category.dart';
+import 'package:kerwenli_yol/pages/parts/show_image.dart';
 import 'package:kerwenli_yol/providers/pages/categories_page.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
@@ -42,6 +43,14 @@ class CategoryCard extends ConsumerWidget {
       category.nameEn,
     );
 
+    // ====== Image ======
+    String image = translateText(
+      ref,
+      category.imageTm,
+      category.imageRu,
+      category.imageEn,
+    );
+
     return Container(
       decoration: BoxDecoration(
         color: isActive ? leadingBgColor : activeLeadingBgColor,
@@ -55,11 +64,10 @@ class CategoryCard extends ConsumerWidget {
             color: isActive ? activeLeadingBgColor : leadingBgColor,
             borderRadius: BorderRadius.circular(4),
           ),
-          child: Image.asset(
+          child: SizedBox(
             height: 16,
             width: 16,
-            'assets/examples/category_icon.png',
-            fit: BoxFit.cover,
+            child: ShowNetwImage(image: image),
           ),
         ),
         title: Text(name, style: titleStyle),

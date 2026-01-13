@@ -27,8 +27,8 @@ class ShowImage extends StatelessWidget {
   }
 }
 
-class ShoNetwImage extends StatelessWidget {
-  const ShoNetwImage({super.key, this.borderRadius, required this.image});
+class ShowNetwImage extends StatelessWidget {
+  const ShowNetwImage({super.key, this.borderRadius, required this.image});
 
   final double? borderRadius;
   final String image;
@@ -42,7 +42,7 @@ class ShoNetwImage extends StatelessWidget {
           ? BorderRadius.circular(8)
           : BorderRadius.zero,
       child: CachedNetworkImage(
-        imageUrl: '$pathUrl/$image',
+        imageUrl: '$pathUrl$image',
         errorWidget: (context, url, error) => errImage,
         placeholder: (context, url) => errImage,
         fit: BoxFit.cover,
