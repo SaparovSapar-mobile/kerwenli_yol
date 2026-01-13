@@ -4,4 +4,4 @@ String apiUrl = dotenv.env['API_URL']!;
 String pathUrl = dotenv.env['PATH_URL']!;
 
 double companyCardHeight = 284;
-double companyListCardHeight = 131;
+double companyListCardHeight = 124;
