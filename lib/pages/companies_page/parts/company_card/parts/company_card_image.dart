@@ -8,10 +8,19 @@ class CompanyCardImage extends StatelessWidget {
     required this.cardTopTypes,
     this.height,
     this.width,
+    this.bookmarkButtonWith,
+    this.bookmarkButtonHeight,
+    this.bookmarkButtonIconSize,
+    this.bookmarkButtonBorderRadius,
   });
 
   final List<String> cardTopTypes;
-  final double? height, width;
+  final double? height,
+      width,
+      bookmarkButtonWith,
+      bookmarkButtonHeight,
+      bookmarkButtonIconSize,
+      bookmarkButtonBorderRadius;
 
   @override
   Widget build(BuildContext context) {
@@ -46,10 +55,10 @@ class CompanyCardImage extends StatelessWidget {
                     right: 7,
                     top: 7,
                     child: CardBookmarkButton(
-                      width: 32,
-                      height: 32,
-                      iconSize: 18,
-                      borderRadius: 8,
+                      width: bookmarkButtonWith ?? 32,
+                      height: bookmarkButtonHeight ?? 32,
+                      iconSize: bookmarkButtonIconSize ?? 18,
+                      borderRadius: bookmarkButtonBorderRadius ?? 8,
                     ),
                   ),
 

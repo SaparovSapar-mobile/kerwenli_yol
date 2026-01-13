@@ -39,6 +39,10 @@ class CompanyListCard extends ConsumerWidget {
             cardTopTypes: [CardTopTextType.vip],
             height: 100,
             width: 100,
+            bookmarkButtonWith: 20,
+            bookmarkButtonHeight: 20,
+            bookmarkButtonIconSize: 12,
+            bookmarkButtonBorderRadius: 4.3,
           ),
           SizedBox(width: 5),
           Expanded(
