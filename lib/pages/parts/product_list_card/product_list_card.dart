@@ -11,15 +11,9 @@ import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
 
-class HomeNewProductsCard extends ConsumerWidget {
-  const HomeNewProductsCard({
-    super.key,
-    this.isFirst,
-    this.isLast,
-    required this.product,
-  });
+class ProductListCard extends ConsumerWidget {
+  const ProductListCard({super.key, required this.product});
 
-  final bool? isFirst, isLast;
   final ExampleProductCard product;
 
   @override
@@ -35,9 +29,6 @@ class HomeNewProductsCard extends ConsumerWidget {
 
     return Container(
       width: 112,
-      margin: isFirst != null && isLast != null
-          ? EdgeInsets.only(left: isFirst! ? 16 : 0, right: isLast! ? 16 : 0)
-          : null,
       padding: EdgeInsets.all(6),
       decoration: BoxDecoration(
         border: Border.all(color: borderColor),
