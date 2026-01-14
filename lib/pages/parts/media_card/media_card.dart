@@ -12,41 +12,39 @@ class MediaCard extends StatelessWidget {
   Widget build(BuildContext context) {
     TextStyle textStyle = AppTextStyles.semiBold10;
 
-    return SizedBox(
-      width: 98,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Expanded(
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(8),
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  ShowImage(image: 'assets/examples/media_example.jpg'),
-                  PlayMediaButton(),
-                  Positioned(
-                    left: 6,
-                    right: 6,
-                    bottom: 6,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [ViewCount(), VideoDuration()],
-                    ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Expanded(
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(8),
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                ShowImage(image: 'assets/examples/media_example.jpg'),
+                PlayMediaButton(),
+                Positioned(
+                  left: 6,
+                  right: 6,
+                  bottom: 6,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [ViewCount(), VideoDuration()],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
-          SizedBox(height: 6),
-          Text(
-            'Okuwçylary hem talyplary begendirjek habar',
-            maxLines: 2,
-            overflow: TextOverflow.ellipsis,
-            style: textStyle,
-          ),
-        ],
-      ),
+        ),
+        SizedBox(height: 6),
+        Text(
+          'Okuwçylary hem talyplary begendirjek habar',
+          maxLines: 2,
+          overflow: TextOverflow.ellipsis,
+          style: textStyle,
+        ),
+      ],
     );
   }
 }
