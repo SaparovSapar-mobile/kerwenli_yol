@@ -17,6 +17,9 @@ class CompanyPageProductsOrServices extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final isLight = isLightTheme(context, ref);
     final bgColor = isLight ? LightColors.bgPageLight : DarkColors.bgPageDark;
+    final tabbarViewBgColor = isLight
+        ? LightColors.bgBlogLight
+        : DarkColors.bgBlogDark;
     final tabbarBgColor = isLight
         ? LightColors.bgBlogLight
         : DarkColors.bgBlogDark;
@@ -88,12 +91,15 @@ class CompanyPageProductsOrServices extends ConsumerWidget {
           },
 
           // Tab içerikleri (scroll olacak)
-          body: const TabBarView(
-            children: [
-              ProductsListView(),
-              Text('Kategoriya 2'),
-              Text('Kategoriya 3'),
-            ],
+          body: Container(
+            color: tabbarViewBgColor,
+            child: const TabBarView(
+              children: [
+                ProductsListView(),
+                Text('Kategoriya 2'),
+                Text('Kategoriya 3'),
+              ],
+            ),
           ),
         ),
       ),

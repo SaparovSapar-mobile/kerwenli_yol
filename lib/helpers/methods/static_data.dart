@@ -6,4 +6,4 @@ String pathUrl = dotenv.env['PATH_URL']!;
 double companyCardHeight = 284;
 double companyListCardHeight = 124;
 
-double productListCardHeight = 130;
+double productListCardHeight = 127;
