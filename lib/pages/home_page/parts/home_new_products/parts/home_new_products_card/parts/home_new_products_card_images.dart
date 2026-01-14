@@ -7,9 +7,15 @@ import 'package:kerwenli_yol/pages/parts/card_favorite_button.dart';
 import 'package:kerwenli_yol/pages/parts/card_top_texts/card_top_texts.dart';
 
 class HomeNewProductsCardImages extends StatefulWidget {
-  const HomeNewProductsCardImages({super.key, required this.product});
+  const HomeNewProductsCardImages({
+    super.key,
+    required this.product,
+    this.width,
+    this.height,
+  });
 
   final ExampleProductCard product;
+  final double? width, height;
 
   @override
   State<HomeNewProductsCardImages> createState() =>
@@ -33,8 +39,8 @@ class _HomeNewProductsCardImagesState extends State<HomeNewProductsCardImages> {
     if (widget.product.forVirtual) cardToptypes.add(CardTopTextType.virtual);
 
     return SizedBox(
-      width: 99,
-      height: 110,
+      width: widget.width ?? 99,
+      height: widget.height ?? 110,
       child: Stack(
         clipBehavior: Clip.none,
         children: [
