@@ -11,7 +11,7 @@ class HomeMediaList extends StatelessWidget {
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) =>
-            MediaCard(isFirst: index == 0, isLast: index == 9),
+            HomeMediaCard(isFirst: index == 0, isLast: index == 9),
         separatorBuilder: (context, index) => SizedBox(width: 5),
         itemCount: 10,
       ),
