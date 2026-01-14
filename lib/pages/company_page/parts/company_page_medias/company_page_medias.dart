@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/pages/company_page/parts/company_page_card.dart';
-import 'package:kerwenli_yol/pages/company_page/parts/company_page_medias/parts/company_page_media_tabbar.dart';
+import 'package:kerwenli_yol/pages/company_page/parts/company_page_part_tabbar.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 
@@ -17,9 +17,6 @@ class CompanyPageMedias extends ConsumerWidget {
     final tabbarViewBgColor = isLight
         ? LightColors.bgBlogLight
         : DarkColors.bgBlogDark;
-    final tabbarBgColor = isLight
-        ? LightColors.bgBlogLight
-        : DarkColors.bgBlogDark;
 
     return DefaultTabController(
       length: 3,
@@ -32,18 +29,8 @@ class CompanyPageMedias extends ConsumerWidget {
               CompanyPageCard(),
 
               // ✅ TabBar’ı SliverAppBar ile pinle (yükseklik sorunu bitiyor)
-              SliverAppBar(
-                pinned: true,
-                automaticallyImplyLeading: false,
-                backgroundColor: tabbarBgColor,
-                elevation: 0,
-                toolbarHeight: 0, // sadece TabBar görünsün
-                bottom: const PreferredSize(
-                  preferredSize: Size.fromHeight(
-                    48,
-                  ), // burası TabBar'ın min yüksekliği
-                  child: CompanyPageMediaTabbar(),
-                ),
+              CompanyPagePartTabbar(
+                tabTexts: ['Gysga Sekiller', 'Wideolar', 'Fotoreportaz'],
               ),
             ];
           },

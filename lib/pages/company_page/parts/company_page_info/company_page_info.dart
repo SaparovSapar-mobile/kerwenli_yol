@@ -5,7 +5,7 @@ import 'package:kerwenli_yol/pages/company_page/parts/company_page_card.dart';
 import 'package:kerwenli_yol/pages/company_page/parts/company_page_info/parts/company_features/company_features.dart';
 import 'package:kerwenli_yol/pages/company_page/parts/company_page_info/parts/company_info/company_info.dart';
 import 'package:kerwenli_yol/pages/company_page/parts/company_page_info/parts/company_page_about/company_page_about.dart';
-import 'package:kerwenli_yol/pages/company_page/parts/company_page_info/parts/company_page_info_tabbar.dart';
+import 'package:kerwenli_yol/pages/company_page/parts/company_page_part_tabbar.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 
@@ -16,9 +16,6 @@ class CompanyPageInfo extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final isLight = isLightTheme(context, ref);
     final bgColor = isLight ? LightColors.bgPageLight : DarkColors.bgPageDark;
-    final tabbarBgColor = isLight
-        ? LightColors.bgBlogLight
-        : DarkColors.bgBlogDark;
 
     return DefaultTabController(
       length: 3,
@@ -31,18 +28,8 @@ class CompanyPageInfo extends ConsumerWidget {
               CompanyPageCard(),
 
               // ✅ TabBar’ı SliverAppBar ile pinle (yükseklik sorunu bitiyor)
-              SliverAppBar(
-                pinned: true,
-                automaticallyImplyLeading: false,
-                backgroundColor: tabbarBgColor,
-                elevation: 0,
-                toolbarHeight: 0, // sadece TabBar görünsün
-                bottom: const PreferredSize(
-                  preferredSize: Size.fromHeight(
-                    48,
-                  ), // burası TabBar'ın min yüksekliği
-                  child: CompanyPageInfoTabbar(),
-                ),
+              CompanyPagePartTabbar(
+                tabTexts: ['Biz Barada', 'Info', 'Mumkincilikler'],
               ),
             ];
           },
