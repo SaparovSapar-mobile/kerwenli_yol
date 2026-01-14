@@ -96,8 +96,8 @@ class CompanyPageProductsOrServices extends ConsumerWidget {
             child: const TabBarView(
               children: [
                 ProductsListView(),
-                Text('Kategoriya 2'),
-                Text('Kategoriya 3'),
+                ProductsListView(),
+                ProductsListView(),
               ],
             ),
           ),
