@@ -6,6 +6,7 @@ import 'package:kerwenli_yol/pages/company_page/parts/company_page_products_or_s
 import 'package:kerwenli_yol/pages/parts/card_bookmark_button.dart';
 import 'package:kerwenli_yol/pages/parts/card_virtual_button.dart';
 import 'package:kerwenli_yol/pages/parts/company_subscribe_button.dart';
+import 'package:kerwenli_yol/pages/products_page/parts/products_list_view.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 
@@ -89,24 +90,13 @@ class CompanyPageProductsOrServices extends ConsumerWidget {
           // Tab içerikleri (scroll olacak)
           body: const TabBarView(
             children: [
-              _InnerTabScroll(child: Text('Kategoriya 1')),
-              _InnerTabScroll(child: Text('Kategoriya 2')),
-              _InnerTabScroll(child: Text('Kategoriya 3')),
+              ProductsListView(),
+              Text('Kategoriya 2'),
+              Text('Kategoriya 3'),
             ],
           ),
         ),
       ),
     );
-  }
-}
-
-class _InnerTabScroll extends StatelessWidget {
-  const _InnerTabScroll({required this.child});
-
-  final Widget child;
-
-  @override
-  Widget build(BuildContext context) {
-    return SingleChildScrollView(child: child);
   }
 }
