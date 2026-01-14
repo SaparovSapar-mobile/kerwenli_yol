@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/pages/company_page/parts/company_page_card.dart';
-import 'package:kerwenli_yol/pages/company_page/parts/company_page_products_or_services/parts/company_page_p_or_s_tabbar.dart';
-import 'package:kerwenli_yol/pages/products_page/parts/products_list_view.dart';
+import 'package:kerwenli_yol/pages/company_page/parts/company_page_medias/parts/company_page_media_tabbar.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 
@@ -43,7 +42,7 @@ class CompanyPageMedias extends ConsumerWidget {
                   preferredSize: Size.fromHeight(
                     48,
                   ), // burası TabBar'ın min yüksekliği
-                  child: CompanyPagePOrSTabbar(),
+                  child: CompanyPageMediaTabbar(),
                 ),
               ),
             ];
@@ -54,9 +53,9 @@ class CompanyPageMedias extends ConsumerWidget {
             color: tabbarViewBgColor,
             child: const TabBarView(
               children: [
-                ProductsListView(),
-                ProductsListView(),
-                ProductsListView(),
+                Text('Gysga Sekiller'),
+                Text('Wideolar'),
+                Text('FotoReportaz'),
               ],
             ),
           ),
