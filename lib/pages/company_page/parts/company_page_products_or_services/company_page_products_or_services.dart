@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/pages/company_page/parts/company_page_info/parts/company_page_info_card.dart';
-import 'package:kerwenli_yol/pages/company_page/parts/company_page_info/parts/company_page_info_tabbar.dart';
+import 'package:kerwenli_yol/pages/company_page/parts/company_page_products_or_services/parts/company_page_p_or_s_tabbar.dart';
 import 'package:kerwenli_yol/pages/parts/card_bookmark_button.dart';
 import 'package:kerwenli_yol/pages/parts/card_virtual_button.dart';
 import 'package:kerwenli_yol/pages/parts/company_subscribe_button.dart';
@@ -80,7 +80,7 @@ class CompanyPageProductsOrServices extends ConsumerWidget {
                   preferredSize: Size.fromHeight(
                     48,
                   ), // burası TabBar'ın min yüksekliği
-                  child: CompanyPageInfoTabbar(),
+                  child: CompanyPagePOrSTabbar(),
                 ),
               ),
             ];

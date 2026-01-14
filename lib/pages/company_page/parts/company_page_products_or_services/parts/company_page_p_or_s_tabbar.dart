@@ -5,8 +5,8 @@ import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
 
-class CompanyPageInfoTabbar extends ConsumerWidget {
-  const CompanyPageInfoTabbar({super.key});
+class CompanyPagePOrSTabbar extends ConsumerWidget {
+  const CompanyPagePOrSTabbar({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -32,9 +32,9 @@ class CompanyPageInfoTabbar extends ConsumerWidget {
         labelStyle: labelStyle.copyWith(color: labelColor),
         unselectedLabelStyle: labelStyle.copyWith(color: unselectedLabelColor),
         tabs: [
-          Text('Biz barada', textAlign: TextAlign.center),
-          Text('Info', textAlign: TextAlign.center),
-          Text('Mumkincilikler', textAlign: TextAlign.center),
+          Text('Kategoriya 1', textAlign: TextAlign.center),
+          Text('Kategoriya 1', textAlign: TextAlign.center),
+          Text('Kategoriya 1', textAlign: TextAlign.center),
         ],
       ),
     );
