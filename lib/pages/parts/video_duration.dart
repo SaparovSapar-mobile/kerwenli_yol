@@ -2,16 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
 
 class VideoDuration extends StatelessWidget {
-  const VideoDuration({super.key});
+  const VideoDuration({super.key, this.icon, this.fontSize});
+
+  final IconData? icon;
+  final double? fontSize;
 
   @override
   Widget build(BuildContext context) {
     Color bgColor = Colors.black26;
+    Color iconColor = Color(0xFFFFFFFF);
 
     TextStyle textStyle = AppTextStyles.medium10.copyWith(
-      fontSize: 8,
+      fontSize: fontSize ?? 8,
       color: Colors.white,
     );
+
+    bool hasIcon = icon != null;
 
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 3, vertical: 2),
@@ -19,7 +25,18 @@ class VideoDuration extends StatelessWidget {
         color: bgColor,
         borderRadius: BorderRadius.circular(2),
       ),
-      child: Text('03:00', style: textStyle),
+      child: Row(
+        children: [
+          if (hasIcon)
+            Padding(
+              padding: const EdgeInsets.only(right: 2),
+              child: Icon(icon, size: 16, color: iconColor),
+            )
+          else
+            const SizedBox.shrink(),
+          Text('03:00', style: textStyle),
+        ],
+      ),
     );
   }
 }
