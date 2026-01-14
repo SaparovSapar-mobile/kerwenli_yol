@@ -38,7 +38,14 @@ class HomeVipCompanyCardCategories extends ConsumerWidget {
           mainAxisAlignment:
               mainAxisAlignment ?? MainAxisAlignment.spaceBetween,
           children: [
-            Text('Category/sub category', style: textStyle),
+            Flexible(
+              child: Text(
+                'Category/sub category',
+                style: textStyle,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
             hasAligment ? SizedBox(width: 5) : const SizedBox.shrink(),
             Icon(Icons.arrow_forward_ios, size: iconSize ?? 6),
           ],
