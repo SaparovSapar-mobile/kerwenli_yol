@@ -7,11 +7,12 @@ import 'package:kerwenli_yol/pages/products_page/parts/products_list_view.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 
-class CompanyPageProductsOrServices extends ConsumerWidget {
-  const CompanyPageProductsOrServices({super.key});
+class CompanyPageMedias extends ConsumerWidget {
+  const CompanyPageMedias({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // ====== Colors =====
     final isLight = isLightTheme(context, ref);
     final bgColor = isLight ? LightColors.bgPageLight : DarkColors.bgPageDark;
     final tabbarViewBgColor = isLight
