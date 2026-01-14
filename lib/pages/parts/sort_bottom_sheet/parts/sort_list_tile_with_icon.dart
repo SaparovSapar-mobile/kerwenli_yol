@@ -21,6 +21,7 @@ class SortListTileWithIcon extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // ========= Colors ========
     bool isLight = isLightTheme(context, ref);
     Color borderColor = isLight
         ? LightColors.bgPageLight
@@ -30,6 +31,7 @@ class SortListTileWithIcon extends ConsumerWidget {
         ? LightColors.textTitleLight
         : DarkColors.textTitleDark;
 
+    // ========= Text Styles ========
     TextStyle titleStyle = AppTextStyles.medium14;
 
     int selectedIndex = ref.watch(sortOrFilterProvider);

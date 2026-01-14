@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kerwenli_yol/pages/parts/bottom_sheet_widget/bottom_sheet_widget.dart';
 import 'package:kerwenli_yol/pages/parts/bottom_sheet_widget/parts/bottom_sheet_title.dart';
-import 'package:kerwenli_yol/pages/parts/primary_button.dart';
+import 'package:kerwenli_yol/pages/parts/sort_bottom_sheet/parts/filter_button.dart';
 import 'package:kerwenli_yol/pages/parts/sort_bottom_sheet/parts/sort_list_tile.dart';
 import 'package:kerwenli_yol/pages/parts/sort_bottom_sheet/parts/sort_list_tile_with_icon.dart';
 import 'package:kerwenli_yol/providers/pages/companies_page.dart';
@@ -46,10 +46,7 @@ class SortBottomSheet extends StatelessWidget {
           icon: Icons.align_horizontal_left,
         ),
         SizedBox(height: 16),
-        PrimaryButton(
-          text: 'Tertiple',
-          onPressed: () => Navigator.pop(context),
-        ),
+        FilterButton(),
       ],
     );
   }
