@@ -15,6 +15,16 @@ List<String> homeParts = [
   'Hyzmatlar',
 ];
 
+List<String> headerCategories = [
+  'All',
+  'Et Onumleri',
+  'Esikler',
+  'Penoplast Onumleri',
+  'Daslar',
+  'Balyklar',
+  'Rezinler',
+];
+
 List<ExampleProductCard> homeProducts = [
   ExampleProductCard(
     forVip: true,
