@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kerwenli_yol/helpers/methods/pages/bottom_sheets.dart';
 import 'package:kerwenli_yol/helpers/methods/parts/app_bar_methods.dart';
 import 'package:kerwenli_yol/pages/parts/back_leading_button.dart';
 import 'package:kerwenli_yol/pages/parts/more_button.dart';
@@ -22,7 +23,9 @@ class CompanyPageTop extends StatelessWidget {
                 children: [
                   ShareButton(onPressed: () {}),
                   SizedBox(width: 20),
-                  MoreButton(onPressed: () {}),
+                  MoreButton(
+                    onPressed: () => showCompanyPageMessageBottomSheet(context),
+                  ),
                 ],
               ),
             ],
