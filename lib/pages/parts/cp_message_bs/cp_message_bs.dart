@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kerwenli_yol/pages/parts/bottom_sheet_widget/bottom_sheet_widget.dart';
 import 'package:kerwenli_yol/pages/parts/bottom_sheet_widget/parts/bottom_sheet_title.dart';
-import 'package:kerwenli_yol/pages/parts/filter_bottom_sheet/parts/filter_expansion_tile.dart';
-import 'package:kerwenli_yol/pages/parts/primary_button.dart';
+import 'package:kerwenli_yol/pages/parts/cp_message_bs/parts/cp_message_bs_list_tile.dart';
 
 // ===== Company Page Message Bottom Sheet =====
 class CpMessageBs extends StatelessWidget {
@@ -13,9 +12,16 @@ class CpMessageBs extends StatelessWidget {
     return BottomSheetWidget(
       children: [
         BottomSheetTitle(text: 'Sazlamalar'),
-        FilterExpansionTile(),
-        SizedBox(height: 16),
-        PrimaryButton(text: 'Filter', onPressed: () => Navigator.pop(context)),
+        CpMessageBsListTile(
+          title: 'Nagilelik bildirmek',
+          index: 0,
+          image: 'flag.png',
+        ),
+        CpMessageBsListTile(
+          title: 'Hat yazmak',
+          index: 1,
+          image: 'messages.png',
+        ),
       ],
     );
   }
