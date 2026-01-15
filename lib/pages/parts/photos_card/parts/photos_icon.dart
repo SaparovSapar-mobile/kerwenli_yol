@@ -10,6 +10,7 @@ class PhotosIcon extends StatelessWidget {
     Color iconColor = Color(0xFFFFFFFF);
 
     return Container(
+      padding: EdgeInsets.all(2),
       decoration: BoxDecoration(
         color: bgColor,
         borderRadius: BorderRadius.circular(5),
