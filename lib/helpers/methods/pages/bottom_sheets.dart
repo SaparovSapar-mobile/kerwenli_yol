@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kerwenli_yol/pages/parts/cp_message_bs/cp_message_bs.dart';
 import 'package:kerwenli_yol/pages/parts/filter_bottom_sheet/filter_bottom_sheet.dart';
 import 'package:kerwenli_yol/pages/parts/select_language/select_language.dart';
 import 'package:kerwenli_yol/pages/parts/select_theme/select_theme.dart';
@@ -36,5 +37,5 @@ Future<void> showCompanyPageMessageBottomSheet(BuildContext context) async =>
     await showModalBottomSheet(
       backgroundColor: Colors.transparent,
       context: context,
-      builder: (context) => const FilterBottomSheet(),
+      builder: (context) => const CpMessageBs(),
     );
