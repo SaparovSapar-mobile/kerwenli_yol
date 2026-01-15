@@ -9,9 +9,11 @@ class VideoDuration extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // ======= Colors ======
     Color bgColor = Colors.black26;
     Color iconColor = Color(0xFFFFFFFF);
 
+    // ======= Text Styles ======
     TextStyle textStyle = AppTextStyles.medium10.copyWith(
       fontSize: fontSize ?? 8,
       color: Colors.white,
