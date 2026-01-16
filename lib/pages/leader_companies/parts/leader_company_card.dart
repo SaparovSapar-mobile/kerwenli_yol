@@ -16,7 +16,7 @@ class LeaderCompanyCard extends ConsumerWidget {
     bool isLight = isLightTheme(context, ref);
     Color bgColor = isLight ? LightColors.bgPageLight : DarkColors.bgPageDark;
 
-    TextStyle textStyle = AppTextStyles.medium10;
+    TextStyle textStyle = AppTextStyles.semiBold10;
 
     return GestureDetector(
       onTap: () => goToPage(context, CompanyPage(), AxisDirection.left),
@@ -25,15 +25,14 @@ class LeaderCompanyCard extends ConsumerWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 25, vertical: 13),
-
+            padding: EdgeInsets.symmetric(horizontal: 32, vertical: 17),
             decoration: BoxDecoration(
               color: bgColor,
-              borderRadius: BorderRadius.circular(5),
+              borderRadius: BorderRadius.circular(6),
             ),
             child: SizedBox(
-              height: 29,
-              width: 38,
+              height: 37,
+              width: 50,
               child: ShowImage(image: 'assets/examples/leader_company.png'),
             ),
           ),

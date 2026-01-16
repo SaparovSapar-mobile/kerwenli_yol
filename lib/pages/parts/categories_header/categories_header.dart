@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kerwenli_yol/helpers/methods/parts/app_bar_methods.dart';
 import 'package:kerwenli_yol/pages/parts/categories_header/parts/head_category_buttons.dart';
 
 class CategoriesHeader extends StatelessWidget {
@@ -19,6 +20,8 @@ class CategoriesHeader extends StatelessWidget {
         child: Column(
           children: [
             HeadCategoryButtons(categories: categories),
+            AppBarBottomLine(thickness: 10),
+            SizedBox(height: 5),
             Expanded(
               child: TabBarView(
                 physics: NeverScrollableScrollPhysics(),
