@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kerwenli_yol/examples.dart';
 import 'package:kerwenli_yol/helpers/methods/pages/home_page.dart';
 import 'package:kerwenli_yol/pages/companies_page/parts/header_companies.dart';
 import 'package:kerwenli_yol/pages/parts/categories_header/categories_header.dart';
@@ -14,7 +15,7 @@ class LeaderCompaniesPage extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           HeaderCompanies(text: 'Öňde baryjy kärhanalar'),
-          CategoriesHeader(),
+          CategoriesHeader(categories: headerCategories),
         ],
       ),
     );

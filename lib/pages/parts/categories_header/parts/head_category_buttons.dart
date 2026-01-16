@@ -1,3 +1,4 @@
+import 'package:buttons_tabbar/buttons_tabbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
@@ -6,17 +7,13 @@ import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
 
-class HeadCategoryCard extends ConsumerWidget {
-  const HeadCategoryCard({super.key, required this.index, required this.text});
+class HeadCategoryButtons extends ConsumerWidget {
+  const HeadCategoryButtons({super.key, required this.categories});
 
-  final int index;
-  final String text;
+  final List<String> categories;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    int selectedCategory = ref.watch(headerCategoryIndexProvider);
-    bool isActive = selectedCategory == index;
-
     // ====== Colors ======
     bool isLight = isLightTheme(context, ref);
     Color activeBgColor = isLight ? LightColors.primary : DarkColors.primary;
@@ -34,18 +31,23 @@ class HeadCategoryCard extends ConsumerWidget {
         : DarkColors.textTitleDark;
 
     // ====== Text Styles ======
-    TextStyle textStyle = AppTextStyles.semiBold12.copyWith(
-      color: isActive ? activeTextColor : textColor,
-    );
+    TextStyle textStyle = AppTextStyles.semiBold12;
 
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 11, horizontal: 12),
-      decoration: BoxDecoration(
-        color: isActive ? activeBgColor : bgColor,
-        borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: isActive ? activeBgColor : borderColor),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: ButtonsTabBar(
+        contentPadding: EdgeInsets.symmetric(vertical: 9, horizontal: 12),
+        backgroundColor: activeBgColor,
+        unselectedBackgroundColor: bgColor,
+        borderColor: activeBgColor,
+        unselectedBorderColor: borderColor,
+        borderWidth: 1,
+        labelStyle: textStyle.copyWith(color: activeTextColor),
+        unselectedLabelStyle: textStyle.copyWith(color: textColor),
+        tabs: categories.map((e) => Tab(text: e)).toList(),
+        onTap: (v) => ref.read(headerCategoryIndexProvider.notifier).state =
+            categories[v],
       ),
-      child: Text(text, style: textStyle),
     );
   }
 }
