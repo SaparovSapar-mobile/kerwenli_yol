@@ -6,14 +6,12 @@ class CompaniesListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: ListView.separated(
-        padding: EdgeInsets.symmetric(horizontal: 16),
-        itemBuilder: (context, index) => CompanyListCard(),
-        separatorBuilder: (BuildContext context, int index) =>
-            SizedBox(height: 10),
-        itemCount: 12,
-      ),
+    return ListView.separated(
+      padding: EdgeInsets.symmetric(horizontal: 16),
+      itemBuilder: (context, index) => CompanyListCard(),
+      separatorBuilder: (BuildContext context, int index) =>
+          SizedBox(height: 10),
+      itemCount: 12,
     );
   }
 }
