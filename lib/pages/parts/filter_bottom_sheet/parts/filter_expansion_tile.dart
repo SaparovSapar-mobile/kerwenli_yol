@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
-import 'package:kerwenli_yol/pages/parts/sort_bottom_sheet/parts/sort_list_tile.dart';
-import 'package:kerwenli_yol/providers/pages/categories_page.dart';
+import 'package:kerwenli_yol/pages/parts/filter_bottom_sheet/parts/filter_list_tile.dart';
+import 'package:kerwenli_yol/providers/parts/inputs.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
@@ -26,15 +26,15 @@ class FilterExpansionTile extends ConsumerWidget {
       shape: const Border(), // açıkken
       collapsedShape: const Border(), // kapalıyken
       children: [
-        SortListTile(
+        FilterListTile(
           title: 'Maslahat berilýänler',
           value: 0,
-          sortOrFilterProvider: categoryFilterIndexProvider,
+          filtersProvider: categoriesProvider,
         ),
-        SortListTile(
+        FilterListTile(
           title: 'Iň ýakyn',
           value: 1,
-          sortOrFilterProvider: categoryFilterIndexProvider,
+          filtersProvider: categoriesProvider,
         ),
       ],
     );
