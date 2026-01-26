@@ -33,11 +33,13 @@ class BackLeadingButton extends ConsumerWidget {
           Icon(Icons.arrow_back_ios_new, color: iconColor, size: 20),
           SizedBox(width: hasText ? 10 : 0),
           if (hasText)
-            Text(
-              text!,
-              style: textStyle,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
+            Flexible(
+              child: Text(
+                text!,
+                style: textStyle,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
             )
           else
             const SizedBox.shrink(),

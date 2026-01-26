@@ -6,7 +6,9 @@ import 'package:kerwenli_yol/pages/parts/more_button.dart';
 import 'package:kerwenli_yol/pages/parts/share_button.dart';
 
 class CompanyPageTop extends StatelessWidget {
-  const CompanyPageTop({super.key});
+  const CompanyPageTop({super.key, required this.text});
+
+  final String text;
 
   @override
   Widget build(BuildContext context) {
@@ -18,8 +20,9 @@ class CompanyPageTop extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              BackLeadingButton(text: 'VIP Karhanalar'),
+              Expanded(child: BackLeadingButton(text: text)),
               Row(
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   ShareButton(onPressed: () {}),
                   SizedBox(width: 20),

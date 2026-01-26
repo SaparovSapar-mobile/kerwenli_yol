@@ -18,7 +18,7 @@ class CompanyPage extends StatelessWidget {
         appBar: homePageAppBar(context),
         body: Column(
           children: [
-            CompanyPageTop(),
+            CompanyPageTop(text: 'VIP Karhanalar'),
             CompanyPageTabbar(),
             Expanded(
               child: TabBarView(
