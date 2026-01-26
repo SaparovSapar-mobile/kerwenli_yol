@@ -47,6 +47,7 @@ class ProductPageBody extends ConsumerWidget {
               dotsActiveHeight: 5.36,
               bbRightPosition: 10,
               bbTopPosition: 10,
+              forProductPage: true,
             ),
           ],
         ),

@@ -5,9 +5,14 @@ import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 
 class ImagesLeftRightButton extends ConsumerWidget {
-  const ImagesLeftRightButton({super.key, required this.isLeftBtn});
+  const ImagesLeftRightButton({
+    super.key,
+    required this.isLeftBtn,
+    required this.onTap,
+  });
 
   final bool isLeftBtn;
+  final void Function() onTap;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -15,17 +20,20 @@ class ImagesLeftRightButton extends ConsumerWidget {
     bool isLight = isLightTheme(context, ref);
     Color bgColor = isLight ? LightColors.bgBlogLight : DarkColors.bgBlogDark;
 
-    return Container(
-      width: 34,
-      height: 34,
-      decoration: BoxDecoration(
-        color: bgColor,
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Center(
-        child: Icon(
-          isLeftBtn ? Icons.arrow_back_ios_new : Icons.arrow_forward_ios,
-          size: 23,
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        width: 34,
+        height: 34,
+        decoration: BoxDecoration(
+          color: bgColor,
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Center(
+          child: Icon(
+            isLeftBtn ? Icons.arrow_back_ios_new : Icons.arrow_forward_ios,
+            size: 23,
+          ),
         ),
       ),
     );

@@ -25,6 +25,7 @@ class HomeNewProductsCardImages extends StatefulWidget {
     this.dotsSize,
     this.dotsActiveWidth,
     this.dotsActiveHeight,
+    this.forProductPage,
   });
 
   final ExampleProductCard product;
@@ -42,6 +43,7 @@ class HomeNewProductsCardImages extends StatefulWidget {
       dotsSize,
       dotsActiveWidth,
       dotsActiveHeight;
+  final bool? forProductPage;
 
   @override
   State<HomeNewProductsCardImages> createState() =>
@@ -63,6 +65,8 @@ class _HomeNewProductsCardImagesState extends State<HomeNewProductsCardImages> {
     if (widget.product.forNew) cardToptypes.add(CardTopTextType.taze);
     if (widget.product.forExport) cardToptypes.add(CardTopTextType.export);
     if (widget.product.forVirtual) cardToptypes.add(CardTopTextType.virtual);
+
+    bool forProdPage = widget.forProductPage != null && widget.forProductPage!;
 
     return SizedBox(
       width: widget.width ?? 99,
@@ -122,18 +126,41 @@ class _HomeNewProductsCardImagesState extends State<HomeNewProductsCardImages> {
                     ),
 
                     // Left And Right Button
-                    Center(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            ImagesLeftRightButton(isLeftBtn: true),
-                            ImagesLeftRightButton(isLeftBtn: false),
-                          ],
+                    if (forProdPage)
+                      Center(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 10),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              ImagesLeftRightButton(
+                                isLeftBtn: true,
+                                onTap: () => setState(() {
+                                  print('=============== $_currentIndex');
+                                  if (_currentIndex > len - 1) {
+                                    _currentIndex = len - 1;
+                                    return;
+                                  }
+                                  _currentIndex++;
+                                }),
+                              ),
+                              ImagesLeftRightButton(
+                                isLeftBtn: false,
+                                onTap: () => setState(() {
+                                  print('=============== $_currentIndex');
+                                  if (_currentIndex < 0) {
+                                    _currentIndex = 0;
+                                    return;
+                                  }
+                                  _currentIndex--;
+                                }),
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                    ),
+                      )
+                    else
+                      const SizedBox.shrink(),
 
                     /// Favorite button
                     CardFavoriteButton(
