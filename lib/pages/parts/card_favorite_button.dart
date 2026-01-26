@@ -5,10 +5,19 @@ import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 
 class CardFavoriteButton extends ConsumerWidget {
-  const CardFavoriteButton({super.key});
+  const CardFavoriteButton({
+    super.key,
+    this.width,
+    this.height,
+    this.iconSize,
+    this.borderRadius,
+  });
+
+  final double? width, height, iconSize, borderRadius;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // ======= Colors =======
     bool isLight = isLightTheme(context, ref);
     Color bgColor = isLight ? LightColors.bgBlogLight : DarkColors.bgBlogDark;
     Color iconColor = isLight
@@ -19,13 +28,17 @@ class CardFavoriteButton extends ConsumerWidget {
       right: 4,
       top: 4,
       child: Container(
-        width: 21,
-        height: 21,
+        width: width ?? 21,
+        height: height ?? 21,
         decoration: BoxDecoration(
           color: bgColor,
-          borderRadius: BorderRadius.circular(4),
+          borderRadius: BorderRadius.circular(borderRadius ?? 4),
         ),
-        child: Icon(Icons.favorite_border, size: 12, color: iconColor),
+        child: Icon(
+          Icons.favorite_border,
+          size: iconSize ?? 12,
+          color: iconColor,
+        ),
       ),
     );
   }

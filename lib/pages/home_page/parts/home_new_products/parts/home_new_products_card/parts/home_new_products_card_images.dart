@@ -12,10 +12,25 @@ class HomeNewProductsCardImages extends StatefulWidget {
     required this.product,
     this.width,
     this.height,
+    this.cttHeight,
+    this.cttFontSize,
+    this.cttTopPosition,
+    this.bbWith,
+    this.bbHeight,
+    this.bbIconSize,
+    this.bbBorderRadius,
   });
 
   final ExampleProductCard product;
-  final double? width, height;
+  final double? width,
+      height,
+      cttHeight,
+      cttFontSize,
+      cttTopPosition,
+      bbWith,
+      bbHeight,
+      bbIconSize,
+      bbBorderRadius;
 
   @override
   State<HomeNewProductsCardImages> createState() =>
@@ -45,12 +60,17 @@ class _HomeNewProductsCardImagesState extends State<HomeNewProductsCardImages> {
         clipBehavior: Clip.none,
         children: [
           /// VIP / NEW / EXPORT etiketleri
-          CardTopTexts(types: cardToptypes),
+          CardTopTexts(
+            types: cardToptypes,
+            height: widget.cttHeight,
+            fontSize: widget.cttFontSize,
+            topPosition: widget.cttTopPosition,
+          ),
 
           /// Main card
           SizedBox(
-            width: 99,
-            height: 110,
+            width: double.maxFinite,
+            height: double.maxFinite,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(cardRadius),
               child: Container(
@@ -61,7 +81,12 @@ class _HomeNewProductsCardImagesState extends State<HomeNewProductsCardImages> {
                 child: Stack(
                   children: [
                     /// Favorite button
-                    const CardFavoriteButton(),
+                    CardFavoriteButton(
+                      width: widget.bbWith,
+                      height: widget.bbHeight,
+                      iconSize: widget.bbIconSize,
+                      borderRadius: widget.bbBorderRadius,
+                    ),
 
                     /// Image carousel
                     CarouselSlider.builder(
