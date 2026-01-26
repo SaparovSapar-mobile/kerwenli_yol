@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:kerwenli_yol/enums/card_top_text_type.dart';
 import 'package:kerwenli_yol/examples.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_banners/parts/banner_dots.dart';
+import 'package:kerwenli_yol/pages/home_page/parts/home_new_products/parts/home_new_products_card/parts/images_left_right_button.dart';
 import 'package:kerwenli_yol/pages/parts/card_favorite_button.dart';
 import 'package:kerwenli_yol/pages/parts/card_top_texts/card_top_texts.dart';
 
@@ -90,16 +91,6 @@ class _HomeNewProductsCardImagesState extends State<HomeNewProductsCardImages> {
                 ),
                 child: Stack(
                   children: [
-                    /// Favorite button
-                    CardFavoriteButton(
-                      width: widget.bbWith,
-                      height: widget.bbHeight,
-                      iconSize: widget.bbIconSize,
-                      borderRadius: widget.bbBorderRadius,
-                      rightPosition: widget.bbRightPosition,
-                      topPosition: widget.bbTopPosition,
-                    ),
-
                     /// Image carousel
                     CarouselSlider.builder(
                       itemCount: len,
@@ -128,6 +119,30 @@ class _HomeNewProductsCardImagesState extends State<HomeNewProductsCardImages> {
                           setState(() => _currentIndex = index);
                         },
                       ),
+                    ),
+
+                    // Left And Right Button
+                    Center(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            ImagesLeftRightButton(isLeftBtn: true),
+                            ImagesLeftRightButton(isLeftBtn: false),
+                          ],
+                        ),
+                      ),
+                    ),
+
+                    /// Favorite button
+                    CardFavoriteButton(
+                      width: widget.bbWith,
+                      height: widget.bbHeight,
+                      iconSize: widget.bbIconSize,
+                      borderRadius: widget.bbBorderRadius,
+                      rightPosition: widget.bbRightPosition,
+                      topPosition: widget.bbTopPosition,
                     ),
 
                     /// Image dots

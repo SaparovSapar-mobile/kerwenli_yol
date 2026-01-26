@@ -34,17 +34,20 @@ class CardFavoriteButton extends ConsumerWidget {
     return Positioned(
       right: rightPosition ?? 4,
       top: topPosition ?? 4,
-      child: Container(
-        width: width ?? 21,
-        height: height ?? 21,
-        decoration: BoxDecoration(
-          color: bgColor,
-          borderRadius: BorderRadius.circular(borderRadius ?? 4),
-        ),
-        child: Icon(
-          Icons.favorite_border,
-          size: iconSize ?? 12,
-          color: iconColor,
+      child: GestureDetector(
+        onTap: () {},
+        child: Container(
+          width: width ?? 21,
+          height: height ?? 21,
+          decoration: BoxDecoration(
+            color: bgColor,
+            borderRadius: BorderRadius.circular(borderRadius ?? 4),
+          ),
+          child: Icon(
+            Icons.favorite_border,
+            size: iconSize ?? 12,
+            color: iconColor,
+          ),
         ),
       ),
     );
