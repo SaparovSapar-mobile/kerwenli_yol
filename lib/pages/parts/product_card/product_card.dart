@@ -68,6 +68,7 @@ class ProductCard extends ConsumerWidget {
               ],
             ),
           ),
+          SizedBox(height: 10),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

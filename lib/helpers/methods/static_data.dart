@@ -7,6 +7,7 @@ double companyCardHeight = 284;
 double companyListCardHeight = 124;
 
 double productListCardHeight = 127;
+double productCardHeight = 295;
 
 double mediaCardHeight = 238;
 double photosCardHeight = 113;

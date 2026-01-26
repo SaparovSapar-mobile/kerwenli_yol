@@ -9,12 +9,13 @@ class ProductsGridView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
+      itemCount: homeProducts.length,
       padding: EdgeInsets.symmetric(horizontal: 16),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         crossAxisSpacing: 10,
         mainAxisSpacing: 10,
-        mainAxisExtent: companyCardHeight,
+        mainAxisExtent: productCardHeight,
       ),
       itemBuilder: (context, index) =>
           ProductCard(product: homeProducts[index]),
