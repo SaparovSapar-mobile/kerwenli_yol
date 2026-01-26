@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kerwenli_yol/pages/parts/bottom_sheet_widget/bottom_sheet_widget.dart';
 import 'package:kerwenli_yol/pages/parts/bottom_sheet_widget/parts/bottom_sheet_title.dart';
+import 'package:kerwenli_yol/pages/parts/message_bs/parts/message_bs_with_email.dart';
 import 'package:kerwenli_yol/pages/parts/message_bs/parts/message_bs_with_phone.dart';
 import 'package:kerwenli_yol/pages/parts/selection_button.dart';
 
@@ -12,7 +13,9 @@ class MessageBs extends StatefulWidget {
 }
 
 class _MessageBsState extends State<MessageBs> {
-  final TextEditingController _emailCtrl = TextEditingController();
+  final TextEditingController _emailCtrl = TextEditingController(
+    text: 'exampleEmail@gmail.com',
+  );
   final TextEditingController _phoneCtrl = TextEditingController(
     text: '63 509004',
   );
@@ -59,7 +62,11 @@ class _MessageBsState extends State<MessageBs> {
                         phoneCtrl: _phoneCtrl,
                         messageCtrl: _messageCtrl,
                       ),
-                      const Text('Email Habarlas'),
+                      MessageBsWithEmail(
+                        formKey: formKeyForEmail,
+                        emailCtrl: _emailCtrl,
+                        messageCtrl: _messageCtrl,
+                      ),
                     ],
                   ),
                 ),
