@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kerwenli_yol/helpers/methods/static_data.dart';
-import 'package:kerwenli_yol/pages/companies_page/parts/company_card/company_card.dart';
+import 'package:kerwenli_yol/pages/parts/product_card/product_card.dart';
 
 class ProductsGridView extends StatelessWidget {
   const ProductsGridView({super.key});
@@ -15,7 +15,7 @@ class ProductsGridView extends StatelessWidget {
         mainAxisSpacing: 10,
         mainAxisExtent: companyCardHeight,
       ),
-      itemBuilder: (context, index) => CompanyCard(),
+      itemBuilder: (context, index) => ProductCard(),
     );
   }
 }
