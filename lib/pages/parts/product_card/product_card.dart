@@ -17,11 +17,13 @@ class ProductCard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // ======== Colors =========
     bool isLight = isLightTheme(context, ref);
     Color borderColor = isLight
         ? LightColors.bgPageLight
         : DarkColors.bgPageDark;
 
+    // ======== Text Styles =========
     TextStyle nameStyle = AppTextStyles.medium16;
 
     return Container(
@@ -50,6 +52,9 @@ class ProductCard extends ConsumerWidget {
                   bbHeight: 32,
                   bbIconSize: 18,
                   bbBorderRadius: 7,
+                  dotsSize: 5.36,
+                  dotsActiveWidth: 13.41,
+                  dotsActiveHeight: 5.36,
                 ),
                 SizedBox(height: 5),
                 Text(

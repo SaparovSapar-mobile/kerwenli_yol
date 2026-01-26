@@ -19,6 +19,9 @@ class HomeNewProductsCardImages extends StatefulWidget {
     this.bbHeight,
     this.bbIconSize,
     this.bbBorderRadius,
+    this.dotsSize,
+    this.dotsActiveWidth,
+    this.dotsActiveHeight,
   });
 
   final ExampleProductCard product;
@@ -30,7 +33,10 @@ class HomeNewProductsCardImages extends StatefulWidget {
       bbWith,
       bbHeight,
       bbIconSize,
-      bbBorderRadius;
+      bbBorderRadius,
+      dotsSize,
+      dotsActiveWidth,
+      dotsActiveHeight;
 
   @override
   State<HomeNewProductsCardImages> createState() =>
@@ -125,9 +131,9 @@ class _HomeNewProductsCardImagesState extends State<HomeNewProductsCardImages> {
                       child: BannerDots(
                         lenght: len,
                         page: _currentIndex,
-                        dotsSize: 2.83,
-                        dotsActiveWidth: 7.08,
-                        dotsActiveHeight: 2.83,
+                        dotsSize: widget.dotsSize ?? 2.83,
+                        dotsActiveWidth: widget.dotsActiveWidth ?? 7.08,
+                        dotsActiveHeight: widget.dotsActiveHeight ?? 2.83,
                       ),
                     ),
                   ],
