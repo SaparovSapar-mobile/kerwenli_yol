@@ -30,7 +30,7 @@ class MessageBsWithEmail extends StatelessWidget {
               MessageInput(ctrl: messageCtrl),
             ],
           ),
-          SizedBox(height: 16),
+          SizedBox(height: 10),
           SendMessageBsButton(
             messageCtrl: messageCtrl,
             formKeyForEmail: formKey,

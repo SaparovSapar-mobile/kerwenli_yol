@@ -30,7 +30,7 @@ class MessageBsWithPhone extends StatelessWidget {
               MessageInput(ctrl: messageCtrl),
             ],
           ),
-          SizedBox(height: 16),
+          SizedBox(height: 10),
           SendMessageBsButton(
             messageCtrl: messageCtrl,
             formKeyForPhone: formKey,
