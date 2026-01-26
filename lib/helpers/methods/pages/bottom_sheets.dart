@@ -41,10 +41,13 @@ Future<void> showCompanyPageMessageBottomSheet(BuildContext context) async =>
       builder: (context) => const CpMessageBs(),
     );
 
-Future<void> showMessageBottomSheet(BuildContext context) async =>
-    await showModalBottomSheet(
-      backgroundColor: Colors.transparent,
-      isScrollControlled: true,
-      context: context,
-      builder: (context) => const MessageBs(),
-    );
+Future<void> showMessageBottomSheet(
+  BuildContext context,
+  String title,
+  String image,
+) async => await showModalBottomSheet(
+  backgroundColor: Colors.transparent,
+  isScrollControlled: true,
+  context: context,
+  builder: (context) => MessageBs(title: title, image: image),
+);

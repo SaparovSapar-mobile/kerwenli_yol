@@ -67,7 +67,7 @@ class CpMessageBsListTile extends ConsumerWidget {
             : const SizedBox.shrink(),
         onTap: () async {
           ref.read(companyMessageListtileIndexProvider.notifier).state = index;
-          showMessageBottomSheet(context);
+          showMessageBottomSheet(context, title, image);
         },
       ),
     );

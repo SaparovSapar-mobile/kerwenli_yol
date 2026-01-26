@@ -6,7 +6,9 @@ import 'package:kerwenli_yol/pages/parts/message_bs/parts/message_bs_with_phone.
 import 'package:kerwenli_yol/pages/parts/selection_button.dart';
 
 class MessageBs extends StatefulWidget {
-  const MessageBs({super.key});
+  const MessageBs({super.key, required this.title, required this.image});
+
+  final String title, image;
 
   @override
   State<MessageBs> createState() => _MessageBsState();
@@ -41,7 +43,7 @@ class _MessageBsState extends State<MessageBs> {
       padding: EdgeInsets.only(bottom: bottom), // ✅ klavye kadar yukarı iter
       child: BottomSheetWidget(
         children: [
-          BottomSheetTitle(text: 'Hat Yazmak', icon: 'messages.png'),
+          BottomSheetTitle(text: widget.title, icon: widget.image),
           DefaultTabController(
             length: 2,
             child: Column(
