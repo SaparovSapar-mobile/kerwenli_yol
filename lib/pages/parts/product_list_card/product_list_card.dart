@@ -4,7 +4,6 @@ import 'package:kerwenli_yol/examples.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/helpers/methods/static_data.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_new_products/parts/home_new_products_card/parts/home_new_products_card_images.dart';
-import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/parts/company_status.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/parts/home_vip_company_card_categories.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/parts/home_vip_company_rating.dart';
 import 'package:kerwenli_yol/pages/parts/view_count.dart';
@@ -44,19 +43,24 @@ class ProductListCard extends ConsumerWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  'Türkmenistanda öndürilen şokaladlary alyn',
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: nameStyle,
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Türkmenistanda öndürilen şokaladlary alyn',
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: nameStyle,
+                      ),
+                      SizedBox(height: 8),
+                      HomeVipCompanyCardCategories(
+                        iconSize: 9,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                      ),
+                    ],
+                  ),
                 ),
-                CompanyStatus(isOpen: product.isOpen, fontSize: 9),
-                SizedBox(height: 8),
-                HomeVipCompanyCardCategories(
-                  iconSize: 9,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                ),
-                SizedBox(height: 5),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [

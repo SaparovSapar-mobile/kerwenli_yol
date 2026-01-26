@@ -4,6 +4,7 @@ import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/pages/company_page/parts/company_page_card.dart';
 import 'package:kerwenli_yol/pages/company_page/parts/company_page_part_tabbar.dart';
 import 'package:kerwenli_yol/pages/products_page/parts/products_grid_view.dart';
+import 'package:kerwenli_yol/pages/products_page/parts/products_list_view.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 
