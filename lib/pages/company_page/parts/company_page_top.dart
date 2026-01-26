@@ -6,9 +6,14 @@ import 'package:kerwenli_yol/pages/parts/more_button.dart';
 import 'package:kerwenli_yol/pages/parts/share_button.dart';
 
 class CompanyPageTop extends StatelessWidget {
-  const CompanyPageTop({super.key, required this.text});
+  const CompanyPageTop({
+    super.key,
+    required this.text,
+    required this.showBottomLine,
+  });
 
   final String text;
+  final bool showBottomLine;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +39,7 @@ class CompanyPageTop extends StatelessWidget {
             ],
           ),
         ),
-        AppBarBottomLine(thickness: 2),
+        showBottomLine ? AppBarBottomLine(thickness: 2) : SizedBox.shrink(),
       ],
     );
   }

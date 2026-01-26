@@ -11,9 +11,16 @@ class CardFavoriteButton extends ConsumerWidget {
     this.height,
     this.iconSize,
     this.borderRadius,
+    this.rightPosition,
+    this.topPosition,
   });
 
-  final double? width, height, iconSize, borderRadius;
+  final double? width,
+      height,
+      iconSize,
+      borderRadius,
+      rightPosition,
+      topPosition;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -25,8 +32,8 @@ class CardFavoriteButton extends ConsumerWidget {
         : DarkColors.textTitleDark;
 
     return Positioned(
-      right: 4,
-      top: 4,
+      right: rightPosition ?? 4,
+      top: topPosition ?? 4,
       child: Container(
         width: width ?? 21,
         height: height ?? 21,

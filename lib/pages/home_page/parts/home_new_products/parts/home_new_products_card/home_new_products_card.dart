@@ -36,7 +36,8 @@ class HomeNewProductsCard extends ConsumerWidget {
     TextStyle nameStyle = AppTextStyles.medium10;
 
     return GestureDetector(
-      onTap: () => goToPage(context, ProductPage(), AxisDirection.left),
+      onTap: () =>
+          goToPage(context, ProductPage(product: product), AxisDirection.left),
       child: Container(
         width: 112,
         margin: isFirst != null && isLast != null

@@ -28,7 +28,8 @@ class BackLeadingButton extends ConsumerWidget {
       visualDensity: VisualDensity.compact,
       onPressed: onPressed ?? () => Navigator.pop(context),
       icon: Row(
-        mainAxisSize: MainAxisSize.min,
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Icon(Icons.arrow_back_ios_new, color: iconColor, size: 20),
           SizedBox(width: hasText ? 10 : 0),

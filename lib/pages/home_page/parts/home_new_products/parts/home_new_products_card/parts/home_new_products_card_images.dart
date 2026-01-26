@@ -19,6 +19,8 @@ class HomeNewProductsCardImages extends StatefulWidget {
     this.bbHeight,
     this.bbIconSize,
     this.bbBorderRadius,
+    this.bbRightPosition,
+    this.bbTopPosition,
     this.dotsSize,
     this.dotsActiveWidth,
     this.dotsActiveHeight,
@@ -34,6 +36,8 @@ class HomeNewProductsCardImages extends StatefulWidget {
       bbHeight,
       bbIconSize,
       bbBorderRadius,
+      bbRightPosition,
+      bbTopPosition,
       dotsSize,
       dotsActiveWidth,
       dotsActiveHeight;
@@ -92,6 +96,8 @@ class _HomeNewProductsCardImagesState extends State<HomeNewProductsCardImages> {
                       height: widget.bbHeight,
                       iconSize: widget.bbIconSize,
                       borderRadius: widget.bbBorderRadius,
+                      rightPosition: widget.bbRightPosition,
+                      topPosition: widget.bbTopPosition,
                     ),
 
                     /// Image carousel
