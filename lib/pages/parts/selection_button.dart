@@ -10,19 +10,22 @@ class SelectionButton extends ConsumerWidget {
     super.key,
     required this.title1,
     required this.title2,
+    this.horizontalMargin,
   });
 
   final String title1, title2;
+  final double? horizontalMargin;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // ======== Colors =========
     bool isLight = isLightTheme(context, ref);
-
     Color bgColor = isLight ? LightColors.bgPageLight : DarkColors.bgPageDark;
     Color subBgColor = isLight
         ? LightColors.bgBlogLight
         : DarkColors.bgBlogDark;
 
+    // ======== Text Styles =========
     TextStyle titleStyle1 = AppTextStyles.semiBold12.copyWith(
       color: isLight ? LightColors.textTitleLight : DarkColors.textTitleDark,
     );
@@ -34,7 +37,7 @@ class SelectionButton extends ConsumerWidget {
 
     return Container(
       height: 50,
-      margin: EdgeInsets.symmetric(horizontal: 16),
+      margin: EdgeInsets.symmetric(horizontal: horizontalMargin ?? 16),
       decoration: BoxDecoration(
         color: bgColor,
         borderRadius: BorderRadius.circular(8),

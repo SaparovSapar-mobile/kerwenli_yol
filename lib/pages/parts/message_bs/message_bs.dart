@@ -34,7 +34,11 @@ class _MessageBsState extends State<MessageBs> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              SelectionButton(title1: 'Telefon Belgi', title2: 'Email'),
+              SelectionButton(
+                title1: 'Telefon Belgi',
+                title2: 'Email',
+                horizontalMargin: 0,
+              ),
               SizedBox(
                 height: 330,
                 child: TabBarView(
