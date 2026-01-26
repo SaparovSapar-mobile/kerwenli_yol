@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kerwenli_yol/pages/parts/inputs/message_input.dart';
 import 'package:kerwenli_yol/pages/parts/inputs/phone_input.dart';
+import 'package:kerwenli_yol/pages/parts/message_bs/parts/send_message_bs_button.dart';
 
 class MessageBsWithPhone extends StatelessWidget {
   const MessageBsWithPhone({
@@ -29,12 +30,12 @@ class MessageBsWithPhone extends StatelessWidget {
               MessageInput(ctrl: messageCtrl),
             ],
           ),
-          // SizedBox(height: 16),
-          // LoginButton(
-          //   passwordCtrl: passwordCtrl,
-          //   phoneCtrl: phoneCtrl,
-          //   formKeyForPhone: formKey,
-          // ),
+          SizedBox(height: 16),
+          SendMessageBsButton(
+            messageCtrl: messageCtrl,
+            formKeyForPhone: formKey,
+            phoneCtrl: phoneCtrl,
+          ),
         ],
       ),
     );
