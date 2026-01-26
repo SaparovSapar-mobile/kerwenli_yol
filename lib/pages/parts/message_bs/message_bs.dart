@@ -13,7 +13,10 @@ class MessageBs extends StatefulWidget {
 
 class _MessageBsState extends State<MessageBs> {
   final TextEditingController _emailCtrl = TextEditingController();
-  final TextEditingController _phoneCtrl = TextEditingController();
+  final TextEditingController _phoneCtrl = TextEditingController(
+    text: '63 509004',
+  );
+  final TextEditingController _messageCtrl = TextEditingController();
   final GlobalKey<FormState> formKeyForPhone = GlobalKey<FormState>();
   final GlobalKey<FormState> formKeyForEmail = GlobalKey<FormState>();
 
@@ -21,6 +24,7 @@ class _MessageBsState extends State<MessageBs> {
   void dispose() {
     _emailCtrl.dispose();
     _phoneCtrl.dispose();
+    _messageCtrl.dispose();
     super.dispose();
   }
 
@@ -39,6 +43,7 @@ class _MessageBsState extends State<MessageBs> {
                 title2: 'Email',
                 horizontalMargin: 0,
               ),
+              SizedBox(height: 16),
               SizedBox(
                 height: 330,
                 child: TabBarView(
@@ -46,6 +51,7 @@ class _MessageBsState extends State<MessageBs> {
                     MessageBsWithPhone(
                       formKey: formKeyForPhone,
                       phoneCtrl: _phoneCtrl,
+                      messageCtrl: _messageCtrl,
                     ),
                     Text('Email Habarlas'),
                   ],

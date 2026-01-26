@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kerwenli_yol/pages/parts/inputs/message_input.dart';
 import 'package:kerwenli_yol/pages/parts/inputs/phone_input.dart';
 
 class MessageBsWithPhone extends StatelessWidget {
@@ -6,10 +7,11 @@ class MessageBsWithPhone extends StatelessWidget {
     super.key,
     required this.formKey,
     required this.phoneCtrl,
+    required this.messageCtrl,
   });
 
   final GlobalKey<FormState> formKey;
-  final TextEditingController phoneCtrl;
+  final TextEditingController phoneCtrl, messageCtrl;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +21,13 @@ class MessageBsWithPhone extends StatelessWidget {
         children: [
           Column(
             mainAxisSize: MainAxisSize.min,
-            children: [PhoneInput(ctrl: phoneCtrl)],
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 5),
+                child: PhoneInput(ctrl: phoneCtrl, readOnly: true),
+              ),
+              MessageInput(ctrl: messageCtrl),
+            ],
           ),
           // SizedBox(height: 16),
           // LoginButton(
