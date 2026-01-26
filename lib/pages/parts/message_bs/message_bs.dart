@@ -30,37 +30,44 @@ class _MessageBsState extends State<MessageBs> {
 
   @override
   Widget build(BuildContext context) {
-    return BottomSheetWidget(
-      children: [
-        BottomSheetTitle(text: 'Hat Yazmak', icon: 'messages.png'),
-        DefaultTabController(
-          length: 2,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              SelectionButton(
-                title1: 'Telefon Belgi',
-                title2: 'Email',
-                horizontalMargin: 0,
-              ),
-              SizedBox(height: 16),
-              SizedBox(
-                height: 330,
-                child: TabBarView(
-                  children: [
-                    MessageBsWithPhone(
-                      formKey: formKeyForPhone,
-                      phoneCtrl: _phoneCtrl,
-                      messageCtrl: _messageCtrl,
-                    ),
-                    Text('Email Habarlas'),
-                  ],
+    final bottom = MediaQuery.of(context).viewInsets.bottom;
+
+    return AnimatedPadding(
+      duration: const Duration(milliseconds: 200),
+      curve: Curves.easeOut,
+      padding: EdgeInsets.only(bottom: bottom), // ✅ klavye kadar yukarı iter
+      child: BottomSheetWidget(
+        children: [
+          BottomSheetTitle(text: 'Hat Yazmak', icon: 'messages.png'),
+          DefaultTabController(
+            length: 2,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                SelectionButton(
+                  title1: 'Telefon Belgi',
+                  title2: 'Email',
+                  horizontalMargin: 0,
                 ),
-              ),
-            ],
+                const SizedBox(height: 16),
+                SizedBox(
+                  height: 330,
+                  child: TabBarView(
+                    children: [
+                      MessageBsWithPhone(
+                        formKey: formKeyForPhone,
+                        phoneCtrl: _phoneCtrl,
+                        messageCtrl: _messageCtrl,
+                      ),
+                      const Text('Email Habarlas'),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

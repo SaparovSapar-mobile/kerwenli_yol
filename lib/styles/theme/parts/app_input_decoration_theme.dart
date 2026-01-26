@@ -23,6 +23,7 @@ class AppInputDecorationTheme {
     contentPadding: const EdgeInsets.all(14),
     filled: true,
     fillColor: LightColors.bgPageLight,
+    alignLabelWithHint: true,
   );
 
   static InputDecorationTheme darkInputDecorationTheme = InputDecorationTheme(
@@ -40,6 +41,7 @@ class AppInputDecorationTheme {
     contentPadding: const EdgeInsets.all(14),
     filled: true,
     fillColor: DarkColors.bgPageDark,
+    alignLabelWithHint: true,
   );
 }
 
