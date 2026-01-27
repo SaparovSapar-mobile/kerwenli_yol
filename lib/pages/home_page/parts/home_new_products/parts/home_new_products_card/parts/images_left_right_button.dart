@@ -19,6 +19,9 @@ class ImagesLeftRightButton extends ConsumerWidget {
     // ======== Colors ========
     bool isLight = isLightTheme(context, ref);
     Color bgColor = isLight ? LightColors.bgBlogLight : DarkColors.bgBlogDark;
+    Color iconColor = isLight
+        ? LightColors.textTitleLight
+        : DarkColors.textTitleDark;
 
     return GestureDetector(
       onTap: onTap,
@@ -40,6 +43,7 @@ class ImagesLeftRightButton extends ConsumerWidget {
           child: Icon(
             isLeftBtn ? Icons.arrow_back_ios_new : Icons.arrow_forward_ios,
             size: 23,
+            color: iconColor,
           ),
         ),
       ),

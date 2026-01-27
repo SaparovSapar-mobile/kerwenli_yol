@@ -4,6 +4,7 @@ import 'package:kerwenli_yol/enums/card_top_text_type.dart';
 import 'package:kerwenli_yol/examples.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_banners/parts/banner_dots.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_new_products/parts/home_new_products_card/parts/images_left_right_button.dart';
+import 'package:kerwenli_yol/pages/home_page/parts/home_new_products/parts/home_new_products_card/parts/zoom_images_button.dart';
 import 'package:kerwenli_yol/pages/parts/card_favorite_button.dart';
 import 'package:kerwenli_yol/pages/parts/card_top_texts/card_top_texts.dart';
 
@@ -188,6 +189,9 @@ class _HomeNewProductsCardImagesState extends State<HomeNewProductsCardImages> {
                         dotsActiveHeight: widget.dotsActiveHeight ?? 2.83,
                       ),
                     ),
+
+                    // Zoom Images Button
+                    Positioned(left: 10, bottom: 10, child: ZoomImagesButton()),
                   ],
                 ),
               ),
