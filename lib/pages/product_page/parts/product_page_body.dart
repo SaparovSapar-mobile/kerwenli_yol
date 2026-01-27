@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/examples.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
+import 'package:kerwenli_yol/pages/company_page/parts/company_page_info/parts/company_info/parts/company_info_key_value.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_new_products/parts/home_new_products_card/parts/home_new_products_card_images.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/parts/home_vip_company_card_categories.dart';
+import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/parts/home_vip_company_rating.dart';
+import 'package:kerwenli_yol/pages/parts/view_count.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
@@ -64,6 +67,39 @@ class ProductPageBody extends ConsumerWidget {
               HomeVipCompanyCardCategories(
                 iconSize: 10,
                 mainAxisAlignment: MainAxisAlignment.start,
+              ),
+              SizedBox(height: 10),
+              CompanyInfoKeyValue(
+                keyText: 'FCA bahasy',
+                valueText: 'ylalaşykly',
+              ),
+              CompanyInfoKeyValue(
+                keyText: 'Sargydyň iň az mukdary',
+                valueText: '1 600 sany',
+              ),
+              CompanyInfoKeyValue(
+                keyText: 'Kuwwatlylygy her aýda',
+                valueText: '10 000 kg',
+              ),
+              CompanyInfoKeyValue(
+                keyText: 'Tabşyryş şertleri',
+                valueText: 'FCA, FOB, CIP, CIF',
+              ),
+              CompanyInfoKeyValue(
+                keyText: 'Tölegiň pul görnüşi',
+                valueText: 'TMT, USD, EURO',
+              ),
+              CompanyInfoKeyValue(
+                keyText: 'Töleg şertleri',
+                valueText: 'S.W.I.F.T',
+              ),
+              SizedBox(height: 10),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  ViewCount(fontSize: 13),
+                  HomeVipCompanyRating(fontSize: 13),
+                ],
               ),
             ],
           ),
