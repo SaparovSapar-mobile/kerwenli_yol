@@ -28,6 +28,13 @@ class ImagesLeftRightButton extends ConsumerWidget {
         decoration: BoxDecoration(
           color: bgColor,
           borderRadius: BorderRadius.circular(12),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withValues(alpha: .05), // gölge rengi
+              blurRadius: 6, // yumuşaklık
+              offset: const Offset(0, 3), // x,y yönü
+            ),
+          ],
         ),
         child: Center(
           child: Icon(
