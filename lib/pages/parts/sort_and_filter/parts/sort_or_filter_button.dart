@@ -17,6 +17,7 @@ class SortOrFilterButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // ========= Colors =========
     bool isLight = isLightTheme(context, ref);
     Color borderColor = isLight
         ? LightColors.bgPageLight
@@ -25,6 +26,7 @@ class SortOrFilterButton extends ConsumerWidget {
         ? LightColors.textTitleLight
         : DarkColors.textTitleDark;
 
+    // ========= Text Styles =========
     TextStyle textStyle = AppTextStyles.medium16;
 
     return GestureDetector(
