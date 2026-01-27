@@ -25,6 +25,14 @@ List<String> headerCategories = [
   'Rezinler',
 ];
 
+List<String> searchCategories = [
+  'Firmalar',
+  'Harytlar',
+  'Medialar',
+  'Hyzmatlar',
+  'Galereya',
+];
+
 List<ExampleProductCard> homeProducts = [
   ExampleProductCard(
     forVip: true,
