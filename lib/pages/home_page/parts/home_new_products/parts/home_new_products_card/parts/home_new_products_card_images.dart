@@ -52,6 +52,7 @@ class HomeNewProductsCardImages extends StatefulWidget {
 
 class _HomeNewProductsCardImagesState extends State<HomeNewProductsCardImages> {
   int _currentIndex = 0;
+  final CarouselSliderController _carouselCtrl = CarouselSliderController();
 
   @override
   Widget build(BuildContext context) {
@@ -97,6 +98,7 @@ class _HomeNewProductsCardImagesState extends State<HomeNewProductsCardImages> {
                   children: [
                     /// Image carousel
                     CarouselSlider.builder(
+                      carouselController: _carouselCtrl,
                       itemCount: len,
                       itemBuilder: (context, index, realIndex) {
                         // Burada gerçek resim widget’ını koyabilirsin
@@ -135,25 +137,27 @@ class _HomeNewProductsCardImagesState extends State<HomeNewProductsCardImages> {
                             children: [
                               ImagesLeftRightButton(
                                 isLeftBtn: true,
-                                onTap: () => setState(() {
-                                  print('=============== $_currentIndex');
-                                  if (_currentIndex > len - 1) {
-                                    _currentIndex = len - 1;
-                                    return;
+                                onTap: () {
+                                  if (len <= 1) return;
+
+                                  if (_currentIndex > 0) {
+                                    _carouselCtrl.previousPage();
+                                  } else {
+                                    _carouselCtrl.animateToPage(len - 1);
                                   }
-                                  _currentIndex++;
-                                }),
+                                },
                               ),
                               ImagesLeftRightButton(
                                 isLeftBtn: false,
-                                onTap: () => setState(() {
-                                  print('=============== $_currentIndex');
-                                  if (_currentIndex < 0) {
-                                    _currentIndex = 0;
-                                    return;
+                                onTap: () {
+                                  if (len <= 1) return;
+
+                                  if (_currentIndex < len - 1) {
+                                    _carouselCtrl.nextPage();
+                                  } else {
+                                    _carouselCtrl.animateToPage(0);
                                   }
-                                  _currentIndex--;
-                                }),
+                                },
                               ),
                             ],
                           ),
@@ -174,8 +178,8 @@ class _HomeNewProductsCardImagesState extends State<HomeNewProductsCardImages> {
 
                     /// Image dots
                     Positioned(
-                      right: 4,
-                      bottom: 4,
+                      right: 10,
+                      bottom: 10,
                       child: BannerDots(
                         lenght: len,
                         page: _currentIndex,
