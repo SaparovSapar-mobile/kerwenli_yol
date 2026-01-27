@@ -41,6 +41,13 @@ Future<void> showCompanyPageMessageBottomSheet(BuildContext context) async =>
       builder: (context) => const CpMessageBs(),
     );
 
+Future<void> showSelectImageBottomSheet(BuildContext context) async =>
+    await showModalBottomSheet(
+      backgroundColor: Colors.transparent,
+      context: context,
+      builder: (context) => const CpMessageBs(),
+    );
+
 Future<void> showMessageBottomSheet(
   BuildContext context,
   String title,

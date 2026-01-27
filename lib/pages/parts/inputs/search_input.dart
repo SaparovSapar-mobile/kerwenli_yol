@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
+import 'package:kerwenli_yol/helpers/methods/pages/bottom_sheets.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
@@ -70,7 +71,7 @@ class _SearchInputState extends ConsumerState<SearchInput> {
           // ======== Search With Photo =========
           SizedBox(width: 10),
           GestureDetector(
-            onTap: () {},
+            onTap: () => showSelectImageBottomSheet(context),
             child: CircleAvatar(
               backgroundColor: bgColor,
               radius: 22,
