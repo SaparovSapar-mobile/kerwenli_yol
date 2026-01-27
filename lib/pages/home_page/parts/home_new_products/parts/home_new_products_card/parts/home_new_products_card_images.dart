@@ -191,7 +191,14 @@ class _HomeNewProductsCardImagesState extends State<HomeNewProductsCardImages> {
                     ),
 
                     // Zoom Images Button
-                    Positioned(left: 10, bottom: 10, child: ZoomImagesButton()),
+                    if (forProdPage)
+                      Positioned(
+                        left: 10,
+                        bottom: 10,
+                        child: ZoomImagesButton(),
+                      )
+                    else
+                      const SizedBox.shrink(),
                   ],
                 ),
               ),

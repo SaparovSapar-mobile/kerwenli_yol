@@ -30,25 +30,28 @@ class HomeVipCompanyCardCategories extends ConsumerWidget {
 
     return GestureDetector(
       onTap: () {},
-      child: Container(
-        padding: EdgeInsets.all(2),
-        decoration: BoxDecoration(color: bgColor),
-        child: Row(
-          mainAxisSize: hasAligment ? MainAxisSize.min : MainAxisSize.max,
-          mainAxisAlignment:
-              mainAxisAlignment ?? MainAxisAlignment.spaceBetween,
-          children: [
-            Flexible(
-              child: Text(
-                'Category/sub category',
-                style: textStyle,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
+      child: Align(
+        alignment: Alignment.centerLeft, // sola yasla
+        child: Container(
+          padding: EdgeInsets.all(2),
+          decoration: BoxDecoration(color: bgColor),
+          child: Row(
+            mainAxisSize: hasAligment ? MainAxisSize.min : MainAxisSize.max,
+            mainAxisAlignment:
+                mainAxisAlignment ?? MainAxisAlignment.spaceBetween,
+            children: [
+              Flexible(
+                child: Text(
+                  'Category/sub category',
+                  style: textStyle,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
               ),
-            ),
-            hasAligment ? SizedBox(width: 5) : const SizedBox.shrink(),
-            Icon(Icons.arrow_forward_ios, size: iconSize ?? 6),
-          ],
+              hasAligment ? SizedBox(width: 5) : const SizedBox.shrink(),
+              Icon(Icons.arrow_forward_ios, size: iconSize ?? 6),
+            ],
+          ),
         ),
       ),
     );
