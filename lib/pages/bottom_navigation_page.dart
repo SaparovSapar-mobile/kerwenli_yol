@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/helpers/methods/pages/bottom_navigation.dart';
 import 'package:kerwenli_yol/helpers/methods/pages/home_page.dart';
+import 'package:kerwenli_yol/helpers/methods/pages/search_page.dart';
 import 'package:kerwenli_yol/pages/bookmark_page.dart';
 import 'package:kerwenli_yol/pages/home_page/home_page.dart';
 import 'package:kerwenli_yol/pages/search_page.dart';
@@ -17,6 +18,7 @@ class BottomNavigationPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // ======= Colors =========
     bool isLight = isLightTheme(context, ref);
     Color activeTextColor = isLight ? LightColors.primary : DarkColors.primary;
     Color textColor = isLight
@@ -26,6 +28,7 @@ class BottomNavigationPage extends ConsumerWidget {
         ? LightColors.bgBlogLight
         : DarkColors.bgBlogDark;
 
+    // ======= Text Styles =========
     TextStyle textStyle = AppTextStyles.medium10;
 
     int selectedIndex = ref.watch(selectedBottomIndexProvider);
@@ -43,7 +46,7 @@ class BottomNavigationPage extends ConsumerWidget {
         appBar = homePageAppBar(context);
         break;
       case 1:
-        appBar = homePageAppBar(context);
+        appBar = searchPageAppBar(context);
         break;
       case 2:
         appBar = homePageAppBar(context);
