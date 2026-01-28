@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/helpers/methods/parts/app_bar_methods.dart';
-import 'package:kerwenli_yol/pages/parts/inputs/search_input.dart';
+import 'package:kerwenli_yol/pages/parts/circle_button.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 
@@ -30,7 +30,22 @@ AppBar bookmarsPageAppBar(BuildContext context) {
             ),
             child: Column(
               children: [
-                SearchInput(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text('Bookmarks'),
+                    SizedBox(
+                      height: 38,
+                      child: Row(
+                        children: [
+                          CircleButton(icon: Icons.search, onTap: () {}),
+                          SizedBox(width: 10),
+                          CircleButton(icon: Icons.more_vert, onTap: () {}),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
                 SizedBox(height: 10),
                 AppBarBottomLine(thickness: 2),
               ],
