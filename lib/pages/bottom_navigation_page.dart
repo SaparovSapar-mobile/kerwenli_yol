@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
+import 'package:kerwenli_yol/helpers/methods/pages/bookmars_page.dart';
 import 'package:kerwenli_yol/helpers/methods/pages/bottom_navigation.dart';
 import 'package:kerwenli_yol/helpers/methods/pages/home_page.dart';
 import 'package:kerwenli_yol/helpers/methods/pages/search_page.dart';
@@ -49,7 +50,7 @@ class BottomNavigationPage extends ConsumerWidget {
         appBar = searchPageAppBar(context);
         break;
       case 2:
-        appBar = homePageAppBar(context);
+        appBar = bookmarsPageAppBar(context);
         break;
       case 3:
         appBar = homePageAppBar(context);
