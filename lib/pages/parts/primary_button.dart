@@ -24,12 +24,14 @@ class PrimaryButton extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     bool buttonPress = false;
 
+    // ========== Colors ==============
     bool isLight = isLightTheme(context, ref);
     Color bgColor = isLight ? LightColors.primary : DarkColors.primary;
     Color textColor = isLight
         ? LightColors.textTitleDark
         : DarkColors.textTitleDark;
 
+    // ========== Text Styles ==============
     TextStyle textStyle = AppTextStyles.semiBold16.copyWith(color: textColor);
 
     if (btnPressProvider != null) {

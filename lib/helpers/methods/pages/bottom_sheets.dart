@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kerwenli_yol/pages/parts/book_mark_setting_bs/book_mark_setting_bs.dart';
 import 'package:kerwenli_yol/pages/parts/cp_message_bs/cp_message_bs.dart';
 import 'package:kerwenli_yol/pages/parts/filter_bottom_sheet/filter_bottom_sheet.dart';
 import 'package:kerwenli_yol/pages/parts/message_bs/message_bs.dart';
@@ -46,7 +47,7 @@ Future<void> showBookmarkSettingBottomSheet(BuildContext context) async =>
     await showModalBottomSheet(
       backgroundColor: Colors.transparent,
       context: context,
-      builder: (context) => const CpMessageBs(),
+      builder: (context) => const BookMarkSettingBs(),
     );
 
 Future<void> showSelectImageBottomSheet(BuildContext context) async =>

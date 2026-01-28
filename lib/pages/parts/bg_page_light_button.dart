@@ -13,23 +13,28 @@ class BgPageLightButton extends ConsumerWidget {
     this.width,
     required this.onPressed,
     this.btnPressProvider,
+    this.icon,
   });
 
   final String text;
   final double? width;
   final void Function() onPressed;
   final AutoDisposeStateProvider<bool>? btnPressProvider;
+  final IconData? icon;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     bool buttonPress = false;
+    bool hasIcon = icon != null;
 
+    // ========== Colors ==============
     bool isLight = isLightTheme(context, ref);
     Color bgColor = isLight ? LightColors.bgPageLight : DarkColors.bgPageLight;
     Color textColor = isLight
         ? LightColors.textTitleLight
         : DarkColors.textTitleLight;
 
+    // ========== Text Styles ==============
     TextStyle textStyle = AppTextStyles.semiBold16.copyWith(color: textColor);
 
     if (btnPressProvider != null) {
@@ -47,7 +52,18 @@ class BgPageLightButton extends ConsumerWidget {
           ),
         ),
         onPressed: buttonPress ? null : onPressed,
-        child: buttonPress ? loadWidget : Text(text, style: textStyle),
+        child: buttonPress
+            ? loadWidget
+            : Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  hasIcon
+                      ? Icon(icon, color: textColor, size: 20)
+                      : const SizedBox.shrink(),
+                  SizedBox(width: hasIcon ? 10 : 0),
+                  Text(text, style: textStyle),
+                ],
+              ),
       ),
     );
   }
