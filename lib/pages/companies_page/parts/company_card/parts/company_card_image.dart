@@ -12,6 +12,7 @@ class CompanyCardImage extends StatelessWidget {
     this.bookmarkButtonHeight,
     this.bookmarkButtonIconSize,
     this.bookmarkButtonBorderRadius,
+    this.forBookMark,
   });
 
   final List<String> cardTopTypes;
@@ -21,10 +22,12 @@ class CompanyCardImage extends StatelessWidget {
       bookmarkButtonHeight,
       bookmarkButtonIconSize,
       bookmarkButtonBorderRadius;
+  final bool? forBookMark;
 
   @override
   Widget build(BuildContext context) {
     const double cardRadius = 10;
+    bool forBookmark = forBookMark != null && forBookMark!;
 
     return SizedBox(
       height: height ?? 156,
@@ -51,16 +54,19 @@ class CompanyCardImage extends StatelessWidget {
               child: Stack(
                 children: [
                   // Bookmark box (sağ üst)
-                  Positioned(
-                    right: 7,
-                    top: 7,
-                    child: CardBookmarkButton(
-                      width: bookmarkButtonWith ?? 32,
-                      height: bookmarkButtonHeight ?? 32,
-                      iconSize: bookmarkButtonIconSize ?? 18,
-                      borderRadius: bookmarkButtonBorderRadius ?? 8,
+                  if (forBookmark)
+                    const SizedBox.shrink()
+                  else
+                    Positioned(
+                      right: 7,
+                      top: 7,
+                      child: CardBookmarkButton(
+                        width: bookmarkButtonWith ?? 32,
+                        height: bookmarkButtonHeight ?? 32,
+                        iconSize: bookmarkButtonIconSize ?? 18,
+                        borderRadius: bookmarkButtonBorderRadius ?? 8,
+                      ),
                     ),
-                  ),
 
                   // Company Image
                   Center(

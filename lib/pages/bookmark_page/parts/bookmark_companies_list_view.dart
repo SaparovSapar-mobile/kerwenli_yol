@@ -8,7 +8,7 @@ class BookmarkCompaniesListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.separated(
       padding: EdgeInsets.symmetric(horizontal: 16),
-      itemBuilder: (context, index) => CompanyListCard(),
+      itemBuilder: (context, index) => CompanyListCard(forBookMark: true),
       separatorBuilder: (BuildContext context, int index) =>
           SizedBox(height: 10),
       itemCount: 12,
