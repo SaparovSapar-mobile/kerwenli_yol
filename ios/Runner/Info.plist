@@ -47,5 +47,10 @@
 		<true/>
 		<key>UIStatusBarHidden</key>
 		<false/>
+
+		 <!-- Start My Code -->
+		<key>NSFaceIDUsageDescription</key>
+		<string>Face ID is used to securely verify your identity and protect access to your account.</string>
+		 <!-- End My Code -->
 	</dict>
 </plist>
