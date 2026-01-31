@@ -21,9 +21,3 @@ final isFirstTimeProvider = createPrefProvider<bool>(
   prefKey: "is_first_time",
   defaultValue: true,
 );
-
-final passCodeProvider = createPrefProvider<int>(
-  prefs: (_) => prefs,
-  prefKey: "pass_code",
-  defaultValue: 0,
-);

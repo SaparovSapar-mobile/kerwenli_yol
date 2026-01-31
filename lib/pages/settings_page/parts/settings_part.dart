@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/pages/settings_page/parts/language_button.dart';
 import 'package:kerwenli_yol/pages/settings_page/parts/setting_part_card.dart';
+import 'package:kerwenli_yol/pages/settings_page/parts/setting_passcode_button.dart';
 import 'package:kerwenli_yol/pages/settings_page/parts/theme_button.dart';
 import 'package:kerwenli_yol/providers/pages/settings_page.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
@@ -35,12 +36,7 @@ class SettingsPart extends ConsumerWidget {
             icon: Icons.notifications,
             settingProvider: openNotificationProvider,
           ),
-          SettingPartCard(
-            index: 3,
-            text: 'Pin kod',
-            icon: Icons.lock,
-            settingProvider: openPinProvider,
-          ),
+          SettingPasscodeButton(index: 3),
         ],
       ),
     );

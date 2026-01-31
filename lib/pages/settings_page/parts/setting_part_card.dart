@@ -27,6 +27,7 @@ class SettingPartCard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // ========== Colors ============
     bool isLight = isLightTheme(context, ref);
     Color leadingBgColor = isLight
         ? LightColors.bgPageLight
@@ -39,6 +40,7 @@ class SettingPartCard extends ConsumerWidget {
         : DarkColors.textTitleDark;
     Color leadingIconColor = isLight ? LightColors.primary : DarkColors.primary;
 
+    // ========== Text Styles ============
     TextStyle titleStyle = AppTextStyles.medium12;
     TextStyle tralingStyle = AppTextStyles.regular12;
 

@@ -10,8 +10,8 @@ final openNotificationProvider = createPrefProvider<bool>(
   defaultValue: true,
 );
 
-final openPinProvider = createPrefProvider<bool>(
+final passCodeProvider = createPrefProvider<int>(
   prefs: (_) => prefs,
-  prefKey: "open_pin",
-  defaultValue: true,
+  prefKey: "pass_code",
+  defaultValue: 0,
 );
