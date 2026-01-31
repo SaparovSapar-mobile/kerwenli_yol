@@ -5,6 +5,7 @@ import 'package:kerwenli_yol/helpers/methods/pages/home_page.dart';
 import 'package:kerwenli_yol/pages/parts/back_leading_button.dart';
 import 'package:kerwenli_yol/pages/passcode_page/parts/pass_code_input.dart';
 import 'package:kerwenli_yol/pages/passcode_page/parts/pass_lock_button.dart';
+import 'package:kerwenli_yol/providers/parts/inputs.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 
@@ -20,26 +21,34 @@ class PasscodePage extends ConsumerWidget {
         ? LightColors.bgBlogLight
         : DarkColors.bgBlogDark;
 
-    return Scaffold(
-      backgroundColor: bgColor,
-      appBar: homePageAppBar(context),
-      body: Container(
-        margin: EdgeInsets.all(16),
-        padding: EdgeInsets.all(8),
-        decoration: BoxDecoration(
-          color: innerBgColor,
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            BackLeadingButton(text: 'Yza'),
-            SizedBox(height: 20),
-            PassLockButton(),
-            SizedBox(height: 10),
-            PassCodeInput(),
-          ],
+    return PopScope(
+      canPop: true,
+      onPopInvokedWithResult: (didPop, result) async {
+        if (didPop) {
+          ref.read(firstPassCodeProvider.notifier).state = '';
+        }
+      },
+      child: Scaffold(
+        backgroundColor: bgColor,
+        appBar: homePageAppBar(context),
+        body: Container(
+          margin: EdgeInsets.all(16),
+          padding: EdgeInsets.all(8),
+          decoration: BoxDecoration(
+            color: innerBgColor,
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              BackLeadingButton(text: 'Yza'),
+              SizedBox(height: 20),
+              PassLockButton(),
+              SizedBox(height: 10),
+              PassCodeInput(),
+            ],
+          ),
         ),
       ),
     );
