@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kerwenli_yol/helpers/functions/navigation.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
+import 'package:kerwenli_yol/pages/passcode_page/passcode_page.dart';
 import 'package:kerwenli_yol/providers/pages/settings_page.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
@@ -44,15 +46,12 @@ class SettingPasscodeButton extends ConsumerWidget {
         onTap: () {
           ref.read(selectedSettingPartIndexProvider.notifier).state = index;
 
-          // // ====== eger switch ulanmak gerek bolsa =======
-          // if (settingProvider != null) {
-          //   ref.read(settingProvider!.notifier).update(!openSetting);
-          // }
+          if (openPassCode) {
+            ref.read(passCodeProvider.notifier).update(0);
+            return;
+          }
 
-          // // ========== eger ontap ulanmak gerek bolsa =======
-          // if (onTap != null) {
-          //   onTap!();
-          // }
+          goToPage(context, PasscodePage(), AxisDirection.left);
         },
         dense: true,
         visualDensity: VisualDensity.compact,
@@ -76,8 +75,14 @@ class SettingPasscodeButton extends ConsumerWidget {
             inactiveThumbColor: activeLeadingBgColor,
             inactiveTrackColor: iconColor,
             onChanged: (v) {
-              // ref.read(settingProvider!.notifier).update(v);
               ref.read(selectedSettingPartIndexProvider.notifier).state = index;
+
+              if (openPassCode) {
+                ref.read(passCodeProvider.notifier).update(0);
+                return;
+              }
+
+              goToPage(context, PasscodePage(), AxisDirection.left);
             },
           ),
         ),
