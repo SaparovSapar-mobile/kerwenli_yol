@@ -9,6 +9,9 @@ var showPassProvider = StateProvider.autoDispose<bool>((ref) => false);
 
 var otpCodeProvider = StateProvider<String>((ref) => '');
 
+var passCodeCounterProvider = StateProvider.autoDispose<int>((ref) => 0);
+var firstPassCodeProvider = StateProvider<String>((ref) => '');
+
 // ====== Providers For Loading =============
 var sendOTPCodeBtnPressProvider = StateProvider.autoDispose<bool>(
   (ref) => false,

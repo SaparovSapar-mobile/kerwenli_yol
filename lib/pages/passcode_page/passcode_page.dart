@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/helpers/methods/pages/home_page.dart';
 import 'package:kerwenli_yol/pages/parts/back_leading_button.dart';
+import 'package:kerwenli_yol/pages/passcode_page/parts/pass_code_input.dart';
 import 'package:kerwenli_yol/pages/passcode_page/parts/pass_lock_button.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
@@ -36,6 +37,8 @@ class PasscodePage extends ConsumerWidget {
             BackLeadingButton(text: 'Yza'),
             SizedBox(height: 20),
             PassLockButton(),
+            SizedBox(height: 10),
+            PassCodeInput(),
           ],
         ),
       ),
