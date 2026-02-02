@@ -32,7 +32,7 @@ class HomeVipCompanyCard extends ConsumerWidget {
       margin: isFirst != null && isLast != null
           ? EdgeInsets.only(left: isFirst! ? 16 : 0, right: isLast! ? 16 : 0)
           : null,
-      padding: EdgeInsets.all(6),
+      padding: EdgeInsets.only(left: 6, top: 12, right: 6, bottom: 6),
       decoration: BoxDecoration(
         border: Border.all(color: borderColor),
         borderRadius: BorderRadius.circular(5),

@@ -33,7 +33,6 @@ class HomeLeaderCompanyCard extends ConsumerWidget {
           children: [
             Container(
               padding: EdgeInsets.symmetric(horizontal: 25, vertical: 13),
-
               decoration: BoxDecoration(
                 color: bgColor,
                 borderRadius: BorderRadius.circular(5),
