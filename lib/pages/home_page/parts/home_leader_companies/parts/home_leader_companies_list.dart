@@ -7,7 +7,7 @@ class HomeLeaderCompaniesList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 71,
+      height: 84,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) =>
