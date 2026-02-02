@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
-import 'package:kerwenli_yol/pages/company_page/parts/company_page_card.dart';
 import 'package:kerwenli_yol/pages/company_page/parts/company_page_part_tabbar.dart';
 import 'package:kerwenli_yol/pages/medias_page/parts/medias_grid_view.dart';
 import 'package:kerwenli_yol/pages/photos_page/parts/photos_grid_view.dart';
@@ -28,9 +27,6 @@ class CompanyPageMedias extends ConsumerWidget {
         child: NestedScrollView(
           headerSliverBuilder: (context, innerBoxIsScrolled) {
             return [
-              // ÜST KART (scroll’a dahil)
-              CompanyPageCard(),
-
               // ✅ TabBar’ı SliverAppBar ile pinle (yükseklik sorunu bitiyor)
               CompanyPagePartTabbar(
                 tabTexts: ['Gysga Sekiller', 'Wideolar', 'Fotoreportaz'],

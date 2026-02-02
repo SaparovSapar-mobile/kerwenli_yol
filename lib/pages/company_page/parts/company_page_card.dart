@@ -20,40 +20,39 @@ class CompanyPageCard extends ConsumerWidget {
         ? LightColors.bgBlogLight
         : DarkColors.bgBlogDark;
 
-    return SliverToBoxAdapter(
+    return Container(
+      padding: const EdgeInsets.all(10),
+      color: bgColor,
       child: Container(
-        padding: const EdgeInsets.all(10),
-        child: Container(
-          padding: const EdgeInsets.all(8),
-          decoration: BoxDecoration(
-            color: innerBgColor,
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: Column(
-            children: [
-              CompanyPageInfoCard(),
-              const SizedBox(height: 8.8),
-              Row(
-                children: [
-                  Expanded(
-                    child: Row(
-                      children: [
-                        CardBookmarkButton(
-                          width: 26,
-                          height: 26,
-                          iconSize: 16,
-                          bGColor: bgColor,
-                        ),
-                        const SizedBox(width: 4),
-                        CardVirtualButton(bGColor: bgColor),
-                      ],
-                    ),
+        padding: const EdgeInsets.all(8),
+        decoration: BoxDecoration(
+          color: innerBgColor,
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Column(
+          children: [
+            CompanyPageInfoCard(),
+            const SizedBox(height: 8.8),
+            Row(
+              children: [
+                Expanded(
+                  child: Row(
+                    children: [
+                      CardBookmarkButton(
+                        width: 26,
+                        height: 26,
+                        iconSize: 16,
+                        bGColor: bgColor,
+                      ),
+                      const SizedBox(width: 4),
+                      CardVirtualButton(bGColor: bgColor),
+                    ],
                   ),
-                  CompanySubscribeButton(),
-                ],
-              ),
-            ],
-          ),
+                ),
+                CompanySubscribeButton(),
+              ],
+            ),
+          ],
         ),
       ),
     );
