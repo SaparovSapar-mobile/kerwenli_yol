@@ -22,12 +22,13 @@ class CompanyPageTabbar extends ConsumerWidget {
     return TabBar(
       padding: EdgeInsets.symmetric(horizontal: 16, vertical: 6.5),
       indicatorSize: TabBarIndicatorSize.tab,
+      indicatorAnimation: TabIndicatorAnimation.elastic,
       dividerColor: Colors.transparent,
       indicator: BoxDecoration(
         color: subBgColor,
         borderRadius: BorderRadius.circular(8),
       ),
-      overlayColor: WidgetStatePropertyAll(subBgColor),
+      overlayColor: WidgetStatePropertyAll(Colors.transparent),
       labelStyle: labelStyle.copyWith(color: labelColor),
       unselectedLabelStyle: labelStyle.copyWith(color: unselectedLabelColor),
       tabs: [
