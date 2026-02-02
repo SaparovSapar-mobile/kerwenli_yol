@@ -16,11 +16,13 @@ class CompanyCard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // =========== Colors ==============
     bool isLight = isLightTheme(context, ref);
     Color borderColor = isLight
         ? LightColors.bgPageLight
         : DarkColors.bgPageDark;
 
+    // =========== Text Styles ==============
     TextStyle nameStyle = AppTextStyles.medium16;
 
     return Container(

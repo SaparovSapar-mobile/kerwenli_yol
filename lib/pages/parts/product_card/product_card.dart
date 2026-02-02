@@ -45,11 +45,10 @@ class ProductCard extends ConsumerWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // CompanyCardImage(cardTopTypes: [CardTopTextType.vip]),
                   HomeNewProductsCardImages(
                     product: product,
                     width: 157,
-                    height: 174,
+                    height: 157,
                     cttHeight: 27,
                     cttFontSize: 9,
                     cttTopPosition: -10,

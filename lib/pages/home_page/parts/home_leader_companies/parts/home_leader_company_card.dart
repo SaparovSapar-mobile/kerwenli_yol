@@ -46,7 +46,7 @@ class HomeLeaderCompanyCard extends ConsumerWidget {
             ),
             SizedBox(height: 2),
             Text(
-              'Täze aý Täze aý Täze aý Täze aý Täze aý Täze aý ',
+              'Täze aý',
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
               style: textStyle,
