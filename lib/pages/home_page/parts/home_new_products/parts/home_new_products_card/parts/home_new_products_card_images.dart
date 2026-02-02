@@ -60,6 +60,7 @@ class _HomeNewProductsCardImagesState extends State<HomeNewProductsCardImages> {
     const double cardRadius = 8;
     final images = widget.product.images;
     final len = images.length;
+    bool hasMoreImages = len > 1;
 
     /// Üst etiketler
     final List<String> cardToptypes = [];
@@ -71,8 +72,8 @@ class _HomeNewProductsCardImagesState extends State<HomeNewProductsCardImages> {
     bool forProdPage = widget.forProductPage != null && widget.forProductPage!;
 
     return SizedBox(
-      width: widget.width ?? 99,
-      height: widget.height ?? 110,
+      width: widget.width ?? 100,
+      height: widget.height ?? 100,
       child: Stack(
         clipBehavior: Clip.none,
         children: [
@@ -112,10 +113,10 @@ class _HomeNewProductsCardImagesState extends State<HomeNewProductsCardImages> {
                         );
                       },
                       options: CarouselOptions(
-                        height: 110,
+                        height: 100,
                         viewportFraction: 1,
-                        enableInfiniteScroll: len > 1,
-                        autoPlay: len > 1,
+                        enableInfiniteScroll: hasMoreImages,
+                        autoPlay: hasMoreImages,
                         autoPlayInterval: const Duration(seconds: 3),
                         autoPlayAnimationDuration: const Duration(
                           milliseconds: 800,
@@ -178,17 +179,20 @@ class _HomeNewProductsCardImagesState extends State<HomeNewProductsCardImages> {
                     ),
 
                     /// Image dots
-                    Positioned(
-                      right: 10,
-                      bottom: 10,
-                      child: BannerDots(
-                        lenght: len,
-                        page: _currentIndex,
-                        dotsSize: widget.dotsSize ?? 2.83,
-                        dotsActiveWidth: widget.dotsActiveWidth ?? 7.08,
-                        dotsActiveHeight: widget.dotsActiveHeight ?? 2.83,
-                      ),
-                    ),
+                    if (hasMoreImages)
+                      Positioned(
+                        right: 8,
+                        bottom: 8,
+                        child: BannerDots(
+                          lenght: len,
+                          page: _currentIndex,
+                          dotsSize: widget.dotsSize ?? 2.83,
+                          dotsActiveWidth: widget.dotsActiveWidth ?? 7.08,
+                          dotsActiveHeight: widget.dotsActiveHeight ?? 2.83,
+                        ),
+                      )
+                    else
+                      const SizedBox.shrink(),
 
                     // Zoom Images Button
                     if (forProdPage)
