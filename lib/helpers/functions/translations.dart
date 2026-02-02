@@ -41,3 +41,25 @@ String translateImage(
       return imageTm;
   }
 }
+
+String formatTwoLines10(String text) {
+  const int maxPerLine = 10;
+  const int maxTotal = maxPerLine * 2; // 20
+
+  // Güvenli trim
+  final t = text.trim();
+
+  if (t.length <= maxPerLine) {
+    return t; // Tek satır yeter
+  }
+
+  final first = t.substring(0, maxPerLine);
+
+  if (t.length <= maxTotal) {
+    final second = t.substring(maxPerLine);
+    return '$first\n$second';
+  }
+
+  final second = t.substring(maxPerLine, maxTotal);
+  return '$first\n$second…';
+}
