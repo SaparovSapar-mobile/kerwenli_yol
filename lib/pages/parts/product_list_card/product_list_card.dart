@@ -35,7 +35,7 @@ class ProductListCard extends ConsumerWidget {
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 10),
         height: productListCardHeight,
-        padding: EdgeInsets.all(10),
+        padding: EdgeInsets.only(left: 9, top: 18, right: 9, bottom: 9),
         decoration: BoxDecoration(
           border: Border.all(color: borderColor),
           borderRadius: BorderRadius.circular(6),
@@ -46,6 +46,9 @@ class ProductListCard extends ConsumerWidget {
               product: product,
               width: 100,
               height: 100,
+              cttHeight: 27,
+              cttFontSize: 9,
+              cttTopPosition: -10,
             ),
             SizedBox(width: 5),
             Expanded(

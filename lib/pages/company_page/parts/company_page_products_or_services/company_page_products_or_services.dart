@@ -41,9 +41,6 @@ class CompanyPageProductsOrServices extends ConsumerWidget {
             color: tabbarViewBgColor,
             child: const TabBarView(
               children: [
-                // ProductsListView(),
-                // ProductsListView(),
-                // ProductsListView(),
                 ProductsGridView(),
                 ProductsGridView(),
                 ProductsGridView(),
