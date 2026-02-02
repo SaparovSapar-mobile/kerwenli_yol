@@ -18,6 +18,8 @@ class ShareButton extends ConsumerWidget {
         : DarkColors.textTitleDark;
 
     return IconButton(
+      visualDensity: VisualDensity.compact,
+      padding: EdgeInsets.zero,
       onPressed: onPressed,
       icon: Icon(Icons.share, size: iconSize ?? 24, color: iconColor),
     );

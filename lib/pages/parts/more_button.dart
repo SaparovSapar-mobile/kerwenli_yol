@@ -18,6 +18,8 @@ class MoreButton extends ConsumerWidget {
         : DarkColors.textTitleDark;
 
     return IconButton(
+      visualDensity: VisualDensity.compact,
+      padding: EdgeInsets.zero,
       onPressed: onPressed,
       icon: Icon(Icons.more_vert, size: iconSize ?? 24, color: iconColor),
     );
