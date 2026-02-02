@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_media/parts/home_media_card/parts/play_media_button.dart';
 import 'package:kerwenli_yol/pages/parts/show_image.dart';
 import 'package:kerwenli_yol/pages/parts/video_duration.dart';
+import 'package:kerwenli_yol/pages/parts/view_count.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
 
 class WideoCard extends StatelessWidget {
@@ -28,8 +29,15 @@ class WideoCard extends StatelessWidget {
                 PlayMediaButton(),
                 Positioned(
                   left: 6,
+                  right: 6,
                   bottom: 6,
-                  child: VideoDuration(icon: Icons.play_circle, fontSize: 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      ViewCount(fontSize: 10),
+                      VideoDuration(icon: Icons.play_circle, fontSize: 10),
+                    ],
+                  ),
                 ),
               ],
             ),
