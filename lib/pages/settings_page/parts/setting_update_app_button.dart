@@ -13,6 +13,7 @@ class SettingUpdateAppButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // =========== Colors =============
     bool isLight = isLightTheme(context, ref);
     Color leadingBgColor = isLight
         ? LightColors.bgPageLight
@@ -25,6 +26,7 @@ class SettingUpdateAppButton extends ConsumerWidget {
         : DarkColors.textTitleDark;
     Color leadingIconColor = isLight ? LightColors.primary : DarkColors.primary;
 
+    // =========== Text Styles =============
     TextStyle titleStyle = AppTextStyles.medium12;
     TextStyle subTitleStyle = AppTextStyles.regular10;
     TextStyle tralingStyle = AppTextStyles.medium10;
@@ -44,7 +46,7 @@ class SettingUpdateAppButton extends ConsumerWidget {
         },
         dense: true,
         visualDensity: VisualDensity.compact,
-        contentPadding: const EdgeInsets.only(left: 5),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 10),
         leading: Container(
           padding: EdgeInsets.all(5),
           decoration: BoxDecoration(
