@@ -18,11 +18,13 @@ class HomeVipCompanyCard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // ======== Colors ============
     bool isLight = isLightTheme(context, ref);
     Color borderColor = isLight
         ? LightColors.bgPageLight
         : DarkColors.bgPageDark;
 
+    // ======== Text Styles ============
     TextStyle nameStyle = AppTextStyles.medium10;
 
     return Container(

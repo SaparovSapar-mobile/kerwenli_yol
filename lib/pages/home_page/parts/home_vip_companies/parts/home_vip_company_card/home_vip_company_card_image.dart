@@ -12,8 +12,8 @@ class HomeVipCompanyCardImage extends StatelessWidget {
     const double cardRadius = 8;
 
     return SizedBox(
-      width: 99,
-      height: 110,
+      width: 100,
+      height: 100,
       child: Stack(
         clipBehavior: Clip.none,
         children: [
