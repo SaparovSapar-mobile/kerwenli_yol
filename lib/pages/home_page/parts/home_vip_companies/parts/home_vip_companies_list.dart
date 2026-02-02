@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kerwenli_yol/enums/card_top_text_type.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/home_vip_company_card.dart';
 
 class HomeVipCompaniesList extends StatelessWidget {
@@ -10,8 +11,11 @@ class HomeVipCompaniesList extends StatelessWidget {
       height: 202,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) =>
-            HomeVipCompanyCard(isFirst: index == 0, isLast: index == 9),
+        itemBuilder: (context, index) => HomeVipCompanyCard(
+          isFirst: index == 0,
+          isLast: index == 9,
+          cardTopTypes: [CardTopTextType.vip],
+        ),
         separatorBuilder: (context, index) => SizedBox(width: 5),
         itemCount: 10,
       ),

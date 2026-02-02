@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:kerwenli_yol/enums/card_top_text_type.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/home_vip_company_card_image.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/parts/company_status.dart';
@@ -12,9 +11,15 @@ import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
 
 class HomeVipCompanyCard extends ConsumerWidget {
-  const HomeVipCompanyCard({super.key, this.isFirst, this.isLast});
+  const HomeVipCompanyCard({
+    super.key,
+    this.isFirst,
+    this.isLast,
+    required this.cardTopTypes,
+  });
 
   final bool? isFirst, isLast;
+  final List<String> cardTopTypes;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -41,7 +46,7 @@ class HomeVipCompanyCard extends ConsumerWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          HomeVipCompanyCardImage(cardTopTypes: [CardTopTextType.vip]),
+          HomeVipCompanyCardImage(cardTopTypes: cardTopTypes),
           SizedBox(height: 5),
           Text(
             'Türkmenistanda öndürilen şokaladlary alyn',
