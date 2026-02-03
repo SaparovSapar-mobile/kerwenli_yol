@@ -14,3 +14,5 @@ double photosCardHeight = 113;
 double wideoCardHeight = 151;
 
 double leaderCompanyCardHeight = 90;
+
+double newsListCardHeight = 103;
