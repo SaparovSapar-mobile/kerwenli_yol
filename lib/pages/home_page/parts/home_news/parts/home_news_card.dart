@@ -24,6 +24,7 @@ class HomeNewsCard extends ConsumerWidget {
       margin: isFirst != null && isLast != null
           ? EdgeInsets.only(left: isFirst! ? 16 : 0, right: isLast! ? 16 : 0)
           : null,
+      padding: EdgeInsets.only(left: 5, top: 13, bottom: 5, right: 5),
       decoration: BoxDecoration(
         border: Border.all(color: borderColor),
         borderRadius: BorderRadius.circular(4),
@@ -33,8 +34,11 @@ class HomeNewsCard extends ConsumerWidget {
         children: [
           CompanyCardImage(
             cardTopTypes: [CardTopTextType.news],
-            height: 56,
+            height: double.maxFinite,
             width: 87,
+            forBookMark: true,
+            cttSize: 6,
+            cttTopPosition: -8,
           ),
         ],
       ),

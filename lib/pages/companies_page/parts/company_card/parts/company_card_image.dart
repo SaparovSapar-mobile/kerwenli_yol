@@ -13,6 +13,8 @@ class CompanyCardImage extends StatelessWidget {
     this.bookmarkButtonIconSize,
     this.bookmarkButtonBorderRadius,
     this.forBookMark,
+    this.cttSize,
+    this.cttTopPosition,
   });
 
   final List<String> cardTopTypes;
@@ -21,7 +23,9 @@ class CompanyCardImage extends StatelessWidget {
       bookmarkButtonWith,
       bookmarkButtonHeight,
       bookmarkButtonIconSize,
-      bookmarkButtonBorderRadius;
+      bookmarkButtonBorderRadius,
+      cttSize,
+      cttTopPosition;
   final bool? forBookMark;
 
   @override
@@ -39,8 +43,8 @@ class CompanyCardImage extends StatelessWidget {
           CardTopTexts(
             types: cardTopTypes,
             height: 27,
-            fontSize: 9,
-            topPosition: -10,
+            fontSize: cttSize ?? 9,
+            topPosition: cttTopPosition ?? -10,
           ),
 
           // Main card
