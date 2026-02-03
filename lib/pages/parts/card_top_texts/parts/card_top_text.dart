@@ -18,6 +18,10 @@ class CardTopText extends StatelessWidget {
     Color cardColor = const Color(0xFFFBB725);
 
     switch (cardTopTextType) {
+      case CardTopTextType.news:
+        text = "Tazelik";
+        cardColor = const Color(0xFFFFC13C);
+        break;
       case CardTopTextType.vip:
         text = "VIP";
         cardColor = const Color(0xFFFBB725);

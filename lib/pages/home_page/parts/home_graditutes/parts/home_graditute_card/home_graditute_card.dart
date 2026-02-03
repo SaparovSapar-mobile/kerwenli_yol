@@ -15,6 +15,7 @@ class HomeGradituteCard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // =========== Colors ===========
     bool isLight = isLightTheme(context, ref);
     Color borderColor = isLight
         ? LightColors.bgPageLight
@@ -23,6 +24,7 @@ class HomeGradituteCard extends ConsumerWidget {
         ? LightColors.textDescriptionLight
         : DarkColors.textDescriptionDark;
 
+    // =========== Text Styles ===========
     TextStyle nameStyle = AppTextStyles.semiBold10;
     TextStyle descStyle = AppTextStyles.regular10.copyWith(color: textColor);
 
