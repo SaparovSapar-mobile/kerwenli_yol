@@ -21,38 +21,23 @@ class CompanyPagePartTabbar extends ConsumerWidget {
     Color overlayColor = isLight
         ? LightColors.bgBlogLight
         : DarkColors.bgBlogDark;
-    final tabbarBgColor = isLight
-        ? LightColors.bgBlogLight
-        : DarkColors.bgBlogDark;
 
     // ====== Text Styles =====
     TextStyle labelStyle = AppTextStyles.semiBold12;
 
-    return SliverAppBar(
-      pinned: true,
-      automaticallyImplyLeading: false,
-      backgroundColor: tabbarBgColor,
-      elevation: 0,
-      toolbarHeight: 0, // sadece
-      bottom: PreferredSize(
-        preferredSize: Size.fromHeight(48),
-        child: Padding(
-          padding: const EdgeInsets.only(bottom: 3),
-          child: TabBar(
-            labelPadding: EdgeInsets.all(10),
-            dividerColor: Colors.transparent,
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            indicatorColor: labelColor,
-            overlayColor: WidgetStatePropertyAll(overlayColor),
-            labelStyle: labelStyle.copyWith(color: labelColor),
-            unselectedLabelStyle: labelStyle.copyWith(
-              color: unselectedLabelColor,
-            ),
-            tabs: tabTexts
-                .map((e) => Text(e, textAlign: TextAlign.center))
-                .toList(),
-          ),
-        ),
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 3),
+      child: TabBar(
+        labelPadding: EdgeInsets.all(10),
+        dividerColor: Colors.transparent,
+        padding: EdgeInsets.symmetric(horizontal: 16),
+        indicatorColor: labelColor,
+        overlayColor: WidgetStatePropertyAll(overlayColor),
+        labelStyle: labelStyle.copyWith(color: labelColor),
+        unselectedLabelStyle: labelStyle.copyWith(color: unselectedLabelColor),
+        tabs: tabTexts
+            .map((e) => Text(e, textAlign: TextAlign.center))
+            .toList(),
       ),
     );
   }

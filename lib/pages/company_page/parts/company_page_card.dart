@@ -23,6 +23,7 @@ class CompanyPageCard extends ConsumerWidget {
     return SliverToBoxAdapter(
       child: Container(
         padding: const EdgeInsets.all(10),
+        color: bgColor,
         child: Container(
           padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(

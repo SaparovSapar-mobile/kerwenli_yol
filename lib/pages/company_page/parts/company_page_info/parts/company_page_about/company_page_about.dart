@@ -14,12 +14,14 @@ class CompanyPageAbout extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // ========== Colors ==========
     bool isLight = isLightTheme(context, ref);
     Color bgColor = isLight ? LightColors.bgPageLight : DarkColors.bgPageDark;
     Color innerBgColor = isLight
         ? LightColors.bgBlogLight
         : DarkColors.bgBlogDark;
 
+    // ========== Text Styles ==========
     TextStyle textStyle = AppTextStyles.semiBold12;
     TextStyle descStyle = AppTextStyles.regular12;
 
