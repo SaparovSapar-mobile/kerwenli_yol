@@ -15,6 +15,7 @@ class CompanyCardImage extends StatelessWidget {
     this.forBookMark,
     this.cttSize,
     this.cttTopPosition,
+    this.cardRad,
   });
 
   final List<String> cardTopTypes;
@@ -25,12 +26,13 @@ class CompanyCardImage extends StatelessWidget {
       bookmarkButtonIconSize,
       bookmarkButtonBorderRadius,
       cttSize,
-      cttTopPosition;
+      cttTopPosition,
+      cardRad;
   final bool? forBookMark;
 
   @override
   Widget build(BuildContext context) {
-    const double cardRadius = 10;
+    double cardRadius = cardRad ?? 10;
     bool forBookmark = forBookMark != null && forBookMark!;
 
     return SizedBox(
