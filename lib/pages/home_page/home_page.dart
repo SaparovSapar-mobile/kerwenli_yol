@@ -6,6 +6,7 @@ import 'package:kerwenli_yol/pages/home_page/parts/home_graditutes/home_graditut
 import 'package:kerwenli_yol/pages/home_page/parts/home_leader_companies/home_leader_companies.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_media/home_media.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_new_products/home_new_products.dart';
+import 'package:kerwenli_yol/pages/home_page/parts/home_news/home_news.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_page_top/home_page_top.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_partners/home_partners.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_second_banner.dart';
@@ -32,6 +33,7 @@ class HomePage extends StatelessWidget {
               HomeNewProducts(),
               HomeVirtuals(),
               HomeMedia(),
+              HomeNews(),
               HomeSecondBanner(),
               HomePartners(),
               HomeGraditutes(),
