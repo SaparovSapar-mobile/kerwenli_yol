@@ -18,9 +18,10 @@ class HomeLeaderCompanies extends StatelessWidget {
           onTap: () =>
               goToPage(context, LeaderCompaniesPage(), AxisDirection.left),
         ),
-        SizedBox(height: 5),
-        HomeLeaderCompaniesList(),
-        SizedBox(height: 10),
+        Padding(
+          padding: const EdgeInsets.only(top: 5, bottom: 10),
+          child: HomeLeaderCompaniesList(),
+        ),
         AppBarBottomLine(thickness: 10),
       ],
     );

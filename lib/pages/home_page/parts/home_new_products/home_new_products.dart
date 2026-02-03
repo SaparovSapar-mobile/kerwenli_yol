@@ -12,9 +12,10 @@ class HomeNewProducts extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         HomeMoreButton(text: 'Täze önümler', onTap: () {}),
-        SizedBox(height: 5),
-        HomeNewProductsList(),
-        SizedBox(height: 10),
+        Padding(
+          padding: const EdgeInsets.only(top: 5, bottom: 10),
+          child: HomeNewProductsList(),
+        ),
         AppBarBottomLine(thickness: 10),
       ],
     );

@@ -12,9 +12,10 @@ class HomeMedia extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         HomeMoreButton(text: 'Media', onTap: () {}),
-        SizedBox(height: 5),
-        HomeMediaList(),
-        SizedBox(height: 10),
+        Padding(
+          padding: const EdgeInsets.only(top: 5, bottom: 10),
+          child: HomeMediaList(),
+        ),
         AppBarBottomLine(thickness: 10),
       ],
     );

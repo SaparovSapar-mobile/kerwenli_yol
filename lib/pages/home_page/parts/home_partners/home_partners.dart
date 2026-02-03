@@ -12,9 +12,10 @@ class HomePartners extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         HomeMoreButton(text: 'Hyzmadaslarymyz', onTap: () {}),
-        SizedBox(height: 5),
-        HomePartnerList(),
-        SizedBox(height: 10),
+        Padding(
+          padding: const EdgeInsets.only(top: 5, bottom: 10),
+          child: HomePartnerList(),
+        ),
         AppBarBottomLine(thickness: 10),
       ],
     );

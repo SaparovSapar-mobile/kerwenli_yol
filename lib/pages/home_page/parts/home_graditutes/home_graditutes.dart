@@ -12,9 +12,10 @@ class HomeGraditutes extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         HomeMoreButton(text: 'Minnetdarlyklar', onTap: () {}),
-        SizedBox(height: 5),
-        HomeGradituteList(),
-        SizedBox(height: 10),
+        Padding(
+          padding: const EdgeInsets.only(top: 5, bottom: 10),
+          child: HomeGradituteList(),
+        ),
         AppBarBottomLine(thickness: 10),
       ],
     );

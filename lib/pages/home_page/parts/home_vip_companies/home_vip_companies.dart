@@ -17,9 +17,10 @@ class HomeVipCompanies extends StatelessWidget {
           text: 'VIP Karhanalar',
           onTap: () => goToPage(context, CompaniesPage(), AxisDirection.left),
         ),
-        SizedBox(height: 5),
-        HomeVipCompaniesList(),
-        SizedBox(height: 10),
+        Padding(
+          padding: const EdgeInsets.only(top: 5, bottom: 10),
+          child: HomeVipCompaniesList(),
+        ),
         AppBarBottomLine(thickness: 10),
       ],
     );

@@ -12,9 +12,10 @@ class HomeCategories extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         HomeMoreButton(text: 'Kategoriýalar', onTap: () {}),
-        SizedBox(height: 5),
-        HomeCategoriesList(),
-        SizedBox(height: 10),
+        Padding(
+          padding: const EdgeInsets.only(top: 5, bottom: 10),
+          child: HomeCategoriesList(),
+        ),
         AppBarBottomLine(thickness: 10),
       ],
     );

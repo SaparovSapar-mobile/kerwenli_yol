@@ -12,9 +12,10 @@ class HomeNews extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         HomeMoreButton(text: 'Tazelikler', onTap: () {}),
-        SizedBox(height: 5),
-        HomeNewsList(),
-        SizedBox(height: 10),
+        Padding(
+          padding: const EdgeInsets.only(top: 6, bottom: 10),
+          child: HomeNewsList(),
+        ),
         AppBarBottomLine(thickness: 10),
       ],
     );

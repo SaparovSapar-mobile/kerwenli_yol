@@ -12,9 +12,10 @@ class HomeVirtuals extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         HomeMoreButton(text: '360° gezelenç', onTap: () {}),
-        SizedBox(height: 5),
-        HomeVirtualsList(),
-        SizedBox(height: 10),
+        Padding(
+          padding: const EdgeInsets.only(top: 5, bottom: 10),
+          child: HomeVirtualsList(),
+        ),
         AppBarBottomLine(thickness: 10),
       ],
     );
