@@ -12,7 +12,7 @@ class HomeNewsList extends StatelessWidget {
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) =>
-            HomeNewsCard(isFirst: index == 0, isLast: index == 9),
+            HomeNewsCard(isFirst: index == 0, isLast: index == 9, width: 238),
         separatorBuilder: (context, index) => SizedBox(width: 5),
         itemCount: 10,
       ),

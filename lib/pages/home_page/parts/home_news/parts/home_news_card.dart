@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/enums/card_top_text_type.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
+import 'package:kerwenli_yol/helpers/methods/static_data.dart';
 import 'package:kerwenli_yol/pages/companies_page/parts/company_card/parts/company_card_image.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/parts/home_vip_company_card_categories.dart';
 import 'package:kerwenli_yol/pages/parts/show_date.dart';
@@ -11,9 +12,10 @@ import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
 
 class HomeNewsCard extends ConsumerWidget {
-  const HomeNewsCard({super.key, this.isFirst, this.isLast});
+  const HomeNewsCard({super.key, this.isFirst, this.isLast, this.width});
 
   final bool? isFirst, isLast;
+  final double? width;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -34,7 +36,8 @@ class HomeNewsCard extends ConsumerWidget {
     );
 
     return Container(
-      width: 238,
+      width: width,
+      height: newsListCardHeight,
       margin: isFirst != null && isLast != null
           ? EdgeInsets.only(left: isFirst! ? 16 : 0, right: isLast! ? 16 : 0)
           : null,
@@ -58,6 +61,7 @@ class HomeNewsCard extends ConsumerWidget {
           SizedBox(width: 5),
           Expanded(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   'Türkmenistanda öndürilen şokaladly süýji',

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kerwenli_yol/helpers/methods/pages/home_page.dart';
 import 'package:kerwenli_yol/pages/companies_page/parts/header_companies.dart';
+import 'package:kerwenli_yol/pages/news_page/parts/news_list_view.dart';
 
 class NewsPage extends StatelessWidget {
   const NewsPage({super.key});
@@ -13,18 +14,7 @@ class NewsPage extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           HeaderCompanies(text: 'Tazelikler'),
-          // CategoriesHeader(
-          //   categories: headerCategories,
-          //   childWidget: Consumer(
-          //     builder: (context, ref, _) {
-          //       bool isGridCompanies = ref.watch(isGridCompaniesProvider);
-          //       if (isGridCompanies) {
-          //         return CompaniesGridView();
-          //       }
-          //       return CompaniesListView();
-          //     },
-          //   ),
-          // ),
+          Expanded(child: NewsListView()),
         ],
       ),
     );
