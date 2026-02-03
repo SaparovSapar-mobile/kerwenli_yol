@@ -38,6 +38,9 @@ class SettingPartCard extends ConsumerWidget {
     Color iconColor = isLight
         ? LightColors.textTitleLight
         : DarkColors.textTitleDark;
+    Color inactiveTrackColor = isLight
+        ? LightColors.textTitleLight
+        : DarkColors.bgPageDark;
     Color leadingIconColor = isLight ? LightColors.primary : DarkColors.primary;
 
     // ========== Text Styles ============
@@ -91,7 +94,7 @@ class SettingPartCard extends ConsumerWidget {
                   activeColor: activeLeadingBgColor,
                   activeTrackColor: leadingIconColor,
                   inactiveThumbColor: activeLeadingBgColor,
-                  inactiveTrackColor: iconColor,
+                  inactiveTrackColor: inactiveTrackColor,
                   onChanged: (v) {
                     ref.read(settingProvider!.notifier).update(v);
                     ref.read(selectedSettingPartIndexProvider.notifier).state =

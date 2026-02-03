@@ -23,9 +23,9 @@ class SettingPasscodeButton extends ConsumerWidget {
     Color activeLeadingBgColor = isLight
         ? LightColors.bgBlogLight
         : DarkColors.bgBlogDark;
-    Color iconColor = isLight
+    Color inactiveTrackColor = isLight
         ? LightColors.textTitleLight
-        : DarkColors.textTitleDark;
+        : DarkColors.bgPageDark;
     Color leadingIconColor = isLight ? LightColors.primary : DarkColors.primary;
 
     // ========== Text Styles ============
@@ -73,7 +73,7 @@ class SettingPasscodeButton extends ConsumerWidget {
             activeColor: activeLeadingBgColor,
             activeTrackColor: leadingIconColor,
             inactiveThumbColor: activeLeadingBgColor,
-            inactiveTrackColor: iconColor,
+            inactiveTrackColor: inactiveTrackColor,
             onChanged: (v) {
               ref.read(selectedSettingPartIndexProvider.notifier).state = index;
 
