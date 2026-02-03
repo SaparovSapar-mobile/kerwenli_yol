@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kerwenli_yol/helpers/methods/pages/bottom_sheets.dart';
 import 'package:kerwenli_yol/helpers/methods/pages/home_page.dart';
 import 'package:kerwenli_yol/pages/company_page/parts/company_page_card.dart';
 import 'package:kerwenli_yol/pages/company_page/parts/company_page_info/company_page_info.dart';
@@ -20,7 +21,11 @@ class CompanyPage extends StatelessWidget {
         body: Column(
           children: [
             // ========= Fixed ===========
-            CompanyPageTop(text: 'VIP Karhanalar', showBottomLine: true),
+            CompanyPageTop(
+              text: 'VIP Karhanalar',
+              showBottomLine: true,
+              onPressed: () => showCompanyPageMessageBottomSheet(context),
+            ),
             CompanyPageTabbar(),
 
             // ========= Scroll ===========

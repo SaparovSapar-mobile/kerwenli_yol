@@ -16,7 +16,11 @@ class ProductPage extends StatelessWidget {
       appBar: homePageAppBar(context),
       body: Column(
         children: [
-          CompanyPageTop(text: 'Haryt ady', showBottomLine: false),
+          CompanyPageTop(
+            text: 'Haryt ady',
+            showBottomLine: false,
+            onPressed: () {},
+          ),
           ProductPageBody(product: product),
         ],
       ),
