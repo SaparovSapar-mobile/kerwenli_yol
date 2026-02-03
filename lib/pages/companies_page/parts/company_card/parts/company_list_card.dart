@@ -25,6 +25,9 @@ class CompanyListCard extends ConsumerWidget {
     Color borderColor = isLight
         ? LightColors.bgPageLight
         : DarkColors.bgPageDark;
+    Color bookmarkIconColor = isLight
+        ? LightColors.primary
+        : DarkColors.primary;
 
     // ====== Text Styles =======
     TextStyle nameStyle = AppTextStyles.medium16;
@@ -69,7 +72,11 @@ class CompanyListCard extends ConsumerWidget {
                     ),
                     SizedBox(width: 5),
                     if (forBookmark)
-                      CardBookmarkButton()
+                      CardBookmarkButton(
+                        bGColor: bookmarkIconColor.withValues(alpha: .2),
+                        icnColor: bookmarkIconColor,
+                        iconSize: 16,
+                      )
                     else
                       const SizedBox.shrink(),
                   ],

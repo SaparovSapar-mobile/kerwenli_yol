@@ -12,9 +12,10 @@ class CardBookmarkButton extends ConsumerWidget {
     this.height,
     this.iconSize,
     this.borderRadius,
+    this.icnColor,
   });
 
-  final Color? bGColor;
+  final Color? bGColor, icnColor;
   final double? width, height, iconSize, borderRadius;
 
   @override
@@ -25,9 +26,13 @@ class CardBookmarkButton extends ConsumerWidget {
     if (bGColor != null) {
       bgColor = bGColor!;
     }
+
     Color iconColor = isLight
         ? LightColors.textTitleLight
         : DarkColors.textTitleDark;
+    if (icnColor != null) {
+      iconColor = icnColor!;
+    }
 
     return Container(
       width: width ?? 21,
