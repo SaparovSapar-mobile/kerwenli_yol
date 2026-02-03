@@ -4,6 +4,8 @@ import 'package:kerwenli_yol/enums/card_top_text_type.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/pages/companies_page/parts/company_card/parts/company_card_image.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/parts/home_vip_company_card_categories.dart';
+import 'package:kerwenli_yol/pages/parts/show_date.dart';
+import 'package:kerwenli_yol/pages/parts/view_count.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
@@ -75,6 +77,11 @@ class HomeNewsCard extends ConsumerWidget {
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: descStyle,
+                ),
+                SizedBox(height: 2),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [ViewCount(fontSize: 8), ShowDate()],
                 ),
               ],
             ),

@@ -10,9 +10,11 @@ class ShowDate extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // ========= Colors =========
     bool isLight = isLightTheme(context, ref);
     Color bgColor = isLight ? LightColors.bgPageLight : DarkColors.bgPageDark;
 
+    // ========= Text Styles =========
     TextStyle textStyle = AppTextStyles.medium10.copyWith(
       fontSize: 8,
       fontStyle: FontStyle.italic,

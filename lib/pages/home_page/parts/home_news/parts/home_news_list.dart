@@ -7,7 +7,7 @@ class HomeNewsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 87,
+      height: 103,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) =>
