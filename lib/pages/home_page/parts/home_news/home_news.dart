@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:kerwenli_yol/helpers/functions/navigation.dart';
 import 'package:kerwenli_yol/helpers/methods/parts/app_bar_methods.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_news/parts/home_news_list.dart';
+import 'package:kerwenli_yol/pages/news_page/news_page.dart';
 import 'package:kerwenli_yol/pages/parts/home_more_button.dart';
 
 class HomeNews extends StatelessWidget {
@@ -11,7 +13,10 @@ class HomeNews extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        HomeMoreButton(text: 'Tazelikler', onTap: () {}),
+        HomeMoreButton(
+          text: 'Tazelikler',
+          onTap: () => goToPage(context, NewsPage(), AxisDirection.left),
+        ),
         Padding(
           padding: const EdgeInsets.only(top: 6, bottom: 10),
           child: HomeNewsList(),
