@@ -1,4 +1,4 @@
-package com.example.kerwenli_yol
+package tm.abb.tajirtrade
 
 import io.flutter.embedding.android.FlutterActivity
 
