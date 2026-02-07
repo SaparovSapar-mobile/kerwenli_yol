@@ -16,3 +16,5 @@ double wideoCardHeight = 151;
 double leaderCompanyCardHeight = 90;
 
 double newsListCardHeight = 103;
+
+double vipCompanyCardHeight = 202;
