@@ -3,11 +3,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/examples.dart';
 import 'package:kerwenli_yol/helpers/methods/pages/home_page.dart';
 import 'package:kerwenli_yol/models/company.dart';
-import 'package:kerwenli_yol/pages/companies_page/parts/companies_grid_view.dart';
 import 'package:kerwenli_yol/pages/companies_page/parts/companies_list_view.dart';
 import 'package:kerwenli_yol/pages/companies_page/parts/header_companies.dart';
 import 'package:kerwenli_yol/pages/parts/categories_header/categories_header.dart';
 import 'package:kerwenli_yol/pages/parts/sort_and_filter/sort_and_filter.dart';
+import 'package:kerwenli_yol/pages/vip_companies_page/parts/vip_companies_grid_view.dart';
 import 'package:kerwenli_yol/providers/parts/grid_or_list.dart';
 
 class VipCompaniesPage extends StatelessWidget {
@@ -31,9 +31,9 @@ class VipCompaniesPage extends StatelessWidget {
             categories: headerCategories,
             childWidget: Consumer(
               builder: (context, ref, _) {
-                bool isGridCompanies = ref.watch(isGridCompaniesProvider);
+                bool isGridCompanies = ref.watch(isGridVipCompaniesProvider);
                 if (isGridCompanies) {
-                  return CompaniesGridView();
+                  return VipCompaniesGridView(vipCompanies: vipCompanies);
                 }
                 return CompaniesListView();
               },
