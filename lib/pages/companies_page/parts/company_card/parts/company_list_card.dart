@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/enums/card_top_text_type.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
+import 'package:kerwenli_yol/helpers/functions/translations.dart';
 import 'package:kerwenli_yol/helpers/methods/static_data.dart';
 import 'package:kerwenli_yol/models/company.dart';
-import 'package:kerwenli_yol/pages/example_widgets/companies_page/parts/company_card/parts/exm_company_card_image.dart';
+import 'package:kerwenli_yol/pages/companies_page/parts/company_card/parts/company_card_image.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/parts/company_status.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/parts/home_vip_company_card_categories.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/parts/home_vip_company_rating.dart';
@@ -36,6 +37,14 @@ class CompanyListCard extends ConsumerWidget {
 
     bool forBookmark = forBookMark != null && forBookMark!;
 
+    // ====== Name ======
+    String name = translateText(
+      ref,
+      company.nameTm,
+      company.nameRu,
+      company.nameEn,
+    );
+
     return Container(
       height: companyListCardHeight,
       padding: EdgeInsets.only(left: 9, top: 18, right: 9, bottom: 9),
@@ -45,7 +54,7 @@ class CompanyListCard extends ConsumerWidget {
       ),
       child: Row(
         children: [
-          ExmCompanyCardImage(
+          CompanyCardImage(
             cardTopTypes: [CardTopTextType.vip],
             height: 100,
             width: 100,
@@ -54,6 +63,7 @@ class CompanyListCard extends ConsumerWidget {
             bookmarkButtonIconSize: 12,
             bookmarkButtonBorderRadius: 4.3,
             forBookMark: forBookmark,
+            company: company,
           ),
           SizedBox(width: 5),
           Expanded(
@@ -66,7 +76,7 @@ class CompanyListCard extends ConsumerWidget {
                   children: [
                     Expanded(
                       child: Text(
-                        'Türkmenistanda öndürilen şokaladlary alyn',
+                        name,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: nameStyle,
