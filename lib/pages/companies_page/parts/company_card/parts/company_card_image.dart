@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:kerwenli_yol/helpers/methods/image_and_video.dart';
+import 'package:kerwenli_yol/models/company.dart';
 import 'package:kerwenli_yol/pages/parts/card_bookmark_button.dart';
 import 'package:kerwenli_yol/pages/parts/card_top_texts/card_top_texts.dart';
 
@@ -16,6 +18,7 @@ class CompanyCardImage extends StatelessWidget {
     this.cttSize,
     this.cttTopPosition,
     this.cardRad,
+    required this.company,
   });
 
   final List<String> cardTopTypes;
@@ -29,6 +32,7 @@ class CompanyCardImage extends StatelessWidget {
       cttTopPosition,
       cardRad;
   final bool? forBookMark;
+  final CompanyModel company;
 
   @override
   Widget build(BuildContext context) {
@@ -74,14 +78,8 @@ class CompanyCardImage extends StatelessWidget {
                       ),
                     ),
 
-                  // Company Image
-                  Center(
-                    child: Icon(
-                      Icons.add_a_photo_outlined,
-                      size: 22,
-                      color: Color(0xFF9CB7FF),
-                    ),
-                  ),
+                  // ======= Card Image ========
+                  showCacheImageMethod(company.photo, 0, null),
                 ],
               ),
             ),

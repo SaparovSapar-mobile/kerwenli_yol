@@ -38,7 +38,10 @@ class CompanyCard extends ConsumerWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CompanyCardImage(cardTopTypes: [CardTopTextType.vip]),
+          CompanyCardImage(
+            cardTopTypes: [CardTopTextType.vip],
+            company: company,
+          ),
           SizedBox(height: 5),
           Text(
             'Türkmenistanda öndürilen şokaladlary alyn',

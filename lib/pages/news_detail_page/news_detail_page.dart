@@ -3,8 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/enums/card_top_text_type.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/helpers/methods/pages/home_page.dart';
-import 'package:kerwenli_yol/pages/companies_page/parts/company_card/parts/company_card_image.dart';
 import 'package:kerwenli_yol/pages/company_page/parts/company_page_top.dart';
+import 'package:kerwenli_yol/pages/example_widgets/companies_page/parts/company_card/parts/exm_company_card_image.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/parts/home_vip_company_card_categories.dart';
 import 'package:kerwenli_yol/pages/parts/show_date.dart';
 import 'package:kerwenli_yol/pages/parts/view_count.dart';
@@ -51,7 +51,7 @@ class NewsDetailPage extends ConsumerWidget {
                   ),
                   child: Column(
                     children: [
-                      CompanyCardImage(
+                      ExmCompanyCardImage(
                         cardTopTypes: [CardTopTextType.news],
                         height: 184,
                         width: double.maxFinite,

@@ -4,7 +4,7 @@ import 'package:kerwenli_yol/enums/card_top_text_type.dart';
 import 'package:kerwenli_yol/helpers/functions/navigation.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/helpers/methods/static_data.dart';
-import 'package:kerwenli_yol/pages/companies_page/parts/company_card/parts/company_card_image.dart';
+import 'package:kerwenli_yol/pages/example_widgets/companies_page/parts/company_card/parts/exm_company_card_image.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/parts/home_vip_company_card_categories.dart';
 import 'package:kerwenli_yol/pages/news_detail_page/news_detail_page.dart';
 import 'package:kerwenli_yol/pages/parts/show_date.dart';
@@ -53,7 +53,7 @@ class HomeNewsCard extends ConsumerWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            CompanyCardImage(
+            ExmCompanyCardImage(
               cardTopTypes: [CardTopTextType.news],
               height: double.maxFinite,
               width: 87,
