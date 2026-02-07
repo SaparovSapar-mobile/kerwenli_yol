@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/enums/card_top_text_type.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/helpers/methods/static_data.dart';
-import 'package:kerwenli_yol/models/company.dart';
 import 'package:kerwenli_yol/pages/example_widgets/companies_page/parts/company_card/parts/exm_company_card_image.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/parts/company_status.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/parts/home_vip_company_card_categories.dart';
@@ -14,11 +13,10 @@ import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
 
-class CompanyListCard extends ConsumerWidget {
-  const CompanyListCard({super.key, this.forBookMark, required this.company});
+class ExmCompanyListCard extends ConsumerWidget {
+  const ExmCompanyListCard({super.key, this.forBookMark});
 
   final bool? forBookMark;
-  final CompanyModel company;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

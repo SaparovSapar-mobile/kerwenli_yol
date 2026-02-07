@@ -11,7 +11,8 @@ class VipCompaniesListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.separated(
       padding: EdgeInsets.symmetric(horizontal: 16),
-      itemBuilder: (context, index) => CompanyListCard(),
+      itemBuilder: (context, index) =>
+          CompanyListCard(company: vipCompanies[index]),
       separatorBuilder: (BuildContext context, int index) =>
           SizedBox(height: 10),
       itemCount: vipCompanies.length,
