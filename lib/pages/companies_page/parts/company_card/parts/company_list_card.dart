@@ -70,28 +70,30 @@ class CompanyListCard extends ConsumerWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(
-                      child: Text(
-                        name,
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: nameStyle,
+                Expanded(
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        child: Text(
+                          name,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: nameStyle,
+                        ),
                       ),
-                    ),
-                    SizedBox(width: 5),
-                    if (forBookmark)
-                      CardBookmarkButton(
-                        bGColor: bookmarkIconColor.withValues(alpha: .2),
-                        icnColor: bookmarkIconColor,
-                        iconSize: 16,
-                      )
-                    else
-                      const SizedBox.shrink(),
-                  ],
+                      SizedBox(width: 5),
+                      if (forBookmark)
+                        CardBookmarkButton(
+                          bGColor: bookmarkIconColor.withValues(alpha: .2),
+                          icnColor: bookmarkIconColor,
+                          iconSize: 16,
+                        )
+                      else
+                        const SizedBox.shrink(),
+                    ],
+                  ),
                 ),
                 CompanyStatus(isOpen: false, fontSize: 9),
                 SizedBox(height: 2),
