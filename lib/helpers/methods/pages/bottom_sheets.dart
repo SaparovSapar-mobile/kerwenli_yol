@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/pages/parts/book_mark_setting_bs/book_mark_setting_bs.dart';
 import 'package:kerwenli_yol/pages/parts/cp_message_bs/cp_message_bs.dart';
 import 'package:kerwenli_yol/pages/parts/filter_bottom_sheet/filter_bottom_sheet.dart';
@@ -22,12 +23,14 @@ Future<void> showThemeBottomSheet(BuildContext context) async =>
       builder: (context) => const SelectTheme(),
     );
 
-Future<void> showSortBottomSheet(BuildContext context) async =>
-    await showModalBottomSheet(
-      backgroundColor: Colors.transparent,
-      context: context,
-      builder: (context) => const SortBottomSheet(),
-    );
+Future<void> showSortBottomSheet(
+  BuildContext context,
+  StateProvider<int> gridOrListProvider,
+) async => await showModalBottomSheet(
+  backgroundColor: Colors.transparent,
+  context: context,
+  builder: (context) => SortBottomSheet(gridOrListProvider: gridOrListProvider),
+);
 
 Future<void> showFilterBottomSheet(BuildContext context) async =>
     await showModalBottomSheet(

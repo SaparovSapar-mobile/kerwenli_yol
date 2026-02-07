@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final StateProvider<int> gridOrListsortProvider = StateProvider<int>(
+final StateProvider<int> gridOrListSortProvider = StateProvider<int>(
   (ref) => 0,
 );
 final StateProvider<bool> isGridCompaniesProvider = StateProvider<bool>(
