@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kerwenli_yol/pages/parts/shimmer_effects/home_vip_company_shimmer_card.dart';
+import 'package:kerwenli_yol/pages/parts/shimmer_effects/home_vip_companies_shimmer/home_vip_company_shimmer_card.dart';
 
 class HomeVipCompaniesShimmer extends StatelessWidget {
   const HomeVipCompaniesShimmer({super.key});
