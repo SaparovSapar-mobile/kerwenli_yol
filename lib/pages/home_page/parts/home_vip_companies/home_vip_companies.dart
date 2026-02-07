@@ -3,10 +3,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/navigation.dart';
 import 'package:kerwenli_yol/helpers/methods/parts/app_bar_methods.dart';
 import 'package:kerwenli_yol/models/company.dart';
-import 'package:kerwenli_yol/pages/companies_page/companies_page.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_companies_list.dart';
 import 'package:kerwenli_yol/pages/parts/home_more_button.dart';
 import 'package:kerwenli_yol/pages/parts/shimmer_effects/home_vip_companies_shimmer/home_vip_companies_shimmer.dart';
+import 'package:kerwenli_yol/pages/vip_companies_page/vip_companies_page.dart';
 import 'package:kerwenli_yol/providers/api/company.dart';
 
 class HomeVipCompanies extends ConsumerWidget {
@@ -29,8 +29,11 @@ class HomeVipCompanies extends ConsumerWidget {
           children: [
             HomeMoreButton(
               text: 'VIP Karhanalar',
-              onTap: () =>
-                  goToPage(context, CompaniesPage(), AxisDirection.left),
+              onTap: () => goToPage(
+                context,
+                VipCompaniesPage(vipCompanies: data),
+                AxisDirection.left,
+              ),
             ),
             Padding(
               padding: const EdgeInsets.only(bottom: 10),
