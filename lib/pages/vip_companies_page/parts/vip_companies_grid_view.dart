@@ -18,7 +18,8 @@ class VipCompaniesGridView extends StatelessWidget {
         mainAxisSpacing: 10,
         mainAxisExtent: companyCardHeight,
       ),
-      itemBuilder: (context, index) => CompanyCard(),
+      itemBuilder: (context, index) =>
+          CompanyCard(company: vipCompanies[index]),
       itemCount: vipCompanies.length,
     );
   }
