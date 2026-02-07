@@ -4,9 +4,14 @@ import 'package:kerwenli_yol/helpers/methods/pages/bottom_sheets.dart';
 import 'package:kerwenli_yol/pages/parts/sort_and_filter/parts/sort_or_filter_button.dart';
 
 class SortAndFilter extends StatelessWidget {
-  const SortAndFilter({super.key, required this.gridOrListProvider});
+  const SortAndFilter({
+    super.key,
+    required this.gridOrListProvider,
+    required this.isGridProvider,
+  });
 
   final StateProvider<int> gridOrListProvider;
+  final StateProvider<bool> isGridProvider;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +20,8 @@ class SortAndFilter extends StatelessWidget {
       children: [
         SortOrFilterButton(
           text: 'Tertiple',
-          onTap: () => showSortBottomSheet(context, gridOrListProvider),
+          onTap: () =>
+              showSortBottomSheet(context, gridOrListProvider, isGridProvider),
         ),
         SizedBox(width: 15),
         SortOrFilterButton(

@@ -9,9 +9,14 @@ import 'package:kerwenli_yol/providers/pages/companies_page.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
 
 class SortBottomSheet extends StatelessWidget {
-  const SortBottomSheet({super.key, required this.gridOrListProvider});
+  const SortBottomSheet({
+    super.key,
+    required this.gridOrListProvider,
+    required this.isGridProvider,
+  });
 
   final StateProvider<int> gridOrListProvider;
+  final StateProvider<bool> isGridProvider;
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +53,7 @@ class SortBottomSheet extends StatelessWidget {
           icon: Icons.align_horizontal_left,
         ),
         SizedBox(height: 16),
-        FilterButton(),
+        FilterButton(isGridProvider: isGridProvider),
       ],
     );
   }

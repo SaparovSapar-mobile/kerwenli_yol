@@ -20,7 +20,10 @@ class CompaniesPage extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           HeaderCompanies(text: 'VIP Karhanalar'),
-          SortAndFilter(gridOrListProvider: gridOrListSortProvider),
+          SortAndFilter(
+            gridOrListProvider: gridOrListSortProvider,
+            isGridProvider: isGridCompaniesProvider,
+          ),
           CategoriesHeader(
             categories: headerCategories,
             childWidget: Consumer(

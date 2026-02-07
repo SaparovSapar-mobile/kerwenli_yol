@@ -26,10 +26,14 @@ Future<void> showThemeBottomSheet(BuildContext context) async =>
 Future<void> showSortBottomSheet(
   BuildContext context,
   StateProvider<int> gridOrListProvider,
+  StateProvider<bool> isGridProvider,
 ) async => await showModalBottomSheet(
   backgroundColor: Colors.transparent,
   context: context,
-  builder: (context) => SortBottomSheet(gridOrListProvider: gridOrListProvider),
+  builder: (context) => SortBottomSheet(
+    gridOrListProvider: gridOrListProvider,
+    isGridProvider: isGridProvider,
+  ),
 );
 
 Future<void> showFilterBottomSheet(BuildContext context) async =>
