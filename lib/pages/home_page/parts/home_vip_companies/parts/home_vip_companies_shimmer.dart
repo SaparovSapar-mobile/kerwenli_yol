@@ -1,0 +1,21 @@
+import 'package:flutter/material.dart';
+import 'package:kerwenli_yol/pages/parts/shimmer_effects/home_vip_company_shimmer_card.dart';
+
+class HomeVipCompaniesShimmer extends StatelessWidget {
+  const HomeVipCompaniesShimmer({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 16),
+      child: ListView.separated(
+        shrinkWrap: true,
+        physics: NeverScrollableScrollPhysics(),
+        scrollDirection: Axis.horizontal,
+        itemBuilder: (context, index) => HomeVipCompanyShimmerCard(),
+        separatorBuilder: (_, _) => SizedBox(width: 5),
+        itemCount: 5,
+      ),
+    );
+  }
+}
