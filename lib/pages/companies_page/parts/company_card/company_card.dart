@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/enums/card_top_text_type.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
+import 'package:kerwenli_yol/helpers/functions/translations.dart';
 import 'package:kerwenli_yol/models/company.dart';
 import 'package:kerwenli_yol/pages/companies_page/parts/company_card/parts/company_card_image.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/parts/company_status.dart';
@@ -28,6 +29,14 @@ class CompanyCard extends ConsumerWidget {
     // =========== Text Styles ==============
     TextStyle nameStyle = AppTextStyles.medium16;
 
+    // ====== Name ======
+    String name = translateText(
+      ref,
+      company.nameTm,
+      company.nameRu,
+      company.nameEn,
+    );
+
     return Container(
       padding: EdgeInsets.only(left: 9, top: 18, right: 9, bottom: 9),
       decoration: BoxDecoration(
@@ -43,11 +52,13 @@ class CompanyCard extends ConsumerWidget {
             company: company,
           ),
           SizedBox(height: 5),
-          Text(
-            'Türkmenistanda öndürilen şokaladlary alyn',
-            maxLines: 2,
-            overflow: TextOverflow.ellipsis,
-            style: nameStyle,
+          Expanded(
+            child: Text(
+              name,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+              style: nameStyle,
+            ),
           ),
           CompanyStatus(isOpen: false, fontSize: 9),
           SizedBox(height: 2),
