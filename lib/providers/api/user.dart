@@ -7,9 +7,12 @@ import 'package:kerwenli_yol/models/update_password.dart';
 import 'package:kerwenli_yol/models/user.dart';
 import 'package:kerwenli_yol/services/api/user.dart';
 
-final userApiProvider = Provider<UserApiService>((ref) => UserApiService());
+final Provider<UserApiService> userApiProvider = Provider<UserApiService>(
+  (ref) => UserApiService(),
+);
 
-var registerUserProvider = FutureProvider.autoDispose
+final AutoDisposeFutureProviderFamily<ResultRegister, RegisterUserModel>
+registerUserProvider = FutureProvider.autoDispose
     .family<ResultRegister, RegisterUserModel>((ref, arg) async {
       ResultRegister result = ResultRegister.defaultResult();
 
@@ -21,7 +24,8 @@ var registerUserProvider = FutureProvider.autoDispose
       return result;
     });
 
-var sendOtpProvider = FutureProvider.autoDispose
+final AutoDisposeFutureProviderFamily<ResultRegister, SendOtpModel>
+sendOtpProvider = FutureProvider.autoDispose
     .family<ResultRegister, SendOtpModel>((ref, arg) async {
       ResultRegister result = ResultRegister.defaultResult();
 
@@ -33,7 +37,8 @@ var sendOtpProvider = FutureProvider.autoDispose
       return result;
     });
 
-var updatePasswordProvider = FutureProvider.autoDispose
+final AutoDisposeFutureProviderFamily<ResultRegister, UpdatePasswordModel>
+updatePasswordProvider = FutureProvider.autoDispose
     .family<ResultRegister, UpdatePasswordModel>((ref, arg) async {
       ResultRegister result = ResultRegister.defaultResult();
 
@@ -45,8 +50,8 @@ var updatePasswordProvider = FutureProvider.autoDispose
       return result;
     });
 
-var verifyEmailProvider = FutureProvider.autoDispose
-    .family<bool, CheckOtpModel>((ref, arg) async {
+final AutoDisposeFutureProviderFamily<bool, CheckOtpModel> verifyEmailProvider =
+    FutureProvider.autoDispose.family<bool, CheckOtpModel>((ref, arg) async {
       bool result = false;
 
       try {
@@ -57,7 +62,8 @@ var verifyEmailProvider = FutureProvider.autoDispose
       return result;
     });
 
-var loginUserProvider = FutureProvider.autoDispose
+final AutoDisposeFutureProviderFamily<UserModel, LoginUserModel>
+loginUserProvider = FutureProvider.autoDispose
     .family<UserModel, LoginUserModel>((ref, arg) async {
       UserModel result = UserModel.defaultValue();
 
