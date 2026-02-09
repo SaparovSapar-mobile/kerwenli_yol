@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:kerwenli_yol/providers/parts/internet.dart';
 
 class NoResult extends StatelessWidget {
   const NoResult({super.key, required this.ref, required this.apiProviders});
@@ -18,7 +17,6 @@ class NoResult extends StatelessWidget {
           Text('No Result'),
           ElevatedButton(
             onPressed: () {
-              ref.invalidate(checkInConnProvider);
               for (var element in apiProviders) {
                 ref.invalidate(element);
               }
