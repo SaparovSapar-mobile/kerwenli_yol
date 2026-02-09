@@ -12,11 +12,13 @@ AppBar homePageAppBar(BuildContext context) {
       preferredSize: Size.fromHeight(16),
       child: Consumer(
         builder: (context, ref, widget) {
+          // ========== Colors ===========
           bool isLight = isLightTheme(context, ref);
           Color bgColor = isLight
               ? LightColors.bgBlogLight
               : DarkColors.bgBlogDark;
 
+          // ========== Text Styles ===========
           TextStyle dateStyle = AppTextStyles.medium12;
 
           String appBarLogo = isLight
