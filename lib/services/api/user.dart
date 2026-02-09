@@ -20,10 +20,10 @@ class UserApiService {
         headers: {'Content-Type': 'application/json'},
         body: json.encode(reqData.toJson()),
       );
-      var jsonData = json.decode(response.body);
+      final dynamic jsonData = json.decode(response.body);
 
       if (response.statusCode == 200 && jsonData['status']) {
-        var data = jsonData['data'];
+        final dynamic data = jsonData['data'];
 
         if (data != null) {
           return UserModel.fromJson(data);
@@ -47,7 +47,7 @@ class UserApiService {
         headers: {'Content-Type': 'application/json'},
         body: json.encode(reqData.toJson()),
       );
-      var jsonData = json.decode(response.body);
+      final dynamic jsonData = json.decode(response.body);
 
       return response.statusCode == 200 && jsonData['status'];
     } catch (e) {
@@ -65,7 +65,7 @@ class UserApiService {
         headers: {'Content-Type': 'application/json'},
         body: json.encode(reqData.toJson()),
       );
-      var jsonData = json.decode(response.body);
+      final dynamic jsonData = json.decode(response.body);
 
       return ResultRegister(
         success: response.statusCode == 200 && jsonData['status'],
@@ -86,7 +86,7 @@ class UserApiService {
         headers: {'Content-Type': 'application/json'},
         body: json.encode(reqData.toJson()),
       );
-      var jsonData = json.decode(response.body);
+      final dynamic jsonData = json.decode(response.body);
 
       return ResultRegister(
         success: response.statusCode == 200 && jsonData['status'],
@@ -107,7 +107,7 @@ class UserApiService {
         headers: {'Content-Type': 'application/json'},
         body: json.encode(reqData.toJson()),
       );
-      var jsonData = json.decode(response.body);
+      final dynamic jsonData = json.decode(response.body);
 
       return ResultRegister(
         success: response.statusCode == 200 && jsonData['status'],

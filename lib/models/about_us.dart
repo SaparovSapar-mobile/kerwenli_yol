@@ -31,4 +31,17 @@ class AboutUsModel {
       photos: json['photos'] ?? [],
     );
   }
+
+  factory AboutUsModel.defaultValue() {
+    return AboutUsModel(
+      nameTm: '',
+      nameRu: '',
+      nameEn: '',
+      descriptionTm: '',
+      descriptionRu: '',
+      descriptionEn: '',
+      basePhoto: '',
+      photos: [],
+    );
+  }
 }

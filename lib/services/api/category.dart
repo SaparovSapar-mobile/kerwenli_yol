@@ -11,15 +11,15 @@ class CategoryApiService {
 
     try {
       http.Response response = await http.get(uri);
-      var jsonData = json.decode(response.body);
+      final dynamic jsonData = json.decode(response.body);
 
       if (response.statusCode == 200 && jsonData['status']) {
-        var datas = jsonData['data'];
+        final dynamic datas = jsonData['data'];
         if (datas == []) {
           return [];
         }
 
-        var data = datas as List;
+        final List<dynamic> data = datas as List;
         return data
             .map<CategoryModel>((propJson) => CategoryModel.fromJson(propJson))
             .toList();

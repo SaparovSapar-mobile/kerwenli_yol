@@ -1,0 +1,30 @@
+import 'dart:convert';
+
+import 'package:kerwenli_yol/helpers/methods/static_data.dart';
+import 'package:kerwenli_yol/models/about_us.dart';
+import 'package:http/http.dart' as http;
+
+class AboutUsApiService {
+  // fetch about us text -------------------------------------
+  Future<AboutUsModel> fetchAboutUs() async {
+    Uri uri = Uri.parse('$apiUrl/client/about');
+
+    try {
+      http.Response response = await http.get(uri);
+      final dynamic jsonData = json.decode(response.body);
+
+      if (response.statusCode == 200 && jsonData['status']) {
+        final dynamic data = jsonData['data'];
+
+        if (data != null) {
+          return AboutUsModel.fromJson(data);
+        }
+
+        return AboutUsModel.defaultValue();
+      }
+      return AboutUsModel.defaultValue();
+    } catch (e) {
+      rethrow;
+    }
+  }
+}
