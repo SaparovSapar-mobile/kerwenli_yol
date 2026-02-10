@@ -14,10 +14,11 @@ class AboutUsApiService {
       final dynamic jsonData = json.decode(response.body);
 
       if (response.statusCode == 200 && jsonData['status']) {
-        final dynamic data = jsonData['data'];
+        final dynamic datas = jsonData['data'];
 
-        if (data != null) {
-          return AboutUsModel.fromJson(data);
+        if (datas != null) {
+          final List<dynamic> data = datas as List;
+          return AboutUsModel.fromJson(data.first);
         }
 
         return AboutUsModel.defaultValue();
