@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/helpers/methods/pages/home_page.dart';
 import 'package:kerwenli_yol/pages/parts/back_leading_button.dart';
+import 'package:kerwenli_yol/pages/parts/internet_status_bar/internet_status_bar.dart';
 import 'package:kerwenli_yol/pages/passcode_page/parts/pass_code_input.dart';
 import 'package:kerwenli_yol/pages/passcode_page/parts/pass_lock_button.dart';
 import 'package:kerwenli_yol/providers/parts/inputs.dart';
@@ -31,24 +32,29 @@ class PasscodePage extends ConsumerWidget {
       child: Scaffold(
         backgroundColor: bgColor,
         appBar: homePageAppBar(context),
-        body: Container(
-          margin: EdgeInsets.all(16),
-          padding: EdgeInsets.all(8),
-          decoration: BoxDecoration(
-            color: innerBgColor,
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              BackLeadingButton(text: 'Yza'),
-              SizedBox(height: 20),
-              PassLockButton(),
-              SizedBox(height: 10),
-              PassCodeInput(),
-            ],
-          ),
+        body: Column(
+          children: [
+            InternetStatusBar(),
+            Container(
+              margin: EdgeInsets.all(16),
+              padding: EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: innerBgColor,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  BackLeadingButton(text: 'Yza'),
+                  SizedBox(height: 20),
+                  PassLockButton(),
+                  SizedBox(height: 10),
+                  PassCodeInput(),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );

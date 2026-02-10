@@ -7,6 +7,7 @@ import 'package:kerwenli_yol/pages/company_page/parts/company_page_medias/compan
 import 'package:kerwenli_yol/pages/company_page/parts/company_page_products_or_services/company_page_products_or_services.dart';
 import 'package:kerwenli_yol/pages/company_page/parts/company_page_tabbar.dart';
 import 'package:kerwenli_yol/pages/company_page/parts/company_page_top.dart';
+import 'package:kerwenli_yol/pages/parts/internet_status_bar/internet_status_bar.dart';
 
 class CompanyPage extends StatelessWidget {
   const CompanyPage({super.key});
@@ -20,6 +21,7 @@ class CompanyPage extends StatelessWidget {
         appBar: homePageAppBar(context),
         body: Column(
           children: [
+            InternetStatusBar(),
             // ========= Fixed ===========
             CompanyPageTop(
               text: 'VIP Karhanalar',

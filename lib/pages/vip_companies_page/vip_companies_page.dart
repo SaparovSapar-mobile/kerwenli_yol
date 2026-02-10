@@ -5,6 +5,7 @@ import 'package:kerwenli_yol/helpers/methods/pages/home_page.dart';
 import 'package:kerwenli_yol/models/company.dart';
 import 'package:kerwenli_yol/pages/companies_page/parts/header_companies.dart';
 import 'package:kerwenli_yol/pages/parts/categories_header/categories_header.dart';
+import 'package:kerwenli_yol/pages/parts/internet_status_bar/internet_status_bar.dart';
 import 'package:kerwenli_yol/pages/parts/sort_and_filter/sort_and_filter.dart';
 import 'package:kerwenli_yol/pages/vip_companies_page/parts/vip_companies_grid_view.dart';
 import 'package:kerwenli_yol/pages/vip_companies_page/parts/vip_companies_list_view.dart';
@@ -22,6 +23,7 @@ class VipCompaniesPage extends StatelessWidget {
       body: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
+          InternetStatusBar(),
           HeaderCompanies(text: 'VIP Karhanalar'),
           SortAndFilter(
             gridOrListProvider: gridOrListVipCompaniesSortProvider,

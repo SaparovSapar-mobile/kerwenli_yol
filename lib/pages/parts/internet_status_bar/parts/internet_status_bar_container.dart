@@ -36,6 +36,7 @@ class InternetStatusBarContainer extends ConsumerWidget {
     return Container(
       alignment: Alignment.center,
       width: double.infinity,
+      margin: EdgeInsets.only(bottom: 7.5),
       padding: const EdgeInsets.symmetric(vertical: 4),
       color: bgColor,
       child: Row(

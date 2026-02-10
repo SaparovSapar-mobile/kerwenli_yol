@@ -8,6 +8,8 @@ import 'package:kerwenli_yol/styles/text_styles.dart';
 
 AppBar homePageAppBar(BuildContext context) {
   return AppBar(
+    leading: null,
+    automaticallyImplyLeading: false,
     bottom: PreferredSize(
       preferredSize: Size.fromHeight(16),
       child: Consumer(

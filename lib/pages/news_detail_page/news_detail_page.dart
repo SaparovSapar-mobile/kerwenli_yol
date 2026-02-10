@@ -6,6 +6,7 @@ import 'package:kerwenli_yol/helpers/methods/pages/home_page.dart';
 import 'package:kerwenli_yol/pages/company_page/parts/company_page_top.dart';
 import 'package:kerwenli_yol/pages/example_widgets/companies_page/parts/company_card/parts/exm_company_card_image.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/parts/home_vip_company_card_categories.dart';
+import 'package:kerwenli_yol/pages/parts/internet_status_bar/internet_status_bar.dart';
 import 'package:kerwenli_yol/pages/parts/show_date.dart';
 import 'package:kerwenli_yol/pages/parts/view_count.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
@@ -33,6 +34,7 @@ class NewsDetailPage extends ConsumerWidget {
       appBar: homePageAppBar(context),
       body: Column(
         children: [
+          InternetStatusBar(),
           CompanyPageTop(
             text: 'Tazelik',
             onPressed: () {},
