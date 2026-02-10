@@ -79,7 +79,7 @@ class CompanyCardImage extends StatelessWidget {
                     ),
 
                   // ======= Card Image ========
-                  showCacheImageMethod(company.photo, 0, null),
+                  showImageMethod(company.photo, 0, null),
                 ],
               ),
             ),

@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:kerwenli_yol/helpers/methods/static_data.dart';
 
-Widget showCacheImageMethod(String image, double borderRadius, BoxFit? boxFit) {
+Widget showImageMethod(String image, double borderRadius, BoxFit? boxFit) {
   String imageUrl = '$pathUrl/$image';
 
   if (image.isNotEmpty) {

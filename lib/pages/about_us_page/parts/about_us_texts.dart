@@ -4,6 +4,7 @@ import 'package:kerwenli_yol/helpers/functions/translations.dart';
 import 'package:kerwenli_yol/helpers/methods/image_and_video.dart';
 import 'package:kerwenli_yol/helpers/methods/static_methods.dart';
 import 'package:kerwenli_yol/models/about_us.dart';
+import 'package:kerwenli_yol/pages/about_us_page/parts/about_us_photos.dart';
 import 'package:kerwenli_yol/providers/api/about_us.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
 
@@ -47,7 +48,7 @@ class AboutUsTexts extends ConsumerWidget {
                   SizedBox(
                     width: 50,
                     height: 50,
-                    child: showCacheImageMethod(data.basePhoto, 10.0, null),
+                    child: showImageMethod(data.basePhoto, 10.0, null),
                   ),
                   SizedBox(width: 5),
                   Text(name, style: nameStyle),
@@ -55,6 +56,8 @@ class AboutUsTexts extends ConsumerWidget {
               ),
               SizedBox(height: 5),
               Text(desc, style: descStyle),
+              SizedBox(height: 10),
+              AboutUsPhotos(photos: data.photos),
             ],
           ),
         );
