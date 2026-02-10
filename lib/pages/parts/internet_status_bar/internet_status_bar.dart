@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kerwenli_yol/pages/parts/internet_status_bar/parts/internet_status_bar_container.dart';
 import 'package:kerwenli_yol/providers/parts/internet.dart';
 
 class InternetStatusBar extends ConsumerStatefulWidget {
@@ -53,39 +54,19 @@ class _InternetStatusBarState extends ConsumerState<InternetStatusBar> {
   Widget build(BuildContext context) {
     final isOnline = ref.watch(isOnlineProvider);
 
-    // ❌ İnternet yoksa (sürekli)
     if (!isOnline) {
-      return Container(
-        width: double.infinity,
-        padding: const EdgeInsets.symmetric(vertical: 6),
-        color: Colors.red.withValues(alpha: 0.92),
-        child: const Text(
-          'İnternet bağlantısı yok',
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 12,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
+      return InternetStatusBarContainer(
+        isOnline: false,
+        icon: Icons.wifi_off,
+        text: 'Internet nasazlygy',
       );
     }
 
-    // ✅ İnternet geri geldiyse (2 saniye)
     if (_showBackOnline) {
-      return Container(
-        width: double.infinity,
-        padding: const EdgeInsets.symmetric(vertical: 6),
-        color: Colors.green.withValues(alpha: 0.92),
-        child: const Text(
-          'İnternet bağlantısı geri geldi',
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 12,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
+      return InternetStatusBarContainer(
+        isOnline: true,
+        icon: Icons.wifi,
+        text: 'Internet baglandy',
       );
     }
 
