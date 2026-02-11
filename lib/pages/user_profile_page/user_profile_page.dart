@@ -25,7 +25,7 @@ class UserProfilePage extends ConsumerWidget {
       backgroundColor: bgColor,
       appBar: homePageAppBar(context),
       body: Padding(
-        padding: EdgeInsetsGeometry.all(16),
+        padding: EdgeInsetsGeometry.all(10),
         child: Column(
           children: [
             UserProfile(user: user, forUserPage: true),
