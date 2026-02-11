@@ -6,8 +6,8 @@ import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
 
-class UserProfileInfo extends ConsumerWidget {
-  const UserProfileInfo({super.key});
+class UserProfileInfoMessages extends ConsumerWidget {
+  const UserProfileInfoMessages({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -29,10 +29,9 @@ class UserProfileInfo extends ConsumerWidget {
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              'Info',
+              'Sesli gelen hatlar',
               style: titleStyle,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
@@ -41,7 +40,7 @@ class UserProfileInfo extends ConsumerWidget {
             Flexible(
               child: GridView(
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3,
+                  crossAxisCount: 2,
                   crossAxisSpacing: 3,
                   mainAxisSpacing: 3,
                   mainAxisExtent: 88,
@@ -49,17 +48,12 @@ class UserProfileInfo extends ConsumerWidget {
                 children: [
                   UserProfileInfoCard(
                     icon: Icons.corporate_fare,
-                    text: 'Menin karhanalarym',
+                    text: 'Bildirisler',
                     countText: '3',
                   ),
                   UserProfileInfoCard(
                     icon: Icons.group,
-                    text: 'Doslarym',
-                    countText: '150 K',
-                  ),
-                  UserProfileInfoCard(
-                    icon: Icons.bookmark,
-                    text: 'Halanlarym',
+                    text: 'Tazelikler',
                     countText: '150 K',
                   ),
                 ],

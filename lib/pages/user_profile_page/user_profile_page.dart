@@ -5,6 +5,7 @@ import 'package:kerwenli_yol/helpers/methods/pages/home_page.dart';
 import 'package:kerwenli_yol/models/user.dart';
 import 'package:kerwenli_yol/pages/user_profile_page/parts/user_profile.dart';
 import 'package:kerwenli_yol/pages/user_profile_page/parts/user_profile_info.dart';
+import 'package:kerwenli_yol/pages/user_profile_page/parts/user_profile_info_messages.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 
@@ -29,6 +30,8 @@ class UserProfilePage extends ConsumerWidget {
             UserProfile(user: user, forUserPage: true),
             SizedBox(height: 5),
             UserProfileInfo(),
+            SizedBox(height: 5),
+            UserProfileInfoMessages(),
           ],
         ),
       ),
