@@ -13,17 +13,19 @@ class BackLeadingButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // ======= Colors ===========
     bool isLight = isLightTheme(context, ref);
     Color iconColor = isLight
         ? LightColors.textTitleLight
         : DarkColors.textTitleDark;
 
+    // ======= Text Styles ===========
     TextStyle textStyle = AppTextStyles.semiBold16;
 
     bool hasText = text != null;
 
     return IconButton(
-      padding: EdgeInsets.zero,
+      padding: EdgeInsets.only(left: 16),
       constraints: const BoxConstraints(),
       visualDensity: VisualDensity.compact,
       onPressed: onPressed ?? () => Navigator.pop(context),

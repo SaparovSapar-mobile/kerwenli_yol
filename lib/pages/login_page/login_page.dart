@@ -34,6 +34,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    // ======= Colors ========
     bool isLight = isLightTheme(context, ref);
     Color bgColor = isLight ? LightColors.bgBlogLight : DarkColors.bgBlogDark;
     Color formBgColor = isLight
