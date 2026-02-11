@@ -23,6 +23,7 @@ class SettingsPage extends ConsumerWidget {
       child: ListView(
         children: [
           UserProfilePart(),
+          SizedBox(height: 10),
           SettingsPart(),
           SizedBox(height: 10),
           AboutPart(),
