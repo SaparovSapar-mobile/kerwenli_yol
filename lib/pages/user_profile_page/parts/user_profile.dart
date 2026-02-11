@@ -55,7 +55,7 @@ class UserProfile extends ConsumerWidget {
             visualDensity: VisualDensity.compact,
             title: Text('Menin sahypam', style: titleStyle),
             trailing: forUserPage
-                ? null
+                ? Icon(Icons.border_color_outlined, size: 16, color: iconColor)
                 : Icon(Icons.arrow_forward_ios, size: 16, color: iconColor),
           ),
           SizedBox(height: 5),
