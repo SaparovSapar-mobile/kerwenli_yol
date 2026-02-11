@@ -18,3 +18,5 @@ double leaderCompanyCardHeight = 90;
 double newsListCardHeight = 103;
 
 double vipCompanyCardHeight = 202;
+
+double userProfileInfoCardHeight = 90;
