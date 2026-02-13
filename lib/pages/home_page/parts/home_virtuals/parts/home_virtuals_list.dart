@@ -1,23 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:kerwenli_yol/enums/card_top_text_type.dart';
+import 'package:kerwenli_yol/helpers/methods/static_data.dart';
+import 'package:kerwenli_yol/models/company.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/home_vip_company_card.dart';
 
 class HomeVirtualsList extends StatelessWidget {
-  const HomeVirtualsList({super.key});
+  const HomeVirtualsList({super.key, required this.vipCompanies});
+
+  final List<CompanyModel> vipCompanies;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 202,
+      height: vipCompanyCardHeight,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) => HomeVipCompanyCard(
           isFirst: index == 0,
           isLast: index == 9,
-          cardTopTypes: [CardTopTextType.vip, CardTopTextType.virtual],
+          cardTopTypes: [CardTopTextType.virtual, CardTopTextType.export],
         ),
         separatorBuilder: (context, index) => SizedBox(width: 5),
-        itemCount: 10,
+        itemCount: vipCompanies.length,
       ),
     );
   }
