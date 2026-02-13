@@ -17,3 +17,16 @@ final FutureProvider<List<CompanyModel>> fetchVipCompaniesProvider =
 
       return datas;
     });
+
+final FutureProvider<List<CompanyModel>> fetchTravelsProvider =
+    FutureProvider<List<CompanyModel>>((ref) async {
+      List<CompanyModel> datas = [];
+
+      try {
+        datas = await ref.read(companyApiProvider).fetchTravels();
+      } catch (e) {
+        rethrow;
+      }
+
+      return datas;
+    });
