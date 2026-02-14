@@ -8,24 +8,26 @@ class HomeVipCompaniesShimmer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        HomeMoreButtonShimmer(),
-        SizedBox(height: 10),
-        Container(
-          height: vipCompanyCardHeight,
-          padding: const EdgeInsets.only(left: 16),
-          child: ListView.separated(
-            shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
-            scrollDirection: Axis.horizontal,
-            itemBuilder: (context, index) => HomeVipCompanyShimmerCard(),
-            separatorBuilder: (_, _) => SizedBox(width: 5),
-            itemCount: 5,
+    return Padding(
+      padding: const EdgeInsets.only(left: 16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          HomeMoreButtonShimmer(),
+          SizedBox(height: 10),
+          SizedBox(
+            height: vipCompanyCardHeight,
+            child: ListView.separated(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context, index) => HomeVipCompanyShimmerCard(),
+              separatorBuilder: (_, _) => SizedBox(width: 5),
+              itemCount: 5,
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
