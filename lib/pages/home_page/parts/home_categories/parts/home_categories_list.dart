@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kerwenli_yol/helpers/methods/static_data.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_categories/parts/home_category_card.dart';
 
 class HomeCategoriesList extends StatelessWidget {
@@ -7,7 +8,7 @@ class HomeCategoriesList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 48,
+      height: homeCategoriesCardHeight,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) =>

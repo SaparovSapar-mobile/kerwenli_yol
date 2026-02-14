@@ -20,3 +20,5 @@ double newsListCardHeight = 103;
 double vipCompanyCardHeight = 202;
 
 double userProfileInfoCardHeight = 90;
+
+double homeCategoriesCardHeight = 48;
