@@ -14,8 +14,11 @@ class HomeLeaderCompaniesList extends StatelessWidget {
       height: homeBestCompaniesCardHeight,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) =>
-            HomeLeaderCompanyCard(isFirst: index == 0, isLast: index == 9),
+        itemBuilder: (context, index) => HomeLeaderCompanyCard(
+          isFirst: index == 0,
+          isLast: index == 9,
+          company: companies[index],
+        ),
         separatorBuilder: (context, index) => SizedBox(width: 5),
         itemCount: companies.length,
       ),

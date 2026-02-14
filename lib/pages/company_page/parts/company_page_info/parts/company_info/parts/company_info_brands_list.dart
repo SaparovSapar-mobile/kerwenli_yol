@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kerwenli_yol/models/company.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_leader_companies/parts/home_leader_company_card.dart';
 
 class CompanyInfoBrandsList extends StatelessWidget {
@@ -10,7 +11,16 @@ class CompanyInfoBrandsList extends StatelessWidget {
       height: 71,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) => HomeLeaderCompanyCard(),
+        itemBuilder: (context, index) => HomeLeaderCompanyCard(
+          company: CompanyModel(
+            uuid: '',
+            individualUuid: '',
+            photo: '',
+            nameTm: '',
+            nameRu: '',
+            nameEn: '',
+          ),
+        ),
         separatorBuilder: (context, index) => SizedBox(width: 5),
         itemCount: 10,
       ),
