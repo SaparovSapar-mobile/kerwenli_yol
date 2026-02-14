@@ -14,8 +14,11 @@ class HomeCategoriesList extends StatelessWidget {
       height: homeCategoriesCardHeight,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) =>
-            HomeCategoryCard(isFirst: index == 0, isLast: index == 9),
+        itemBuilder: (context, index) => HomeCategoryCard(
+          isFirst: index == 0,
+          isLast: index == 9,
+          category: categories[index],
+        ),
         separatorBuilder: (context, index) => SizedBox(width: 5),
         itemCount: categories.length,
       ),

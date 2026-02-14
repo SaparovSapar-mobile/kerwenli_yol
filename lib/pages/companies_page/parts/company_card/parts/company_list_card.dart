@@ -38,7 +38,7 @@ class CompanyListCard extends ConsumerWidget {
     bool forBookmark = forBookMark != null && forBookMark!;
 
     // ====== Name ======
-    String name = translateText(
+    final String name = translateText(
       ref,
       company.nameTm,
       company.nameRu,

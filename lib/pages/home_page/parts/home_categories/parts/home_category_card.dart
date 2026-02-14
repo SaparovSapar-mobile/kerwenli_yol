@@ -3,16 +3,23 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/navigation.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/helpers/functions/translations.dart';
+import 'package:kerwenli_yol/helpers/methods/image_and_video.dart';
+import 'package:kerwenli_yol/models/category.dart';
 import 'package:kerwenli_yol/pages/companies_page/companies_page.dart';
-import 'package:kerwenli_yol/pages/parts/show_image.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
 
 class HomeCategoryCard extends ConsumerWidget {
-  const HomeCategoryCard({super.key, this.isFirst, this.isLast});
+  const HomeCategoryCard({
+    super.key,
+    this.isFirst,
+    this.isLast,
+    required this.category,
+  });
 
   final bool? isFirst, isLast;
+  final CategoryModel category;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -23,6 +30,20 @@ class HomeCategoryCard extends ConsumerWidget {
 
     // =========== Text Styles ===============
     TextStyle textStyle = AppTextStyles.medium12;
+
+    final String name = translateText(
+      ref,
+      category.nameTm,
+      category.nameRu,
+      category.nameEn,
+    );
+
+    final String image = translateText(
+      ref,
+      category.imageTm,
+      category.imageRu,
+      category.imageEn,
+    );
 
     return GestureDetector(
       onTap: () => goToPage(context, CompaniesPage(), AxisDirection.left),
@@ -45,11 +66,11 @@ class HomeCategoryCard extends ConsumerWidget {
                 color: inBgColor,
                 borderRadius: BorderRadius.circular(5),
               ),
-              child: ShowImage(image: 'assets/examples/category_icon.png'),
+              child: showImageMethod(image, 5, null),
             ),
             SizedBox(width: 5),
             Text(
-              formatTwoLines10('Лихорадка и инфекция'),
+              formatTwoLines10(name),
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
               style: textStyle,

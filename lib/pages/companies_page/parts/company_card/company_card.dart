@@ -30,7 +30,7 @@ class CompanyCard extends ConsumerWidget {
     TextStyle nameStyle = AppTextStyles.medium16;
 
     // ====== Name ======
-    String name = translateText(
+    final String name = translateText(
       ref,
       company.nameTm,
       company.nameRu,

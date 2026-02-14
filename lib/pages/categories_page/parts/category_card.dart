@@ -36,7 +36,7 @@ class CategoryCard extends ConsumerWidget {
     bool isActive = selectedCategory == categoryId;
 
     // ====== Name ======
-    String name = translateText(
+    final String name = translateText(
       ref,
       category.nameTm,
       category.nameRu,
@@ -44,7 +44,7 @@ class CategoryCard extends ConsumerWidget {
     );
 
     // ====== Image ======
-    String image = translateText(
+    final String image = translateText(
       ref,
       category.imageTm,
       category.imageRu,
