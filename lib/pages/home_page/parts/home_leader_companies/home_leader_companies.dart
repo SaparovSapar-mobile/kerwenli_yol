@@ -34,7 +34,7 @@ class HomeLeaderCompanies extends ConsumerWidget {
             ),
             Padding(
               padding: const EdgeInsets.only(top: 5, bottom: 10),
-              child: HomeLeaderCompaniesList(),
+              child: HomeLeaderCompaniesList(companies: data),
             ),
             AppBarBottomLine(thickness: 10),
           ],
