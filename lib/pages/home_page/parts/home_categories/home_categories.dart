@@ -28,7 +28,7 @@ class HomeCategories extends ConsumerWidget {
             HomeMoreButton(text: 'Kategoriýalar', onTap: () {}),
             Padding(
               padding: const EdgeInsets.only(bottom: 10),
-              child: HomeCategoriesList(),
+              child: HomeCategoriesList(categories: data),
             ),
             AppBarBottomLine(thickness: 10),
           ],
