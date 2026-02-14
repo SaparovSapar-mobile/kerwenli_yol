@@ -30,3 +30,16 @@ final FutureProvider<List<CompanyModel>> fetchTravelsProvider =
 
       return datas;
     });
+
+final FutureProvider<List<CompanyModel>> fetchBestCompaniesProvider =
+    FutureProvider<List<CompanyModel>>((ref) async {
+      List<CompanyModel> datas = [];
+
+      try {
+        datas = await ref.read(companyApiProvider).fetchBestCompanies();
+      } catch (e) {
+        rethrow;
+      }
+
+      return datas;
+    });
