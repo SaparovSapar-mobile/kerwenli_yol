@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/methods/pages/bottom_sheets.dart';
 import 'package:kerwenli_yol/helpers/methods/pages/home_page.dart';
-import 'package:kerwenli_yol/helpers/methods/static_methods.dart';
 import 'package:kerwenli_yol/models/company.dart';
 import 'package:kerwenli_yol/pages/company_page/parts/company_page_card.dart';
 import 'package:kerwenli_yol/pages/company_page/parts/company_page_info/company_page_info.dart';
@@ -11,6 +10,7 @@ import 'package:kerwenli_yol/pages/company_page/parts/company_page_products_or_s
 import 'package:kerwenli_yol/pages/company_page/parts/company_page_tabbar.dart';
 import 'package:kerwenli_yol/pages/company_page/parts/company_page_top.dart';
 import 'package:kerwenli_yol/pages/parts/internet_status_bar/internet_status_bar.dart';
+import 'package:kerwenli_yol/pages/parts/shimmer_effects/company_page_shimmer.dart';
 import 'package:kerwenli_yol/providers/api/company.dart';
 
 class CompanyPage extends ConsumerWidget {
@@ -67,7 +67,7 @@ class CompanyPage extends ConsumerWidget {
         );
       },
       error: (_, _) => const SizedBox.shrink(),
-      loading: () => loadWidget,
+      loading: () => CompanyPageShimmer(),
     );
   }
 }
