@@ -43,3 +43,16 @@ final FutureProvider<List<CompanyModel>> fetchBestCompaniesProvider =
 
       return datas;
     });
+
+final AutoDisposeFutureProviderFamily<CompanyDetailModel, String>
+fetchCompanyProvider = FutureProvider.autoDispose
+    .family<CompanyDetailModel, String>((ref, arg) async {
+      CompanyDetailModel result = CompanyDetailModel.defaultValue();
+
+      try {
+        result = await ref.read(companyApiProvider).fetchCompany(arg);
+      } catch (e) {
+        rethrow;
+      }
+      return result;
+    });
