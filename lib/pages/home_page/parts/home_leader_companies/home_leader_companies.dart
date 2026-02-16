@@ -29,8 +29,11 @@ class HomeLeaderCompanies extends ConsumerWidget {
           children: [
             HomeMoreButton(
               text: 'Öňde baryjy kärhanalar',
-              onTap: () =>
-                  goToPage(context, LeaderCompaniesPage(), AxisDirection.left),
+              onTap: () => goToPage(
+                context,
+                LeaderCompaniesPage(companies: data),
+                AxisDirection.left,
+              ),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 5, bottom: 10),
