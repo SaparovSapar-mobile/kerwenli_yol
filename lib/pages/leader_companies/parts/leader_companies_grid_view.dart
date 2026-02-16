@@ -19,7 +19,8 @@ class LeaderCompaniesGridView extends StatelessWidget {
         mainAxisSpacing: 10,
         mainAxisExtent: leaderCompanyCardHeight,
       ),
-      itemBuilder: (context, index) => LeaderCompanyCard(),
+      itemBuilder: (context, index) =>
+          LeaderCompanyCard(company: companies[index]),
     );
   }
 }

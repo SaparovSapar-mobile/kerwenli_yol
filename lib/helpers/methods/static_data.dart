@@ -13,7 +13,7 @@ double mediaCardHeight = 238;
 double photosCardHeight = 113;
 double wideoCardHeight = 151;
 
-double leaderCompanyCardHeight = 90;
+double leaderCompanyCardHeight = 100;
 
 double newsListCardHeight = 103;
 
