@@ -57,6 +57,29 @@ class CompanyApiService {
     }
   }
 
+  // fetch company detail by id ---------------------------------
+  Future<CompanyDetailModel> fetchCompany(String id) async {
+    Uri uri = Uri.parse('$apiUrl/client/individuals/$id');
+
+    try {
+      http.Response response = await http.get(uri);
+      final dynamic jsonData = json.decode(response.body);
+
+      if (response.statusCode == 200 && jsonData['status']) {
+        final dynamic data = jsonData['data'];
+
+        if (data != null) {
+          return CompanyDetailModel.fromJson(data);
+        }
+
+        return CompanyDetailModel.defaultValue();
+      }
+      return CompanyDetailModel.defaultValue();
+    } catch (e) {
+      rethrow;
+    }
+  }
+
   // fetch vip companies ---------------------------------
   Future<List<CompanyModel>> fetchVipCompanies() async {
     Uri uri = Uri.parse('$apiUrl/client/vip-companies');
