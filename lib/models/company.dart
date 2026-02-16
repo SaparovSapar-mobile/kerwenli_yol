@@ -61,7 +61,7 @@ class CompanyDetailModel {
 
   factory CompanyDetailModel.fromJson(Map<String, dynamic> json) {
     return CompanyDetailModel(
-      id: json['id'] ?? '',
+      id: json['uuid'] ?? '',
       mainInfo: json['main_info'] == null
           ? MainInfoModel.defaultValue()
           : MainInfoModel.fromJson(json['main_info']),
