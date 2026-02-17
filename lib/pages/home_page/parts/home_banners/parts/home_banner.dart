@@ -1,6 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:kerwenli_yol/examples.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_banners/parts/banner_dots.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_banners/parts/home_banner_card.dart';
 
@@ -15,6 +14,7 @@ class HomeBanner extends StatefulWidget {
     required this.dotsSize,
     required this.dotsActiveWidth,
     required this.dotsActiveHeight,
+    required this.images,
   });
 
   final double height,
@@ -25,6 +25,8 @@ class HomeBanner extends StatefulWidget {
       dotsSize,
       dotsActiveWidth,
       dotsActiveHeight;
+
+  final List<dynamic> images;
 
   @override
   State<HomeBanner> createState() => _HomeBannerState();
@@ -37,7 +39,9 @@ class _HomeBannerState extends State<HomeBanner> {
 
   @override
   Widget build(BuildContext context) {
-    final len = homeBanners.length;
+    // final len = homeBanners.length;
+    final int len = widget.images.length;
+    final bool hasMore = len > 1;
 
     return SizedBox(
       width: widget.width,
@@ -50,13 +54,13 @@ class _HomeBannerState extends State<HomeBanner> {
             CarouselSlider.builder(
               itemCount: len,
               itemBuilder: (context, index, realIndex) {
-                return HomeBannerCard(image: homeBanners[index]);
+                return HomeBannerCard(image: widget.images[index]);
               },
               options: CarouselOptions(
                 height: widget.height,
                 viewportFraction: 1.0, // tam ekran gibi
-                enableInfiniteScroll: len > 1,
-                autoPlay: len > 1,
+                enableInfiniteScroll: hasMore,
+                autoPlay: hasMore,
                 autoPlayInterval: const Duration(seconds: 3),
                 autoPlayAnimationDuration: const Duration(milliseconds: 800),
                 autoPlayCurve: Curves.easeOut,
@@ -70,17 +74,20 @@ class _HomeBannerState extends State<HomeBanner> {
               carouselController: _controller,
             ),
 
-            Positioned(
-              left: widget.dotsLeft,
-              bottom: widget.dotsBottom,
-              child: BannerDots(
-                lenght: len,
-                page: _currentIndex,
-                dotsSize: widget.dotsSize,
-                dotsActiveWidth: widget.dotsActiveWidth,
-                dotsActiveHeight: widget.dotsActiveHeight,
-              ),
-            ),
+            if (hasMore)
+              Positioned(
+                left: widget.dotsLeft,
+                bottom: widget.dotsBottom,
+                child: BannerDots(
+                  lenght: len,
+                  page: _currentIndex,
+                  dotsSize: widget.dotsSize,
+                  dotsActiveWidth: widget.dotsActiveWidth,
+                  dotsActiveHeight: widget.dotsActiveHeight,
+                ),
+              )
+            else
+              const SizedBox.shrink(),
           ],
         ),
       ),

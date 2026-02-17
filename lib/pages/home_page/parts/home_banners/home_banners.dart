@@ -15,6 +15,7 @@ class HomeBanners extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           HomeBanner(
+            images: [],
             height: 122,
             width: double.infinity,
             borderRadius: 8,
@@ -28,6 +29,7 @@ class HomeBanners extends StatelessWidget {
           Row(
             children: [
               HomeBanner(
+                images: [],
                 height: 64,
                 width: bottomBannersWidth,
                 borderRadius: 6,
@@ -39,6 +41,7 @@ class HomeBanners extends StatelessWidget {
               ),
               SizedBox(width: 10),
               HomeBanner(
+                images: [],
                 height: 64,
                 width: bottomBannersWidth,
                 borderRadius: 6,

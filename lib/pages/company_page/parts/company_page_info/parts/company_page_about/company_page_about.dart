@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kerwenli_yol/enums/social_type.dart';
+import 'package:kerwenli_yol/helpers/functions/send.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
+import 'package:kerwenli_yol/helpers/functions/translations.dart';
+import 'package:kerwenli_yol/models/company.dart';
+import 'package:kerwenli_yol/models/maps.dart';
+import 'package:kerwenli_yol/models/social.dart';
+import 'package:kerwenli_yol/models/translation.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_banners/parts/home_banner.dart';
 import 'package:kerwenli_yol/pages/parts/open_location_list_tile.dart';
 import 'package:kerwenli_yol/pages/parts/open_social_list_tile.dart';
@@ -10,7 +17,9 @@ import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
 
 class CompanyPageAbout extends ConsumerWidget {
-  const CompanyPageAbout({super.key});
+  const CompanyPageAbout({super.key, required this.company});
+
+  final CompanyDetailModel company;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -24,6 +33,47 @@ class CompanyPageAbout extends ConsumerWidget {
     // ========== Text Styles ==========
     TextStyle textStyle = AppTextStyles.semiBold12;
     TextStyle descStyle = AppTextStyles.regular12;
+
+    // ======= company translation =======
+    final TranslationModel compDesc = company.description;
+    final String desc = translateText(
+      ref,
+      compDesc.tm,
+      compDesc.ru,
+      compDesc.en,
+    );
+
+    // ======= company banners =======
+    final CompContactModel contact = company.contact;
+    final List<dynamic> banners = contact.banners;
+
+    // ======= company phones =======
+    List<dynamic> phones = contact.phones;
+
+    // ======= company address =======
+    final TranslationModel compAddress = company.address;
+    final String address = translateText(
+      ref,
+      compAddress.tm,
+      compAddress.ru,
+      compAddress.en,
+    );
+
+    // ======= company socials =======
+    final List<SocialModel> socials = contact.socials;
+    final bool hasSocials = socials.isNotEmpty;
+    String email = '';
+    if (hasSocials) {
+      for (final SocialModel social in socials) {
+        if (social.type == SocialType.mail) {
+          email = social.value;
+        }
+      }
+    }
+
+    // ======= company map =======
+    final MapsModel compMap = contact.maps;
+    final bool hasMap = compMap.url != '';
 
     return Container(
       padding: EdgeInsets.all(10),
@@ -41,6 +91,7 @@ class CompanyPageAbout extends ConsumerWidget {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 10),
               child: HomeBanner(
+                images: banners,
                 height: 120,
                 width: double.infinity,
                 borderRadius: 8,
@@ -51,77 +102,102 @@ class CompanyPageAbout extends ConsumerWidget {
                 dotsActiveHeight: 4.0,
               ),
             ),
-            Text(
-              '''Contrary to popular belief, Lorem Ipsum is not simply random text.
-It has roots in a piece of classical Latin literature from 45 BC, 
-making it over 2000 years old. Richard McClintock,
-a Latin professor at HampdenContrary to popular belief,
-Lorem Ipsum is not simply random text.
-It has roots in a piece of classical Latin literature from 45 BC,
-making it over 2000 years old. Richard McClintock, a Latin professor at Hampden...''',
-              style: descStyle,
-            ),
+            Text(desc, style: descStyle),
             SizedBox(height: 20),
             Text('Habarlasmak ucin', style: textStyle),
-            OpenSocialListTile(
-              icon: 'phone.png',
-              text: '+11265124',
-              onTap: () {},
-            ),
-            OpenSocialListTile(
-              icon: 'call.png',
-              text: '+99363509004',
-              onTap: () {},
-            ),
-            OpenSocialListTile(
-              icon: 'mail.png',
-              text: 'tradingportalofficial@gmail.com',
-              onTap: () {},
-            ),
+            if (phones.isNotEmpty)
+              ...phones.map(
+                (e) => OpenSocialListTile(
+                  icon: 'call.png',
+                  text: e.toString(),
+                  onTap: () async {
+                    await launchPhone(e.toString());
+                  },
+                ),
+              ),
+            if (email != '')
+              OpenSocialListTile(
+                icon: 'mail.png',
+                text: email,
+                onTap: () async {
+                  await sendEmail(email);
+                },
+              ),
             OpenSocialListTile(
               icon: 'location.png',
-              text:
-                  'Söwda merkezi "Uniwermag" 3-nji gat,dükan belgi C42 Magtymguly 73, Aşgabat',
+              text: address,
               onTap: () {},
             ),
             SizedBox(height: 20),
             Text('Social media salgylanmalar', style: textStyle),
-            OpenSocialListTile(
-              icon: 'tiktok.png',
-              text: 'tradingportalofficial@',
-              onTap: () {},
-            ),
-            OpenSocialListTile(
-              icon: 'telegram.png',
-              text: 'tradingportalofficial@',
-              onTap: () {},
-            ),
-            OpenSocialListTile(
-              icon: 'instagram.png',
-              text: 'tradingportalofficial@',
-              onTap: () {},
-            ),
-            OpenSocialListTile(
-              icon: 'linkedin.png',
-              text: 'tradingportalofficial@',
-              onTap: () {},
-            ),
-            OpenSocialListTile(
-              icon: 'whatsapp.png',
-              text: 'tradingportalofficial@',
-              onTap: () {},
-            ),
+            if (hasSocials)
+              ...socials.map((e) {
+                Widget rWidget = const SizedBox.shrink();
+
+                switch (e.type) {
+                  case SocialType.tiktok:
+                    rWidget = OpenSocialListTile(
+                      icon: 'tiktok.png',
+                      text: 'tradingportalofficial@',
+                      onTap: () async {
+                        await openSocial(e.value);
+                      },
+                    );
+                    break;
+                  case SocialType.instagram:
+                    rWidget = OpenSocialListTile(
+                      icon: 'instagram.png',
+                      text: 'tradingportalofficial@',
+                      onTap: () async {
+                        await openSocial(e.value);
+                      },
+                    );
+                    break;
+                  case SocialType.telegram:
+                    rWidget = OpenSocialListTile(
+                      icon: 'telegram.png',
+                      text: 'tradingportalofficial@',
+                      onTap: () async {
+                        await openSocial(e.value);
+                      },
+                    );
+                    break;
+                  case SocialType.linkedin:
+                    rWidget = OpenSocialListTile(
+                      icon: 'linkedin.png',
+                      text: 'tradingportalofficial@',
+                      onTap: () async {
+                        await openSocial(e.value);
+                      },
+                    );
+                    break;
+                  case SocialType.whatsapp:
+                    rWidget = OpenSocialListTile(
+                      icon: 'whatsapp.png',
+                      text: 'tradingportalofficial@',
+                      onTap: () async {
+                        await openSocial(e.value);
+                      },
+                    );
+                    break;
+                  default:
+                    rWidget = const SizedBox.shrink();
+                }
+
+                return rWidget;
+              }),
             SizedBox(height: 20),
             Text('Karta salgymyz', style: textStyle),
             SizedBox(height: 10),
-            SizedBox(
-              width: double.maxFinite,
-              height: 150,
-              child: ShowImage(
-                image: 'assets/examples/cropped_map.png',
-                borderRadius: 10,
+            if (hasMap)
+              SizedBox(
+                width: double.maxFinite,
+                height: 150,
+                child: ShowImage(
+                  image: 'assets/examples/cropped_map.png',
+                  borderRadius: 10,
+                ),
               ),
-            ),
             SizedBox(height: 20),
             OpenLocationListTile(),
           ],

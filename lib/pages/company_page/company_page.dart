@@ -54,7 +54,7 @@ class CompanyPage extends ConsumerWidget {
                     // ========= Scroll Body ===========
                     body: TabBarView(
                       children: [
-                        CompanyPageInfo(),
+                        CompanyPageInfo(company: data),
                         CompanyPageProductsOrServices(),
                         CompanyPageMedias(),
                       ],

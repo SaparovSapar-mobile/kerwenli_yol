@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:kerwenli_yol/pages/parts/show_image.dart';
+import 'package:kerwenli_yol/helpers/methods/image_and_video.dart';
 
-class HomeBannerCard extends ConsumerWidget {
+class HomeBannerCard extends StatelessWidget {
   const HomeBannerCard({super.key, required this.image});
 
   final String image;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {},
-      child: ShowImage(image: image),
+      child: showImageMethod(image, 0, null),
     );
   }
 }
