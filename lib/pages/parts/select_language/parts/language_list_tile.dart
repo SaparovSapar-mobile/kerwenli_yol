@@ -21,7 +21,7 @@ class LanguageListTile extends ConsumerWidget {
     String selectedLang = ref.watch(langProvider);
     bool isActive = selectedLang == lang;
 
-    bool isLight = isLightTheme(context, ref);
+    final bool isLight = isLightTheme(context, ref);
     Color leadingBgColor = isLight
         ? LightColors.bgPageLight
         : DarkColors.bgPageDark;

@@ -11,7 +11,7 @@ class CompanyPageTabbar extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // ========= Colors =========
-    bool isLight = isLightTheme(context, ref);
+    final bool isLight = isLightTheme(context, ref);
     Color labelColor = isLight ? LightColors.gradus360 : DarkColors.gradus360;
     Color unselectedLabelColor = isLight
         ? LightColors.textDescriptionLight

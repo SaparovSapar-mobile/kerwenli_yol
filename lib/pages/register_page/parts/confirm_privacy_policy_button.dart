@@ -14,7 +14,7 @@ class ConfirmPrivacyPolicyButton extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     AppLocalizations lang = AppLocalizations.of(context)!;
 
-    bool isLight = isLightTheme(context, ref);
+    final bool isLight = isLightTheme(context, ref);
     Color activeColor = isLight ? LightColors.primary : DarkColors.primary;
     Color textColor = isLight
         ? LightColors.textTitleLight

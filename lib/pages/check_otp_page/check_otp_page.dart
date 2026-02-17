@@ -26,7 +26,7 @@ class CheckOtpPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    bool isLight = isLightTheme(context, ref);
+    final bool isLight = isLightTheme(context, ref);
     Color bgColor = isLight ? LightColors.bgBlogLight : DarkColors.bgBlogDark;
 
     TextStyle textStyle = AppTextStyles.semiBold16;

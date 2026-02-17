@@ -24,7 +24,7 @@ class ThemeListTile extends ConsumerWidget {
     int selectedTheme = ref.watch(themeProvider);
     bool isActive = selectedTheme == theme;
 
-    bool isLight = isLightTheme(context, ref);
+    final bool isLight = isLightTheme(context, ref);
     Color leadingBgColor = isLight
         ? LightColors.bgPageLight
         : DarkColors.bgPageDark;

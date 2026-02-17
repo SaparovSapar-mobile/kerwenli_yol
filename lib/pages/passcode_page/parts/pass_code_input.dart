@@ -35,7 +35,7 @@ class _PassCodeInputState extends ConsumerState<PassCodeInput> {
     AppLocalizations lang = AppLocalizations.of(context)!;
 
     // ========= Colors ==========
-    bool isLight = isLightTheme(context, ref);
+    final bool isLight = isLightTheme(context, ref);
     Color bgColor = isLight ? LightColors.bgPageLight : DarkColors.bgPageDark;
     Color textColor = isLight
         ? LightColors.textTitleLight

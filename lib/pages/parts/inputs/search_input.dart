@@ -26,7 +26,7 @@ class _SearchInputState extends ConsumerState<SearchInput> {
   @override
   Widget build(BuildContext context) {
     // ======= Colors ======
-    bool isLight = isLightTheme(context, ref);
+    final bool isLight = isLightTheme(context, ref);
     Color bgColor = isLight ? LightColors.bgPageLight : DarkColors.bgPageDark;
     Color hintColor = isLight
         ? LightColors.textDescriptionLight

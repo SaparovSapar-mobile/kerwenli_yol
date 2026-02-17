@@ -15,7 +15,7 @@ AppBar homePageAppBar(BuildContext context) {
       child: Consumer(
         builder: (context, ref, widget) {
           // ========== Colors ===========
-          bool isLight = isLightTheme(context, ref);
+          final bool isLight = isLightTheme(context, ref);
           Color bgColor = isLight
               ? LightColors.bgBlogLight
               : DarkColors.bgBlogDark;

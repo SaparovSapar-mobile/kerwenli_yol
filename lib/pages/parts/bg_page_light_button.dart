@@ -28,7 +28,7 @@ class BgPageLightButton extends ConsumerWidget {
     bool hasIcon = icon != null;
 
     // ========== Colors ==============
-    bool isLight = isLightTheme(context, ref);
+    final bool isLight = isLightTheme(context, ref);
     Color bgColor = isLight ? LightColors.bgPageLight : DarkColors.bgPageLight;
     Color textColor = isLight
         ? LightColors.textTitleLight

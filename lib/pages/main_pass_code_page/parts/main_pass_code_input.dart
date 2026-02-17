@@ -29,7 +29,7 @@ class _MainPassCodeInputState extends ConsumerState<MainPassCodeInput> {
   @override
   Widget build(BuildContext context) {
     // ========= Colors ==========
-    bool isLight = isLightTheme(context, ref);
+    final bool isLight = isLightTheme(context, ref);
     Color bgColor = isLight ? LightColors.bgPageLight : DarkColors.bgPageDark;
     Color textColor = isLight
         ? LightColors.textTitleLight

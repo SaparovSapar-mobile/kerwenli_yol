@@ -45,7 +45,7 @@ class _ResendOtpButtonState extends ConsumerState<ResendOtpButton> {
 
   @override
   Widget build(BuildContext context) {
-    bool isLight = isLightTheme(context, ref);
+    final bool isLight = isLightTheme(context, ref);
     Color timerColor = isLight ? LightColors.primary : DarkColors.primary;
     Color textColor = isLight
         ? LightColors.textDescriptionLight

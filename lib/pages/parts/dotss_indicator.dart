@@ -18,7 +18,7 @@ class DotssIndicator extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     int page = ref.watch(pageProvider);
-    bool isLight = isLightTheme(context, ref);
+    final bool isLight = isLightTheme(context, ref);
     Color activeColor = isLight ? LightColors.primary : DarkColors.primary;
     Color disableColor = isLight
         ? LightColors.loadingBackground

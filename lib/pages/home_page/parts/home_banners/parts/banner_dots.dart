@@ -20,7 +20,7 @@ class BannerDots extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    bool isLight = isLightTheme(context, ref);
+    final bool isLight = isLightTheme(context, ref);
     Color bgColor = Colors.white60;
     Color activeColor = isLight ? LightColors.primary : DarkColors.primary;
     Color inactiveColor = Color(0xffFFC4AE);

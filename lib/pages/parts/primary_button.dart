@@ -25,7 +25,7 @@ class PrimaryButton extends ConsumerWidget {
     bool buttonPress = false;
 
     // ========== Colors ==============
-    bool isLight = isLightTheme(context, ref);
+    final bool isLight = isLightTheme(context, ref);
     Color bgColor = isLight ? LightColors.primary : DarkColors.primary;
     Color textColor = isLight
         ? LightColors.textTitleDark

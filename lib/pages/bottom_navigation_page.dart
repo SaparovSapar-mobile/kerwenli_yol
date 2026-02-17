@@ -21,7 +21,7 @@ class BottomNavigationPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // ======= Colors =========
-    bool isLight = isLightTheme(context, ref);
+    final bool isLight = isLightTheme(context, ref);
     Color activeTextColor = isLight ? LightColors.primary : DarkColors.primary;
     Color textColor = isLight
         ? LightColors.textTitleLight

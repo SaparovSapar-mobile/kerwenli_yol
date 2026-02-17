@@ -20,7 +20,7 @@ class AppBarBottomLine extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer(
       builder: (context, ref, widget) {
-        bool isLight = isLightTheme(context, ref);
+        final bool isLight = isLightTheme(context, ref);
         Color lineColor = isLight
             ? LightColors.bgPageLight
             : DarkColors.bgPageDark;

@@ -24,7 +24,7 @@ class CpMessageBsListTile extends ConsumerWidget {
     bool isActive = selectedIndex == index;
 
     // ===== Colors =======
-    bool isLight = isLightTheme(context, ref);
+    final bool isLight = isLightTheme(context, ref);
     Color leadingBgColor = isLight
         ? LightColors.bgPageLight
         : DarkColors.bgPageDark;
