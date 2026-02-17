@@ -49,7 +49,7 @@ class CompanyPage extends ConsumerWidget {
                   child: NestedScrollView(
                     // ========= Scroll Header ===========
                     headerSliverBuilder: (context, innerBoxIsScrolled) => [
-                      CompanyPageCard(),
+                      CompanyPageCard(company: data),
                     ],
                     // ========= Scroll Body ===========
                     body: TabBarView(

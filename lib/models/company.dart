@@ -154,6 +154,7 @@ class CompContactModel {
 
 class MainInfoModel {
   final String logoImg, invoiceDate, categoryId, publicationId, countryId;
+  final List<dynamic> sub;
 
   MainInfoModel({
     required this.logoImg,
@@ -161,6 +162,7 @@ class MainInfoModel {
     required this.categoryId,
     required this.publicationId,
     required this.countryId,
+    required this.sub,
   });
 
   factory MainInfoModel.defaultValue() {
@@ -170,6 +172,7 @@ class MainInfoModel {
       categoryId: '',
       publicationId: '',
       countryId: '',
+      sub: [],
     );
   }
 
@@ -180,6 +183,7 @@ class MainInfoModel {
       categoryId: json['category_id'] ?? '',
       publicationId: json['publication_id'] ?? '',
       countryId: json['country_id'] ?? '',
+      sub: json['sub'] ?? [],
     );
   }
 }
