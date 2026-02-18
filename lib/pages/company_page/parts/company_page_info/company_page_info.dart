@@ -24,7 +24,7 @@ class CompanyPageInfo extends StatelessWidget {
             child: TabBarView(
               children: [
                 _InnerTabScroll(child: CompanyPageAbout(company: company)),
-                _InnerTabScroll(child: CompanyInfo()),
+                _InnerTabScroll(child: CompanyInfo(company: company)),
                 _InnerTabScroll(child: CompanyFeatures()),
               ],
             ),

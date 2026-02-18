@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
+import 'package:kerwenli_yol/helpers/functions/translations.dart';
+import 'package:kerwenli_yol/models/company.dart';
+import 'package:kerwenli_yol/models/translation.dart';
 import 'package:kerwenli_yol/pages/company_page/parts/company_page_info/parts/company_info/parts/company_info_brands_list.dart';
 import 'package:kerwenli_yol/pages/company_page/parts/company_page_info/parts/company_info/parts/company_info_key_value.dart';
 import 'package:kerwenli_yol/pages/company_page/parts/company_page_info/parts/company_info/parts/company_info_sertificates_list.dart';
@@ -10,19 +13,32 @@ import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
 
 class CompanyInfo extends ConsumerWidget {
-  const CompanyInfo({super.key});
+  const CompanyInfo({super.key, required this.company});
+
+  final CompanyDetailModel company;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // ======== Colors ==========
     final bool isLight = isLightTheme(context, ref);
-    Color bgColor = isLight ? LightColors.bgPageLight : DarkColors.bgPageDark;
-    Color innerBgColor = isLight
+    final Color bgColor = isLight
+        ? LightColors.bgPageLight
+        : DarkColors.bgPageDark;
+    final Color innerBgColor = isLight
         ? LightColors.bgBlogLight
         : DarkColors.bgBlogDark;
 
     // ======== Text Styles ==========
-    TextStyle textStyle = AppTextStyles.semiBold12;
+    final TextStyle textStyle = AppTextStyles.semiBold12;
+
+    // ======= company name =======
+    final TranslationModel compName = company.businessName;
+    final String name = translateText(
+      ref,
+      compName.tm,
+      compName.ru,
+      compName.en,
+    );
 
     return Container(
       padding: EdgeInsets.all(10),
@@ -38,10 +54,7 @@ class CompanyInfo extends ConsumerWidget {
           children: [
             Text('Karhana maglumaty', style: textStyle),
             SizedBox(height: 15),
-            CompanyInfoKeyValue(
-              keyText: 'Kärhananyň ady',
-              valueText: 'Nesil Kofe hususy kärhanasy',
-            ),
+            CompanyInfoKeyValue(keyText: 'Kärhananyň ady', valueText: name),
             CompanyInfoKeyValue(
               keyText: 'Esaslandyrylan Senesi',
               valueText: '11.11.2025',

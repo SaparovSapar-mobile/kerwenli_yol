@@ -25,14 +25,16 @@ class CompanyPageAbout extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // ========== Colors ==========
     final bool isLight = isLightTheme(context, ref);
-    Color bgColor = isLight ? LightColors.bgPageLight : DarkColors.bgPageDark;
-    Color innerBgColor = isLight
+    final Color bgColor = isLight
+        ? LightColors.bgPageLight
+        : DarkColors.bgPageDark;
+    final Color innerBgColor = isLight
         ? LightColors.bgBlogLight
         : DarkColors.bgBlogDark;
 
     // ========== Text Styles ==========
-    TextStyle textStyle = AppTextStyles.semiBold12;
-    TextStyle descStyle = AppTextStyles.regular12;
+    final TextStyle textStyle = AppTextStyles.semiBold12;
+    final TextStyle descStyle = AppTextStyles.regular12;
 
     // ======= company translation =======
     final TranslationModel compDesc = company.description;
@@ -48,7 +50,7 @@ class CompanyPageAbout extends ConsumerWidget {
     final List<dynamic> banners = contact.banners;
 
     // ======= company phones =======
-    List<dynamic> phones = contact.phones;
+    final List<dynamic> phones = contact.phones;
 
     // ======= company address =======
     final TranslationModel compAddress = company.address;
