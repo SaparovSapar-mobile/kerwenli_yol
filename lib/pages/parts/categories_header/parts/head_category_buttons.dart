@@ -16,22 +16,22 @@ class HeadCategoryButtons extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // ====== Colors ======
     final bool isLight = isLightTheme(context, ref);
-    Color activeBgColor = isLight ? LightColors.primary : DarkColors.primary;
-    Color bgColor = isLight ? LightColors.bgPageLight : DarkColors.bgPageDark;
-
-    Color borderColor = isLight
+    final Color activeBgColor = isLight
+        ? LightColors.primary
+        : DarkColors.primary;
+    final Color bgColor = isLight
         ? LightColors.bgPageLight
         : DarkColors.bgPageDark;
 
-    Color activeTextColor = isLight
+    final Color activeTextColor = isLight
         ? LightColors.textTitleDark
         : DarkColors.textTitleLight;
-    Color textColor = isLight
+    final Color textColor = isLight
         ? LightColors.textTitleLight
         : DarkColors.textTitleDark;
 
     // ====== Text Styles ======
-    TextStyle textStyle = AppTextStyles.semiBold12;
+    final TextStyle textStyle = AppTextStyles.semiBold12;
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -40,8 +40,7 @@ class HeadCategoryButtons extends ConsumerWidget {
         backgroundColor: activeBgColor,
         unselectedBackgroundColor: bgColor,
         borderColor: activeBgColor,
-        unselectedBorderColor: borderColor,
-        borderWidth: 1,
+        borderWidth: 0,
         labelStyle: textStyle.copyWith(color: activeTextColor),
         unselectedLabelStyle: textStyle.copyWith(color: textColor),
         tabs: categories.map((e) => Tab(text: e)).toList(),

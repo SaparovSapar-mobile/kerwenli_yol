@@ -14,11 +14,11 @@ class HomeMoreButton extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final bool isLight = isLightTheme(context, ref);
-    Color iconColor = isLight
+    final Color iconColor = isLight
         ? LightColors.textTitleLight
         : DarkColors.textTitleDark;
 
-    TextStyle textStyle = AppTextStyles.semiBold14;
+    final TextStyle textStyle = AppTextStyles.semiBold14;
 
     return ListTile(
       onTap: onTap,
