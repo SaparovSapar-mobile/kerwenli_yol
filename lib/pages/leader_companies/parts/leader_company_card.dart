@@ -19,12 +19,14 @@ class LeaderCompanyCard extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // ========= Colors =========
     final bool isLight = isLightTheme(context, ref);
-    Color bgColor = isLight ? LightColors.bgPageLight : DarkColors.bgPageDark;
+    final Color bgColor = isLight
+        ? LightColors.bgPageLight
+        : DarkColors.bgPageDark;
 
     // ========= Text Styles =========
-    TextStyle textStyle = AppTextStyles.semiBold10;
+    final TextStyle textStyle = AppTextStyles.semiBold10;
 
-    String name = translateText(
+    final String name = translateText(
       ref,
       company.nameTm,
       company.nameRu,
