@@ -24,8 +24,6 @@ class CompanyPage extends ConsumerWidget {
       fetchCompanyProvider(companyId),
     );
 
-    print('==================== $companyId');
-
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: homePageAppBar(context),
