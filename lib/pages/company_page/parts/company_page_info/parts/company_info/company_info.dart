@@ -4,6 +4,7 @@ import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/helpers/functions/translations.dart';
 import 'package:kerwenli_yol/models/company.dart';
 import 'package:kerwenli_yol/models/translation.dart';
+import 'package:kerwenli_yol/models/working_time.dart';
 import 'package:kerwenli_yol/pages/company_page/parts/company_page_info/parts/company_info/parts/company_info_brands_list.dart';
 import 'package:kerwenli_yol/pages/company_page/parts/company_page_info/parts/company_info/parts/company_info_key_value.dart';
 import 'package:kerwenli_yol/pages/company_page/parts/company_page_info/parts/company_info/parts/company_info_sertificates_list.dart';
@@ -39,6 +40,10 @@ class CompanyInfo extends ConsumerWidget {
       compName.ru,
       compName.en,
     );
+
+    // ======== Working Times =======
+    final List<WorkingTimeModel> workingTimes = company.workingTimes;
+    final bool hasWorkingTimes = workingTimes.isNotEmpty;
 
     return Container(
       padding: EdgeInsets.all(10),
@@ -76,13 +81,22 @@ class CompanyInfo extends ConsumerWidget {
             CompanyInfoKeyValue(keyText: 'Esasy önümleri', valueText: 'Bar'),
             CompanyInfoKeyValue(keyText: 'Hukuk salgysy', valueText: 'Bar'),
             CompanyInfoKeyValue(keyText: 'Goşmaça maglumat', valueText: 'Bar'),
-            SizedBox(height: 20),
-            Text('Iş wagtymyz', style: textStyle),
-            SizedBox(height: 15),
-            WorkHour(keyText: 'Duşenbe', valueText: '09:00-21:00'),
-            WorkHour(keyText: 'Sişenbe', valueText: '09:00-21:00'),
-            WorkHour(keyText: 'Çarşenbe', valueText: '09:00-21:00'),
-            WorkHour(keyText: 'Çarşenbe', valueText: '09:00-21:00'),
+            if (hasWorkingTimes)
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(height: 20),
+                  Text('Iş wagtymyz', style: textStyle),
+                  SizedBox(height: 15),
+                  ...workingTimes.map(
+                    (e) => WorkHour(
+                      keyText: e.day,
+                      valueText: '${e.open}-${e.close}',
+                    ),
+                  ),
+                ],
+              ),
             SizedBox(height: 20),
             Text('Brendlerimiz', style: textStyle),
             SizedBox(height: 15),
