@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/examples.dart';
 import 'package:kerwenli_yol/helpers/functions/navigation.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
-import 'package:kerwenli_yol/models/new_product.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_new_products/parts/home_new_products_card/parts/home_new_products_card_images.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/parts/company_status.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/parts/home_vip_company_card_categories.dart';
@@ -14,8 +13,8 @@ import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
 
-class HomeNewProductsCard extends ConsumerWidget {
-  const HomeNewProductsCard({
+class ExmHomeNewProductsCard extends ConsumerWidget {
+  const ExmHomeNewProductsCard({
     super.key,
     this.isFirst,
     this.isLast,
@@ -23,7 +22,7 @@ class HomeNewProductsCard extends ConsumerWidget {
   });
 
   final bool? isFirst, isLast;
-  final NewProductModel product;
+  final ExampleProductCard product;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -37,11 +36,8 @@ class HomeNewProductsCard extends ConsumerWidget {
     final TextStyle nameStyle = AppTextStyles.medium10;
 
     return GestureDetector(
-      onTap: () => goToPage(
-        context,
-        ProductPage(product: homeProducts[0]),
-        AxisDirection.left,
-      ),
+      onTap: () =>
+          goToPage(context, ProductPage(product: product), AxisDirection.left),
       child: Container(
         width: 112,
         margin: isFirst != null && isLast != null
@@ -56,7 +52,7 @@ class HomeNewProductsCard extends ConsumerWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            HomeNewProductsCardImages(product: homeProducts[0]),
+            HomeNewProductsCardImages(product: product),
             SizedBox(height: 5),
             Text(
               'Türkmenistanda öndürilen şokaladlary alyn',
@@ -64,7 +60,7 @@ class HomeNewProductsCard extends ConsumerWidget {
               overflow: TextOverflow.ellipsis,
               style: nameStyle,
             ),
-            CompanyStatus(isOpen: true),
+            CompanyStatus(isOpen: product.isOpen),
             SizedBox(height: 2),
             HomeVipCompanyCardCategories(),
             SizedBox(height: 5),

@@ -28,7 +28,7 @@ class HomeNewProducts extends ConsumerWidget {
             HomeMoreButton(text: 'Täze önümler', onTap: () {}),
             Padding(
               padding: const EdgeInsets.only(top: 5, bottom: 10),
-              child: HomeNewProductsList(),
+              child: HomeNewProductsList(products: data),
             ),
             AppBarBottomLine(thickness: 10),
           ],
