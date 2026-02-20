@@ -60,7 +60,7 @@ class _HomeNewProductsCardImagesState extends State<HomeNewProductsCardImages> {
     const double cardRadius = 8;
     final images = widget.product.images;
     final len = images.length;
-    bool hasMoreImages = len > 1;
+    final bool hasMoreImages = len > 1;
 
     /// Üst etiketler
     final List<String> cardToptypes = [];

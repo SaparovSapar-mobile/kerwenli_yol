@@ -3,9 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/examples.dart';
 import 'package:kerwenli_yol/helpers/functions/navigation.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
-import 'package:kerwenli_yol/models/new_product.dart';
+import 'package:kerwenli_yol/helpers/functions/translations.dart';
+import 'package:kerwenli_yol/models/product.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_new_products/parts/home_new_products_card/parts/home_new_products_card_images.dart';
-import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/parts/company_status.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/parts/home_vip_company_card_categories.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/parts/home_vip_company_rating.dart';
 import 'package:kerwenli_yol/pages/parts/view_count.dart';
@@ -23,7 +23,7 @@ class HomeNewProductsCard extends ConsumerWidget {
   });
 
   final bool? isFirst, isLast;
-  final NewProductModel product;
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -35,6 +35,14 @@ class HomeNewProductsCard extends ConsumerWidget {
 
     // ======== Text Styles ======
     final TextStyle nameStyle = AppTextStyles.medium10;
+
+    // ========= name =======
+    final String name = translateText(
+      ref,
+      product.nameTm,
+      product.nameRu,
+      product.nameEn,
+    );
 
     return GestureDetector(
       onTap: () => goToPage(
@@ -58,13 +66,14 @@ class HomeNewProductsCard extends ConsumerWidget {
           children: [
             HomeNewProductsCardImages(product: homeProducts[0]),
             SizedBox(height: 5),
-            Text(
-              'Türkmenistanda öndürilen şokaladlary alyn',
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-              style: nameStyle,
+            Expanded(
+              child: Text(
+                name,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: nameStyle,
+              ),
             ),
-            CompanyStatus(isOpen: true),
             SizedBox(height: 2),
             HomeVipCompanyCardCategories(),
             SizedBox(height: 5),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/methods/parts/app_bar_methods.dart';
 import 'package:kerwenli_yol/models/new_product.dart';
+import 'package:kerwenli_yol/models/product.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_new_products/parts/home_new_products_list.dart';
 import 'package:kerwenli_yol/pages/parts/home_more_button.dart';
 import 'package:kerwenli_yol/pages/parts/shimmer_effects/home_vip_companies_shimmer/home_vip_companies_shimmer.dart';
@@ -22,13 +23,18 @@ class HomeNewProducts extends ConsumerWidget {
           return const SizedBox.shrink();
         }
 
+        List<ProductModel> products = [];
+        for (NewProductModel element in data) {
+          products.addAll(element.products);
+        }
+
         return Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             HomeMoreButton(text: 'Täze önümler', onTap: () {}),
             Padding(
               padding: const EdgeInsets.only(top: 5, bottom: 10),
-              child: HomeNewProductsList(products: data),
+              child: HomeNewProductsList(products: products),
             ),
             AppBarBottomLine(thickness: 10),
           ],
