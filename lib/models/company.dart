@@ -38,6 +38,13 @@ class CompanyDetailModel {
   final TranslationModel description;
   final TranslationModel address;
   final CompContactModel contact;
+  final List<dynamic> banners;
+  final OpportunityModel opportunity;
+  final List<WorkingTimeModel> workingTimes;
+  final QrCodeModel qrCode;
+  final MapsModel maps;
+  final VrModel vr;
+  final TaxiNumberModel taxiNumber;
 
   CompanyDetailModel({
     required this.id,
@@ -46,6 +53,13 @@ class CompanyDetailModel {
     required this.description,
     required this.address,
     required this.contact,
+    required this.banners,
+    required this.opportunity,
+    required this.workingTimes,
+    required this.qrCode,
+    required this.maps,
+    required this.vr,
+    required this.taxiNumber,
   });
 
   factory CompanyDetailModel.defaultValue() {
@@ -56,6 +70,13 @@ class CompanyDetailModel {
       description: TranslationModel.defaultValue(),
       address: TranslationModel.defaultValue(),
       contact: CompContactModel.defaultValue(),
+      banners: [],
+      opportunity: OpportunityModel.defaultValue(),
+      workingTimes: [],
+      qrCode: QrCodeModel.defaultValue(),
+      maps: MapsModel.defaultValue(),
+      vr: VrModel.defaultValue(),
+      taxiNumber: TaxiNumberModel.defaultValue(),
     );
   }
 
@@ -77,55 +98,7 @@ class CompanyDetailModel {
       contact: json['contact'] == null
           ? CompContactModel.defaultValue()
           : CompContactModel.fromJson(json['contact']),
-    );
-  }
-}
-
-class CompContactModel {
-  final List<dynamic> phones, banners;
-  final List<SocialModel> socials;
-  final OpportunityModel opportunity;
-  final List<WorkingTimeModel> workingTimes;
-  final QrCodeModel qrCode;
-  final MapsModel maps;
-  final VrModel vr;
-  final TaxiNumberModel taxiNumber;
-
-  CompContactModel({
-    required this.phones,
-    required this.banners,
-    required this.socials,
-    required this.opportunity,
-    required this.workingTimes,
-    required this.qrCode,
-    required this.maps,
-    required this.vr,
-    required this.taxiNumber,
-  });
-
-  factory CompContactModel.defaultValue() {
-    return CompContactModel(
-      phones: [],
-      banners: [],
-      socials: [],
-      opportunity: OpportunityModel.defaultValue(),
-      workingTimes: [],
-      qrCode: QrCodeModel.defaultValue(),
-      maps: MapsModel.defaultValue(),
-      vr: VrModel.defaultValue(),
-      taxiNumber: TaxiNumberModel.defaultValue(),
-    );
-  }
-
-  factory CompContactModel.fromJson(Map<String, dynamic> json) {
-    return CompContactModel(
-      phones: json['phones'] ?? [],
       banners: json['banners'] ?? [],
-      socials: json['social'] == null || json['social'] == []
-          ? []
-          : List<SocialModel>.from(
-              json['social'].map((dataJson) => SocialModel.fromJson(dataJson)),
-            ),
       opportunity: json['opportunity'] == null
           ? OpportunityModel.defaultValue()
           : OpportunityModel.fromJson(json['opportunity']),
@@ -148,6 +121,28 @@ class CompContactModel {
       taxiNumber: json['taxi_number'] == null
           ? TaxiNumberModel.defaultValue()
           : TaxiNumberModel.fromJson(json['taxi_number']),
+    );
+  }
+}
+
+class CompContactModel {
+  final List<dynamic> phones;
+  final List<SocialModel> socials;
+
+  CompContactModel({required this.phones, required this.socials});
+
+  factory CompContactModel.defaultValue() {
+    return CompContactModel(phones: [], socials: []);
+  }
+
+  factory CompContactModel.fromJson(Map<String, dynamic> json) {
+    return CompContactModel(
+      phones: json['phones'] ?? [],
+      socials: json['social'] == null || json['social'] == []
+          ? []
+          : List<SocialModel>.from(
+              json['social'].map((dataJson) => SocialModel.fromJson(dataJson)),
+            ),
     );
   }
 }

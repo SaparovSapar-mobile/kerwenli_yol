@@ -47,7 +47,8 @@ class CompanyPageAbout extends ConsumerWidget {
 
     // ======= company banners =======
     final CompContactModel contact = company.contact;
-    final List<dynamic> banners = contact.banners;
+    final List<dynamic> banners = company.banners;
+    final bool hasBanners = banners.isNotEmpty;
 
     // ======= company phones =======
     final List<dynamic> phones = contact.phones;
@@ -74,7 +75,7 @@ class CompanyPageAbout extends ConsumerWidget {
     }
 
     // ======= company map =======
-    final MapsModel compMap = contact.maps;
+    final MapsModel compMap = company.maps;
     final bool hasMap = compMap.url != '';
 
     return Container(
@@ -90,20 +91,21 @@ class CompanyPageAbout extends ConsumerWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text('Biz barada', style: textStyle),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10),
-              child: HomeBanner(
-                images: banners,
-                height: 120,
-                width: double.infinity,
-                borderRadius: 8,
-                dotsLeft: 4,
-                dotsBottom: 4,
-                dotsSize: 4.0,
-                dotsActiveWidth: 9.0,
-                dotsActiveHeight: 4.0,
+            if (hasBanners)
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 10),
+                child: HomeBanner(
+                  images: banners,
+                  height: 120,
+                  width: double.infinity,
+                  borderRadius: 8,
+                  dotsLeft: 4,
+                  dotsBottom: 4,
+                  dotsSize: 4.0,
+                  dotsActiveWidth: 9.0,
+                  dotsActiveHeight: 4.0,
+                ),
               ),
-            ),
             Text(desc, style: descStyle),
             SizedBox(height: 20),
             Text('Habarlasmak ucin', style: textStyle),

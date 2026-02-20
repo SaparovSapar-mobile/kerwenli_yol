@@ -21,9 +21,10 @@ class CompanyPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final AsyncValue<CompanyDetailModel> resultApi = ref.watch(
-      // fetchCompanyProvider('eb55acc9-fc8c-47c3-8fd1-0cd875a1df03'),
       fetchCompanyProvider(companyId),
     );
+
+    print('==================== $companyId');
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
