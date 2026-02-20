@@ -23,7 +23,8 @@ class ExmHomeLeaderCompanyCard extends ConsumerWidget {
     final TextStyle textStyle = AppTextStyles.medium10;
 
     return GestureDetector(
-      onTap: () => goToPage(context, CompanyPage(), AxisDirection.left),
+      onTap: () =>
+          goToPage(context, CompanyPage(companyId: ''), AxisDirection.left),
       child: SizedBox(
         width: 90,
         child: Column(

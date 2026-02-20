@@ -38,7 +38,7 @@ class HomePage extends StatelessWidget {
               // HomeMedia(),
               // HomeNews(),
               // HomeSecondBanner(),
-              HomePartnersSlider(),
+              // HomePartnersSlider(),
               // HomePartners(),
               // HomeGraditutes(),
             ],

@@ -14,26 +14,29 @@ import 'package:kerwenli_yol/pages/parts/shimmer_effects/company_page_shimmer.da
 import 'package:kerwenli_yol/providers/api/company.dart';
 
 class CompanyPage extends ConsumerWidget {
-  const CompanyPage({super.key});
+  const CompanyPage({super.key, required this.companyId});
+
+  final String companyId;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final AsyncValue<CompanyDetailModel> resultApi = ref.watch(
-      fetchCompanyProvider('eb55acc9-fc8c-47c3-8fd1-0cd875a1df03'),
+      // fetchCompanyProvider('eb55acc9-fc8c-47c3-8fd1-0cd875a1df03'),
+      fetchCompanyProvider(companyId),
     );
 
-    return resultApi.when(
-      data: (data) {
-        if (data.id == '') {
-          return Center(child: Text('No data'));
-        }
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      appBar: homePageAppBar(context),
+      body: resultApi.when(
+        data: (data) {
+          if (data.id == '') {
+            return Center(child: Text('No data'));
+          }
 
-        return DefaultTabController(
-          length: 3,
-          child: Scaffold(
-            resizeToAvoidBottomInset: false,
-            appBar: homePageAppBar(context),
-            body: Column(
+          return DefaultTabController(
+            length: 3,
+            child: Column(
               children: [
                 InternetStatusBar(),
                 // ========= Fixed ===========
@@ -63,11 +66,11 @@ class CompanyPage extends ConsumerWidget {
                 ),
               ],
             ),
-          ),
-        );
-      },
-      error: (_, _) => const SizedBox.shrink(),
-      loading: () => CompanyPageShimmer(),
+          );
+        },
+        error: (_, _) => const SizedBox.shrink(),
+        loading: () => CompanyPageShimmer(),
+      ),
     );
   }
 }

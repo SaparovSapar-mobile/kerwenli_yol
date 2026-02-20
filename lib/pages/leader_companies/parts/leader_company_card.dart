@@ -34,7 +34,11 @@ class LeaderCompanyCard extends ConsumerWidget {
     );
 
     return GestureDetector(
-      onTap: () => goToPage(context, CompanyPage(), AxisDirection.left),
+      onTap: () => goToPage(
+        context,
+        CompanyPage(companyId: company.individualUuid),
+        AxisDirection.left,
+      ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.center,

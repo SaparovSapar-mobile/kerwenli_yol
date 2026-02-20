@@ -14,7 +14,8 @@ class HomePartnerCard extends StatelessWidget {
     TextStyle textStyle = AppTextStyles.semiBold10;
 
     return GestureDetector(
-      onTap: () => goToPage(context, CompanyPage(), AxisDirection.left),
+      onTap: () =>
+          goToPage(context, CompanyPage(companyId: ''), AxisDirection.left),
       child: Container(
         width: 170,
         margin: isFirst != null && isLast != null
