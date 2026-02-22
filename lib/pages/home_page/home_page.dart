@@ -4,6 +4,7 @@ import 'package:kerwenli_yol/pages/home_page/parts/home_categories/home_categori
 import 'package:kerwenli_yol/pages/home_page/parts/home_leader_companies/home_leader_companies.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_new_products/home_new_products.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_page_top/home_page_top.dart';
+import 'package:kerwenli_yol/pages/home_page/parts/home_partners_slider/home_partners_slider.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/home_vip_companies.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_virtuals/home_virtuals.dart';
 
@@ -26,10 +27,11 @@ class HomePage extends StatelessWidget {
               HomeVipCompanies(),
               HomeNewProducts(),
               HomeVirtuals(),
+
               // HomeMedia(),
               // HomeNews(),
               // HomeSecondBanner(),
-              // HomePartnersSlider(),
+              HomePartnersSlider(),
               // HomePartners(),
               // HomeGraditutes(),
             ],

@@ -12,7 +12,10 @@ class HomePartnersSlider extends StatefulWidget {
   State<HomePartnersSlider> createState() => _HomePartnersSliderState();
 }
 
-class _HomePartnersSliderState extends State<HomePartnersSlider> {
+class _HomePartnersSliderState extends State<HomePartnersSlider>
+    with SingleTickerProviderStateMixin {
+  late final TabController _tabCtrl;
+
   final ScrollController _scrollCtrl1 = ScrollController();
   final ScrollController _scrollCtrl2 = ScrollController();
   final ScrollController _scrollCtrl3 = ScrollController();
@@ -24,26 +27,57 @@ class _HomePartnersSliderState extends State<HomePartnersSlider> {
   void initState() {
     super.initState();
 
+    _tabCtrl = TabController(length: 3, vsync: this);
+
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      _startAutoScroll(_scrollCtrl1);
-      _startAutoScroll(_scrollCtrl2);
-      _startAutoScroll(_scrollCtrl3);
-      _startAutoScroll(_scrollCtrl4);
-      _startAutoScroll(_scrollCtrl5);
-      _startAutoScroll(_scrollCtrl6);
+      _startForTab(0); // ilk tab
+    });
+
+    _tabCtrl.addListener(() {
+      if (_tabCtrl.indexIsChanging) return;
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        _startForTab(_tabCtrl.index);
+      });
     });
   }
 
-  void _startAutoScroll(ScrollController ctrl) {
-    if (!mounted) return;
+  void _startForTab(int index) {
+    switch (index) {
+      case 0:
+        _startAutoScrollToMax(_scrollCtrl1);
+        _startAutoScrollToMin(_scrollCtrl2);
+        break;
+      case 1:
+        _startAutoScrollToMax(_scrollCtrl3);
+        _startAutoScrollToMin(_scrollCtrl4);
+        break;
+      case 2:
+        _startAutoScrollToMax(_scrollCtrl5);
+        _startAutoScrollToMin(_scrollCtrl6);
+        break;
+    }
+  }
 
-    // ✅ bağlı değilse çık (TabBarView diğer tablarda bu çok olur)
+  void _startAutoScrollToMax(ScrollController ctrl) {
+    if (!mounted) return;
     if (!ctrl.hasClients) return;
 
     final min = ctrl.position.minScrollExtent;
     final max = ctrl.position.maxScrollExtent;
 
     _animateLoop(max, min, max, 25, ctrl);
+  }
+
+  void _startAutoScrollToMin(ScrollController ctrl) {
+    if (!mounted) return;
+    if (!ctrl.hasClients) return;
+
+    final min = ctrl.position.minScrollExtent;
+    final max = ctrl.position.maxScrollExtent;
+
+    ctrl.jumpTo(max);
+
+    _animateLoop(max, min, min, 25, ctrl);
   }
 
   _animateLoop(
@@ -71,6 +105,8 @@ class _HomePartnersSliderState extends State<HomePartnersSlider> {
 
   @override
   void dispose() {
+    _tabCtrl.dispose();
+
     _scrollCtrl1.dispose();
     _scrollCtrl2.dispose();
     _scrollCtrl3.dispose();
@@ -82,47 +118,45 @@ class _HomePartnersSliderState extends State<HomePartnersSlider> {
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 3,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          HomeMoreButton(text: 'Yerli markalary', onTap: () {}),
-          HpsTabs(),
-          SizedBox(
-            height: 2 * homeBestCompaniesCardHeight + 5,
-            child: TabBarView(
-              children: [
-                Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    HpsList(scrollController: _scrollCtrl1),
-                    SizedBox(height: 5),
-                    HpsList(scrollController: _scrollCtrl2),
-                  ],
-                ),
-                Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    HpsList(scrollController: _scrollCtrl3),
-                    SizedBox(height: 5),
-                    HpsList(scrollController: _scrollCtrl4),
-                  ],
-                ),
-                Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    HpsList(scrollController: _scrollCtrl5),
-                    SizedBox(height: 5),
-                    HpsList(scrollController: _scrollCtrl6),
-                  ],
-                ),
-              ],
-            ),
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        HomeMoreButton(text: 'Yerli markalary', onTap: () {}),
+        HpsTabs(tabCtrl: _tabCtrl),
+        SizedBox(
+          height: 2 * homeBestCompaniesCardHeight + 5,
+          child: TabBarView(
+            controller: _tabCtrl,
+            children: [
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  HpsList(scrollController: _scrollCtrl1),
+                  SizedBox(height: 5),
+                  HpsList(scrollController: _scrollCtrl2),
+                ],
+              ),
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  HpsList(scrollController: _scrollCtrl3),
+                  SizedBox(height: 5),
+                  HpsList(scrollController: _scrollCtrl4),
+                ],
+              ),
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  HpsList(scrollController: _scrollCtrl5),
+                  SizedBox(height: 5),
+                  HpsList(scrollController: _scrollCtrl6),
+                ],
+              ),
+            ],
           ),
-          AppBarBottomLine(thickness: 10),
-        ],
-      ),
+        ),
+        AppBarBottomLine(thickness: 10),
+      ],
     );
   }
 }

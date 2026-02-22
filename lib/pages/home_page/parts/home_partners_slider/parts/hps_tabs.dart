@@ -7,7 +7,9 @@ import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
 
 class HpsTabs extends ConsumerWidget {
-  const HpsTabs({super.key});
+  const HpsTabs({super.key, required this.tabCtrl});
+
+  final TabController tabCtrl;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -35,6 +37,7 @@ class HpsTabs extends ConsumerWidget {
       child: Align(
         alignment: Alignment.centerLeft,
         child: ButtonsTabBar(
+          controller: tabCtrl,
           contentPadding: EdgeInsets.symmetric(vertical: 5, horizontal: 8),
           backgroundColor: activeBgColor,
           unselectedBackgroundColor: bgColor,
