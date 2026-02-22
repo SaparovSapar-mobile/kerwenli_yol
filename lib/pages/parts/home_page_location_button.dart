@@ -21,16 +21,20 @@ class HomePageLocationButton extends ConsumerWidget {
     return Positioned(
       bottom: 20,
       right: 20,
-      child: FloatingActionButton(
-        backgroundColor: bgColor,
-        child: Container(
-          margin: EdgeInsets.all(8),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(50),
-            border: Border.all(color: borderColor, width: 8),
+      child: SizedBox(
+        width: 44,
+        height: 44,
+        child: FloatingActionButton(
+          backgroundColor: bgColor,
+          child: Container(
+            margin: EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50),
+              border: Border.all(color: borderColor, width: 5),
+            ),
           ),
+          onPressed: () {},
         ),
-        onPressed: () {},
       ),
     );
   }

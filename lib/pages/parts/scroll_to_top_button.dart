@@ -21,16 +21,20 @@ class ScrollToTopButton extends ConsumerWidget {
     return Positioned(
       bottom: 20,
       left: 20,
-      child: FloatingActionButton(
-        backgroundColor: bgColor,
-        child: Icon(Icons.arrow_upward, size: 24, color: iconColor),
-        onPressed: () async {
-          scrollCtrl.animateTo(
-            scrollCtrl.position.minScrollExtent,
-            duration: const Duration(seconds: 1),
-            curve: Curves.fastOutSlowIn,
-          );
-        },
+      child: SizedBox(
+        height: 44,
+        width: 44,
+        child: FloatingActionButton(
+          backgroundColor: bgColor,
+          child: Icon(Icons.arrow_upward, size: 24, color: iconColor),
+          onPressed: () async {
+            scrollCtrl.animateTo(
+              scrollCtrl.position.minScrollExtent,
+              duration: const Duration(seconds: 1),
+              curve: Curves.linear,
+            );
+          },
+        ),
       ),
     );
   }
