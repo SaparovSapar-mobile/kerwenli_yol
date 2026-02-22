@@ -8,6 +8,7 @@ import 'package:kerwenli_yol/helpers/methods/pages/search_page.dart';
 import 'package:kerwenli_yol/pages/bookmark_page/bookmark_page.dart';
 import 'package:kerwenli_yol/pages/home_page/home_page.dart';
 import 'package:kerwenli_yol/pages/parts/internet_status_bar/internet_status_bar.dart';
+import 'package:kerwenli_yol/pages/parts/scroll_to_top_button.dart';
 import 'package:kerwenli_yol/pages/search_page/search_page.dart';
 import 'package:kerwenli_yol/pages/settings_page/settings_page.dart';
 import 'package:kerwenli_yol/providers/pages/bottom_navigation.dart';
@@ -110,6 +111,8 @@ class BottomNavigationPage extends ConsumerWidget {
           },
         ),
       ),
+      floatingActionButton: ScrollToTopButton(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
     );
   }
 }
