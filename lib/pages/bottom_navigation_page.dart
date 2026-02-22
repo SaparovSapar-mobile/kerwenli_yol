@@ -12,6 +12,7 @@ import 'package:kerwenli_yol/pages/parts/scroll_to_top_button.dart';
 import 'package:kerwenli_yol/pages/search_page/search_page.dart';
 import 'package:kerwenli_yol/pages/settings_page/settings_page.dart';
 import 'package:kerwenli_yol/providers/pages/bottom_navigation.dart';
+import 'package:kerwenli_yol/providers/parts/scroll_to_top.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
@@ -23,18 +24,22 @@ class BottomNavigationPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // ======= Colors =========
     final bool isLight = isLightTheme(context, ref);
-    Color activeTextColor = isLight ? LightColors.primary : DarkColors.primary;
-    Color textColor = isLight
+    final Color activeTextColor = isLight
+        ? LightColors.primary
+        : DarkColors.primary;
+    final Color textColor = isLight
         ? LightColors.textTitleLight
         : DarkColors.textTitleLight;
-    Color itemBgColor = isLight
+    final Color itemBgColor = isLight
         ? LightColors.bgBlogLight
         : DarkColors.bgBlogDark;
 
     // ======= Text Styles =========
-    TextStyle textStyle = AppTextStyles.medium10;
+    final TextStyle textStyle = AppTextStyles.medium10;
 
-    int selectedIndex = ref.watch(selectedBottomIndexProvider);
+    final int selectedIndex = ref.watch(selectedBottomIndexProvider);
+    final bool openToTop = ref.watch(mainPageOpenToTopProvider);
+
     AppBar appBar = homePageAppBar(context);
 
     List<Widget> pages = [
@@ -64,12 +69,18 @@ class BottomNavigationPage extends ConsumerWidget {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: appBar,
-      body: Column(
+      body: Stack(
         children: [
-          InternetStatusBar(),
-          Expanded(
-            child: IndexedStack(index: selectedIndex, children: pages),
+          Column(
+            children: [
+              InternetStatusBar(),
+              Expanded(
+                child: IndexedStack(index: selectedIndex, children: pages),
+              ),
+            ],
           ),
+          if (openToTop)
+            ScrollToTopButton(provider: mainPageScrollCtrlProvider),
         ],
       ),
       bottomNavigationBar: Theme(
@@ -111,8 +122,6 @@ class BottomNavigationPage extends ConsumerWidget {
           },
         ),
       ),
-      floatingActionButton: ScrollToTopButton(),
-      floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
     );
   }
 }

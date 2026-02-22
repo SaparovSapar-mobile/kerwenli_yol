@@ -5,19 +5,33 @@ import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 
 class ScrollToTopButton extends ConsumerWidget {
-  const ScrollToTopButton({super.key});
+  const ScrollToTopButton({super.key, required this.provider});
+
+  final AutoDisposeStateProvider<ScrollController> provider;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // ========= Colors =========
-    bool isLight = isLightTheme(context, ref);
-    Color bgColor = isLight ? LightColors.primary : DarkColors.primary;
-    Color iconColor = Colors.white;
+    final bool isLight = isLightTheme(context, ref);
+    final Color bgColor = isLight ? LightColors.primary : DarkColors.primary;
+    final Color iconColor = Colors.white;
 
-    return FloatingActionButton(
-      onPressed: () {},
-      backgroundColor: bgColor,
-      child: Icon(Icons.arrow_upward, size: 24, color: iconColor),
+    final ScrollController scrollCtrl = ref.watch(provider);
+
+    return Positioned(
+      bottom: 20,
+      left: 20,
+      child: FloatingActionButton(
+        backgroundColor: bgColor,
+        child: Icon(Icons.arrow_upward, size: 24, color: iconColor),
+        onPressed: () async {
+          scrollCtrl.animateTo(
+            scrollCtrl.position.minScrollExtent,
+            duration: const Duration(seconds: 1),
+            curve: Curves.fastOutSlowIn,
+          );
+        },
+      ),
     );
   }
 }
