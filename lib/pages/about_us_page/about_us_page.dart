@@ -16,8 +16,10 @@ class AboutUsPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // ========= Colors =======
     final bool isLight = isLightTheme(context, ref);
-    Color bgColor = isLight ? LightColors.bgPageLight : DarkColors.bgPageDark;
-    Color innerBgColor = isLight
+    final Color bgColor = isLight
+        ? LightColors.bgPageLight
+        : DarkColors.bgPageDark;
+    final Color innerBgColor = isLight
         ? LightColors.bgBlogLight
         : DarkColors.bgBlogDark;
 

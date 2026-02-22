@@ -45,7 +45,7 @@ class BottomNavigationPage extends ConsumerWidget {
 
     AppBar appBar = homePageAppBar(context);
 
-    List<Widget> pages = [
+    final List<Widget> pages = [
       const HomePage(),
       const SearchPage(),
       const BookmarkPage(),
