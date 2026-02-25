@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/methods/parts/app_bar_methods.dart';
+import 'package:kerwenli_yol/pages/home_page/parts/home_banners/home_banners.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_categories/home_categories.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_leader_companies/home_leader_companies.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_new_products/home_new_products.dart';
@@ -25,8 +26,8 @@ class HomePage extends ConsumerWidget {
           child: ListView(
             controller: scrollCtrl,
             children: [
-              // HomeBanners(),
-              // AppBarBottomLine(thickness: 10),
+              HomeBanners(),
+              AppBarBottomLine(thickness: 10),
               HomeCategories(),
               HomeLeaderCompanies(),
               HomeVipCompanies(),

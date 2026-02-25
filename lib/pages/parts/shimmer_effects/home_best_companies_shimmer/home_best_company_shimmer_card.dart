@@ -12,12 +12,12 @@ class HomeBestCompanyShimmerCard extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // ======== Colors ============
     final bool isLight = isLightTheme(context, ref);
-    Color highlightColor = isLight
+    final Color highlightColor = isLight
         ? LightColors.bgPageLight
         : DarkColors.bgPageDark;
-    Color imgColor = Color(0xff708798);
+    final Color imgColor = Color(0xff708798);
 
-    double colorOpacity = isLight ? 1 : .1;
+    final double colorOpacity = isLight ? 1 : .1;
 
     return SizedBox(
       width: 88.57925415039062,

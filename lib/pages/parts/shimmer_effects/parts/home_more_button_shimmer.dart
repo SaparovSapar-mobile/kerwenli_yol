@@ -12,11 +12,11 @@ class HomeMoreButtonShimmer extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // ======== Colors ============
     final bool isLight = isLightTheme(context, ref);
-    Color highlightColor = isLight
+    final Color highlightColor = isLight
         ? LightColors.bgPageLight
         : DarkColors.bgPageDark;
 
-    double colorOpacity = isLight ? 1 : .1;
+    final double colorOpacity = isLight ? 1 : .1;
 
     return Shimmer(
       colorOpacity: colorOpacity,

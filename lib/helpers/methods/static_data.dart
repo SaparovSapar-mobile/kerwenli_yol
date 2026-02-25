@@ -23,3 +23,6 @@ double userProfileInfoCardHeight = 90;
 
 double homeCategoriesCardHeight = 48;
 double homeBestCompaniesCardHeight = 84;
+
+double banner1Height = 122;
+double banner2Height = 64;

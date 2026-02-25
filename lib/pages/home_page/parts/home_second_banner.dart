@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kerwenli_yol/helpers/methods/parts/app_bar_methods.dart';
+import 'package:kerwenli_yol/helpers/methods/static_data.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_banners/parts/home_banner.dart';
 
 class HomeSecondBanner extends StatelessWidget {
@@ -14,7 +15,7 @@ class HomeSecondBanner extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
           child: HomeBanner(
             images: [],
-            height: 122,
+            height: banner1Height,
             width: double.infinity,
             borderRadius: 8,
             dotsLeft: 4,
