@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:kerwenli_yol/enums/banner_type.dart';
 import 'package:kerwenli_yol/helpers/functions/convert_and_sort.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/helpers/methods/static_data.dart';
@@ -38,7 +37,7 @@ class HomeBanners extends ConsumerWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               HomeBanner(
-                images: [],
+                banners: slot1,
                 height: banner1Height,
                 width: double.infinity,
                 borderRadius: 8,
@@ -52,7 +51,7 @@ class HomeBanners extends ConsumerWidget {
               Row(
                 children: [
                   HomeBanner(
-                    images: [],
+                    banners: slot2,
                     height: banner2Height,
                     width: width,
                     borderRadius: 6,
@@ -64,7 +63,7 @@ class HomeBanners extends ConsumerWidget {
                   ),
                   SizedBox(width: 10),
                   HomeBanner(
-                    images: [],
+                    banners: slot3,
                     height: banner2Height,
                     width: width,
                     borderRadius: 6,

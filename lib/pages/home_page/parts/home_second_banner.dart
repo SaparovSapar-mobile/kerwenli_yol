@@ -14,7 +14,7 @@ class HomeSecondBanner extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
           child: HomeBanner(
-            images: [],
+            banners: [],
             height: banner1Height,
             width: double.infinity,
             borderRadius: 8,
