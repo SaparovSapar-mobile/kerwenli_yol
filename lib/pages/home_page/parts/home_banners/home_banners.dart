@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kerwenli_yol/enums/banner_type.dart';
+import 'package:kerwenli_yol/helpers/functions/convert_and_sort.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/helpers/methods/static_data.dart';
 import 'package:kerwenli_yol/models/banner.dart';
@@ -25,6 +27,12 @@ class HomeBanners extends ConsumerWidget {
           if (data.isEmpty) {
             return const SizedBox.shrink();
           }
+
+          final List<List<BannerModel>> slots = sortBannerTypes(data);
+
+          final List<BannerModel> slot1 = slots[0]; // Type1 alanı
+          final List<BannerModel> slot2 = slots[1]; // Type2 alanı
+          final List<BannerModel> slot3 = slots[2]; // Type3 alanı
 
           return Column(
             mainAxisSize: MainAxisSize.min,

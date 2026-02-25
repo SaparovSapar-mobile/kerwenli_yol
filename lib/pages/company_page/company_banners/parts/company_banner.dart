@@ -1,10 +1,10 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:kerwenli_yol/helpers/methods/image_and_video.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_banners/parts/banner_dots.dart';
-import 'package:kerwenli_yol/pages/home_page/parts/home_banners/parts/home_banner_card.dart';
 
-class HomeBanner extends StatefulWidget {
-  const HomeBanner({
+class CompanyBanner extends StatefulWidget {
+  const CompanyBanner({
     super.key,
     required this.height,
     required this.width,
@@ -29,10 +29,10 @@ class HomeBanner extends StatefulWidget {
   final List<dynamic> images;
 
   @override
-  State<HomeBanner> createState() => _HomeBannerState();
+  State<CompanyBanner> createState() => _CompanyBannerState();
 }
 
-class _HomeBannerState extends State<HomeBanner> {
+class _CompanyBannerState extends State<CompanyBanner> {
   final CarouselSliderController _controller = CarouselSliderController();
 
   int _currentIndex = 0;
@@ -53,7 +53,7 @@ class _HomeBannerState extends State<HomeBanner> {
             CarouselSlider.builder(
               itemCount: len,
               itemBuilder: (context, index, realIndex) {
-                return HomeBannerCard(image: widget.images[index]);
+                return showImageMethod(widget.images[index], 0, null);
               },
               options: CarouselOptions(
                 height: widget.height,

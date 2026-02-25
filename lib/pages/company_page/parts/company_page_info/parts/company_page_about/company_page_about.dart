@@ -8,7 +8,7 @@ import 'package:kerwenli_yol/models/company.dart';
 import 'package:kerwenli_yol/models/maps.dart';
 import 'package:kerwenli_yol/models/social.dart';
 import 'package:kerwenli_yol/models/translation.dart';
-import 'package:kerwenli_yol/pages/home_page/parts/home_banners/parts/home_banner.dart';
+import 'package:kerwenli_yol/pages/company_page/company_banners/parts/company_banner.dart';
 import 'package:kerwenli_yol/pages/parts/open_location_list_tile.dart';
 import 'package:kerwenli_yol/pages/parts/open_social_list_tile.dart';
 import 'package:kerwenli_yol/pages/parts/show_image.dart';
@@ -94,7 +94,7 @@ class CompanyPageAbout extends ConsumerWidget {
             if (hasBanners)
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10),
-                child: HomeBanner(
+                child: CompanyBanner(
                   images: banners,
                   height: 120,
                   width: double.infinity,
