@@ -21,10 +21,10 @@ List<List<BannerModel>> sortBannerTypes(List<BannerModel> all) {
     grouped[BannerType.type4]!,
   ].where((lst) => lst.isNotEmpty).toList();
 
-  // UI'da 3 slot var: eksikse boş liste ekleyelim
-  while (ordered.length < 3) {
+  // UI'da 4 slot var: eksikse boş liste ekleyelim
+  while (ordered.length < 4) {
     ordered.add(<BannerModel>[]);
   }
 
-  return ordered.take(3).toList(); // [slot1, slot2, slot3]
+  return ordered.take(4).toList(); // [slot1, slot2, slot3, slot4]
 }
