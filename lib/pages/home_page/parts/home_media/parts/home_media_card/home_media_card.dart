@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kerwenli_yol/models/media.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_media/parts/home_media_card/parts/play_media_button.dart';
 import 'package:kerwenli_yol/pages/parts/video_duration.dart';
 import 'package:kerwenli_yol/pages/parts/view_count.dart';
@@ -6,9 +7,15 @@ import 'package:kerwenli_yol/pages/parts/show_image.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
 
 class HomeMediaCard extends StatelessWidget {
-  const HomeMediaCard({super.key, this.isFirst, this.isLast});
+  const HomeMediaCard({
+    super.key,
+    this.isFirst,
+    this.isLast,
+    required this.media,
+  });
 
   final bool? isFirst, isLast;
+  final MediaModel media;
 
   @override
   Widget build(BuildContext context) {

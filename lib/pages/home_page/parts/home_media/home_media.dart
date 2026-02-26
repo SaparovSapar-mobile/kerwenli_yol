@@ -28,7 +28,7 @@ class HomeMedia extends ConsumerWidget {
             HomeMoreButton(text: 'Media', onTap: () {}),
             Padding(
               padding: const EdgeInsets.only(top: 5, bottom: 10),
-              child: HomeMediaList(),
+              child: HomeMediaList(medias: data),
             ),
             AppBarBottomLine(thickness: 10),
           ],
