@@ -19,7 +19,7 @@ class HomeMediaList extends StatelessWidget {
           media: medias[index],
         ),
         separatorBuilder: (context, index) => SizedBox(width: 5),
-        itemCount: 10,
+        itemCount: medias.length,
       ),
     );
   }
