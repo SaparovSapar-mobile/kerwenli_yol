@@ -12,8 +12,8 @@ class MediaModel {
   factory MediaModel.fromJson(Map<String, dynamic> json) {
     return MediaModel(
       id: json['uuid'] ?? '',
-      viewNumber: json['video_paths'] ?? 0,
-      videoPaths: json['banners'] ?? [],
+      viewNumber: json['view_number'] ?? 0,
+      videoPaths: json['video_paths'] ?? [],
     );
   }
 }
