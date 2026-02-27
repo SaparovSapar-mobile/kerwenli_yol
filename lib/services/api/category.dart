@@ -7,10 +7,10 @@ import 'package:http/http.dart' as http;
 class CategoryApiService {
   // fetch categories ------------------------------------------------------------
   Future<List<CategoryModel>> fetchCategories() async {
-    Uri uri = Uri.parse('$apiUrl/client/categories');
+    final Uri uri = Uri.parse('$apiUrl/client/categories');
 
     try {
-      http.Response response = await http.get(uri);
+      final http.Response response = await http.get(uri);
       final dynamic jsonData = json.decode(response.body);
 
       if (response.statusCode == 200 && jsonData['status']) {

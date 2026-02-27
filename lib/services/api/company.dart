@@ -7,10 +7,10 @@ import 'package:kerwenli_yol/models/company.dart';
 class CompanyApiService {
   // fetch best companies -----------------------------
   Future<List<CompanyModel>> fetchBestCompanies() async {
-    Uri uri = Uri.parse('$apiUrl/client/best-companies');
+    final Uri uri = Uri.parse('$apiUrl/client/best-companies');
 
     try {
-      http.Response response = await http.get(uri);
+      final http.Response response = await http.get(uri);
       final dynamic jsonData = json.decode(response.body);
 
       if (response.statusCode == 200 && jsonData['status']) {
@@ -33,10 +33,10 @@ class CompanyApiService {
 
   // fetch travel 360 ---------------------------------
   Future<List<CompanyModel>> fetchTravels() async {
-    Uri uri = Uri.parse('$apiUrl/client/travel360');
+    final Uri uri = Uri.parse('$apiUrl/client/travel360');
 
     try {
-      http.Response response = await http.get(uri);
+      final http.Response response = await http.get(uri);
       final dynamic jsonData = json.decode(response.body);
 
       if (response.statusCode == 200 && jsonData['status']) {
@@ -59,10 +59,10 @@ class CompanyApiService {
 
   // fetch company detail by id ---------------------------------
   Future<CompanyDetailModel> fetchCompany(String id) async {
-    Uri uri = Uri.parse('$apiUrl/client/individuals/$id');
+    final Uri uri = Uri.parse('$apiUrl/client/individuals/$id');
 
     try {
-      http.Response response = await http.get(uri);
+      final http.Response response = await http.get(uri);
       final dynamic jsonData = json.decode(response.body);
 
       if (response.statusCode == 200 && jsonData['status']) {
@@ -82,10 +82,10 @@ class CompanyApiService {
 
   // fetch vip companies ---------------------------------
   Future<List<CompanyModel>> fetchVipCompanies() async {
-    Uri uri = Uri.parse('$apiUrl/client/vip-companies');
+    final Uri uri = Uri.parse('$apiUrl/client/vip-companies');
 
     try {
-      http.Response response = await http.get(uri);
+      final http.Response response = await http.get(uri);
       final dynamic jsonData = json.decode(response.body);
 
       if (response.statusCode == 200 && jsonData['status']) {

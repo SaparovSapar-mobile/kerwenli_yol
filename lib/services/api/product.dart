@@ -7,10 +7,10 @@ import 'package:http/http.dart' as http;
 class ProductApiService {
   // fetch new products -----------------------------
   Future<List<NewProductModel>> fetchNewProducts() async {
-    Uri uri = Uri.parse('$apiUrl/client/new-products');
+    final Uri uri = Uri.parse('$apiUrl/client/new-products');
 
     try {
-      http.Response response = await http.get(uri);
+      final http.Response response = await http.get(uri);
       final dynamic jsonData = json.decode(response.body);
 
       if (response.statusCode == 200 && jsonData['status']) {

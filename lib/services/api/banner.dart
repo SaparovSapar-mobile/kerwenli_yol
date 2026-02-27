@@ -7,10 +7,10 @@ import 'package:kerwenli_yol/models/banner.dart';
 class BannerApiService {
   // fetch banners ------------------------------------------------------------
   Future<List<BannerModel>> fetchBanners() async {
-    Uri uri = Uri.parse('$apiUrl/client/banners');
+    final Uri uri = Uri.parse('$apiUrl/client/banners');
 
     try {
-      http.Response response = await http.get(uri);
+      final http.Response response = await http.get(uri);
       final dynamic jsonData = json.decode(response.body);
 
       if (response.statusCode == 200 && jsonData['status']) {

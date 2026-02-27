@@ -12,10 +12,10 @@ import 'package:kerwenli_yol/models/user.dart';
 class UserApiService {
   // === Login User ===
   Future<UserModel> loginUser(LoginUserModel reqData) async {
-    Uri uri = Uri.parse('$apiUrl/client/login');
+    final Uri uri = Uri.parse('$apiUrl/client/login');
 
     try {
-      http.Response response = await http.post(
+      final http.Response response = await http.post(
         uri,
         headers: {'Content-Type': 'application/json'},
         body: json.encode(reqData.toJson()),
@@ -39,10 +39,10 @@ class UserApiService {
 
   // === Check OTP for Email ===
   Future<bool> verifyEmail(CheckOtpModel reqData) async {
-    Uri uri = Uri.parse('$apiUrl/client/verify-email');
+    final Uri uri = Uri.parse('$apiUrl/client/verify-email');
 
     try {
-      http.Response response = await http.post(
+      final http.Response response = await http.post(
         uri,
         headers: {'Content-Type': 'application/json'},
         body: json.encode(reqData.toJson()),
@@ -57,10 +57,10 @@ class UserApiService {
 
   // === Register User ===
   Future<ResultRegister> registerUser(RegisterUserModel reqData) async {
-    Uri uri = Uri.parse('$apiUrl/client/register');
+    final Uri uri = Uri.parse('$apiUrl/client/register');
 
     try {
-      http.Response response = await http.post(
+      final http.Response response = await http.post(
         uri,
         headers: {'Content-Type': 'application/json'},
         body: json.encode(reqData.toJson()),
@@ -78,10 +78,10 @@ class UserApiService {
 
   // === Send Otp Code for Forgot Passoword ===
   Future<ResultRegister> sendOtp(SendOtpModel reqData) async {
-    Uri uri = Uri.parse('$apiUrl/client/forgot-password');
+    final Uri uri = Uri.parse('$apiUrl/client/forgot-password');
 
     try {
-      http.Response response = await http.post(
+      final http.Response response = await http.post(
         uri,
         headers: {'Content-Type': 'application/json'},
         body: json.encode(reqData.toJson()),
@@ -99,10 +99,10 @@ class UserApiService {
 
   // === Update Passoword ===
   Future<ResultRegister> updatePassword(UpdatePasswordModel reqData) async {
-    Uri uri = Uri.parse('$apiUrl/client/reset-password');
+    final Uri uri = Uri.parse('$apiUrl/client/reset-password');
 
     try {
-      http.Response response = await http.post(
+      final http.Response response = await http.post(
         uri,
         headers: {'Content-Type': 'application/json'},
         body: json.encode(reqData.toJson()),

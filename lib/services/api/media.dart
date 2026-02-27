@@ -7,10 +7,10 @@ import 'package:kerwenli_yol/models/media.dart';
 class MediaApiService {
   // fetch banners ------------------------------------------------------------
   Future<List<MediaModel>> fetchMedias() async {
-    Uri uri = Uri.parse('$apiUrl/client/media');
+    final Uri uri = Uri.parse('$apiUrl/client/media');
 
     try {
-      http.Response response = await http.get(uri);
+      final http.Response response = await http.get(uri);
       final dynamic jsonData = json.decode(response.body);
 
       if (response.statusCode == 200 && jsonData['status']) {

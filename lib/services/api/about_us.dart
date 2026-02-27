@@ -7,10 +7,10 @@ import 'package:http/http.dart' as http;
 class AboutUsApiService {
   // fetch about us text -------------------------------------
   Future<AboutUsModel> fetchAboutUs() async {
-    Uri uri = Uri.parse('$apiUrl/client/about');
+    final Uri uri = Uri.parse('$apiUrl/client/about');
 
     try {
-      http.Response response = await http.get(uri);
+      final http.Response response = await http.get(uri);
       final dynamic jsonData = json.decode(response.body);
 
       if (response.statusCode == 200 && jsonData['status']) {
