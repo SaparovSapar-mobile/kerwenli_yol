@@ -1,10 +1,13 @@
 import 'dart:io';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/database/config.dart';
 import 'package:kerwenli_yol/enums/theme.dart';
+import 'package:kerwenli_yol/firebase_options.dart';
 import 'package:kerwenli_yol/l10n/app_localizations.dart';
 import 'package:kerwenli_yol/pages/home.dart';
 import 'package:kerwenli_yol/providers/settings.dart';
@@ -13,6 +16,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  //  -------  Firebase Start ---------
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+  // --------- Firebase End ---------
 
   prefs = await SharedPreferences.getInstance(); // shared preferences
   await SystemChrome.setPreferredOrientations([
@@ -35,6 +43,11 @@ class MyHttpoverrides extends HttpOverrides {
   }
 }
 // release motda ayyrmaly
+
+@pragma('vm:entry-point')
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  await Firebase.initializeApp();
+}
 
 class MyApp extends ConsumerWidget {
   const MyApp({super.key});
