@@ -1,28 +1,30 @@
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-String apiUrl = dotenv.env['API_URL']!;
-String pathUrl = dotenv.env['PATH_URL']!;
+final String apiUrl = dotenv.env['API_URL']!;
+final String pathUrl = dotenv.env['PATH_URL']!;
 
-double companyCardHeight = 292;
-double companyListCardHeight = 132;
+const double companyCardHeight = 292;
+const double companyListCardHeight = 132;
 
-double productListCardHeight = 127;
-double productCardHeight = 295;
+const double productListCardHeight = 127;
+const double productCardHeight = 295;
 
-double mediaCardHeight = 238;
-double photosCardHeight = 113;
-double wideoCardHeight = 151;
+const double mediaCardHeight = 238;
+const double photosCardHeight = 113;
+const double wideoCardHeight = 151;
 
-double leaderCompanyCardHeight = 100;
+const double leaderCompanyCardHeight = 100;
 
-double newsListCardHeight = 103;
+const double newsListCardHeight = 103;
 
-double vipCompanyCardHeight = 202;
+const double vipCompanyCardHeight = 202;
 
-double userProfileInfoCardHeight = 90;
+const double userProfileInfoCardHeight = 90;
 
-double homeCategoriesCardHeight = 48;
-double homeBestCompaniesCardHeight = 84;
+const double homeCategoriesCardHeight = 48;
+const double homeBestCompaniesCardHeight = 84;
 
-double banner1Height = 122;
-double banner2Height = 64;
+const double banner1Height = 122;
+const double banner2Height = 64;
+
+const String notificationTopic = "trading_channel";
