@@ -5,7 +5,7 @@ import 'package:sqflite/sql.dart';
 Future<void> createUser(UserModel user) async {
   if (db.isOpen) {
     // Kullanıcı var mı kontrol et
-    final existingUser = await db.query('user');
+    final List<Map<String, Object?>> existingUser = await db.query('user');
 
     if (existingUser.isNotEmpty) {
       await deleteUser();
@@ -25,7 +25,7 @@ Future<UserModel> getUser() async {
   if (db.isOpen) {
     List<Map<String, dynamic>>? maps = await db.rawQuery("SELECT * FROM user");
     if (maps.isEmpty) return data;
-    UserModel user = UserModel.fromMap(maps.first);
+    final UserModel user = UserModel.fromMap(maps.first);
     data = user;
   }
   return data;
