@@ -4,8 +4,8 @@ import 'package:sqflite/sqflite.dart';
 late Database db;
 
 Future<void> createDB() async {
-  var dbPath = await getDatabasesPath();
-  final path = '$dbPath/trading.db';
+  final String dbPath = await getDatabasesPath();
+  final String path = '$dbPath/trading.db';
 
   db = await openDatabase(
     path,

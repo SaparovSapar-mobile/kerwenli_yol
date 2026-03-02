@@ -11,10 +11,10 @@ class AppHome extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    bool isFirstTime = ref.read(isFirstTimeProvider);
-    int passCode = ref.read(passCodeProvider);
+    final bool isFirstTime = ref.read(isFirstTimeProvider);
+    final int passCode = ref.read(passCodeProvider);
 
-    bool hasPassCode = passCode != 0;
+    final bool hasPassCode = passCode != 0;
 
     if (isFirstTime) {
       return const OnboardPage();

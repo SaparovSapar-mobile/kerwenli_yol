@@ -55,11 +55,11 @@ class MyApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // ---------- Lang Provider ----------------
-    String language = ref.watch(langProvider);
+    final String language = ref.watch(langProvider);
 
     // ---------- Theme Provider Start --------------
     ThemeMode? themeMode = ThemeMode.system;
-    int theme = ref.watch(themeProvider);
+    final int theme = ref.watch(themeProvider);
 
     if (theme == ThemeType.system) {
       themeMode = ThemeMode.system;
