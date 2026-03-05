@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/methods/parts/app_bar_methods.dart';
+import 'package:kerwenli_yol/models/default_params.dart';
 import 'package:kerwenli_yol/models/media.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_media/parts/home_media_list.dart';
 import 'package:kerwenli_yol/pages/parts/home_more_button.dart';
@@ -12,8 +13,9 @@ class HomeMedia extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    DefaultParams arg = DefaultParams(page: 1, pageSize: 10);
     final AsyncValue<List<MediaModel>> resultApi = ref.watch(
-      fetchMediasProvider,
+      fetchMediasProvider(arg),
     );
 
     return resultApi.when(
