@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kerwenli_yol/helpers/methods/pages/home_page.dart';
 import 'package:kerwenli_yol/pages/companies_page/parts/header_companies.dart';
+import 'package:kerwenli_yol/pages/medias_page/parts/medias_grid_view.dart';
 import 'package:kerwenli_yol/pages/parts/internet_status_bar/internet_status_bar.dart';
 
 class MediasPage extends StatelessWidget {
@@ -15,6 +16,7 @@ class MediasPage extends StatelessWidget {
         children: [
           InternetStatusBar(),
           HeaderCompanies(text: 'Medialar'),
+          Expanded(child: MediasGridView()),
         ],
       ),
     );

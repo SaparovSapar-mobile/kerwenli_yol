@@ -28,3 +28,5 @@ const double banner1Height = 122;
 const double banner2Height = 64;
 
 const String notificationTopic = "trading_channel";
+
+const pageSize = 10;

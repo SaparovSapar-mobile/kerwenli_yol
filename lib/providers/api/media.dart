@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/models/default_params.dart';
 import 'package:kerwenli_yol/models/media.dart';
+import 'package:kerwenli_yol/providers/pages/medias_page.dart';
 import 'package:kerwenli_yol/services/api/media.dart';
 
 final Provider<MediaApiService> mediaApiProvider = Provider<MediaApiService>(
@@ -12,13 +13,18 @@ fetchMediasProvider = FutureProvider.family<List<MediaModel>, DefaultParams>((
   ref,
   arg,
 ) async {
-  List<MediaModel> datas = [];
+  List<MediaModel> result = [];
 
   try {
-    datas = await ref.read(mediaApiProvider).fetchMedias(arg);
+    result = await ref.read(mediaApiProvider).fetchMedias(arg);
+    if (arg.page == 1) {
+      ref.read(hasMediasProvider.notifier).state = result.isNotEmpty;
+      ref.read(hasErrMediasProvider.notifier).state = false;
+    }
   } catch (e) {
-    rethrow;
+    ref.read(hasErrMediasProvider.notifier).state = e.toString().isNotEmpty;
   }
 
-  return datas;
+  ref.read(loadMediasProvider.notifier).state = false;
+  return result;
 });
