@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kerwenli_yol/helpers/methods/image_and_video.dart';
+import 'package:kerwenli_yol/helpers/methods/static_data.dart';
 import 'package:kerwenli_yol/models/media.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_media/parts/home_media_card/parts/play_media_button.dart';
 import 'package:kerwenli_yol/pages/parts/show_video.dart';
@@ -35,7 +36,7 @@ class MediaCard extends StatelessWidget {
                 alignment: Alignment.center,
                 children: [
                   SizedBox(
-                    height: 202,
+                    height: mediaCardImageHeight,
                     child: showImageMethod(media.coverImage, 8, null),
                   ),
                   PlayMediaButton(),
