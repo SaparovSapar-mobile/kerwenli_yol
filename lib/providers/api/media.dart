@@ -15,7 +15,7 @@ fetchMediasProvider = FutureProvider.family<List<MediaModel>, DefaultParams>((
   List<MediaModel> datas = [];
 
   try {
-    datas = await ref.read(mediaApiProvider).fetchMedias();
+    datas = await ref.read(mediaApiProvider).fetchMedias(arg);
   } catch (e) {
     rethrow;
   }
