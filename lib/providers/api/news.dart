@@ -25,3 +25,18 @@ final FutureProviderFamily<List<NewsModel>, DefaultParams> fetchNewsProvider =
       ref.read(loadNewsProvider.notifier).state = false;
       return result;
     });
+
+final AutoDisposeFutureProviderFamily<NewsModel, String>
+fetchNewsDetailProvider = FutureProvider.autoDispose.family<NewsModel, String>((
+  ref,
+  arg,
+) async {
+  NewsModel result = NewsModel.defaultValue();
+
+  try {
+    result = await ref.read(newsApiProvider).fetchNewsDetail(arg);
+  } catch (e) {
+    rethrow;
+  }
+  return result;
+});
