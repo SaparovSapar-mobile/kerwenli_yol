@@ -79,7 +79,11 @@ class CompanyCardImage extends StatelessWidget {
                     ),
 
                   // ======= Card Image ========
-                  showImageMethod(image, 0, null),
+                  SizedBox(
+                    height: height ?? 156,
+                    width: width,
+                    child: showImageMethod(image, 0, null),
+                  ),
                 ],
               ),
             ),
