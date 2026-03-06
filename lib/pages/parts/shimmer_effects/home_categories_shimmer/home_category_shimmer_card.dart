@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
+import 'package:kerwenli_yol/pages/parts/shimmer_effects/shimmer_container.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
@@ -45,23 +46,9 @@ class HomeCategoryShimmerCard extends ConsumerWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                  width: 60,
-                  height: 10,
-                  decoration: BoxDecoration(
-                    color: highlightColor,
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                ),
+                ShimmerContainer(height: 10, width: 60),
                 SizedBox(height: 4),
-                Container(
-                  width: 86,
-                  height: 10,
-                  decoration: BoxDecoration(
-                    color: highlightColor,
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                ),
+                ShimmerContainer(height: 10, width: 86),
               ],
             ),
           ],

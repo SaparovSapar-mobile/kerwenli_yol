@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
+import 'package:kerwenli_yol/pages/parts/shimmer_effects/shimmer_container.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
@@ -46,43 +47,15 @@ class HomeVipCompanyShimmerCard extends ConsumerWidget {
               ),
             ),
             SizedBox(height: 4),
-            Container(
-              width: double.maxFinite,
-              height: 14,
-              decoration: BoxDecoration(
-                color: highlightColor,
-                borderRadius: BorderRadius.circular(4),
-              ),
-            ),
+            ShimmerContainer(height: 14, width: double.maxFinite),
             SizedBox(height: 4),
-            Container(
-              width: 80,
-              height: 14,
-              decoration: BoxDecoration(
-                color: highlightColor,
-                borderRadius: BorderRadius.circular(4),
-              ),
-            ),
+            ShimmerContainer(height: 14, width: 80),
             SizedBox(height: 17),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(
-                  width: 32,
-                  height: 14,
-                  decoration: BoxDecoration(
-                    color: highlightColor,
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                ),
-                Container(
-                  width: 32,
-                  height: 14,
-                  decoration: BoxDecoration(
-                    color: highlightColor,
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                ),
+                ShimmerContainer(height: 14, width: 32),
+                ShimmerContainer(height: 14, width: 32),
               ],
             ),
           ],
