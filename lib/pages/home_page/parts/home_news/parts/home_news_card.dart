@@ -115,7 +115,7 @@ class HomeNewsCard extends ConsumerWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       ViewCount(fontSize: 8, viewCount: news.viewsCount),
-                      ShowDate(),
+                      ShowDate(date: news.updatedAt),
                     ],
                   ),
                 ],
