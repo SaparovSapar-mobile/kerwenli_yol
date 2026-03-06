@@ -22,20 +22,27 @@ class HomeNewsCard extends ConsumerWidget {
     this.isFirst,
     this.isLast,
     this.width,
+    this.forListView,
     required this.news,
   });
 
-  final bool? isFirst, isLast;
+  final bool? isFirst, isLast, forListView;
   final double? width;
   final NewsModel news;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    EdgeInsetsGeometry? margin;
+    Color? color;
+
     // =========== Colors ===========
     final bool isLight = isLightTheme(context, ref);
     final Color borderColor = isLight
         ? LightColors.bgPageLight
         : DarkColors.bgPageDark;
+    final Color bgColor = isLight
+        ? LightColors.bgBlogLight
+        : DarkColors.bgBlogDark;
     final Color descColor = isLight
         ? LightColors.textDescriptionLight
         : DarkColors.textDescriptionDark;
@@ -60,18 +67,29 @@ class HomeNewsCard extends ConsumerWidget {
       news.descriptionEn,
     );
 
+    final bool forLv = forListView != null && forListView!;
+    final bool hasBeginAndEndMarrgin = isFirst != null && isLast != null;
+    if (hasBeginAndEndMarrgin) {
+      margin = EdgeInsets.only(
+        left: isFirst! ? 16 : 0,
+        right: isLast! ? 16 : 0,
+      );
+    } else if (forLv) {
+      margin = EdgeInsets.symmetric(vertical: 5);
+      color = bgColor;
+    }
+
     return GestureDetector(
       onTap: () => goToPage(context, NewsDetailPage(), AxisDirection.left),
       child: Container(
         width: width,
         height: newsListCardHeight,
-        margin: isFirst != null && isLast != null
-            ? EdgeInsets.only(left: isFirst! ? 16 : 0, right: isLast! ? 16 : 0)
-            : null,
+        margin: margin,
         padding: EdgeInsets.only(left: 5, top: 13, bottom: 5, right: 5),
         decoration: BoxDecoration(
+          color: color,
           border: Border.all(color: borderColor),
-          borderRadius: BorderRadius.circular(4),
+          borderRadius: BorderRadius.circular(10),
         ),
         child: Row(
           mainAxisSize: MainAxisSize.min,
@@ -91,11 +109,13 @@ class HomeNewsCard extends ConsumerWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    name,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: titleStyle,
+                  Expanded(
+                    child: Text(
+                      name,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: titleStyle,
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 2),
