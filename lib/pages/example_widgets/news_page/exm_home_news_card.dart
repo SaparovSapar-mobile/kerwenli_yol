@@ -38,7 +38,8 @@ class ExmHomeNewsCard extends ConsumerWidget {
     );
 
     return GestureDetector(
-      onTap: () => goToPage(context, NewsDetailPage(), AxisDirection.left),
+      onTap: () =>
+          goToPage(context, NewsDetailPage(newsId: ''), AxisDirection.left),
       child: Container(
         width: width,
         height: newsListCardHeight,
