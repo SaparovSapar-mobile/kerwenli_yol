@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kerwenli_yol/helpers/functions/convert_and_sort.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
 
 class ViewCount extends ConsumerWidget {
-  const ViewCount({super.key, this.bGColor, this.fontSize});
+  const ViewCount({super.key, this.bGColor, this.viewCount, this.fontSize});
 
   final Color? bGColor;
   final double? fontSize;
+  final int? viewCount;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -19,9 +21,11 @@ class ViewCount extends ConsumerWidget {
       bgColor = bGColor!;
     }
 
-    TextStyle textStyle = AppTextStyles.medium10.copyWith(
+    final TextStyle textStyle = AppTextStyles.medium10.copyWith(
       fontSize: fontSize ?? 8,
     );
+
+    final bool hasViewCount = viewCount != null;
 
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 3, vertical: 2),
@@ -32,7 +36,10 @@ class ViewCount extends ConsumerWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text('10 K', style: textStyle),
+          Text(
+            formatCount(hasViewCount ? viewCount! : 10).toString(),
+            style: textStyle,
+          ),
           SizedBox(width: 5),
           Icon(Icons.visibility, size: fontSize ?? 8),
         ],
