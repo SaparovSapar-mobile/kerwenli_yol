@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kerwenli_yol/helpers/methods/static_data.dart';
-import 'package:kerwenli_yol/pages/parts/shimmer_effects/home_vip_companies_shimmer/home_vip_company_shimmer_card.dart';
+import 'package:kerwenli_yol/pages/parts/shimmer_effects/home_news_shimmer/home_news_shimmer_card.dart';
 import 'package:kerwenli_yol/pages/parts/shimmer_effects/parts/home_more_button_shimmer.dart';
 
 class HomeNewsShimmer extends StatelessWidget {
@@ -21,7 +21,7 @@ class HomeNewsShimmer extends StatelessWidget {
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
               scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) => HomeVipCompanyShimmerCard(),
+              itemBuilder: (context, index) => HomeNewsShimmerCard(),
               separatorBuilder: (_, _) => SizedBox(width: 5),
               itemCount: 3,
             ),

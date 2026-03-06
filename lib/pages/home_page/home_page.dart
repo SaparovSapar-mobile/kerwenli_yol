@@ -12,6 +12,7 @@ import 'package:kerwenli_yol/pages/home_page/parts/home_partners_slider/home_par
 import 'package:kerwenli_yol/pages/home_page/parts/home_second_banner.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/home_vip_companies.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_virtuals/home_virtuals.dart';
+import 'package:kerwenli_yol/pages/parts/shimmer_effects/home_news_shimmer/home_news_shimmer.dart';
 import 'package:kerwenli_yol/providers/parts/scroll_to_top.dart';
 
 class HomePage extends ConsumerWidget {

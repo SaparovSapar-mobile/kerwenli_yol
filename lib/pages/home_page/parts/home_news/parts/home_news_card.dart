@@ -23,16 +23,16 @@ class HomeNewsCard extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // =========== Colors ===========
     final bool isLight = isLightTheme(context, ref);
-    Color borderColor = isLight
+    final Color borderColor = isLight
         ? LightColors.bgPageLight
         : DarkColors.bgPageDark;
-    Color descColor = isLight
+    final Color descColor = isLight
         ? LightColors.textDescriptionLight
         : DarkColors.textDescriptionDark;
 
     // =========== Text Styles ===========
-    TextStyle titleStyle = AppTextStyles.medium10;
-    TextStyle descStyle = AppTextStyles.regular10.copyWith(
+    final TextStyle titleStyle = AppTextStyles.medium10;
+    final TextStyle descStyle = AppTextStyles.regular10.copyWith(
       fontSize: 8,
       color: descColor,
     );
