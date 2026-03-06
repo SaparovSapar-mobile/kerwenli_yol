@@ -1,5 +1,11 @@
+import 'package:intl/intl.dart';
 import 'package:kerwenli_yol/enums/banner_type.dart';
 import 'package:kerwenli_yol/models/banner.dart';
+
+String formatDate(String isoDate) {
+  final DateTime dateTime = DateTime.parse(isoDate);
+  return DateFormat('dd.MM.yyyy').format(dateTime);
+}
 
 List<List<BannerModel>> sortBannerTypes(List<BannerModel> all) {
   final Map<String, List<BannerModel>> grouped = {
