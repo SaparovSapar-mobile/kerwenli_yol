@@ -15,7 +15,7 @@ class HomeMediaList extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) => HomeMediaCard(
           isFirst: index == 0,
-          isLast: index == 9,
+          isLast: index == medias.length - 1,
           media: medias[index],
         ),
         separatorBuilder: (context, index) => SizedBox(width: 5),
