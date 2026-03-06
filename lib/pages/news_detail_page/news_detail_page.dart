@@ -14,20 +14,24 @@ import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
 
 class NewsDetailPage extends ConsumerWidget {
-  const NewsDetailPage({super.key});
+  const NewsDetailPage({super.key, required this.newsId});
+
+  final String newsId;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // ============= Colors ===========
     final bool isLight = isLightTheme(context, ref);
-    Color bgColor = isLight ? LightColors.bgPageLight : DarkColors.bgPageDark;
-    Color innerBgColor = isLight
+    final Color bgColor = isLight
+        ? LightColors.bgPageLight
+        : DarkColors.bgPageDark;
+    final Color innerBgColor = isLight
         ? LightColors.bgBlogLight
         : DarkColors.bgBlogDark;
 
     // ============= Text Styles ===========
-    TextStyle titleStyle = AppTextStyles.medium16;
-    TextStyle descStyle = AppTextStyles.regular12;
+    final TextStyle titleStyle = AppTextStyles.medium16;
+    final TextStyle descStyle = AppTextStyles.regular12;
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -89,6 +93,7 @@ class NewsDetailPage extends ConsumerWidget {
               ),
             ),
           ),
+          SizedBox(height: 20),
         ],
       ),
     );

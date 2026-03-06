@@ -32,4 +32,27 @@ class NewsApiService {
       rethrow;
     }
   }
+
+  // fetch news detail by id ---------------------------------
+  Future<NewsModel> fetchNewsDetail(String id) async {
+    final Uri uri = Uri.parse('$apiUrl/client/news/$id');
+
+    try {
+      final http.Response response = await http.get(uri);
+      final dynamic jsonData = json.decode(response.body);
+
+      if (response.statusCode == 200 && jsonData['status']) {
+        final dynamic data = jsonData['data'];
+
+        if (data != null) {
+          return NewsModel.fromJson(data);
+        }
+
+        return NewsModel.defaultValue();
+      }
+      return NewsModel.defaultValue();
+    } catch (e) {
+      rethrow;
+    }
+  }
 }
