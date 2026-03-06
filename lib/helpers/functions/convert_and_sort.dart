@@ -34,3 +34,20 @@ List<List<BannerModel>> sortBannerTypes(List<BannerModel> all) {
 
   return ordered.take(4).toList(); // [slot1, slot2, slot3, slot4]
 }
+
+String formatCount(int value) {
+  if (value < 1000) return value.toString();
+
+  if (value < 1000000) {
+    double result = value / 1000;
+    return '${result.toStringAsFixed(result % 1 == 0 ? 0 : 1)}K';
+  }
+
+  if (value < 1000000000) {
+    double result = value / 1000000;
+    return '${result.toStringAsFixed(result % 1 == 0 ? 0 : 1)}M';
+  }
+
+  double result = value / 1000000000;
+  return '${result.toStringAsFixed(result % 1 == 0 ? 0 : 1)}B';
+}

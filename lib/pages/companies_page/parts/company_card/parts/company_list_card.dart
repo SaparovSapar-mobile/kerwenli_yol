@@ -63,7 +63,7 @@ class CompanyListCard extends ConsumerWidget {
             bookmarkButtonIconSize: 12,
             bookmarkButtonBorderRadius: 4.3,
             forBookMark: forBookmark,
-            company: company,
+            image: company.photo,
           ),
           SizedBox(width: 5),
           Expanded(

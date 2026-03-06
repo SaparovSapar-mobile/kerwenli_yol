@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:html/parser.dart';
 import 'package:kerwenli_yol/enums/card_top_text_type.dart';
 import 'package:kerwenli_yol/helpers/functions/navigation.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
-import 'package:kerwenli_yol/helpers/functions/translations.dart';
 import 'package:kerwenli_yol/helpers/methods/static_data.dart';
-import 'package:kerwenli_yol/models/news_model.dart';
-import 'package:kerwenli_yol/pages/companies_page/parts/company_card/parts/company_card_image.dart';
+import 'package:kerwenli_yol/pages/example_widgets/companies_page/parts/company_card/parts/exm_company_card_image.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/parts/home_vip_company_card_categories.dart';
 import 'package:kerwenli_yol/pages/news_detail_page/news_detail_page.dart';
 import 'package:kerwenli_yol/pages/parts/show_date.dart';
@@ -16,18 +13,11 @@ import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
 
-class HomeNewsCard extends ConsumerWidget {
-  const HomeNewsCard({
-    super.key,
-    this.isFirst,
-    this.isLast,
-    this.width,
-    required this.news,
-  });
+class ExmHomeNewsCard extends ConsumerWidget {
+  const ExmHomeNewsCard({super.key, this.isFirst, this.isLast, this.width});
 
   final bool? isFirst, isLast;
   final double? width;
-  final NewsModel news;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -47,19 +37,6 @@ class HomeNewsCard extends ConsumerWidget {
       color: descColor,
     );
 
-    final String name = translateText(
-      ref,
-      news.nameTm,
-      news.nameRu,
-      news.nameEn,
-    );
-    final String description = translateText(
-      ref,
-      news.descriptionTm,
-      news.descriptionRu,
-      news.descriptionEn,
-    );
-
     return GestureDetector(
       onTap: () => goToPage(context, NewsDetailPage(), AxisDirection.left),
       child: Container(
@@ -76,7 +53,7 @@ class HomeNewsCard extends ConsumerWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            CompanyCardImage(
+            ExmCompanyCardImage(
               cardTopTypes: [CardTopTextType.news],
               height: double.maxFinite,
               width: 87,
@@ -84,7 +61,6 @@ class HomeNewsCard extends ConsumerWidget {
               cttSize: 6,
               cttTopPosition: -8,
               cardRad: 7,
-              image: news.coverImage,
             ),
             SizedBox(width: 5),
             Expanded(
@@ -92,7 +68,7 @@ class HomeNewsCard extends ConsumerWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    name,
+                    'Türkmenistanda öndürilen şokaladly süýji',
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: titleStyle,
@@ -105,7 +81,7 @@ class HomeNewsCard extends ConsumerWidget {
                     ),
                   ),
                   Text(
-                    parse(description).body!.text,
+                    'Türkmenistanyn Ministrler Kabinetinin yanyndaky Ulag we kommunikasiya',
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: descStyle,

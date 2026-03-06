@@ -49,7 +49,7 @@ class CompanyCard extends ConsumerWidget {
         children: [
           CompanyCardImage(
             cardTopTypes: [CardTopTextType.vip],
-            company: company,
+            image: company.photo,
           ),
           SizedBox(height: 5),
           Expanded(

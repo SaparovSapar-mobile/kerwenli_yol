@@ -18,6 +18,7 @@ class HomeNewsList extends StatelessWidget {
           isFirst: index == 0,
           isLast: index == news.length - 1,
           width: 238,
+          news: news[index],
         ),
         separatorBuilder: (context, index) => SizedBox(width: 5),
         itemCount: news.length,
