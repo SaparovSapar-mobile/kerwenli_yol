@@ -34,3 +34,5 @@ const pageSize = 10;
 const mediaCardImageHeight = 202.0;
 const homeSponsorsHeight = 56.0;
 const homeSponsorsWidth = 170.0;
+
+const homeGratutitudesHeight = 110.0;
