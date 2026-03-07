@@ -17,6 +17,7 @@ class HomeGradituteList extends StatelessWidget {
         itemBuilder: (context, index) => HomeGradituteCard(
           isFirst: index == 0,
           isLast: index == gratitudes.length - 1,
+          gratitude: gratitudes[index],
         ),
         separatorBuilder: (context, index) => SizedBox(width: 5),
         itemCount: gratitudes.length,
