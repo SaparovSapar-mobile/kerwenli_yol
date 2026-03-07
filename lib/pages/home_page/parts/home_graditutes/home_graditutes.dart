@@ -30,7 +30,7 @@ class HomeGraditutes extends ConsumerWidget {
             HomeMoreButton(text: 'Minnetdarlyklar', onTap: () {}),
             Padding(
               padding: const EdgeInsets.only(top: 5, bottom: 10),
-              child: HomeGradituteList(),
+              child: HomeGradituteList(gratitudes: data),
             ),
             AppBarBottomLine(thickness: 10),
           ],
