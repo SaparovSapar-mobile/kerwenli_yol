@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kerwenli_yol/helpers/functions/navigation.dart';
+import 'package:kerwenli_yol/helpers/methods/static_data.dart';
 import 'package:kerwenli_yol/pages/company_page/company_page.dart';
 import 'package:kerwenli_yol/pages/parts/show_image.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
@@ -17,7 +18,7 @@ class HomePartnerCard extends StatelessWidget {
       onTap: () =>
           goToPage(context, CompanyPage(companyId: ''), AxisDirection.left),
       child: Container(
-        width: 170,
+        width: homeSponsorsWidth,
         margin: isFirst != null && isLast != null
             ? EdgeInsets.only(left: isFirst! ? 16 : 0, right: isLast! ? 16 : 0)
             : null,
