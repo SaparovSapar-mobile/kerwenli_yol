@@ -15,7 +15,7 @@ class GratitudesPage extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           InternetStatusBar(),
-          HeaderCompanies(text: 'Minnetdarlyklar'),
+          HeaderCompanies(text: 'Minnetdarlyklar', leftPadding: 0),
           Expanded(child: GratitudesListView()),
         ],
       ),

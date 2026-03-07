@@ -15,7 +15,7 @@ class SponsorsPage extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           InternetStatusBar(),
-          HeaderCompanies(text: 'Hyzmadaslarymyz'),
+          HeaderCompanies(text: 'Hyzmadaslarymyz', leftPadding: 0),
           Expanded(child: SponsorsListView()),
         ],
       ),

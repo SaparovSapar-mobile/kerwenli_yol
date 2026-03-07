@@ -15,7 +15,7 @@ class MediasPage extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           InternetStatusBar(),
-          HeaderCompanies(text: 'Medialar'),
+          HeaderCompanies(text: 'Medialar', leftPadding: 0),
           Expanded(child: MediasGridView()),
         ],
       ),

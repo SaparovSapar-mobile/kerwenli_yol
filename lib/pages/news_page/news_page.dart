@@ -15,7 +15,7 @@ class NewsPage extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           InternetStatusBar(),
-          HeaderCompanies(text: 'Tazelikler'),
+          HeaderCompanies(text: 'Tazelikler', leftPadding: 0),
           Expanded(child: NewsListView()),
         ],
       ),

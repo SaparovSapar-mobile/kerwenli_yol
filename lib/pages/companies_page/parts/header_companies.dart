@@ -3,9 +3,10 @@ import 'package:kerwenli_yol/helpers/methods/parts/app_bar_methods.dart';
 import 'package:kerwenli_yol/pages/parts/back_leading_button.dart';
 
 class HeaderCompanies extends StatelessWidget {
-  const HeaderCompanies({super.key, required this.text});
+  const HeaderCompanies({super.key, required this.text, this.leftPadding});
 
   final String text;
+  final double? leftPadding;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +16,7 @@ class HeaderCompanies extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: BackLeadingButton(text: text),
+          child: BackLeadingButton(text: text, leftPadding: leftPadding),
         ),
         AppBarBottomLine(thickness: 2),
       ],

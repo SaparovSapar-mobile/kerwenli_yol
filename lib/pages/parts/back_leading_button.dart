@@ -6,26 +6,32 @@ import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
 
 class BackLeadingButton extends ConsumerWidget {
-  const BackLeadingButton({super.key, this.text, this.onPressed});
+  const BackLeadingButton({
+    super.key,
+    this.text,
+    this.onPressed,
+    this.leftPadding,
+  });
 
   final String? text;
   final void Function()? onPressed;
+  final double? leftPadding;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // ======= Colors ===========
     final bool isLight = isLightTheme(context, ref);
-    Color iconColor = isLight
+    final Color iconColor = isLight
         ? LightColors.textTitleLight
         : DarkColors.textTitleDark;
 
     // ======= Text Styles ===========
-    TextStyle textStyle = AppTextStyles.semiBold16;
+    final TextStyle textStyle = AppTextStyles.semiBold16;
 
-    bool hasText = text != null;
+    final bool hasText = text != null;
 
     return IconButton(
-      padding: EdgeInsets.only(left: 16),
+      padding: EdgeInsets.only(left: leftPadding ?? 16),
       constraints: const BoxConstraints(),
       visualDensity: VisualDensity.compact,
       onPressed: onPressed ?? () => Navigator.pop(context),

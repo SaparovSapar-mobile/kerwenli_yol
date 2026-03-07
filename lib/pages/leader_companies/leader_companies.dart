@@ -20,7 +20,7 @@ class LeaderCompaniesPage extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           InternetStatusBar(),
-          HeaderCompanies(text: 'Öňde baryjy kärhanalar'),
+          HeaderCompanies(text: 'Öňde baryjy kärhanalar', leftPadding: 0),
           CategoriesHeader(
             categories: headerCategories,
             childWidget: LeaderCompaniesGridView(companies: companies),

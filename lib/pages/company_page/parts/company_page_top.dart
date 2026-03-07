@@ -10,11 +10,13 @@ class CompanyPageTop extends StatelessWidget {
     required this.text,
     required this.showBottomLine,
     required this.onPressed,
+    this.leftPadding,
   });
 
   final String text;
   final bool showBottomLine;
   final void Function() onPressed;
+  final double? leftPadding;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +28,9 @@ class CompanyPageTop extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Expanded(child: BackLeadingButton(text: text)),
+              Expanded(
+                child: BackLeadingButton(text: text, leftPadding: leftPadding),
+              ),
               Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [

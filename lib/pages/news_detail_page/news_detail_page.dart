@@ -70,7 +70,9 @@ class NewsDetailPage extends ConsumerWidget {
                 text: 'Tazelik',
                 onPressed: () {},
                 showBottomLine: false,
+                leftPadding: 0,
               ),
+              SizedBox(height: 6),
               Expanded(
                 child: SingleChildScrollView(
                   child: Container(

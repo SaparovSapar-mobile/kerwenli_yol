@@ -61,6 +61,7 @@ class GradituteCard extends ConsumerWidget {
       child: Container(
         height: 133,
         padding: EdgeInsets.symmetric(vertical: 15, horizontal: 11),
+        margin: EdgeInsets.symmetric(vertical: 5),
         decoration: BoxDecoration(
           color: bgColor,
           borderRadius: BorderRadius.circular(10),

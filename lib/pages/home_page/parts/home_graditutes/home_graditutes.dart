@@ -38,7 +38,7 @@ class HomeGraditutes extends ConsumerWidget {
               padding: const EdgeInsets.only(top: 5, bottom: 10),
               child: HomeGradituteList(gratitudes: data),
             ),
-            AppBarBottomLine(thickness: 10),
+            AppBarBottomLine(thickness: 70),
           ],
         );
       },

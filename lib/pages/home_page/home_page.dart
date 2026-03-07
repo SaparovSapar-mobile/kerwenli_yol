@@ -44,7 +44,6 @@ class HomePage extends ConsumerWidget {
               HomePartnersSlider(),
               HomePartners(),
               HomeGraditutes(),
-              SizedBox(height: 60),
             ],
           ),
         ),

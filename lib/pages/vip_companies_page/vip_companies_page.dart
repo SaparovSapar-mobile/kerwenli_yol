@@ -24,7 +24,7 @@ class VipCompaniesPage extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           InternetStatusBar(),
-          HeaderCompanies(text: 'VIP Karhanalar'),
+          HeaderCompanies(text: 'VIP Karhanalar', leftPadding: 0),
           SortAndFilter(
             gridOrListProvider: gridOrListVipCompaniesSortProvider,
             isGridProvider: isGridVipCompaniesProvider,
