@@ -69,38 +69,40 @@ class GradituteCard extends ConsumerWidget {
             child: showImageMethod(gratitude.coverImg, 6.81, null),
           ),
           SizedBox(width: 5),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        name,
+                        style: nameStyle,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      SizedBox(width: 5),
+                      Text(
+                        parse(description).body!.text,
+                        style: descStyle,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(width: 5),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      name,
-                      style: nameStyle,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    SizedBox(width: 5),
-                    Text(
-                      parse(description).body!.text,
-                      style: descStyle,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                    ),
+                    ViewCount(),
+                    ShowDate(date: gratitude.createdAt),
                   ],
                 ),
-              ),
-              SizedBox(width: 5),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  ViewCount(),
-                  ShowDate(date: gratitude.createdAt),
-                ],
-              ),
-            ],
+              ],
+            ),
           ),
         ],
       ),
