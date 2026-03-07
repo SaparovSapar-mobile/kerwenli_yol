@@ -36,3 +36,4 @@ const homeSponsorsHeight = 56.0;
 const homeSponsorsWidth = 170.0;
 
 const homeGratutitudesHeight = 110.0;
+const homeGratutitudeWidth = 190.0;

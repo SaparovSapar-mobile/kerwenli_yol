@@ -11,7 +11,7 @@ class HomeGradituteCardImage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final bool isLight = isLightTheme(context, ref);
-    Color borderColor = isLight
+    final Color borderColor = isLight
         ? LightColors.bgPageLight
         : DarkColors.bgPageDark;
 

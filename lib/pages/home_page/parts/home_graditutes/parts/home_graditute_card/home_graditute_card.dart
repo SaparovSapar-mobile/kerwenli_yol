@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
+import 'package:kerwenli_yol/helpers/methods/static_data.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_graditutes/parts/home_graditute_card/parts/home_graditute_card_image.dart';
 import 'package:kerwenli_yol/pages/parts/show_date.dart';
 import 'package:kerwenli_yol/pages/parts/view_count.dart';
@@ -17,19 +18,21 @@ class HomeGradituteCard extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // =========== Colors ===========
     final bool isLight = isLightTheme(context, ref);
-    Color borderColor = isLight
+    final Color borderColor = isLight
         ? LightColors.bgPageLight
         : DarkColors.bgPageDark;
-    Color textColor = isLight
+    final Color textColor = isLight
         ? LightColors.textDescriptionLight
         : DarkColors.textDescriptionDark;
 
     // =========== Text Styles ===========
-    TextStyle nameStyle = AppTextStyles.semiBold10;
-    TextStyle descStyle = AppTextStyles.regular10.copyWith(color: textColor);
+    final TextStyle nameStyle = AppTextStyles.semiBold10;
+    final TextStyle descStyle = AppTextStyles.regular10.copyWith(
+      color: textColor,
+    );
 
     return Container(
-      width: 190,
+      width: homeGratutitudeWidth,
       margin: isFirst != null && isLast != null
           ? EdgeInsets.only(left: isFirst! ? 16 : 0, right: isLast! ? 16 : 0)
           : null,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kerwenli_yol/helpers/methods/static_data.dart';
-import 'package:kerwenli_yol/pages/parts/shimmer_effects/home_sponsors_shimmer/home_sponsor_shimmer_card.dart';
+import 'package:kerwenli_yol/pages/parts/shimmer_effects/home_gratitudes_shimmer/home_gratitude_shimmer_card.dart';
 import 'package:kerwenli_yol/pages/parts/shimmer_effects/parts/home_more_button_shimmer.dart';
 
 class HomeGratitudesShimmer extends StatelessWidget {
@@ -21,7 +21,7 @@ class HomeGratitudesShimmer extends StatelessWidget {
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
               scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) => HomeSponsorShimmerCard(),
+              itemBuilder: (context, index) => HomeGratitudeShimmerCard(),
               separatorBuilder: (_, _) => SizedBox(width: 5),
               itemCount: 3,
             ),
