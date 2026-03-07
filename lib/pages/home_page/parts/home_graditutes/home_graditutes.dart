@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kerwenli_yol/helpers/functions/navigation.dart';
 import 'package:kerwenli_yol/helpers/methods/parts/app_bar_methods.dart';
 import 'package:kerwenli_yol/models/default_params.dart';
 import 'package:kerwenli_yol/models/gratitude.dart';
+import 'package:kerwenli_yol/pages/gratitudes_page/gratitudes_page.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_graditutes/parts/home_graditute_list.dart';
 import 'package:kerwenli_yol/pages/parts/home_more_button.dart';
 import 'package:kerwenli_yol/pages/parts/shimmer_effects/home_gratitudes_shimmer/home_gratitudes_shimmer.dart';
@@ -27,7 +29,11 @@ class HomeGraditutes extends ConsumerWidget {
         return Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            HomeMoreButton(text: 'Minnetdarlyklar', onTap: () {}),
+            HomeMoreButton(
+              text: 'Minnetdarlyklar',
+              onTap: () =>
+                  goToPage(context, GratitudesPage(), AxisDirection.left),
+            ),
             Padding(
               padding: const EdgeInsets.only(top: 5, bottom: 10),
               child: HomeGradituteList(gratitudes: data),
