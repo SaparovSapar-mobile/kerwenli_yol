@@ -1,6 +1,8 @@
+import 'package:kerwenli_yol/models/translation.dart';
+
 class SponsorModel {
   final String id, companyId, companyLogoImg;
-  final List<dynamic> businessNames;
+  final TranslationModel businessNames;
 
   SponsorModel({
     required this.id,
@@ -14,7 +16,7 @@ class SponsorModel {
       id: '',
       companyId: '',
       companyLogoImg: '',
-      businessNames: [],
+      businessNames: TranslationModel.defaultValue(),
     );
   }
 
@@ -23,7 +25,9 @@ class SponsorModel {
       id: json['uuid'] ?? '',
       companyId: json['company_uuid'] ?? '',
       companyLogoImg: json['company_logo_img'] ?? '',
-      businessNames: json['business_name'] ?? [],
+      businessNames: json['business_name'] == null
+          ? TranslationModel.defaultValue()
+          : TranslationModel.fromJson(json['business_name']),
     );
   }
 }
