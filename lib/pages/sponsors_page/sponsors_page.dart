@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:kerwenli_yol/helpers/methods/pages/home_page.dart';
 import 'package:kerwenli_yol/pages/companies_page/parts/header_companies.dart';
-import 'package:kerwenli_yol/pages/news_page/parts/news_list_view.dart';
 import 'package:kerwenli_yol/pages/parts/internet_status_bar/internet_status_bar.dart';
+import 'package:kerwenli_yol/pages/sponsors_page/parts/sponsors_list_view.dart';
 
 class SponsorsPage extends StatelessWidget {
   const SponsorsPage({super.key});
@@ -16,7 +16,7 @@ class SponsorsPage extends StatelessWidget {
         children: [
           InternetStatusBar(),
           HeaderCompanies(text: 'Hyzmadaslarymyz'),
-          Expanded(child: NewsListView()),
+          Expanded(child: SponsorsListView()),
         ],
       ),
     );
