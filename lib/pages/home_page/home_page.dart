@@ -8,6 +8,7 @@ import 'package:kerwenli_yol/pages/home_page/parts/home_media/home_media.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_new_products/home_new_products.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_news/home_news.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_page_top/home_page_top.dart';
+import 'package:kerwenli_yol/pages/home_page/parts/home_partners/home_partners.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_partners_slider/home_partners_slider.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_second_banner.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/home_vip_companies.dart';
@@ -40,7 +41,7 @@ class HomePage extends ConsumerWidget {
               HomeNews(),
               HomeSecondBanner(),
               HomePartnersSlider(),
-              // HomePartners(),
+              HomePartners(),
               // HomeGraditutes(),
             ],
           ),
