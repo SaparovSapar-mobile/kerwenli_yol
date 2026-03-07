@@ -34,4 +34,27 @@ class GratitudeApiService {
       rethrow;
     }
   }
+
+  // fetch gratitude detail by id ---------------------------------
+  Future<GratitudeModel> fetchGratitudeDetail(String id) async {
+    final Uri uri = Uri.parse('$apiUrl/client/gratitudes/$id');
+
+    try {
+      final http.Response response = await http.get(uri);
+      final dynamic jsonData = json.decode(response.body);
+
+      if (response.statusCode == 200) {
+        final dynamic data = jsonData;
+
+        if (data != null) {
+          return GratitudeModel.fromJson(data);
+        }
+
+        return GratitudeModel.defaultValue();
+      }
+      return GratitudeModel.defaultValue();
+    } catch (e) {
+      rethrow;
+    }
+  }
 }
