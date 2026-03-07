@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kerwenli_yol/helpers/functions/navigation.dart';
 import 'package:kerwenli_yol/helpers/methods/parts/app_bar_methods.dart';
 import 'package:kerwenli_yol/models/default_params.dart';
 import 'package:kerwenli_yol/models/sponsor.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_partners/parts/home_partner_list.dart';
 import 'package:kerwenli_yol/pages/parts/home_more_button.dart';
 import 'package:kerwenli_yol/pages/parts/shimmer_effects/home_sponsors_shimmer/home_sponsors_shimmer.dart';
+import 'package:kerwenli_yol/pages/sponsors_page/sponsors_page.dart';
 import 'package:kerwenli_yol/providers/api/sponsor.dart';
 
 class HomePartners extends ConsumerWidget {
@@ -27,7 +29,11 @@ class HomePartners extends ConsumerWidget {
         return Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            HomeMoreButton(text: 'Hyzmadaslarymyz', onTap: () {}),
+            HomeMoreButton(
+              text: 'Hyzmadaslarymyz',
+              onTap: () =>
+                  goToPage(context, SponsorsPage(), AxisDirection.left),
+            ),
             Padding(
               padding: const EdgeInsets.only(top: 5, bottom: 10),
               child: HomePartnerList(sponsors: data),
