@@ -52,7 +52,7 @@ class SponsorsListView extends ConsumerWidget {
               }
 
               final SponsorModel sponsor = response[indexInPage];
-              return HomePartnerCard(sponsor: sponsor);
+              return HomePartnerCard(sponsor: sponsor, forListView: true);
             },
             error: (error, stackTrace) => const SizedBox.shrink(),
             loading: () {

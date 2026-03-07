@@ -18,6 +18,7 @@ class HomePartnerList extends StatelessWidget {
           isFirst: index == 0,
           isLast: index == sponsors.length - 1,
           sponsor: sponsors[index],
+          width: homeSponsorsWidth,
         ),
         separatorBuilder: (context, index) => SizedBox(width: 5),
         itemCount: sponsors.length,
