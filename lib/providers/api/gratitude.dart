@@ -30,3 +30,16 @@ fetchGradtitudesProvider =
       ref.read(loadGratitudesProvider.notifier).state = false;
       return result;
     });
+
+final AutoDisposeFutureProviderFamily<GratitudeModel, String>
+fetchGratitudeDetailProvider = FutureProvider.autoDispose
+    .family<GratitudeModel, String>((ref, arg) async {
+      GratitudeModel result = GratitudeModel.defaultValue();
+
+      try {
+        result = await ref.read(gratitudeApiProvider).fetchGratitudeDetail(arg);
+      } catch (e) {
+        rethrow;
+      }
+      return result;
+    });
