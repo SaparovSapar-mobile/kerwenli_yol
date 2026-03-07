@@ -7,9 +7,10 @@ import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
 
 class ShowDate extends ConsumerWidget {
-  const ShowDate({super.key, this.date});
+  const ShowDate({super.key, this.date, this.fontSize});
 
   final String? date;
+  final double? fontSize;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -19,7 +20,7 @@ class ShowDate extends ConsumerWidget {
 
     // ========= Text Styles =========
     final TextStyle textStyle = AppTextStyles.medium10.copyWith(
-      fontSize: 8,
+      fontSize: fontSize ?? 8,
       fontStyle: FontStyle.italic,
     );
 

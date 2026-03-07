@@ -23,8 +23,8 @@ class GradituteCard extends ConsumerWidget {
     // =========== Colors ===========
     final bool isLight = isLightTheme(context, ref);
     final Color borderColor = isLight
-        ? LightColors.bgPageLight
-        : DarkColors.bgPageDark;
+        ? LightColors.textDescriptionLight
+        : DarkColors.textDescriptionDark;
     final Color textColor = isLight
         ? LightColors.textDescriptionLight
         : DarkColors.textDescriptionDark;

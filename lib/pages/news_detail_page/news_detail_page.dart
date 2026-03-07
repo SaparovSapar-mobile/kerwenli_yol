@@ -120,10 +120,10 @@ class NewsDetailPage extends ConsumerWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               ViewCount(
-                                fontSize: 8,
+                                fontSize: 10,
                                 viewCount: data.viewsCount,
                               ),
-                              ShowDate(date: data.updatedAt),
+                              ShowDate(date: data.updatedAt, fontSize: 10),
                             ],
                           ),
                           SizedBox(height: 10),
