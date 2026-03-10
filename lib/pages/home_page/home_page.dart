@@ -10,7 +10,7 @@ import 'package:kerwenli_yol/pages/home_page/parts/home_new_products/home_new_pr
 import 'package:kerwenli_yol/pages/home_page/parts/home_news/home_news.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_page_top/home_page_top.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_partners/home_partners.dart';
-import 'package:kerwenli_yol/pages/home_page/parts/home_marks_slider/home_marks_slider.dart';
+import 'package:kerwenli_yol/pages/home_page/parts/home_marks/home_marks_slider.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_second_banner.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/home_vip_companies.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_virtuals/home_virtuals.dart';
