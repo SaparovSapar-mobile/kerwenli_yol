@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:kerwenli_yol/helpers/methods/parts/app_bar_methods.dart';
 import 'package:kerwenli_yol/helpers/methods/static_data.dart';
-import 'package:kerwenli_yol/pages/home_page/parts/home_partners_slider/parts/hps_list.dart';
-import 'package:kerwenli_yol/pages/home_page/parts/home_partners_slider/parts/hps_tabs.dart';
+import 'package:kerwenli_yol/pages/home_page/parts/home_marks_slider/parts/hps_list.dart';
+import 'package:kerwenli_yol/pages/home_page/parts/home_marks_slider/parts/hps_tabs.dart';
 import 'package:kerwenli_yol/pages/parts/home_more_button.dart';
 
-class HomePartnersSlider extends StatefulWidget {
-  const HomePartnersSlider({super.key});
+class HomeMarksSlider extends StatefulWidget {
+  const HomeMarksSlider({super.key});
 
   @override
-  State<HomePartnersSlider> createState() => _HomePartnersSliderState();
+  State<HomeMarksSlider> createState() => _HomeMarksSliderState();
 }
 
-class _HomePartnersSliderState extends State<HomePartnersSlider>
+class _HomeMarksSliderState extends State<HomeMarksSlider>
     with SingleTickerProviderStateMixin {
   late final TabController _tabCtrl;
 
