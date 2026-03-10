@@ -17,15 +17,24 @@ class HomeMarksSlider extends StatefulWidget {
 
 class _HomeMarksSliderState extends State<HomeMarksSlider>
     with SingleTickerProviderStateMixin {
-  late final TabController _tabCtrl;
-  late final List<ScrollController> _scrollControllers;
+  late TabController _tabCtrl;
+  late List<ScrollController> _scrollControllers;
+
+  final Set<int> _startedControllerIndexes = {};
 
   int get _tabLength => widget.markTypes.length + 1;
 
   @override
   void initState() {
     super.initState();
+    _initControllers();
 
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _startForTab(0);
+    });
+  }
+
+  void _initControllers() {
     _tabCtrl = TabController(length: _tabLength, vsync: this);
 
     _scrollControllers = List.generate(
@@ -33,38 +42,93 @@ class _HomeMarksSliderState extends State<HomeMarksSlider>
       (_) => ScrollController(),
     );
 
+    _tabCtrl.addListener(_onTabChanged);
+  }
+
+  void _onTabChanged() {
+    if (_tabCtrl.indexIsChanging) return;
+
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      _startForTab(0);
-    });
-
-    _tabCtrl.addListener(() {
-      if (_tabCtrl.indexIsChanging) return;
-
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        _startForTab(_tabCtrl.index);
-      });
+      if (!mounted) return;
+      _startForTab(_tabCtrl.index);
     });
   }
 
+  @override
+  void didUpdateWidget(covariant HomeMarksSlider oldWidget) {
+    super.didUpdateWidget(oldWidget);
+
+    final oldLength = oldWidget.markTypes.length + 1;
+    final newLength = widget.markTypes.length + 1;
+
+    if (oldLength != newLength) {
+      _tabCtrl.removeListener(_onTabChanged);
+      _tabCtrl.dispose();
+
+      for (final controller in _scrollControllers) {
+        controller.dispose();
+      }
+
+      _startedControllerIndexes.clear();
+
+      _initControllers();
+
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (!mounted) return;
+        _startForTab(0);
+      });
+
+      setState(() {});
+    }
+  }
+
+  String _getMarkTypeIdByTabIndex(int tabIndex) {
+    if (tabIndex == 0) return '';
+    return widget.markTypes[tabIndex - 1].id;
+  }
+
   void _startForTab(int tabIndex) {
-    final firstCtrlIndex = tabIndex * 2;
-    final secondCtrlIndex = firstCtrlIndex + 1;
+    final int firstCtrlIndex = tabIndex * 2;
+    final int secondCtrlIndex = firstCtrlIndex + 1;
 
     if (firstCtrlIndex >= _scrollControllers.length ||
         secondCtrlIndex >= _scrollControllers.length) {
       return;
     }
 
-    _startAutoScrollToMax(_scrollControllers[firstCtrlIndex]);
-    _startAutoScrollToMin(_scrollControllers[secondCtrlIndex]);
+    _startControllerIfNeeded(firstCtrlIndex, toMax: true);
+    _startControllerIfNeeded(secondCtrlIndex, toMax: false);
   }
 
-  void _startAutoScrollToMax(ScrollController ctrl) {
-    if (!mounted) return;
-    if (!ctrl.hasClients) return;
+  void _startControllerIfNeeded(int controllerIndex, {required bool toMax}) {
+    if (_startedControllerIndexes.contains(controllerIndex)) return;
+
+    final ctrl = _scrollControllers[controllerIndex];
+
+    if (!ctrl.hasClients) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (!mounted) return;
+        _startControllerIfNeeded(controllerIndex, toMax: toMax);
+      });
+      return;
+    }
+
+    _startedControllerIndexes.add(controllerIndex);
+
+    if (toMax) {
+      _startAutoScrollToMax(ctrl, controllerIndex);
+    } else {
+      _startAutoScrollToMin(ctrl, controllerIndex);
+    }
+  }
+
+  void _startAutoScrollToMax(ScrollController ctrl, int controllerIndex) {
+    if (!mounted || !ctrl.hasClients) return;
 
     final min = ctrl.position.minScrollExtent;
     final max = ctrl.position.maxScrollExtent;
+
+    if (max <= min) return;
 
     _animateLoop(
       max: max,
@@ -72,15 +136,17 @@ class _HomeMarksSliderState extends State<HomeMarksSlider>
       direction: max,
       second: 25,
       scrollCtrl: ctrl,
+      controllerIndex: controllerIndex,
     );
   }
 
-  void _startAutoScrollToMin(ScrollController ctrl) {
-    if (!mounted) return;
-    if (!ctrl.hasClients) return;
+  void _startAutoScrollToMin(ScrollController ctrl, int controllerIndex) {
+    if (!mounted || !ctrl.hasClients) return;
 
     final min = ctrl.position.minScrollExtent;
     final max = ctrl.position.maxScrollExtent;
+
+    if (max <= min) return;
 
     ctrl.jumpTo(max);
 
@@ -90,6 +156,7 @@ class _HomeMarksSliderState extends State<HomeMarksSlider>
       direction: min,
       second: 25,
       scrollCtrl: ctrl,
+      controllerIndex: controllerIndex,
     );
   }
 
@@ -99,6 +166,7 @@ class _HomeMarksSliderState extends State<HomeMarksSlider>
     required double direction,
     required int second,
     required ScrollController scrollCtrl,
+    required int controllerIndex,
   }) {
     if (!mounted || !scrollCtrl.hasClients) return;
 
@@ -111,7 +179,9 @@ class _HomeMarksSliderState extends State<HomeMarksSlider>
         .then((_) {
           if (!mounted || !scrollCtrl.hasClients) return;
 
-          final newDirection = direction == max ? min : max;
+          if (!_startedControllerIndexes.contains(controllerIndex)) return;
+
+          final double newDirection = direction == max ? min : max;
 
           _animateLoop(
             max: max,
@@ -119,12 +189,17 @@ class _HomeMarksSliderState extends State<HomeMarksSlider>
             direction: newDirection,
             second: second,
             scrollCtrl: scrollCtrl,
+            controllerIndex: controllerIndex,
           );
+        })
+        .catchError((_) {
+          // dispose veya attach sorunu olursa sessizce geç
         });
   }
 
   @override
   void dispose() {
+    _tabCtrl.removeListener(_onTabChanged);
     _tabCtrl.dispose();
 
     for (final controller in _scrollControllers) {
@@ -146,21 +221,21 @@ class _HomeMarksSliderState extends State<HomeMarksSlider>
           child: TabBarView(
             controller: _tabCtrl,
             children: List.generate(_tabLength, (tabIndex) {
-              final firstCtrlIndex = tabIndex * 2;
-              final secondCtrlIndex = firstCtrlIndex + 1;
+              final int firstCtrlIndex = tabIndex * 2;
+              final int secondCtrlIndex = firstCtrlIndex + 1;
+              final String markTypeId = _getMarkTypeIdByTabIndex(tabIndex);
 
               return Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   HpsList(
                     scrollController: _scrollControllers[firstCtrlIndex],
-                    // isterseniz burada ilgili tab datasını da gönderebilirsiniz
-                    // markType: tabIndex == 0 ? null : widget.markTypes[tabIndex - 1],
+                    markTypeId: markTypeId,
                   ),
                   const SizedBox(height: 5),
                   HpsList(
                     scrollController: _scrollControllers[secondCtrlIndex],
-                    // markType: tabIndex == 0 ? null : widget.markTypes[tabIndex - 1],
+                    markTypeId: markTypeId,
                   ),
                 ],
               );

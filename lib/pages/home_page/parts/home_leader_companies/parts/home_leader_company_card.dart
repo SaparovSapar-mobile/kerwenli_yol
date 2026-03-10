@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/navigation.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
-import 'package:kerwenli_yol/helpers/functions/translations.dart';
 import 'package:kerwenli_yol/helpers/methods/image_and_video.dart';
-import 'package:kerwenli_yol/models/company.dart';
 import 'package:kerwenli_yol/pages/company_page/company_page.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
@@ -15,11 +13,13 @@ class HomeLeaderCompanyCard extends ConsumerWidget {
     super.key,
     this.isFirst,
     this.isLast,
-    required this.company,
+    required this.name,
+    required this.companyId,
+    required this.image,
   });
 
   final bool? isFirst, isLast;
-  final CompanyModel company;
+  final String name, companyId, image;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -32,17 +32,10 @@ class HomeLeaderCompanyCard extends ConsumerWidget {
     // ========= Text Styles ==========
     final TextStyle textStyle = AppTextStyles.medium10;
 
-    final String name = translateText(
-      ref,
-      company.nameTm,
-      company.nameRu,
-      company.nameEn,
-    );
-
     return GestureDetector(
       onTap: () => goToPage(
         context,
-        CompanyPage(companyId: company.individualUuid),
+        CompanyPage(companyId: companyId),
         AxisDirection.left,
       ),
       child: Container(
@@ -63,7 +56,7 @@ class HomeLeaderCompanyCard extends ConsumerWidget {
               child: SizedBox(
                 height: 29,
                 width: 38,
-                child: showImageMethod(company.photo, 0, null),
+                child: showImageMethod(image, 0, null),
               ),
             ),
             SizedBox(height: 2),

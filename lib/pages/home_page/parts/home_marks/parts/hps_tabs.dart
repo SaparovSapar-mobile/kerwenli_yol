@@ -2,6 +2,7 @@ import 'package:buttons_tabbar/buttons_tabbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
+import 'package:kerwenli_yol/helpers/functions/translations.dart';
 import 'package:kerwenli_yol/helpers/methods/static_data.dart';
 import 'package:kerwenli_yol/models/mark_type.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
@@ -52,8 +53,16 @@ class HpsTabs extends ConsumerWidget {
           radius: 16,
           tabs: [
             const Tab(text: 'Hemmesi'),
-            ...markTypes.map((item) => Tab(text: 'Beyleki')),
-            // ...markTypes.map((item) => Tab(text: item.name ?? '')),
+            ...markTypes.map((item) {
+              final String name = translateText(
+                ref,
+                item.nameTm,
+                item.nameRu,
+                item.nameEn,
+              );
+
+              return Tab(text: name);
+            }),
           ],
         ),
       ),

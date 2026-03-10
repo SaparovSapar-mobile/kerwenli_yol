@@ -17,7 +17,7 @@ class HomeVirtualsList extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) => HomeVipCompanyCard(
           isFirst: index == 0,
-          isLast: index == 9,
+          isLast: index == vipCompanies.length - 1,
           cardTopTypes: [CardTopTextType.virtual, CardTopTextType.export],
         ),
         separatorBuilder: (context, index) => SizedBox(width: 5),

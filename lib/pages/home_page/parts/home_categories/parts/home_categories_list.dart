@@ -16,7 +16,7 @@ class HomeCategoriesList extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) => HomeCategoryCard(
           isFirst: index == 0,
-          isLast: index == 9,
+          isLast: index == categories.length - 1,
           category: categories[index],
         ),
         separatorBuilder: (context, index) => SizedBox(width: 5),
