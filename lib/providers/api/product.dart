@@ -1,5 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/models/new_product.dart';
+import 'package:kerwenli_yol/models/product.dart';
+import 'package:kerwenli_yol/providers/pages/products_page.dart';
 import 'package:kerwenli_yol/services/api/product.dart';
 
 final Provider<ProductApiService> productApiProvider =
@@ -16,4 +18,25 @@ final FutureProvider<List<NewProductModel>> fetchNewProductsProvider =
       }
 
       return datas;
+    });
+
+final FutureProviderFamily<List<ProductModel>, ProductParams>
+fetchCompanyProductsProvider =
+    FutureProvider.family<List<ProductModel>, ProductParams>((ref, arg) async {
+      List<ProductModel> result = [];
+
+      try {
+        result = await ref.read(productApiProvider).fetchCompanyProducts(arg);
+        if (arg.page == 1) {
+          ref.read(hasCProductsProvider.notifier).state = result.isNotEmpty;
+          ref.read(hasErrCProductsProvider.notifier).state = false;
+        }
+      } catch (e) {
+        ref.read(hasErrCProductsProvider.notifier).state = e
+            .toString()
+            .isNotEmpty;
+      }
+
+      ref.read(loadCProductsProvider.notifier).state = false;
+      return result;
     });
