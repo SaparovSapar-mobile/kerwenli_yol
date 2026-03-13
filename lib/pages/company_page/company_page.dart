@@ -57,7 +57,7 @@ class CompanyPage extends ConsumerWidget {
                     body: TabBarView(
                       children: [
                         CompanyPageInfo(company: data),
-                        CompanyPageProductsOrServices(),
+                        CompanyPageProductsOrServices(companyId: companyId),
                         CompanyPageMedias(),
                       ],
                     ),

@@ -7,7 +7,9 @@ import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 
 class CompanyPageProductsOrServices extends ConsumerWidget {
-  const CompanyPageProductsOrServices({super.key});
+  const CompanyPageProductsOrServices({super.key, required this.companyId});
+
+  final String companyId;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -27,11 +29,11 @@ class CompanyPageProductsOrServices extends ConsumerWidget {
           Expanded(
             child: Container(
               color: tabbarViewBgColor,
-              child: const TabBarView(
+              child: TabBarView(
                 children: [
-                  ProductsGridView(),
-                  ProductsGridView(),
-                  ProductsGridView(),
+                  ProductsGridView(companyId: companyId),
+                  ProductsGridView(companyId: companyId),
+                  ProductsGridView(companyId: companyId),
                 ],
               ),
             ),

@@ -4,7 +4,9 @@ import 'package:kerwenli_yol/helpers/methods/static_data.dart';
 import 'package:kerwenli_yol/pages/parts/product_card/product_card.dart';
 
 class ProductsGridView extends StatelessWidget {
-  const ProductsGridView({super.key});
+  const ProductsGridView({super.key, required this.companyId});
+
+  final String companyId;
 
   @override
   Widget build(BuildContext context) {
