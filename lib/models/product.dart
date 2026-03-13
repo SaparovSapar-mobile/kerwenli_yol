@@ -1,5 +1,6 @@
 class ProductModel {
-  final String id, nameTm, nameRu, nameEn, coverImage;
+  final String id, nameTm, nameRu, nameEn, coverImage, categoryId;
+  final int viewCount;
 
   ProductModel({
     required this.id,
@@ -7,6 +8,8 @@ class ProductModel {
     required this.nameRu,
     required this.nameEn,
     required this.coverImage,
+    required this.categoryId,
+    required this.viewCount,
   });
 
   factory ProductModel.defaultValue() {
@@ -16,6 +19,8 @@ class ProductModel {
       nameRu: '',
       nameEn: '',
       coverImage: '',
+      categoryId: '',
+      viewCount: 0,
     );
   }
 
@@ -26,6 +31,8 @@ class ProductModel {
       nameRu: json['name_ru'] ?? '',
       nameEn: json['name_en'] ?? '',
       coverImage: json['cover_image'] ?? '',
+      categoryId: json['category_uuid'] ?? '',
+      viewCount: json['view_count'] ?? 0,
     );
   }
 }
