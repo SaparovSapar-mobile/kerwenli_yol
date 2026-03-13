@@ -1,17 +1,17 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:kerwenli_yol/enums/card_top_text_type.dart';
-import 'package:kerwenli_yol/helpers/methods/image_and_video.dart';
+import 'package:kerwenli_yol/examples.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_banners/parts/banner_dots.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_new_products/parts/home_new_products_card/parts/images_left_right_button.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_new_products/parts/home_new_products_card/parts/zoom_images_button.dart';
 import 'package:kerwenli_yol/pages/parts/card_favorite_button.dart';
 import 'package:kerwenli_yol/pages/parts/card_top_texts/card_top_texts.dart';
 
-class HomeNewProductsCardImages extends StatefulWidget {
-  const HomeNewProductsCardImages({
+class ExmHomeNewProductsCardImages extends StatefulWidget {
+  const ExmHomeNewProductsCardImages({
     super.key,
-    required this.coverImage,
+    required this.product,
     this.width,
     this.height,
     this.cttHeight,
@@ -29,8 +29,7 @@ class HomeNewProductsCardImages extends StatefulWidget {
     this.forProductPage,
   });
 
-  // final ExampleProductCard product;
-  final String coverImage;
+  final ExampleProductCard product;
   final double? width,
       height,
       cttHeight,
@@ -48,32 +47,30 @@ class HomeNewProductsCardImages extends StatefulWidget {
   final bool? forProductPage;
 
   @override
-  State<HomeNewProductsCardImages> createState() =>
+  State<ExmHomeNewProductsCardImages> createState() =>
       _HomeNewProductsCardImagesState();
 }
 
-class _HomeNewProductsCardImagesState extends State<HomeNewProductsCardImages> {
+class _HomeNewProductsCardImagesState
+    extends State<ExmHomeNewProductsCardImages> {
   int _currentIndex = 0;
   final CarouselSliderController _carouselCtrl = CarouselSliderController();
 
   @override
   Widget build(BuildContext context) {
     const double cardRadius = 8;
-    // final images = widget.product.images;
-    final List<String> images = [widget.coverImage];
-    final int len = images.length;
+    final images = widget.product.images;
+    final len = images.length;
     final bool hasMoreImages = len > 1;
 
     /// Üst etiketler
-    final List<String> cardToptypes = [CardTopTextType.taze];
-    // final List<String> cardToptypes = [];
-    // if (widget.product.forVip) cardToptypes.add(CardTopTextType.vip);
-    // if (widget.product.forNew) cardToptypes.add(CardTopTextType.taze);
-    // if (widget.product.forExport) cardToptypes.add(CardTopTextType.export);
-    // if (widget.product.forVirtual) cardToptypes.add(CardTopTextType.virtual);
+    final List<String> cardToptypes = [];
+    if (widget.product.forVip) cardToptypes.add(CardTopTextType.vip);
+    if (widget.product.forNew) cardToptypes.add(CardTopTextType.taze);
+    if (widget.product.forExport) cardToptypes.add(CardTopTextType.export);
+    if (widget.product.forVirtual) cardToptypes.add(CardTopTextType.virtual);
 
-    final bool forProdPage =
-        widget.forProductPage != null && widget.forProductPage!;
+    bool forProdPage = widget.forProductPage != null && widget.forProductPage!;
 
     return SizedBox(
       width: widget.width ?? 100,
@@ -107,19 +104,18 @@ class _HomeNewProductsCardImagesState extends State<HomeNewProductsCardImages> {
                       carouselController: _carouselCtrl,
                       itemCount: len,
                       itemBuilder: (context, index, realIndex) {
-                        return SizedBox(
-                          width: double.infinity,
-                          height: double.infinity,
-                          child: showImageMethod(
-                            images[index],
-                            0,
-                            BoxFit.cover,
+                        // Burada gerçek resim widget’ını koyabilirsin
+                        return Center(
+                          child: Icon(
+                            Icons.add_a_photo_outlined,
+                            size: 14,
+                            color: const Color(0xFF9CB7FF),
                           ),
                         );
                       },
                       options: CarouselOptions(
-                        height: widget.height ?? 100,
-                        viewportFraction: 1.0,
+                        height: 100,
+                        viewportFraction: 1,
                         enableInfiniteScroll: hasMoreImages,
                         autoPlay: hasMoreImages,
                         autoPlayInterval: const Duration(seconds: 3),

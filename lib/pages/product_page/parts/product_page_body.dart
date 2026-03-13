@@ -4,7 +4,7 @@ import 'package:kerwenli_yol/examples.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/helpers/methods/pages/bottom_sheets.dart';
 import 'package:kerwenli_yol/pages/company_page/parts/company_page_info/parts/company_info/parts/company_info_key_value.dart';
-import 'package:kerwenli_yol/pages/home_page/parts/home_new_products/parts/home_new_products_card/parts/home_new_products_card_images.dart';
+import 'package:kerwenli_yol/pages/example_widgets/products_page/exm_home_new_products_card_images.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/parts/home_vip_company_card_categories.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/parts/home_vip_company_rating.dart';
 import 'package:kerwenli_yol/pages/parts/primary_button.dart';
@@ -48,7 +48,7 @@ class ProductPageBody extends ConsumerWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  HomeNewProductsCardImages(
+                  ExmHomeNewProductsCardImages(
                     product: product,
                     width: double.maxFinite,
                     height: 330,

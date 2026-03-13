@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/examples.dart';
 import 'package:kerwenli_yol/helpers/functions/navigation.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
-import 'package:kerwenli_yol/pages/home_page/parts/home_new_products/parts/home_new_products_card/parts/home_new_products_card_images.dart';
+import 'package:kerwenli_yol/pages/example_widgets/products_page/exm_home_new_products_card_images.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/parts/company_status.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/parts/home_vip_company_card_categories.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/parts/home_vip_company_rating.dart';
@@ -52,7 +52,7 @@ class ExmHomeNewProductsCard extends ConsumerWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            HomeNewProductsCardImages(product: product),
+            ExmHomeNewProductsCardImages(product: product),
             SizedBox(height: 5),
             Text(
               'Türkmenistanda öndürilen şokaladlary alyn',

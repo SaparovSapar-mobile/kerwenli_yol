@@ -37,13 +37,13 @@ class ProductApiService {
 
   // fetch company products -----------------------------
   Future<List<ProductModel>> fetchCompanyProducts(ProductParams arg) async {
-    final Uri uri = Uri.parse('$apiUrl/client/products/company').replace(
-      queryParameters: {
-        'p': arg.page.toString(),
-        'l': arg.pageSize.toString(),
-        'uuid': arg.companyId,
-      },
-    );
+    final Uri uri =
+        Uri.parse('$apiUrl/client/products/company/${arg.companyId}').replace(
+          queryParameters: {
+            // 'p': arg.page.toString(),
+            // 'l': arg.pageSize.toString()
+          },
+        );
 
     try {
       final http.Response response = await http.get(uri);
