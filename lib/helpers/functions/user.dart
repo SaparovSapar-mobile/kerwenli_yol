@@ -5,3 +5,8 @@ Future<String> getAccessToken() async {
   final UserModel user = await getUser();
   return user.token;
 }
+
+Future<String> getUserId() async {
+  final UserModel user = await getUser();
+  return user.id;
+}
