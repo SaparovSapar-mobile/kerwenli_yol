@@ -175,6 +175,7 @@ class _HomeNewProductsCardImagesState extends State<HomeNewProductsCardImages> {
 
                     /// Favorite button
                     CardFavoriteButton(
+                      productId: p.id,
                       width: widget.bbWith,
                       height: widget.bbHeight,
                       iconSize: widget.bbIconSize,

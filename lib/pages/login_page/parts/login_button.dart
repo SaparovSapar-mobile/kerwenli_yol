@@ -73,8 +73,6 @@ class LoginButton extends ConsumerWidget {
         }
 
         // ====== insert user to db ===========
-        print('=======================================================');
-        print('user id: ${respUser.id}');
         await createUser(
           UserModel(
             id: respUser.id,

@@ -171,6 +171,7 @@ class _HomeNewProductsCardImagesState
 
                     /// Favorite button
                     CardFavoriteButton(
+                      productId: '',
                       width: widget.bbWith,
                       height: widget.bbHeight,
                       iconSize: widget.bbIconSize,
