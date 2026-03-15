@@ -26,8 +26,10 @@ class CardFavoriteButton extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // ======= Colors =======
     final bool isLight = isLightTheme(context, ref);
-    Color bgColor = isLight ? LightColors.bgBlogLight : DarkColors.bgBlogDark;
-    Color iconColor = isLight
+    final Color bgColor = isLight
+        ? LightColors.bgBlogLight
+        : DarkColors.bgBlogDark;
+    final Color iconColor = isLight
         ? LightColors.textTitleLight
         : DarkColors.textTitleDark;
 
@@ -35,7 +37,7 @@ class CardFavoriteButton extends ConsumerWidget {
       right: rightPosition ?? 4,
       top: topPosition ?? 4,
       child: GestureDetector(
-        onTap: () {},
+        onTap: () async {},
         child: Container(
           width: width ?? 21,
           height: height ?? 21,

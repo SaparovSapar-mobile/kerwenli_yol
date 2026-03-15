@@ -34,7 +34,7 @@ class LoginButton extends ConsumerWidget {
       text: 'Ulgama Girmek',
       btnPressProvider: loginBtnPressProvider,
       onPressed: () async {
-        GlobalKey<FormState> formKey = emailCtrl != null
+        final GlobalKey<FormState> formKey = emailCtrl != null
             ? formKeyForEmail!
             : formKeyForPhone!;
 
@@ -49,19 +49,19 @@ class LoginButton extends ConsumerWidget {
         ref.read(loginBtnPressProvider.notifier).state = true;
 
         // ======== Login User ==========
-        String email = emailCtrl == null ? '' : emailCtrl!.text;
-        String phone = phoneCtrl == null ? '' : phoneCtrl!.text;
-        String password = passwordCtrl.text;
+        final String email = emailCtrl == null ? '' : emailCtrl!.text;
+        final String phone = phoneCtrl == null ? '' : phoneCtrl!.text;
+        final String password = passwordCtrl.text;
 
         String login = email;
         if (email == '') {
           login = phone;
         }
-        LoginUserModel reqDataLogin = LoginUserModel(
+        final LoginUserModel reqDataLogin = LoginUserModel(
           login: login,
           password: password,
         );
-        UserModel respUser = await ref.read(
+        final UserModel respUser = await ref.read(
           loginUserProvider(reqDataLogin).future,
         );
         if (respUser.id == '' && respUser.token == '') {
@@ -73,6 +73,8 @@ class LoginButton extends ConsumerWidget {
         }
 
         // ====== insert user to db ===========
+        print('=======================================================');
+        print('user id: ${respUser.id}');
         await createUser(
           UserModel(
             id: respUser.id,
@@ -88,7 +90,7 @@ class LoginButton extends ConsumerWidget {
         ref.invalidate(getUserProvider);
 
         // ==== Ulanyjy programmany ilkinji gezek acyan bolsa==
-        bool isFirstTime = ref.read(isFirstTimeProvider);
+        final bool isFirstTime = ref.read(isFirstTimeProvider);
         if (isFirstTime) {
           ref.read(isFirstTimeProvider.notifier).update(false);
         }

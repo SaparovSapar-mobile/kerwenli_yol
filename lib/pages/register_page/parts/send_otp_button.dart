@@ -36,7 +36,7 @@ class SendOtpButton extends ConsumerWidget {
       text: 'Kod ugratmak',
       btnPressProvider: sendOTPCodeBtnPressProvider,
       onPressed: () async {
-        GlobalKey<FormState> formKey = emailCtrl != null
+        final GlobalKey<FormState> formKey = emailCtrl != null
             ? formKeyForEmail!
             : formKeyForPhone!;
 
@@ -48,12 +48,12 @@ class SendOtpButton extends ConsumerWidget {
           return;
         }
 
-        String userEmail = emailCtrl != null ? emailCtrl!.text : '';
-        String userPhone = phoneCtrl != null ? phoneCtrl!.text : '';
-        String userPassword = passwordCtrl.text;
-        String fullName = fullNameCtrl == null ? '' : fullNameCtrl!.text;
+        final String userEmail = emailCtrl != null ? emailCtrl!.text : '';
+        final String userPhone = phoneCtrl != null ? phoneCtrl!.text : '';
+        final String userPassword = passwordCtrl.text;
+        final String fullName = fullNameCtrl == null ? '' : fullNameCtrl!.text;
 
-        bool forRegister = fullName != '';
+        final bool forRegister = fullName != '';
 
         // ===== Dine Register - de confirm Privacy Control edilyar ===
         if (forRegister) {
@@ -69,7 +69,7 @@ class SendOtpButton extends ConsumerWidget {
         ResultRegister result = ResultRegister.defaultResult();
         if (forRegister) {
           // ====== Ulanyjy Registr Boljak bolanda su yeri isleyar ===
-          RegisterUserModel reqData = RegisterUserModel(
+          final RegisterUserModel reqData = RegisterUserModel(
             email: userEmail,
             name: fullName,
             password: userPassword,
