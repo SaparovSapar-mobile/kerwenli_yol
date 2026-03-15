@@ -52,7 +52,7 @@ class ProductCard extends ConsumerWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   HomeNewProductsCardImages(
-                    coverImage: product.coverImage,
+                    product: product,
                     width: 157,
                     height: 157,
                     cttHeight: 27,

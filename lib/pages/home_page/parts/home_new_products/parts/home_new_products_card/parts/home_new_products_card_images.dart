@@ -1,7 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:kerwenli_yol/enums/card_top_text_type.dart';
 import 'package:kerwenli_yol/helpers/methods/image_and_video.dart';
+import 'package:kerwenli_yol/models/product.dart';
+import 'package:kerwenli_yol/models/publication_model.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_banners/parts/banner_dots.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_new_products/parts/home_new_products_card/parts/images_left_right_button.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_new_products/parts/home_new_products_card/parts/zoom_images_button.dart';
@@ -11,7 +12,7 @@ import 'package:kerwenli_yol/pages/parts/card_top_texts/card_top_texts.dart';
 class HomeNewProductsCardImages extends StatefulWidget {
   const HomeNewProductsCardImages({
     super.key,
-    required this.coverImage,
+    required this.product,
     this.width,
     this.height,
     this.cttHeight,
@@ -30,7 +31,7 @@ class HomeNewProductsCardImages extends StatefulWidget {
   });
 
   // final ExampleProductCard product;
-  final String coverImage;
+  final ProductModel product;
   final double? width,
       height,
       cttHeight,
@@ -60,17 +61,16 @@ class _HomeNewProductsCardImagesState extends State<HomeNewProductsCardImages> {
   Widget build(BuildContext context) {
     const double cardRadius = 8;
     // final images = widget.product.images;
-    final List<String> images = [widget.coverImage];
+    final ProductModel p = widget.product;
+    final List<String> images = [p.coverImage];
     final int len = images.length;
     final bool hasMoreImages = len > 1;
 
     /// Üst etiketler
-    final List<String> cardToptypes = [CardTopTextType.taze];
-    // final List<String> cardToptypes = [];
-    // if (widget.product.forVip) cardToptypes.add(CardTopTextType.vip);
-    // if (widget.product.forNew) cardToptypes.add(CardTopTextType.taze);
-    // if (widget.product.forExport) cardToptypes.add(CardTopTextType.export);
-    // if (widget.product.forVirtual) cardToptypes.add(CardTopTextType.virtual);
+    final List<String> cardToptypes = [];
+    for (final PublicationModel e in p.publications) {
+      cardToptypes.add(e.nameEn.toLowerCase());
+    }
 
     final bool forProdPage =
         widget.forProductPage != null && widget.forProductPage!;
