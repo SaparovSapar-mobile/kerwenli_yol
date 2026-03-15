@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kerwenli_yol/helpers/methods/pages/bookmars_page.dart';
+import 'package:kerwenli_yol/helpers/methods/pages/bookmarks_page.dart';
 import 'package:kerwenli_yol/helpers/methods/parts/app_bar_methods.dart';
 import 'package:kerwenli_yol/helpers/methods/static_data.dart';
 import 'package:kerwenli_yol/pages/bookmark_page/parts/bookmark_companies_list_view.dart';
