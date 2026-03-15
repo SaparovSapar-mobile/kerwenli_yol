@@ -1,9 +1,16 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/database/functions/user.dart';
+import 'package:kerwenli_yol/helpers/functions/user.dart';
 import 'package:kerwenli_yol/models/user.dart';
 
 final AutoDisposeFutureProvider<UserModel> getUserProvider =
     FutureProvider.autoDispose<UserModel>((ref) async {
       final UserModel user = await getUser();
       return user;
+    });
+
+final AutoDisposeFutureProvider<String> getUserIdProvider =
+    FutureProvider.autoDispose<String>((ref) async {
+      final String userId = await getUserId();
+      return userId;
     });
