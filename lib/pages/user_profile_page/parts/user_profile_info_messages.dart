@@ -14,12 +14,12 @@ class UserProfileInfoMessages extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // ====== Colors ========
     final bool isLight = isLightTheme(context, ref);
-    Color innerBgColor = isLight
+    final Color innerBgColor = isLight
         ? LightColors.bgBlogLight
         : DarkColors.bgBlogDark;
 
     // ====== Text Styles ========
-    TextStyle titleStyle = AppTextStyles.medium20;
+    final TextStyle titleStyle = AppTextStyles.medium20;
 
     return Container(
       padding: EdgeInsets.all(10),
@@ -48,11 +48,13 @@ class UserProfileInfoMessages extends ConsumerWidget {
               ),
               children: [
                 UserProfileInfoCard(
+                  onTap: () {},
                   icon: Icons.corporate_fare,
                   text: 'Bildirisler',
                   countText: '3',
                 ),
                 UserProfileInfoCard(
+                  onTap: () {},
                   icon: Icons.group,
                   text: 'Tazelikler',
                   countText: '150 K',

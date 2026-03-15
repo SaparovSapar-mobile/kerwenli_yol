@@ -20,14 +20,16 @@ class UserProfile extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // ========= Colors ==========
     final bool isLight = isLightTheme(context, ref);
-    Color bgColor = isLight ? LightColors.bgBlogLight : DarkColors.bgBlogDark;
-    Color iconColor = isLight
+    final Color bgColor = isLight
+        ? LightColors.bgBlogLight
+        : DarkColors.bgBlogDark;
+    final Color iconColor = isLight
         ? LightColors.textTitleLight
         : DarkColors.textTitleDark;
 
     // ========= Text Styles ==========
-    TextStyle nameStyle = AppTextStyles.medium12;
-    TextStyle titleStyle = AppTextStyles.medium20;
+    final TextStyle nameStyle = AppTextStyles.medium12;
+    final TextStyle titleStyle = AppTextStyles.medium20;
 
     return Container(
       padding: EdgeInsets.all(10),

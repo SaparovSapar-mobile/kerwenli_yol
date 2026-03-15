@@ -15,7 +15,7 @@ AppBar bookmarsPageAppBar(BuildContext context) {
         builder: (context, ref, widget) {
           // ======= Colors =======
           final bool isLight = isLightTheme(context, ref);
-          Color bgColor = isLight
+          final Color bgColor = isLight
               ? LightColors.bgBlogLight
               : DarkColors.bgBlogDark;
 
@@ -51,7 +51,6 @@ AppBar bookmarsPageAppBar(BuildContext context) {
                     ),
                   ],
                 ),
-                SizedBox(height: 10),
                 AppBarBottomLine(thickness: 2),
               ],
             ),

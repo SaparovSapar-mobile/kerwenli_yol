@@ -39,3 +39,5 @@ const homeGratutitudesHeight = 110.0;
 const homeGratutitudeWidth = 190.0;
 
 const homeMarkTypeHeight = 44.0;
+
+List<String> bookmarkHeaders = ['Likelar', 'Bookmarklar'];

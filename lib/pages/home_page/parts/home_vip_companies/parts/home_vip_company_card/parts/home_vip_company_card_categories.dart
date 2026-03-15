@@ -19,14 +19,16 @@ class HomeVipCompanyCardCategories extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // ======== Colors =======
     final bool isLight = isLightTheme(context, ref);
-    Color bgColor = isLight ? LightColors.bgPageLight : DarkColors.bgPageDark;
+    final Color bgColor = isLight
+        ? LightColors.bgPageLight
+        : DarkColors.bgPageDark;
 
     // ======== Text Styles ======
-    TextStyle textStyle = AppTextStyles.medium10.copyWith(
+    final TextStyle textStyle = AppTextStyles.medium10.copyWith(
       fontSize: iconSize ?? 6,
     );
 
-    bool hasAligment = mainAxisAlignment != null;
+    final bool hasAligment = mainAxisAlignment != null;
 
     return GestureDetector(
       onTap: () {},

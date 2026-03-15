@@ -8,8 +8,8 @@ BottomNavigationBarItem bottomNavBarItem(
   bool isSelected,
   bool isLight,
 ) {
-  Color activeColor = isLight ? LightColors.primary : DarkColors.primary;
-  Color disableColor = isLight
+  final Color activeColor = isLight ? LightColors.primary : DarkColors.primary;
+  final Color disableColor = isLight
       ? LightColors.textTitleLight
       : DarkColors.textTitleDark;
 

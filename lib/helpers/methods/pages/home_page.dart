@@ -16,14 +16,14 @@ AppBar homePageAppBar(BuildContext context) {
         builder: (context, ref, widget) {
           // ========== Colors ===========
           final bool isLight = isLightTheme(context, ref);
-          Color bgColor = isLight
+          final Color bgColor = isLight
               ? LightColors.bgBlogLight
               : DarkColors.bgBlogDark;
 
           // ========== Text Styles ===========
-          TextStyle dateStyle = AppTextStyles.medium12;
+          final TextStyle dateStyle = AppTextStyles.medium12;
 
-          String appBarLogo = isLight
+          final String appBarLogo = isLight
               ? 'appbar_logo.png'
               : 'dark_appbar_logo.png';
 

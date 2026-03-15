@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kerwenli_yol/helpers/functions/navigation.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/helpers/methods/static_data.dart';
+import 'package:kerwenli_yol/pages/bookmark_page/bookmarks_page.dart';
 import 'package:kerwenli_yol/pages/user_profile_page/parts/user_profile_info_card.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
@@ -14,12 +16,12 @@ class UserProfileInfo extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // ====== Colors ========
     final bool isLight = isLightTheme(context, ref);
-    Color innerBgColor = isLight
+    final Color innerBgColor = isLight
         ? LightColors.bgBlogLight
         : DarkColors.bgBlogDark;
 
     // ====== Text Styles ========
-    TextStyle titleStyle = AppTextStyles.medium20;
+    final TextStyle titleStyle = AppTextStyles.medium20;
 
     return Container(
       padding: EdgeInsets.all(10),
@@ -49,16 +51,20 @@ class UserProfileInfo extends ConsumerWidget {
               ),
               children: [
                 UserProfileInfoCard(
+                  onTap: () {},
                   icon: Icons.corporate_fare,
                   text: 'Menin karhanalarym',
                   countText: '3',
                 ),
                 UserProfileInfoCard(
+                  onTap: () {},
                   icon: Icons.group,
                   text: 'Doslarym',
                   countText: '150 K',
                 ),
                 UserProfileInfoCard(
+                  onTap: () =>
+                      goToPage(context, BookmarksPage(), AxisDirection.left),
                   icon: Icons.bookmark,
                   text: 'Halanlarym',
                   countText: '150 K',

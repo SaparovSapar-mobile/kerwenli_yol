@@ -19,7 +19,9 @@ class UserProfilePage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // ====== Colors ========
     final bool isLight = isLightTheme(context, ref);
-    Color bgColor = isLight ? LightColors.bgPageLight : DarkColors.bgPageDark;
+    final Color bgColor = isLight
+        ? LightColors.bgPageLight
+        : DarkColors.bgPageDark;
 
     return Scaffold(
       backgroundColor: bgColor,

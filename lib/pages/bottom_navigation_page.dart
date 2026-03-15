@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
-import 'package:kerwenli_yol/helpers/methods/pages/bookmars_page.dart';
 import 'package:kerwenli_yol/helpers/methods/pages/bottom_navigation.dart';
 import 'package:kerwenli_yol/helpers/methods/pages/home_page.dart';
 import 'package:kerwenli_yol/helpers/methods/pages/search_page.dart';
-import 'package:kerwenli_yol/pages/bookmark_page/bookmark_page.dart';
 import 'package:kerwenli_yol/pages/home_page/home_page.dart';
 import 'package:kerwenli_yol/pages/parts/internet_status_bar/internet_status_bar.dart';
 import 'package:kerwenli_yol/pages/parts/scroll_to_top_button.dart';
@@ -47,7 +45,7 @@ class BottomNavigationPage extends ConsumerWidget {
     final List<Widget> pages = [
       const HomePage(),
       const SearchPage(),
-      const BookmarkPage(),
+      // const BookmarkPage(),
       const SettingsPage(),
     ];
 
@@ -58,10 +56,10 @@ class BottomNavigationPage extends ConsumerWidget {
       case 1:
         appBar = searchPageAppBar(context);
         break;
+      // case 2:
+      //   appBar = bookmarsPageAppBar(context);
+      // break;
       case 2:
-        appBar = bookmarsPageAppBar(context);
-        break;
-      case 3:
         appBar = homePageAppBar(context);
         break;
       default:
@@ -105,12 +103,12 @@ class BottomNavigationPage extends ConsumerWidget {
               selectedIndex == 1,
               isLight,
             ),
-            bottomNavBarItem(
-              Icons.bookmark,
-              'Book Mark',
-              selectedIndex == 2,
-              isLight,
-            ),
+            // bottomNavBarItem(
+            //   Icons.bookmark,
+            //   'Book Mark',
+            //   selectedIndex == 2,
+            //   isLight,
+            // ),
             bottomNavBarItem(
               Icons.settings,
               'Setting',
