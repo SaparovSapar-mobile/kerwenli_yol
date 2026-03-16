@@ -66,6 +66,29 @@ class ProductApiService {
       rethrow;
     }
   }
+
+  // fetch product detail by id ---------------------------------
+  Future<ProductModel> fetchProduct(String id) async {
+    final Uri uri = Uri.parse('$apiUrl/client/products/$id');
+
+    try {
+      final http.Response response = await http.get(uri);
+      final dynamic jsonData = json.decode(response.body);
+
+      if (response.statusCode == 200 && jsonData['status']) {
+        final dynamic data = jsonData['data'];
+
+        if (data != null) {
+          return ProductModel.fromJson(data);
+        }
+
+        return ProductModel.defaultValue();
+      }
+      return ProductModel.defaultValue();
+    } catch (e) {
+      rethrow;
+    }
+  }
 }
 
 class ProductParams extends Equatable {
