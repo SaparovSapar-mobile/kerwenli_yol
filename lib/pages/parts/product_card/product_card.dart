@@ -37,8 +37,11 @@ class ProductCard extends ConsumerWidget {
     );
 
     return GestureDetector(
-      onTap: () =>
-          goToPage(context, ProductPage(product: product), AxisDirection.left),
+      onTap: () => goToPage(
+        context,
+        ProductPage(productId: product.id),
+        AxisDirection.left,
+      ),
       child: Container(
         padding: EdgeInsets.only(left: 9, top: 18, right: 9, bottom: 9),
         decoration: BoxDecoration(
