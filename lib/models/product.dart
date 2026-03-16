@@ -1,9 +1,20 @@
 import 'package:kerwenli_yol/models/publication_model.dart';
 
 class ProductModel {
-  final String id, nameTm, nameRu, nameEn, coverImage, categoryId;
+  final String id,
+      nameTm,
+      nameRu,
+      nameEn,
+      coverImage,
+      categoryId,
+      companyId,
+      invoiceDate,
+      date;
   final int viewCount;
   final List<PublicationModel> publications;
+  final List<dynamic> galleryImages, videos;
+  final num price;
+  final bool isLiked;
 
   ProductModel({
     required this.id,
@@ -14,6 +25,13 @@ class ProductModel {
     required this.categoryId,
     required this.viewCount,
     required this.publications,
+    required this.companyId,
+    required this.invoiceDate,
+    required this.date,
+    required this.galleryImages,
+    required this.videos,
+    required this.price,
+    required this.isLiked,
   });
 
   factory ProductModel.defaultValue() {
@@ -26,6 +44,13 @@ class ProductModel {
       categoryId: '',
       viewCount: 0,
       publications: [],
+      companyId: '',
+      invoiceDate: '',
+      date: '',
+      galleryImages: [],
+      videos: [],
+      price: 0,
+      isLiked: false,
     );
   }
 
@@ -45,6 +70,13 @@ class ProductModel {
                 (dataJson) => PublicationModel.fromJson(dataJson),
               ),
             ),
+      companyId: json['company_uuid'] ?? '',
+      invoiceDate: json['invoice_date'] ?? '',
+      date: json['date'] ?? '',
+      galleryImages: json['gallery_images'] ?? [],
+      videos: json['videos'] ?? [],
+      price: json['price'] ?? 0,
+      isLiked: json['is_liked'] ?? false,
     );
   }
 }
