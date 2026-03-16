@@ -9,7 +9,10 @@ class ProductModel {
       categoryId,
       companyId,
       invoiceDate,
-      date;
+      date,
+      descriptionTm,
+      descriptionRu,
+      descriptionEn;
   final int viewCount;
   final List<PublicationModel> publications;
   final List<dynamic> galleryImages, videos;
@@ -32,6 +35,9 @@ class ProductModel {
     required this.videos,
     required this.price,
     required this.isLiked,
+    required this.descriptionTm,
+    required this.descriptionRu,
+    required this.descriptionEn,
   });
 
   factory ProductModel.defaultValue() {
@@ -51,6 +57,9 @@ class ProductModel {
       videos: [],
       price: 0,
       isLiked: false,
+      descriptionTm: '',
+      descriptionRu: '',
+      descriptionEn: '',
     );
   }
 
@@ -60,6 +69,9 @@ class ProductModel {
       nameTm: json['name_tm'] ?? '',
       nameRu: json['name_ru'] ?? '',
       nameEn: json['name_en'] ?? '',
+      descriptionTm: json['description_tm'] ?? '',
+      descriptionRu: json['description_ru'] ?? '',
+      descriptionEn: json['description_en'] ?? '',
       coverImage: json['cover_image'] ?? '',
       categoryId: json['category_uuid'] ?? '',
       viewCount: json['view_count'] ?? 0,

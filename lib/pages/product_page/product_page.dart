@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kerwenli_yol/helpers/functions/translations.dart';
 import 'package:kerwenli_yol/helpers/methods/pages/home_page.dart';
 import 'package:kerwenli_yol/models/product.dart';
 import 'package:kerwenli_yol/pages/company_page/parts/company_page_top.dart';
@@ -28,11 +29,18 @@ class ProductPage extends ConsumerWidget {
             return Center(child: Text('No Data'));
           }
 
+          final String name = translateText(
+            ref,
+            data.nameTm,
+            data.nameRu,
+            data.nameEn,
+          );
+
           return Column(
             children: [
               InternetStatusBar(),
               CompanyPageTop(
-                text: 'Haryt ady',
+                text: name,
                 showBottomLine: false,
                 onPressed: () {},
               ),

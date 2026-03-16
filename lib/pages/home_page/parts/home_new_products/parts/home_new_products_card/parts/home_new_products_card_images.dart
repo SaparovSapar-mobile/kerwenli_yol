@@ -62,7 +62,13 @@ class _HomeNewProductsCardImagesState extends State<HomeNewProductsCardImages> {
     const double cardRadius = 8;
     // final images = widget.product.images;
     final ProductModel p = widget.product;
+    final List<dynamic> pgi = p.galleryImages;
     final List<String> images = [p.coverImage];
+    if (pgi.isNotEmpty) {
+      for (dynamic e in pgi) {
+        images.add(e.toString());
+      }
+    }
     final int len = images.length;
     final bool hasMoreImages = len > 1;
 

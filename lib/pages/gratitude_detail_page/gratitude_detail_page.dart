@@ -31,7 +31,7 @@ class GratitudeDetailPage extends ConsumerWidget {
     final Color innerBgColor = isLight
         ? LightColors.bgBlogLight
         : DarkColors.bgBlogDark;
-    Color borderColor = isLight
+    final Color borderColor = isLight
         ? LightColors.textDescriptionLight
         : DarkColors.textDescriptionDark;
 

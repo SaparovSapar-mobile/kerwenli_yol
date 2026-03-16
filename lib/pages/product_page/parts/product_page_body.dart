@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
+import 'package:kerwenli_yol/helpers/functions/translations.dart';
 import 'package:kerwenli_yol/helpers/methods/pages/bottom_sheets.dart';
 import 'package:kerwenli_yol/models/product.dart';
 import 'package:kerwenli_yol/pages/company_page/parts/company_page_info/parts/company_info/parts/company_info_key_value.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_new_products/parts/home_new_products_card/parts/home_new_products_card_images.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/parts/home_vip_company_card_categories.dart';
-import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/parts/home_vip_company_rating.dart';
 import 'package:kerwenli_yol/pages/parts/primary_button.dart';
 import 'package:kerwenli_yol/pages/parts/view_count.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
@@ -33,6 +34,18 @@ class ProductPageBody extends ConsumerWidget {
     final TextStyle nameStyle = AppTextStyles.medium16;
     final TextStyle descTitleStyle = AppTextStyles.semiBold12;
     final TextStyle descStyle = AppTextStyles.regular12;
+
+    String priceText = 'ylalasykly';
+    if (product.price != 0) {
+      priceText = product.price.toString();
+    }
+
+    final String description = translateText(
+      ref,
+      product.descriptionTm,
+      product.descriptionEn,
+      product.descriptionEn,
+    );
 
     return Expanded(
       child: Container(
@@ -81,7 +94,7 @@ class ProductPageBody extends ConsumerWidget {
                   SizedBox(height: 10),
                   CompanyInfoKeyValue(
                     keyText: 'FCA bahasy',
-                    valueText: 'ylalaşykly',
+                    valueText: priceText,
                   ),
                   CompanyInfoKeyValue(
                     keyText: 'Sargydyň iň az mukdary',
@@ -107,8 +120,8 @@ class ProductPageBody extends ConsumerWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      ViewCount(fontSize: 13),
-                      HomeVipCompanyRating(fontSize: 13),
+                      ViewCount(fontSize: 13, viewCount: product.viewCount),
+                      // HomeVipCompanyRating(fontSize: 13),
                     ],
                   ),
                 ],
@@ -127,10 +140,21 @@ class ProductPageBody extends ConsumerWidget {
                 children: [
                   Text('Dusundirilisi', style: descTitleStyle),
                   SizedBox(height: 5),
-                  Text(
-                    '''Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at HampdenContrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden...''',
-                    style: descStyle,
+                  Html(
+                    data: description,
+                    style: {
+                      "*": Style(
+                        fontWeight: FontWeight.w400,
+                        fontSize: FontSize(12),
+                        lineHeight: LineHeight.number(1.20),
+                        fontFamily: "Rubik",
+                      ),
+                    },
                   ),
+                  // Text(
+                  //   '''Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at HampdenContrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden...''',
+                  //   style: descStyle,
+                  // ),
                 ],
               ),
             ),
