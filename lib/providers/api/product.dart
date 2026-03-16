@@ -40,3 +40,18 @@ fetchCompanyProductsProvider =
       ref.read(loadCProductsProvider.notifier).state = false;
       return result;
     });
+
+final AutoDisposeFutureProviderFamily<ProductModel, String>
+fetchProductProvider = FutureProvider.autoDispose.family<ProductModel, String>((
+  ref,
+  arg,
+) async {
+  ProductModel result = ProductModel.defaultValue();
+
+  try {
+    result = await ref.read(productApiProvider).fetchProduct(arg);
+  } catch (e) {
+    rethrow;
+  }
+  return result;
+});
