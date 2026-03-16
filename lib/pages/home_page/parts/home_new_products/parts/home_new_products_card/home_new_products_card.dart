@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:kerwenli_yol/examples.dart';
 import 'package:kerwenli_yol/helpers/functions/navigation.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/helpers/functions/translations.dart';
@@ -45,11 +44,8 @@ class HomeNewProductsCard extends ConsumerWidget {
     );
 
     return GestureDetector(
-      onTap: () => goToPage(
-        context,
-        ProductPage(product: homeProducts[0]),
-        AxisDirection.left,
-      ),
+      onTap: () =>
+          goToPage(context, ProductPage(product: product), AxisDirection.left),
       child: Container(
         width: 112,
         margin: isFirst != null && isLast != null

@@ -5,10 +5,10 @@ import 'package:kerwenli_yol/helpers/functions/navigation.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/helpers/methods/static_data.dart';
 import 'package:kerwenli_yol/pages/example_widgets/products_page/exm_home_new_products_card_images.dart';
+import 'package:kerwenli_yol/pages/example_widgets/products_page/exm_product_page.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/parts/home_vip_company_card_categories.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/parts/home_vip_company_rating.dart';
 import 'package:kerwenli_yol/pages/parts/view_count.dart';
-import 'package:kerwenli_yol/pages/product_page/product_page.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
@@ -30,8 +30,11 @@ class ProductListCard extends ConsumerWidget {
     final TextStyle nameStyle = AppTextStyles.medium16;
 
     return GestureDetector(
-      onTap: () =>
-          goToPage(context, ProductPage(product: product), AxisDirection.left),
+      onTap: () => goToPage(
+        context,
+        ExmProductPage(product: product),
+        AxisDirection.left,
+      ),
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 10),
         height: productListCardHeight,
