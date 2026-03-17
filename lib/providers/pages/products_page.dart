@@ -8,3 +8,12 @@ final StateProvider<bool> hasErrCProductsProvider = StateProvider<bool>(
 final StateProvider<bool> loadCProductsProvider = StateProvider<bool>(
   (ref) => true,
 );
+
+final AutoDisposeStateProvider<bool> hasFProductsProvider =
+    StateProvider.autoDispose<bool>((ref) => true);
+final StateProvider<bool> hasErrFProductsProvider = StateProvider<bool>(
+  (ref) => false,
+);
+final StateProvider<bool> loadFProductsProvider = StateProvider<bool>(
+  (ref) => true,
+);

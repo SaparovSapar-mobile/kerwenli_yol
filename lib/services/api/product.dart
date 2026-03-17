@@ -36,12 +36,46 @@ class ProductApiService {
   }
 
   // fetch company products -----------------------------
+  Future<List<ProductModel>> fetchLikedProducts(ProductParams arg) async {
+    final Uri uri = Uri.parse('$apiUrl/client/likes/${arg.companyId}').replace(
+      queryParameters: {'p': arg.page.toString(), 'l': arg.pageSize.toString()},
+    );
+
+    print('------------------------ fetchLikedProducts');
+    print('uri: $uri');
+
+    try {
+      final http.Response response = await http.get(uri);
+      print('response.statusCode: ${response.statusCode}');
+      print('response.body: ${response.body}');
+      final dynamic jsonData = json.decode(response.body);
+
+      if (response.statusCode == 200 && jsonData['status']) {
+        final dynamic datas = jsonData['data'];
+
+        if (datas == []) {
+          return [];
+        }
+
+        final List<dynamic> data = datas as List;
+        return data
+            .map<ProductModel>((propJson) => ProductModel.fromJson(propJson))
+            .toList();
+      }
+      return [];
+    } catch (e) {
+      print('error: ${e.toString()}');
+      rethrow;
+    }
+  }
+
+  // fetch company products -----------------------------
   Future<List<ProductModel>> fetchCompanyProducts(ProductParams arg) async {
     final Uri uri =
         Uri.parse('$apiUrl/client/products/company/${arg.companyId}').replace(
           queryParameters: {
-            // 'p': arg.page.toString(),
-            // 'l': arg.pageSize.toString()
+            'p': arg.page.toString(),
+            'l': arg.pageSize.toString(),
           },
         );
 

@@ -1,4 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kerwenli_yol/database/functions/favorite.dart';
+import 'package:kerwenli_yol/enums/favorite_type.dart';
+import 'package:kerwenli_yol/models/favorite.dart';
 import 'package:kerwenli_yol/models/new_product.dart';
 import 'package:kerwenli_yol/models/product.dart';
 import 'package:kerwenli_yol/providers/pages/products_page.dart';
@@ -40,6 +43,40 @@ fetchCompanyProductsProvider =
       ref.read(loadCProductsProvider.notifier).state = false;
       return result;
     });
+
+final FutureProviderFamily<List<ProductModel>, ProductParams>
+fetchLikedProducts = FutureProvider.family<List<ProductModel>, ProductParams>((
+  ref,
+  arg,
+) async {
+  List<ProductModel> result = [];
+
+  try {
+    result = await ref.read(productApiProvider).fetchLikedProducts(arg);
+    if (arg.page == 1) {
+      ref.read(hasFProductsProvider.notifier).state = result.isNotEmpty;
+      ref.read(hasErrFProductsProvider.notifier).state = false;
+    }
+
+    if (result.isNotEmpty) {
+      for (final ProductModel product in result) {
+        final FavoriteModel params = FavoriteModel(
+          id: product.id,
+          type: FavoriteTypeEnum.product,
+        );
+
+        if (!await hasInFavorites(params)) {
+          await addOrRemoveFromFavorites(params);
+        }
+      }
+    }
+  } catch (e) {
+    ref.read(hasErrFProductsProvider.notifier).state = e.toString().isNotEmpty;
+  }
+
+  ref.read(loadFProductsProvider.notifier).state = false;
+  return result;
+});
 
 final AutoDisposeFutureProviderFamily<ProductModel, String>
 fetchProductProvider = FutureProvider.autoDispose.family<ProductModel, String>((
