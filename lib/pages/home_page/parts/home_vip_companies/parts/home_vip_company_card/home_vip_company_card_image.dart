@@ -37,7 +37,13 @@ class HomeVipCompanyCardImage extends StatelessWidget {
               child: Stack(
                 children: [
                   // Bookmark box (sağ üst)
-                  Positioned(right: 4, top: 4, child: CardBookmarkButton()),
+                  Positioned(
+                    right: 4,
+                    top: 4,
+                    child: CardBookmarkButton(
+                      companyId: company.individualUuid,
+                    ),
+                  ),
 
                   // Company Image
                   Center(

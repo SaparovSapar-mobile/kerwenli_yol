@@ -50,6 +50,7 @@ class CompanyCard extends ConsumerWidget {
           CompanyCardImage(
             cardTopTypes: [CardTopTextType.vip],
             image: company.photo,
+            companyId: company.individualUuid,
           ),
           SizedBox(height: 5),
           Expanded(

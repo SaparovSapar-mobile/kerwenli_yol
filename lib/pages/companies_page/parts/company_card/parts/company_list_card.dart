@@ -64,6 +64,7 @@ class CompanyListCard extends ConsumerWidget {
             bookmarkButtonBorderRadius: 4.3,
             forBookMark: forBookmark,
             image: company.photo,
+            companyId: company.individualUuid,
           ),
           SizedBox(width: 5),
           Expanded(
@@ -89,6 +90,7 @@ class CompanyListCard extends ConsumerWidget {
                           bGColor: bookmarkIconColor.withValues(alpha: .2),
                           icnColor: bookmarkIconColor,
                           iconSize: 16,
+                          companyId: company.individualUuid,
                         )
                       else
                         const SizedBox.shrink(),

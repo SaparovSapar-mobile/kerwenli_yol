@@ -17,6 +17,7 @@ class CompanyCardImage extends StatelessWidget {
     this.cttSize,
     this.cttTopPosition,
     this.cardRad,
+    this.companyId,
     required this.image,
   });
 
@@ -31,13 +32,14 @@ class CompanyCardImage extends StatelessWidget {
       cttTopPosition,
       cardRad;
   final bool? forBookMark;
-  // final CompanyModel company;
   final String image;
+  final String? companyId;
 
   @override
   Widget build(BuildContext context) {
-    double cardRadius = cardRad ?? 10;
-    bool forBookmark = forBookMark != null && forBookMark!;
+    final double cardRadius = cardRad ?? 10;
+    final bool forBookmark = forBookMark != null && forBookMark!;
+    final String compId = companyId ?? '';
 
     return SizedBox(
       height: height ?? 156,
@@ -71,6 +73,7 @@ class CompanyCardImage extends StatelessWidget {
                       right: 7,
                       top: 7,
                       child: CardBookmarkButton(
+                        companyId: compId,
                         width: bookmarkButtonWith ?? 32,
                         height: bookmarkButtonHeight ?? 32,
                         iconSize: bookmarkButtonIconSize ?? 18,

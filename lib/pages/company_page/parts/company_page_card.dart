@@ -43,6 +43,7 @@ class CompanyPageCard extends ConsumerWidget {
                     child: Row(
                       children: [
                         CardBookmarkButton(
+                          companyId: company.id,
                           width: 26,
                           height: 26,
                           iconSize: 16,

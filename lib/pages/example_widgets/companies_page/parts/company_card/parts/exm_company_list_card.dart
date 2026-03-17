@@ -73,6 +73,7 @@ class ExmCompanyListCard extends ConsumerWidget {
                     SizedBox(width: 5),
                     if (forBookmark)
                       CardBookmarkButton(
+                        companyId: '',
                         bGColor: bookmarkIconColor.withValues(alpha: .2),
                         icnColor: bookmarkIconColor,
                         iconSize: 16,

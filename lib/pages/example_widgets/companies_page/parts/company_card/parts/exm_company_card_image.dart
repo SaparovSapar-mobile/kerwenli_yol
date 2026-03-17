@@ -67,6 +67,7 @@ class ExmCompanyCardImage extends StatelessWidget {
                       right: 7,
                       top: 7,
                       child: CardBookmarkButton(
+                        companyId: '',
                         width: bookmarkButtonWith ?? 32,
                         height: bookmarkButtonHeight ?? 32,
                         iconSize: bookmarkButtonIconSize ?? 18,
