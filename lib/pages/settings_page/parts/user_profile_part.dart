@@ -9,7 +9,7 @@ class UserProfilePart extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    AsyncValue<UserModel> resultDB = ref.watch(getUserProvider);
+    final AsyncValue<UserModel> resultDB = ref.watch(getUserProvider);
 
     return resultDB.when(
       data: (data) {

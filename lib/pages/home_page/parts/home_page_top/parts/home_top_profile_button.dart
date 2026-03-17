@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/navigation.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
+import 'package:kerwenli_yol/models/user.dart';
 import 'package:kerwenli_yol/pages/login_page/login_page.dart';
+import 'package:kerwenli_yol/pages/user_profile_page/user_profile_page.dart';
 import 'package:kerwenli_yol/providers/database/user.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
@@ -24,15 +26,20 @@ class HomeTopProfileButton extends ConsumerWidget {
         ? LightColors.newCard
         : DarkColors.newCard;
 
-    final AsyncValue<String> resultDB = ref.watch(getUserIdProvider);
+    final AsyncValue<UserModel> resultDB = ref.watch(getUserProvider);
 
     return resultDB.when(
       data: (data) {
-        final bool hasUser = data != '';
+        final bool hasUser = data.id != '';
 
         return GestureDetector(
           onTap: () async {
             if (hasUser) {
+              goToPage(
+                context,
+                UserProfilePage(user: data),
+                AxisDirection.left,
+              );
               return;
             }
 

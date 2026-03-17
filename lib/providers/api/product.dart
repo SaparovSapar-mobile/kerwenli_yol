@@ -51,42 +51,42 @@ fetchCompanyProductsProvider =
       return result;
     });
 
-final FutureProviderFamily<List<ProductModel>, ProductParams>
-fetchLikedProducts = FutureProvider.family<List<ProductModel>, ProductParams>((
-  ref,
-  arg,
-) async {
-  List<ProductModel> result = [];
+final AutoDisposeFutureProviderFamily<List<ProductModel>, ProductParams>
+fetchLikedProducts = FutureProvider.family
+    .autoDispose<List<ProductModel>, ProductParams>((ref, arg) async {
+      List<ProductModel> result = [];
 
-  try {
-    final String userId = await getUserId();
-    ProductParams params = arg.copyWith(userId: userId);
+      try {
+        final String userId = await getUserId();
+        ProductParams params = arg.copyWith(userId: userId);
 
-    result = await ref.read(productApiProvider).fetchLikedProducts(params);
-    if (arg.page == 1) {
-      ref.read(hasFProductsProvider.notifier).state = result.isNotEmpty;
-      ref.read(hasErrFProductsProvider.notifier).state = false;
-    }
-
-    if (result.isNotEmpty) {
-      for (final ProductModel product in result) {
-        final FavoriteModel params = FavoriteModel(
-          id: product.id,
-          type: FavoriteTypeEnum.product,
-        );
-
-        if (!await hasInFavorites(params)) {
-          await addOrRemoveFromFavorites(params);
+        result = await ref.read(productApiProvider).fetchLikedProducts(params);
+        if (arg.page == 1) {
+          ref.read(hasFProductsProvider.notifier).state = result.isNotEmpty;
+          ref.read(hasErrFProductsProvider.notifier).state = false;
         }
-      }
-    }
-  } catch (e) {
-    ref.read(hasErrFProductsProvider.notifier).state = e.toString().isNotEmpty;
-  }
 
-  ref.read(loadFProductsProvider.notifier).state = false;
-  return result;
-});
+        if (result.isNotEmpty) {
+          for (final ProductModel product in result) {
+            final FavoriteModel params = FavoriteModel(
+              id: product.id,
+              type: FavoriteTypeEnum.product,
+            );
+
+            if (!await hasInFavorites(params)) {
+              await addOrRemoveFromFavorites(params);
+            }
+          }
+        }
+      } catch (e) {
+        ref.read(hasErrFProductsProvider.notifier).state = e
+            .toString()
+            .isNotEmpty;
+      }
+
+      ref.read(loadFProductsProvider.notifier).state = false;
+      return result;
+    });
 
 final AutoDisposeFutureProviderFamily<ProductModel, String>
 fetchProductProvider = FutureProvider.autoDispose.family<ProductModel, String>((
