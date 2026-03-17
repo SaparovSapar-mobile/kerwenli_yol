@@ -31,3 +31,16 @@ addCompanyBookmarkProvider = FutureProvider.autoDispose
       }
       return result;
     });
+
+final AutoDisposeFutureProviderFamily<bool, AddCBookmarkModel>
+addCompanyFollowProvider = FutureProvider.autoDispose
+    .family<bool, AddCBookmarkModel>((ref, arg) async {
+      bool result = false;
+
+      try {
+        result = await ref.read(favoriteApiProvider).addCompanyFollow(arg);
+      } catch (e) {
+        rethrow;
+      }
+      return result;
+    });
