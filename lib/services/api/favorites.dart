@@ -24,7 +24,7 @@ class FavoritesApiService {
   }
 
   // add or remove company bookmar =======
-  Future<bool> addCompanyBookmark(AddCBookmark bookmark) async {
+  Future<bool> addCompanyBookmark(AddCBookmarkModel bookmark) async {
     final Uri uri = Uri.parse('$apiUrl/client/bookmarks');
     print('============================ addCompanyBookmark');
     print('uri: $uri');
