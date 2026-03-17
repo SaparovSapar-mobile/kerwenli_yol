@@ -21,7 +21,10 @@ class LikedProductsListView extends ConsumerWidget {
     Widget returnWidget;
 
     if (!hasData) {
-      returnWidget = NoResult(ref: ref, apiProviders: [fetchLikedProducts]);
+      returnWidget = NoResult(
+        ref: ref,
+        apiProviders: [fetchLikedProductsProvider],
+      );
     } else if (!hasErr) {
       returnWidget = ListView.builder(
         padding: EdgeInsets.symmetric(horizontal: 16),
@@ -36,7 +39,7 @@ class LikedProductsListView extends ConsumerWidget {
             userId: '',
           );
           final AsyncValue<List<ProductModel>> resultApi = ref.watch(
-            fetchLikedProducts(arg),
+            fetchLikedProductsProvider(arg),
           );
 
           return resultApi.when(

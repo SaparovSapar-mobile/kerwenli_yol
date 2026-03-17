@@ -52,7 +52,7 @@ fetchCompanyProductsProvider =
     });
 
 final AutoDisposeFutureProviderFamily<List<ProductModel>, ProductParams>
-fetchLikedProducts = FutureProvider.family
+fetchLikedProductsProvider = FutureProvider.family
     .autoDispose<List<ProductModel>, ProductParams>((ref, arg) async {
       List<ProductModel> result = [];
 

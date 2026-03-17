@@ -94,7 +94,7 @@ class CardFavoriteButton extends ConsumerWidget {
                   showErrorSnackbar(context, lang.somethingWentWrong);
                 }
               } else {
-                ref.invalidate(fetchLikedProducts);
+                ref.invalidate(fetchLikedProductsProvider);
               }
             },
             child: Container(
