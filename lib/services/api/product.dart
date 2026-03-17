@@ -8,8 +8,10 @@ import 'package:kerwenli_yol/models/product.dart';
 
 class ProductApiService {
   // fetch new products -----------------------------
-  Future<List<NewProductModel>> fetchNewProducts() async {
-    final Uri uri = Uri.parse('$apiUrl/client/new-products');
+  Future<List<NewProductModel>> fetchNewProducts(String userId) async {
+    final Uri uri = Uri.parse(
+      '$apiUrl/client/new-products',
+    ).replace(queryParameters: {'user_uuid': userId});
 
     try {
       final http.Response response = await http.get(uri);
@@ -37,7 +39,7 @@ class ProductApiService {
 
   // fetch company products -----------------------------
   Future<List<ProductModel>> fetchLikedProducts(ProductParams arg) async {
-    final Uri uri = Uri.parse('$apiUrl/client/likes/${arg.companyId}').replace(
+    final Uri uri = Uri.parse('$apiUrl/client/likes/${arg.userId}').replace(
       queryParameters: {'p': arg.page.toString(), 'l': arg.pageSize.toString()},
     );
 
@@ -70,6 +72,7 @@ class ProductApiService {
           queryParameters: {
             'p': arg.page.toString(),
             'l': arg.pageSize.toString(),
+            'user_uuid': arg.userId,
           },
         );
 
@@ -96,8 +99,10 @@ class ProductApiService {
   }
 
   // fetch product detail by id ---------------------------------
-  Future<ProductModel> fetchProduct(String id) async {
-    final Uri uri = Uri.parse('$apiUrl/client/products/$id');
+  Future<ProductModel> fetchProduct(String id, String userId) async {
+    final Uri uri = Uri.parse(
+      '$apiUrl/client/products/$id',
+    ).replace(queryParameters: {'user_uuid': userId});
 
     try {
       final http.Response response = await http.get(uri);
@@ -121,22 +126,29 @@ class ProductApiService {
 
 class ProductParams extends Equatable {
   final int page, pageSize;
-  final String companyId;
+  final String companyId, userId;
 
   const ProductParams({
     required this.page,
     required this.pageSize,
     required this.companyId,
+    required this.userId,
   });
 
-  ProductParams copyWith({int? page, int? pageSize, String? companyId}) {
+  ProductParams copyWith({
+    int? page,
+    int? pageSize,
+    String? companyId,
+    String? userId,
+  }) {
     return ProductParams(
       page: page ?? this.page,
       pageSize: pageSize ?? this.pageSize,
       companyId: companyId ?? this.companyId,
+      userId: userId ?? this.userId,
     );
   }
 
   @override
-  List<Object?> get props => [page, pageSize, companyId];
+  List<Object?> get props => [page, pageSize, companyId, userId];
 }

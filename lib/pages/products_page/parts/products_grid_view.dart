@@ -46,6 +46,7 @@ class ProductsGridView extends ConsumerWidget {
             page: page,
             pageSize: pageSize,
             companyId: companyId,
+            userId: '',
           );
           final AsyncValue<List<ProductModel>> resultApi = ref.watch(
             fetchCompanyProductsProvider(arg),

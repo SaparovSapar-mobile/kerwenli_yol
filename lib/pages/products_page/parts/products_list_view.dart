@@ -33,6 +33,7 @@ class ProductsListView extends ConsumerWidget {
             page: page,
             pageSize: pageSize,
             companyId: '',
+            userId: '',
           );
           final AsyncValue<List<ProductModel>> resultApi = ref.watch(
             fetchLikedProducts(arg),

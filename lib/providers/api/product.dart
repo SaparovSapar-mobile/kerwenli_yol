@@ -16,7 +16,8 @@ final FutureProvider<List<NewProductModel>> fetchNewProductsProvider =
       List<NewProductModel> datas = [];
 
       try {
-        datas = await ref.read(productApiProvider).fetchNewProducts();
+        final String userId = await getUserId();
+        datas = await ref.read(productApiProvider).fetchNewProducts(userId);
       } catch (e) {
         rethrow;
       }
@@ -30,7 +31,12 @@ fetchCompanyProductsProvider =
       List<ProductModel> result = [];
 
       try {
-        result = await ref.read(productApiProvider).fetchCompanyProducts(arg);
+        final String userId = await getUserId();
+        ProductParams params = arg.copyWith(userId: userId);
+        result = await ref
+            .read(productApiProvider)
+            .fetchCompanyProducts(params);
+
         if (arg.page == 1) {
           ref.read(hasCProductsProvider.notifier).state = result.isNotEmpty;
           ref.read(hasErrCProductsProvider.notifier).state = false;
@@ -54,7 +60,7 @@ fetchLikedProducts = FutureProvider.family<List<ProductModel>, ProductParams>((
 
   try {
     final String userId = await getUserId();
-    ProductParams params = arg.copyWith(companyId: userId);
+    ProductParams params = arg.copyWith(userId: userId);
 
     result = await ref.read(productApiProvider).fetchLikedProducts(params);
     if (arg.page == 1) {
@@ -90,7 +96,8 @@ fetchProductProvider = FutureProvider.autoDispose.family<ProductModel, String>((
   ProductModel result = ProductModel.defaultValue();
 
   try {
-    result = await ref.read(productApiProvider).fetchProduct(arg);
+    final String userId = await getUserId();
+    result = await ref.read(productApiProvider).fetchProduct(arg, userId);
   } catch (e) {
     rethrow;
   }
