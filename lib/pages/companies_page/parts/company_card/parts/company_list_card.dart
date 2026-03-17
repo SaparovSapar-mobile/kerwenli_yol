@@ -35,7 +35,7 @@ class CompanyListCard extends ConsumerWidget {
     // ====== Text Styles =======
     final TextStyle nameStyle = AppTextStyles.medium16;
 
-    final bool forBookmark = forBookMark != null && forBookMark!;
+    final bool forBm = forBookMark != null && forBookMark!;
 
     // ====== Name ======
     final String name = translateText(
@@ -55,14 +55,14 @@ class CompanyListCard extends ConsumerWidget {
       child: Row(
         children: [
           CompanyCardImage(
-            cardTopTypes: [CardTopTextType.vip],
+            cardTopTypes: forBm ? [] : [CardTopTextType.vip],
             height: 100,
             width: 100,
             bookmarkButtonWith: 20,
             bookmarkButtonHeight: 20,
             bookmarkButtonIconSize: 12,
             bookmarkButtonBorderRadius: 4.3,
-            forBookMark: forBookmark,
+            forBookMark: forBm,
             image: company.photo,
             companyId: company.individualUuid,
           ),
@@ -85,7 +85,7 @@ class CompanyListCard extends ConsumerWidget {
                         ),
                       ),
                       SizedBox(width: 5),
-                      if (forBookmark)
+                      if (forBm)
                         CardBookmarkButton(
                           bGColor: bookmarkIconColor.withValues(alpha: .2),
                           icnColor: bookmarkIconColor,

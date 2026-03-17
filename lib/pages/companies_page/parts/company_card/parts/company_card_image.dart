@@ -38,7 +38,7 @@ class CompanyCardImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final double cardRadius = cardRad ?? 10;
-    final bool forBookmark = forBookMark != null && forBookMark!;
+    final bool forBm = forBookMark != null && forBookMark!;
     final String compId = companyId ?? '';
 
     return SizedBox(
@@ -66,9 +66,7 @@ class CompanyCardImage extends StatelessWidget {
               child: Stack(
                 children: [
                   // Bookmark box (sağ üst)
-                  if (forBookmark)
-                    const SizedBox.shrink()
-                  else
+                  if (!forBm)
                     Positioned(
                       right: 7,
                       top: 7,

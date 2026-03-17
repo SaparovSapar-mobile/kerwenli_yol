@@ -17,7 +17,7 @@ class CardTopTexts extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final items = types.take(max).toList();
+    final List<String> items = types.take(max).toList();
 
     return Positioned(
       top: topPosition ?? -6,

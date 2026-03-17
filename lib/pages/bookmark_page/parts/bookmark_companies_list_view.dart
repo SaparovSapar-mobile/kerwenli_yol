@@ -56,7 +56,7 @@ class BookmarkCompaniesListView extends ConsumerWidget {
                 nameRu: c.businessName.ru,
                 nameEn: c.businessName.en,
               );
-              return CompanyListCard(company: company);
+              return CompanyListCard(company: company, forBookMark: true);
             },
             error: (error, stackTrace) => const SizedBox.shrink(),
             loading: () {
