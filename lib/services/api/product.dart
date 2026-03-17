@@ -41,13 +41,8 @@ class ProductApiService {
       queryParameters: {'p': arg.page.toString(), 'l': arg.pageSize.toString()},
     );
 
-    print('------------------------ fetchLikedProducts');
-    print('uri: $uri');
-
     try {
       final http.Response response = await http.get(uri);
-      print('response.statusCode: ${response.statusCode}');
-      print('response.body: ${response.body}');
       final dynamic jsonData = json.decode(response.body);
 
       if (response.statusCode == 200 && jsonData['status']) {
@@ -64,7 +59,6 @@ class ProductApiService {
       }
       return [];
     } catch (e) {
-      print('error: ${e.toString()}');
       rethrow;
     }
   }
@@ -134,6 +128,14 @@ class ProductParams extends Equatable {
     required this.pageSize,
     required this.companyId,
   });
+
+  ProductParams copyWith({int? page, int? pageSize, String? companyId}) {
+    return ProductParams(
+      page: page ?? this.page,
+      pageSize: pageSize ?? this.pageSize,
+      companyId: companyId ?? this.companyId,
+    );
+  }
 
   @override
   List<Object?> get props => [page, pageSize, companyId];

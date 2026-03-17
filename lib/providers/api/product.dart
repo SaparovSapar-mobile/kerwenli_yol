@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/database/functions/favorite.dart';
 import 'package:kerwenli_yol/enums/favorite_type.dart';
+import 'package:kerwenli_yol/helpers/functions/user.dart';
 import 'package:kerwenli_yol/models/favorite.dart';
 import 'package:kerwenli_yol/models/new_product.dart';
 import 'package:kerwenli_yol/models/product.dart';
@@ -52,7 +53,10 @@ fetchLikedProducts = FutureProvider.family<List<ProductModel>, ProductParams>((
   List<ProductModel> result = [];
 
   try {
-    result = await ref.read(productApiProvider).fetchLikedProducts(arg);
+    final String userId = await getUserId();
+    ProductParams params = arg.copyWith(companyId: userId);
+
+    result = await ref.read(productApiProvider).fetchLikedProducts(params);
     if (arg.page == 1) {
       ref.read(hasFProductsProvider.notifier).state = result.isNotEmpty;
       ref.read(hasErrFProductsProvider.notifier).state = false;

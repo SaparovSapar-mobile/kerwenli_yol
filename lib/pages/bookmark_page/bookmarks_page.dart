@@ -5,6 +5,7 @@ import 'package:kerwenli_yol/helpers/methods/static_data.dart';
 import 'package:kerwenli_yol/pages/bookmark_page/parts/bookmark_companies_list_view.dart';
 import 'package:kerwenli_yol/pages/parts/categories_header/parts/head_category_buttons.dart';
 import 'package:kerwenli_yol/pages/parts/internet_status_bar/internet_status_bar.dart';
+import 'package:kerwenli_yol/pages/products_page/parts/products_list_view.dart';
 
 class BookmarksPage extends StatelessWidget {
   const BookmarksPage({super.key});
@@ -24,10 +25,7 @@ class BookmarksPage extends StatelessWidget {
             SizedBox(height: 5),
             Expanded(
               child: TabBarView(
-                children: [
-                  BookmarkCompaniesListView(),
-                  BookmarkCompaniesListView(),
-                ],
+                children: [ProductsListView(), BookmarkCompaniesListView()],
               ),
             ),
           ],
