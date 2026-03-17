@@ -21,8 +21,8 @@ class CompanyModel {
 
   factory CompanyModel.fromJson(Map<String, dynamic> json) {
     return CompanyModel(
-      uuid: json['uuid'],
-      individualUuid: json['individual_uuid'],
+      uuid: json['uuid'] ?? '',
+      individualUuid: json['individual_uuid'] ?? '',
       photo: json['photo'] ?? '',
       nameTm: json['name_tm'] ?? '',
       nameRu: json['name_ru'] ?? '',

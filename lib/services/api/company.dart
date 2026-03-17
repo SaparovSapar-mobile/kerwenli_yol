@@ -59,17 +59,15 @@ class CompanyApiService {
   }
 
   // fetch bookmarked companies -------------------------
-  Future<List<CompanyModel>> fetchBookmarkedCompanies(CompanyParams arg) async {
+  Future<List<CompanyDetailModel>> fetchBookmarkedCompanies(
+    CompanyParams arg,
+  ) async {
     final Uri uri = Uri.parse('$apiUrl/client/bookmarks/${arg.userId}').replace(
       queryParameters: {'p': arg.page.toString(), 'l': arg.pageSize.toString()},
     );
-    print('==================================== fetchBookmarkedCompanies');
-    print('uri: $uri');
 
     try {
       final http.Response response = await http.get(uri);
-      print('response.statusCode: ${response.statusCode}');
-      print('response.body: ${response.body}');
       final dynamic jsonData = json.decode(response.body);
 
       if (response.statusCode == 200 && jsonData['status']) {
@@ -81,12 +79,13 @@ class CompanyApiService {
 
         final List<dynamic> data = datas as List;
         return data
-            .map<CompanyModel>((propJson) => CompanyModel.fromJson(propJson))
+            .map<CompanyDetailModel>(
+              (propJson) => CompanyDetailModel.fromJson(propJson),
+            )
             .toList();
       }
       return [];
     } catch (e) {
-      print('error: ${e.toString()}');
       rethrow;
     }
   }

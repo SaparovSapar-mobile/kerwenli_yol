@@ -10,6 +10,7 @@ import 'package:kerwenli_yol/l10n/app_localizations.dart';
 import 'package:kerwenli_yol/models/add_c_bookmark.dart';
 import 'package:kerwenli_yol/models/favorite.dart';
 import 'package:kerwenli_yol/pages/login_page/login_page.dart';
+import 'package:kerwenli_yol/providers/api/company.dart';
 import 'package:kerwenli_yol/providers/api/favorite.dart';
 import 'package:kerwenli_yol/providers/database/favorite.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
@@ -90,7 +91,7 @@ class CardBookmarkButton extends ConsumerWidget {
                 showErrorSnackbar(context, lang.somethingWentWrong);
               }
             } else {
-              // ref.invalidate(fetchLikedProducts);
+              ref.invalidate(fetchBookmarkedCompaniesProvider);
             }
           },
           child: Container(

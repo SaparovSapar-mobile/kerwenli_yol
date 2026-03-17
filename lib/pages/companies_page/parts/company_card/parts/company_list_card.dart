@@ -25,17 +25,17 @@ class CompanyListCard extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     //======== Colors ======
     final bool isLight = isLightTheme(context, ref);
-    Color borderColor = isLight
+    final Color borderColor = isLight
         ? LightColors.bgPageLight
         : DarkColors.bgPageDark;
-    Color bookmarkIconColor = isLight
+    final Color bookmarkIconColor = isLight
         ? LightColors.primary
         : DarkColors.primary;
 
     // ====== Text Styles =======
-    TextStyle nameStyle = AppTextStyles.medium16;
+    final TextStyle nameStyle = AppTextStyles.medium16;
 
-    bool forBookmark = forBookMark != null && forBookMark!;
+    final bool forBookmark = forBookMark != null && forBookMark!;
 
     // ====== Name ======
     final String name = translateText(

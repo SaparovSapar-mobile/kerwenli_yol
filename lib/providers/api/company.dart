@@ -62,10 +62,10 @@ fetchCompanyProvider = FutureProvider.autoDispose
       return result;
     });
 
-final AutoDisposeFutureProviderFamily<List<CompanyModel>, CompanyParams>
+final AutoDisposeFutureProviderFamily<List<CompanyDetailModel>, CompanyParams>
 fetchBookmarkedCompaniesProvider = FutureProvider.family
-    .autoDispose<List<CompanyModel>, CompanyParams>((ref, arg) async {
-      List<CompanyModel> result = [];
+    .autoDispose<List<CompanyDetailModel>, CompanyParams>((ref, arg) async {
+      List<CompanyDetailModel> result = [];
 
       try {
         final String userId = await getUserId();
@@ -80,9 +80,9 @@ fetchBookmarkedCompaniesProvider = FutureProvider.family
         }
 
         if (result.isNotEmpty) {
-          for (final CompanyModel company in result) {
+          for (final CompanyDetailModel company in result) {
             final FavoriteModel params = FavoriteModel(
-              id: company.individualUuid,
+              id: company.id,
               type: FavoriteTypeEnum.company,
             );
 
