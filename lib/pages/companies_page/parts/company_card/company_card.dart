@@ -22,12 +22,12 @@ class CompanyCard extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // =========== Colors ==============
     final bool isLight = isLightTheme(context, ref);
-    Color borderColor = isLight
+    final Color borderColor = isLight
         ? LightColors.bgPageLight
         : DarkColors.bgPageDark;
 
     // =========== Text Styles ==============
-    TextStyle nameStyle = AppTextStyles.medium16;
+    final TextStyle nameStyle = AppTextStyles.medium16;
 
     // ====== Name ======
     final String name = translateText(

@@ -33,7 +33,9 @@ class VipCompaniesPage extends StatelessWidget {
             categories: headerCategories,
             childWidget: Consumer(
               builder: (context, ref, _) {
-                bool isGridCompanies = ref.watch(isGridVipCompaniesProvider);
+                final bool isGridCompanies = ref.watch(
+                  isGridVipCompaniesProvider,
+                );
                 if (isGridCompanies) {
                   return VipCompaniesGridView(vipCompanies: vipCompanies);
                 }

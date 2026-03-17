@@ -40,4 +40,6 @@ const homeGratutitudeWidth = 190.0;
 
 const homeMarkTypeHeight = 44.0;
 
+const vipCompanyCardWidth = 112.0;
+
 List<String> bookmarkHeaders = ['Likelar', 'Bookmarklar'];

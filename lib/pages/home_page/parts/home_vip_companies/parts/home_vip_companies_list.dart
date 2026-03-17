@@ -19,6 +19,7 @@ class HomeVipCompaniesList extends StatelessWidget {
           isFirst: index == 0,
           isLast: index == vipCompanies.length - 1,
           cardTopTypes: [CardTopTextType.vip],
+          company: vipCompanies[index],
         ),
         separatorBuilder: (context, index) => SizedBox(width: 5),
         itemCount: vipCompanies.length,

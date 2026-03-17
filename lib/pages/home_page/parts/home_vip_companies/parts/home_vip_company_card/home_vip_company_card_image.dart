@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:kerwenli_yol/models/company.dart';
 import 'package:kerwenli_yol/pages/parts/card_bookmark_button.dart';
 import 'package:kerwenli_yol/pages/parts/card_top_texts/card_top_texts.dart';
 
 class HomeVipCompanyCardImage extends StatelessWidget {
-  const HomeVipCompanyCardImage({super.key, required this.cardTopTypes});
+  const HomeVipCompanyCardImage({
+    super.key,
+    required this.cardTopTypes,
+    required this.company,
+  });
 
   final List<String> cardTopTypes;
+  final CompanyModel company;
 
   @override
   Widget build(BuildContext context) {
