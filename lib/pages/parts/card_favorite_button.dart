@@ -11,6 +11,7 @@ import 'package:kerwenli_yol/models/add_p_favorite.dart';
 import 'package:kerwenli_yol/models/favorite.dart';
 import 'package:kerwenli_yol/pages/login_page/login_page.dart';
 import 'package:kerwenli_yol/providers/api/favorite.dart';
+import 'package:kerwenli_yol/providers/api/product.dart';
 import 'package:kerwenli_yol/providers/database/favorite.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
@@ -93,8 +94,7 @@ class CardFavoriteButton extends ConsumerWidget {
                   showErrorSnackbar(context, lang.somethingWentWrong);
                 }
               } else {
-                // ref.invalidate(fetchFavoriteProductsProvider);
-                // ref.invalidate(fetchFavoriteServicesProvider);
+                ref.invalidate(fetchLikedProducts);
               }
             },
             child: Container(

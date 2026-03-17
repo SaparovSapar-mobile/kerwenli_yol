@@ -26,17 +26,12 @@ class FavoritesApiService {
   // add or remove company bookmar =======
   Future<bool> addCompanyBookmark(AddCBookmarkModel bookmark) async {
     final Uri uri = Uri.parse('$apiUrl/client/bookmarks');
-    print('============================ addCompanyBookmark');
-    print('uri: $uri');
-    print('bookmark.toJson(): ${bookmark.toJson()}');
 
     try {
       final http.Response response = await http.post(
         uri,
         body: json.encode(bookmark.toJson()),
       );
-      print('response.statusCode: ${response.statusCode}');
-      print('response.body: ${response.body}');
       final dynamic jsonData = json.decode(response.body);
 
       return response.statusCode == 200 && jsonData['status'];
