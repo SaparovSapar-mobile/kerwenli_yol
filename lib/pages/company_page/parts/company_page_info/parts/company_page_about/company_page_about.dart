@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:html/parser.dart';
 import 'package:kerwenli_yol/enums/social_type.dart';
 import 'package:kerwenli_yol/helpers/functions/send.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
@@ -34,7 +36,6 @@ class CompanyPageAbout extends ConsumerWidget {
 
     // ========== Text Styles ==========
     final TextStyle textStyle = AppTextStyles.semiBold12;
-    final TextStyle descStyle = AppTextStyles.regular12;
 
     // ======= company translation =======
     final TranslationModel compDesc = company.description;
@@ -106,7 +107,17 @@ class CompanyPageAbout extends ConsumerWidget {
                   dotsActiveHeight: 4.0,
                 ),
               ),
-            Text(desc, style: descStyle),
+            Html(
+              data: desc,
+              style: {
+                "*": Style(
+                  fontWeight: FontWeight.w400,
+                  fontSize: FontSize(12),
+                  lineHeight: LineHeight.number(1.20),
+                  fontFamily: "Rubik",
+                ),
+              },
+            ),
             SizedBox(height: 20),
             Text('Habarlasmak ucin', style: textStyle),
             if (phones.isNotEmpty)
@@ -129,7 +140,7 @@ class CompanyPageAbout extends ConsumerWidget {
               ),
             OpenSocialListTile(
               icon: 'location.png',
-              text: address,
+              text: parse(address).body!.text,
               onTap: () {},
             ),
             SizedBox(height: 20),

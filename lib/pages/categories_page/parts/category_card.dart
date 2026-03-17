@@ -18,22 +18,22 @@ class CategoryCard extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // ======= Colors ========
     final bool isLight = isLightTheme(context, ref);
-    Color leadingBgColor = isLight
+    final Color leadingBgColor = isLight
         ? LightColors.bgPageLight
         : DarkColors.bgPageDark;
-    Color activeLeadingBgColor = isLight
+    final Color activeLeadingBgColor = isLight
         ? LightColors.bgBlogLight
         : DarkColors.bgBlogDark;
-    Color iconColor = isLight
+    final Color iconColor = isLight
         ? LightColors.textTitleLight
         : DarkColors.textTitleDark;
 
     // ======= Text Styles ========
-    TextStyle titleStyle = AppTextStyles.medium12;
+    final TextStyle titleStyle = AppTextStyles.medium12;
 
-    String selectedCategory = ref.watch(categoryProvider);
-    String categoryId = category.id;
-    bool isActive = selectedCategory == categoryId;
+    final String selectedCategory = ref.watch(categoryProvider);
+    final String categoryId = category.id;
+    final bool isActive = selectedCategory == categoryId;
 
     // ====== Name ======
     final String name = translateText(

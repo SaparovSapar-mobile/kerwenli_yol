@@ -25,11 +25,15 @@ class HomeCategoryCard extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // =========== Colors ===============
     final bool isLight = isLightTheme(context, ref);
-    Color bgColor = isLight ? LightColors.bgPageLight : DarkColors.bgPageDark;
-    Color inBgColor = isLight ? LightColors.bgBlogLight : DarkColors.bgBlogDark;
+    final Color bgColor = isLight
+        ? LightColors.bgPageLight
+        : DarkColors.bgPageDark;
+    final Color inBgColor = isLight
+        ? LightColors.bgBlogLight
+        : DarkColors.bgBlogDark;
 
     // =========== Text Styles ===============
-    TextStyle textStyle = AppTextStyles.medium12;
+    final TextStyle textStyle = AppTextStyles.medium12;
 
     final String name = translateText(
       ref,

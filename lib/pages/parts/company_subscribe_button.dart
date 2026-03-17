@@ -6,15 +6,19 @@ import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
 
 class CompanySubscribeButton extends ConsumerWidget {
-  const CompanySubscribeButton({super.key});
+  const CompanySubscribeButton({super.key, required this.companyId});
+
+  final String companyId;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final bool isLight = isLightTheme(context, ref);
-    Color bgColor = isLight ? LightColors.bgPageLight : DarkColors.bgPageDark;
-    Color iconColor = isLight ? LightColors.primary : DarkColors.primary;
+    final Color bgColor = isLight
+        ? LightColors.bgPageLight
+        : DarkColors.bgPageDark;
+    final Color iconColor = isLight ? LightColors.primary : DarkColors.primary;
 
-    TextStyle textStyle = AppTextStyles.bold12;
+    final TextStyle textStyle = AppTextStyles.bold12;
 
     return Container(
       padding: EdgeInsets.symmetric(vertical: 5, horizontal: 18),

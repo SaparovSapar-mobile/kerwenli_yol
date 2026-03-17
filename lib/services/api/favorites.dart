@@ -39,4 +39,21 @@ class FavoritesApiService {
       rethrow;
     }
   }
+
+  // add or remove company follow =======
+  Future<bool> addCompanyFollow(AddCBookmarkModel bookmark) async {
+    final Uri uri = Uri.parse('$apiUrl/client/follows');
+
+    try {
+      final http.Response response = await http.post(
+        uri,
+        body: json.encode(bookmark.toJson()),
+      );
+      final dynamic jsonData = json.decode(response.body);
+
+      return response.statusCode == 200 && jsonData['status'];
+    } catch (e) {
+      rethrow;
+    }
+  }
 }

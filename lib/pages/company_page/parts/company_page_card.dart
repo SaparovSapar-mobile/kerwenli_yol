@@ -54,7 +54,7 @@ class CompanyPageCard extends ConsumerWidget {
                       ],
                     ),
                   ),
-                  CompanySubscribeButton(),
+                  CompanySubscribeButton(companyId: company.id),
                 ],
               ),
             ],
