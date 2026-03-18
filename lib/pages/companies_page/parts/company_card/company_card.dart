@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/enums/card_top_text_type.dart';
+import 'package:kerwenli_yol/helpers/functions/navigation.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/helpers/functions/translations.dart';
 import 'package:kerwenli_yol/models/company.dart';
 import 'package:kerwenli_yol/pages/companies_page/parts/company_card/parts/company_card_image.dart';
+import 'package:kerwenli_yol/pages/company_page/company_page.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/parts/company_status.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/parts/home_vip_company_card_categories.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/parts/home_vip_company_rating.dart';
@@ -37,42 +39,49 @@ class CompanyCard extends ConsumerWidget {
       company.nameEn,
     );
 
-    return Container(
-      padding: EdgeInsets.only(left: 9, top: 18, right: 9, bottom: 9),
-      decoration: BoxDecoration(
-        border: Border.all(color: borderColor),
-        borderRadius: BorderRadius.circular(8),
+    return GestureDetector(
+      onTap: () => goToPage(
+        context,
+        CompanyPage(companyId: company.individualUuid),
+        AxisDirection.left,
       ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          CompanyCardImage(
-            cardTopTypes: [CardTopTextType.vip],
-            image: company.photo,
-            companyId: company.individualUuid,
-          ),
-          SizedBox(height: 5),
-          Expanded(
-            child: Text(
-              name,
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-              style: nameStyle,
+      child: Container(
+        padding: EdgeInsets.only(left: 9, top: 18, right: 9, bottom: 9),
+        decoration: BoxDecoration(
+          border: Border.all(color: borderColor),
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            CompanyCardImage(
+              cardTopTypes: [CardTopTextType.vip],
+              image: company.photo,
+              companyId: company.individualUuid,
             ),
-          ),
-          CompanyStatus(isOpen: false, fontSize: 9),
-          SizedBox(height: 2),
-          HomeVipCompanyCardCategories(iconSize: 10),
-          SizedBox(height: 5),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              ViewCount(fontSize: 12),
-              HomeVipCompanyRating(fontSize: 12),
-            ],
-          ),
-        ],
+            SizedBox(height: 5),
+            Expanded(
+              child: Text(
+                name,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: nameStyle,
+              ),
+            ),
+            CompanyStatus(isOpen: false, fontSize: 9),
+            SizedBox(height: 2),
+            HomeVipCompanyCardCategories(iconSize: 10),
+            SizedBox(height: 5),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                ViewCount(fontSize: 12),
+                HomeVipCompanyRating(fontSize: 12),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

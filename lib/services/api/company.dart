@@ -77,7 +77,7 @@ class CompanyApiService {
       if (response.statusCode == 200 && jsonData['status']) {
         final dynamic datas = jsonData['data'];
 
-        if (datas == []) {
+        if (datas == [] || datas == null) {
           return [];
         }
 
@@ -141,7 +141,7 @@ class CompanyApiService {
       if (response.statusCode == 200 && jsonData['status']) {
         final dynamic datas = jsonData['data'];
 
-        if (datas == []) {
+        if (datas == [] || datas == null) {
           return [];
         }
 

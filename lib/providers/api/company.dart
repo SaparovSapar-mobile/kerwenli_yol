@@ -136,12 +136,9 @@ final FutureProvider<List<CompanyModel>> fetchBestCompaniesProvider =
       return datas;
     });
 
-final FutureProviderFamily<List<CompanyDetailModel>, CompanyParams>
-fetchCompaniesByCategoryIdProvider =
-    FutureProvider.family<List<CompanyDetailModel>, CompanyParams>((
-      ref,
-      arg,
-    ) async {
+final AutoDisposeFutureProviderFamily<List<CompanyDetailModel>, CompanyParams>
+fetchCompaniesByCategoryIdProvider = FutureProvider.family
+    .autoDispose<List<CompanyDetailModel>, CompanyParams>((ref, arg) async {
       List<CompanyDetailModel> datas = [];
 
       try {
