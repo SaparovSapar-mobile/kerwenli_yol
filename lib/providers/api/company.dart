@@ -151,6 +151,11 @@ fetchCompaniesByCategoryIdProvider =
             .read(companyApiProvider)
             .fetchCompaniesByCategoryId(params);
 
+        if (arg.page == 1) {
+          ref.read(hasCompaniesProvider.notifier).state = datas.isNotEmpty;
+          ref.read(hasErrCompaniesProvider.notifier).state = false;
+        }
+
         // Eger user id bar bolsa we maglumat bos dal bolsa
         // we api - den is_bookmarked we is_followed  maglumatlar true gelse
         // bookmark ve follow local db save edilyar
@@ -179,9 +184,12 @@ fetchCompaniesByCategoryIdProvider =
           }
         }
       } catch (e) {
-        rethrow;
+        ref.read(hasErrCompaniesProvider.notifier).state = e
+            .toString()
+            .isNotEmpty;
       }
 
+      ref.read(loadCompaniesProvider.notifier).state = false;
       return datas;
     });
 
@@ -237,6 +245,7 @@ fetchBookmarkedCompaniesProvider = FutureProvider.family
         result = await ref
             .read(companyApiProvider)
             .fetchBookmarkedCompanies(params);
+
         if (arg.page == 1) {
           ref.read(hasBCompaniesProvider.notifier).state = result.isNotEmpty;
           ref.read(hasErrBCompaniesProvider.notifier).state = false;
