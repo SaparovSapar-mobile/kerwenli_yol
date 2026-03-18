@@ -3,13 +3,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/pages/parts/bottom_sheet_widget/bottom_sheet_widget.dart';
 import 'package:kerwenli_yol/pages/parts/bottom_sheet_widget/parts/bottom_sheet_title.dart';
 import 'package:kerwenli_yol/pages/parts/sort_bottom_sheet/parts/filter_button.dart';
-import 'package:kerwenli_yol/pages/parts/sort_bottom_sheet/parts/sort_list_tile.dart';
 import 'package:kerwenli_yol/pages/parts/sort_bottom_sheet/parts/sort_list_tile_with_icon.dart';
-import 'package:kerwenli_yol/providers/pages/companies_page.dart';
-import 'package:kerwenli_yol/styles/text_styles.dart';
 
-class SortBottomSheet extends StatelessWidget {
-  const SortBottomSheet({
+class GridOrListBottomSheet extends StatelessWidget {
+  const GridOrListBottomSheet({
     super.key,
     required this.gridOrListProvider,
     required this.isGridProvider,
@@ -20,26 +17,9 @@ class SortBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final TextStyle textStyle = AppTextStyles.semiBold14;
-
     return BottomSheetWidget(
       children: [
         BottomSheetTitle(text: 'Tertiple'),
-        SortListTile(
-          title: 'Maslahat berilýänler',
-          value: 0,
-          sortOrFilterProvider: companySortIndexProvider,
-        ),
-        SortListTile(
-          title: 'Iň ýakyn',
-          value: 1,
-          sortOrFilterProvider: companySortIndexProvider,
-        ),
-        Container(
-          margin: EdgeInsets.symmetric(vertical: 16),
-          alignment: Alignment.centerLeft,
-          child: Text('Görnüşi', style: textStyle, textAlign: TextAlign.left),
-        ),
         SortListTileWithIcon(
           title: 'Grid',
           value: 0,

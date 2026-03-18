@@ -14,16 +14,16 @@ class CompanyPagePartTabbar extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // ====== Colors =====
     final bool isLight = isLightTheme(context, ref);
-    Color labelColor = isLight ? LightColors.primary : DarkColors.primary;
-    Color unselectedLabelColor = isLight
+    final Color labelColor = isLight ? LightColors.primary : DarkColors.primary;
+    final Color unselectedLabelColor = isLight
         ? LightColors.textTitleLight
         : DarkColors.textTitleDark;
-    Color overlayColor = isLight
+    final Color overlayColor = isLight
         ? LightColors.bgBlogLight
         : DarkColors.bgBlogDark;
 
     // ====== Text Styles =====
-    TextStyle labelStyle = AppTextStyles.semiBold12;
+    final TextStyle labelStyle = AppTextStyles.semiBold12;
 
     return Padding(
       padding: const EdgeInsets.only(bottom: 3),
