@@ -17,8 +17,8 @@ class CompanyPageProductsSortButton extends ConsumerWidget {
         ? LightColors.bgPageLight
         : DarkColors.bgPageDark;
     final Color iconColor = isLight
-        ? LightColors.bgBlogLight
-        : DarkColors.bgBlogDark;
+        ? LightColors.textTitleLight
+        : DarkColors.textTitleDark;
 
     return GestureDetector(
       onTap: () => showGridOrListSortBottomSheet(
@@ -28,6 +28,7 @@ class CompanyPageProductsSortButton extends ConsumerWidget {
       ),
       child: Container(
         padding: EdgeInsets.all(5),
+        margin: EdgeInsets.only(right: 16),
         decoration: BoxDecoration(
           color: bgColor,
           borderRadius: BorderRadius.circular(4),

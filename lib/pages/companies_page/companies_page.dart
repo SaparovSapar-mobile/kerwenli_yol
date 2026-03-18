@@ -30,7 +30,7 @@ class CompaniesPage extends StatelessWidget {
             categories: headerCategories,
             childWidget: Consumer(
               builder: (context, ref, _) {
-                bool isGridCompanies = ref.watch(isGridCompaniesProvider);
+                final bool isGridCompanies = ref.watch(isGridCompaniesProvider);
                 if (isGridCompanies) {
                   return CompaniesGridView();
                 }

@@ -10,20 +10,22 @@ import 'package:kerwenli_yol/providers/pages/products_page.dart';
 import 'package:kerwenli_yol/services/api/product.dart';
 
 class ProductsListView extends ConsumerWidget {
-  const ProductsListView({super.key});
+  const ProductsListView({super.key, required this.companyId});
+
+  final String companyId;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final bool hasData = ref.watch(hasFProductsProvider);
-    final bool loading = ref.watch(loadFProductsProvider);
-    final bool hasErr = ref.watch(hasErrFProductsProvider);
+    final bool hasData = ref.watch(hasCProductsProvider);
+    final bool loading = ref.watch(loadCProductsProvider);
+    final bool hasErr = ref.watch(hasErrCProductsProvider);
 
     Widget returnWidget;
 
     if (!hasData) {
       returnWidget = NoResult(
         ref: ref,
-        apiProviders: [fetchLikedProductsProvider],
+        apiProviders: [fetchCompanyProductsProvider],
       );
     } else if (!hasErr) {
       returnWidget = ListView.builder(
@@ -35,11 +37,11 @@ class ProductsListView extends ConsumerWidget {
           final ProductParams arg = ProductParams(
             page: page,
             pageSize: pageSize,
-            companyId: '',
+            companyId: companyId,
             userId: '',
           );
           final AsyncValue<List<ProductModel>> resultApi = ref.watch(
-            fetchLikedProductsProvider(arg),
+            fetchCompanyProductsProvider(arg),
           );
 
           return resultApi.when(
@@ -56,7 +58,7 @@ class ProductsListView extends ConsumerWidget {
               if (!loading) {
                 Future.delayed(
                   const Duration(),
-                  () => ref.read(loadFProductsProvider.notifier).state = true,
+                  () => ref.read(hasErrCProductsProvider.notifier).state = true,
                 );
               }
               return null;

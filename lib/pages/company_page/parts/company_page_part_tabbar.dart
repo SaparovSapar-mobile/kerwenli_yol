@@ -28,6 +28,8 @@ class CompanyPagePartTabbar extends ConsumerWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 3),
       child: TabBar(
+        tabAlignment: TabAlignment.start,
+        isScrollable: true,
         labelPadding: EdgeInsets.all(10),
         dividerColor: Colors.transparent,
         padding: EdgeInsets.symmetric(horizontal: 16),
