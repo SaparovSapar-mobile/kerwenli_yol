@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/navigation.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
+import 'package:kerwenli_yol/helpers/functions/translations.dart';
 import 'package:kerwenli_yol/helpers/methods/static_data.dart';
 import 'package:kerwenli_yol/models/product.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_new_products/parts/home_new_products_card/parts/home_new_products_card_images.dart';
@@ -28,6 +29,13 @@ class ProductListCard extends ConsumerWidget {
 
     // ======== Text Styles ======
     final TextStyle nameStyle = AppTextStyles.medium16;
+
+    final String name = translateText(
+      ref,
+      product.nameTm,
+      product.nameRu,
+      product.nameEn,
+    );
 
     return GestureDetector(
       onTap: () => goToPage(
@@ -63,7 +71,7 @@ class ProductListCard extends ConsumerWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Türkmenistanda öndürilen şokaladlary alyn',
+                          name,
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           style: nameStyle,

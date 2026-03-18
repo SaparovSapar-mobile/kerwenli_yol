@@ -49,7 +49,6 @@ class CompanyPageProductsOrServices extends ConsumerWidget {
                       if (isGrid) {
                         return ProductsGridView(companyId: companyId);
                       }
-                      // return CompaniesListView();
                       return ProductsListView(companyId: companyId);
                     },
                   ),
@@ -59,7 +58,6 @@ class CompanyPageProductsOrServices extends ConsumerWidget {
                       if (isGrid) {
                         return ProductsGridView(companyId: companyId);
                       }
-                      // return CompaniesListView();
                       return ProductsListView(companyId: companyId);
                     },
                   ),
@@ -69,7 +67,6 @@ class CompanyPageProductsOrServices extends ConsumerWidget {
                       if (isGrid) {
                         return ProductsGridView(companyId: companyId);
                       }
-                      // return CompaniesListView();
                       return ProductsListView(companyId: companyId);
                     },
                   ),
