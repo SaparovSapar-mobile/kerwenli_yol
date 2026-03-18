@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kerwenli_yol/helpers/functions/navigation.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/helpers/functions/translations.dart';
 import 'package:kerwenli_yol/models/category.dart';
+import 'package:kerwenli_yol/pages/companies_page/companies_page.dart';
 import 'package:kerwenli_yol/pages/parts/show_image.dart';
 import 'package:kerwenli_yol/providers/pages/categories_page.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
@@ -57,7 +59,14 @@ class CategoryCard extends ConsumerWidget {
         borderRadius: BorderRadius.circular(8),
       ),
       child: ListTile(
-        onTap: () => ref.read(categoryProvider.notifier).state = categoryId,
+        onTap: () {
+          ref.read(categoryProvider.notifier).state = categoryId;
+          goToPage(
+            context,
+            CompaniesPage(categoryId: categoryId),
+            AxisDirection.left,
+          );
+        },
         leading: Container(
           padding: EdgeInsets.all(5),
           decoration: BoxDecoration(

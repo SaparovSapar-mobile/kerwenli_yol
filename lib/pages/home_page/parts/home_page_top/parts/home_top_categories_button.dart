@@ -13,13 +13,17 @@ class HomeTopCategoriesButton extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final bool isLight = isLightTheme(context, ref);
-    Color bgColor = isLight ? LightColors.bgPageLight : DarkColors.bgPageDark;
-    Color iconColor = isLight ? LightColors.primary : DarkColors.primary;
-    Color textColor = isLight
+    final Color bgColor = isLight
+        ? LightColors.bgPageLight
+        : DarkColors.bgPageDark;
+    final Color iconColor = isLight ? LightColors.primary : DarkColors.primary;
+    final Color textColor = isLight
         ? LightColors.textTitleLight
         : DarkColors.textTitleDark;
 
-    TextStyle textStyle = AppTextStyles.medium14.copyWith(color: textColor);
+    final TextStyle textStyle = AppTextStyles.medium14.copyWith(
+      color: textColor,
+    );
 
     return GestureDetector(
       onTap: () => goToPage(context, CategoriesPage(), AxisDirection.right),

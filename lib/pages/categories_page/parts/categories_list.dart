@@ -16,12 +16,14 @@ class CategoriesList extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // ======== Colors ==========
     final bool isLight = isLightTheme(context, ref);
-    Color bgColor = isLight ? LightColors.bgPageLight : DarkColors.bgPageDark;
-    Color bgInnerColor = isLight
+    final Color bgColor = isLight
+        ? LightColors.bgPageLight
+        : DarkColors.bgPageDark;
+    final Color bgInnerColor = isLight
         ? LightColors.bgBlogLight
         : DarkColors.bgBlogDark;
 
-    AsyncValue<List<CategoryModel>> resultApi = ref.watch(
+    final AsyncValue<List<CategoryModel>> resultApi = ref.watch(
       fetchCategoriesProvider,
     );
 
