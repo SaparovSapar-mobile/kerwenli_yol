@@ -18,6 +18,28 @@ final FutureProvider<List<NewProductModel>> fetchNewProductsProvider =
       try {
         final String userId = await getUserId();
         datas = await ref.read(productApiProvider).fetchNewProducts(userId);
+
+        // Eger user id bar bolsa we maglumat bos dal bolsa
+        // we api - den is_liked we is_followed true gelse
+        // like - lar local db save edilyar
+        if (userId != '' && datas.isNotEmpty) {
+          for (final NewProductModel e in datas) {
+            final List<ProductModel> products = e.products;
+            if (products.isNotEmpty) {
+              for (final ProductModel product in products) {
+                if (product.isLiked) {
+                  final FavoriteModel bp = FavoriteModel(
+                    id: product.id,
+                    type: FavoriteTypeEnum.product,
+                  );
+                  if (!await hasInFavorites(bp)) {
+                    await addOrRemoveFromFavorites(bp);
+                  }
+                }
+              }
+            }
+          }
+        }
       } catch (e) {
         rethrow;
       }
@@ -40,6 +62,23 @@ fetchCompanyProductsProvider =
         if (arg.page == 1) {
           ref.read(hasCProductsProvider.notifier).state = result.isNotEmpty;
           ref.read(hasErrCProductsProvider.notifier).state = false;
+        }
+
+        // Eger user id bar bolsa we maglumat bos dal bolsa
+        // we api - den is_liked we is_followed true gelse
+        // like - lar local db save edilyar
+        if (userId != '' && result.isNotEmpty) {
+          for (final ProductModel product in result) {
+            if (product.isLiked) {
+              final FavoriteModel bp = FavoriteModel(
+                id: product.id,
+                type: FavoriteTypeEnum.product,
+              );
+              if (!await hasInFavorites(bp)) {
+                await addOrRemoveFromFavorites(bp);
+              }
+            }
+          }
         }
       } catch (e) {
         ref.read(hasErrCProductsProvider.notifier).state = e
@@ -98,6 +137,21 @@ fetchProductProvider = FutureProvider.autoDispose.family<ProductModel, String>((
   try {
     final String userId = await getUserId();
     result = await ref.read(productApiProvider).fetchProduct(arg, userId);
+
+    // Eger user id bar bolsa we maglumat bos dal bolsa
+    // we api - den is_liked we is_followed true gelse
+    // like - lar local db save edilyar
+    if (userId != '' && result.id != '') {
+      if (result.isLiked) {
+        final FavoriteModel bp = FavoriteModel(
+          id: result.id,
+          type: FavoriteTypeEnum.product,
+        );
+        if (!await hasInFavorites(bp)) {
+          await addOrRemoveFromFavorites(bp);
+        }
+      }
+    }
   } catch (e) {
     rethrow;
   }
