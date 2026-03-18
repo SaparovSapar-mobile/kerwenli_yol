@@ -41,7 +41,7 @@ class CompanyPage extends ConsumerWidget {
                 InternetStatusBar(),
                 // ========= Fixed ===========
                 CompanyPageTop(
-                  text: 'VIP Karhanalar',
+                  text: 'Karhana',
                   showBottomLine: true,
                   onPressed: () => showCompanyPageMessageBottomSheet(context),
                 ),

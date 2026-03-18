@@ -9,6 +9,7 @@ import 'package:kerwenli_yol/models/working_time.dart';
 
 class CompanyModel {
   final String uuid, individualUuid, photo, nameTm, nameRu, nameEn;
+  final bool isFollowed, isBookmarked;
 
   CompanyModel({
     required this.uuid,
@@ -17,6 +18,8 @@ class CompanyModel {
     required this.nameTm,
     required this.nameRu,
     required this.nameEn,
+    required this.isFollowed,
+    required this.isBookmarked,
   });
 
   factory CompanyModel.fromJson(Map<String, dynamic> json) {
@@ -27,6 +30,8 @@ class CompanyModel {
       nameTm: json['name_tm'] ?? '',
       nameRu: json['name_ru'] ?? '',
       nameEn: json['name_en'] ?? '',
+      isFollowed: json['is_followed'] ?? false,
+      isBookmarked: json['is_bookmarked'] ?? false,
     );
   }
 }
@@ -45,6 +50,7 @@ class CompanyDetailModel {
   final MapsModel maps;
   final VrModel vr;
   final TaxiNumberModel taxiNumber;
+  final bool isFollowed, isBookmarked;
 
   CompanyDetailModel({
     required this.id,
@@ -60,6 +66,8 @@ class CompanyDetailModel {
     required this.maps,
     required this.vr,
     required this.taxiNumber,
+    required this.isFollowed,
+    required this.isBookmarked,
   });
 
   factory CompanyDetailModel.defaultValue() {
@@ -77,6 +85,8 @@ class CompanyDetailModel {
       maps: MapsModel.defaultValue(),
       vr: VrModel.defaultValue(),
       taxiNumber: TaxiNumberModel.defaultValue(),
+      isBookmarked: false,
+      isFollowed: false,
     );
   }
 
@@ -121,6 +131,8 @@ class CompanyDetailModel {
       taxiNumber: json['taxi_number'] == null
           ? TaxiNumberModel.defaultValue()
           : TaxiNumberModel.fromJson(json['taxi_number']),
+      isFollowed: json['is_followed'] ?? false,
+      isBookmarked: json['is_bookmarked'] ?? false,
     );
   }
 }

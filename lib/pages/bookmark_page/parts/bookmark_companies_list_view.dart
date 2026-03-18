@@ -55,6 +55,8 @@ class BookmarkCompaniesListView extends ConsumerWidget {
                 nameTm: c.businessName.tm,
                 nameRu: c.businessName.ru,
                 nameEn: c.businessName.en,
+                isBookmarked: c.isBookmarked,
+                isFollowed: c.isFollowed,
               );
               return CompanyListCard(company: company, forBookMark: true);
             },
