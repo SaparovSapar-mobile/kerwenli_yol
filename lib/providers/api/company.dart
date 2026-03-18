@@ -19,24 +19,29 @@ final FutureProvider<List<CompanyModel>> fetchVipCompaniesProvider =
         datas = await ref.read(companyApiProvider).fetchVipCompanies(userId);
 
         // Eger user id bar bolsa we maglumat bos dal bolsa
+        // we api - den is_bookmarked we is_followed  maglumatlar true gelse
         // bookmark ve follow local db save edilyar
         if (userId != '' && datas.isNotEmpty) {
           for (final CompanyModel e in datas) {
-            final FavoriteModel bp = FavoriteModel(
-              id: e.individualUuid,
-              type: FavoriteTypeEnum.company,
-            );
-            final FavoriteModel fp = FavoriteModel(
-              id: e.individualUuid,
-              type: FavoriteTypeEnum.companyFollow,
-            );
-
-            if (!await hasInFavorites(bp)) {
-              await addOrRemoveFromFavorites(bp);
+            if (e.isBookmarked) {
+              final FavoriteModel bp = FavoriteModel(
+                id: e.individualUuid,
+                type: FavoriteTypeEnum.company,
+              );
+              if (!await hasInFavorites(bp)) {
+                await addOrRemoveFromFavorites(bp);
+              }
             }
 
-            if (!await hasInFavorites(fp)) {
-              await addOrRemoveFromFavorites(fp);
+            if (e.isFollowed) {
+              final FavoriteModel fp = FavoriteModel(
+                id: e.individualUuid,
+                type: FavoriteTypeEnum.companyFollow,
+              );
+
+              if (!await hasInFavorites(fp)) {
+                await addOrRemoveFromFavorites(fp);
+              }
             }
           }
         }
@@ -56,24 +61,29 @@ final FutureProvider<List<CompanyModel>> fetchTravelsProvider =
         datas = await ref.read(companyApiProvider).fetchTravels(userId);
 
         // Eger user id bar bolsa we maglumat bos dal bolsa
+        // we api - den is_bookmarked we is_followed  maglumatlar true gelse
         // bookmark ve follow local db save edilyar
         if (userId != '' && datas.isNotEmpty) {
           for (final CompanyModel e in datas) {
-            final FavoriteModel bp = FavoriteModel(
-              id: e.individualUuid,
-              type: FavoriteTypeEnum.company,
-            );
-            final FavoriteModel fp = FavoriteModel(
-              id: e.individualUuid,
-              type: FavoriteTypeEnum.companyFollow,
-            );
-
-            if (!await hasInFavorites(bp)) {
-              await addOrRemoveFromFavorites(bp);
+            if (e.isBookmarked) {
+              final FavoriteModel bp = FavoriteModel(
+                id: e.individualUuid,
+                type: FavoriteTypeEnum.company,
+              );
+              if (!await hasInFavorites(bp)) {
+                await addOrRemoveFromFavorites(bp);
+              }
             }
 
-            if (!await hasInFavorites(fp)) {
-              await addOrRemoveFromFavorites(fp);
+            if (e.isFollowed) {
+              final FavoriteModel fp = FavoriteModel(
+                id: e.individualUuid,
+                type: FavoriteTypeEnum.companyFollow,
+              );
+
+              if (!await hasInFavorites(fp)) {
+                await addOrRemoveFromFavorites(fp);
+              }
             }
           }
         }
@@ -93,24 +103,29 @@ final FutureProvider<List<CompanyModel>> fetchBestCompaniesProvider =
         datas = await ref.read(companyApiProvider).fetchBestCompanies(userId);
 
         // Eger user id bar bolsa we maglumat bos dal bolsa
+        // we api - den is_bookmarked we is_followed  maglumatlar true gelse
         // bookmark ve follow local db save edilyar
         if (userId != '' && datas.isNotEmpty) {
           for (final CompanyModel e in datas) {
-            final FavoriteModel bp = FavoriteModel(
-              id: e.individualUuid,
-              type: FavoriteTypeEnum.company,
-            );
-            final FavoriteModel fp = FavoriteModel(
-              id: e.individualUuid,
-              type: FavoriteTypeEnum.companyFollow,
-            );
-
-            if (!await hasInFavorites(bp)) {
-              await addOrRemoveFromFavorites(bp);
+            if (e.isBookmarked) {
+              final FavoriteModel bp = FavoriteModel(
+                id: e.individualUuid,
+                type: FavoriteTypeEnum.company,
+              );
+              if (!await hasInFavorites(bp)) {
+                await addOrRemoveFromFavorites(bp);
+              }
             }
 
-            if (!await hasInFavorites(fp)) {
-              await addOrRemoveFromFavorites(fp);
+            if (e.isFollowed) {
+              final FavoriteModel fp = FavoriteModel(
+                id: e.individualUuid,
+                type: FavoriteTypeEnum.companyFollow,
+              );
+
+              if (!await hasInFavorites(fp)) {
+                await addOrRemoveFromFavorites(fp);
+              }
             }
           }
         }
@@ -131,23 +146,28 @@ fetchCompanyProvider = FutureProvider.autoDispose
         result = await ref.read(companyApiProvider).fetchCompany(arg, userId);
 
         // Eger user id bar bolsa we maglumat bos dal bolsa
+        // we api - den is_bookmarked we is_followed  maglumatlar true gelse
         // bookmark ve follow local db save edilyar
         if (userId != '' && result.id != '') {
-          final FavoriteModel bp = FavoriteModel(
-            id: result.id,
-            type: FavoriteTypeEnum.company,
-          );
-          final FavoriteModel fp = FavoriteModel(
-            id: result.id,
-            type: FavoriteTypeEnum.companyFollow,
-          );
-
-          if (!await hasInFavorites(bp)) {
-            await addOrRemoveFromFavorites(bp);
+          if (result.isBookmarked) {
+            final FavoriteModel bp = FavoriteModel(
+              id: result.id,
+              type: FavoriteTypeEnum.company,
+            );
+            if (!await hasInFavorites(bp)) {
+              await addOrRemoveFromFavorites(bp);
+            }
           }
 
-          if (!await hasInFavorites(fp)) {
-            await addOrRemoveFromFavorites(fp);
+          if (result.isFollowed) {
+            final FavoriteModel fp = FavoriteModel(
+              id: result.id,
+              type: FavoriteTypeEnum.companyFollow,
+            );
+
+            if (!await hasInFavorites(fp)) {
+              await addOrRemoveFromFavorites(fp);
+            }
           }
         }
       } catch (e) {
