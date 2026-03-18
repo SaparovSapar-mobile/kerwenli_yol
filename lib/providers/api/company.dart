@@ -136,6 +136,55 @@ final FutureProvider<List<CompanyModel>> fetchBestCompaniesProvider =
       return datas;
     });
 
+final FutureProviderFamily<List<CompanyDetailModel>, CompanyParams>
+fetchCompaniesByCategoryIdProvider =
+    FutureProvider.family<List<CompanyDetailModel>, CompanyParams>((
+      ref,
+      arg,
+    ) async {
+      List<CompanyDetailModel> datas = [];
+
+      try {
+        final String userId = await ref.watch(getUserIdProvider.future);
+        CompanyParams params = arg.copyWith(userId: userId);
+        datas = await ref
+            .read(companyApiProvider)
+            .fetchCompaniesByCategoryId(params);
+
+        // Eger user id bar bolsa we maglumat bos dal bolsa
+        // we api - den is_bookmarked we is_followed  maglumatlar true gelse
+        // bookmark ve follow local db save edilyar
+        if (userId != '' && datas.isNotEmpty) {
+          for (final CompanyDetailModel e in datas) {
+            if (e.isBookmarked) {
+              final FavoriteModel bp = FavoriteModel(
+                id: e.id,
+                type: FavoriteTypeEnum.company,
+              );
+              if (!await hasInFavorites(bp)) {
+                await addOrRemoveFromFavorites(bp);
+              }
+            }
+
+            if (e.isFollowed) {
+              final FavoriteModel fp = FavoriteModel(
+                id: e.id,
+                type: FavoriteTypeEnum.companyFollow,
+              );
+
+              if (!await hasInFavorites(fp)) {
+                await addOrRemoveFromFavorites(fp);
+              }
+            }
+          }
+        }
+      } catch (e) {
+        rethrow;
+      }
+
+      return datas;
+    });
+
 final AutoDisposeFutureProviderFamily<CompanyDetailModel, String>
 fetchCompanyProvider = FutureProvider.autoDispose
     .family<CompanyDetailModel, String>((ref, arg) async {
