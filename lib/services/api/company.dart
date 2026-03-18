@@ -120,7 +120,7 @@ class CompanyApiService {
   }
 
   // fetch companies by category id ---------------------------------
-  Future<CompanyDetailModel> fetchCompaniesByCategoryId(
+  Future<List<CompanyDetailModel>> fetchCompaniesByCategoryId(
     CompanyParams arg,
   ) async {
     final Uri uri =
@@ -139,15 +139,20 @@ class CompanyApiService {
       final dynamic jsonData = json.decode(response.body);
 
       if (response.statusCode == 200 && jsonData['status']) {
-        final dynamic data = jsonData['data'];
+        final dynamic datas = jsonData['data'];
 
-        if (data != null) {
-          return CompanyDetailModel.fromJson(data);
+        if (datas == []) {
+          return [];
         }
 
-        return CompanyDetailModel.defaultValue();
+        final List<dynamic> data = datas as List;
+        return data
+            .map<CompanyDetailModel>(
+              (propJson) => CompanyDetailModel.fromJson(propJson),
+            )
+            .toList();
       }
-      return CompanyDetailModel.defaultValue();
+      return [];
     } catch (e) {
       rethrow;
     }
