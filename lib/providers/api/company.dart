@@ -17,6 +17,29 @@ final FutureProvider<List<CompanyModel>> fetchVipCompaniesProvider =
       try {
         final String userId = await getUserId();
         datas = await ref.read(companyApiProvider).fetchVipCompanies(userId);
+
+        // Eger user id bar bolsa we maglumat bos dal bolsa
+        // bookmark ve follow local db save edilyar
+        if (userId != '' && datas.isNotEmpty) {
+          for (final CompanyModel e in datas) {
+            final FavoriteModel bp = FavoriteModel(
+              id: e.individualUuid,
+              type: FavoriteTypeEnum.company,
+            );
+            final FavoriteModel fp = FavoriteModel(
+              id: e.individualUuid,
+              type: FavoriteTypeEnum.companyFollow,
+            );
+
+            if (!await hasInFavorites(bp)) {
+              await addOrRemoveFromFavorites(bp);
+            }
+
+            if (!await hasInFavorites(fp)) {
+              await addOrRemoveFromFavorites(fp);
+            }
+          }
+        }
       } catch (e) {
         rethrow;
       }
@@ -31,6 +54,29 @@ final FutureProvider<List<CompanyModel>> fetchTravelsProvider =
       try {
         final String userId = await getUserId();
         datas = await ref.read(companyApiProvider).fetchTravels(userId);
+
+        // Eger user id bar bolsa we maglumat bos dal bolsa
+        // bookmark ve follow local db save edilyar
+        if (userId != '' && datas.isNotEmpty) {
+          for (final CompanyModel e in datas) {
+            final FavoriteModel bp = FavoriteModel(
+              id: e.individualUuid,
+              type: FavoriteTypeEnum.company,
+            );
+            final FavoriteModel fp = FavoriteModel(
+              id: e.individualUuid,
+              type: FavoriteTypeEnum.companyFollow,
+            );
+
+            if (!await hasInFavorites(bp)) {
+              await addOrRemoveFromFavorites(bp);
+            }
+
+            if (!await hasInFavorites(fp)) {
+              await addOrRemoveFromFavorites(fp);
+            }
+          }
+        }
       } catch (e) {
         rethrow;
       }
@@ -45,6 +91,29 @@ final FutureProvider<List<CompanyModel>> fetchBestCompaniesProvider =
       try {
         final String userId = await getUserId();
         datas = await ref.read(companyApiProvider).fetchBestCompanies(userId);
+
+        // Eger user id bar bolsa we maglumat bos dal bolsa
+        // bookmark ve follow local db save edilyar
+        if (userId != '' && datas.isNotEmpty) {
+          for (final CompanyModel e in datas) {
+            final FavoriteModel bp = FavoriteModel(
+              id: e.individualUuid,
+              type: FavoriteTypeEnum.company,
+            );
+            final FavoriteModel fp = FavoriteModel(
+              id: e.individualUuid,
+              type: FavoriteTypeEnum.companyFollow,
+            );
+
+            if (!await hasInFavorites(bp)) {
+              await addOrRemoveFromFavorites(bp);
+            }
+
+            if (!await hasInFavorites(fp)) {
+              await addOrRemoveFromFavorites(fp);
+            }
+          }
+        }
       } catch (e) {
         rethrow;
       }
@@ -60,6 +129,27 @@ fetchCompanyProvider = FutureProvider.autoDispose
       try {
         final String userId = await getUserId();
         result = await ref.read(companyApiProvider).fetchCompany(arg, userId);
+
+        // Eger user id bar bolsa we maglumat bos dal bolsa
+        // bookmark ve follow local db save edilyar
+        if (userId != '' && result.id != '') {
+          final FavoriteModel bp = FavoriteModel(
+            id: result.id,
+            type: FavoriteTypeEnum.company,
+          );
+          final FavoriteModel fp = FavoriteModel(
+            id: result.id,
+            type: FavoriteTypeEnum.companyFollow,
+          );
+
+          if (!await hasInFavorites(bp)) {
+            await addOrRemoveFromFavorites(bp);
+          }
+
+          if (!await hasInFavorites(fp)) {
+            await addOrRemoveFromFavorites(fp);
+          }
+        }
       } catch (e) {
         rethrow;
       }
