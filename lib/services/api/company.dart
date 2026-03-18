@@ -7,8 +7,10 @@ import 'package:kerwenli_yol/models/company.dart';
 
 class CompanyApiService {
   // fetch best companies -----------------------------
-  Future<List<CompanyModel>> fetchBestCompanies() async {
-    final Uri uri = Uri.parse('$apiUrl/client/best-companies');
+  Future<List<CompanyModel>> fetchBestCompanies(String userId) async {
+    final Uri uri = Uri.parse(
+      '$apiUrl/client/best-companies',
+    ).replace(queryParameters: {'user_uuid': userId});
 
     try {
       final http.Response response = await http.get(uri);
@@ -33,8 +35,10 @@ class CompanyApiService {
   }
 
   // fetch travel 360 ---------------------------------
-  Future<List<CompanyModel>> fetchTravels() async {
-    final Uri uri = Uri.parse('$apiUrl/client/travel360');
+  Future<List<CompanyModel>> fetchTravels(String userId) async {
+    final Uri uri = Uri.parse(
+      '$apiUrl/client/travel360',
+    ).replace(queryParameters: {'user_uuid': userId});
 
     try {
       final http.Response response = await http.get(uri);
@@ -91,8 +95,10 @@ class CompanyApiService {
   }
 
   // fetch company detail by id ---------------------------------
-  Future<CompanyDetailModel> fetchCompany(String id) async {
-    final Uri uri = Uri.parse('$apiUrl/client/individuals/$id');
+  Future<CompanyDetailModel> fetchCompany(String id, String userId) async {
+    final Uri uri = Uri.parse(
+      '$apiUrl/client/individuals/$id',
+    ).replace(queryParameters: {'user_uuid': userId});
 
     try {
       final http.Response response = await http.get(uri);
@@ -114,8 +120,10 @@ class CompanyApiService {
   }
 
   // fetch vip companies ---------------------------------
-  Future<List<CompanyModel>> fetchVipCompanies() async {
-    final Uri uri = Uri.parse('$apiUrl/client/vip-companies');
+  Future<List<CompanyModel>> fetchVipCompanies(String userId) async {
+    final Uri uri = Uri.parse(
+      '$apiUrl/client/vip-companies',
+    ).replace(queryParameters: {'user_uuid': userId});
 
     try {
       final http.Response response = await http.get(uri);

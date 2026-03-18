@@ -49,6 +49,8 @@ class HomeCategoryCard extends ConsumerWidget {
       category.imageEn,
     );
 
+    // 9f4806b2-2fc8-4de1-8c32-63b5f24f57b2
+
     return GestureDetector(
       onTap: () => goToPage(context, CompaniesPage(), AxisDirection.left),
       child: Container(

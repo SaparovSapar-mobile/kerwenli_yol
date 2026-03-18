@@ -20,6 +20,7 @@ class CompanyPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    print('companyId: $companyId');
     final AsyncValue<CompanyDetailModel> resultApi = ref.watch(
       fetchCompanyProvider(companyId),
     );

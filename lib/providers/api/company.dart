@@ -15,7 +15,8 @@ final FutureProvider<List<CompanyModel>> fetchVipCompaniesProvider =
       List<CompanyModel> datas = [];
 
       try {
-        datas = await ref.read(companyApiProvider).fetchVipCompanies();
+        final String userId = await getUserId();
+        datas = await ref.read(companyApiProvider).fetchVipCompanies(userId);
       } catch (e) {
         rethrow;
       }
@@ -28,7 +29,8 @@ final FutureProvider<List<CompanyModel>> fetchTravelsProvider =
       List<CompanyModel> datas = [];
 
       try {
-        datas = await ref.read(companyApiProvider).fetchTravels();
+        final String userId = await getUserId();
+        datas = await ref.read(companyApiProvider).fetchTravels(userId);
       } catch (e) {
         rethrow;
       }
@@ -41,7 +43,8 @@ final FutureProvider<List<CompanyModel>> fetchBestCompaniesProvider =
       List<CompanyModel> datas = [];
 
       try {
-        datas = await ref.read(companyApiProvider).fetchBestCompanies();
+        final String userId = await getUserId();
+        datas = await ref.read(companyApiProvider).fetchBestCompanies(userId);
       } catch (e) {
         rethrow;
       }
@@ -55,7 +58,8 @@ fetchCompanyProvider = FutureProvider.autoDispose
       CompanyDetailModel result = CompanyDetailModel.defaultValue();
 
       try {
-        result = await ref.read(companyApiProvider).fetchCompany(arg);
+        final String userId = await getUserId();
+        result = await ref.read(companyApiProvider).fetchCompany(arg, userId);
       } catch (e) {
         rethrow;
       }
