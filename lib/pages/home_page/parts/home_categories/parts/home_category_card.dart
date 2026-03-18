@@ -52,7 +52,11 @@ class HomeCategoryCard extends ConsumerWidget {
     // 9f4806b2-2fc8-4de1-8c32-63b5f24f57b2
 
     return GestureDetector(
-      onTap: () => goToPage(context, CompaniesPage(), AxisDirection.left),
+      onTap: () => goToPage(
+        context,
+        CompaniesPage(categoryId: category.id),
+        AxisDirection.left,
+      ),
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 5, vertical: 9),
         margin: isFirst != null && isLast != null

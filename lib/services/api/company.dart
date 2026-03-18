@@ -119,6 +119,40 @@ class CompanyApiService {
     }
   }
 
+  // fetch companies by category id ---------------------------------
+  Future<CompanyDetailModel> fetchCompaniesByCategoryId(
+    CompanyParams arg,
+  ) async {
+    final Uri uri =
+        Uri.parse(
+          '$apiUrl/client/individuals/by-category/${arg.categoryId}',
+        ).replace(
+          queryParameters: {
+            'p': arg.page.toString(),
+            'l': arg.pageSize.toString(),
+            'user_uuid': arg.userId,
+          },
+        );
+
+    try {
+      final http.Response response = await http.get(uri);
+      final dynamic jsonData = json.decode(response.body);
+
+      if (response.statusCode == 200 && jsonData['status']) {
+        final dynamic data = jsonData['data'];
+
+        if (data != null) {
+          return CompanyDetailModel.fromJson(data);
+        }
+
+        return CompanyDetailModel.defaultValue();
+      }
+      return CompanyDetailModel.defaultValue();
+    } catch (e) {
+      rethrow;
+    }
+  }
+
   // fetch vip companies ---------------------------------
   Future<List<CompanyModel>> fetchVipCompanies(String userId) async {
     final Uri uri = Uri.parse(
@@ -150,22 +184,29 @@ class CompanyApiService {
 
 class CompanyParams extends Equatable {
   final int page, pageSize;
-  final String userId;
+  final String userId, categoryId;
 
   const CompanyParams({
     required this.page,
     required this.pageSize,
     required this.userId,
+    required this.categoryId,
   });
 
-  CompanyParams copyWith({int? page, int? pageSize, String? userId}) {
+  CompanyParams copyWith({
+    int? page,
+    int? pageSize,
+    String? userId,
+    String? categoryId,
+  }) {
     return CompanyParams(
       page: page ?? this.page,
       pageSize: pageSize ?? this.pageSize,
       userId: userId ?? this.userId,
+      categoryId: categoryId ?? this.categoryId,
     );
   }
 
   @override
-  List<Object?> get props => [page, pageSize, userId];
+  List<Object?> get props => [page, pageSize, userId, categoryId];
 }

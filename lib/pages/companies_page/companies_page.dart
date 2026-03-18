@@ -11,7 +11,9 @@ import 'package:kerwenli_yol/pages/parts/sort_and_filter/sort_and_filter.dart';
 import 'package:kerwenli_yol/providers/parts/grid_or_list.dart';
 
 class CompaniesPage extends StatelessWidget {
-  const CompaniesPage({super.key});
+  const CompaniesPage({super.key, required this.categoryId});
+
+  final String categoryId;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +23,7 @@ class CompaniesPage extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           InternetStatusBar(),
-          HeaderCompanies(text: 'VIP Karhanalar'),
+          HeaderCompanies(text: 'Karhanalar'),
           SortAndFilter(
             gridOrListProvider: gridOrListSortProvider,
             isGridProvider: isGridCompaniesProvider,

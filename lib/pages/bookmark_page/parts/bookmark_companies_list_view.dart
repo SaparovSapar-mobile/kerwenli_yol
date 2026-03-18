@@ -36,6 +36,7 @@ class BookmarkCompaniesListView extends ConsumerWidget {
             page: page,
             pageSize: pageSize,
             userId: '',
+            categoryId: '',
           );
           final AsyncValue<List<CompanyDetailModel>> resultApi = ref.watch(
             fetchBookmarkedCompaniesProvider(arg),
