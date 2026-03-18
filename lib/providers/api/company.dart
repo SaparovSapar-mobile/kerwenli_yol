@@ -1,9 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/database/functions/favorite.dart';
 import 'package:kerwenli_yol/enums/favorite_type.dart';
-import 'package:kerwenli_yol/helpers/functions/user.dart';
 import 'package:kerwenli_yol/models/company.dart';
 import 'package:kerwenli_yol/models/favorite.dart';
+import 'package:kerwenli_yol/providers/database/user.dart';
 import 'package:kerwenli_yol/providers/pages/companies_page.dart';
 import 'package:kerwenli_yol/services/api/company.dart';
 
@@ -15,7 +15,7 @@ final FutureProvider<List<CompanyModel>> fetchVipCompaniesProvider =
       List<CompanyModel> datas = [];
 
       try {
-        final String userId = await getUserId();
+        final String userId = await ref.watch(getUserIdProvider.future);
         datas = await ref.read(companyApiProvider).fetchVipCompanies(userId);
 
         // Eger user id bar bolsa we maglumat bos dal bolsa
@@ -57,7 +57,7 @@ final FutureProvider<List<CompanyModel>> fetchTravelsProvider =
       List<CompanyModel> datas = [];
 
       try {
-        final String userId = await getUserId();
+        final String userId = await ref.watch(getUserIdProvider.future);
         datas = await ref.read(companyApiProvider).fetchTravels(userId);
 
         // Eger user id bar bolsa we maglumat bos dal bolsa
@@ -99,7 +99,7 @@ final FutureProvider<List<CompanyModel>> fetchBestCompaniesProvider =
       List<CompanyModel> datas = [];
 
       try {
-        final String userId = await getUserId();
+        final String userId = await ref.watch(getUserIdProvider.future);
         datas = await ref.read(companyApiProvider).fetchBestCompanies(userId);
 
         // Eger user id bar bolsa we maglumat bos dal bolsa
@@ -142,7 +142,7 @@ fetchCompanyProvider = FutureProvider.autoDispose
       CompanyDetailModel result = CompanyDetailModel.defaultValue();
 
       try {
-        final String userId = await getUserId();
+        final String userId = await ref.watch(getUserIdProvider.future);
         result = await ref.read(companyApiProvider).fetchCompany(arg, userId);
 
         // Eger user id bar bolsa we maglumat bos dal bolsa
@@ -182,7 +182,7 @@ fetchBookmarkedCompaniesProvider = FutureProvider.family
       List<CompanyDetailModel> result = [];
 
       try {
-        final String userId = await getUserId();
+        final String userId = await ref.watch(getUserIdProvider.future);
         CompanyParams params = arg.copyWith(userId: userId);
 
         result = await ref

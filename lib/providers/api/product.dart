@@ -1,10 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/database/functions/favorite.dart';
 import 'package:kerwenli_yol/enums/favorite_type.dart';
-import 'package:kerwenli_yol/helpers/functions/user.dart';
 import 'package:kerwenli_yol/models/favorite.dart';
 import 'package:kerwenli_yol/models/new_product.dart';
 import 'package:kerwenli_yol/models/product.dart';
+import 'package:kerwenli_yol/providers/database/user.dart';
 import 'package:kerwenli_yol/providers/pages/products_page.dart';
 import 'package:kerwenli_yol/services/api/product.dart';
 
@@ -16,7 +16,7 @@ final FutureProvider<List<NewProductModel>> fetchNewProductsProvider =
       List<NewProductModel> datas = [];
 
       try {
-        final String userId = await getUserId();
+        final String userId = await ref.watch(getUserIdProvider.future);
         datas = await ref.read(productApiProvider).fetchNewProducts(userId);
 
         // Eger user id bar bolsa we maglumat bos dal bolsa
@@ -53,7 +53,7 @@ fetchCompanyProductsProvider =
       List<ProductModel> result = [];
 
       try {
-        final String userId = await getUserId();
+        final String userId = await ref.watch(getUserIdProvider.future);
         ProductParams params = arg.copyWith(userId: userId);
         result = await ref
             .read(productApiProvider)
@@ -96,7 +96,7 @@ fetchLikedProductsProvider = FutureProvider.family
       List<ProductModel> result = [];
 
       try {
-        final String userId = await getUserId();
+        final String userId = await ref.watch(getUserIdProvider.future);
         ProductParams params = arg.copyWith(userId: userId);
 
         result = await ref.read(productApiProvider).fetchLikedProducts(params);
@@ -135,7 +135,7 @@ fetchProductProvider = FutureProvider.autoDispose.family<ProductModel, String>((
   ProductModel result = ProductModel.defaultValue();
 
   try {
-    final String userId = await getUserId();
+    final String userId = await ref.watch(getUserIdProvider.future);
     result = await ref.read(productApiProvider).fetchProduct(arg, userId);
 
     // Eger user id bar bolsa we maglumat bos dal bolsa

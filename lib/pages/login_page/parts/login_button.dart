@@ -87,6 +87,7 @@ class LoginButton extends ConsumerWidget {
 
         ref.read(loginBtnPressProvider.notifier).state = false;
         ref.invalidate(getUserProvider);
+        ref.invalidate(getUserIdProvider);
 
         // ==== Ulanyjy programmany ilkinji gezek acyan bolsa==
         final bool isFirstTime = ref.read(isFirstTimeProvider);
