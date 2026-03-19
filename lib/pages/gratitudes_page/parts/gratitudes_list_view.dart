@@ -7,6 +7,7 @@ import 'package:kerwenli_yol/models/default_params.dart';
 import 'package:kerwenli_yol/models/gratitude.dart';
 import 'package:kerwenli_yol/pages/gratitudes_page/parts/graditute_card.dart';
 import 'package:kerwenli_yol/pages/parts/no_result.dart';
+import 'package:kerwenli_yol/pages/parts/some_error.dart';
 import 'package:kerwenli_yol/providers/api/gratitude.dart';
 import 'package:kerwenli_yol/providers/pages/gratitudes_page.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
@@ -30,10 +31,7 @@ class GratitudesListView extends ConsumerWidget {
     Widget returnWidget;
 
     if (!hasData) {
-      returnWidget = NoResult(
-        ref: ref,
-        apiProviders: [fetchGradtitudesProvider],
-      );
+      returnWidget = NoResult();
     } else if (!hasErr) {
       returnWidget = ListView.builder(
         itemBuilder: (context, index) {
@@ -71,7 +69,10 @@ class GratitudesListView extends ConsumerWidget {
         },
       );
     } else {
-      returnWidget = Text('has error');
+      returnWidget = SomeError(
+        ref: ref,
+        apiProviders: [fetchGradtitudesProvider],
+      );
     }
 
     return Container(

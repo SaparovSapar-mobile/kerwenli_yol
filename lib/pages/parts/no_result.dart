@@ -6,10 +6,7 @@ import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
 
 class NoResult extends ConsumerWidget {
-  const NoResult({super.key, required this.ref, required this.apiProviders});
-
-  final WidgetRef ref;
-  final List<dynamic> apiProviders;
+  const NoResult({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -18,15 +15,8 @@ class NoResult extends ConsumerWidget {
     final Color textColor = isLight
         ? LightColors.textDescriptionLight
         : DarkColors.textDescriptionDark;
-    final Color iconColor = isLight
-        ? LightColors.textTitleDark
-        : DarkColors.textTitleDark;
-    final Color bgColor = isLight ? LightColors.primary : DarkColors.primary;
 
     final TextStyle textStyle = AppTextStyles.bold20.copyWith(color: textColor);
-    final TextStyle iconTextStyle = AppTextStyles.semiBold16.copyWith(
-      color: iconColor,
-    );
 
     return Center(
       child: Column(
@@ -40,27 +30,6 @@ class NoResult extends ConsumerWidget {
           Padding(
             padding: EdgeInsetsGeometry.symmetric(vertical: 20),
             child: Text('Maglumat Yok', style: textStyle),
-          ),
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: bgColor,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
-            ),
-            onPressed: () {
-              for (var element in apiProviders) {
-                ref.invalidate(element);
-              }
-            },
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text('Tazeden Synans', style: iconTextStyle),
-                SizedBox(width: 10),
-                Icon(Icons.replay_outlined, color: iconColor, size: 24),
-              ],
-            ),
           ),
         ],
       ),

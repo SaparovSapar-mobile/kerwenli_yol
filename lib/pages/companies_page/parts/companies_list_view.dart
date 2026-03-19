@@ -5,6 +5,7 @@ import 'package:kerwenli_yol/helpers/methods/static_methods.dart';
 import 'package:kerwenli_yol/models/company.dart';
 import 'package:kerwenli_yol/pages/companies_page/parts/company_card/parts/company_list_card.dart';
 import 'package:kerwenli_yol/pages/parts/no_result.dart';
+import 'package:kerwenli_yol/pages/parts/some_error.dart';
 import 'package:kerwenli_yol/providers/api/company.dart';
 import 'package:kerwenli_yol/providers/pages/companies_page.dart';
 import 'package:kerwenli_yol/services/api/company.dart';
@@ -23,10 +24,7 @@ class CompaniesListView extends ConsumerWidget {
     Widget returnWidget;
 
     if (!hasData) {
-      returnWidget = NoResult(
-        ref: ref,
-        apiProviders: [fetchCompaniesByCategoryIdProvider],
-      );
+      returnWidget = NoResult();
     } else if (!hasErr) {
       return ListView.builder(
         padding: EdgeInsets.symmetric(horizontal: 16),
@@ -77,7 +75,10 @@ class CompaniesListView extends ConsumerWidget {
         },
       );
     } else {
-      returnWidget = Text('has error');
+      returnWidget = SomeError(
+        ref: ref,
+        apiProviders: [fetchCompaniesByCategoryIdProvider],
+      );
     }
 
     return Stack(children: [returnWidget, if (loading) loadWidget]);

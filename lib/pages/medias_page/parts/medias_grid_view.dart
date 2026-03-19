@@ -6,6 +6,7 @@ import 'package:kerwenli_yol/models/default_params.dart';
 import 'package:kerwenli_yol/models/media.dart';
 import 'package:kerwenli_yol/pages/parts/media_card/media_card.dart';
 import 'package:kerwenli_yol/pages/parts/no_result.dart';
+import 'package:kerwenli_yol/pages/parts/some_error.dart';
 import 'package:kerwenli_yol/providers/api/media.dart';
 import 'package:kerwenli_yol/providers/pages/medias_page.dart';
 
@@ -21,7 +22,7 @@ class MediasGridView extends ConsumerWidget {
     Widget returnWidget;
 
     if (!hasData) {
-      returnWidget = NoResult(ref: ref, apiProviders: [fetchMediasProvider]);
+      returnWidget = NoResult();
     } else if (!hasErr) {
       returnWidget = GridView.builder(
         padding: EdgeInsets.symmetric(horizontal: 16),
@@ -67,7 +68,7 @@ class MediasGridView extends ConsumerWidget {
         },
       );
     } else {
-      returnWidget = Text('has error');
+      returnWidget = SomeError(ref: ref, apiProviders: [fetchMediasProvider]);
     }
 
     return Stack(children: [returnWidget, if (loading) loadWidget]);

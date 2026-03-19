@@ -7,6 +7,7 @@ import 'package:kerwenli_yol/models/default_params.dart';
 import 'package:kerwenli_yol/models/sponsor.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_partners/parts/home_partner_card.dart';
 import 'package:kerwenli_yol/pages/parts/no_result.dart';
+import 'package:kerwenli_yol/pages/parts/some_error.dart';
 import 'package:kerwenli_yol/providers/api/sponsor.dart';
 import 'package:kerwenli_yol/providers/pages/sponsors_page.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
@@ -30,7 +31,7 @@ class SponsorsListView extends ConsumerWidget {
     Widget returnWidget;
 
     if (!hasData) {
-      returnWidget = NoResult(ref: ref, apiProviders: [fetchSponsorsProvider]);
+      returnWidget = NoResult();
     } else if (!hasErr) {
       returnWidget = ListView.builder(
         itemBuilder: (context, index) {
@@ -68,7 +69,7 @@ class SponsorsListView extends ConsumerWidget {
         },
       );
     } else {
-      returnWidget = Text('has error');
+      returnWidget = SomeError(ref: ref, apiProviders: [fetchSponsorsProvider]);
     }
 
     return Container(

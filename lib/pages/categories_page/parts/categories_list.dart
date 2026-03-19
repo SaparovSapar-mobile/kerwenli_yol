@@ -37,10 +37,7 @@ class CategoriesList extends ConsumerWidget {
           child: resultApi.when(
             data: (data) {
               if (data.isEmpty) {
-                return NoResult(
-                  ref: ref,
-                  apiProviders: [fetchCategoriesProvider],
-                );
+                return NoResult();
               }
 
               return ListView.builder(
