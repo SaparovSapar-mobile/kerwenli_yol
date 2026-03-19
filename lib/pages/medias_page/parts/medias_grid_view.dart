@@ -32,7 +32,6 @@ class MediasGridView extends ConsumerWidget {
           mainAxisSpacing: 7,
           mainAxisExtent: mediaCardHeight,
         ),
-        // itemBuilder: (context, index) => MediaCard(),
         itemBuilder: (context, index) {
           final page = index ~/ pageSize + 1;
           final indexInPage = index % pageSize;
