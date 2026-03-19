@@ -11,13 +11,17 @@ class OpenLocationListTile extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final bool isLight = isLightTheme(context, ref);
-    Color iconColor = isLight
+    final Color iconColor = isLight
         ? LightColors.textTitleLight
         : DarkColors.textTitleDark;
-    Color leadingIconColor = isLight ? LightColors.error : DarkColors.error;
-    Color bgColor = isLight ? LightColors.bgPageLight : DarkColors.bgPageDark;
+    final Color leadingIconColor = isLight
+        ? LightColors.error
+        : DarkColors.error;
+    final Color bgColor = isLight
+        ? LightColors.bgPageLight
+        : DarkColors.bgPageDark;
 
-    TextStyle textStyle = AppTextStyles.regular10;
+    final TextStyle textStyle = AppTextStyles.regular10;
 
     return ListTile(
       onTap: () {},

@@ -1,0 +1,73 @@
+import 'package:flutter/widgets.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kerwenli_yol/enums/search_type.dart';
+import 'package:kerwenli_yol/helpers/functions/theme.dart';
+import 'package:kerwenli_yol/helpers/methods/static_methods.dart';
+import 'package:kerwenli_yol/pages/search_page/parts/search_history_card.dart';
+import 'package:kerwenli_yol/providers/pages/search_page.dart';
+import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
+import 'package:kerwenli_yol/styles/colors/light_colors.dart';
+import 'package:kerwenli_yol/styles/text_styles.dart';
+
+class SearchHistory extends ConsumerWidget {
+  const SearchHistory({super.key});
+
+  final String searcType = SearchTypeEnum.all;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    // ======= Colors =========
+    final bool isLight = isLightTheme(context, ref);
+    final Color bgColor = isLight
+        ? LightColors.bgBlogLight
+        : DarkColors.bgBlogDark;
+    final Color iconColor = isLight
+        ? LightColors.textDescriptionLight
+        : DarkColors.textDescriptionDark;
+
+    final TextStyle titleStyle = AppTextStyles.semiBold14.copyWith(
+      color: iconColor,
+    );
+
+    final AsyncValue<List<String>> resultDB = ref.watch(
+      getSearchsProvider(searcType),
+    );
+
+    return Container(
+      margin: EdgeInsets.only(left: 16, top: 6, right: 16),
+      padding: EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        color: bgColor,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text('Gozleg taryhy :', style: titleStyle),
+          SizedBox(height: 8),
+          Expanded(
+            child: resultDB.when(
+              data: (data) {
+                if (data.isEmpty) {
+                  return const SizedBox.shrink();
+                }
+
+                return ListView.separated(
+                  itemBuilder: (context, index) => SearchHistoryCard(
+                    searchText: data[index],
+                    searcType: searcType,
+                  ),
+                  separatorBuilder: (context, index) =>
+                      const SizedBox(height: 23),
+                  itemCount: data.length,
+                );
+              },
+              error: (_, _) => const SizedBox.shrink(),
+              loading: () => loadWidget,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
