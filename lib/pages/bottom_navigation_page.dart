@@ -9,7 +9,9 @@ import 'package:kerwenli_yol/pages/parts/internet_status_bar/internet_status_bar
 import 'package:kerwenli_yol/pages/parts/scroll_to_top_button.dart';
 import 'package:kerwenli_yol/pages/search_page/search_page.dart';
 import 'package:kerwenli_yol/pages/settings_page/settings_page.dart';
+import 'package:kerwenli_yol/providers/api/search.dart';
 import 'package:kerwenli_yol/providers/pages/bottom_navigation.dart';
+import 'package:kerwenli_yol/providers/pages/search_page.dart';
 import 'package:kerwenli_yol/providers/parts/scroll_to_top.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
@@ -119,6 +121,16 @@ class BottomNavigationPage extends ConsumerWidget {
           currentIndex: selectedIndex,
           onTap: (value) {
             ref.read(selectedBottomIndexProvider.notifier).state = value;
+
+            // Eger user Search sahypada dal bolsa
+            // onda search history acyk bolmaly
+            // we search edilen soz arassalanmaly
+            if (value != 1) {
+              ref.read(eCommerceSearchProvider.notifier).state = '';
+              ref.read(openSearchECommerceHistoryProvider.notifier).state =
+                  true;
+              ref.invalidate(fetchSearchProvider);
+            }
           },
         ),
       ),

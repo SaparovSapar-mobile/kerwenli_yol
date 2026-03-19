@@ -42,4 +42,12 @@ const homeMarkTypeHeight = 44.0;
 
 const vipCompanyCardWidth = 112.0;
 
-List<String> bookmarkHeaders = ['Likelar', 'Bookmarklar'];
+final List<String> bookmarkHeaders = ['Likelar', 'Bookmarklar'];
+
+final List<String> searchTabs = [
+  'Harytlar',
+  'Firmalar',
+  'Tazelikler',
+  'Markalar',
+  'Medialar',
+];

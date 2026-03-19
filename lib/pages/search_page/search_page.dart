@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:kerwenli_yol/examples.dart';
-import 'package:kerwenli_yol/pages/parts/categories_header/categories_header_without_expanded.dart';
+import 'package:kerwenli_yol/pages/search_page/parts/search_history.dart';
+import 'package:kerwenli_yol/pages/search_page/parts/search_result.dart';
 import 'package:kerwenli_yol/providers/pages/search_page.dart';
 
 class SearchPage extends ConsumerWidget {
@@ -13,11 +13,10 @@ class SearchPage extends ConsumerWidget {
       openSearchECommerceHistoryProvider,
     );
 
-    return CategoriesHeaderWithoutExpanded(
-      categories: searchCategories,
-      childWidget: openSearchHistory
-          ? Center(child: Text('Search History'))
-          : Center(child: Text('Search Result')),
-    );
+    if (openSearchHistory) {
+      return SearchHistory();
+    } else {
+      return SearchResult();
+    }
   }
 }

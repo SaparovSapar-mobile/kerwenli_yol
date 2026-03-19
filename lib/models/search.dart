@@ -20,11 +20,11 @@ class SearchModel {
   });
 
   factory SearchModel.fromJson(Map<String, dynamic> json) {
-    final productsData = json['products']?['data'] as List?;
-    final companiesData = json['companies']?['data'] as List?;
-    final newsData = json['news']?['data'] as List?;
-    final marksData = json['marks']?['data'] as List?;
-    final mediaData = json['media']?['data'] as List?;
+    final List<dynamic>? productsData = json['products']?['data'] as List?;
+    final List<dynamic>? companiesData = json['companies']?['data'] as List?;
+    final List<dynamic>? newsData = json['news']?['data'] as List?;
+    final List<dynamic>? marksData = json['marks']?['data'] as List?;
+    final List<dynamic>? mediaData = json['media']?['data'] as List?;
 
     return SearchModel(
       products: productsData == null || productsData.isEmpty
@@ -52,6 +52,16 @@ class SearchModel {
           : mediaData
                 .map((e) => MediaModel.fromJson(e as Map<String, dynamic>))
                 .toList(),
+    );
+  }
+
+  factory SearchModel.defaultValue() {
+    return SearchModel(
+      products: [],
+      companies: [],
+      news: [],
+      marks: [],
+      media: [],
     );
   }
 }

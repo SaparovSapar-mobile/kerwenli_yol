@@ -6,27 +6,25 @@ import 'package:http/http.dart' as http;
 
 class SearchApiService {
   // fetch search ===========
-  Future<List<SearchModel>> fetchSearch(String q) async {
+  Future<SearchModel> fetchSearch(String q) async {
     final Uri uri = Uri.parse(
       '$apiUrl/client/search',
-    ).replace(queryParameters: {'p': '10000000', 'l': '1', 'q': q});
+    ).replace(queryParameters: {'p': '1', 'l': '1000000', 'q': q});
 
     try {
       final http.Response response = await http.get(uri);
       final dynamic jsonData = json.decode(response.body);
 
-      if (response.statusCode == 200 && jsonData['status']) {
-        final dynamic datas = jsonData['data'];
-        if (datas == []) {
-          return [];
+      if (response.statusCode == 200) {
+        final dynamic data = jsonData;
+
+        if (data != null) {
+          return SearchModel.fromJson(data);
         }
 
-        final List<dynamic> data = datas as List;
-        return data
-            .map<SearchModel>((propJson) => SearchModel.fromJson(propJson))
-            .toList();
+        return SearchModel.defaultValue();
       }
-      return [];
+      return SearchModel.defaultValue();
     } catch (e) {
       rethrow;
     }
