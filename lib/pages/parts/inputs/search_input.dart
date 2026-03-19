@@ -58,6 +58,7 @@ class SearchInput extends ConsumerWidget {
                 const EdgeInsets.only(left: 16),
               ),
               onChanged: (value) async {
+                await createSearch(value, SearchTypeEnum.all);
                 ref.read(searchECommerceTextProvider.notifier).state = value;
                 ref.read(eCommerceSearchProvider.notifier).state = value;
                 ref.read(openSearchECommerceHistoryProvider.notifier).state =

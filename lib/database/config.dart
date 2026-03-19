@@ -13,6 +13,7 @@ Future<void> createDB() async {
     onCreate: (db, version) async {
       await db.execute(userTable);
       await db.execute(favoritesTable);
+      await db.execute(searchsTable);
       return;
     },
   );

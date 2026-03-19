@@ -8,7 +8,7 @@ Future<void> createSearch(String search, String type) async {
       [search, type],
     );
 
-    int count = Sqflite.firstIntValue(result) ?? 0;
+    final int count = Sqflite.firstIntValue(result) ?? 0;
 
     if (count == 0) {
       await db.insert('searchs', {
