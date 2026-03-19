@@ -1,30 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kerwenli_yol/database/functions/search.dart';
+import 'package:kerwenli_yol/enums/search_type.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/helpers/methods/pages/bottom_sheets.dart';
 import 'package:kerwenli_yol/pages/parts/circle_button.dart';
+import 'package:kerwenli_yol/providers/pages/search_page.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
 
-class SearchInput extends ConsumerStatefulWidget {
+class SearchInput extends ConsumerWidget {
   const SearchInput({super.key});
 
   @override
-  ConsumerState<SearchInput> createState() => _SearchInputState();
-}
-
-class _SearchInputState extends ConsumerState<SearchInput> {
-  final TextEditingController _ctrl = TextEditingController();
-
-  @override
-  void dispose() {
-    _ctrl.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     // ======= Colors ======
     final bool isLight = isLightTheme(context, ref);
     final Color bgColor = isLight
@@ -43,6 +33,9 @@ class _SearchInputState extends ConsumerState<SearchInput> {
       color: hintColor,
     );
 
+    String searchText = ref.watch(searchECommerceTextProvider);
+    final hasSearchText = searchText.isNotEmpty;
+
     return SizedBox(
       height: 38,
       child: Row(
@@ -50,7 +43,6 @@ class _SearchInputState extends ConsumerState<SearchInput> {
           // ======== Search Input =========
           Expanded(
             child: SearchBar(
-              controller: _ctrl,
               backgroundColor: WidgetStateProperty.all<Color>(bgColor),
               elevation: WidgetStateProperty.all<double>(0),
               shape: WidgetStatePropertyAll(
@@ -65,11 +57,35 @@ class _SearchInputState extends ConsumerState<SearchInput> {
               padding: WidgetStateProperty.all<EdgeInsetsGeometry>(
                 const EdgeInsets.only(left: 16),
               ),
+              onChanged: (value) async {
+                ref.read(searchECommerceTextProvider.notifier).state = value;
+                ref.read(eCommerceSearchProvider.notifier).state = value;
+                ref.read(openSearchECommerceHistoryProvider.notifier).state =
+                    false;
+              },
+              onSubmitted: (value) async {
+                if (value.isNotEmpty) {
+                  await createSearch(value, SearchTypeEnum.all);
+                  ref.read(searchECommerceTextProvider.notifier).state = value;
+                  ref.read(eCommerceSearchProvider.notifier).state = value;
+                  ref.read(openSearchECommerceHistoryProvider.notifier).state =
+                      false;
+                  ref.invalidate(getSearchsProvider);
+                }
+              },
               trailing: [
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.cancel, color: iconColor, size: 20),
-                ),
+                if (hasSearchText)
+                  IconButton(
+                    onPressed: () {
+                      ref.read(eCommerceSearchProvider.notifier).state = '';
+                      ref.read(searchECommerceTextProvider.notifier).state = '';
+                      ref
+                              .read(openSearchECommerceHistoryProvider.notifier)
+                              .state =
+                          true;
+                    },
+                    icon: Icon(Icons.cancel, color: iconColor, size: 20),
+                  ),
               ],
             ),
           ),

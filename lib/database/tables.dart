@@ -4,3 +4,5 @@ const String userTable = '''CREATE TABLE "user"
 
 final String favoritesTable =
     'CREATE TABLE "favorites" ("id"	TEXT,	"type" TEXT);';
+
+String searchsTable = 'CREATE TABLE "searchs" ("search" TEXT, "type" TEXT);';
