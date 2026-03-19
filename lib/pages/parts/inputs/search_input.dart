@@ -27,17 +27,21 @@ class _SearchInputState extends ConsumerState<SearchInput> {
   Widget build(BuildContext context) {
     // ======= Colors ======
     final bool isLight = isLightTheme(context, ref);
-    Color bgColor = isLight ? LightColors.bgPageLight : DarkColors.bgPageDark;
-    Color hintColor = isLight
+    final Color bgColor = isLight
+        ? LightColors.bgPageLight
+        : DarkColors.bgPageDark;
+    final Color hintColor = isLight
         ? LightColors.textDescriptionLight
         : DarkColors.textDescriptionDark;
-    Color iconColor = isLight
+    final Color iconColor = isLight
         ? LightColors.textTitleLight
         : DarkColors.textTitleDark;
-    Color borderColor = iconColor.withValues(alpha: .2);
+    final Color borderColor = iconColor.withValues(alpha: .2);
 
     // ======= Text Styles ======
-    TextStyle hintStyle = AppTextStyles.medium16.copyWith(color: hintColor);
+    final TextStyle hintStyle = AppTextStyles.medium16.copyWith(
+      color: hintColor,
+    );
 
     return SizedBox(
       height: 38,

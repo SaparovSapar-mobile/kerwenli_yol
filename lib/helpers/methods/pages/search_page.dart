@@ -14,7 +14,7 @@ AppBar searchPageAppBar(BuildContext context) {
         builder: (context, ref, widget) {
           // ======= Colors =======
           final bool isLight = isLightTheme(context, ref);
-          Color bgColor = isLight
+          final Color bgColor = isLight
               ? LightColors.bgBlogLight
               : DarkColors.bgBlogDark;
 
