@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:kerwenli_yol/examples.dart';
 import 'package:kerwenli_yol/helpers/methods/static_data.dart';
 import 'package:kerwenli_yol/helpers/methods/static_methods.dart';
 import 'package:kerwenli_yol/models/product.dart';
@@ -28,7 +27,6 @@ class ProductsGridView extends ConsumerWidget {
       returnWidget = NoResult();
     } else if (!hasErr) {
       returnWidget = GridView.builder(
-        itemCount: homeProducts.length,
         padding: EdgeInsets.symmetric(horizontal: 16),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,

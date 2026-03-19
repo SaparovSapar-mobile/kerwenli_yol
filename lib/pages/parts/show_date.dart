@@ -24,7 +24,7 @@ class ShowDate extends ConsumerWidget {
       fontStyle: FontStyle.italic,
     );
 
-    final bool hasDate = date != null;
+    final bool hasDate = date != null && date != '';
 
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 3, vertical: 2),

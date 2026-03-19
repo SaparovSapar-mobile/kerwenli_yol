@@ -100,7 +100,7 @@ class HomeNewsCard extends ConsumerWidget {
           children: [
             CompanyCardImage(
               cardTopTypes: [CardTopTextType.news],
-              height: double.maxFinite,
+              height: double.infinity,
               width: 87,
               forBookMark: true,
               cttSize: 6,
