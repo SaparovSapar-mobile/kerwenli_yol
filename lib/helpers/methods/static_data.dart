@@ -2,6 +2,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 final String apiUrl = dotenv.env['API_URL']!;
 final String pathUrl = dotenv.env['PATH_URL']!;
+final String weatherApiKey = dotenv.env['WEATHER_API_KEY']!;
 
 const double companyCardHeight = 292;
 const double companyListCardHeight = 132;
