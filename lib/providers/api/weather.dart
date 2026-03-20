@@ -1,0 +1,32 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:kerwenli_yol/models/weather.dart';
+import 'package:kerwenli_yol/services/api/weather.dart';
+import 'package:kerwenli_yol/services/location_service.dart';
+
+final Provider<WeatherApiService> weatherApiProvider =
+    Provider<WeatherApiService>((ref) => WeatherApiService());
+
+final Provider<LocationService> locationServiceProvider =
+    Provider<LocationService>((ref) {
+      return LocationService();
+    });
+
+FutureProvider<WeatherModel> weatherProvider = FutureProvider<WeatherModel>((
+  ref,
+) async {
+  WeatherModel result = WeatherModel.defaultValue();
+
+  try {
+    final LocationService locationService = ref.read(locationServiceProvider);
+    final Position position = await locationService.getCurrentLocation();
+
+    result = await ref
+        .read(weatherApiProvider)
+        .getWeatherByCoordinates(position.latitude, position.longitude);
+  } catch (e) {
+    rethrow;
+  }
+
+  return result;
+});

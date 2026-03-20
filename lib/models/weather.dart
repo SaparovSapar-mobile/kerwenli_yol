@@ -1,10 +1,7 @@
 class WeatherModel {
-  final String cityName;
-  final double temperature;
-  final String description;
-  final String icon;
+  final String cityName, description, icon;
+  final num temperature, windSpeed;
   final int humidity;
-  final double windSpeed;
 
   WeatherModel({
     required this.cityName,
@@ -14,6 +11,17 @@ class WeatherModel {
     required this.humidity,
     required this.windSpeed,
   });
+
+  factory WeatherModel.defaultValue() {
+    return WeatherModel(
+      cityName: '',
+      temperature: 0,
+      description: '',
+      icon: '',
+      windSpeed: 0,
+      humidity: 0,
+    );
+  }
 
   factory WeatherModel.fromJson(Map<String, dynamic> json) {
     return WeatherModel(
