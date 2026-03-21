@@ -3,6 +3,7 @@ import 'package:kerwenli_yol/helpers/methods/pages/bookmarks_page.dart';
 import 'package:kerwenli_yol/helpers/methods/parts/app_bar_methods.dart';
 import 'package:kerwenli_yol/helpers/methods/static_data.dart';
 import 'package:kerwenli_yol/pages/bookmark_page/parts/bookmark_companies_list_view.dart';
+import 'package:kerwenli_yol/pages/bookmark_page/parts/followed_companies_list_view.dart';
 import 'package:kerwenli_yol/pages/bookmark_page/parts/liked_products_list_view.dart';
 import 'package:kerwenli_yol/pages/parts/categories_header/parts/head_category_buttons.dart';
 import 'package:kerwenli_yol/pages/parts/internet_status_bar/internet_status_bar.dart';
@@ -28,7 +29,7 @@ class BookmarksPage extends StatelessWidget {
                 children: [
                   LikedProductsListView(),
                   BookmarkCompaniesListView(),
-                  BookmarkCompaniesListView(),
+                  FollowedCompaniesListView(),
                 ],
               ),
             ),
