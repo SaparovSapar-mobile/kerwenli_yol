@@ -12,21 +12,25 @@ final Provider<LocationService> locationServiceProvider =
       return LocationService();
     });
 
-FutureProvider<WeatherModel> weatherProvider = FutureProvider<WeatherModel>((
-  ref,
-) async {
-  WeatherModel result = WeatherModel.defaultValue();
+final FutureProvider<WeatherModel> weatherProvider =
+    FutureProvider<WeatherModel>((ref) async {
+      WeatherModel result = WeatherModel.defaultValue();
+      print('----------------------------- weatherProvider');
 
-  try {
-    final LocationService locationService = ref.read(locationServiceProvider);
-    final Position position = await locationService.getCurrentLocation();
+      try {
+        final LocationService locationService = ref.watch(
+          locationServiceProvider,
+        );
+        final Position position = await locationService.getCurrentLocation();
+        print('lat: ${position.latitude}');
+        print('long: ${position.longitude}');
 
-    result = await ref
-        .read(weatherApiProvider)
-        .getWeatherByCoordinates(position.latitude, position.longitude);
-  } catch (e) {
-    rethrow;
-  }
+        result = await ref
+            .read(weatherApiProvider)
+            .getWeatherByCoordinates(position.latitude, position.longitude);
+      } catch (e) {
+        rethrow;
+      }
 
-  return result;
-});
+      return result;
+    });

@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/helpers/methods/parts/app_bar_methods.dart';
+import 'package:kerwenli_yol/models/weather.dart';
+import 'package:kerwenli_yol/providers/api/weather.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 AppBar homePageAppBar(BuildContext context) {
   return AppBar(
@@ -49,6 +52,7 @@ AppBar homePageAppBar(BuildContext context) {
                       children: [
                         Text('09.11.2025 | ', style: dateStyle),
                         Text('13° Ашхабад', style: dateStyle),
+                        // WeatherPart(dateStyle: dateStyle),
                       ],
                     ),
                   ],
@@ -62,4 +66,25 @@ AppBar homePageAppBar(BuildContext context) {
       ),
     ),
   );
+}
+
+class WeatherPart extends ConsumerWidget {
+  const WeatherPart({super.key, required this.dateStyle});
+
+  final TextStyle dateStyle;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final AsyncValue<WeatherModel> resultApi = ref.watch(weatherProvider);
+    return resultApi.when(
+      data: (data) {
+        return Text('13° Ашхабад', style: dateStyle);
+      },
+      error: (_, _) => const SizedBox.shrink(),
+      loading: () => LoadingAnimationWidget.staggeredDotsWave(
+        color: LightColors.primary,
+        size: 12,
+      ),
+    );
+  }
 }

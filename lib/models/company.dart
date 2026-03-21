@@ -7,6 +7,37 @@ import 'package:kerwenli_yol/models/translation.dart';
 import 'package:kerwenli_yol/models/vr.dart';
 import 'package:kerwenli_yol/models/working_time.dart';
 
+class FollowedCompanyModel {
+  final String id, logoImg, categoryId;
+  final TranslationModel businessName, categoryName, publicationLabel;
+
+  FollowedCompanyModel({
+    required this.id,
+    required this.logoImg,
+    required this.categoryId,
+    required this.businessName,
+    required this.categoryName,
+    required this.publicationLabel,
+  });
+
+  factory FollowedCompanyModel.fromJson(Map<String, dynamic> json) {
+    return FollowedCompanyModel(
+      id: json['uuid'] ?? '',
+      logoImg: json['logo_img'] ?? '',
+      categoryId: json['category_uuid'] ?? '',
+      businessName: json['business_name'] == null
+          ? TranslationModel.defaultValue()
+          : TranslationModel.fromJson(json['business_name']),
+      categoryName: json['category_name'] == null
+          ? TranslationModel.defaultValue()
+          : TranslationModel.fromJson(json['category_name']),
+      publicationLabel: json['publication_label'] == null
+          ? TranslationModel.defaultValue()
+          : TranslationModel.fromJson(json['publication_label']),
+    );
+  }
+}
+
 class CompanyModel {
   final String uuid, individualUuid, photo, nameTm, nameRu, nameEn;
   final bool isFollowed, isBookmarked;

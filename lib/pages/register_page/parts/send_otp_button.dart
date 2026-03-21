@@ -57,7 +57,7 @@ class SendOtpButton extends ConsumerWidget {
 
         // ===== Dine Register - de confirm Privacy Control edilyar ===
         if (forRegister) {
-          bool confirmPrivacy = ref.read(confirmPrivacyProvider);
+          final bool confirmPrivacy = ref.read(confirmPrivacyProvider);
           if (!confirmPrivacy) {
             showErrorSnackbar(context, lang.getToKnowTheRules);
             return;
@@ -89,7 +89,7 @@ class SendOtpButton extends ConsumerWidget {
           }
         } else {
           // ====== Forgot Password ucin ========
-          SendOtpModel reqData = SendOtpModel(
+          final SendOtpModel reqData = SendOtpModel(
             email: userEmail,
             phone: userPhone,
           );

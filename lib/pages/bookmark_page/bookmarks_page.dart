@@ -28,6 +28,7 @@ class BookmarksPage extends StatelessWidget {
                 children: [
                   LikedProductsListView(),
                   BookmarkCompaniesListView(),
+                  BookmarkCompaniesListView(),
                 ],
               ),
             ),
