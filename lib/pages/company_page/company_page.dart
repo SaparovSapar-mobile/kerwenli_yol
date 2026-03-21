@@ -58,7 +58,7 @@ class CompanyPage extends ConsumerWidget {
                       children: [
                         CompanyPageInfo(company: data),
                         CompanyPageProductsOrServices(companyId: companyId),
-                        CompanyPageMedias(),
+                        CompanyPageMedias(companyId: companyId),
                       ],
                     ),
                   ),
