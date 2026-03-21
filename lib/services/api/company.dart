@@ -185,6 +185,38 @@ class CompanyApiService {
       rethrow;
     }
   }
+
+  // fetch bookmarked companies -------------------------
+  Future<List<FollowedCompanyModel>> fetchFollowedCompanies(
+    CompanyParams arg,
+  ) async {
+    final Uri uri = Uri.parse('$apiUrl/client/follows/${arg.userId}').replace(
+      queryParameters: {'p': arg.page.toString(), 'l': arg.pageSize.toString()},
+    );
+
+    try {
+      final http.Response response = await http.get(uri);
+      final dynamic jsonData = json.decode(response.body);
+
+      if (response.statusCode == 200 && jsonData['status']) {
+        final dynamic datas = jsonData['data'];
+
+        if (datas == [] || datas == null) {
+          return [];
+        }
+
+        final List<dynamic> data = datas as List;
+        return data
+            .map<FollowedCompanyModel>(
+              (propJson) => FollowedCompanyModel.fromJson(propJson),
+            )
+            .toList();
+      }
+      return [];
+    } catch (e) {
+      rethrow;
+    }
+  }
 }
 
 class CompanyParams extends Equatable {
