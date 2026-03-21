@@ -24,7 +24,7 @@ class HomeVipCompanyCardImage extends StatelessWidget {
         clipBehavior: Clip.none,
         children: [
           // VIP label (arkada, sol üst)
-          CardTopTexts(types: cardTopTypes),
+          CardTopTexts(types: cardTopTypes, topPosition: -8),
 
           // Main card
           ClipRRect(
