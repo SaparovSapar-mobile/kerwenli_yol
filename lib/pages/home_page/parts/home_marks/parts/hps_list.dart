@@ -20,7 +20,7 @@ class HpsList extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    AsyncValue<List<MarkModel>> resultApi = ref.watch(
+    final AsyncValue<List<MarkModel>> resultApi = ref.watch(
       fetchMarksProvider(markTypeId),
     );
 

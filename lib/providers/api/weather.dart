@@ -15,15 +15,12 @@ final Provider<LocationService> locationServiceProvider =
 final FutureProvider<WeatherModel> weatherProvider =
     FutureProvider<WeatherModel>((ref) async {
       WeatherModel result = WeatherModel.defaultValue();
-      print('----------------------------- weatherProvider');
 
       try {
         final LocationService locationService = ref.watch(
           locationServiceProvider,
         );
         final Position position = await locationService.getCurrentLocation();
-        print('lat: ${position.latitude}');
-        print('long: ${position.longitude}');
 
         result = await ref
             .read(weatherApiProvider)

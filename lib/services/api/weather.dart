@@ -16,16 +16,11 @@ class WeatherApiService {
       },
     );
 
-    print('============================= getWeatherByCoordinates');
-    print('uri: $uri');
-
     try {
       final http.Response response = await http.get(uri);
-      print('response.body: ${response.body}');
       final dynamic jsonData = json.decode(response.body);
       return WeatherModel.fromJson(jsonData);
     } catch (e) {
-      print('error: ${e.toString()}');
       rethrow;
     }
   }

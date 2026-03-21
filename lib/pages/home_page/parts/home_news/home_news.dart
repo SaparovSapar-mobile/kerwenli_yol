@@ -15,7 +15,7 @@ class HomeNews extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    DefaultParams arg = DefaultParams(page: 1, pageSize: 10);
+    final DefaultParams arg = DefaultParams(page: 1, pageSize: 10);
     final AsyncValue<List<NewsModel>> resultApi = ref.watch(
       fetchNewsProvider(arg),
     );

@@ -10,7 +10,7 @@ class HomeMarks extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    AsyncValue<List<MarkTypeModel>> resultApi = ref.watch(
+    final AsyncValue<List<MarkTypeModel>> resultApi = ref.watch(
       fetchMarkTypesProvider,
     );
 
@@ -20,7 +20,7 @@ class HomeMarks extends ConsumerWidget {
           return const SizedBox.shrink();
         }
 
-        List<MarkTypeModel> markTypes = data;
+        final List<MarkTypeModel> markTypes = data;
         return HomeMarksSlider(markTypes: markTypes);
       },
       error: (_, _) => const SizedBox.shrink(),

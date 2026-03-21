@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/translations.dart';
 import 'package:kerwenli_yol/helpers/methods/image_and_video.dart';
@@ -14,10 +15,9 @@ class AboutUsTexts extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // ======== Text Styles ========
-    TextStyle nameStyle = AppTextStyles.bold12;
-    TextStyle descStyle = AppTextStyles.regular12;
+    final TextStyle nameStyle = AppTextStyles.bold12;
 
-    AsyncValue<AboutUsModel> resultApi = ref.watch(fetchAboutUsProvider);
+    final AsyncValue<AboutUsModel> resultApi = ref.watch(fetchAboutUsProvider);
 
     return resultApi.when(
       data: (data) {
@@ -55,7 +55,17 @@ class AboutUsTexts extends ConsumerWidget {
                 ],
               ),
               SizedBox(height: 5),
-              Text(desc, style: descStyle),
+              Html(
+                data: desc,
+                style: {
+                  "*": Style(
+                    fontWeight: FontWeight.w400,
+                    fontSize: FontSize(12),
+                    lineHeight: LineHeight.number(1.20),
+                    fontFamily: "Rubik",
+                  ),
+                },
+              ),
               SizedBox(height: 10),
               AboutUsPhotos(photos: data.photos),
             ],

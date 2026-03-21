@@ -58,8 +58,8 @@ class _HomeMarksSliderState extends State<HomeMarksSlider>
   void didUpdateWidget(covariant HomeMarksSlider oldWidget) {
     super.didUpdateWidget(oldWidget);
 
-    final oldLength = oldWidget.markTypes.length + 1;
-    final newLength = widget.markTypes.length + 1;
+    final int oldLength = oldWidget.markTypes.length + 1;
+    final int newLength = widget.markTypes.length + 1;
 
     if (oldLength != newLength) {
       _tabCtrl.removeListener(_onTabChanged);
@@ -214,12 +214,13 @@ class _HomeMarksSliderState extends State<HomeMarksSlider>
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        HomeMoreButton(text: 'Yerli markalary', onTap: () {}),
+        HomeMoreButton(text: 'Yerli markalary'),
         HpsTabs(tabCtrl: _tabCtrl, markTypes: widget.markTypes),
         SizedBox(
           height: 2 * homeBestCompaniesCardHeight + 5,
           child: TabBarView(
             controller: _tabCtrl,
+            physics: const NeverScrollableScrollPhysics(),
             children: List.generate(_tabLength, (tabIndex) {
               final int firstCtrlIndex = tabIndex * 2;
               final int secondCtrlIndex = firstCtrlIndex + 1;

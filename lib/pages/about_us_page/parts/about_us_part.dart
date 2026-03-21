@@ -12,11 +12,13 @@ class AboutUsPart extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // ========== Colors =========
     final bool isLight = isLightTheme(context, ref);
-    Color bgColor = isLight ? LightColors.bgPageLight : DarkColors.bgPageDark;
-    Color iconColor = isLight ? LightColors.primary : DarkColors.primary;
+    final Color bgColor = isLight
+        ? LightColors.bgPageLight
+        : DarkColors.bgPageDark;
+    final Color iconColor = isLight ? LightColors.primary : DarkColors.primary;
 
     // ========== Text Styles =========
-    TextStyle textStyle = AppTextStyles.semiBold10;
+    final TextStyle textStyle = AppTextStyles.semiBold10;
 
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10),

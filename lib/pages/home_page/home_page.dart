@@ -14,7 +14,18 @@ import 'package:kerwenli_yol/pages/home_page/parts/home_partners/home_partners.d
 import 'package:kerwenli_yol/pages/home_page/parts/home_second_banner.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/home_vip_companies.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_virtuals/home_virtuals.dart';
+import 'package:kerwenli_yol/providers/api/banner.dart';
+import 'package:kerwenli_yol/providers/api/category.dart';
+import 'package:kerwenli_yol/providers/api/company.dart';
+import 'package:kerwenli_yol/providers/api/gratitude.dart';
+import 'package:kerwenli_yol/providers/api/mark.dart';
+import 'package:kerwenli_yol/providers/api/mark_type.dart';
+import 'package:kerwenli_yol/providers/api/media.dart';
+import 'package:kerwenli_yol/providers/api/news.dart';
+import 'package:kerwenli_yol/providers/api/product.dart';
+import 'package:kerwenli_yol/providers/api/sponsor.dart';
 import 'package:kerwenli_yol/providers/parts/scroll_to_top.dart';
+import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 
 class HomePage extends ConsumerWidget {
   const HomePage({super.key});
@@ -23,31 +34,50 @@ class HomePage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final ScrollController scrollCtrl = ref.watch(mainPageScrollCtrlProvider);
 
-    return Column(
-      children: [
-        HomePageTop(),
-        AppBarBottomLine(thickness: 10),
-        Expanded(
-          child: ListView(
-            controller: scrollCtrl,
-            children: [
-              HomeBanners(),
-              AppBarBottomLine(thickness: 10),
-              HomeCategories(),
-              HomeLeaderCompanies(),
-              HomeVipCompanies(),
-              HomeNewProducts(),
-              HomeVirtuals(),
-              HomeMedia(),
-              HomeNews(),
-              HomeSecondBanner(),
-              HomeMarks(),
-              HomePartners(),
-              HomeGraditutes(),
-            ],
+    return RefreshIndicator(
+      onRefresh: () async {
+        ref.invalidate(fetchBannersProvider);
+        ref.invalidate(fetchCategoriesProvider);
+        ref.invalidate(fetchBestCompaniesProvider);
+        ref.invalidate(fetchVipCompaniesProvider);
+        ref.invalidate(fetchNewProductsProvider);
+        ref.invalidate(fetchTravelsProvider);
+        ref.invalidate(fetchMediasProvider);
+        ref.invalidate(fetchNewsProvider);
+        ref.invalidate(fetchMarkTypesProvider);
+        ref.invalidate(fetchMarksProvider);
+        ref.invalidate(fetchSponsorsProvider);
+        ref.invalidate(fetchGradtitudesProvider);
+      },
+
+      backgroundColor: Colors.white,
+      color: LightColors.primary,
+      child: Column(
+        children: [
+          HomePageTop(),
+          AppBarBottomLine(thickness: 10),
+          Expanded(
+            child: ListView(
+              controller: scrollCtrl,
+              children: [
+                HomeBanners(),
+                AppBarBottomLine(thickness: 10),
+                HomeCategories(),
+                HomeLeaderCompanies(),
+                HomeVipCompanies(),
+                HomeNewProducts(),
+                HomeVirtuals(),
+                HomeMedia(),
+                HomeNews(),
+                HomeSecondBanner(),
+                HomeMarks(),
+                HomePartners(),
+                HomeGraditutes(),
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
