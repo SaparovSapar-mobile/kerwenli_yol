@@ -44,3 +44,9 @@ Future<void> removeSearch(String search, String type) async {
     );
   }
 }
+
+Future<void> removeSearchs() async {
+  if (db.isOpen) {
+    await db.rawDelete("DELETE FROM searchs");
+  }
+}

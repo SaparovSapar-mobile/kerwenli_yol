@@ -1,5 +1,6 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kerwenli_yol/database/functions/search.dart';
 import 'package:kerwenli_yol/enums/search_type.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/helpers/methods/static_methods.dart';
@@ -64,6 +65,19 @@ class SearchHistory extends ConsumerWidget {
               },
               error: (_, _) => const SizedBox.shrink(),
               loading: () => loadWidget,
+            ),
+          ),
+          Padding(
+            padding: EdgeInsetsGeometry.symmetric(vertical: 8),
+            child: Divider(height: 1),
+          ),
+          Center(
+            child: TextButton(
+              onPressed: () async {
+                await removeSearchs();
+                ref.invalidate(getSearchsProvider);
+              },
+              child: Text('Clear All', style: titleStyle),
             ),
           ),
         ],
