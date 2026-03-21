@@ -269,3 +269,43 @@ fetchBookmarkedCompaniesProvider = FutureProvider.family
       ref.read(loadBCompaniesProvider.notifier).state = false;
       return result;
     });
+
+final AutoDisposeFutureProviderFamily<List<FollowedCompanyModel>, CompanyParams>
+fetchFollowedCompaniesProvider = FutureProvider.family
+    .autoDispose<List<FollowedCompanyModel>, CompanyParams>((ref, arg) async {
+      List<FollowedCompanyModel> result = [];
+
+      try {
+        final String userId = await ref.watch(getUserIdProvider.future);
+        CompanyParams params = arg.copyWith(userId: userId);
+
+        result = await ref
+            .read(companyApiProvider)
+            .fetchFollowedCompanies(params);
+
+        if (arg.page == 1) {
+          ref.read(hasFCompaniesProvider.notifier).state = result.isNotEmpty;
+          ref.read(hasErrFCompaniesProvider.notifier).state = false;
+        }
+
+        if (result.isNotEmpty) {
+          for (final FollowedCompanyModel company in result) {
+            final FavoriteModel params = FavoriteModel(
+              id: company.id,
+              type: FavoriteTypeEnum.companyFollow,
+            );
+
+            if (!await hasInFavorites(params)) {
+              await addOrRemoveFromFavorites(params);
+            }
+          }
+        }
+      } catch (e) {
+        ref.read(hasErrFCompaniesProvider.notifier).state = e
+            .toString()
+            .isNotEmpty;
+      }
+
+      ref.read(loadFCompaniesProvider.notifier).state = false;
+      return result;
+    });

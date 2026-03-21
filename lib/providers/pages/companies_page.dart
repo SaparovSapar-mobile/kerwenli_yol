@@ -12,6 +12,15 @@ final StateProvider<bool> loadBCompaniesProvider = StateProvider<bool>(
   (ref) => true,
 );
 
+final AutoDisposeStateProvider<bool> hasFCompaniesProvider =
+    StateProvider.autoDispose<bool>((ref) => true);
+final StateProvider<bool> hasErrFCompaniesProvider = StateProvider<bool>(
+  (ref) => false,
+);
+final StateProvider<bool> loadFCompaniesProvider = StateProvider<bool>(
+  (ref) => true,
+);
+
 final AutoDisposeStateProvider<bool> hasCompaniesProvider =
     StateProvider.autoDispose<bool>((ref) => true);
 final StateProvider<bool> hasErrCompaniesProvider = StateProvider<bool>(
