@@ -8,3 +8,12 @@ final StateProvider<bool> hasErrMediasProvider = StateProvider<bool>(
 final StateProvider<bool> loadMediasProvider = StateProvider<bool>(
   (ref) => true,
 );
+
+final AutoDisposeStateProvider<bool> hasCMediasProvider =
+    StateProvider.autoDispose<bool>((ref) => true);
+final StateProvider<bool> hasErrCMediasProvider = StateProvider<bool>(
+  (ref) => false,
+);
+final StateProvider<bool> loadCMediasProvider = StateProvider<bool>(
+  (ref) => true,
+);

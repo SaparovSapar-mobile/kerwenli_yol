@@ -28,3 +28,24 @@ fetchMediasProvider = FutureProvider.family<List<MediaModel>, DefaultParams>((
   ref.read(loadMediasProvider.notifier).state = false;
   return result;
 });
+
+final FutureProviderFamily<List<MediaModel>, MediaParams>
+fetchMediasByCompanyIdProvider =
+    FutureProvider.family<List<MediaModel>, MediaParams>((ref, arg) async {
+      List<MediaModel> result = [];
+
+      try {
+        result = await ref.read(mediaApiProvider).fetchMediasByCompanyId(arg);
+        if (arg.page == 1) {
+          ref.read(hasCMediasProvider.notifier).state = result.isNotEmpty;
+          ref.read(hasErrCMediasProvider.notifier).state = false;
+        }
+      } catch (e) {
+        ref.read(hasErrCMediasProvider.notifier).state = e
+            .toString()
+            .isNotEmpty;
+      }
+
+      ref.read(loadCMediasProvider.notifier).state = false;
+      return result;
+    });
