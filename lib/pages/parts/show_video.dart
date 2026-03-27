@@ -25,7 +25,7 @@ class _ShowVideoState extends State<ShowVideo> {
 
     _playerController =
         VideoPlayerController.networkUrl(
-          Uri.parse('$pathUrl/${widget.videoUrl}'),
+          Uri.parse('$pathUrl${widget.videoUrl}'),
         )..addListener(() {
           if (_playerController.value.hasError) {
             setState(() {});
@@ -57,6 +57,7 @@ class _ShowVideoState extends State<ShowVideo> {
 
   @override
   Widget build(BuildContext context) {
+    print('===================== $pathUrl${widget.videoUrl}');
     return ClipRRect(
       borderRadius: BorderRadius.circular(12),
       child: FutureBuilder(

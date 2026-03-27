@@ -169,14 +169,13 @@ class CompanyApiService {
       final dynamic jsonData = json.decode(response.body);
 
       if (response.statusCode == 200 && jsonData['status']) {
-        final dynamic datas = jsonData['data'];
+        final List<dynamic>? datas = jsonData['data']?['items'] as List?;
 
-        if (datas == []) {
+        if (datas == [] || datas == null) {
           return [];
         }
 
-        final List<dynamic> data = datas as List;
-        return data
+        return datas
             .map<CompanyModel>((propJson) => CompanyModel.fromJson(propJson))
             .toList();
       }

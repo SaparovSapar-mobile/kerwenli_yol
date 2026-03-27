@@ -13,23 +13,28 @@ class MediaApiService {
       queryParameters: {'p': arg.page.toString(), 'l': arg.pageSize.toString()},
     );
 
+    print('===================================== fetchMedias');
+    print('uri: $uri');
+
     try {
       final http.Response response = await http.get(uri);
+      print('response.statusCode: ${response.statusCode}');
+      print('response.body: ${response.body}');
       final dynamic jsonData = json.decode(response.body);
 
       if (response.statusCode == 200 && jsonData['status']) {
-        final dynamic datas = jsonData['data'];
-        if (datas == []) {
+        final List<dynamic>? datas = jsonData['data']?['items'];
+        if (datas == [] || datas == null) {
           return [];
         }
 
-        final List<dynamic> data = datas as List;
-        return data
+        return datas
             .map<MediaModel>((propJson) => MediaModel.fromJson(propJson))
             .toList();
       }
       return [];
     } catch (e) {
+      print('error: ${e.toString()}');
       rethrow;
     }
   }

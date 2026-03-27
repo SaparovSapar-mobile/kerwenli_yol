@@ -78,7 +78,11 @@ class UserApiService {
 
   // === Send Otp Code for Forgot Passoword ===
   Future<ResultRegister> sendOtp(SendOtpModel reqData) async {
-    final Uri uri = Uri.parse('$apiUrl/client/forgot-password');
+    // final Uri uri = Uri.parse('$apiUrl/client/forgot-password');
+    final Uri uri = Uri.parse('$apiUrl/client/send-otp');
+    print('============================= sendOtp');
+    print('uri: $uri');
+    print('reqData.toJson(): ${reqData.toJson()}');
 
     try {
       final http.Response response = await http.post(
@@ -86,6 +90,7 @@ class UserApiService {
         headers: {'Content-Type': 'application/json'},
         body: json.encode(reqData.toJson()),
       );
+      print('response.body:: ${response.body}');
       final dynamic jsonData = json.decode(response.body);
 
       return ResultRegister(

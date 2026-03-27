@@ -46,7 +46,7 @@ class AccountPart extends ConsumerWidget {
                 index: 9,
                 text: 'Hasabymy pozmak',
                 icon: Icons.delete_forever,
-                onTap: () {},
+                onTap: () => showDeleteAccountBottomSheet(context),
               ),
             ],
           ),

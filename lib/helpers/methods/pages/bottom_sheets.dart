@@ -25,6 +25,13 @@ Future<void> showLougOutBottomSheet(BuildContext context) async =>
       builder: (context) => const LogOutBottomSheet(),
     );
 
+Future<void> showDeleteAccountBottomSheet(BuildContext context) async =>
+    await showModalBottomSheet(
+      backgroundColor: Colors.transparent,
+      context: context,
+      builder: (context) => const LogOutBottomSheet(),
+    );
+
 Future<void> showThemeBottomSheet(BuildContext context) async =>
     await showModalBottomSheet(
       backgroundColor: Colors.transparent,
