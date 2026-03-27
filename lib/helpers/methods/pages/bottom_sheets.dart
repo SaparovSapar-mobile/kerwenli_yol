@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/pages/parts/book_mark_setting_bs/book_mark_setting_bs.dart';
 import 'package:kerwenli_yol/pages/parts/cp_message_bs/cp_message_bs.dart';
+import 'package:kerwenli_yol/pages/parts/delete_account/delete_account.dart';
 import 'package:kerwenli_yol/pages/parts/filter_bottom_sheet/filter_bottom_sheet.dart';
 import 'package:kerwenli_yol/pages/parts/log_out_bottom_sheet/log_out_bottom_sheet.dart';
 import 'package:kerwenli_yol/pages/parts/message_bs/message_bs.dart';
@@ -29,7 +30,7 @@ Future<void> showDeleteAccountBottomSheet(BuildContext context) async =>
     await showModalBottomSheet(
       backgroundColor: Colors.transparent,
       context: context,
-      builder: (context) => const LogOutBottomSheet(),
+      builder: (context) => const DeleteAccount(),
     );
 
 Future<void> showThemeBottomSheet(BuildContext context) async =>

@@ -22,18 +22,18 @@ class BottomSheetTitle extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // ======= Colors =========
     final bool isLight = isLightTheme(context, ref);
-    Color iconColor = isLight
+    final Color iconColor = isLight
         ? LightColors.textTitleLight
         : DarkColors.textTitleDark;
-    Color iconBgColor = isLight
+    final Color iconBgColor = isLight
         ? LightColors.bgPageLight
         : DarkColors.bgPageDark;
 
     // ======= Text Styles =========
-    TextStyle textStyle = style ?? AppTextStyles.semiBold14;
-    TextStyle titleStyle = textStyle.copyWith(color: iconColor);
+    final TextStyle textStyle = style ?? AppTextStyles.semiBold14;
+    final TextStyle titleStyle = textStyle.copyWith(color: iconColor);
 
-    bool hasIcon = icon != null;
+    final bool hasIcon = icon != null;
 
     return Padding(
       padding: const EdgeInsets.only(bottom: 8),
@@ -47,10 +47,15 @@ class BottomSheetTitle extends ConsumerWidget {
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  hasIcon
-                      ? CompanyFeaturePart(text: '', image: icon!)
-                      : const SizedBox.shrink(),
-                  Text(text, style: titleStyle),
+                  if (hasIcon) CompanyFeaturePart(text: '', image: icon!),
+                  Expanded(
+                    child: Text(
+                      text,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: titleStyle,
+                    ),
+                  ),
                 ],
               ),
             ),

@@ -13,12 +13,14 @@ class SilverBorderButton extends ConsumerWidget {
     this.width,
     required this.onPressed,
     this.btnPressProvider,
+    this.icon,
   });
 
   final String text;
   final double? width;
   final void Function() onPressed;
   final AutoDisposeStateProvider<bool>? btnPressProvider;
+  final IconData? icon;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -29,7 +31,7 @@ class SilverBorderButton extends ConsumerWidget {
     final Color bgColor = isLight
         ? LightColors.bgBlogLight
         : DarkColors.bgBlogDark;
-    final Color textColor = isLight
+    Color textColor = isLight
         ? LightColors.textTitleLight
         : DarkColors.textTitleDark;
     final Color borderColor = isLight
@@ -37,12 +39,15 @@ class SilverBorderButton extends ConsumerWidget {
         : DarkColors.textDescriptionDark;
 
     // ========== Text Styles ==============
-    final TextStyle textStyle = AppTextStyles.semiBold16.copyWith(
-      color: textColor,
-    );
+    final TextStyle textStyle = AppTextStyles.semiBold16;
 
     if (btnPressProvider != null) {
       buttonPress = ref.watch(btnPressProvider!);
+    }
+
+    final bool hasIcon = icon != null;
+    if (hasIcon) {
+      textColor = isLight ? LightColors.error : DarkColors.error;
     }
 
     return SizedBox(
@@ -57,7 +62,16 @@ class SilverBorderButton extends ConsumerWidget {
           ),
         ),
         onPressed: buttonPress ? null : onPressed,
-        child: buttonPress ? loadWidget : Text(text, style: textStyle),
+        child: buttonPress
+            ? loadWidget
+            : Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  if (hasIcon) Icon(icon, size: 20, color: textColor),
+                  if (hasIcon) SizedBox(width: 10),
+                  Text(text, style: textStyle.copyWith(color: textColor)),
+                ],
+              ),
       ),
     );
   }
