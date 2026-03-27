@@ -6,8 +6,8 @@ import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
 
-class PrimaryButton extends ConsumerWidget {
-  const PrimaryButton({
+class SilverBorderButton extends ConsumerWidget {
+  const SilverBorderButton({
     super.key,
     required this.text,
     this.width,
@@ -26,10 +26,15 @@ class PrimaryButton extends ConsumerWidget {
 
     // ========== Colors ==============
     final bool isLight = isLightTheme(context, ref);
-    final Color bgColor = isLight ? LightColors.primary : DarkColors.primary;
+    final Color bgColor = isLight
+        ? LightColors.bgBlogLight
+        : DarkColors.bgBlogDark;
     final Color textColor = isLight
-        ? LightColors.textTitleDark
+        ? LightColors.textTitleLight
         : DarkColors.textTitleDark;
+    final Color borderColor = isLight
+        ? LightColors.textDescriptionLight
+        : DarkColors.textDescriptionDark;
 
     // ========== Text Styles ==============
     final TextStyle textStyle = AppTextStyles.semiBold16.copyWith(
@@ -47,6 +52,7 @@ class PrimaryButton extends ConsumerWidget {
         style: ElevatedButton.styleFrom(
           backgroundColor: bgColor,
           shape: RoundedRectangleBorder(
+            side: BorderSide(color: borderColor),
             borderRadius: BorderRadius.circular(12),
           ),
         ),

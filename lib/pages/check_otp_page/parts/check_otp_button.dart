@@ -39,11 +39,11 @@ class CheckOtpButton extends ConsumerWidget {
       onPressed: () async {
         ref.read(checkOTPCodeBtnPressProvider.notifier).state = true;
 
-        String otpCode = ref.read(otpCodeProvider);
+        final String otpCode = ref.read(otpCodeProvider);
 
         if (forRegister) {
           // ======== Check otp code ==============
-          CheckOtpModel reqData = CheckOtpModel(
+          final CheckOtpModel reqData = CheckOtpModel(
             email: email,
             phone: phone,
             otpCode: otpCode,
@@ -61,11 +61,11 @@ class CheckOtpButton extends ConsumerWidget {
           if (email == '') {
             login = phone;
           }
-          LoginUserModel reqDataLogin = LoginUserModel(
+          final LoginUserModel reqDataLogin = LoginUserModel(
             login: login,
             password: password,
           );
-          UserModel respUser = await ref.read(
+          final UserModel respUser = await ref.read(
             loginUserProvider(reqDataLogin).future,
           );
           if (respUser.id == '' && respUser.token == '') {
@@ -92,7 +92,7 @@ class CheckOtpButton extends ConsumerWidget {
           ref.invalidate(getUserProvider);
 
           // ==== Ulanyjy programmany ilkinji gezek acyan bolsa==
-          bool isFirstTime = ref.read(isFirstTimeProvider);
+          final bool isFirstTime = ref.read(isFirstTimeProvider);
           if (isFirstTime) {
             ref.read(isFirstTimeProvider.notifier).update(false);
           }
@@ -112,11 +112,11 @@ class CheckOtpButton extends ConsumerWidget {
         }
 
         // ======== Update Passoword ucin ==============
-        UpdatePasswordModel reqData = UpdatePasswordModel(
+        final UpdatePasswordModel reqData = UpdatePasswordModel(
           code: otpCode,
           newPassword: password,
         );
-        ResultRegister result = await ref.read(
+        final ResultRegister result = await ref.read(
           updatePasswordProvider(reqData).future,
         );
         if (!result.success) {

@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/pages/parts/book_mark_setting_bs/book_mark_setting_bs.dart';
 import 'package:kerwenli_yol/pages/parts/cp_message_bs/cp_message_bs.dart';
 import 'package:kerwenli_yol/pages/parts/filter_bottom_sheet/filter_bottom_sheet.dart';
+import 'package:kerwenli_yol/pages/parts/log_out_bottom_sheet/log_out_bottom_sheet.dart';
 import 'package:kerwenli_yol/pages/parts/message_bs/message_bs.dart';
 import 'package:kerwenli_yol/pages/parts/select_image_bs/select_image_bs.dart';
 import 'package:kerwenli_yol/pages/parts/select_language/select_language.dart';
@@ -15,6 +16,13 @@ Future<void> showLanguageBottomSheet(BuildContext context) async =>
       backgroundColor: Colors.transparent,
       context: context,
       builder: (context) => const SelectLanguage(),
+    );
+
+Future<void> showLougOutBottomSheet(BuildContext context) async =>
+    await showModalBottomSheet(
+      backgroundColor: Colors.transparent,
+      context: context,
+      builder: (context) => const LogOutBottomSheet(),
     );
 
 Future<void> showThemeBottomSheet(BuildContext context) async =>

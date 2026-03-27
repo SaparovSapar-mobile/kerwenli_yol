@@ -32,19 +32,21 @@ class OtpInput extends ConsumerWidget {
 
     // ========= Colors ==========
     final bool isLight = isLightTheme(context, ref);
-    Color bgColor = isLight ? LightColors.bgPageLight : DarkColors.bgPageDark;
-    Color textColor = isLight
+    final Color bgColor = isLight
+        ? LightColors.bgPageLight
+        : DarkColors.bgPageDark;
+    final Color textColor = isLight
         ? LightColors.textTitleLight
         : DarkColors.textTitleDark;
-    Color borderColor = isLight
+    final Color borderColor = isLight
         ? LightColors.textDescriptionLight
         : DarkColors.textDescriptionDark;
-    Color focusedBorderColor = isLight
+    final Color focusedBorderColor = isLight
         ? LightColors.primary
         : DarkColors.primary;
 
     // ========= Text Styles ==========
-    TextStyle textStyle = AppTextStyles.medium16.copyWith(
+    final TextStyle textStyle = AppTextStyles.medium16.copyWith(
       fontWeight: FontWeight.bold,
       color: textColor,
     );
@@ -91,7 +93,7 @@ class OtpInput extends ConsumerWidget {
 
               if (forRegister) {
                 // ====== Ulanyjy Registr Boljak bolanda su yeri isleyar ===
-                RegisterUserModel reqData = RegisterUserModel(
+                final RegisterUserModel reqData = RegisterUserModel(
                   email: email,
                   name: fullName,
                   password: password,
@@ -110,7 +112,10 @@ class OtpInput extends ConsumerWidget {
                 }
               } else {
                 // ====== Forgot Password ucin ========
-                SendOtpModel reqData = SendOtpModel(email: email, phone: phone);
+                final SendOtpModel reqData = SendOtpModel(
+                  email: email,
+                  phone: phone,
+                );
 
                 result = await ref.read(sendOtpProvider(reqData).future);
               }
