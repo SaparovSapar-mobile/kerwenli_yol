@@ -4,6 +4,7 @@ import 'package:kerwenli_yol/helpers/functions/navigation.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/pages/about_us_page/about_us_page.dart';
 import 'package:kerwenli_yol/pages/contact_us_page/contact_us_page.dart';
+import 'package:kerwenli_yol/pages/privacy_policy_page/privacy_policy_page.dart';
 import 'package:kerwenli_yol/pages/settings_page/parts/setting_part_card.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
@@ -52,6 +53,8 @@ class AboutPart extends ConsumerWidget {
             index: 7,
             text: 'Gizlinllik syyasaty',
             icon: Icons.privacy_tip,
+            onTap: () =>
+                goToPage(context, PrivacyPolicyPage(), AxisDirection.left),
           ),
         ],
       ),

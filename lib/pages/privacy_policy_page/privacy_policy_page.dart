@@ -3,14 +3,14 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/helpers/methods/pages/home_page.dart';
 import 'package:kerwenli_yol/pages/about_us_page/parts/about_us_part.dart';
-import 'package:kerwenli_yol/pages/about_us_page/parts/about_us_texts.dart';
 import 'package:kerwenli_yol/pages/parts/back_leading_button.dart';
 import 'package:kerwenli_yol/pages/parts/internet_status_bar/internet_status_bar.dart';
+import 'package:kerwenli_yol/pages/privacy_policy_page/parts/privacy_policy_texts.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 
-class AboutUsPage extends ConsumerWidget {
-  const AboutUsPage({super.key});
+class PrivacyPolicyPage extends ConsumerWidget {
+  const PrivacyPolicyPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -41,8 +41,11 @@ class AboutUsPage extends ConsumerWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   BackLeadingButton(text: 'Yza', leftPadding: 0),
-                  AboutUsPart(icon: Icons.info, text: 'Karhana barada'),
-                  AboutUsTexts(),
+                  AboutUsPart(
+                    icon: Icons.verified_user,
+                    text: 'Gizlinllik syyasaty',
+                  ),
+                  PrivacyPolicyTexts(),
                 ],
               ),
             ),

@@ -14,10 +14,11 @@ class PrivacyPolicyApiService {
       final dynamic jsonData = json.decode(response.body);
 
       if (response.statusCode == 200 && jsonData['status']) {
-        final dynamic data = jsonData['data'];
+        final dynamic datas = jsonData['data'];
 
-        if (data != null) {
-          return PrivacyPolicyModel.fromJson(data);
+        if (datas != null) {
+          final List<dynamic> data = datas as List;
+          return PrivacyPolicyModel.fromJson(data.first);
         }
 
         return null;
