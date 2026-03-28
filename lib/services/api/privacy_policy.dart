@@ -2,12 +2,12 @@ import 'dart:convert';
 
 import 'package:kerwenli_yol/helpers/methods/static_data.dart';
 import 'package:http/http.dart' as http;
-import 'package:kerwenli_yol/models/contact_us.dart';
+import 'package:kerwenli_yol/models/privacy_policy.dart';
 
-class ContactUsApiService {
-  // fetch contact us text -------------------------------------
-  Future<ContactUsModel?> fetchContactUs() async {
-    final Uri uri = Uri.parse('$apiUrl/client/footer');
+class PrivacyPolicyApiService {
+  // fetch privacy policy -------------------------------------
+  Future<PrivacyPolicyModel?> fetchPrivacyPolicy() async {
+    final Uri uri = Uri.parse('$apiUrl/admin/privacy');
 
     try {
       final http.Response response = await http.get(uri);
@@ -17,7 +17,7 @@ class ContactUsApiService {
         final dynamic data = jsonData['data'];
 
         if (data != null) {
-          return ContactUsModel.fromJson(data);
+          return PrivacyPolicyModel.fromJson(data);
         }
 
         return null;
