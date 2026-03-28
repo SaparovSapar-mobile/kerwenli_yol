@@ -6,7 +6,10 @@ import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
 
 class AboutUsPart extends ConsumerWidget {
-  const AboutUsPart({super.key});
+  const AboutUsPart({super.key, required this.icon, required this.text});
+
+  final IconData icon;
+  final String text;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -31,10 +34,10 @@ class AboutUsPart extends ConsumerWidget {
               color: bgColor,
               borderRadius: BorderRadius.circular(4),
             ),
-            child: Icon(Icons.info, size: 16, color: iconColor),
+            child: Icon(icon, size: 16, color: iconColor),
           ),
           SizedBox(width: 10),
-          Text('Karhana barada', style: textStyle),
+          Text(text, style: textStyle),
         ],
       ),
     );
