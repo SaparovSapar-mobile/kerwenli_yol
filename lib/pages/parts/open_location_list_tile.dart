@@ -6,7 +6,9 @@ import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
 
 class OpenLocationListTile extends ConsumerWidget {
-  const OpenLocationListTile({super.key});
+  const OpenLocationListTile({super.key, this.text});
+
+  final String? text;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -41,7 +43,7 @@ class OpenLocationListTile extends ConsumerWidget {
           color: leadingIconColor,
         ),
       ),
-      title: Text('Geolokasiyany gocur al', style: textStyle),
+      title: Text(text ?? 'Geolokasiyany gocur al', style: textStyle),
       trailing: Icon(Icons.arrow_outward, size: 16, color: iconColor),
     );
   }

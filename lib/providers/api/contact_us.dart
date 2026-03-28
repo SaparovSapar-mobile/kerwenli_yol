@@ -5,9 +5,9 @@ import 'package:kerwenli_yol/services/api/contact_us.dart';
 final Provider<ContactUsApiService> contactUsApiProvider =
     Provider<ContactUsApiService>((ref) => ContactUsApiService());
 
-final AutoDisposeFutureProvider<ContactUsModel> fetchContactUsProvider =
-    FutureProvider.autoDispose<ContactUsModel>((ref) async {
-      ContactUsModel result = ContactUsModel.defaultValue();
+final AutoDisposeFutureProvider<ContactUsModel?> fetchContactUsProvider =
+    FutureProvider.autoDispose<ContactUsModel?>((ref) async {
+      ContactUsModel? result;
 
       try {
         result = await ref.read(contactUsApiProvider).fetchContactUs();

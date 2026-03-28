@@ -6,7 +6,7 @@ import 'package:kerwenli_yol/models/contact_us.dart';
 
 class ContactUsApiService {
   // fetch about us text -------------------------------------
-  Future<ContactUsModel> fetchContactUs() async {
+  Future<ContactUsModel?> fetchContactUs() async {
     final Uri uri = Uri.parse('$apiUrl/client/footer');
 
     try {
@@ -14,16 +14,15 @@ class ContactUsApiService {
       final dynamic jsonData = json.decode(response.body);
 
       if (response.statusCode == 200 && jsonData['status']) {
-        final dynamic datas = jsonData['data'];
+        final dynamic data = jsonData['data'];
 
-        if (datas != null) {
-          final List<dynamic> data = datas as List;
-          return ContactUsModel.fromJson(data.first);
+        if (data != null) {
+          return ContactUsModel.fromJson(data);
         }
 
-        return ContactUsModel.defaultValue();
+        return null;
       }
-      return ContactUsModel.defaultValue();
+      return null;
     } catch (e) {
       rethrow;
     }

@@ -30,7 +30,7 @@ class CompaniesPage extends ConsumerWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             InternetStatusBar(),
-            HeaderCompanies(text: 'Karhanalar'),
+            HeaderCompanies(text: 'Karhanalar', leftPadding: 0),
             SortAndFilter(
               gridOrListProvider: gridOrListSortProvider,
               isGridProvider: isGridCompaniesProvider,

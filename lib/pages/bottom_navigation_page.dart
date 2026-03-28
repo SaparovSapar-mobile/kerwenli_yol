@@ -113,7 +113,7 @@ class BottomNavigationPage extends ConsumerWidget {
             bottomNavBarItem(
               Icons.settings,
               'Setting',
-              selectedIndex == 3,
+              selectedIndex == 2,
               isLight,
             ),
           ],
