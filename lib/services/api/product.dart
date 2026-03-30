@@ -104,13 +104,8 @@ class ProductApiService {
       '$apiUrl/client/products/$id',
     ).replace(queryParameters: {'user_uuid': userId});
 
-    print('====================================== fetchProduct');
-    print('uri: $uri');
-
     try {
       final http.Response response = await http.get(uri);
-      print('response.statusCode: ${response.statusCode}');
-      print('response.body: ${response.body}');
       final dynamic jsonData = json.decode(response.body);
 
       if (response.statusCode == 200 && jsonData['status']) {
@@ -124,8 +119,6 @@ class ProductApiService {
       }
       return ProductModel.defaultValue();
     } catch (e) {
-      print('--------------------------------------------------------');
-      print('error: ${e.toString()}');
       rethrow;
     }
   }

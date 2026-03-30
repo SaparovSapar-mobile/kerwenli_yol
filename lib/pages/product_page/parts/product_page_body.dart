@@ -5,6 +5,7 @@ import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/helpers/functions/translations.dart';
 import 'package:kerwenli_yol/helpers/methods/pages/bottom_sheets.dart';
 import 'package:kerwenli_yol/models/product.dart';
+import 'package:kerwenli_yol/models/translation.dart';
 import 'package:kerwenli_yol/pages/company_page/parts/company_page_info/parts/company_info/parts/company_info_key_value.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_new_products/parts/home_new_products_card/parts/home_new_products_card_images.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/parts/home_vip_company_card_categories.dart';
@@ -47,6 +48,21 @@ class ProductPageBody extends ConsumerWidget {
       product.descriptionEn,
     );
 
+    final String name = translateText(
+      ref,
+      product.nameTm,
+      product.nameRu,
+      product.nameEn,
+    );
+
+    final TranslationModel categoryName = product.categoryName;
+    final String catName = translateText(
+      ref,
+      categoryName.tm,
+      categoryName.ru,
+      categoryName.en,
+    );
+
     return Expanded(
       child: Container(
         padding: EdgeInsets.all(16),
@@ -82,14 +98,12 @@ class ProductPageBody extends ConsumerWidget {
                     forProductPage: true,
                   ),
                   SizedBox(height: 10),
-                  Text(
-                    'Türkmenistanda öndürilen şokaladly süýji we lomay harytlar',
-                    style: nameStyle,
-                  ),
+                  Text(name, style: nameStyle),
                   SizedBox(height: 10),
                   HomeVipCompanyCardCategories(
                     iconSize: 10,
                     mainAxisAlignment: MainAxisAlignment.start,
+                    category: catName,
                   ),
                   SizedBox(height: 10),
                   CompanyInfoKeyValue(

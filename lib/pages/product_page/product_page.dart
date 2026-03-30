@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/translations.dart';
 import 'package:kerwenli_yol/helpers/methods/pages/home_page.dart';
 import 'package:kerwenli_yol/models/product.dart';
+import 'package:kerwenli_yol/models/translation.dart';
 import 'package:kerwenli_yol/pages/company_page/parts/company_page_top.dart';
 import 'package:kerwenli_yol/pages/parts/internet_status_bar/internet_status_bar.dart';
 import 'package:kerwenli_yol/pages/parts/shimmer_effects/product_page_shimmer.dart';
@@ -29,20 +30,23 @@ class ProductPage extends ConsumerWidget {
             return Center(child: Text('No Data'));
           }
 
-          final String name = translateText(
+          // ======== product company name =====
+          final TranslationModel companyName = data.companyName;
+          final String compName = translateText(
             ref,
-            data.nameTm,
-            data.nameRu,
-            data.nameEn,
+            companyName.tm,
+            companyName.ru,
+            companyName.en,
           );
 
           return Column(
             children: [
               InternetStatusBar(),
               CompanyPageTop(
-                text: name,
+                text: compName,
                 showBottomLine: false,
                 onPressed: () {},
+                leftPadding: 0,
               ),
               ProductPageBody(product: data),
             ],

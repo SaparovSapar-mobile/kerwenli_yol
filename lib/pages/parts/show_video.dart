@@ -57,7 +57,6 @@ class _ShowVideoState extends State<ShowVideo> {
 
   @override
   Widget build(BuildContext context) {
-    print('===================== $pathUrl${widget.videoUrl}');
     return ClipRRect(
       borderRadius: BorderRadius.circular(12),
       child: FutureBuilder(
