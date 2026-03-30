@@ -1,3 +1,4 @@
+import 'package:kerwenli_yol/models/category.dart';
 import 'package:kerwenli_yol/models/publication_model.dart';
 
 class ProductModel {
@@ -18,6 +19,7 @@ class ProductModel {
   final List<dynamic> galleryImages, videos;
   final num price;
   final bool isLiked;
+  final CategoryModel category;
 
   ProductModel({
     required this.id,
@@ -38,6 +40,7 @@ class ProductModel {
     required this.descriptionTm,
     required this.descriptionRu,
     required this.descriptionEn,
+    required this.category,
   });
 
   factory ProductModel.defaultValue() {
@@ -60,6 +63,7 @@ class ProductModel {
       descriptionTm: '',
       descriptionRu: '',
       descriptionEn: '',
+      category: CategoryModel.defaultValue(),
     );
   }
 
@@ -89,6 +93,9 @@ class ProductModel {
       videos: json['videos'] ?? [],
       price: json['price'] ?? 0,
       isLiked: json['is_liked'] ?? false,
+      category: json['categories'] == null
+          ? CategoryModel.defaultValue()
+          : CategoryModel.fromJson(json['categories']),
     );
   }
 }

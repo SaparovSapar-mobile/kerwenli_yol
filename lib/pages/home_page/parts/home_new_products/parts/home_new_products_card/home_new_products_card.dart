@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/navigation.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/helpers/functions/translations.dart';
+import 'package:kerwenli_yol/models/category.dart';
 import 'package:kerwenli_yol/models/product.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_new_products/parts/home_new_products_card/parts/home_new_products_card_images.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/parts/home_vip_company_card_categories.dart';
@@ -43,6 +44,15 @@ class HomeNewProductsCard extends ConsumerWidget {
       product.nameEn,
     );
 
+    // ========= category name =======
+    final CategoryModel category = product.category;
+    final String categoryName = translateText(
+      ref,
+      category.nameTm,
+      category.nameRu,
+      category.nameEn,
+    );
+
     return GestureDetector(
       onTap: () => goToPage(
         context,
@@ -74,7 +84,7 @@ class HomeNewProductsCard extends ConsumerWidget {
               ),
             ),
             SizedBox(height: 2),
-            HomeVipCompanyCardCategories(),
+            HomeVipCompanyCardCategories(category: categoryName),
             SizedBox(height: 5),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
