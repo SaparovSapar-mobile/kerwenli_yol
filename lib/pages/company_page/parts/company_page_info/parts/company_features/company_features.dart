@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
+import 'package:kerwenli_yol/helpers/functions/translations.dart';
 import 'package:kerwenli_yol/models/company.dart';
+import 'package:kerwenli_yol/models/opportunity.dart';
 import 'package:kerwenli_yol/pages/company_page/parts/company_page_info/parts/company_features/parts/company_feature_part.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
@@ -26,7 +28,7 @@ class CompanyFeatures extends ConsumerWidget {
     // ========== Text Styles =============
     final TextStyle textStyle = AppTextStyles.semiBold12;
 
-    final List<dynamic> opportunities = company.opportunity.labels;
+    final List<OpportunityTrModel> opportunities = company.opportunity.labels;
     final bool hasOpp = opportunities.isNotEmpty;
 
     return Container(
@@ -44,10 +46,16 @@ class CompanyFeatures extends ConsumerWidget {
             Text('Amatlyklary', style: textStyle),
             SizedBox(height: 4),
             if (hasOpp)
-              ...opportunities.map(
-                (e) =>
-                    CompanyFeaturePart(text: e.toString(), image: 'router.png'),
-              ),
+              ...opportunities.map((e) {
+                final String name = translateText(
+                  ref,
+                  e.labelTm,
+                  e.labelRu,
+                  e.labelEn,
+                );
+
+                return CompanyFeaturePart(text: name, image: 'router.png');
+              }),
           ],
         ),
       ),

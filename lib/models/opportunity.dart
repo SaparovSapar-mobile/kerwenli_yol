@@ -1,13 +1,43 @@
 class OpportunityModel {
-  final List<dynamic> labels;
+  final List<OpportunityTrModel> labels;
 
   OpportunityModel({required this.labels});
 
   factory OpportunityModel.fromJson(Map<String, dynamic> json) {
-    return OpportunityModel(labels: json['labels'] ?? []);
+    return OpportunityModel(
+      labels: json['labels'] == null || json['labels'] == []
+          ? []
+          : List<OpportunityTrModel>.from(
+              json['labels'].map(
+                (dataJson) => OpportunityTrModel.fromJson(dataJson),
+              ),
+            ),
+    );
   }
 
   factory OpportunityModel.defaultValue() {
     return OpportunityModel(labels: []);
+  }
+}
+
+class OpportunityTrModel {
+  final String labelTm, labelRu, labelEn;
+
+  OpportunityTrModel({
+    required this.labelTm,
+    required this.labelRu,
+    required this.labelEn,
+  });
+
+  factory OpportunityTrModel.fromJson(Map<String, dynamic> json) {
+    return OpportunityTrModel(
+      labelTm: json['label_tm'] ?? '',
+      labelRu: json['label_ru'] ?? '',
+      labelEn: json['label_en'] ?? '',
+    );
+  }
+
+  factory OpportunityTrModel.defaultValue() {
+    return OpportunityTrModel(labelTm: '', labelRu: '', labelEn: '');
   }
 }
