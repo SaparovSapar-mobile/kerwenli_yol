@@ -70,9 +70,7 @@ class CompanyModel {
 class CompanyDetailModel {
   final String id;
   final MainInfoModel mainInfo;
-  final TranslationModel businessName;
-  final TranslationModel description;
-  final TranslationModel address;
+  final TranslationModel businessName, description, address, categoryName;
   final CompContactModel contact;
   final List<dynamic> banners;
   final OpportunityModel opportunity;
@@ -99,6 +97,7 @@ class CompanyDetailModel {
     required this.taxiNumber,
     required this.isFollowed,
     required this.isBookmarked,
+    required this.categoryName,
   });
 
   factory CompanyDetailModel.defaultValue() {
@@ -106,6 +105,7 @@ class CompanyDetailModel {
       id: '',
       mainInfo: MainInfoModel.defaultValue(),
       businessName: TranslationModel.defaultValue(),
+      categoryName: TranslationModel.defaultValue(),
       description: TranslationModel.defaultValue(),
       address: TranslationModel.defaultValue(),
       contact: CompContactModel.defaultValue(),
@@ -133,6 +133,9 @@ class CompanyDetailModel {
       description: json['description'] == null
           ? TranslationModel.defaultValue()
           : TranslationModel.fromJson(json['description']),
+      categoryName: json['category_name'] == null
+          ? TranslationModel.defaultValue()
+          : TranslationModel.fromJson(json['category_name']),
       address: json['address'] == null
           ? TranslationModel.defaultValue()
           : TranslationModel.fromJson(json['address']),
