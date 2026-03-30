@@ -1,5 +1,6 @@
 import 'package:kerwenli_yol/models/category.dart';
 import 'package:kerwenli_yol/models/publication_model.dart';
+import 'package:kerwenli_yol/models/translation.dart';
 
 class ProductModel {
   final String id,
@@ -20,6 +21,7 @@ class ProductModel {
   final num price;
   final bool isLiked;
   final CategoryModel category;
+  final TranslationModel categoryName;
 
   ProductModel({
     required this.id,
@@ -41,6 +43,7 @@ class ProductModel {
     required this.descriptionRu,
     required this.descriptionEn,
     required this.category,
+    required this.categoryName,
   });
 
   factory ProductModel.defaultValue() {
@@ -64,6 +67,7 @@ class ProductModel {
       descriptionRu: '',
       descriptionEn: '',
       category: CategoryModel.defaultValue(),
+      categoryName: TranslationModel.defaultValue(),
     );
   }
 
@@ -96,6 +100,9 @@ class ProductModel {
       category: json['categories'] == null
           ? CategoryModel.defaultValue()
           : CategoryModel.fromJson(json['categories']),
+      categoryName: json['category_name'] == null
+          ? TranslationModel.defaultValue()
+          : TranslationModel.fromJson(json['category_name']),
     );
   }
 }

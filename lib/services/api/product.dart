@@ -83,7 +83,7 @@ class ProductApiService {
       if (response.statusCode == 200 && jsonData['status']) {
         final dynamic datas = jsonData['data'];
 
-        if (datas == []) {
+        if (datas == [] || datas == null) {
           return [];
         }
 
