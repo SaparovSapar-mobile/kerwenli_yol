@@ -56,6 +56,7 @@ class FollowedCompaniesListView extends ConsumerWidget {
                 nameEn: c.businessName.en,
                 isBookmarked: false,
                 isFollowed: false,
+                categoryName: c.categoryName,
               );
               return CompanyListCard(company: company);
             },

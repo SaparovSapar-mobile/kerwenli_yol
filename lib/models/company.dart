@@ -41,6 +41,7 @@ class FollowedCompanyModel {
 class CompanyModel {
   final String uuid, individualUuid, photo, nameTm, nameRu, nameEn;
   final bool isFollowed, isBookmarked;
+  final TranslationModel categoryName;
 
   CompanyModel({
     required this.uuid,
@@ -51,6 +52,7 @@ class CompanyModel {
     required this.nameEn,
     required this.isFollowed,
     required this.isBookmarked,
+    required this.categoryName,
   });
 
   factory CompanyModel.fromJson(Map<String, dynamic> json) {
@@ -63,6 +65,9 @@ class CompanyModel {
       nameEn: json['name_en'] ?? '',
       isFollowed: json['is_followed'] ?? false,
       isBookmarked: json['is_bookmarked'] ?? false,
+      categoryName: json['category_name'] == null
+          ? TranslationModel.defaultValue()
+          : TranslationModel.fromJson(json['category_name']),
     );
   }
 }

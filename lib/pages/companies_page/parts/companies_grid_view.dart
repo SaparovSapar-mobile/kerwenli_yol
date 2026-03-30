@@ -64,6 +64,7 @@ class CompaniesGridView extends ConsumerWidget {
                 nameEn: c.businessName.en,
                 isBookmarked: c.isBookmarked,
                 isFollowed: c.isFollowed,
+                categoryName: c.categoryName,
               );
               return CompanyCard(company: company);
             },
