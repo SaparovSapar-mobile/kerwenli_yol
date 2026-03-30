@@ -89,12 +89,20 @@ class CompanyInfo extends ConsumerWidget {
                   SizedBox(height: 20),
                   Text('Iş wagtymyz', style: textStyle),
                   SizedBox(height: 15),
-                  ...workingTimes.map(
-                    (e) => WorkHour(
-                      keyText: e.day,
+                  ...workingTimes.map((e) {
+                    final TranslationModel day = e.day;
+                    final String dayTr = translateText(
+                      ref,
+                      day.tm,
+                      day.ru,
+                      day.en,
+                    );
+
+                    return WorkHour(
+                      keyText: dayTr,
                       valueText: '${e.open}-${e.close}',
-                    ),
-                  ),
+                    );
+                  }),
                 ],
               ),
             SizedBox(height: 20),
