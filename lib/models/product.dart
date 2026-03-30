@@ -21,7 +21,7 @@ class ProductModel {
   final num price;
   final bool isLiked;
   final CategoryModel category;
-  final TranslationModel categoryName;
+  final TranslationModel categoryName, companyName;
 
   ProductModel({
     required this.id,
@@ -44,6 +44,7 @@ class ProductModel {
     required this.descriptionEn,
     required this.category,
     required this.categoryName,
+    required this.companyName,
   });
 
   factory ProductModel.defaultValue() {
@@ -68,6 +69,7 @@ class ProductModel {
       descriptionEn: '',
       category: CategoryModel.defaultValue(),
       categoryName: TranslationModel.defaultValue(),
+      companyName: TranslationModel.defaultValue(),
     );
   }
 
@@ -103,6 +105,9 @@ class ProductModel {
       categoryName: json['category_name'] == null
           ? TranslationModel.defaultValue()
           : TranslationModel.fromJson(json['category_name']),
+      companyName: json['company_name'] == null
+          ? TranslationModel.defaultValue()
+          : TranslationModel.fromJson(json['company_name']),
     );
   }
 }
