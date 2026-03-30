@@ -43,6 +43,7 @@ class CompanyPage extends ConsumerWidget {
                   text: 'Karhana',
                   showBottomLine: true,
                   onPressed: () => showCompanyPageMessageBottomSheet(context),
+                  leftPadding: 0,
                 ),
                 CompanyPageTabbar(),
 

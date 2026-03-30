@@ -22,19 +22,30 @@ class CompanyPageInfoCard extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // ======= Colors =======
     final bool isLight = isLightTheme(context, ref);
-    Color bgColor = isLight ? LightColors.bgPageLight : DarkColors.bgPageDark;
-    Color bGColor = isLight ? LightColors.bgBlogLight : DarkColors.bgBlogDark;
+    final Color bgColor = isLight
+        ? LightColors.bgPageLight
+        : DarkColors.bgPageDark;
+    final Color bGColor = isLight
+        ? LightColors.bgBlogLight
+        : DarkColors.bgBlogDark;
 
     // ======= Text Styles =======
-    TextStyle textStyle = AppTextStyles.semiBold16;
+    final TextStyle textStyle = AppTextStyles.semiBold16;
 
     final MainInfoModel mainInfo = company.mainInfo;
     final TranslationModel compName = company.businessName;
+    final TranslationModel catName = company.categoryName;
     final String name = translateText(
       ref,
       compName.tm,
       compName.ru,
       compName.en,
+    );
+    final String categoryName = translateText(
+      ref,
+      catName.tm,
+      catName.ru,
+      catName.en,
     );
 
     return Container(
@@ -66,6 +77,7 @@ class CompanyPageInfoCard extends ConsumerWidget {
                 SizedBox(height: 5),
                 HomeVipCompanyCardCategories(
                   mainAxisAlignment: MainAxisAlignment.start,
+                  category: categoryName,
                 ),
                 SizedBox(height: 4),
                 CompanyStatus(isOpen: false),

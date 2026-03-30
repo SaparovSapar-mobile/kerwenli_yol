@@ -10,10 +10,12 @@ class HomeVipCompanyCardCategories extends ConsumerWidget {
     super.key,
     this.iconSize,
     this.mainAxisAlignment,
+    this.category,
   });
 
   final double? iconSize;
   final MainAxisAlignment? mainAxisAlignment;
+  final String? category;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -44,7 +46,7 @@ class HomeVipCompanyCardCategories extends ConsumerWidget {
             children: [
               Flexible(
                 child: Text(
-                  'Category/sub category',
+                  category ?? 'Category/sub category',
                   style: textStyle,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,

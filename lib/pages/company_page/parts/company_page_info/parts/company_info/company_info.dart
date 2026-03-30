@@ -34,11 +34,18 @@ class CompanyInfo extends ConsumerWidget {
 
     // ======= company name =======
     final TranslationModel compName = company.businessName;
+    final TranslationModel catName = company.categoryName;
     final String name = translateText(
       ref,
       compName.tm,
       compName.ru,
       compName.en,
+    );
+    final String categoryName = translateText(
+      ref,
+      catName.tm,
+      catName.ru,
+      catName.en,
     );
 
     // ======== Working Times =======
@@ -76,7 +83,7 @@ class CompanyInfo extends ConsumerWidget {
               keyText: 'Guramaçylyk hukuk görnüşi',
               valueText: 'Hojalyk jemgyyeti',
             ),
-            CompanyInfoKeyValue(keyText: 'Iş ugry', valueText: 'Onumcilik'),
+            CompanyInfoKeyValue(keyText: 'Iş ugry', valueText: categoryName),
             CompanyInfoKeyValue(keyText: 'Eýeçiligi', valueText: 'senagaty'),
             CompanyInfoKeyValue(keyText: 'Esasy önümleri', valueText: 'Bar'),
             CompanyInfoKeyValue(keyText: 'Hukuk salgysy', valueText: 'Bar'),
