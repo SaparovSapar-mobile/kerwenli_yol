@@ -1,17 +1,25 @@
+import 'package:kerwenli_yol/models/category.dart';
 import 'package:kerwenli_yol/models/product.dart';
 
 class NewProductModel {
   final String id, companyId;
   final List<ProductModel> products;
+  final CategoryModel category;
 
   NewProductModel({
     required this.id,
     required this.companyId,
     required this.products,
+    required this.category,
   });
 
   factory NewProductModel.defaultValue() {
-    return NewProductModel(id: '', companyId: '', products: []);
+    return NewProductModel(
+      id: '',
+      companyId: '',
+      products: [],
+      category: CategoryModel.defaultValue(),
+    );
   }
 
   factory NewProductModel.fromJson(Map<String, dynamic> json) {
@@ -25,6 +33,9 @@ class NewProductModel {
                 (dataJson) => ProductModel.fromJson(dataJson),
               ),
             ),
+      category: json['categories'] == null
+          ? CategoryModel.defaultValue()
+          : CategoryModel.fromJson(json['categories']),
     );
   }
 }

@@ -16,12 +16,24 @@ class CategoryModel extends Equatable {
   factory CategoryModel.fromJson(Map<String, dynamic> json) {
     return CategoryModel(
       id: json['uuid'],
-      nameTm: json['name_tm'],
-      nameRu: json['name_ru'],
-      nameEn: json['name_en'],
+      nameTm: json['name_tm'] ?? '',
+      nameRu: json['name_ru'] ?? '',
+      nameEn: json['name_en'] ?? '',
       imageTm: json['image_tm'] ?? '',
       imageRu: json['image_ru'] ?? '',
       imageEn: json['image_en'] ?? '',
+    );
+  }
+
+  factory CategoryModel.defaultValue() {
+    return CategoryModel(
+      id: '',
+      nameTm: '',
+      nameRu: '',
+      nameEn: '',
+      imageTm: '',
+      imageRu: '',
+      imageEn: '',
     );
   }
 
