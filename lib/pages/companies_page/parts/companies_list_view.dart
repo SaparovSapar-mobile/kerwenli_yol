@@ -59,6 +59,9 @@ class CompaniesListView extends ConsumerWidget {
                 isBookmarked: c.isBookmarked,
                 isFollowed: c.isFollowed,
                 categoryName: c.categoryName,
+                publicationLabelTm: '',
+                publicationLabelRu: '',
+                publicationLabelEn: '',
               );
               return CompanyListCard(company: company);
             },

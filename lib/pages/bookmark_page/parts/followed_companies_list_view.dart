@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/methods/static_data.dart';
 import 'package:kerwenli_yol/helpers/methods/static_methods.dart';
 import 'package:kerwenli_yol/models/company.dart';
+import 'package:kerwenli_yol/models/translation.dart';
 import 'package:kerwenli_yol/pages/companies_page/parts/company_card/parts/company_list_card.dart';
 import 'package:kerwenli_yol/pages/parts/no_result.dart';
 import 'package:kerwenli_yol/pages/parts/some_error.dart';
@@ -47,6 +48,7 @@ class FollowedCompaniesListView extends ConsumerWidget {
               }
 
               final FollowedCompanyModel c = response[indexInPage];
+              final TranslationModel p = c.publicationLabel;
               final CompanyModel company = CompanyModel(
                 uuid: '',
                 individualUuid: c.id,
@@ -57,6 +59,9 @@ class FollowedCompaniesListView extends ConsumerWidget {
                 isBookmarked: false,
                 isFollowed: false,
                 categoryName: c.categoryName,
+                publicationLabelTm: p.tm,
+                publicationLabelRu: p.ru,
+                publicationLabelEn: p.en,
               );
               return CompanyListCard(company: company);
             },

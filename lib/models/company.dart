@@ -39,7 +39,15 @@ class FollowedCompanyModel {
 }
 
 class CompanyModel {
-  final String uuid, individualUuid, photo, nameTm, nameRu, nameEn;
+  final String uuid,
+      individualUuid,
+      photo,
+      nameTm,
+      nameRu,
+      nameEn,
+      publicationLabelTm,
+      publicationLabelRu,
+      publicationLabelEn;
   final bool isFollowed, isBookmarked;
   final TranslationModel categoryName;
 
@@ -53,6 +61,9 @@ class CompanyModel {
     required this.isFollowed,
     required this.isBookmarked,
     required this.categoryName,
+    required this.publicationLabelTm,
+    required this.publicationLabelRu,
+    required this.publicationLabelEn,
   });
 
   factory CompanyModel.fromJson(Map<String, dynamic> json) {
@@ -68,6 +79,9 @@ class CompanyModel {
       categoryName: json['category_name'] == null
           ? TranslationModel.defaultValue()
           : TranslationModel.fromJson(json['category_name']),
+      publicationLabelTm: json['publication_label_tm'] ?? '',
+      publicationLabelRu: json['publication_label_ru'] ?? '',
+      publicationLabelEn: json['publication_label_en'] ?? '',
     );
   }
 }
