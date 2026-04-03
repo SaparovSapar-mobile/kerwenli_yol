@@ -29,4 +29,33 @@ class CategoryApiService {
       rethrow;
     }
   }
+
+  // fetch categories ------------------------------------------------------------
+  Future<List<CategoryModel>> fetchCategoriesByCompanyId(
+    String companyId,
+  ) async {
+    final Uri uri = Uri.parse(
+      '$apiUrl/client/categories/individual/$companyId',
+    );
+
+    try {
+      final http.Response response = await http.get(uri);
+      final dynamic jsonData = json.decode(response.body);
+
+      if (response.statusCode == 200 && jsonData['status']) {
+        final dynamic datas = jsonData['data'];
+        if (datas == [] || datas == null) {
+          return [];
+        }
+
+        final List<dynamic> data = datas as List;
+        return data
+            .map<CategoryModel>((propJson) => CategoryModel.fromJson(propJson))
+            .toList();
+      }
+      return [];
+    } catch (e) {
+      rethrow;
+    }
+  }
 }
