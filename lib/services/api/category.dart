@@ -5,7 +5,7 @@ import 'package:kerwenli_yol/models/category.dart';
 import 'package:http/http.dart' as http;
 
 class CategoryApiService {
-  // fetch categories ------------------------------------------------------------
+  // fetch categories ---------------------------------------------
   Future<List<CategoryModel>> fetchCategories() async {
     final Uri uri = Uri.parse('$apiUrl/client/categories');
 
@@ -30,7 +30,7 @@ class CategoryApiService {
     }
   }
 
-  // fetch categories ------------------------------------------------------------
+  // fetch categories by company id -----------------------------------------
   Future<List<CategoryModel>> fetchCategoriesByCompanyId(
     String companyId,
   ) async {

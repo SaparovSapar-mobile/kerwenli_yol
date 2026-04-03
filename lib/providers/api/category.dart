@@ -22,3 +22,23 @@ final FutureProvider<List<CategoryModel>> fetchCategoriesProvider =
 
       return datas;
     });
+
+final FutureProviderFamily<List<CategoryModel>, String>
+fetchCategoriesByCompanyIdProvider =
+    FutureProvider.family<List<CategoryModel>, String>((ref, arg) async {
+      List<CategoryModel> datas = [];
+
+      try {
+        datas = await ref
+            .read(categoryApiProvider)
+            .fetchCategoriesByCompanyId(arg);
+
+        if (datas.isNotEmpty) {
+          ref.read(categoryProvider.notifier).state = datas.first.id;
+        }
+      } catch (e) {
+        rethrow;
+      }
+
+      return datas;
+    });
