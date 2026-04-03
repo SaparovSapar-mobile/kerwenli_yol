@@ -17,6 +17,7 @@ class LogOutButton extends ConsumerWidget {
         await deleteUser();
         await deleteAllFavorites();
         ref.invalidate(getUserProvider);
+        ref.invalidate(getUserIdProvider);
         ref.invalidate(hasInFavoritesProvider);
         if (context.mounted) {
           Navigator.pop(context);

@@ -13,7 +13,7 @@ class UserProfilePart extends ConsumerWidget {
 
     return resultDB.when(
       data: (data) {
-        bool noUser = data.id == '' || data.token == '';
+        final bool noUser = data.id == '' || data.token == '';
         if (noUser) {
           return const SizedBox.shrink();
         }

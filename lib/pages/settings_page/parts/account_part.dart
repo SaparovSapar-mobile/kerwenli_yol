@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/helpers/methods/pages/bottom_sheets.dart';
+import 'package:kerwenli_yol/models/user.dart';
 import 'package:kerwenli_yol/pages/settings_page/parts/setting_part_card.dart';
 import 'package:kerwenli_yol/providers/database/user.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
@@ -17,11 +18,12 @@ class AccountPart extends ConsumerWidget {
         ? LightColors.bgBlogLight
         : DarkColors.bgBlogDark;
 
-    final AsyncValue<String> resultDb = ref.watch(getUserIdProvider);
+    final AsyncValue<UserModel> resultDB = ref.watch(getUserProvider);
 
-    return resultDb.when(
+    return resultDB.when(
       data: (data) {
-        if (data == '') {
+        final bool noUser = data.id == '' || data.token == '';
+        if (noUser) {
           return const SizedBox.shrink();
         }
 

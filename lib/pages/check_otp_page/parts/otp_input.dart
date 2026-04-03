@@ -74,7 +74,7 @@ class OtpInput extends ConsumerWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Pinput(
-            length: 6,
+            length: 4,
             defaultPinTheme: pinTheme,
             focusedPinTheme: pinTheme.copyWith(
               decoration: pinTheme.decoration!.copyWith(

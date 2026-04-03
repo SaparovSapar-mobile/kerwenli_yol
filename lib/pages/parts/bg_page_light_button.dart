@@ -25,17 +25,21 @@ class BgPageLightButton extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     bool buttonPress = false;
-    bool hasIcon = icon != null;
+    final bool hasIcon = icon != null;
 
     // ========== Colors ==============
     final bool isLight = isLightTheme(context, ref);
-    Color bgColor = isLight ? LightColors.bgPageLight : DarkColors.bgPageLight;
-    Color textColor = isLight
+    final Color bgColor = isLight
+        ? LightColors.bgPageLight
+        : DarkColors.bgPageLight;
+    final Color textColor = isLight
         ? LightColors.textTitleLight
         : DarkColors.textTitleLight;
 
     // ========== Text Styles ==============
-    TextStyle textStyle = AppTextStyles.semiBold16.copyWith(color: textColor);
+    final TextStyle textStyle = AppTextStyles.semiBold16.copyWith(
+      color: textColor,
+    );
 
     if (btnPressProvider != null) {
       buttonPress = ref.watch(btnPressProvider!);
