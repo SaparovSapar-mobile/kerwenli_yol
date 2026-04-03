@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kerwenli_yol/helpers/functions/navigation.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/helpers/methods/pages/bottom_sheets.dart';
+import 'package:kerwenli_yol/models/user.dart';
+import 'package:kerwenli_yol/pages/login_page/login_page.dart';
+import 'package:kerwenli_yol/providers/database/user.dart';
 import 'package:kerwenli_yol/providers/pages/companies_page.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
@@ -20,24 +24,26 @@ class CpMessageBsListTile extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    int selectedIndex = ref.watch(companyMessageListtileIndexProvider);
-    bool isActive = selectedIndex == index;
+    final int selectedIndex = ref.watch(companyMessageListtileIndexProvider);
+    final bool isActive = selectedIndex == index;
 
     // ===== Colors =======
     final bool isLight = isLightTheme(context, ref);
-    Color leadingBgColor = isLight
+    final Color leadingBgColor = isLight
         ? LightColors.bgPageLight
         : DarkColors.bgPageDark;
-    Color activeLeadingBgColor = isLight
+    final Color activeLeadingBgColor = isLight
         ? LightColors.bgBlogLight
         : DarkColors.bgBlogDark;
-    Color tralingIconColor = isLight ? LightColors.primary : DarkColors.primary;
-    Color iconColor = isLight
+    final Color tralingIconColor = isLight
+        ? LightColors.primary
+        : DarkColors.primary;
+    final Color iconColor = isLight
         ? LightColors.textTitleLight
         : DarkColors.textTitleDark;
 
     // ===== Text Styles =======
-    TextStyle titleStyle = AppTextStyles.medium12;
+    final TextStyle titleStyle = AppTextStyles.medium12;
 
     return Container(
       decoration: BoxDecoration(
@@ -66,8 +72,17 @@ class CpMessageBsListTile extends ConsumerWidget {
             ? CircleAvatar(backgroundColor: tralingIconColor, radius: 3)
             : const SizedBox.shrink(),
         onTap: () async {
+          final UserModel resultDb = await ref.read(getUserProvider.future);
+          final bool hasUser = resultDb.id != '';
+          if (!hasUser && context.mounted) {
+            goToPage(context, LoginPage(), AxisDirection.left);
+            return;
+          }
+
           ref.read(companyMessageListtileIndexProvider.notifier).state = index;
-          showMessageBottomSheet(context, title, image);
+          if (context.mounted) {
+            showMessageBottomSheet(context, title, image);
+          }
         },
       ),
     );
