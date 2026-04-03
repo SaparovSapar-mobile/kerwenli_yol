@@ -20,7 +20,7 @@ class ScrollToTopButton extends ConsumerWidget {
 
     return Positioned(
       bottom: 20,
-      left: 20,
+      right: 20,
       child: SizedBox(
         height: 44,
         width: 44,
