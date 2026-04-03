@@ -34,7 +34,7 @@ class CardBookmarkButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    AppLocalizations lang = AppLocalizations.of(context)!;
+    final AppLocalizations lang = AppLocalizations.of(context)!;
 
     // ========= Colors =========
     final bool isLight = isLightTheme(context, ref);

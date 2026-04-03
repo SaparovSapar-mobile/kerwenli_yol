@@ -10,9 +10,14 @@ import 'package:kerwenli_yol/pages/parts/selection_button.dart';
 import 'package:kerwenli_yol/providers/database/user.dart';
 
 class MessageBs extends StatefulWidget {
-  const MessageBs({super.key, required this.title, required this.image});
+  const MessageBs({
+    super.key,
+    required this.title,
+    required this.image,
+    required this.companyId,
+  });
 
-  final String title, image;
+  final String title, image, companyId;
 
   @override
   State<MessageBs> createState() => _MessageBsState();
@@ -45,7 +50,7 @@ class _MessageBsState extends State<MessageBs> {
         children: [
           BottomSheetTitle(text: widget.title, icon: widget.image),
           Consumer(
-            builder: (context, ref, widget) {
+            builder: (context, ref, child) {
               final AsyncValue<UserModel> resultDB = ref.watch(getUserProvider);
 
               return resultDB.when(
@@ -74,6 +79,7 @@ class _MessageBsState extends State<MessageBs> {
                           child: TabBarView(
                             children: [
                               MessageBsWithPhone(
+                                companyId: widget.companyId,
                                 formKey: formKeyForPhone,
                                 phoneCtrl: _phoneCtrl,
                                 messageCtrl: _messageCtrl,
@@ -82,6 +88,7 @@ class _MessageBsState extends State<MessageBs> {
                                 formKey: formKeyForEmail,
                                 emailCtrl: _emailCtrl,
                                 messageCtrl: _messageCtrl,
+                                companyId: widget.companyId,
                               ),
                             ],
                           ),

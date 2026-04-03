@@ -73,12 +73,14 @@ Future<void> showFilterBottomSheet(BuildContext context) async =>
       builder: (context) => const FilterBottomSheet(),
     );
 
-Future<void> showCompanyPageMessageBottomSheet(BuildContext context) async =>
-    await showModalBottomSheet(
-      backgroundColor: Colors.transparent,
-      context: context,
-      builder: (context) => const CpMessageBs(),
-    );
+Future<void> showCompanyPageMessageBottomSheet(
+  BuildContext context,
+  String companyId,
+) async => await showModalBottomSheet(
+  backgroundColor: Colors.transparent,
+  context: context,
+  builder: (context) => CpMessageBs(companyId: companyId),
+);
 
 Future<void> showBookmarkSettingBottomSheet(BuildContext context) async =>
     await showModalBottomSheet(
@@ -98,9 +100,11 @@ Future<void> showMessageBottomSheet(
   BuildContext context,
   String title,
   String image,
+  String companyId,
 ) async => await showModalBottomSheet(
   backgroundColor: Colors.transparent,
   isScrollControlled: true,
   context: context,
-  builder: (context) => MessageBs(title: title, image: image),
+  builder: (context) =>
+      MessageBs(title: title, image: image, companyId: companyId),
 );

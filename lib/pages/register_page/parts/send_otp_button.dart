@@ -30,7 +30,7 @@ class SendOtpButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    AppLocalizations lang = AppLocalizations.of(context)!;
+    final AppLocalizations lang = AppLocalizations.of(context)!;
 
     return PrimaryButton(
       text: 'Kod ugratmak',

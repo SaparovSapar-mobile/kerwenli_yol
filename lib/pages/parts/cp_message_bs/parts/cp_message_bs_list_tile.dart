@@ -17,9 +17,10 @@ class CpMessageBsListTile extends ConsumerWidget {
     required this.title,
     required this.index,
     required this.image,
+    required this.companyId,
   });
 
-  final String title, image;
+  final String title, image, companyId;
   final int index;
 
   @override
@@ -81,7 +82,7 @@ class CpMessageBsListTile extends ConsumerWidget {
 
           ref.read(companyMessageListtileIndexProvider.notifier).state = index;
           if (context.mounted) {
-            showMessageBottomSheet(context, title, image);
+            showMessageBottomSheet(context, title, image, companyId);
           }
         },
       ),

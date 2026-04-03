@@ -9,10 +9,12 @@ class MessageBsWithEmail extends StatelessWidget {
     required this.formKey,
     required this.emailCtrl,
     required this.messageCtrl,
+    required this.companyId,
   });
 
   final GlobalKey<FormState> formKey;
   final TextEditingController emailCtrl, messageCtrl;
+  final String companyId;
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +37,7 @@ class MessageBsWithEmail extends StatelessWidget {
             messageCtrl: messageCtrl,
             formKeyForEmail: formKey,
             emailCtrl: emailCtrl,
+            companyId: companyId,
           ),
         ],
       ),

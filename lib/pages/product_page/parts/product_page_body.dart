@@ -213,6 +213,7 @@ class ProductPageBody extends ConsumerWidget {
                       context,
                       'Talap ugrat',
                       'messages.png',
+                      '',
                     ),
                   ),
                 ],

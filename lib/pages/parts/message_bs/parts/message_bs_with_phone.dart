@@ -9,10 +9,12 @@ class MessageBsWithPhone extends StatelessWidget {
     required this.formKey,
     required this.phoneCtrl,
     required this.messageCtrl,
+    required this.companyId,
   });
 
   final GlobalKey<FormState> formKey;
   final TextEditingController phoneCtrl, messageCtrl;
+  final String companyId;
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +37,7 @@ class MessageBsWithPhone extends StatelessWidget {
             messageCtrl: messageCtrl,
             formKeyForPhone: formKey,
             phoneCtrl: phoneCtrl,
+            companyId: companyId,
           ),
         ],
       ),

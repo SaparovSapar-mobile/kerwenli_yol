@@ -29,3 +29,6 @@ final StateProvider<bool> hasErrCompaniesProvider = StateProvider<bool>(
 final StateProvider<bool> loadCompaniesProvider = StateProvider<bool>(
   (ref) => true,
 );
+
+final AutoDisposeStateProvider<bool> sendMsgBtnPressProvider =
+    StateProvider.autoDispose<bool>((ref) => false);

@@ -32,7 +32,7 @@ class _PassCodeInputState extends ConsumerState<PassCodeInput> {
 
   @override
   Widget build(BuildContext context) {
-    AppLocalizations lang = AppLocalizations.of(context)!;
+    final AppLocalizations lang = AppLocalizations.of(context)!;
 
     // ========= Colors ==========
     final bool isLight = isLightTheme(context, ref);

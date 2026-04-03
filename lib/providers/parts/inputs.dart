@@ -1,26 +1,35 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/notifiers/inputs.dart';
 
-var clearNameProvider = StateProvider.autoDispose<bool>((ref) => false);
-var clearEmailProvider = StateProvider.autoDispose<bool>((ref) => false);
-var clearPhoneProvider = StateProvider.autoDispose<bool>((ref) => false);
+final AutoDisposeStateProvider<bool> clearNameProvider =
+    StateProvider.autoDispose<bool>((ref) => false);
+final AutoDisposeStateProvider<bool> clearEmailProvider =
+    StateProvider.autoDispose<bool>((ref) => false);
+final AutoDisposeStateProvider<bool> clearPhoneProvider =
+    StateProvider.autoDispose<bool>((ref) => false);
 
-var showPassProvider = StateProvider.autoDispose<bool>((ref) => false);
+final AutoDisposeStateProvider<bool> showPassProvider =
+    StateProvider.autoDispose<bool>((ref) => false);
 
-var otpCodeProvider = StateProvider<String>((ref) => '');
+final StateProvider<String> otpCodeProvider = StateProvider<String>(
+  (ref) => '',
+);
 
-var passCodeCounterProvider = StateProvider.autoDispose<int>((ref) => 0);
-var firstPassCodeProvider = StateProvider<String>((ref) => '');
+final AutoDisposeStateProvider<int> passCodeCounterProvider =
+    StateProvider.autoDispose<int>((ref) => 0);
+final StateProvider<String> firstPassCodeProvider = StateProvider<String>(
+  (ref) => '',
+);
 
 // ====== Providers For Loading =============
-var sendOTPCodeBtnPressProvider = StateProvider.autoDispose<bool>(
-  (ref) => false,
-);
-var checkOTPCodeBtnPressProvider = StateProvider.autoDispose<bool>(
-  (ref) => false,
-);
-var loginBtnPressProvider = StateProvider.autoDispose<bool>((ref) => false);
+final AutoDisposeStateProvider<bool> sendOTPCodeBtnPressProvider =
+    StateProvider.autoDispose<bool>((ref) => false);
+final AutoDisposeStateProvider<bool> checkOTPCodeBtnPressProvider =
+    StateProvider.autoDispose<bool>((ref) => false);
+final AutoDisposeStateProvider<bool> loginBtnPressProvider =
+    StateProvider.autoDispose<bool>((ref) => false);
 
-var categoriesProvider = StateNotifierProvider<CategoriesNotifier, List<int>>(
-  (ref) => CategoriesNotifier(),
-);
+final StateNotifierProvider<CategoriesNotifier, List<int>> categoriesProvider =
+    StateNotifierProvider<CategoriesNotifier, List<int>>(
+      (ref) => CategoriesNotifier(),
+    );
