@@ -4,6 +4,7 @@ import 'package:equatable/equatable.dart';
 import 'package:http/http.dart' as http;
 import 'package:kerwenli_yol/helpers/methods/static_data.dart';
 import 'package:kerwenli_yol/models/company.dart';
+import 'package:kerwenli_yol/models/send_msg_to_company.dart';
 
 class CompanyApiService {
   // fetch best companies -----------------------------
@@ -212,6 +213,23 @@ class CompanyApiService {
             .toList();
       }
       return [];
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  // send message to company =======
+  Future<bool> sendMessageToCompany(SendMsgToCompanyModel msg) async {
+    final Uri uri = Uri.parse('$apiUrl/client/message');
+
+    try {
+      final http.Response response = await http.post(
+        uri,
+        body: json.encode(msg.toJson()),
+      );
+      final dynamic jsonData = json.decode(response.body);
+
+      return response.statusCode == 200 && jsonData['status'];
     } catch (e) {
       rethrow;
     }
