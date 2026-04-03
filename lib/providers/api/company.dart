@@ -3,6 +3,7 @@ import 'package:kerwenli_yol/database/functions/favorite.dart';
 import 'package:kerwenli_yol/enums/favorite_type.dart';
 import 'package:kerwenli_yol/models/company.dart';
 import 'package:kerwenli_yol/models/favorite.dart';
+import 'package:kerwenli_yol/models/send_msg_to_company.dart';
 import 'package:kerwenli_yol/providers/database/user.dart';
 import 'package:kerwenli_yol/providers/pages/companies_page.dart';
 import 'package:kerwenli_yol/services/api/company.dart';
@@ -307,5 +308,18 @@ fetchFollowedCompaniesProvider = FutureProvider.family
       }
 
       ref.read(loadFCompaniesProvider.notifier).state = false;
+      return result;
+    });
+
+final AutoDisposeFutureProviderFamily<bool, SendMsgToCompanyModel>
+sendMessageToCompanyProvider = FutureProvider.autoDispose
+    .family<bool, SendMsgToCompanyModel>((ref, arg) async {
+      bool result = false;
+
+      try {
+        result = await ref.read(companyApiProvider).sendMessageToCompany(arg);
+      } catch (e) {
+        rethrow;
+      }
       return result;
     });
