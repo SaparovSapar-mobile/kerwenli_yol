@@ -11,12 +11,14 @@ class HeaderCategories extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final bool isLight = isLightTheme(context, ref);
-    Color bgColor = isLight ? LightColors.bgPageLight : DarkColors.bgPageDark;
-    Color iconColor = isLight
+    final Color bgColor = isLight
+        ? LightColors.bgPageLight
+        : DarkColors.bgPageDark;
+    final Color iconColor = isLight
         ? LightColors.textTitleLight
         : DarkColors.textTitleDark;
 
-    TextStyle textStyle = AppTextStyles.semiBold16;
+    final TextStyle textStyle = AppTextStyles.semiBold16;
 
     return GestureDetector(
       onTap: () => Navigator.pop(context),
