@@ -18,15 +18,19 @@ class OnboardPart extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final bool isLight = isLightTheme(context, ref);
-    Color titleColor = isLight
+    final Color titleColor = isLight
         ? LightColors.textTitleLight
         : DarkColors.textTitleDark;
-    Color descColor = isLight
+    final Color descColor = isLight
         ? LightColors.textDescriptionLight
         : DarkColors.textDescriptionDark;
 
-    TextStyle titleStyle = AppTextStyles.semiBold20.copyWith(color: titleColor);
-    TextStyle descStyle = AppTextStyles.regular16.copyWith(color: descColor);
+    final TextStyle titleStyle = AppTextStyles.semiBold20.copyWith(
+      color: titleColor,
+    );
+    final TextStyle descStyle = AppTextStyles.regular16.copyWith(
+      color: descColor,
+    );
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,

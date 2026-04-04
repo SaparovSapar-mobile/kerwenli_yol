@@ -13,14 +13,14 @@ class OnboardNextButton extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final bool isLight = isLightTheme(context, ref);
-    Color bgColor = isLight ? LightColors.primary : DarkColors.primary;
-    Color iconColor = isLight
+    final Color bgColor = isLight ? LightColors.primary : DarkColors.primary;
+    final Color iconColor = isLight
         ? LightColors.textTitleDark
         : DarkColors.textTitleDark;
 
     return GestureDetector(
       onTap: () {
-        int page = ref.read(onboardPageIndexProvider);
+        final int page = ref.read(onboardPageIndexProvider);
         ref.read(onboardPageIndexProvider.notifier).state = page + 1;
 
         pageCtrl.animateToPage(

@@ -26,7 +26,7 @@ class _OnboardPageState extends ConsumerState<OnboardPage> {
 
   @override
   Widget build(BuildContext context) {
-    int onboardPage = ref.watch(onboardPageIndexProvider);
+    final int onboardPage = ref.watch(onboardPageIndexProvider);
 
     List<Widget> pages = [
       OnboardPart(
