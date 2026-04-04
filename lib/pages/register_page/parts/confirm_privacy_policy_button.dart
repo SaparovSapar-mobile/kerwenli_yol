@@ -15,18 +15,20 @@ class ConfirmPrivacyPolicyButton extends ConsumerWidget {
     final AppLocalizations lang = AppLocalizations.of(context)!;
 
     final bool isLight = isLightTheme(context, ref);
-    Color activeColor = isLight ? LightColors.primary : DarkColors.primary;
-    Color textColor = isLight
+    final Color activeColor = isLight
+        ? LightColors.primary
+        : DarkColors.primary;
+    final Color textColor = isLight
         ? LightColors.textTitleLight
         : DarkColors.textTitleDark;
 
-    TextStyle textStyle = AppTextStyles.medium14.copyWith(
+    final TextStyle textStyle = AppTextStyles.medium14.copyWith(
       decoration: TextDecoration.underline,
       fontStyle: FontStyle.italic,
       color: textColor,
     );
 
-    bool confirmPrivacy = ref.watch(confirmPrivacyProvider);
+    final bool confirmPrivacy = ref.watch(confirmPrivacyProvider);
 
     return Row(
       children: [

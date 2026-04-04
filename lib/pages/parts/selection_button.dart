@@ -20,16 +20,18 @@ class SelectionButton extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // ======== Colors =========
     final bool isLight = isLightTheme(context, ref);
-    Color bgColor = isLight ? LightColors.bgPageLight : DarkColors.bgPageDark;
-    Color subBgColor = isLight
+    final Color bgColor = isLight
+        ? LightColors.bgPageLight
+        : DarkColors.bgPageDark;
+    final Color subBgColor = isLight
         ? LightColors.bgBlogLight
         : DarkColors.bgBlogDark;
 
     // ======== Text Styles =========
-    TextStyle titleStyle1 = AppTextStyles.semiBold12.copyWith(
+    final TextStyle titleStyle1 = AppTextStyles.semiBold12.copyWith(
       color: isLight ? LightColors.textTitleLight : DarkColors.textTitleDark,
     );
-    TextStyle titleStyle2 = AppTextStyles.semiBold12.copyWith(
+    final TextStyle titleStyle2 = AppTextStyles.semiBold12.copyWith(
       color: isLight
           ? LightColors.textDescriptionLight
           : DarkColors.textDescriptionDark,

@@ -1,3 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-var confirmPrivacyProvider = StateProvider<bool>((ref) => false);
+final StateProvider<bool> confirmPrivacyProvider = StateProvider<bool>(
+  (ref) => false,
+);

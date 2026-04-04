@@ -13,11 +13,11 @@ class LoginForgotPasswordButton extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final bool isLight = isLightTheme(context, ref);
-    Color textColor = isLight
+    final Color textColor = isLight
         ? LightColors.textDescriptionLight
         : DarkColors.textDescriptionDark;
 
-    TextStyle textStyle = AppTextStyles.medium14.copyWith(
+    final TextStyle textStyle = AppTextStyles.medium14.copyWith(
       decoration: TextDecoration.underline,
       fontStyle: FontStyle.italic,
       color: textColor,
