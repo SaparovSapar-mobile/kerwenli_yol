@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/navigation.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
+import 'package:kerwenli_yol/l10n/app_localizations.dart';
 import 'package:kerwenli_yol/pages/about_us_page/about_us_page.dart';
 import 'package:kerwenli_yol/pages/contact_us_page/contact_us_page.dart';
 import 'package:kerwenli_yol/pages/privacy_policy_page/privacy_policy_page.dart';
@@ -14,6 +15,8 @@ class AboutPart extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final AppLocalizations lang = AppLocalizations.of(context)!;
+
     // ====== Colors. ==========
     final bool isLight = isLightTheme(context, ref);
     final Color bgColor = isLight
@@ -29,7 +32,7 @@ class AboutPart extends ConsumerWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Biz Barada'),
+          Text(lang.aboutUs),
           SizedBox(height: 5),
           SettingPartCard(
             index: 4,
@@ -51,7 +54,7 @@ class AboutPart extends ConsumerWidget {
           ),
           SettingPartCard(
             index: 7,
-            text: 'Gizlinllik syyasaty',
+            text: lang.privacyPolicy,
             icon: Icons.privacy_tip,
             onTap: () =>
                 goToPage(context, PrivacyPolicyPage(), AxisDirection.left),

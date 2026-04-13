@@ -5,6 +5,7 @@ import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/helpers/functions/translations.dart';
 import 'package:kerwenli_yol/helpers/methods/image_and_video.dart';
 import 'package:kerwenli_yol/helpers/methods/pages/home_page.dart';
+import 'package:kerwenli_yol/l10n/app_localizations.dart';
 import 'package:kerwenli_yol/models/news_model.dart';
 import 'package:kerwenli_yol/pages/companies_page/parts/company_card/parts/company_card_image.dart';
 import 'package:kerwenli_yol/pages/company_page/parts/company_page_top.dart';
@@ -25,6 +26,8 @@ class NewsDetailPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final AppLocalizations lang = AppLocalizations.of(context)!;
+
     // ============= Colors ===========
     final bool isLight = isLightTheme(context, ref);
     final Color bgColor = isLight
@@ -69,7 +72,7 @@ class NewsDetailPage extends ConsumerWidget {
             children: [
               InternetStatusBar(),
               CompanyPageTop(
-                text: 'Tazelik',
+                text: lang.news,
                 onPressed: () {},
                 showBottomLine: false,
                 leftPadding: 0,

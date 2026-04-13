@@ -25,4 +25,91 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get thisUserAlreadyExists => 'This user already exists';
+
+  @override
+  String get aboutUs => 'About Us';
+
+  @override
+  String get forContact => 'For contact';
+
+  @override
+  String get socialMedia => 'Social media';
+
+  @override
+  String get selectLanguage => 'Select Language';
+
+  @override
+  String get allCategory => 'All category';
+
+  @override
+  String get search => 'Search';
+
+  @override
+  String get bookmark => 'Bookmark';
+
+  @override
+  String get logIn => 'Log In';
+
+  @override
+  String get incoterms => 'Incoterms';
+
+  @override
+  String get news => 'News';
+
+  @override
+  String get contact => 'Contact';
+
+  @override
+  String get categories => 'Categories';
+
+  @override
+  String get leadingCompanies => 'Leading Companies';
+
+  @override
+  String get allView => 'All view';
+
+  @override
+  String get vipCompanies => 'VIP Companies';
+
+  @override
+  String get newProducts => 'New Products';
+
+  @override
+  String get export => 'Export';
+
+  @override
+  String get shortVideos => 'Short Videos';
+
+  @override
+  String get localBrands => 'Local Brands';
+
+  @override
+  String get all => 'All';
+
+  @override
+  String get ourPartners => 'Our Partners';
+
+  @override
+  String get acknowledgements => 'Acknowledgements';
+
+  @override
+  String get companies => 'Companies';
+
+  @override
+  String get privacyPolicy => 'Privacy Policy';
+
+  @override
+  String get termsUse => 'Terms of Use';
+
+  @override
+  String get back => 'Back';
+
+  @override
+  String get info => 'Info';
+
+  @override
+  String get media => 'Media';
+
+  @override
+  String get open => 'Open';
 }

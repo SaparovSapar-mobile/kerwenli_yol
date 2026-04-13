@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kerwenli_yol/helpers/methods/parts/app_bar_methods.dart';
 import 'package:kerwenli_yol/helpers/methods/static_data.dart';
+import 'package:kerwenli_yol/l10n/app_localizations.dart';
 import 'package:kerwenli_yol/models/mark_type.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_marks/parts/hps_list.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_marks/parts/hps_tabs.dart';
@@ -211,10 +212,12 @@ class _HomeMarksSliderState extends State<HomeMarksSlider>
 
   @override
   Widget build(BuildContext context) {
+    final AppLocalizations lang = AppLocalizations.of(context)!;
+
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        HomeMoreButton(text: 'Yerli markalary'),
+        HomeMoreButton(text: lang.localBrands),
         HpsTabs(tabCtrl: _tabCtrl, markTypes: widget.markTypes),
         SizedBox(
           height: 2 * homeBestCompaniesCardHeight + 5,

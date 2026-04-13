@@ -4,6 +4,7 @@ import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/helpers/functions/translations.dart';
 import 'package:kerwenli_yol/helpers/methods/image_and_video.dart';
 import 'package:kerwenli_yol/helpers/methods/pages/home_page.dart';
+import 'package:kerwenli_yol/l10n/app_localizations.dart';
 import 'package:kerwenli_yol/models/gratitude.dart';
 import 'package:kerwenli_yol/pages/company_page/parts/company_page_top.dart';
 import 'package:kerwenli_yol/pages/parts/internet_status_bar/internet_status_bar.dart';
@@ -23,6 +24,8 @@ class GratitudeDetailPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final AppLocalizations lang = AppLocalizations.of(context)!;
+
     // ============= Colors ===========
     final bool isLight = isLightTheme(context, ref);
     final Color bgColor = isLight
@@ -70,7 +73,7 @@ class GratitudeDetailPage extends ConsumerWidget {
             children: [
               InternetStatusBar(),
               CompanyPageTop(
-                text: 'Minnetdarlyklar',
+                text: lang.acknowledgements,
                 onPressed: () {},
                 showBottomLine: false,
                 leftPadding: 0,

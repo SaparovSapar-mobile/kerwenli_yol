@@ -4,6 +4,7 @@ import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/helpers/methods/pages/bottom_navigation.dart';
 import 'package:kerwenli_yol/helpers/methods/pages/home_page.dart';
 import 'package:kerwenli_yol/helpers/methods/pages/search_page.dart';
+import 'package:kerwenli_yol/l10n/app_localizations.dart';
 import 'package:kerwenli_yol/pages/home_page/home_page.dart';
 import 'package:kerwenli_yol/pages/parts/internet_status_bar/internet_status_bar.dart';
 import 'package:kerwenli_yol/pages/parts/scroll_to_top_button.dart';
@@ -21,6 +22,8 @@ class BottomNavigationPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final AppLocalizations lang = AppLocalizations.of(context)!;
+
     // ======= Colors =========
     final bool isLight = isLightTheme(context, ref);
     final Color activeTextColor = isLight
@@ -97,10 +100,15 @@ class BottomNavigationPage extends ConsumerWidget {
           unselectedItemColor: textColor,
           backgroundColor: itemBgColor,
           items: [
-            bottomNavBarItem(Icons.home, 'Home', selectedIndex == 0, isLight),
+            bottomNavBarItem(
+              Icons.home,
+              lang.home,
+              selectedIndex == 0,
+              isLight,
+            ),
             bottomNavBarItem(
               Icons.search,
-              'Search',
+              lang.search,
               selectedIndex == 1,
               isLight,
             ),

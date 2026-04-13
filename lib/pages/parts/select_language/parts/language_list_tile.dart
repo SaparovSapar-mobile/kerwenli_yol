@@ -18,19 +18,21 @@ class LanguageListTile extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    String selectedLang = ref.watch(langProvider);
-    bool isActive = selectedLang == lang;
+    final String selectedLang = ref.watch(langProvider);
+    final bool isActive = selectedLang == lang;
 
     final bool isLight = isLightTheme(context, ref);
-    Color leadingBgColor = isLight
+    final Color leadingBgColor = isLight
         ? LightColors.bgPageLight
         : DarkColors.bgPageDark;
-    Color activeLeadingBgColor = isLight
+    final Color activeLeadingBgColor = isLight
         ? LightColors.bgBlogLight
         : DarkColors.bgBlogDark;
-    Color tralingIconColor = isLight ? LightColors.primary : DarkColors.primary;
+    final Color tralingIconColor = isLight
+        ? LightColors.primary
+        : DarkColors.primary;
 
-    TextStyle titleStyle = AppTextStyles.medium12;
+    final TextStyle titleStyle = AppTextStyles.medium12;
 
     return Container(
       decoration: BoxDecoration(

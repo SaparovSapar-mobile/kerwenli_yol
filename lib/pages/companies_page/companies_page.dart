@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/examples.dart';
 import 'package:kerwenli_yol/helpers/methods/pages/home_page.dart';
+import 'package:kerwenli_yol/l10n/app_localizations.dart';
 import 'package:kerwenli_yol/pages/companies_page/parts/companies_grid_view.dart';
 import 'package:kerwenli_yol/pages/companies_page/parts/companies_list_view.dart';
 import 'package:kerwenli_yol/pages/companies_page/parts/header_companies.dart';
@@ -18,7 +19,8 @@ class CompaniesPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // 9f4806b2-2fc8-4de1-8c32-63b5f24f57b2
+    final AppLocalizations lang = AppLocalizations.of(context)!;
+
     return PopScope(
       canPop: true,
       onPopInvokedWithResult: (didPop, result) {
@@ -30,7 +32,7 @@ class CompaniesPage extends ConsumerWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             InternetStatusBar(),
-            HeaderCompanies(text: 'Karhanalar', leftPadding: 0),
+            HeaderCompanies(text: lang.companies, leftPadding: 0),
             SortAndFilter(
               gridOrListProvider: gridOrListSortProvider,
               isGridProvider: isGridCompaniesProvider,

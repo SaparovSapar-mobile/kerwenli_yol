@@ -13,15 +13,16 @@ class BookmarksPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final List<String> bh = bookmarkHeaders(context);
     return Scaffold(
       appBar: bookmarsPageAppBar(context),
       body: DefaultTabController(
-        length: bookmarkHeaders.length,
+        length: bh.length,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             InternetStatusBar(),
-            HeadCategoryButtons(categories: bookmarkHeaders),
+            HeadCategoryButtons(categories: bh),
             AppBarBottomLine(thickness: 10),
             SizedBox(height: 5),
             Expanded(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/navigation.dart';
 import 'package:kerwenli_yol/helpers/methods/parts/app_bar_methods.dart';
+import 'package:kerwenli_yol/l10n/app_localizations.dart';
 import 'package:kerwenli_yol/models/new_product.dart';
 import 'package:kerwenli_yol/models/product.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_new_products/parts/home_new_products_list.dart';
@@ -15,6 +16,8 @@ class HomeNewProducts extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final AppLocalizations lang = AppLocalizations.of(context)!;
+
     final AsyncValue<List<NewProductModel>> resultApi = ref.watch(
       fetchNewProductsProvider,
     );
@@ -34,7 +37,7 @@ class HomeNewProducts extends ConsumerWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             HomeMoreButton(
-              text: 'Täze önümler',
+              text: lang.newProducts,
               onTap: () => goToPage(
                 context,
                 NewProductsPage(products: products),

@@ -1,4 +1,6 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:kerwenli_yol/l10n/app_localizations.dart';
 
 final String apiUrl = dotenv.env['API_URL']!;
 final String pathUrl = dotenv.env['PATH_URL']!;
@@ -44,16 +46,14 @@ const homeMarkTypeHeight = 44.0;
 
 const vipCompanyCardWidth = 112.0;
 
-final List<String> bookmarkHeaders = [
-  'Likelar',
-  'Bookmarklar',
-  'Follow Firmalar',
-];
+List<String> bookmarkHeaders(BuildContext context) {
+  final AppLocalizations lang = AppLocalizations.of(context)!;
 
-final List<String> searchTabs = [
-  'Harytlar',
-  'Firmalar',
-  'Tazelikler',
-  'Markalar',
-  'Medialar',
-];
+  return ['Likelar', lang.bookmark, 'Follow Firmalar'];
+}
+
+List<String> searchTabs(BuildContext context) {
+  final AppLocalizations lang = AppLocalizations.of(context)!;
+
+  return ['Harytlar', 'Firmalar', lang.news, 'Markalar', 'Medialar'];
+}

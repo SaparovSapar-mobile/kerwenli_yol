@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kerwenli_yol/enums/card_top_text_type.dart';
+import 'package:kerwenli_yol/l10n/app_localizations.dart';
 
 class CardTopText extends StatelessWidget {
   const CardTopText({
@@ -14,12 +15,14 @@ class CardTopText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final AppLocalizations lang = AppLocalizations.of(context)!;
+
     String text = "VIP";
     Color cardColor = const Color(0xFFFBB725);
 
     switch (cardTopTextType) {
       case CardTopTextType.news:
-        text = "Tazelik";
+        text = lang.news;
         cardColor = const Color(0xFFFFC13C);
         break;
       case CardTopTextType.vip:
@@ -31,7 +34,7 @@ class CardTopText extends StatelessWidget {
         cardColor = const Color(0xFF2BC171);
         break;
       case CardTopTextType.export:
-        text = "Export";
+        text = lang.export;
         cardColor = const Color(0xFFF3690D);
         break;
       case CardTopTextType.virtual:

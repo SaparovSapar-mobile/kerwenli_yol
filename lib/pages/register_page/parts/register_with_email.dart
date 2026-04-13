@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kerwenli_yol/l10n/app_localizations.dart';
 import 'package:kerwenli_yol/pages/login_page/login_page.dart';
 import 'package:kerwenli_yol/pages/parts/bg_page_light_button.dart';
 import 'package:kerwenli_yol/pages/parts/inputs/confirm_password_input.dart';
@@ -28,6 +29,8 @@ class RegisterWithEmail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final AppLocalizations lang = AppLocalizations.of(context)!;
+
     return Form(
       key: formKey,
       child: Column(
@@ -63,7 +66,7 @@ class RegisterWithEmail extends StatelessWidget {
           ),
           SizedBox(height: 10),
           BgPageLightButton(
-            text: 'Ulgama Girmek',
+            text: lang.logIn,
             onPressed: () => Navigator.pushReplacement(
               context,
               MaterialPageRoute(builder: (context) => const LoginPage()),

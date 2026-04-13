@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/navigation.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/helpers/methods/static_data.dart';
+import 'package:kerwenli_yol/l10n/app_localizations.dart';
 import 'package:kerwenli_yol/pages/bookmark_page/bookmarks_page.dart';
 import 'package:kerwenli_yol/pages/user_profile_page/parts/user_profile_info_card.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
@@ -14,6 +15,8 @@ class UserProfileInfo extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final AppLocalizations lang = AppLocalizations.of(context)!;
+
     // ====== Colors ========
     final bool isLight = isLightTheme(context, ref);
     final Color innerBgColor = isLight
@@ -34,7 +37,7 @@ class UserProfileInfo extends ConsumerWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
-            'Info',
+            lang.info,
             style: titleStyle,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,

@@ -31,7 +31,7 @@ class LoginButton extends ConsumerWidget {
     final AppLocalizations lang = AppLocalizations.of(context)!;
 
     return PrimaryButton(
-      text: 'Ulgama Girmek',
+      text: lang.logIn,
       btnPressProvider: loginBtnPressProvider,
       onPressed: () async {
         final GlobalKey<FormState> formKey = emailCtrl != null

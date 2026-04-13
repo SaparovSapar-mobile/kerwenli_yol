@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kerwenli_yol/l10n/app_localizations.dart';
 import 'package:kerwenli_yol/models/company.dart';
 import 'package:kerwenli_yol/pages/company_page/parts/company_page_info/parts/company_features/company_features.dart';
 import 'package:kerwenli_yol/pages/company_page/parts/company_page_info/parts/company_info/company_info.dart';
@@ -12,13 +13,15 @@ class CompanyPageInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final AppLocalizations lang = AppLocalizations.of(context)!;
+
     return DefaultTabController(
       length: 3,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           CompanyPagePartTabbar(
-            tabTexts: ['Biz Barada', 'Info', 'Mumkincilikler'],
+            tabTexts: [lang.aboutUs, lang.info, 'Mumkincilikler'],
           ),
           Expanded(
             child: TabBarView(

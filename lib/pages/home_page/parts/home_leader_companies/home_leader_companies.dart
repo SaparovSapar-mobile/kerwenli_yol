@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/navigation.dart';
 import 'package:kerwenli_yol/helpers/methods/parts/app_bar_methods.dart';
+import 'package:kerwenli_yol/l10n/app_localizations.dart';
 import 'package:kerwenli_yol/models/company.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_leader_companies/parts/home_leader_companies_list.dart';
 import 'package:kerwenli_yol/pages/leader_companies/leader_companies.dart';
@@ -14,6 +15,8 @@ class HomeLeaderCompanies extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final AppLocalizations lang = AppLocalizations.of(context)!;
+
     final AsyncValue<List<CompanyModel>> resultApi = ref.watch(
       fetchBestCompaniesProvider,
     );
@@ -28,7 +31,7 @@ class HomeLeaderCompanies extends ConsumerWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             HomeMoreButton(
-              text: 'Öňde baryjy kärhanalar',
+              text: lang.leadingCompanies,
               onTap: () => goToPage(
                 context,
                 LeaderCompaniesPage(companies: data),

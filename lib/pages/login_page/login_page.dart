@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/helpers/methods/parts/app_bar_methods.dart';
+import 'package:kerwenli_yol/l10n/app_localizations.dart';
 import 'package:kerwenli_yol/pages/login_page/parts/login_with_email.dart';
 import 'package:kerwenli_yol/pages/login_page/parts/login_with_phone.dart';
 import 'package:kerwenli_yol/pages/onboard_page/parts/theme_switcher_button.dart';
@@ -34,6 +35,8 @@ class _LoginPageState extends ConsumerState<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    final AppLocalizations lang = AppLocalizations.of(context)!;
+
     // ======= Colors ========
     final bool isLight = isLightTheme(context, ref);
     final Color bgColor = isLight
@@ -49,7 +52,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
           leading: BackLeadingButton(),
-          title: Text('Ulgama Girmek'),
+          title: Text(lang.logIn),
           backgroundColor: bgColor,
           actions: [
             Padding(

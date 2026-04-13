@@ -17,13 +17,14 @@ class SearchResult extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final List<String> st = searchTabs(context);
     final AsyncValue<SearchModel> resultApi = ref.watch(fetchSearchProvider);
 
     return DefaultTabController(
-      length: searchTabs.length,
+      length: st.length,
       child: Column(
         children: [
-          HeadCategoryButtons(categories: searchTabs),
+          HeadCategoryButtons(categories: st),
           AppBarBottomLine(thickness: 10),
           SizedBox(height: 5),
           resultApi.when(

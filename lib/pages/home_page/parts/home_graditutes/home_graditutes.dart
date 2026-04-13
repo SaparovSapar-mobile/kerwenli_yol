@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/navigation.dart';
 import 'package:kerwenli_yol/helpers/methods/parts/app_bar_methods.dart';
+import 'package:kerwenli_yol/l10n/app_localizations.dart';
 import 'package:kerwenli_yol/models/default_params.dart';
 import 'package:kerwenli_yol/models/gratitude.dart';
 import 'package:kerwenli_yol/pages/gratitudes_page/gratitudes_page.dart';
@@ -15,6 +16,8 @@ class HomeGraditutes extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final AppLocalizations lang = AppLocalizations.of(context)!;
+
     final DefaultParams arg = DefaultParams(page: 1, pageSize: 10);
     final AsyncValue<List<GratitudeModel>> resultApi = ref.watch(
       fetchGradtitudesProvider(arg),
@@ -30,7 +33,7 @@ class HomeGraditutes extends ConsumerWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             HomeMoreButton(
-              text: 'Minnetdarlyklar',
+              text: lang.acknowledgements,
               onTap: () =>
                   goToPage(context, GratitudesPage(), AxisDirection.left),
             ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kerwenli_yol/examples.dart';
 import 'package:kerwenli_yol/helpers/methods/pages/home_page.dart';
+import 'package:kerwenli_yol/l10n/app_localizations.dart';
 import 'package:kerwenli_yol/models/company.dart';
 import 'package:kerwenli_yol/pages/companies_page/parts/header_companies.dart';
 import 'package:kerwenli_yol/pages/leader_companies/parts/leader_companies_grid_view.dart';
@@ -14,13 +15,15 @@ class LeaderCompaniesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final AppLocalizations lang = AppLocalizations.of(context)!;
+
     return Scaffold(
       appBar: homePageAppBar(context),
       body: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           InternetStatusBar(),
-          HeaderCompanies(text: 'Öňde baryjy kärhanalar', leftPadding: 0),
+          HeaderCompanies(text: lang.leadingCompanies, leftPadding: 0),
           CategoriesHeader(
             categories: headerCategories,
             childWidget: LeaderCompaniesGridView(companies: companies),

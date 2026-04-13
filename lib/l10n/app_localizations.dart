@@ -134,6 +134,180 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'This user already exists'**
   String get thisUserAlreadyExists;
+
+  /// No description provided for @aboutUs.
+  ///
+  /// In en, this message translates to:
+  /// **'About Us'**
+  String get aboutUs;
+
+  /// No description provided for @forContact.
+  ///
+  /// In en, this message translates to:
+  /// **'For contact'**
+  String get forContact;
+
+  /// No description provided for @socialMedia.
+  ///
+  /// In en, this message translates to:
+  /// **'Social media'**
+  String get socialMedia;
+
+  /// No description provided for @selectLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Language'**
+  String get selectLanguage;
+
+  /// No description provided for @allCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'All category'**
+  String get allCategory;
+
+  /// No description provided for @search.
+  ///
+  /// In en, this message translates to:
+  /// **'Search'**
+  String get search;
+
+  /// No description provided for @bookmark.
+  ///
+  /// In en, this message translates to:
+  /// **'Bookmark'**
+  String get bookmark;
+
+  /// No description provided for @logIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Log In'**
+  String get logIn;
+
+  /// No description provided for @incoterms.
+  ///
+  /// In en, this message translates to:
+  /// **'Incoterms'**
+  String get incoterms;
+
+  /// No description provided for @news.
+  ///
+  /// In en, this message translates to:
+  /// **'News'**
+  String get news;
+
+  /// No description provided for @contact.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact'**
+  String get contact;
+
+  /// No description provided for @categories.
+  ///
+  /// In en, this message translates to:
+  /// **'Categories'**
+  String get categories;
+
+  /// No description provided for @leadingCompanies.
+  ///
+  /// In en, this message translates to:
+  /// **'Leading Companies'**
+  String get leadingCompanies;
+
+  /// No description provided for @allView.
+  ///
+  /// In en, this message translates to:
+  /// **'All view'**
+  String get allView;
+
+  /// No description provided for @vipCompanies.
+  ///
+  /// In en, this message translates to:
+  /// **'VIP Companies'**
+  String get vipCompanies;
+
+  /// No description provided for @newProducts.
+  ///
+  /// In en, this message translates to:
+  /// **'New Products'**
+  String get newProducts;
+
+  /// No description provided for @export.
+  ///
+  /// In en, this message translates to:
+  /// **'Export'**
+  String get export;
+
+  /// No description provided for @shortVideos.
+  ///
+  /// In en, this message translates to:
+  /// **'Short Videos'**
+  String get shortVideos;
+
+  /// No description provided for @localBrands.
+  ///
+  /// In en, this message translates to:
+  /// **'Local Brands'**
+  String get localBrands;
+
+  /// No description provided for @all.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get all;
+
+  /// No description provided for @ourPartners.
+  ///
+  /// In en, this message translates to:
+  /// **'Our Partners'**
+  String get ourPartners;
+
+  /// No description provided for @acknowledgements.
+  ///
+  /// In en, this message translates to:
+  /// **'Acknowledgements'**
+  String get acknowledgements;
+
+  /// No description provided for @companies.
+  ///
+  /// In en, this message translates to:
+  /// **'Companies'**
+  String get companies;
+
+  /// No description provided for @privacyPolicy.
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy Policy'**
+  String get privacyPolicy;
+
+  /// No description provided for @termsUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Terms of Use'**
+  String get termsUse;
+
+  /// No description provided for @back.
+  ///
+  /// In en, this message translates to:
+  /// **'Back'**
+  String get back;
+
+  /// No description provided for @info.
+  ///
+  /// In en, this message translates to:
+  /// **'Info'**
+  String get info;
+
+  /// No description provided for @media.
+  ///
+  /// In en, this message translates to:
+  /// **'Media'**
+  String get media;
+
+  /// No description provided for @open.
+  ///
+  /// In en, this message translates to:
+  /// **'Open'**
+  String get open;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
