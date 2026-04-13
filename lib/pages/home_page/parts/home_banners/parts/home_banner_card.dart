@@ -17,6 +17,7 @@ class HomeBannerCard extends ConsumerWidget {
       banner.imageTm,
       banner.imageRu,
       banner.imageEn,
+      banner.imageEn,
     );
 
     return GestureDetector(

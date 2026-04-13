@@ -39,6 +39,7 @@ class ContactUsAddress extends ConsumerWidget {
           data.addressTm,
           data.addressRu,
           data.addressEn,
+          data.addressEn,
         );
 
         return Container(

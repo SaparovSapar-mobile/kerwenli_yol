@@ -37,6 +37,7 @@ class CompanyCard extends ConsumerWidget {
       company.nameTm,
       company.nameRu,
       company.nameEn,
+      company.nameEn,
     );
 
     return GestureDetector(

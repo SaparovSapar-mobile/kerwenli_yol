@@ -18,9 +18,9 @@ class HomeVipCompanyRating extends ConsumerWidget {
     if (bGColor != null) {
       bgColor = bGColor!;
     }
-    Color iconColor = isLight ? LightColors.vipCard : DarkColors.vipCard;
+    final Color iconColor = isLight ? LightColors.vipCard : DarkColors.vipCard;
 
-    TextStyle textStyle = AppTextStyles.medium10.copyWith(
+    final TextStyle textStyle = AppTextStyles.medium10.copyWith(
       fontSize: fontSize ?? 8,
     );
 

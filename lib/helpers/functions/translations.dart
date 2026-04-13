@@ -7,12 +7,15 @@ String translateText(
   String textTm,
   String textRu,
   String textEn,
+  String textTr,
 ) {
   String lang = ref.watch(langProvider);
 
   switch (lang) {
-    case LangType.tr:
+    case LangType.tk:
       return textTm;
+    case LangType.tr:
+      return textTr;
     case LangType.ru:
       return textRu;
     case LangType.en:

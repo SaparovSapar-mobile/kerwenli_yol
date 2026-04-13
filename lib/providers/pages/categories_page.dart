@@ -1,7 +1,12 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-var categoryProvider = StateProvider<String>((ref) => '');
+final StateProvider<String> categoryProvider = StateProvider<String>(
+  (ref) => '',
+);
 
-var categoriesFilterIndexProvider = StateProvider<List<int>>((ref) => []);
+final StateProvider<List<int>> categoriesFilterIndexProvider =
+    StateProvider<List<int>>((ref) => []);
 
-var headerCategoryIndexProvider = StateProvider<String>((ref) => '');
+final StateProvider<String> headerCategoryIndexProvider = StateProvider<String>(
+  (ref) => '',
+);

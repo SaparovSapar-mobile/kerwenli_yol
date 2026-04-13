@@ -44,6 +44,7 @@ class CompanyPageAbout extends ConsumerWidget {
       compDesc.tm,
       compDesc.ru,
       compDesc.en,
+      compDesc.en,
     );
 
     // ======= company banners =======
@@ -60,6 +61,7 @@ class CompanyPageAbout extends ConsumerWidget {
       ref,
       compAddress.tm,
       compAddress.ru,
+      compAddress.en,
       compAddress.en,
     );
 

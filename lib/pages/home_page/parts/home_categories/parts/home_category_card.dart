@@ -40,12 +40,14 @@ class HomeCategoryCard extends ConsumerWidget {
       category.nameTm,
       category.nameRu,
       category.nameEn,
+      category.nameEn,
     );
 
     final String image = translateText(
       ref,
       category.imageTm,
       category.imageRu,
+      category.imageEn,
       category.imageEn,
     );
 

@@ -18,6 +18,11 @@ class SelectLanguage extends StatelessWidget {
           image: 'tkm.png',
         ),
         const LanguageListTile(
+          title: 'Türkçe',
+          lang: LangType.tr,
+          image: 'tkm.png',
+        ),
+        const LanguageListTile(
           title: 'Русский',
           lang: LangType.ru,
           image: 'ru.png',

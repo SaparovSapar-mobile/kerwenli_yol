@@ -1,7 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-var companySortIndexProvider = StateProvider<int>((ref) => 0);
-var companyMessageListtileIndexProvider = StateProvider<int>((ref) => 0);
+final StateProvider<int> companySortIndexProvider = StateProvider<int>(
+  (ref) => 0,
+);
+final StateProvider<int> companyMessageListtileIndexProvider =
+    StateProvider<int>((ref) => 0);
 
 final AutoDisposeStateProvider<bool> hasBCompaniesProvider =
     StateProvider.autoDispose<bool>((ref) => true);

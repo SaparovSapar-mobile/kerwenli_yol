@@ -43,12 +43,14 @@ class GradituteCard extends ConsumerWidget {
       gratitude.nameTm,
       gratitude.nameRu,
       gratitude.nameEn,
+      gratitude.nameEn,
     );
 
     final String description = translateText(
       ref,
       gratitude.descriptionTm,
       gratitude.descriptionRu,
+      gratitude.descriptionEn,
       gratitude.descriptionEn,
     );
 

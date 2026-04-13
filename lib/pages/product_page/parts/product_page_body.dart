@@ -46,12 +46,14 @@ class ProductPageBody extends ConsumerWidget {
       product.descriptionTm,
       product.descriptionEn,
       product.descriptionEn,
+      product.descriptionEn,
     );
 
     final String name = translateText(
       ref,
       product.nameTm,
       product.nameRu,
+      product.nameEn,
       product.nameEn,
     );
 
@@ -60,6 +62,7 @@ class ProductPageBody extends ConsumerWidget {
       ref,
       categoryName.tm,
       categoryName.ru,
+      categoryName.en,
       categoryName.en,
     );
 

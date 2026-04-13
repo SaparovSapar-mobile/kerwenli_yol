@@ -59,6 +59,7 @@ class HpsTabs extends ConsumerWidget {
                 item.nameTm,
                 item.nameRu,
                 item.nameEn,
+                item.nameEn,
               );
 
               return Tab(text: name);

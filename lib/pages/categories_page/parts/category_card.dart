@@ -43,6 +43,7 @@ class CategoryCard extends ConsumerWidget {
       category.nameTm,
       category.nameRu,
       category.nameEn,
+      category.nameEn,
     );
 
     // ====== Image ======
@@ -50,6 +51,7 @@ class CategoryCard extends ConsumerWidget {
       ref,
       category.imageTm,
       category.imageRu,
+      category.imageEn,
       category.imageEn,
     );
 

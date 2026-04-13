@@ -38,7 +38,13 @@ class HpsList extends ConsumerWidget {
             itemBuilder: (context, index) {
               final MarkModel mark = data[index];
               final TranslationModel bn = mark.businessName;
-              final String name = translateText(ref, bn.tm, bn.ru, bn.en);
+              final String name = translateText(
+                ref,
+                bn.tm,
+                bn.ru,
+                bn.en,
+                bn.en,
+              );
               return HomeLeaderCompanyCard(
                 name: name,
                 companyId: mark.companyId,

@@ -14,8 +14,8 @@ class CompanyStatus extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final bool isLight = isLightTheme(context, ref);
-    Color closedColor = isLight ? LightColors.error : DarkColors.error;
-    Color openColor = isLight ? LightColors.success : DarkColors.success;
+    final Color closedColor = isLight ? LightColors.error : DarkColors.error;
+    final Color openColor = isLight ? LightColors.success : DarkColors.success;
 
     Color textColor = closedColor;
     String text = 'Yapyk';
@@ -24,7 +24,7 @@ class CompanyStatus extends ConsumerWidget {
       text = 'Acyk';
     }
 
-    TextStyle textStyle = AppTextStyles.medium10.copyWith(
+    final TextStyle textStyle = AppTextStyles.medium10.copyWith(
       fontSize: fontSize ?? 6,
       color: textColor,
     );

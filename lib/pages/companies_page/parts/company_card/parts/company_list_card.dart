@@ -46,6 +46,7 @@ class CompanyListCard extends ConsumerWidget {
       company.nameTm,
       company.nameRu,
       company.nameEn,
+      company.nameEn,
     );
 
     final TranslationModel categoryName = company.categoryName;
@@ -53,6 +54,7 @@ class CompanyListCard extends ConsumerWidget {
       ref,
       categoryName.tm,
       categoryName.ru,
+      categoryName.en,
       categoryName.en,
     );
 

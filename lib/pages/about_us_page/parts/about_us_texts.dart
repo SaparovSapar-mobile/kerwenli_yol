@@ -30,12 +30,14 @@ class AboutUsTexts extends ConsumerWidget {
           data.nameTm,
           data.nameRu,
           data.nameEn,
+          data.nameEn,
         );
 
         final String desc = translateText(
           ref,
           data.descriptionTm,
           data.descriptionRu,
+          data.descriptionEn,
           data.descriptionEn,
         );
 

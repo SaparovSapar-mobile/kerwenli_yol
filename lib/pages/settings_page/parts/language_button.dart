@@ -12,8 +12,10 @@ class LanguageButton extends ConsumerWidget {
     String langText = '';
     String lang = ref.watch(langProvider);
 
-    if (lang == 'tr') {
+    if (lang == 'tk') {
       langText = 'Türkmençe';
+    } else if (lang == 'tr') {
+      langText = 'Türkçe';
     } else if (lang == 'ru') {
       langText = 'Русский';
     } else {

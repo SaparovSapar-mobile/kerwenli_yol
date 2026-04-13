@@ -13,7 +13,7 @@ class ShareButton extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final bool isLight = isLightTheme(context, ref);
-    Color iconColor = isLight
+    final Color iconColor = isLight
         ? LightColors.textTitleLight
         : DarkColors.textTitleDark;
 

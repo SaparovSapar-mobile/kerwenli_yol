@@ -35,6 +35,7 @@ class ProductCard extends ConsumerWidget {
       product.nameTm,
       product.nameRu,
       product.nameEn,
+      product.nameEn,
     );
 
     final TranslationModel category = product.categoryName;
@@ -42,6 +43,7 @@ class ProductCard extends ConsumerWidget {
       ref,
       category.tm,
       category.ru,
+      category.en,
       category.en,
     );
 

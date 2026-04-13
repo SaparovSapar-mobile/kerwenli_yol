@@ -40,11 +40,13 @@ class CompanyPageInfoCard extends ConsumerWidget {
       compName.tm,
       compName.ru,
       compName.en,
+      compName.en,
     );
     final String categoryName = translateText(
       ref,
       catName.tm,
       catName.ru,
+      catName.en,
       catName.en,
     );
 

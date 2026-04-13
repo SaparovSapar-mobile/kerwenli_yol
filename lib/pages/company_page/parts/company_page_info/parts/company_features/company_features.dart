@@ -52,6 +52,7 @@ class CompanyFeatures extends ConsumerWidget {
                   e.labelTm,
                   e.labelRu,
                   e.labelEn,
+                  e.labelEn,
                 );
 
                 return CompanyFeaturePart(text: name, image: 'router.png');

@@ -42,6 +42,7 @@ class HomeNewProductsCard extends ConsumerWidget {
       product.nameTm,
       product.nameRu,
       product.nameEn,
+      product.nameEn,
     );
 
     // ========= category name =======
@@ -50,6 +51,7 @@ class HomeNewProductsCard extends ConsumerWidget {
       ref,
       category.nameTm,
       category.nameRu,
+      category.nameEn,
       category.nameEn,
     );
 

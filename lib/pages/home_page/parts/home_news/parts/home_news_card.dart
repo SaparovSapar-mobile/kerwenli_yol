@@ -59,11 +59,13 @@ class HomeNewsCard extends ConsumerWidget {
       news.nameTm,
       news.nameRu,
       news.nameEn,
+      news.nameEn,
     );
     final String description = translateText(
       ref,
       news.descriptionTm,
       news.descriptionRu,
+      news.descriptionEn,
       news.descriptionEn,
     );
 

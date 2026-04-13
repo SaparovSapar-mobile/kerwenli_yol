@@ -14,12 +14,16 @@ class WorkHour extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final bool isLight = isLightTheme(context, ref);
-    Color valueColor = isLight
+    final Color valueColor = isLight
         ? LightColors.textTitleLight
         : DarkColors.textTitleDark;
 
-    TextStyle keyStyle = AppTextStyles.semiBold10.copyWith(color: valueColor);
-    TextStyle valueStyle = AppTextStyles.semiBold10.copyWith(color: valueColor);
+    final TextStyle keyStyle = AppTextStyles.semiBold10.copyWith(
+      color: valueColor,
+    );
+    final TextStyle valueStyle = AppTextStyles.semiBold10.copyWith(
+      color: valueColor,
+    );
 
     return Padding(
       padding: const EdgeInsets.only(bottom: 8),

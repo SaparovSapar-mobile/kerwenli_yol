@@ -29,7 +29,7 @@ class MarkCard extends ConsumerWidget {
 
     final TranslationModel bn = mark.businessName;
 
-    final String name = translateText(ref, bn.tm, bn.ru, bn.en);
+    final String name = translateText(ref, bn.tm, bn.ru, bn.en, bn.en);
 
     return GestureDetector(
       onTap: () => goToPage(

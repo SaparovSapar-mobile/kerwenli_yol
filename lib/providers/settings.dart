@@ -9,7 +9,7 @@ final StateNotifierProvider<PrefNotifier<String>, String> langProvider =
     createPrefProvider<String>(
       prefs: (_) => prefs,
       prefKey: "lang",
-      defaultValue: 'tr',
+      defaultValue: 'tk',
     );
 
 final StateNotifierProvider<PrefNotifier<int>, int> themeProvider =

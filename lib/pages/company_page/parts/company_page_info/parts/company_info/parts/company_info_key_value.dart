@@ -17,15 +17,19 @@ class CompanyInfoKeyValue extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final bool isLight = isLightTheme(context, ref);
-    Color keyColor = isLight
+    final Color keyColor = isLight
         ? LightColors.textDescriptionLight
         : DarkColors.textDescriptionDark;
-    Color valueColor = isLight
+    final Color valueColor = isLight
         ? LightColors.textTitleLight
         : DarkColors.textTitleDark;
 
-    TextStyle keyStyle = AppTextStyles.regular12.copyWith(color: keyColor);
-    TextStyle valueStyle = AppTextStyles.regular12.copyWith(color: valueColor);
+    final TextStyle keyStyle = AppTextStyles.regular12.copyWith(
+      color: keyColor,
+    );
+    final TextStyle valueStyle = AppTextStyles.regular12.copyWith(
+      color: valueColor,
+    );
 
     return Padding(
       padding: const EdgeInsets.only(bottom: 8),

@@ -37,6 +37,7 @@ class ProductPage extends ConsumerWidget {
             companyName.tm,
             companyName.ru,
             companyName.en,
+            companyName.en,
           );
 
           return Column(

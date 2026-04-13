@@ -55,11 +55,13 @@ class NewsDetailPage extends ConsumerWidget {
             data.nameTm,
             data.nameRu,
             data.nameEn,
+            data.nameEn,
           );
           final String description = translateText(
             ref,
             data.descriptionTm,
             data.descriptionRu,
+            data.descriptionEn,
             data.descriptionEn,
           );
 

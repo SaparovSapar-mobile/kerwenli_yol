@@ -61,6 +61,7 @@ class CompanyPageProductsOrServices extends ConsumerWidget {
             cat.nameTm,
             cat.nameRu,
             cat.nameEn,
+            cat.nameEn,
           );
 
           return name;

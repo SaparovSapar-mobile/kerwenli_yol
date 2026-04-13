@@ -55,7 +55,7 @@ class HomePartnerCard extends ConsumerWidget {
     }
 
     final TranslationModel bN = sponsor.businessNames;
-    final String name = translateText(ref, bN.tm, bN.ru, bN.en);
+    final String name = translateText(ref, bN.tm, bN.ru, bN.en, bN.en);
 
     return GestureDetector(
       onTap: () => goToPage(

@@ -35,6 +35,7 @@ class ProductListCard extends ConsumerWidget {
       product.nameTm,
       product.nameRu,
       product.nameEn,
+      product.nameEn,
     );
 
     return GestureDetector(

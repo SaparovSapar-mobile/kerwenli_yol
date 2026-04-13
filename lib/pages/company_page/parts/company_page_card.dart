@@ -17,9 +17,11 @@ class CompanyPageCard extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // ====== Colors =====
-    final isLight = isLightTheme(context, ref);
-    final bgColor = isLight ? LightColors.bgPageLight : DarkColors.bgPageDark;
-    final innerBgColor = isLight
+    final bool isLight = isLightTheme(context, ref);
+    final Color bgColor = isLight
+        ? LightColors.bgPageLight
+        : DarkColors.bgPageDark;
+    final Color innerBgColor = isLight
         ? LightColors.bgBlogLight
         : DarkColors.bgBlogDark;
 
