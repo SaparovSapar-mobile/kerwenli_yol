@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/methods/pages/bottom_sheets.dart';
+import 'package:kerwenli_yol/l10n/app_localizations.dart';
 import 'package:kerwenli_yol/pages/settings_page/parts/setting_part_card.dart';
 import 'package:kerwenli_yol/providers/settings.dart';
 
@@ -9,8 +10,10 @@ class LanguageButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final AppLocalizations langg = AppLocalizations.of(context)!;
+
     String langText = '';
-    String lang = ref.watch(langProvider);
+    final String lang = ref.watch(langProvider);
 
     if (lang == 'tk') {
       langText = 'Türkmençe';
@@ -24,7 +27,7 @@ class LanguageButton extends ConsumerWidget {
 
     return SettingPartCard(
       index: 0,
-      text: 'Diller',
+      text: langg.language,
       icon: Icons.translate,
       tralingText: langText,
       onTap: () => showLanguageBottomSheet(context),

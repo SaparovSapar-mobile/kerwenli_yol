@@ -21,15 +21,17 @@ class FilterListTile extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final bool isLight = isLightTheme(context, ref);
-    Color borderColor = isLight
+    final Color borderColor = isLight
         ? LightColors.bgPageLight
         : DarkColors.bgPageDark;
-    Color activeColor = isLight ? LightColors.primary : DarkColors.primary;
+    final Color activeColor = isLight
+        ? LightColors.primary
+        : DarkColors.primary;
 
-    TextStyle titleStyle = AppTextStyles.medium14;
+    final TextStyle titleStyle = AppTextStyles.medium14;
 
-    List<int> selectedFilters = ref.watch(filtersProvider);
-    bool isActive = selectedFilters.contains(value);
+    final List<int> selectedFilters = ref.watch(filtersProvider);
+    final bool isActive = selectedFilters.contains(value);
 
     return Container(
       decoration: BoxDecoration(

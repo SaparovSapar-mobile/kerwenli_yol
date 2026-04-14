@@ -30,7 +30,7 @@ class AppLocalizationsTk extends AppLocalizations {
   String get aboutUs => 'Biz barada';
 
   @override
-  String get forContact => 'For contact';
+  String get forContact => 'Habarlaşmak üçin';
 
   @override
   String get socialMedia => 'Sosial mediýa';
@@ -112,4 +112,46 @@ class AppLocalizationsTk extends AppLocalizations {
 
   @override
   String get open => 'Açyk';
+
+  @override
+  String get sendMessage => 'Hat ugratmak';
+
+  @override
+  String get features => 'Mumkinçilikler';
+
+  @override
+  String get socialMediaLinks => 'Social media salgylanmalar';
+
+  @override
+  String get copyLocation => 'Geolokasiyany gocur al';
+
+  @override
+  String get ourProducts => 'Önümlerimiz';
+
+  @override
+  String get tour => '360° gezelenç';
+
+  @override
+  String get filter => 'Süzgüç';
+
+  @override
+  String get clear => 'Arassalamak';
+
+  @override
+  String get sort => 'Tertiple';
+
+  @override
+  String get mostPopular => 'Iň meşhurlary';
+
+  @override
+  String get language => 'Dil';
+
+  @override
+  String get notifications => 'Bildirişler';
+
+  @override
+  String get products => 'Önümler';
+
+  @override
+  String get ourAwards => 'Sylaglarymyz';
 }

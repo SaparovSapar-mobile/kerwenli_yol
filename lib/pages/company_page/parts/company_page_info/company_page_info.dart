@@ -21,7 +21,7 @@ class CompanyPageInfo extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           CompanyPagePartTabbar(
-            tabTexts: [lang.aboutUs, lang.info, 'Mumkincilikler'],
+            tabTexts: [lang.aboutUs, lang.info, lang.features],
           ),
           Expanded(
             child: TabBarView(

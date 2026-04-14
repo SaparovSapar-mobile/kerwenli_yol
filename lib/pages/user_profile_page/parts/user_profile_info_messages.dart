@@ -53,7 +53,7 @@ class UserProfileInfoMessages extends ConsumerWidget {
                 UserProfileInfoCard(
                   onTap: () {},
                   icon: Icons.corporate_fare,
-                  text: 'Bildirisler',
+                  text: lang.notifications,
                   countText: '3',
                 ),
                 UserProfileInfoCard(

@@ -308,6 +308,90 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Open'**
   String get open;
+
+  /// No description provided for @sendMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Send Message'**
+  String get sendMessage;
+
+  /// No description provided for @features.
+  ///
+  /// In en, this message translates to:
+  /// **'Features'**
+  String get features;
+
+  /// No description provided for @socialMediaLinks.
+  ///
+  /// In en, this message translates to:
+  /// **'Social Media Links'**
+  String get socialMediaLinks;
+
+  /// No description provided for @copyLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy Location'**
+  String get copyLocation;
+
+  /// No description provided for @ourProducts.
+  ///
+  /// In en, this message translates to:
+  /// **'Our Products'**
+  String get ourProducts;
+
+  /// No description provided for @tour.
+  ///
+  /// In en, this message translates to:
+  /// **'360° Tour'**
+  String get tour;
+
+  /// No description provided for @filter.
+  ///
+  /// In en, this message translates to:
+  /// **'Filter'**
+  String get filter;
+
+  /// No description provided for @clear.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear'**
+  String get clear;
+
+  /// No description provided for @sort.
+  ///
+  /// In en, this message translates to:
+  /// **'Sort'**
+  String get sort;
+
+  /// No description provided for @mostPopular.
+  ///
+  /// In en, this message translates to:
+  /// **'Most Popular'**
+  String get mostPopular;
+
+  /// No description provided for @language.
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get language;
+
+  /// No description provided for @notifications.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications'**
+  String get notifications;
+
+  /// No description provided for @products.
+  ///
+  /// In en, this message translates to:
+  /// **'Products'**
+  String get products;
+
+  /// No description provided for @ourAwards.
+  ///
+  /// In en, this message translates to:
+  /// **'Our Awards'**
+  String get ourAwards;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

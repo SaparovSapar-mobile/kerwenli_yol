@@ -13,11 +13,11 @@ class FilterExpansionTile extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final bool isLight = isLightTheme(context, ref);
-    Color iconColor = isLight
+    final Color iconColor = isLight
         ? LightColors.textTitleLight
         : DarkColors.textTitleDark;
 
-    TextStyle titleStyle = AppTextStyles.semiBold20;
+    final TextStyle titleStyle = AppTextStyles.semiBold20;
 
     return ExpansionTile(
       tilePadding: EdgeInsets.only(left: 0),

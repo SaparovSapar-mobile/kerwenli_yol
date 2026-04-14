@@ -30,7 +30,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get aboutUs => 'Hakkımızda';
 
   @override
-  String get forContact => 'For contact';
+  String get forContact => 'İletişim için';
 
   @override
   String get socialMedia => 'Sosyal medya';
@@ -112,4 +112,46 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get open => 'Açık';
+
+  @override
+  String get sendMessage => 'Mesaj gönder';
+
+  @override
+  String get features => 'İmkanlar';
+
+  @override
+  String get socialMediaLinks => 'Sosyal medya bağlantıları';
+
+  @override
+  String get copyLocation => 'Konumu kopyala';
+
+  @override
+  String get ourProducts => 'Ürünlerimiz';
+
+  @override
+  String get tour => '360° tur';
+
+  @override
+  String get filter => 'Filtre';
+
+  @override
+  String get clear => 'Temizle';
+
+  @override
+  String get sort => 'Sırala';
+
+  @override
+  String get mostPopular => 'En popüler';
+
+  @override
+  String get language => 'Dil';
+
+  @override
+  String get notifications => 'Bildirimler';
+
+  @override
+  String get products => 'Ürünler';
+
+  @override
+  String get ourAwards => 'Ödüllerimiz';
 }

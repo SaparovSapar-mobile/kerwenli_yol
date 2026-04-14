@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kerwenli_yol/enums/lang_type.dart';
+import 'package:kerwenli_yol/l10n/app_localizations.dart';
 import 'package:kerwenli_yol/pages/parts/bottom_sheet_widget/bottom_sheet_widget.dart';
 import 'package:kerwenli_yol/pages/parts/bottom_sheet_widget/parts/bottom_sheet_title.dart';
 import 'package:kerwenli_yol/pages/parts/select_language/parts/language_list_tile.dart';
@@ -9,9 +10,11 @@ class SelectLanguage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final AppLocalizations lang = AppLocalizations.of(context)!;
+
     return BottomSheetWidget(
       children: [
-        BottomSheetTitle(text: 'Diller'),
+        BottomSheetTitle(text: lang.language),
         const LanguageListTile(
           title: 'Türkmençe',
           lang: LangType.tr,

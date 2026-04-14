@@ -112,4 +112,46 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get open => 'Open';
+
+  @override
+  String get sendMessage => 'Send Message';
+
+  @override
+  String get features => 'Features';
+
+  @override
+  String get socialMediaLinks => 'Social Media Links';
+
+  @override
+  String get copyLocation => 'Copy Location';
+
+  @override
+  String get ourProducts => 'Our Products';
+
+  @override
+  String get tour => '360° Tour';
+
+  @override
+  String get filter => 'Filter';
+
+  @override
+  String get clear => 'Clear';
+
+  @override
+  String get sort => 'Sort';
+
+  @override
+  String get mostPopular => 'Most Popular';
+
+  @override
+  String get language => 'Language';
+
+  @override
+  String get notifications => 'Notifications';
+
+  @override
+  String get products => 'Products';
+
+  @override
+  String get ourAwards => 'Our Awards';
 }

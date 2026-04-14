@@ -55,5 +55,5 @@ List<String> bookmarkHeaders(BuildContext context) {
 List<String> searchTabs(BuildContext context) {
   final AppLocalizations lang = AppLocalizations.of(context)!;
 
-  return ['Harytlar', 'Firmalar', lang.news, 'Markalar', 'Medialar'];
+  return [lang.products, 'Firmalar', lang.news, 'Markalar', 'Medialar'];
 }

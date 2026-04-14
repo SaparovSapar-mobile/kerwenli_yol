@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/methods/pages/bottom_sheets.dart';
+import 'package:kerwenli_yol/l10n/app_localizations.dart';
 import 'package:kerwenli_yol/pages/parts/sort_and_filter/parts/sort_or_filter_button.dart';
 
 class SortAndFilter extends StatelessWidget {
@@ -15,11 +16,13 @@ class SortAndFilter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final AppLocalizations lang = AppLocalizations.of(context)!;
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         SortOrFilterButton(
-          text: 'Tertiple',
+          text: lang.sort,
           onTap: () =>
               showSortBottomSheet(context, gridOrListProvider, isGridProvider),
         ),

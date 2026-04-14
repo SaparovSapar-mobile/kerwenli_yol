@@ -149,7 +149,7 @@ class CompanyPageAbout extends ConsumerWidget {
               onTap: () {},
             ),
             SizedBox(height: 20),
-            Text('Social media salgylanmalar', style: textStyle),
+            Text(lang.socialMediaLinks, style: textStyle),
             if (hasSocials)
               ...socials.map((e) {
                 Widget rWidget = const SizedBox.shrink();

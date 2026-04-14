@@ -30,7 +30,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get aboutUs => 'О нас';
 
   @override
-  String get forContact => 'For contact';
+  String get forContact => 'Для связи';
 
   @override
   String get socialMedia => 'Социальные сети';
@@ -112,4 +112,46 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get open => 'Открыто';
+
+  @override
+  String get sendMessage => 'Отправить сообщение';
+
+  @override
+  String get features => 'Возможности';
+
+  @override
+  String get socialMediaLinks => 'Ссылки на социальные сети';
+
+  @override
+  String get copyLocation => 'Скопировать геолокацию';
+
+  @override
+  String get ourProducts => 'Наши продукты';
+
+  @override
+  String get tour => '360° тур';
+
+  @override
+  String get filter => 'Фильтр';
+
+  @override
+  String get clear => 'Очистить';
+
+  @override
+  String get sort => 'Сортировать';
+
+  @override
+  String get mostPopular => 'Популярные';
+
+  @override
+  String get language => 'Язык';
+
+  @override
+  String get notifications => 'Уведомления';
+
+  @override
+  String get products => 'Товары';
+
+  @override
+  String get ourAwards => 'Наши награды';
 }

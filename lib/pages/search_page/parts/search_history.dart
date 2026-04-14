@@ -4,6 +4,7 @@ import 'package:kerwenli_yol/database/functions/search.dart';
 import 'package:kerwenli_yol/enums/search_type.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/helpers/methods/static_methods.dart';
+import 'package:kerwenli_yol/l10n/app_localizations.dart';
 import 'package:kerwenli_yol/pages/search_page/parts/search_history_card.dart';
 import 'package:kerwenli_yol/providers/pages/search_page.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
@@ -17,6 +18,8 @@ class SearchHistory extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final AppLocalizations lang = AppLocalizations.of(context)!;
+
     // ======= Colors =========
     final bool isLight = isLightTheme(context, ref);
     final Color bgColor = isLight
@@ -77,7 +80,7 @@ class SearchHistory extends ConsumerWidget {
                 await removeSearchs();
                 ref.invalidate(getSearchsProvider);
               },
-              child: Text('Clear All', style: titleStyle),
+              child: Text(lang.clear, style: titleStyle),
             ),
           ),
         ],

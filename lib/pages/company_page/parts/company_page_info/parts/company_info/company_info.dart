@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/helpers/functions/translations.dart';
+import 'package:kerwenli_yol/l10n/app_localizations.dart';
 import 'package:kerwenli_yol/models/company.dart';
 import 'package:kerwenli_yol/models/translation.dart';
 import 'package:kerwenli_yol/models/working_time.dart';
@@ -20,6 +21,8 @@ class CompanyInfo extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final AppLocalizations lang = AppLocalizations.of(context)!;
+
     // ======== Colors ==========
     final bool isLight = isLightTheme(context, ref);
     final Color bgColor = isLight
@@ -120,7 +123,7 @@ class CompanyInfo extends ConsumerWidget {
             SizedBox(height: 15),
             CompanyInfoBrandsList(),
             SizedBox(height: 20),
-            Text('Sylaglarymyz', style: textStyle),
+            Text(lang.ourAwards, style: textStyle),
             SizedBox(height: 15),
             CompanyInfoSertificatesList(),
           ],

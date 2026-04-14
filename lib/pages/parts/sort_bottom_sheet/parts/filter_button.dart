@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kerwenli_yol/l10n/app_localizations.dart';
 import 'package:kerwenli_yol/pages/parts/primary_button.dart';
 
 class FilterButton extends ConsumerWidget {
@@ -9,10 +10,12 @@ class FilterButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    bool isGridCompanies = ref.watch(isGridProvider);
+    final AppLocalizations lang = AppLocalizations.of(context)!;
+
+    final bool isGridCompanies = ref.watch(isGridProvider);
 
     return PrimaryButton(
-      text: 'Tertiple',
+      text: lang.sort,
       onPressed: () {
         ref.read(isGridProvider.notifier).state = !isGridCompanies;
         Navigator.pop(context);
