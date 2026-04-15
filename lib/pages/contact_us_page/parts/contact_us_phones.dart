@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/send.dart';
+import 'package:kerwenli_yol/l10n/app_localizations.dart';
 import 'package:kerwenli_yol/models/contact_us.dart';
 import 'package:kerwenli_yol/pages/contact_us_page/parts/contact_us_top_part.dart';
 import 'package:kerwenli_yol/pages/parts/open_social_list_tile.dart';
@@ -12,6 +13,8 @@ class ContactUsPhones extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final AppLocalizations lang = AppLocalizations.of(context)!;
+
     // ========= Text Styles =======
     final TextStyle textStyle = AppTextStyles.medium10;
 
@@ -34,7 +37,7 @@ class ContactUsPhones extends ConsumerWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text('Kontaktlar', style: textStyle),
+                Text(lang.contacts, style: textStyle),
                 SizedBox(height: 10),
                 ...data.phones.map(
                   (e) => OpenSocialListTile(

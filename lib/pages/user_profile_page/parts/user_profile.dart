@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/navigation.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/helpers/methods/image_and_video.dart';
+import 'package:kerwenli_yol/l10n/app_localizations.dart';
 import 'package:kerwenli_yol/models/user.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/parts/home_vip_company_card_categories.dart';
 import 'package:kerwenli_yol/pages/user_profile_page/user_profile_page.dart';
@@ -18,6 +19,8 @@ class UserProfile extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final AppLocalizations lang = AppLocalizations.of(context)!;
+
     // ========= Colors ==========
     final bool isLight = isLightTheme(context, ref);
     final Color bgColor = isLight
@@ -55,7 +58,7 @@ class UserProfile extends ConsumerWidget {
             contentPadding: EdgeInsets.zero,
             dense: true,
             visualDensity: VisualDensity.compact,
-            title: Text('Menin sahypam', style: titleStyle),
+            title: Text(lang.myPage, style: titleStyle),
             trailing: forUserPage
                 ? Icon(Icons.border_color_outlined, size: 16, color: iconColor)
                 : Icon(Icons.arrow_forward_ios, size: 16, color: iconColor),

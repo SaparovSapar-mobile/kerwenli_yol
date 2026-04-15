@@ -154,4 +154,61 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get ourAwards => 'Ödüllerimiz';
+
+  @override
+  String get contactUs => 'Bizimle iletişime geçin';
+
+  @override
+  String get contacts => 'İletişim bilgileri';
+
+  @override
+  String get myPage => 'Sayfam';
+
+  @override
+  String get settings => 'Ayarlar';
+
+  @override
+  String get signOut => 'Çıkış yap';
+
+  @override
+  String get name => 'Isim';
+
+  @override
+  String get phoneNumber => 'Telefon numarası';
+
+  @override
+  String get save => 'Kaydet';
+
+  @override
+  String get password => 'Şifre';
+
+  @override
+  String get internetConnectionError => 'İnternet bağlantı hatası !';
+
+  @override
+  String get email => 'E-posta';
+
+  @override
+  String get forgotPassword => 'Şifrenizi mi unuttunuz ?';
+
+  @override
+  String get signUp => 'Kayıt ol';
+
+  @override
+  String get resendCode => 'Kodu yeniden gönder';
+
+  @override
+  String get ourLocationMap => 'Haritadaki konumumuz';
+
+  @override
+  String get companyName => 'Şirket adı';
+
+  @override
+  String get ourBrands => 'Markalarımız';
+
+  @override
+  String get videos => 'Videolar';
+
+  @override
+  String get noDataAvailable => 'Veri yok !';
 }

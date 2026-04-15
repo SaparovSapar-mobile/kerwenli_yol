@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kerwenli_yol/l10n/app_localizations.dart';
 import 'package:kerwenli_yol/pages/parts/internet_status_bar/parts/internet_status_bar_container.dart';
 import 'package:kerwenli_yol/providers/parts/internet.dart';
 
@@ -52,13 +53,15 @@ class _InternetStatusBarState extends ConsumerState<InternetStatusBar> {
 
   @override
   Widget build(BuildContext context) {
-    final isOnline = ref.watch(isOnlineProvider);
+    final AppLocalizations lang = AppLocalizations.of(context)!;
+
+    final bool isOnline = ref.watch(isOnlineProvider);
 
     if (!isOnline) {
       return InternetStatusBarContainer(
         isOnline: false,
         icon: Icons.wifi_off,
-        text: 'Internet nasazlygy',
+        text: lang.internetConnectionError,
       );
     }
 

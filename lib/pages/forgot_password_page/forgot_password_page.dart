@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/helpers/methods/parts/app_bar_methods.dart';
+import 'package:kerwenli_yol/l10n/app_localizations.dart';
 import 'package:kerwenli_yol/pages/forgot_password_page/parts/fp_with_email.dart';
 import 'package:kerwenli_yol/pages/forgot_password_page/parts/fp_with_phone.dart';
 import 'package:kerwenli_yol/pages/onboard_page/parts/theme_switcher_button.dart';
@@ -35,9 +36,13 @@ class _ForgotPasswordPageState extends ConsumerState<ForgotPasswordPage> {
 
   @override
   Widget build(BuildContext context) {
+    final AppLocalizations lang = AppLocalizations.of(context)!;
+
     final bool isLight = isLightTheme(context, ref);
-    Color bgColor = isLight ? LightColors.bgBlogLight : DarkColors.bgBlogDark;
-    Color formBgColor = isLight
+    final Color bgColor = isLight
+        ? LightColors.bgBlogLight
+        : DarkColors.bgBlogDark;
+    final Color formBgColor = isLight
         ? LightColors.bgPageLight
         : DarkColors.bgPageDark;
 
@@ -47,7 +52,7 @@ class _ForgotPasswordPageState extends ConsumerState<ForgotPasswordPage> {
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
           leading: BackLeadingButton(),
-          title: Text('Parolymy Unutdym'),
+          title: Text(lang.forgotPassword),
           backgroundColor: bgColor,
           actions: [
             Padding(
@@ -61,7 +66,7 @@ class _ForgotPasswordPageState extends ConsumerState<ForgotPasswordPage> {
               children: [
                 AppBarBottomLine(),
                 SizedBox(height: 24),
-                SelectionButton(title1: 'Telefon Belgi', title2: 'Email'),
+                SelectionButton(title1: lang.phoneNumber, title2: lang.email),
                 SizedBox(height: 16),
               ],
             ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/helpers/methods/pages/bottom_sheets.dart';
+import 'package:kerwenli_yol/l10n/app_localizations.dart';
 import 'package:kerwenli_yol/models/user.dart';
 import 'package:kerwenli_yol/pages/settings_page/parts/setting_part_card.dart';
 import 'package:kerwenli_yol/providers/database/user.dart';
@@ -13,6 +14,8 @@ class AccountPart extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final AppLocalizations lang = AppLocalizations.of(context)!;
+
     final bool isLight = isLightTheme(context, ref);
     final Color bgColor = isLight
         ? LightColors.bgBlogLight
@@ -40,7 +43,7 @@ class AccountPart extends ConsumerWidget {
               SizedBox(height: 5),
               SettingPartCard(
                 index: 8,
-                text: 'Akkountdan cykmak',
+                text: lang.signOut,
                 icon: Icons.logout,
                 onTap: () => showLougOutBottomSheet(context),
               ),

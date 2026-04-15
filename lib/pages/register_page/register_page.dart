@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/helpers/methods/parts/app_bar_methods.dart';
+import 'package:kerwenli_yol/l10n/app_localizations.dart';
 import 'package:kerwenli_yol/pages/onboard_page/parts/theme_switcher_button.dart';
 import 'package:kerwenli_yol/pages/parts/back_leading_button.dart';
 import 'package:kerwenli_yol/pages/parts/selection_button.dart';
@@ -38,6 +39,8 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
 
   @override
   Widget build(BuildContext context) {
+    final AppLocalizations lang = AppLocalizations.of(context)!;
+
     final bool isLight = isLightTheme(context, ref);
     final Color bgColor = isLight
         ? LightColors.bgBlogLight
@@ -52,7 +55,7 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
           leading: BackLeadingButton(),
-          title: Text('Agza bolmak'),
+          title: Text(lang.signUp),
           backgroundColor: bgColor,
           actions: [
             Padding(
@@ -66,7 +69,7 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
               children: [
                 AppBarBottomLine(),
                 SizedBox(height: 24),
-                SelectionButton(title1: 'Telefon Belgi', title2: 'Email'),
+                SelectionButton(title1: lang.phoneNumber, title2: lang.email),
                 SizedBox(height: 16),
               ],
             ),

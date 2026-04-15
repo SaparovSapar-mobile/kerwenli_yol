@@ -207,7 +207,7 @@ class CompanyPageAbout extends ConsumerWidget {
                 return rWidget;
               }),
             SizedBox(height: 20),
-            Text('Karta salgymyz', style: textStyle),
+            Text(lang.ourLocationMap, style: textStyle),
             SizedBox(height: 10),
             if (hasMap)
               SizedBox(

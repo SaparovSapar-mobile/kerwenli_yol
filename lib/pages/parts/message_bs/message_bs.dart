@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/methods/static_methods.dart';
+import 'package:kerwenli_yol/l10n/app_localizations.dart';
 import 'package:kerwenli_yol/models/user.dart';
 import 'package:kerwenli_yol/pages/parts/bottom_sheet_widget/bottom_sheet_widget.dart';
 import 'package:kerwenli_yol/pages/parts/bottom_sheet_widget/parts/bottom_sheet_title.dart';
@@ -40,6 +41,8 @@ class _MessageBsState extends State<MessageBs> {
 
   @override
   Widget build(BuildContext context) {
+    final AppLocalizations lang = AppLocalizations.of(context)!;
+
     final double bottom = MediaQuery.of(context).viewInsets.bottom;
 
     return AnimatedPadding(
@@ -69,8 +72,8 @@ class _MessageBsState extends State<MessageBs> {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         SelectionButton(
-                          title1: 'Telefon Belgi',
-                          title2: 'Email',
+                          title1: lang.phoneNumber,
+                          title2: lang.email,
                           horizontalMargin: 0,
                         ),
                         const SizedBox(height: 16),

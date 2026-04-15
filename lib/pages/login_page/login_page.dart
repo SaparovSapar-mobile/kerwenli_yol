@@ -66,7 +66,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
               children: [
                 AppBarBottomLine(),
                 SizedBox(height: 24),
-                SelectionButton(title1: 'Telefon Belgi', title2: 'Email'),
+                SelectionButton(title1: lang.phoneNumber, title2: lang.email),
                 SizedBox(height: 16),
               ],
             ),

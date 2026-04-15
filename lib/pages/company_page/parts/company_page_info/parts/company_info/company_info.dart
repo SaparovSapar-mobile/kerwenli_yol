@@ -71,7 +71,7 @@ class CompanyInfo extends ConsumerWidget {
           children: [
             Text('Karhana maglumaty', style: textStyle),
             SizedBox(height: 15),
-            CompanyInfoKeyValue(keyText: 'Kärhananyň ady', valueText: name),
+            CompanyInfoKeyValue(keyText: lang.companyName, valueText: name),
             CompanyInfoKeyValue(
               keyText: 'Esaslandyrylan Senesi',
               valueText: '11.11.2025',
@@ -119,7 +119,7 @@ class CompanyInfo extends ConsumerWidget {
                 ],
               ),
             SizedBox(height: 20),
-            Text('Brendlerimiz', style: textStyle),
+            Text(lang.ourBrands, style: textStyle),
             SizedBox(height: 15),
             CompanyInfoBrandsList(),
             SizedBox(height: 20),

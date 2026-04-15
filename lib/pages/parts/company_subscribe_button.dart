@@ -91,7 +91,7 @@ class CompanySubscribeButton extends ConsumerWidget {
               children: [
                 Icon(icon, size: 16, color: iconColor),
                 SizedBox(width: 4),
-                Text('Agza bol', style: textStyle),
+                Text(lang.signUp, style: textStyle),
               ],
             ),
           ),

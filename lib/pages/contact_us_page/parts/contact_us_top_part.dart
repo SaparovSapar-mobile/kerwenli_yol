@@ -14,7 +14,7 @@ class ContactUsTopPart extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         BackLeadingButton(text: lang.back, leftPadding: 0),
-        AboutUsPart(icon: Icons.support_agent, text: 'Biz bilen habarlasmak'),
+        AboutUsPart(icon: Icons.support_agent, text: lang.contactUs),
       ],
     );
   }

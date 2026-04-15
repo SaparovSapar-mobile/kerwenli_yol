@@ -154,4 +154,61 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get ourAwards => 'Наши награды';
+
+  @override
+  String get contactUs => 'Связаться с нами';
+
+  @override
+  String get contacts => 'Контакты';
+
+  @override
+  String get myPage => 'Моя страница';
+
+  @override
+  String get settings => 'Настройки';
+
+  @override
+  String get signOut => 'Выход из системы';
+
+  @override
+  String get name => 'Имя';
+
+  @override
+  String get phoneNumber => 'Номер телефона';
+
+  @override
+  String get save => 'Сохранить';
+
+  @override
+  String get password => 'Пароль';
+
+  @override
+  String get internetConnectionError => 'Ошибка интернет-соединения !';
+
+  @override
+  String get email => 'Электронная почта';
+
+  @override
+  String get forgotPassword => 'Забыли пароль ?';
+
+  @override
+  String get signUp => 'Регистрация';
+
+  @override
+  String get resendCode => 'Отправить код повторно';
+
+  @override
+  String get ourLocationMap => 'Наша локация на карте';
+
+  @override
+  String get companyName => 'Название компании';
+
+  @override
+  String get ourBrands => 'Наши бренды';
+
+  @override
+  String get videos => 'Видео';
+
+  @override
+  String get noDataAvailable => 'Нет данных !';
 }

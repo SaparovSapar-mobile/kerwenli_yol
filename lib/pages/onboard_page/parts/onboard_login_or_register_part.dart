@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/navigation.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
+import 'package:kerwenli_yol/l10n/app_localizations.dart';
 import 'package:kerwenli_yol/pages/bottom_navigation_page.dart';
 import 'package:kerwenli_yol/pages/parts/bg_page_light_button.dart';
 import 'package:kerwenli_yol/pages/parts/primary_button.dart';
@@ -23,6 +24,8 @@ class OnboardLoginOrRegisterPart extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final AppLocalizations lang = AppLocalizations.of(context)!;
+
     final bool isLight = isLightTheme(context, ref);
     final Color titleColor = isLight
         ? LightColors.textTitleLight
@@ -47,7 +50,7 @@ class OnboardLoginOrRegisterPart extends ConsumerWidget {
         Text(desc, style: descStyle, textAlign: TextAlign.center),
         SizedBox(height: 47),
         PrimaryButton(
-          text: 'Agza bolmak',
+          text: lang.signUp,
           onPressed: () =>
               goToPage(context, RegisterPage(), AxisDirection.left),
         ),

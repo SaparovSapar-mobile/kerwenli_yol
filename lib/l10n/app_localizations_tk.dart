@@ -154,4 +154,61 @@ class AppLocalizationsTk extends AppLocalizations {
 
   @override
   String get ourAwards => 'Sylaglarymyz';
+
+  @override
+  String get contactUs => 'Biz bilen habarlaşmak';
+
+  @override
+  String get contacts => 'Kontaktlar';
+
+  @override
+  String get myPage => 'Meniň sahypam';
+
+  @override
+  String get settings => 'Sazlamalar';
+
+  @override
+  String get signOut => 'Ulgamdan çykmak';
+
+  @override
+  String get name => 'Ady';
+
+  @override
+  String get phoneNumber => 'Telefon belgisi';
+
+  @override
+  String get save => 'Ýatda sakla';
+
+  @override
+  String get password => 'Parol';
+
+  @override
+  String get internetConnectionError => 'Internet näsazlygy ýüze çykdy !';
+
+  @override
+  String get email => 'E-poçta';
+
+  @override
+  String get forgotPassword => 'Paroly unutdyňyzmy ?';
+
+  @override
+  String get signUp => 'Agza bolmak';
+
+  @override
+  String get resendCode => 'Kody täzeden ugrat';
+
+  @override
+  String get ourLocationMap => 'Karta salgymyz';
+
+  @override
+  String get companyName => 'Kompaniýanyň ady';
+
+  @override
+  String get ourBrands => 'Brendlerimiz';
+
+  @override
+  String get videos => 'Wideolar';
+
+  @override
+  String get noDataAvailable => 'Maglumat ýok !';
 }

@@ -154,4 +154,61 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get ourAwards => 'Our Awards';
+
+  @override
+  String get contactUs => 'Contact Us';
+
+  @override
+  String get contacts => 'Contacts';
+
+  @override
+  String get myPage => 'My Page';
+
+  @override
+  String get settings => 'Settings';
+
+  @override
+  String get signOut => 'Sign Out';
+
+  @override
+  String get name => 'Name';
+
+  @override
+  String get phoneNumber => 'Phone Number';
+
+  @override
+  String get save => 'Save';
+
+  @override
+  String get password => 'Password';
+
+  @override
+  String get internetConnectionError => 'Internet connection error !';
+
+  @override
+  String get email => 'Email';
+
+  @override
+  String get forgotPassword => 'Forgot password ?';
+
+  @override
+  String get signUp => 'Sign Up';
+
+  @override
+  String get resendCode => 'Resend Code';
+
+  @override
+  String get ourLocationMap => 'Our Location on the Map';
+
+  @override
+  String get companyName => 'Company name';
+
+  @override
+  String get ourBrands => 'Our Brands';
+
+  @override
+  String get videos => 'Videos';
+
+  @override
+  String get noDataAvailable => 'No data available !';
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kerwenli_yol/l10n/app_localizations.dart';
 import 'package:kerwenli_yol/pages/parts/inputs/input_part/input_part.dart';
 import 'package:kerwenli_yol/providers/parts/inputs.dart';
 
@@ -9,8 +10,10 @@ class NameInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final AppLocalizations lang = AppLocalizations.of(context)!;
+
     return InputPart(
-      labelText: 'Ady',
+      labelText: lang.name,
       ctrl: ctrl,
       showClearInputProvider: clearNameProvider,
       validationFunc: (value) {

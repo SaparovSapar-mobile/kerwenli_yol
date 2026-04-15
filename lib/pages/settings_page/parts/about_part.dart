@@ -42,7 +42,7 @@ class AboutPart extends ConsumerWidget {
           ),
           SettingPartCard(
             index: 5,
-            text: 'Biz bilen habarlasmak',
+            text: lang.contactUs,
             icon: Icons.support_agent,
             onTap: () => goToPage(context, ContactUsPage(), AxisDirection.left),
           ),
