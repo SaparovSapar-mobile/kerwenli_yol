@@ -69,37 +69,46 @@ class CompanyInfo extends ConsumerWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Karhana maglumaty', style: textStyle),
+            Text(lang.companyInformation, style: textStyle),
             SizedBox(height: 15),
             CompanyInfoKeyValue(keyText: lang.companyName, valueText: name),
             CompanyInfoKeyValue(
-              keyText: 'Esaslandyrylan Senesi',
+              keyText: lang.dateEstablishment,
               valueText: '11.11.2025',
             ),
             CompanyInfoKeyValue(
-              keyText: 'Hasaba alyjy gurama',
+              keyText: lang.registrationAuthority,
               valueText: 'Türkmenistanyň Ykdysadyýet we Maliýe ministrligi',
             ),
             CompanyInfoKeyValue(
-              keyText: 'Hasaba alyş belgisi',
+              keyText: lang.registrationNumber,
               valueText: '№23988161',
             ),
             CompanyInfoKeyValue(
-              keyText: 'Guramaçylyk hukuk görnüşi',
+              keyText: lang.legalForm,
               valueText: 'Hojalyk jemgyyeti',
             ),
-            CompanyInfoKeyValue(keyText: 'Iş ugry', valueText: categoryName),
-            CompanyInfoKeyValue(keyText: 'Eýeçiligi', valueText: 'senagaty'),
-            CompanyInfoKeyValue(keyText: 'Esasy önümleri', valueText: 'Bar'),
-            CompanyInfoKeyValue(keyText: 'Hukuk salgysy', valueText: 'Bar'),
-            CompanyInfoKeyValue(keyText: 'Goşmaça maglumat', valueText: 'Bar'),
+            CompanyInfoKeyValue(
+              keyText: lang.businessActivity,
+              valueText: categoryName,
+            ),
+            CompanyInfoKeyValue(
+              keyText: lang.ownershipType,
+              valueText: 'senagaty',
+            ),
+            CompanyInfoKeyValue(keyText: lang.mainProducts, valueText: 'Bar'),
+            CompanyInfoKeyValue(keyText: lang.legalAddress, valueText: 'Bar'),
+            CompanyInfoKeyValue(
+              keyText: lang.additionalInformation,
+              valueText: 'Bar',
+            ),
             if (hasWorkingTimes)
               Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: 20),
-                  Text('Iş wagtymyz', style: textStyle),
+                  Text(lang.workingHours, style: textStyle),
                   SizedBox(height: 15),
                   ...workingTimes.map((e) {
                     final TranslationModel day = e.day;

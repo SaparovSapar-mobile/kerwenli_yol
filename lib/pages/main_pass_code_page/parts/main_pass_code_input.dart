@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/helpers/methods/snackbars.dart';
+import 'package:kerwenli_yol/l10n/app_localizations.dart';
 import 'package:kerwenli_yol/pages/bottom_navigation_page.dart';
 import 'package:kerwenli_yol/pages/parts/primary_button.dart';
 import 'package:kerwenli_yol/providers/pages/settings_page.dart';
@@ -28,21 +29,25 @@ class _MainPassCodeInputState extends ConsumerState<MainPassCodeInput> {
 
   @override
   Widget build(BuildContext context) {
+    final AppLocalizations lang = AppLocalizations.of(context)!;
+
     // ========= Colors ==========
     final bool isLight = isLightTheme(context, ref);
-    Color bgColor = isLight ? LightColors.bgPageLight : DarkColors.bgPageDark;
-    Color textColor = isLight
+    final Color bgColor = isLight
+        ? LightColors.bgPageLight
+        : DarkColors.bgPageDark;
+    final Color textColor = isLight
         ? LightColors.textTitleLight
         : DarkColors.textTitleDark;
-    Color borderColor = isLight
+    final Color borderColor = isLight
         ? LightColors.textDescriptionLight
         : DarkColors.textDescriptionDark;
-    Color focusedBorderColor = isLight
+    final Color focusedBorderColor = isLight
         ? LightColors.primary
         : DarkColors.primary;
 
     // ========= Text Styles ==========
-    TextStyle textStyle = AppTextStyles.medium16.copyWith(
+    final TextStyle textStyle = AppTextStyles.medium16.copyWith(
       fontWeight: FontWeight.bold,
       color: textColor,
     );
@@ -74,7 +79,7 @@ class _MainPassCodeInputState extends ConsumerState<MainPassCodeInput> {
         ),
         SizedBox(height: 20),
         PrimaryButton(
-          text: 'Tassykla',
+          text: lang.confirm,
           onPressed: () {
             int passCode = ref.read(passCodeProvider);
 

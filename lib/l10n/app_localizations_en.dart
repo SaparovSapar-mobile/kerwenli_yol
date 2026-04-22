@@ -229,4 +229,64 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get od3 => 'Easily find services, products, and categories.';
+
+  @override
+  String get browse => 'Browse';
+
+  @override
+  String get confirm => 'Confirm';
+
+  @override
+  String get confirmYourPassword => 'Confirm your password';
+
+  @override
+  String get sendCode => 'Send code';
+
+  @override
+  String get enterCodeSentYourPhoneNumber => 'Enter the code sent to your phone number';
+
+  @override
+  String get enterCodeSentYourEmail => 'Enter the code sent to your email';
+
+  @override
+  String get companyInformation => 'Company Information';
+
+  @override
+  String get dateEstablishment => 'Date of establishment';
+
+  @override
+  String get registrationAuthority => 'Registration authority';
+
+  @override
+  String get registrationNumber => 'Registration number';
+
+  @override
+  String get legalForm => 'Legal form';
+
+  @override
+  String get businessActivity => 'Business activity';
+
+  @override
+  String get ownershipType => 'Ownership type';
+
+  @override
+  String get mainProducts => 'Main products';
+
+  @override
+  String get legalAddress => 'Legal address';
+
+  @override
+  String get additionalInformation => 'Additional information';
+
+  @override
+  String get workingHours => 'Working hours';
+
+  @override
+  String get type => 'Type';
+
+  @override
+  String get photoReport => 'Photo report';
+
+  @override
+  String get fCAPrice => 'FCA price';
 }

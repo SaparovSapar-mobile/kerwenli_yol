@@ -229,4 +229,64 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get od3 => 'Hizmetleri, ürünleri ve kategorileri kolayca bulun.';
+
+  @override
+  String get browse => 'Göz atma';
+
+  @override
+  String get confirm => 'Onayla';
+
+  @override
+  String get confirmYourPassword => 'Şifrenizi onaylayın';
+
+  @override
+  String get sendCode => 'Kod gönder';
+
+  @override
+  String get enterCodeSentYourPhoneNumber => 'Telefon numaranıza gönderilen kodu girin';
+
+  @override
+  String get enterCodeSentYourEmail => 'E-postanıza gönderilen kodu girin';
+
+  @override
+  String get companyInformation => 'Şirket bilgileri';
+
+  @override
+  String get dateEstablishment => 'Kuruluş tarihi';
+
+  @override
+  String get registrationAuthority => 'Kayıt otoritesi';
+
+  @override
+  String get registrationNumber => 'Kayıt numarası';
+
+  @override
+  String get legalForm => 'Hukuki yapı';
+
+  @override
+  String get businessActivity => 'Faaliyet alanı';
+
+  @override
+  String get ownershipType => 'Mülkiyet türü';
+
+  @override
+  String get mainProducts => 'Ana ürünler';
+
+  @override
+  String get legalAddress => 'Yasal adres';
+
+  @override
+  String get additionalInformation => 'Ek bilgi';
+
+  @override
+  String get workingHours => 'Çalışma saatleri';
+
+  @override
+  String get type => 'Tür';
+
+  @override
+  String get photoReport => 'Fotoğraf raporu';
+
+  @override
+  String get fCAPrice => 'FCA fiyatı';
 }

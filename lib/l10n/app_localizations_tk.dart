@@ -229,4 +229,64 @@ class AppLocalizationsTk extends AppLocalizations {
 
   @override
   String get od3 => 'Hyzmatlary, önümleri we kategoriýalary aňsat tapyň.';
+
+  @override
+  String get browse => 'Gezelenç';
+
+  @override
+  String get confirm => 'Tassyklamak';
+
+  @override
+  String get confirmYourPassword => 'Açar sözüňizi tassyklaň';
+
+  @override
+  String get sendCode => 'Kod ugratmak';
+
+  @override
+  String get enterCodeSentYourPhoneNumber => 'Telefon belgiňize gelen kody giriziň';
+
+  @override
+  String get enterCodeSentYourEmail => 'Elektron poçtaňyza gelen kody giriziň';
+
+  @override
+  String get companyInformation => 'Kärhana maglumaty';
+
+  @override
+  String get dateEstablishment => 'Esaslandyrylan senesi';
+
+  @override
+  String get registrationAuthority => 'Hasaba alyjy gurama';
+
+  @override
+  String get registrationNumber => 'Hasaba alyş belgisi';
+
+  @override
+  String get legalForm => 'Guramaçylyk hukuk görnüşi';
+
+  @override
+  String get businessActivity => 'Iş ugry';
+
+  @override
+  String get ownershipType => 'Eýeçiligi';
+
+  @override
+  String get mainProducts => 'Esasy önümleri';
+
+  @override
+  String get legalAddress => 'Hukuk salgysy';
+
+  @override
+  String get additionalInformation => 'Goşmaça maglumat';
+
+  @override
+  String get workingHours => 'Iş wagtymyz';
+
+  @override
+  String get type => 'Görnüşi';
+
+  @override
+  String get photoReport => 'Fotoreportaž';
+
+  @override
+  String get fCAPrice => 'FCA bahasy';
 }

@@ -229,4 +229,64 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get od3 => 'Легко находите услуги, товары и категории.';
+
+  @override
+  String get browse => 'Обзор';
+
+  @override
+  String get confirm => 'Подтвердить';
+
+  @override
+  String get confirmYourPassword => 'Подтвердите пароль';
+
+  @override
+  String get sendCode => 'Отправить код';
+
+  @override
+  String get enterCodeSentYourPhoneNumber => 'Введите код, отправленный на ваш номер телефона';
+
+  @override
+  String get enterCodeSentYourEmail => 'Введите код, отправленный на вашу электронную почту';
+
+  @override
+  String get companyInformation => 'Информация о компании';
+
+  @override
+  String get dateEstablishment => 'Дата основания';
+
+  @override
+  String get registrationAuthority => 'Регистрирующий орган';
+
+  @override
+  String get registrationNumber => 'Регистрационный номер';
+
+  @override
+  String get legalForm => 'Организационно-правовая форма';
+
+  @override
+  String get businessActivity => 'Сфера деятельности';
+
+  @override
+  String get ownershipType => 'Форма собственности';
+
+  @override
+  String get mainProducts => 'Основная продукция';
+
+  @override
+  String get legalAddress => 'Юридический адрес';
+
+  @override
+  String get additionalInformation => 'Дополнительная информация';
+
+  @override
+  String get workingHours => 'Часы работы';
+
+  @override
+  String get type => 'Тип';
+
+  @override
+  String get photoReport => 'Фоторепортаж';
+
+  @override
+  String get fCAPrice => 'Цена FCA';
 }

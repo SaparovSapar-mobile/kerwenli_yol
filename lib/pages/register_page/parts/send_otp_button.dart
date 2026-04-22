@@ -33,7 +33,7 @@ class SendOtpButton extends ConsumerWidget {
     final AppLocalizations lang = AppLocalizations.of(context)!;
 
     return PrimaryButton(
-      text: 'Kod ugratmak',
+      text: lang.sendCode,
       btnPressProvider: sendOTPCodeBtnPressProvider,
       onPressed: () async {
         final GlobalKey<FormState> formKey = emailCtrl != null

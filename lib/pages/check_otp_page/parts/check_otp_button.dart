@@ -34,7 +34,7 @@ class CheckOtpButton extends ConsumerWidget {
     final AppLocalizations lang = AppLocalizations.of(context)!;
 
     return PrimaryButton(
-      text: 'Tassykalamk',
+      text: lang.confirm,
       btnPressProvider: checkOTPCodeBtnPressProvider,
       onPressed: () async {
         ref.read(checkOTPCodeBtnPressProvider.notifier).state = true;

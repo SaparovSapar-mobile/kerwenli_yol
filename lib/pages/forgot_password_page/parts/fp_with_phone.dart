@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kerwenli_yol/l10n/app_localizations.dart';
 import 'package:kerwenli_yol/pages/parts/inputs/password_input.dart';
 import 'package:kerwenli_yol/pages/parts/inputs/phone_input.dart';
 import 'package:kerwenli_yol/pages/register_page/parts/send_otp_button.dart';
@@ -18,6 +19,8 @@ class FpWithPhone extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final AppLocalizations lang = AppLocalizations.of(context)!;
+
     return Form(
       key: formKey,
       child: Column(
@@ -40,7 +43,7 @@ class FpWithPhone extends StatelessWidget {
           SendOtpButton(
             phoneCtrl: phoneCtrl,
             formKeyForPhone: formKey,
-            text: 'Telefon belgiňize gelen kody giriziň',
+            text: lang.enterCodeSentYourPhoneNumber,
             passwordCtrl: passwordCtrl,
           ),
         ],

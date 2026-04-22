@@ -542,6 +542,126 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Easily find services, products, and categories.'**
   String get od3;
+
+  /// No description provided for @browse.
+  ///
+  /// In en, this message translates to:
+  /// **'Browse'**
+  String get browse;
+
+  /// No description provided for @confirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm'**
+  String get confirm;
+
+  /// No description provided for @confirmYourPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm your password'**
+  String get confirmYourPassword;
+
+  /// No description provided for @sendCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Send code'**
+  String get sendCode;
+
+  /// No description provided for @enterCodeSentYourPhoneNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the code sent to your phone number'**
+  String get enterCodeSentYourPhoneNumber;
+
+  /// No description provided for @enterCodeSentYourEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the code sent to your email'**
+  String get enterCodeSentYourEmail;
+
+  /// No description provided for @companyInformation.
+  ///
+  /// In en, this message translates to:
+  /// **'Company Information'**
+  String get companyInformation;
+
+  /// No description provided for @dateEstablishment.
+  ///
+  /// In en, this message translates to:
+  /// **'Date of establishment'**
+  String get dateEstablishment;
+
+  /// No description provided for @registrationAuthority.
+  ///
+  /// In en, this message translates to:
+  /// **'Registration authority'**
+  String get registrationAuthority;
+
+  /// No description provided for @registrationNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Registration number'**
+  String get registrationNumber;
+
+  /// No description provided for @legalForm.
+  ///
+  /// In en, this message translates to:
+  /// **'Legal form'**
+  String get legalForm;
+
+  /// No description provided for @businessActivity.
+  ///
+  /// In en, this message translates to:
+  /// **'Business activity'**
+  String get businessActivity;
+
+  /// No description provided for @ownershipType.
+  ///
+  /// In en, this message translates to:
+  /// **'Ownership type'**
+  String get ownershipType;
+
+  /// No description provided for @mainProducts.
+  ///
+  /// In en, this message translates to:
+  /// **'Main products'**
+  String get mainProducts;
+
+  /// No description provided for @legalAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Legal address'**
+  String get legalAddress;
+
+  /// No description provided for @additionalInformation.
+  ///
+  /// In en, this message translates to:
+  /// **'Additional information'**
+  String get additionalInformation;
+
+  /// No description provided for @workingHours.
+  ///
+  /// In en, this message translates to:
+  /// **'Working hours'**
+  String get workingHours;
+
+  /// No description provided for @type.
+  ///
+  /// In en, this message translates to:
+  /// **'Type'**
+  String get type;
+
+  /// No description provided for @photoReport.
+  ///
+  /// In en, this message translates to:
+  /// **'Photo report'**
+  String get photoReport;
+
+  /// No description provided for @fCAPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'FCA price'**
+  String get fCAPrice;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

@@ -36,25 +36,27 @@ class _PassCodeInputState extends ConsumerState<PassCodeInput> {
 
     // ========= Colors ==========
     final bool isLight = isLightTheme(context, ref);
-    Color bgColor = isLight ? LightColors.bgPageLight : DarkColors.bgPageDark;
-    Color textColor = isLight
+    final Color bgColor = isLight
+        ? LightColors.bgPageLight
+        : DarkColors.bgPageDark;
+    final Color textColor = isLight
         ? LightColors.textTitleLight
         : DarkColors.textTitleDark;
-    Color borderColor = isLight
+    final Color borderColor = isLight
         ? LightColors.textDescriptionLight
         : DarkColors.textDescriptionDark;
-    Color focusedBorderColor = isLight
+    final Color focusedBorderColor = isLight
         ? LightColors.primary
         : DarkColors.primary;
 
     // ========= Text Styles ==========
-    TextStyle textStyle = AppTextStyles.medium16.copyWith(
+    final TextStyle textStyle = AppTextStyles.medium16.copyWith(
       fontWeight: FontWeight.bold,
       color: textColor,
     );
 
-    int passCodeCounter = ref.watch(passCodeCounterProvider);
-    bool firstCount = passCodeCounter == 0;
+    final int passCodeCounter = ref.watch(passCodeCounterProvider);
+    final bool firstCount = passCodeCounter == 0;
 
     final pinTheme = PinTheme(
       width: 40,
@@ -109,7 +111,7 @@ class _PassCodeInputState extends ConsumerState<PassCodeInput> {
         ),
         SizedBox(height: 20),
         PrimaryButton(
-          text: 'Tassykla',
+          text: lang.confirm,
           onPressed: () {
             ref.read(passCodeProvider.notifier).update(int.parse(_ctrl.text));
             Navigator.pop(context);

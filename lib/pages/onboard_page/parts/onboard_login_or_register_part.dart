@@ -56,7 +56,7 @@ class OnboardLoginOrRegisterPart extends ConsumerWidget {
         ),
         SizedBox(height: 10),
         BgPageLightButton(
-          text: 'Gezelenç',
+          text: lang.browse,
           onPressed: () {
             ref.read(isFirstTimeProvider.notifier).update(false);
             Navigator.pushReplacement(

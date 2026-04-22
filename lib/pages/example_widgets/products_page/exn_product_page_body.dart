@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/examples.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/helpers/methods/pages/bottom_sheets.dart';
+import 'package:kerwenli_yol/l10n/app_localizations.dart';
 import 'package:kerwenli_yol/pages/company_page/parts/company_page_info/parts/company_info/parts/company_info_key_value.dart';
 import 'package:kerwenli_yol/pages/example_widgets/products_page/exm_home_new_products_card_images.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/parts/home_vip_company_card_categories.dart';
@@ -20,6 +21,8 @@ class ExnProductPageBody extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final AppLocalizations lang = AppLocalizations.of(context)!;
+
     // ========= Colors =======
     final bool isLight = isLightTheme(context, ref);
     final Color bgColor = isLight
@@ -80,7 +83,7 @@ class ExnProductPageBody extends ConsumerWidget {
                   ),
                   SizedBox(height: 10),
                   CompanyInfoKeyValue(
-                    keyText: 'FCA bahasy',
+                    keyText: lang.fCAPrice,
                     valueText: 'ylalaşykly',
                   ),
                   CompanyInfoKeyValue(

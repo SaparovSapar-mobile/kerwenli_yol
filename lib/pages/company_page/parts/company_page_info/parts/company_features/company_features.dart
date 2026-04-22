@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/helpers/functions/translations.dart';
+import 'package:kerwenli_yol/l10n/app_localizations.dart';
 import 'package:kerwenli_yol/models/company.dart';
 import 'package:kerwenli_yol/models/opportunity.dart';
 import 'package:kerwenli_yol/pages/company_page/parts/company_page_info/parts/company_features/parts/company_feature_part.dart';
@@ -16,6 +17,8 @@ class CompanyFeatures extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final AppLocalizations lang = AppLocalizations.of(context)!;
+
     // ========== Colors =============
     final bool isLight = isLightTheme(context, ref);
     final Color bgColor = isLight
@@ -43,7 +46,7 @@ class CompanyFeatures extends ConsumerWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Amatlyklary', style: textStyle),
+            Text(lang.features, style: textStyle),
             SizedBox(height: 4),
             if (hasOpp)
               ...opportunities.map((e) {

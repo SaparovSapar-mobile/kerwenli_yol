@@ -29,7 +29,7 @@ class CompanyPageMedias extends ConsumerWidget {
       child: Column(
         children: [
           CompanyPagePartTabbar(
-            tabTexts: [lang.shortVideos, lang.videos, 'Fotoreportaz'],
+            tabTexts: [lang.shortVideos, lang.videos, lang.photoReport],
           ),
           Expanded(
             child: Container(

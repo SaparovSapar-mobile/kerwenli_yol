@@ -62,7 +62,7 @@ class RegisterWithEmail extends StatelessWidget {
             fullNameCtrl: nameCtrl,
             emailCtrl: emailCtrl,
             formKeyForEmail: formKey,
-            text: 'Emailiňize gelen kody giriziň',
+            text: lang.enterCodeSentYourEmail,
           ),
           SizedBox(height: 10),
           BgPageLightButton(

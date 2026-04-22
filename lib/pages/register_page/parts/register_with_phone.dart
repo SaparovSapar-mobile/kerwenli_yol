@@ -62,7 +62,7 @@ class RegisterWithPhone extends StatelessWidget {
             fullNameCtrl: nameCtrl,
             phoneCtrl: phoneCtrl,
             formKeyForPhone: formKey,
-            text: 'Telefon belgiňize gelen kody giriziň',
+            text: lang.enterCodeSentYourPhoneNumber,
           ),
           SizedBox(height: 10),
           BgPageLightButton(

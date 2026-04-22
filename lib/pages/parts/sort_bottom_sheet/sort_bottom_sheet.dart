@@ -41,7 +41,7 @@ class SortBottomSheet extends StatelessWidget {
         Container(
           margin: EdgeInsets.symmetric(vertical: 16),
           alignment: Alignment.centerLeft,
-          child: Text('Görnüşi', style: textStyle, textAlign: TextAlign.left),
+          child: Text(lang.type, style: textStyle, textAlign: TextAlign.left),
         ),
         SortListTileWithIcon(
           title: 'Grid',
