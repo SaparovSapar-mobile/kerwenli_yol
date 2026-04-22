@@ -211,4 +211,22 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get noDataAvailable => 'Нет данных !';
+
+  @override
+  String get ot1 => 'Найдите надежные предприятия';
+
+  @override
+  String get ot2 => 'Расширяйте деловые связи';
+
+  @override
+  String get ot3 => 'Все на одной платформе';
+
+  @override
+  String get od1 => 'Получите возможность работать с ведущими компаниями в одном месте.';
+
+  @override
+  String get od2 => 'Находите возможности для сотрудничества легко и эффективно.';
+
+  @override
+  String get od3 => 'Легко находите услуги, товары и категории.';
 }

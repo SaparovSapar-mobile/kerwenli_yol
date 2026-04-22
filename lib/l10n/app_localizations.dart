@@ -506,6 +506,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No data available !'**
   String get noDataAvailable;
+
+  /// No description provided for @ot1.
+  ///
+  /// In en, this message translates to:
+  /// **'Find reliable companies'**
+  String get ot1;
+
+  /// No description provided for @ot2.
+  ///
+  /// In en, this message translates to:
+  /// **'Expand your business connections'**
+  String get ot2;
+
+  /// No description provided for @ot3.
+  ///
+  /// In en, this message translates to:
+  /// **'Everything on one platform'**
+  String get ot3;
+
+  /// No description provided for @od1.
+  ///
+  /// In en, this message translates to:
+  /// **'Get the opportunity to work with leading companies all in one place.'**
+  String get od1;
+
+  /// No description provided for @od2.
+  ///
+  /// In en, this message translates to:
+  /// **'Find partnership opportunities in an easy and efficient way.'**
+  String get od2;
+
+  /// No description provided for @od3.
+  ///
+  /// In en, this message translates to:
+  /// **'Easily find services, products, and categories.'**
+  String get od3;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

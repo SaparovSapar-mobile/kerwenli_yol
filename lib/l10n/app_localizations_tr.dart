@@ -211,4 +211,22 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get noDataAvailable => 'Veri yok !';
+
+  @override
+  String get ot1 => 'Güvenilir işletmeleri bulun';
+
+  @override
+  String get ot2 => 'İş bağlantılarınızı genişletin';
+
+  @override
+  String get ot3 => 'Hepsi bir platformda';
+
+  @override
+  String get od1 => 'Önde gelen işletmelerle çalışma fırsatını tek bir yerden yakalayın.';
+
+  @override
+  String get od2 => 'İş birliği fırsatlarını kolay ve etkili bir şekilde bulun.';
+
+  @override
+  String get od3 => 'Hizmetleri, ürünleri ve kategorileri kolayca bulun.';
 }

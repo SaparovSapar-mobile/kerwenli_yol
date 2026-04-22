@@ -66,5 +66,11 @@
     "companyName":"Company name",
     "ourBrands":"Our Brands",
     "videos":"Videos",
-    "noDataAvailable":"No data available !"
+    "noDataAvailable":"No data available !",
+    "ot1":"Find reliable companies",
+    "ot2":"Expand your business connections",
+    "ot3":"Everything on one platform",
+    "od1":"Get the opportunity to work with leading companies all in one place.",
+    "od2":"Find partnership opportunities in an easy and efficient way.",
+    "od3":"Easily find services, products, and categories."
 }

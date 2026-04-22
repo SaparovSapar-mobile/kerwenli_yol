@@ -211,4 +211,22 @@ class AppLocalizationsTk extends AppLocalizations {
 
   @override
   String get noDataAvailable => 'Maglumat ýok !';
+
+  @override
+  String get ot1 => 'Ygtybarly kärhanalary tapyň';
+
+  @override
+  String get ot2 => 'Biznes baglanyşyklaryny giňeldiň';
+
+  @override
+  String get ot3 => 'Hemmesi bir platformada';
+
+  @override
+  String get od1 => 'Öňdebaryjy kärhanalar bilen işleşmek mümkinçiligini bir ýerde alyň.';
+
+  @override
+  String get od2 => 'Hyzmatdaşlyk mümkinçiliklerini aňsat we netijeli görnüşde tapyň.';
+
+  @override
+  String get od3 => 'Hyzmatlary, önümleri we kategoriýalary aňsat tapyň.';
 }

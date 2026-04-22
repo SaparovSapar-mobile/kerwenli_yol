@@ -211,4 +211,22 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get noDataAvailable => 'No data available !';
+
+  @override
+  String get ot1 => 'Find reliable companies';
+
+  @override
+  String get ot2 => 'Expand your business connections';
+
+  @override
+  String get ot3 => 'Everything on one platform';
+
+  @override
+  String get od1 => 'Get the opportunity to work with leading companies all in one place.';
+
+  @override
+  String get od2 => 'Find partnership opportunities in an easy and efficient way.';
+
+  @override
+  String get od3 => 'Easily find services, products, and categories.';
 }

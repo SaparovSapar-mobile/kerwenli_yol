@@ -66,5 +66,11 @@
     "companyName":"Şirket adı",
     "ourBrands":"Markalarımız",
     "videos":"Videolar",
-    "noDataAvailable":"Veri yok !"
+    "noDataAvailable":"Veri yok !",
+    "ot1":"Güvenilir işletmeleri bulun",
+    "ot2":"İş bağlantılarınızı genişletin",
+    "ot3":"Hepsi bir platformda",
+    "od1":"Önde gelen işletmelerle çalışma fırsatını tek bir yerden yakalayın.",
+    "od2":"İş birliği fırsatlarını kolay ve etkili bir şekilde bulun.",
+    "od3":"Hizmetleri, ürünleri ve kategorileri kolayca bulun."
 }
