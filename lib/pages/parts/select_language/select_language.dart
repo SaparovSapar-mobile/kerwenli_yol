@@ -17,7 +17,7 @@ class SelectLanguage extends StatelessWidget {
         BottomSheetTitle(text: lang.language),
         const LanguageListTile(
           title: 'Türkmençe',
-          lang: LangType.tr,
+          lang: LangType.tk,
           image: 'tkm.png',
         ),
         const LanguageListTile(
