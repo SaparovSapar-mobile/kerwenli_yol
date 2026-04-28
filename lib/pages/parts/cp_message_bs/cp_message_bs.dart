@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kerwenli_yol/l10n/app_localizations.dart';
 import 'package:kerwenli_yol/pages/parts/bottom_sheet_widget/bottom_sheet_widget.dart';
 import 'package:kerwenli_yol/pages/parts/bottom_sheet_widget/parts/bottom_sheet_title.dart';
 import 'package:kerwenli_yol/pages/parts/cp_message_bs/parts/cp_message_bs_list_tile.dart';
@@ -11,17 +12,19 @@ class CpMessageBs extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final AppLocalizations lang = AppLocalizations.of(context)!;
+
     return BottomSheetWidget(
       children: [
-        BottomSheetTitle(text: 'Sazlamalar'),
+        BottomSheetTitle(text: lang.settings),
         CpMessageBsListTile(
-          title: 'Nagilelik bildirmek',
+          title: lang.submitComplaint,
           index: 0,
           image: 'flag.png',
           companyId: companyId,
         ),
         CpMessageBsListTile(
-          title: 'Hat yazmak',
+          title: lang.writeMessage,
           index: 1,
           image: 'messages.png',
           companyId: companyId,

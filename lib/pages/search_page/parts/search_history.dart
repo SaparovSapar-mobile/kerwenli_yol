@@ -47,7 +47,7 @@ class SearchHistory extends ConsumerWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Gozleg taryhy :', style: titleStyle),
+          Text('${lang.searchHistory} :', style: titleStyle),
           SizedBox(height: 8),
           Expanded(
             child: resultDB.when(

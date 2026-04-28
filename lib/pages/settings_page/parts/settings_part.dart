@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
+import 'package:kerwenli_yol/l10n/app_localizations.dart';
 import 'package:kerwenli_yol/pages/settings_page/parts/language_button.dart';
 import 'package:kerwenli_yol/pages/settings_page/parts/setting_part_card.dart';
 import 'package:kerwenli_yol/pages/settings_page/parts/setting_passcode_button.dart';
@@ -14,9 +15,13 @@ class SettingsPart extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final AppLocalizations lang = AppLocalizations.of(context)!;
+
     // ========= Colors ==========
     final bool isLight = isLightTheme(context, ref);
-    Color bgColor = isLight ? LightColors.bgBlogLight : DarkColors.bgBlogDark;
+    final Color bgColor = isLight
+        ? LightColors.bgBlogLight
+        : DarkColors.bgBlogDark;
 
     return Container(
       padding: EdgeInsets.all(10),
@@ -27,13 +32,13 @@ class SettingsPart extends ConsumerWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Sazlamalar'),
+          Text(lang.settings),
           SizedBox(height: 5),
           LanguageButton(),
           ThemeButton(),
           SettingPartCard(
             index: 2,
-            text: 'Sesli bildirisler',
+            text: lang.soundNotifications,
             icon: Icons.notifications,
             settingProvider: openNotificationProvider,
           ),

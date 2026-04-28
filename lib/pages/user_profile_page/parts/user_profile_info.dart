@@ -69,7 +69,7 @@ class UserProfileInfo extends ConsumerWidget {
                   onTap: () =>
                       goToPage(context, BookmarksPage(), AxisDirection.left),
                   icon: Icons.bookmark,
-                  text: 'Halanlarym',
+                  text: lang.likes,
                   countText: '150 K',
                 ),
               ],

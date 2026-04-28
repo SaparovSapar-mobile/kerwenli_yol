@@ -289,4 +289,118 @@ class AppLocalizationsTk extends AppLocalizations {
 
   @override
   String get fCAPrice => 'FCA bahasy';
+
+  @override
+  String get minimumOrderQuantity => 'Sargydyň iň az mukdary';
+
+  @override
+  String get monthlyProductionCapacity => 'Kuwwatlylygy her aýda';
+
+  @override
+  String get deliveryTerms => 'Tabşyryş şertleri';
+
+  @override
+  String get paymentCurrency => 'Tölegiň pul görnüşi';
+
+  @override
+  String get paymentTerms => 'Töleg şertleri';
+
+  @override
+  String get description => 'Düşündirilişi';
+
+  @override
+  String get packaging => 'Gaplama';
+
+  @override
+  String get shelfLife => 'Ýaramlylyk möhleti';
+
+  @override
+  String get volume => 'Göwrüm';
+
+  @override
+  String get sendRequest => 'Talap ugrat';
+
+  @override
+  String get addFile => 'Faýl Goş';
+
+  @override
+  String get selectImage => 'Surat saýla';
+
+  @override
+  String get camera => 'Kamera';
+
+  @override
+  String get gallery => 'Galereýa';
+
+  @override
+  String get likes => 'Likes';
+
+  @override
+  String get deleteAllBookmarks => 'Ähli bookmarklar pozmak';
+
+  @override
+  String get theme => 'Tema';
+
+  @override
+  String get darkTheme => 'Garaňky Tema';
+
+  @override
+  String get lightTheme => 'Ak Tema';
+
+  @override
+  String get systemTheme => 'Sistema Temasy';
+
+  @override
+  String get soundNotifications => 'Sesli bildirişler';
+
+  @override
+  String get pINCode => 'PIN kod';
+
+  @override
+  String get enterYourPINCodeCorrectly => 'Pin Kodynyzy dogry giriziň';
+
+  @override
+  String get enterYourPINCode => 'Pin Kodynyzy giriziň';
+
+  @override
+  String get aboutTheCompany => 'Kärhana barada';
+
+  @override
+  String get company => 'Kärhana';
+
+  @override
+  String get writeMessage => 'Hat ýazmak';
+
+  @override
+  String get deleteAccount => 'Hasabymy pozmak';
+
+  @override
+  String get views => 'Görülmeler';
+
+  @override
+  String get favorites => 'Gözlenenler';
+
+  @override
+  String get sms => 'SMS';
+
+  @override
+  String get areYouSureYouWantDeleteYourAccount => 'Hakykatdan hem hasabyňy pozmak isleýäňmi ?';
+
+  @override
+  String get areYouSureYouWantLogOut => 'Siz hakykatdan hem ulgamdan çykmak isleýärsiňizmi ?';
+
+  @override
+  String get no => 'Ýok';
+
+  @override
+  String get retry => 'Täzeden Synanş';
+
+  @override
+  String get allYourDataWillAlsoDeleted => 'Şonuň bilen birlikde ähli maglumatlaryň hem pozular';
+
+  @override
+  String get submitComplaint => 'Nägilelik bildirmek';
+
+  @override
+  String get searchHistory => 'Gözlenenler';
 }

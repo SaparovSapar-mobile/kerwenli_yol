@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/helpers/methods/static_data.dart';
+import 'package:kerwenli_yol/l10n/app_localizations.dart';
 import 'package:kerwenli_yol/pages/user_profile_page/parts/user_profile_info_card.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
@@ -12,14 +13,16 @@ class UserProfileInfoViews extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final AppLocalizations lang = AppLocalizations.of(context)!;
+
     // ====== Colors ========
     final bool isLight = isLightTheme(context, ref);
-    Color innerBgColor = isLight
+    final Color innerBgColor = isLight
         ? LightColors.bgBlogLight
         : DarkColors.bgBlogDark;
 
     // ====== Text Styles ========
-    TextStyle titleStyle = AppTextStyles.medium20;
+    final TextStyle titleStyle = AppTextStyles.medium20;
 
     return Container(
       padding: EdgeInsets.all(10),
@@ -31,7 +34,7 @@ class UserProfileInfoViews extends ConsumerWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Gorulmeler',
+            lang.views,
             style: titleStyle,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
@@ -49,17 +52,17 @@ class UserProfileInfoViews extends ConsumerWidget {
               children: [
                 UserProfileInfoCard(
                   icon: Icons.favorite,
-                  text: 'Likeler',
+                  text: lang.likes,
                   countText: '3',
                 ),
                 UserProfileInfoCard(
                   icon: Icons.preview,
-                  text: 'Gorulme',
+                  text: lang.views,
                   countText: '150 K',
                 ),
                 UserProfileInfoCard(
                   icon: Icons.person_search,
-                  text: 'Gozlenenler',
+                  text: lang.favorites,
                   countText: '150 K',
                 ),
               ],

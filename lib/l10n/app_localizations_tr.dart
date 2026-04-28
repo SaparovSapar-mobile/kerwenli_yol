@@ -276,7 +276,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get legalAddress => 'Yasal adres';
 
   @override
-  String get additionalInformation => 'Ek bilgi';
+  String get additionalInformation => 'Ek Bilgiler';
 
   @override
   String get workingHours => 'Çalışma saatleri';
@@ -289,4 +289,118 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get fCAPrice => 'FCA fiyatı';
+
+  @override
+  String get minimumOrderQuantity => 'Minimum sipariş miktarı';
+
+  @override
+  String get monthlyProductionCapacity => 'Aylık üretim kapasitesi';
+
+  @override
+  String get deliveryTerms => 'Teslimat şartları';
+
+  @override
+  String get paymentCurrency => 'Ödeme para birimi';
+
+  @override
+  String get paymentTerms => 'Ödeme şartları';
+
+  @override
+  String get description => 'Açıklama';
+
+  @override
+  String get packaging => 'Ambalaj';
+
+  @override
+  String get shelfLife => 'Raf ömrü';
+
+  @override
+  String get volume => 'Hacim';
+
+  @override
+  String get sendRequest => 'Talep gönder';
+
+  @override
+  String get addFile => 'Dosya ekle';
+
+  @override
+  String get selectImage => 'Resim Seç';
+
+  @override
+  String get camera => 'Kamera';
+
+  @override
+  String get gallery => 'Galeri';
+
+  @override
+  String get likes => 'Beğeniler';
+
+  @override
+  String get deleteAllBookmarks => 'Tüm yer imlerini sil';
+
+  @override
+  String get theme => 'Tema';
+
+  @override
+  String get darkTheme => 'Koyu Tema';
+
+  @override
+  String get lightTheme => 'Açık Tema';
+
+  @override
+  String get systemTheme => 'Sistem Teması';
+
+  @override
+  String get soundNotifications => 'Sesli bildirimler';
+
+  @override
+  String get pINCode => 'PIN kodu';
+
+  @override
+  String get enterYourPINCodeCorrectly => 'Pin kodunuzu dogru yazin';
+
+  @override
+  String get enterYourPINCode => 'Pin kodunuzu yazin';
+
+  @override
+  String get aboutTheCompany => 'Şirket hakkında';
+
+  @override
+  String get company => 'Şirket';
+
+  @override
+  String get writeMessage => 'Mesaj yaz';
+
+  @override
+  String get deleteAccount => 'Hesabı sil';
+
+  @override
+  String get views => 'Görüntülenmeler';
+
+  @override
+  String get favorites => 'Favoriler';
+
+  @override
+  String get sms => 'SMS';
+
+  @override
+  String get areYouSureYouWantDeleteYourAccount => 'Hesabınızı silmek istediğinizden emin misiniz ?';
+
+  @override
+  String get areYouSureYouWantLogOut => 'Çıkış yapmak istediğinizden emin misiniz ?';
+
+  @override
+  String get no => 'Hayir';
+
+  @override
+  String get retry => 'Tekrar';
+
+  @override
+  String get allYourDataWillAlsoDeleted => 'Tüm verileriniz de silinecektir';
+
+  @override
+  String get submitComplaint => 'Şikayet bildir';
+
+  @override
+  String get searchHistory => 'Arama geçmişi';
 }

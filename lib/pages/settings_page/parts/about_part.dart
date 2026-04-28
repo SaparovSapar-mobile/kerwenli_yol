@@ -36,7 +36,7 @@ class AboutPart extends ConsumerWidget {
           SizedBox(height: 5),
           SettingPartCard(
             index: 4,
-            text: 'Karhana barada',
+            text: lang.aboutTheCompany,
             icon: Icons.info,
             onTap: () => goToPage(context, AboutUsPage(), AxisDirection.left),
           ),
@@ -48,7 +48,7 @@ class AboutPart extends ConsumerWidget {
           ),
           SettingPartCard(
             index: 6,
-            text: 'Hat yazmak',
+            text: lang.writeMessage,
             icon: Icons.forum,
             onTap: () {},
           ),

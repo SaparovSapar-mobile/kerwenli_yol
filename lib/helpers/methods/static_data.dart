@@ -49,7 +49,7 @@ const vipCompanyCardWidth = 112.0;
 List<String> bookmarkHeaders(BuildContext context) {
   final AppLocalizations lang = AppLocalizations.of(context)!;
 
-  return ['Likelar', lang.bookmark, 'Follow Firmalar'];
+  return [lang.likes, lang.bookmark, 'Follow Firmalar'];
 }
 
 List<String> searchTabs(BuildContext context) {

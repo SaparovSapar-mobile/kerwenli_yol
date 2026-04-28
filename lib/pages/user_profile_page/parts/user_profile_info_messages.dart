@@ -34,7 +34,7 @@ class UserProfileInfoMessages extends ConsumerWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Sesli gelen hatlar',
+            lang.soundNotifications,
             style: titleStyle,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,

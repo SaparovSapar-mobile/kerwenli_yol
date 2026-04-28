@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/navigation.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
+import 'package:kerwenli_yol/l10n/app_localizations.dart';
 import 'package:kerwenli_yol/pages/passcode_page/passcode_page.dart';
 import 'package:kerwenli_yol/providers/pages/settings_page.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
@@ -15,27 +16,31 @@ class SettingPasscodeButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final AppLocalizations lang = AppLocalizations.of(context)!;
+
     // ========== Colors ============
     final bool isLight = isLightTheme(context, ref);
-    Color leadingBgColor = isLight
+    final Color leadingBgColor = isLight
         ? LightColors.bgPageLight
         : DarkColors.bgPageDark;
-    Color activeLeadingBgColor = isLight
+    final Color activeLeadingBgColor = isLight
         ? LightColors.bgBlogLight
         : DarkColors.bgBlogDark;
-    Color inactiveTrackColor = isLight
+    final Color inactiveTrackColor = isLight
         ? LightColors.textTitleLight
         : DarkColors.bgPageDark;
-    Color leadingIconColor = isLight ? LightColors.primary : DarkColors.primary;
+    final Color leadingIconColor = isLight
+        ? LightColors.primary
+        : DarkColors.primary;
 
     // ========== Text Styles ============
-    TextStyle titleStyle = AppTextStyles.medium12;
+    final TextStyle titleStyle = AppTextStyles.medium12;
 
-    int selectedSetting = ref.watch(selectedSettingPartIndexProvider);
-    bool isActive = selectedSetting == index;
+    final int selectedSetting = ref.watch(selectedSettingPartIndexProvider);
+    final bool isActive = selectedSetting == index;
 
-    int passCode = ref.watch(passCodeProvider);
-    bool openPassCode = passCode != 0;
+    final int passCode = ref.watch(passCodeProvider);
+    final bool openPassCode = passCode != 0;
 
     return Container(
       decoration: BoxDecoration(
@@ -64,7 +69,7 @@ class SettingPasscodeButton extends ConsumerWidget {
           ),
           child: Icon(Icons.lock, size: 16, color: leadingIconColor),
         ),
-        title: Text('Pin kod', style: titleStyle),
+        title: Text(lang.pINCode, style: titleStyle),
         trailing: Transform.scale(
           alignment: Alignment.centerRight,
           scale: 0.6,

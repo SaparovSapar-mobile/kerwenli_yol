@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
+import 'package:kerwenli_yol/l10n/app_localizations.dart';
 import 'package:kerwenli_yol/pages/parts/bottom_sheet_widget/bottom_sheet_widget.dart';
 import 'package:kerwenli_yol/pages/parts/bottom_sheet_widget/parts/bottom_sheet_title.dart';
 import 'package:kerwenli_yol/pages/parts/silver_border_button.dart';
@@ -13,6 +14,8 @@ class DeleteAccount extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final AppLocalizations lang = AppLocalizations.of(context)!;
+
     // ======== Colors ==========
     final bool isLight = isLightTheme(context, ref);
     final Color textColor = isLight
@@ -24,17 +27,17 @@ class DeleteAccount extends ConsumerWidget {
 
     return BottomSheetWidget(
       children: [
-        BottomSheetTitle(text: 'Hakykatdan hem hasabyňy pozmak isleýäňmi?'),
+        BottomSheetTitle(text: lang.areYouSureYouWantDeleteYourAccount),
         Padding(
           padding: EdgeInsetsGeometry.only(top: 4, bottom: 24),
           child: Text(
-            'Şonuň bilen birlikde ähli maglumatlaryň hem pozular.',
+            lang.allYourDataWillAlsoDeleted,
             textAlign: TextAlign.start,
             style: ts,
           ),
         ),
         SilverBorderButton(
-          text: 'Hasabdan pozmak',
+          text: lang.deleteAccount,
           onPressed: () {},
           icon: Icons.logout,
         ),

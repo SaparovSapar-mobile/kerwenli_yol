@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kerwenli_yol/l10n/app_localizations.dart';
 import 'package:kerwenli_yol/pages/parts/bg_page_light_button.dart';
 import 'package:kerwenli_yol/pages/parts/bottom_sheet_widget/bottom_sheet_widget.dart';
 import 'package:kerwenli_yol/pages/parts/bottom_sheet_widget/parts/bottom_sheet_title.dart';
@@ -8,12 +9,14 @@ class BookMarkSettingBs extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final AppLocalizations lang = AppLocalizations.of(context)!;
+
     return BottomSheetWidget(
       children: [
-        BottomSheetTitle(text: 'Sazlamalar'),
+        BottomSheetTitle(text: lang.settings),
         SizedBox(height: 10),
         BgPageLightButton(
-          text: 'Ahli bookmarklary pozmak',
+          text: lang.deleteAllBookmarks,
           onPressed: () {},
           icon: Icons.delete,
         ),

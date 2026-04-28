@@ -289,4 +289,118 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get fCAPrice => 'Цена FCA';
+
+  @override
+  String get minimumOrderQuantity => 'Минимальный объем заказа';
+
+  @override
+  String get monthlyProductionCapacity => 'Производственная мощность в месяц';
+
+  @override
+  String get deliveryTerms => 'Условия поставки';
+
+  @override
+  String get paymentCurrency => 'Валюта оплаты';
+
+  @override
+  String get paymentTerms => 'Условия оплаты';
+
+  @override
+  String get description => 'Описание';
+
+  @override
+  String get packaging => 'Упаковка';
+
+  @override
+  String get shelfLife => 'Срок годности';
+
+  @override
+  String get volume => 'Объем';
+
+  @override
+  String get sendRequest => 'Отправить запрос';
+
+  @override
+  String get addFile => 'Добавить файл';
+
+  @override
+  String get selectImage => 'Выберите изображение';
+
+  @override
+  String get camera => 'Камера';
+
+  @override
+  String get gallery => 'Галерея';
+
+  @override
+  String get likes => 'Лайки';
+
+  @override
+  String get deleteAllBookmarks => 'Удалить все закладки';
+
+  @override
+  String get theme => 'Тема';
+
+  @override
+  String get darkTheme => 'Темная тема';
+
+  @override
+  String get lightTheme => 'Светлая тема';
+
+  @override
+  String get systemTheme => 'Системная тема';
+
+  @override
+  String get soundNotifications => 'Звуковые уведомления';
+
+  @override
+  String get pINCode => 'ПИН-код';
+
+  @override
+  String get enterYourPINCodeCorrectly => 'Введите свой PIN-код правильно';
+
+  @override
+  String get enterYourPINCode => 'Введите свой PIN-код';
+
+  @override
+  String get aboutTheCompany => 'О компании';
+
+  @override
+  String get company => 'Компания';
+
+  @override
+  String get writeMessage => 'Написать сообщение';
+
+  @override
+  String get deleteAccount => 'Удалить аккаунт';
+
+  @override
+  String get views => 'Просмотры';
+
+  @override
+  String get favorites => 'Избранное';
+
+  @override
+  String get sms => 'SMS';
+
+  @override
+  String get areYouSureYouWantDeleteYourAccount => 'Вы действительно хотите удалить аккаунт ?';
+
+  @override
+  String get areYouSureYouWantLogOut => 'Вы действительно хотите выйти из системы ?';
+
+  @override
+  String get no => 'Нет';
+
+  @override
+  String get retry => 'Повторить';
+
+  @override
+  String get allYourDataWillAlsoDeleted => 'Все ваши данные также будут удалены';
+
+  @override
+  String get submitComplaint => 'Подать жалобу';
+
+  @override
+  String get searchHistory => 'История поиска';
 }

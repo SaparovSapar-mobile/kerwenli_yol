@@ -289,4 +289,118 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get fCAPrice => 'FCA price';
+
+  @override
+  String get minimumOrderQuantity => 'Minimum order quantity';
+
+  @override
+  String get monthlyProductionCapacity => 'Monthly production capacity';
+
+  @override
+  String get deliveryTerms => 'Delivery terms';
+
+  @override
+  String get paymentCurrency => 'Payment currency';
+
+  @override
+  String get paymentTerms => 'Payment terms';
+
+  @override
+  String get description => 'Description';
+
+  @override
+  String get packaging => 'Packaging';
+
+  @override
+  String get shelfLife => 'Shelf life';
+
+  @override
+  String get volume => 'Volume';
+
+  @override
+  String get sendRequest => 'Send request';
+
+  @override
+  String get addFile => 'Add file';
+
+  @override
+  String get selectImage => 'Select Image';
+
+  @override
+  String get camera => 'Camera';
+
+  @override
+  String get gallery => 'Gallery';
+
+  @override
+  String get likes => 'Likes';
+
+  @override
+  String get deleteAllBookmarks => 'Delete all bookmarks';
+
+  @override
+  String get theme => 'Theme';
+
+  @override
+  String get darkTheme => 'Dark Theme';
+
+  @override
+  String get lightTheme => 'Light Theme';
+
+  @override
+  String get systemTheme => 'System Theme';
+
+  @override
+  String get soundNotifications => 'Sound notifications';
+
+  @override
+  String get pINCode => 'PIN code';
+
+  @override
+  String get enterYourPINCodeCorrectly => 'Enter your PIN code correctly';
+
+  @override
+  String get enterYourPINCode => 'Enter your PIN code';
+
+  @override
+  String get aboutTheCompany => 'About the company';
+
+  @override
+  String get company => 'Company';
+
+  @override
+  String get writeMessage => 'Write a message';
+
+  @override
+  String get deleteAccount => 'Delete account';
+
+  @override
+  String get views => 'Views';
+
+  @override
+  String get favorites => 'Favorites';
+
+  @override
+  String get sms => 'SMS';
+
+  @override
+  String get areYouSureYouWantDeleteYourAccount => 'Are you sure you want to delete your account ?';
+
+  @override
+  String get areYouSureYouWantLogOut => 'Are you sure you want to log out ?';
+
+  @override
+  String get no => 'No';
+
+  @override
+  String get retry => 'Retry';
+
+  @override
+  String get allYourDataWillAlsoDeleted => 'All your data will also be deleted';
+
+  @override
+  String get submitComplaint => 'Submit a complaint';
+
+  @override
+  String get searchHistory => 'Search history';
 }

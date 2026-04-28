@@ -662,6 +662,234 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'FCA price'**
   String get fCAPrice;
+
+  /// No description provided for @minimumOrderQuantity.
+  ///
+  /// In en, this message translates to:
+  /// **'Minimum order quantity'**
+  String get minimumOrderQuantity;
+
+  /// No description provided for @monthlyProductionCapacity.
+  ///
+  /// In en, this message translates to:
+  /// **'Monthly production capacity'**
+  String get monthlyProductionCapacity;
+
+  /// No description provided for @deliveryTerms.
+  ///
+  /// In en, this message translates to:
+  /// **'Delivery terms'**
+  String get deliveryTerms;
+
+  /// No description provided for @paymentCurrency.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment currency'**
+  String get paymentCurrency;
+
+  /// No description provided for @paymentTerms.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment terms'**
+  String get paymentTerms;
+
+  /// No description provided for @description.
+  ///
+  /// In en, this message translates to:
+  /// **'Description'**
+  String get description;
+
+  /// No description provided for @packaging.
+  ///
+  /// In en, this message translates to:
+  /// **'Packaging'**
+  String get packaging;
+
+  /// No description provided for @shelfLife.
+  ///
+  /// In en, this message translates to:
+  /// **'Shelf life'**
+  String get shelfLife;
+
+  /// No description provided for @volume.
+  ///
+  /// In en, this message translates to:
+  /// **'Volume'**
+  String get volume;
+
+  /// No description provided for @sendRequest.
+  ///
+  /// In en, this message translates to:
+  /// **'Send request'**
+  String get sendRequest;
+
+  /// No description provided for @addFile.
+  ///
+  /// In en, this message translates to:
+  /// **'Add file'**
+  String get addFile;
+
+  /// No description provided for @selectImage.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Image'**
+  String get selectImage;
+
+  /// No description provided for @camera.
+  ///
+  /// In en, this message translates to:
+  /// **'Camera'**
+  String get camera;
+
+  /// No description provided for @gallery.
+  ///
+  /// In en, this message translates to:
+  /// **'Gallery'**
+  String get gallery;
+
+  /// No description provided for @likes.
+  ///
+  /// In en, this message translates to:
+  /// **'Likes'**
+  String get likes;
+
+  /// No description provided for @deleteAllBookmarks.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete all bookmarks'**
+  String get deleteAllBookmarks;
+
+  /// No description provided for @theme.
+  ///
+  /// In en, this message translates to:
+  /// **'Theme'**
+  String get theme;
+
+  /// No description provided for @darkTheme.
+  ///
+  /// In en, this message translates to:
+  /// **'Dark Theme'**
+  String get darkTheme;
+
+  /// No description provided for @lightTheme.
+  ///
+  /// In en, this message translates to:
+  /// **'Light Theme'**
+  String get lightTheme;
+
+  /// No description provided for @systemTheme.
+  ///
+  /// In en, this message translates to:
+  /// **'System Theme'**
+  String get systemTheme;
+
+  /// No description provided for @soundNotifications.
+  ///
+  /// In en, this message translates to:
+  /// **'Sound notifications'**
+  String get soundNotifications;
+
+  /// No description provided for @pINCode.
+  ///
+  /// In en, this message translates to:
+  /// **'PIN code'**
+  String get pINCode;
+
+  /// No description provided for @enterYourPINCodeCorrectly.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your PIN code correctly'**
+  String get enterYourPINCodeCorrectly;
+
+  /// No description provided for @enterYourPINCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your PIN code'**
+  String get enterYourPINCode;
+
+  /// No description provided for @aboutTheCompany.
+  ///
+  /// In en, this message translates to:
+  /// **'About the company'**
+  String get aboutTheCompany;
+
+  /// No description provided for @company.
+  ///
+  /// In en, this message translates to:
+  /// **'Company'**
+  String get company;
+
+  /// No description provided for @writeMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Write a message'**
+  String get writeMessage;
+
+  /// No description provided for @deleteAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete account'**
+  String get deleteAccount;
+
+  /// No description provided for @views.
+  ///
+  /// In en, this message translates to:
+  /// **'Views'**
+  String get views;
+
+  /// No description provided for @favorites.
+  ///
+  /// In en, this message translates to:
+  /// **'Favorites'**
+  String get favorites;
+
+  /// No description provided for @sms.
+  ///
+  /// In en, this message translates to:
+  /// **'SMS'**
+  String get sms;
+
+  /// No description provided for @areYouSureYouWantDeleteYourAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to delete your account ?'**
+  String get areYouSureYouWantDeleteYourAccount;
+
+  /// No description provided for @areYouSureYouWantLogOut.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to log out ?'**
+  String get areYouSureYouWantLogOut;
+
+  /// No description provided for @no.
+  ///
+  /// In en, this message translates to:
+  /// **'No'**
+  String get no;
+
+  /// No description provided for @retry.
+  ///
+  /// In en, this message translates to:
+  /// **'Retry'**
+  String get retry;
+
+  /// No description provided for @allYourDataWillAlsoDeleted.
+  ///
+  /// In en, this message translates to:
+  /// **'All your data will also be deleted'**
+  String get allYourDataWillAlsoDeleted;
+
+  /// No description provided for @submitComplaint.
+  ///
+  /// In en, this message translates to:
+  /// **'Submit a complaint'**
+  String get submitComplaint;
+
+  /// No description provided for @searchHistory.
+  ///
+  /// In en, this message translates to:
+  /// **'Search history'**
+  String get searchHistory;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

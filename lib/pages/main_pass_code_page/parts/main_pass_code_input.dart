@@ -84,7 +84,7 @@ class _MainPassCodeInputState extends ConsumerState<MainPassCodeInput> {
             int passCode = ref.read(passCodeProvider);
 
             if (passCode.toString() != _ctrl.text) {
-              showErrorSnackbar(context, 'Pin Kodynyzy dogry girizin');
+              showErrorSnackbar(context, lang.enterYourPINCodeCorrectly);
               _ctrl.clear();
               return;
             }

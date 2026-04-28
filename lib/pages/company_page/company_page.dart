@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/methods/pages/bottom_sheets.dart';
 import 'package:kerwenli_yol/helpers/methods/pages/home_page.dart';
+import 'package:kerwenli_yol/l10n/app_localizations.dart';
 import 'package:kerwenli_yol/models/company.dart';
 import 'package:kerwenli_yol/pages/company_page/parts/company_page_card.dart';
 import 'package:kerwenli_yol/pages/company_page/parts/company_page_info/company_page_info.dart';
@@ -20,6 +21,8 @@ class CompanyPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final AppLocalizations lang = AppLocalizations.of(context)!;
+
     final AsyncValue<CompanyDetailModel> resultApi = ref.watch(
       fetchCompanyProvider(companyId),
     );
@@ -42,7 +45,7 @@ class CompanyPage extends ConsumerWidget {
                 InternetStatusBar(),
                 // ========= Fixed ===========
                 CompanyPageTop(
-                  text: 'Karhana',
+                  text: lang.company,
                   showBottomLine: true,
                   onPressed: () =>
                       showCompanyPageMessageBottomSheet(context, companyId),

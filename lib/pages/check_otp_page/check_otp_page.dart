@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/helpers/methods/parts/app_bar_methods.dart';
+import 'package:kerwenli_yol/l10n/app_localizations.dart';
 import 'package:kerwenli_yol/pages/check_otp_page/parts/check_otp_button.dart';
 import 'package:kerwenli_yol/pages/check_otp_page/parts/otp_input.dart';
 import 'package:kerwenli_yol/pages/onboard_page/parts/theme_switcher_button.dart';
@@ -26,6 +27,8 @@ class CheckOtpPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final AppLocalizations lang = AppLocalizations.of(context)!;
+
     final bool isLight = isLightTheme(context, ref);
     final Color bgColor = isLight
         ? LightColors.bgBlogLight
@@ -36,7 +39,7 @@ class CheckOtpPage extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         leading: BackLeadingButton(),
-        title: Text('SMS'),
+        title: Text(lang.sms),
         backgroundColor: bgColor,
         actions: [
           Padding(

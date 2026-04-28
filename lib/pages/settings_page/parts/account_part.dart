@@ -49,7 +49,7 @@ class AccountPart extends ConsumerWidget {
               ),
               SettingPartCard(
                 index: 9,
-                text: 'Hasabymy pozmak',
+                text: lang.deleteAccount,
                 icon: Icons.delete_forever,
                 onTap: () => showDeleteAccountBottomSheet(context),
               ),

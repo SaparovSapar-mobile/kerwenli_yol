@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
+import 'package:kerwenli_yol/l10n/app_localizations.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
@@ -13,6 +14,8 @@ class SomeError extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final AppLocalizations lang = AppLocalizations.of(context)!;
+
     // ======= Colors ======
     final bool isLight = isLightTheme(context, ref);
     final Color textColor = isLight
@@ -56,7 +59,7 @@ class SomeError extends StatelessWidget {
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text('Tazeden Synans', style: iconTextStyle),
+                Text(lang.retry, style: iconTextStyle),
                 SizedBox(width: 10),
                 Icon(Icons.replay_outlined, color: iconColor, size: 24),
               ],

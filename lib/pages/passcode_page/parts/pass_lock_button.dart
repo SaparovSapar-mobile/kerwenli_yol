@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
+import 'package:kerwenli_yol/l10n/app_localizations.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
@@ -10,16 +11,18 @@ class PassLockButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final AppLocalizations lang = AppLocalizations.of(context)!;
+
     // ======= Colors ========
     final bool isLight = isLightTheme(context, ref);
-    Color btnBgColor = isLight
+    final Color btnBgColor = isLight
         ? LightColors.bgPageLight
         : DarkColors.bgPageDark;
-    Color btnColor = isLight ? LightColors.primary : DarkColors.primary;
+    final Color btnColor = isLight ? LightColors.primary : DarkColors.primary;
 
     // ======= Text Styles ========
-    TextStyle titleStyle = AppTextStyles.medium16;
-    TextStyle subTitleStyle = AppTextStyles.regular10;
+    final TextStyle titleStyle = AppTextStyles.medium16;
+    final TextStyle subTitleStyle = AppTextStyles.regular10;
 
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -35,7 +38,7 @@ class PassLockButton extends ConsumerWidget {
         ),
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 5),
-          child: Text('Pin kod', style: titleStyle),
+          child: Text(lang.pINCode, style: titleStyle),
         ),
         Text('Kodunyňyzy 2 gezek tassyklaň.', style: subTitleStyle),
       ],

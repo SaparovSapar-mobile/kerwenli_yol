@@ -117,23 +117,23 @@ class ProductPageBody extends ConsumerWidget {
                     valueText: priceText,
                   ),
                   CompanyInfoKeyValue(
-                    keyText: 'Sargydyň iň az mukdary',
+                    keyText: lang.minimumOrderQuantity,
                     valueText: '1 600 sany',
                   ),
                   CompanyInfoKeyValue(
-                    keyText: 'Kuwwatlylygy her aýda',
+                    keyText: lang.monthlyProductionCapacity,
                     valueText: '10 000 kg',
                   ),
                   CompanyInfoKeyValue(
-                    keyText: 'Tabşyryş şertleri',
+                    keyText: lang.deliveryTerms,
                     valueText: 'FCA, FOB, CIP, CIF',
                   ),
                   CompanyInfoKeyValue(
-                    keyText: 'Tölegiň pul görnüşi',
+                    keyText: lang.paymentCurrency,
                     valueText: 'TMT, USD, EURO',
                   ),
                   CompanyInfoKeyValue(
-                    keyText: 'Töleg şertleri',
+                    keyText: lang.paymentTerms,
                     valueText: 'S.W.I.F.T',
                   ),
                   SizedBox(height: 10),
@@ -158,7 +158,7 @@ class ProductPageBody extends ConsumerWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text('Dusundirilisi', style: descTitleStyle),
+                  Text(lang.description, style: descTitleStyle),
                   SizedBox(height: 5),
                   Html(
                     data: description,
@@ -189,22 +189,22 @@ class ProductPageBody extends ConsumerWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text('Goşmaça maglumat', style: descTitleStyle),
+                  Text(lang.additionalInformation, style: descTitleStyle),
                   SizedBox(height: 5),
                   CompanyInfoKeyValue(
-                    keyText: 'Görnüş:',
+                    keyText: '${lang.type}:',
                     valueText: 'Şetdaly çaga püresi Ýeserje 90gr',
                   ),
                   CompanyInfoKeyValue(
-                    keyText: 'Gaplama:',
+                    keyText: '${lang.packaging}:',
                     valueText: 'Polietilen',
                   ),
                   CompanyInfoKeyValue(
-                    keyText: 'Ýaramlylyk möhleti:',
+                    keyText: '${lang.shelfLife}:',
                     valueText: '12 aý',
                   ),
                   CompanyInfoKeyValue(
-                    keyText: 'Göwrüm:',
+                    keyText: '${lang.volume}:',
                     valueText: 'Gutyda 16 sany',
                   ),
                   SizedBox(height: 5),
@@ -214,10 +214,10 @@ class ProductPageBody extends ConsumerWidget {
                   ),
                   SizedBox(height: 10),
                   PrimaryButton(
-                    text: 'Talap ugrat',
+                    text: lang.sendRequest,
                     onPressed: () => showMessageBottomSheet(
                       context,
-                      'Talap ugrat',
+                      lang.sendRequest,
                       'messages.png',
                       '',
                     ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
+import 'package:kerwenli_yol/l10n/app_localizations.dart';
 import 'package:kerwenli_yol/pages/parts/bottom_sheet_widget/bottom_sheet_widget.dart';
 import 'package:kerwenli_yol/pages/parts/log_out_bottom_sheet/parts/log_out_button.dart';
 import 'package:kerwenli_yol/pages/parts/silver_border_button.dart';
@@ -13,6 +14,8 @@ class LogOutBottomSheet extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final AppLocalizations lang = AppLocalizations.of(context)!;
+
     // ======== Colors ==========
     final bool isLight = isLightTheme(context, ref);
     final Color bgColor = isLight
@@ -36,7 +39,7 @@ class LogOutBottomSheet extends ConsumerWidget {
         Padding(
           padding: EdgeInsetsGeometry.symmetric(vertical: 16),
           child: Text(
-            'Siz hakykatdan hem ulgamdan cykmak isleyarsinizmi',
+            lang.areYouSureYouWantLogOut,
             textAlign: TextAlign.center,
             style: ts,
           ),
@@ -44,7 +47,7 @@ class LogOutBottomSheet extends ConsumerWidget {
         LogOutButton(),
         SizedBox(height: 8),
         SilverBorderButton(
-          text: 'Yok',
+          text: lang.no,
           onPressed: () => Navigator.pop(context),
         ),
       ],
