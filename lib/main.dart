@@ -13,6 +13,8 @@ import 'package:kerwenli_yol/pages/home.dart';
 import 'package:kerwenli_yol/providers/settings.dart';
 import 'package:kerwenli_yol/styles/theme/theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:kerwenli_yol/l10n/tk_material_localizations.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -75,7 +77,23 @@ class MyApp extends ConsumerWidget {
       themeMode: themeMode,
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      // localizationsDelegates: AppLocalizations.localizationsDelegates,
+      localizationsDelegates: [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        TkMaterialLocalizations.delegate,
+        TkCupertinoLocalizations.delegate,
+      ],
+      localeResolutionCallback: (locale, supportedLocales) {
+        for (var supported in supportedLocales) {
+          if (supported.languageCode == locale?.languageCode) {
+            return supported;
+          }
+        }
+        return const Locale('en');
+      },
       supportedLocales: AppLocalizations.supportedLocales,
       locale: Locale(language),
       home: AppHome(),
