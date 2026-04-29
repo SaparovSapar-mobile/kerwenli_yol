@@ -61,6 +61,11 @@
 		</array>
 		<key>NSLocationWhenInUseUsageDescription</key>
 		<string>We need location permission to show you the weather and the nearest companies based on your location.</string>
+
+		<key>NSCameraUsageDescription</key>
+		<string>This app uses the camera to allow users to take profile photos and to capture images when creating new listings.</string>
+		<key>NSPhotoLibraryUsageDescription</key>
+		<string>This app uses the camera to allow users to take profile photos and to capture images when creating new listings</string>
 		 <!-- End My Code -->
 	</dict>
 </plist>
