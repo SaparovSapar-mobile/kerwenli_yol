@@ -6,7 +6,9 @@ import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/helpers/methods/pages/bottom_sheets.dart';
 import 'package:kerwenli_yol/l10n/app_localizations.dart';
 import 'package:kerwenli_yol/pages/parts/circle_button.dart';
+import 'package:kerwenli_yol/providers/api/search.dart';
 import 'package:kerwenli_yol/providers/pages/search_page.dart';
+import 'package:kerwenli_yol/providers/parts/file_upload.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
@@ -61,7 +63,11 @@ class SearchInput extends ConsumerWidget {
                 const EdgeInsets.only(left: 16),
               ),
               onChanged: (value) async {
+                ref.read(isVisualSearchModeProvider.notifier).state = false;
+                ref.read(visualSearchResultProvider.notifier).state = null;
+
                 await createSearch(value, SearchTypeEnum.all);
+
                 ref.read(searchECommerceTextProvider.notifier).state = value;
                 ref.read(eCommerceSearchProvider.notifier).state = value;
                 ref.read(openSearchECommerceHistoryProvider.notifier).state =
@@ -69,24 +75,37 @@ class SearchInput extends ConsumerWidget {
               },
               onSubmitted: (value) async {
                 if (value.isNotEmpty) {
+                  ref.read(isVisualSearchModeProvider.notifier).state = false;
+                  ref.read(visualSearchResultProvider.notifier).state = null;
+
                   await createSearch(value, SearchTypeEnum.all);
+
                   ref.read(searchECommerceTextProvider.notifier).state = value;
                   ref.read(eCommerceSearchProvider.notifier).state = value;
                   ref.read(openSearchECommerceHistoryProvider.notifier).state =
                       false;
+
                   ref.invalidate(getSearchsProvider);
+                  ref.invalidate(fetchSearchProvider);
                 }
               },
               trailing: [
                 if (hasSearchText)
                   IconButton(
                     onPressed: () {
+                      ref.read(isVisualSearchModeProvider.notifier).state =
+                          false;
+                      ref.read(visualSearchResultProvider.notifier).state =
+                          null;
+
                       ref.read(eCommerceSearchProvider.notifier).state = '';
                       ref.read(searchECommerceTextProvider.notifier).state = '';
                       ref
                               .read(openSearchECommerceHistoryProvider.notifier)
                               .state =
                           true;
+
+                      ref.invalidate(fetchSearchProvider);
                     },
                     icon: Icon(Icons.cancel, color: iconColor, size: 20),
                   ),

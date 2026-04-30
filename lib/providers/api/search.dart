@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/models/search.dart';
 import 'package:kerwenli_yol/providers/pages/search_page.dart';
@@ -14,6 +16,19 @@ final FutureProvider<SearchModel> fetchSearchProvider =
       try {
         final String q = ref.watch(eCommerceSearchProvider);
         result = await ref.read(searchApiProvider).fetchSearch(q);
+      } catch (e) {
+        rethrow;
+      }
+
+      return result;
+    });
+
+final AutoDisposeFutureProviderFamily<SearchModel?, File> visualSearchProvider =
+    FutureProvider.autoDispose.family<SearchModel?, File>((ref, arg) async {
+      SearchModel? result;
+
+      try {
+        result = await ref.read(searchApiProvider).visualSearch(arg);
       } catch (e) {
         rethrow;
       }

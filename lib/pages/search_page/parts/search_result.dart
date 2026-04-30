@@ -11,6 +11,7 @@ import 'package:kerwenli_yol/pages/search_page/parts/search_medias.dart';
 import 'package:kerwenli_yol/pages/search_page/parts/search_news.dart';
 import 'package:kerwenli_yol/pages/search_page/parts/search_products.dart';
 import 'package:kerwenli_yol/providers/api/search.dart';
+import 'package:kerwenli_yol/providers/parts/file_upload.dart';
 
 class SearchResult extends ConsumerWidget {
   const SearchResult({super.key});
@@ -18,7 +19,11 @@ class SearchResult extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final List<String> st = searchTabs(context);
-    final AsyncValue<SearchModel> resultApi = ref.watch(fetchSearchProvider);
+
+    final bool isVisualSearch = ref.watch(isVisualSearchModeProvider);
+    final SearchModel? visualResult = ref.watch(visualSearchResultProvider);
+
+    final AsyncValue<SearchModel> textResult = ref.watch(fetchSearchProvider);
 
     return DefaultTabController(
       length: st.length,
@@ -26,24 +31,38 @@ class SearchResult extends ConsumerWidget {
         children: [
           HeadCategoryButtons(categories: st),
           AppBarBottomLine(thickness: 10),
-          SizedBox(height: 5),
-          resultApi.when(
-            data: (data) {
-              return Expanded(
-                child: TabBarView(
-                  children: [
-                    SearchProducts(products: data.products),
-                    SearchCompanies(companies: data.companies),
-                    SearchNews(news: data.news),
-                    SearchMarks(marks: data.marks),
-                    SearchMedias(medias: data.media),
-                  ],
-                ),
-              );
-            },
-            error: (_, _) => const SizedBox.shrink(),
-            loading: () => loadWidget,
-          ),
+          const SizedBox(height: 5),
+
+          if (isVisualSearch && visualResult != null)
+            Expanded(
+              child: TabBarView(
+                children: [
+                  SearchProducts(products: visualResult.products),
+                  SearchCompanies(companies: visualResult.companies),
+                  SearchNews(news: visualResult.news),
+                  SearchMarks(marks: visualResult.marks),
+                  SearchMedias(medias: visualResult.media),
+                ],
+              ),
+            )
+          else
+            textResult.when(
+              data: (data) {
+                return Expanded(
+                  child: TabBarView(
+                    children: [
+                      SearchProducts(products: data.products),
+                      SearchCompanies(companies: data.companies),
+                      SearchNews(news: data.news),
+                      SearchMarks(marks: data.marks),
+                      SearchMedias(medias: data.media),
+                    ],
+                  ),
+                );
+              },
+              error: (_, _) => const SizedBox.shrink(),
+              loading: () => loadWidget,
+            ),
         ],
       ),
     );

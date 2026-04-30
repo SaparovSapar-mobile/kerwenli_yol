@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kerwenli_yol/helpers/functions/file_functions.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/helpers/methods/pages/bottom_navigation.dart';
 import 'package:kerwenli_yol/helpers/methods/pages/home_page.dart';
@@ -126,7 +127,7 @@ class BottomNavigationPage extends ConsumerWidget {
             ),
           ],
           currentIndex: selectedIndex,
-          onTap: (value) {
+          onTap: (value) async {
             ref.read(selectedBottomIndexProvider.notifier).state = value;
 
             // Eger user Search sahypada dal bolsa
@@ -136,6 +137,7 @@ class BottomNavigationPage extends ConsumerWidget {
               ref.read(eCommerceSearchProvider.notifier).state = '';
               ref.read(openSearchECommerceHistoryProvider.notifier).state =
                   true;
+              await cleanCacheDirectory();
             }
           },
         ),

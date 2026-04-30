@@ -5,9 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:kerwenli_yol/providers/api/image.dart';
+import 'package:kerwenli_yol/models/search.dart';
+import 'package:kerwenli_yol/providers/api/search.dart';
+import 'package:kerwenli_yol/providers/pages/search_page.dart';
 import 'package:kerwenli_yol/providers/parts/file_upload.dart';
-import 'package:kerwenli_yol/services/api/image.dart';
 import 'package:path_provider/path_provider.dart';
 
 Future<String> getDownloadPath() async {
@@ -26,12 +27,10 @@ Future<void> getImageFromFolder(
   BuildContext context,
   double ratioX,
   double ratioY,
-  String fileType,
-  bool forMultiple,
 ) async {
   final FilePickerResult? pickedFiles = await FilePicker.platform.pickFiles(
     type: FileType.image,
-    allowMultiple: forMultiple,
+    allowMultiple: false,
     // allowedExtensions: ['jpg', 'png', 'jpeg'],
   );
 
@@ -44,7 +43,7 @@ Future<void> getImageFromFolder(
     if (croppedFile != null) {
       final File file = File(croppedFile.path);
       if (context.mounted) {
-        await uploadImage(ref, file, context, fileType);
+        await uploadImage(ref, file, context);
       }
     }
   }
@@ -55,7 +54,6 @@ Future<void> getImageFromCamera(
   BuildContext context,
   double ratioX,
   double ratioY,
-  String fileType,
 ) async {
   final XFile? pickedFile = await ImagePicker().pickImage(
     source: ImageSource.camera,
@@ -70,28 +68,30 @@ Future<void> getImageFromCamera(
     if (croppedFile != null) {
       final File file = File(croppedFile.path);
       if (context.mounted) {
-        await uploadImage(ref, file, context, fileType);
+        await uploadImage(ref, file, context);
       }
     }
   }
 }
 
-Future<void> uploadImage(
-  WidgetRef ref,
-  File file,
-  BuildContext context,
-  String fileType,
-) async {
+Future<void> uploadImage(WidgetRef ref, File file, BuildContext context) async {
   ref.read(loadUploadImageProvider.notifier).state = true;
 
-  final ImageParams params = ImageParams(imageFile: file, fileType: fileType);
-  final String resultImage = await ref.watch(
-    imageUploadProvider(params).future,
-  );
+  try {
+    final SearchModel? result = await ref.read(
+      visualSearchProvider(file).future,
+    );
 
-  ref.read(imagePathProvider.notifier).state = resultImage;
+    ref.read(visualSearchResultProvider.notifier).state = result;
+    ref.read(isVisualSearchModeProvider.notifier).state = true;
 
-  ref.read(loadUploadImageProvider.notifier).state = false;
+    // BUNU EKLEYİN
+    ref.read(openSearchECommerceHistoryProvider.notifier).state = false;
+  } catch (e) {
+    rethrow;
+  } finally {
+    ref.read(loadUploadImageProvider.notifier).state = false;
+  }
 
   if (context.mounted) {
     Navigator.pop(context);
