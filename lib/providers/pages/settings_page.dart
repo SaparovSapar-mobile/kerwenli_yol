@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:kerwenli_yol/providers/settings.dart';
 import 'package:shared_preferences_riverpod/shared_preferences_riverpod.dart';
+
+import '../../main.dart';
 
 final StateProvider<int> selectedSettingPartIndexProvider = StateProvider<int>(
   (ref) => 0,

@@ -16,22 +16,36 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:kerwenli_yol/l10n/tk_material_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
+late SharedPreferences prefs;
+
+@pragma('vm:entry-point')
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+}
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  //  -------  Firebase Start ---------
+  // 1. Firebase
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
-  // --------- Firebase End ---------
 
-  prefs = await SharedPreferences.getInstance(); // shared preferences
+  // 2. SharedPreferences ПЕРВЫМ — до всего остального
+  prefs = await SharedPreferences.getInstance();
+
+  // 3. Ориентация
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
 
-  await createDB(); // create database
-  await dotenv.load(fileName: ".env"); // load .env file
+  // 4. База данных
+  await createDB();
+
+  // 5. .env файл
+  await dotenv.load(fileName: ".env");
+
+  // 6. Только теперь запускаем приложение
   runApp(const ProviderScope(child: MyApp()));
 }
 
@@ -46,20 +60,13 @@ class MyHttpoverrides extends HttpOverrides {
 }
 // release motda ayyrmaly
 
-@pragma('vm:entry-point')
-Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-  await Firebase.initializeApp();
-}
-
 class MyApp extends ConsumerWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // ---------- Lang Provider ----------------
     final String language = ref.watch(langProvider);
 
-    // ---------- Theme Provider Start --------------
     ThemeMode? themeMode = ThemeMode.system;
     final int theme = ref.watch(themeProvider);
 
@@ -70,14 +77,12 @@ class MyApp extends ConsumerWidget {
     } else {
       themeMode = ThemeMode.dark;
     }
-    // ---------- Theme Provider End --------------
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       themeMode: themeMode,
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
-      // localizationsDelegates: AppLocalizations.localizationsDelegates,
       localizationsDelegates: [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,

@@ -1,9 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/enums/theme.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shared_preferences_riverpod/shared_preferences_riverpod.dart';
 
-late SharedPreferences prefs;
+import '../main.dart';
+
 
 final StateNotifierProvider<PrefNotifier<String>, String> langProvider =
     createPrefProvider<String>(
