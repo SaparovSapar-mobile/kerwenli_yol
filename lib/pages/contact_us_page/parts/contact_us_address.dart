@@ -9,6 +9,7 @@ import 'package:kerwenli_yol/providers/api/contact_us.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 class ContactUsAddress extends ConsumerWidget {
   const ContactUsAddress({super.key});
@@ -22,7 +23,7 @@ class ContactUsAddress extends ConsumerWidget {
         : DarkColors.bgBlogDark;
 
     // ========= Text Styles =======
-    final TextStyle textStyle = AppTextStyles.medium10;
+    final TextStyle textStyle = AppTextStyles.semiBold14;
 
     final AsyncValue<ContactUsModel?> resultApi = ref.watch(
       fetchContactUsProvider,
@@ -59,12 +60,23 @@ class ContactUsAddress extends ConsumerWidget {
                 margin: EdgeInsets.symmetric(vertical: 10),
                 width: double.maxFinite,
                 height: 150,
-                child: ShowImage(
-                  image: 'assets/examples/cropped_map.png',
-                  borderRadius: 10,
+                clipBehavior: Clip.hardEdge,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: WebViewWidget(
+                  controller: WebViewController()
+                    ..setJavaScriptMode(JavaScriptMode.unrestricted)
+                    ..loadRequest(
+                      Uri.parse(
+                        'https://maps.google.com/maps?q=37.955773,58.425587&output=embed',
+                      ),
+                    ),
                 ),
               ),
-              OpenLocationListTile(text: address),
+              OpenLocationListTile(
+                text: address,
+              ),
             ],
           ),
         );

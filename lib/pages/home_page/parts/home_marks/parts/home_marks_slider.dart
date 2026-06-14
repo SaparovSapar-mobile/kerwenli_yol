@@ -218,7 +218,7 @@ class _HomeMarksSliderState extends State<HomeMarksSlider>
       mainAxisSize: MainAxisSize.min,
       children: [
         HomeMoreButton(text: lang.localBrands),
-        HpsTabs(tabCtrl: _tabCtrl, markTypes: widget.markTypes),
+        // HpsTabs(tabCtrl: _tabCtrl, markTypes: widget.markTypes),
         SizedBox(
           height: 2 * homeBestCompaniesCardHeight + 5,
           child: TabBarView(

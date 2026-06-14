@@ -37,10 +37,11 @@ class HomeBanners extends ConsumerWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               HomeBanner(
+                isBig: true,
                 banners: slot1,
                 height: banner1Height,
                 width: double.infinity,
-                borderRadius: 8,
+                borderRadius: 10,
                 dotsLeft: 7,
                 dotsBottom: 5,
                 dotsSize: 4.0,
@@ -51,6 +52,7 @@ class HomeBanners extends ConsumerWidget {
               Row(
                 children: [
                   HomeBanner(
+                    isBig: false,
                     banners: slot2,
                     height: banner2Height,
                     width: width,
@@ -63,6 +65,7 @@ class HomeBanners extends ConsumerWidget {
                   ),
                   SizedBox(width: 10),
                   HomeBanner(
+                    isBig: false,
                     banners: slot3,
                     height: banner2Height,
                     width: width,

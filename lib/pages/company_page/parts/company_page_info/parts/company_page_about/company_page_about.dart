@@ -19,6 +19,8 @@ import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
 
+import 'expanded_html.dart';
+
 class CompanyPageAbout extends ConsumerWidget {
   const CompanyPageAbout({super.key, required this.company});
 
@@ -38,7 +40,7 @@ class CompanyPageAbout extends ConsumerWidget {
         : DarkColors.bgBlogDark;
 
     // ========== Text Styles ==========
-    final TextStyle textStyle = AppTextStyles.semiBold12;
+    final TextStyle textStyle = AppTextStyles.semiBold14;
 
     // ======= company translation =======
     final TranslationModel compDesc = company.description;
@@ -102,7 +104,7 @@ class CompanyPageAbout extends ConsumerWidget {
                 padding: const EdgeInsets.symmetric(vertical: 10),
                 child: CompanyBanner(
                   images: banners,
-                  height: 120,
+                  height: 100,
                   width: double.infinity,
                   borderRadius: 8,
                   dotsLeft: 4,
@@ -112,17 +114,7 @@ class CompanyPageAbout extends ConsumerWidget {
                   dotsActiveHeight: 4.0,
                 ),
               ),
-            Html(
-              data: desc,
-              style: {
-                "*": Style(
-                  fontWeight: FontWeight.w400,
-                  fontSize: FontSize(12),
-                  lineHeight: LineHeight.number(1.20),
-                  fontFamily: "Rubik",
-                ),
-              },
-            ),
+            ExpandableHtmlText(desc: desc),
             SizedBox(height: 20),
             Text(lang.forContact, style: textStyle),
             if (phones.isNotEmpty)
@@ -158,45 +150,48 @@ class CompanyPageAbout extends ConsumerWidget {
                   case SocialType.tiktok:
                     rWidget = OpenSocialListTile(
                       icon: 'tiktok.png',
-                      text: 'tradingportalofficial@',
+                      text: e.value,
                       onTap: () async {
-                        await openSocial(e.value);
+                        await openSocial(
+                          e.value,
+                          SocialType.tiktok,
+                        ); // 👈 передаём type
                       },
                     );
                     break;
                   case SocialType.instagram:
                     rWidget = OpenSocialListTile(
                       icon: 'instagram.png',
-                      text: 'tradingportalofficial@',
+                      text: e.value,
                       onTap: () async {
-                        await openSocial(e.value);
+                        await openSocial(e.value, SocialType.instagram); 
                       },
                     );
                     break;
                   case SocialType.telegram:
                     rWidget = OpenSocialListTile(
                       icon: 'telegram.png',
-                      text: 'tradingportalofficial@',
+                      text: e.value,
                       onTap: () async {
-                        await openSocial(e.value);
-                      },
-                    );
-                    break;
-                  case SocialType.linkedin:
-                    rWidget = OpenSocialListTile(
-                      icon: 'linkedin.png',
-                      text: 'tradingportalofficial@',
-                      onTap: () async {
-                        await openSocial(e.value);
+                        await openSocial(e.value, SocialType.telegram);
                       },
                     );
                     break;
                   case SocialType.whatsapp:
                     rWidget = OpenSocialListTile(
                       icon: 'whatsapp.png',
-                      text: 'tradingportalofficial@',
+                      text: e.value,
                       onTap: () async {
-                        await openSocial(e.value);
+                        await openSocial(e.value, SocialType.whatsapp);
+                      },
+                    );
+                    break;
+                  case SocialType.linkedin:
+                    rWidget = OpenSocialListTile(
+                      icon: 'linkedin.png',
+                      text: e.value,
+                      onTap: () async {
+                        await openSocial(e.value, SocialType.linkedin);
                       },
                     );
                     break;

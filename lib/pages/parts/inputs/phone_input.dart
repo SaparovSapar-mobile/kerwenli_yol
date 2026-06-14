@@ -14,6 +14,7 @@ class PhoneInput extends StatelessWidget {
     final AppLocalizations lang = AppLocalizations.of(context)!;
 
     return InputPart(
+      maxLength: 8,
       labelText: lang.phoneNumber,
       ctrl: ctrl,
       keyboardType: TextInputType.phone,

@@ -24,10 +24,12 @@ class CheckOtpButton extends ConsumerWidget {
     required this.phone,
     required this.password,
     required this.forRegister,
+    required this.otpController,
   });
 
   final String email, phone, password;
   final bool forRegister;
+  final TextEditingController otpController;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -39,7 +41,19 @@ class CheckOtpButton extends ConsumerWidget {
       onPressed: () async {
         ref.read(checkOTPCodeBtnPressProvider.notifier).state = true;
 
-        final String otpCode = ref.read(otpCodeProvider);
+        final String otpCode = otpController.text;
+        print('=== otpCode: "$otpCode" length: ${otpCode.length}');
+
+        // Определяем длину OTP
+        final int otpLength = phone.isNotEmpty ? 4 : 6;
+
+        if (otpCode.length != otpLength) {
+          // <-- динамически
+          showErrorSnackbar(context, lang.somethingWentWrong);
+          ref.read(checkOTPCodeBtnPressProvider.notifier).state = false;
+          return;
+        }
+        print('=== OTP прошёл проверку, идём дальше');
 
         if (forRegister) {
           // ======== Check otp code ==============
@@ -48,7 +62,15 @@ class CheckOtpButton extends ConsumerWidget {
             phone: phone,
             otpCode: otpCode,
           );
-          if (!await ref.read(verifyEmailProvider(reqData).future)) {
+
+          print('=== verifyEmail reqData: ${reqData.toJson()}');
+          print('=== вызываем verifyEmail');
+          final bool verified = await ref.read(
+            verifyEmailProvider(reqData).future,
+          );
+          print('=== verifyEmail результат: $verified');
+
+          if (!verified) {
             if (context.mounted) {
               showErrorSnackbar(context, lang.somethingWentWrong);
               ref.read(checkOTPCodeBtnPressProvider.notifier).state = false;
@@ -61,6 +83,8 @@ class CheckOtpButton extends ConsumerWidget {
           if (email == '') {
             login = phone;
           }
+          print('=== вызываем loginUser: login="$login", password="$password"');
+
           final LoginUserModel reqDataLogin = LoginUserModel(
             login: login,
             password: password,
@@ -68,7 +92,12 @@ class CheckOtpButton extends ConsumerWidget {
           final UserModel respUser = await ref.read(
             loginUserProvider(reqDataLogin).future,
           );
+          print(
+            '=== loginUser response: id="${respUser.id}", token="${respUser.token}"',
+          );
+
           if (respUser.id == '' && respUser.token == '') {
+            print('=== loginUser вернул пустые id/token — показываем ошибку');
             if (context.mounted) {
               showErrorSnackbar(context, lang.somethingWentWrong);
               ref.read(checkOTPCodeBtnPressProvider.notifier).state = false;
@@ -77,6 +106,7 @@ class CheckOtpButton extends ConsumerWidget {
           }
 
           // ====== insert user to db ===========
+          print('=== сохраняем пользователя в БД');
           await createUser(
             UserModel(
               id: respUser.id,
@@ -97,7 +127,7 @@ class CheckOtpButton extends ConsumerWidget {
             ref.read(isFirstTimeProvider.notifier).update(false);
           }
 
-          // ==== Ulanyjy programmany ilkinji gezek acyan bolsa==
+          print('=== переходим на BottomNavigationPage');
           if (context.mounted) {
             Navigator.pushAndRemoveUntil(
               context,
@@ -112,6 +142,7 @@ class CheckOtpButton extends ConsumerWidget {
         }
 
         // ======== Update Passoword ucin ==============
+        print('=== вызываем updatePassword');
         final UpdatePasswordModel reqData = UpdatePasswordModel(
           code: otpCode,
           newPassword: password,
@@ -119,6 +150,10 @@ class CheckOtpButton extends ConsumerWidget {
         final ResultRegister result = await ref.read(
           updatePasswordProvider(reqData).future,
         );
+        print(
+          '=== updatePassword результат: success=${result.success}, message=${result.message}',
+        );
+
         if (!result.success) {
           if (context.mounted) {
             showErrorSnackbar(context, lang.somethingWentWrong);

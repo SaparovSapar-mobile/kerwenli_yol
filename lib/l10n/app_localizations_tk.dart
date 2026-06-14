@@ -63,13 +63,13 @@ class AppLocalizationsTk extends AppLocalizations {
   String get categories => 'Kategoriýalar';
 
   @override
-  String get leadingCompanies => 'Onde baryjy karhanalar';
+  String get leadingCompanies => 'Öňde baryjy kärhanalar';
 
   @override
   String get allView => 'Ählisini görmek';
-
+  
   @override
-  String get vipCompanies => 'VIP Karhanalar';
+  String get vipCompanies => 'VIP Kärhanalar';
 
   @override
   String get newProducts => 'Täze önümler';
@@ -81,7 +81,7 @@ class AppLocalizationsTk extends AppLocalizations {
   String get shortVideos => 'Gysga videolar';
 
   @override
-  String get localBrands => 'Yerli markalary';
+  String get localBrands => 'Ýerli markalary';
 
   @override
   String get all => 'Hemmesi';

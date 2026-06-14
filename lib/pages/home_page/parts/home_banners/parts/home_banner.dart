@@ -16,6 +16,7 @@ class HomeBanner extends StatefulWidget {
     required this.dotsActiveWidth,
     required this.dotsActiveHeight,
     required this.banners,
+    required this.isBig,
   });
 
   final double height,
@@ -26,6 +27,7 @@ class HomeBanner extends StatefulWidget {
       dotsSize,
       dotsActiveWidth,
       dotsActiveHeight;
+  final bool isBig;
 
   final List<BannerModel> banners;
 
@@ -46,7 +48,7 @@ class _HomeBannerState extends State<HomeBanner> {
 
     return SizedBox(
       width: widget.width,
-      height: widget.height,
+      height: widget.isBig ? widget.height - 20 : widget.height,
       child: !hasBanners
           ? const SizedBox.shrink()
           : ClipRRect(
@@ -61,7 +63,11 @@ class _HomeBannerState extends State<HomeBanner> {
                     },
                     options: CarouselOptions(
                       height: widget.height,
-                      viewportFraction: 1.0, // tam ekran gibi
+                      viewportFraction: 1.0,
+                      padEnds: false,
+                      pageSnapping: true,
+                      enlargeCenterPage: true,
+                      enlargeFactor: 0.25, // ← маленький зазор между слайдами
                       enableInfiniteScroll: hasMore,
                       autoPlay: hasMore,
                       autoPlayInterval: const Duration(seconds: 3),
@@ -69,7 +75,7 @@ class _HomeBannerState extends State<HomeBanner> {
                         milliseconds: 800,
                       ),
                       autoPlayCurve: Curves.easeOut,
-                      pauseAutoPlayOnTouch: true, // kullanıcı dokununca durur
+                      pauseAutoPlayOnTouch: true,
                       pauseAutoPlayOnManualNavigate: true,
                       pauseAutoPlayInFiniteScroll: true,
                       onPageChanged: (index, reason) {

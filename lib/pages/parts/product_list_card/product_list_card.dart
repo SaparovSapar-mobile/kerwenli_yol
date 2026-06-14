@@ -88,7 +88,7 @@ class ProductListCard extends ConsumerWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      ViewCount(fontSize: 10),
+                      ViewCount(fontSize: 10, viewCount: product.viewCount,),
                       HomeVipCompanyRating(fontSize: 10),
                     ],
                   ),

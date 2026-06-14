@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:kerwenli_yol/helpers/methods/static_data.dart';
 import 'package:kerwenli_yol/models/company.dart';
@@ -136,13 +137,18 @@ class CompanyApiService {
         );
 
     try {
+      debugPrint('COMPANIES REQUEST URL: $uri');
       final http.Response response = await http.get(uri);
+      // debugPrint('COMPANIES STATUS CODE: ${response.statusCode}');
+      // debugPrint('COMPANIES RESPONSE: ${response.body}');
+
       final dynamic jsonData = json.decode(response.body);
 
       if (response.statusCode == 200 && jsonData['status']) {
-        final dynamic datas = jsonData['data'];
+        // ← ИСПРАВЛЕНИЕ: data['items'] вместо data
+        final dynamic datas = jsonData['data']?['items'];
 
-        if (datas == [] || datas == null) {
+        if (datas == null || datas is! List) {
           return [];
         }
 

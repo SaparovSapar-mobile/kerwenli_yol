@@ -27,7 +27,7 @@ class HomeVipCompanyCardCategories extends ConsumerWidget {
 
     // ======== Text Styles ======
     final TextStyle textStyle = AppTextStyles.medium10.copyWith(
-      fontSize: iconSize ?? 6,
+      fontSize: iconSize ?? 8,
     );
 
     final bool hasAligment = mainAxisAlignment != null;

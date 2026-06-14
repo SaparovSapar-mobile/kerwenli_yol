@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/intl.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/helpers/methods/parts/app_bar_methods.dart';
 import 'package:kerwenli_yol/models/weather.dart';
@@ -10,6 +11,10 @@ import 'package:kerwenli_yol/styles/text_styles.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 AppBar homePageAppBar(BuildContext context) {
+  String getCurrentDate() {
+    return DateFormat('dd.MM.yyyy').format(DateTime.now());
+  }
+
   return AppBar(
     leading: null,
     automaticallyImplyLeading: false,
@@ -46,13 +51,22 @@ AppBar homePageAppBar(BuildContext context) {
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Image.asset('assets/images/$appBarLogo', height: 24),
+                    Image.asset(
+                      'assets/images/$appBarLogo',
+                      height: 29,
+                      width: 72,
+                    ),
                     Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Text('09.11.2025 | ', style: dateStyle),
-                        Text('13° Ашхабад', style: dateStyle),
-                        // WeatherPart(dateStyle: dateStyle),
+                        Text('${getCurrentDate()} | ', style: dateStyle),
+                        Image.asset(
+                          "assets/icon/cloud.png",
+                          width: 14,
+                          height: 14,
+                        ),
+                        // Text(' 13° Ашхабад', style: dateStyle),
+                        WeatherPart(dateStyle: dateStyle),
                       ],
                     ),
                   ],
@@ -78,9 +92,10 @@ class WeatherPart extends ConsumerWidget {
     final AsyncValue<WeatherModel> resultApi = ref.watch(weatherProvider);
     return resultApi.when(
       data: (data) {
-        return Text('13° Ашхабад', style: dateStyle);
+        final temp = data.temperature.round();
+        return Text(' $temp° ${data.cityName}', style: dateStyle);
       },
-      error: (_, _) => const SizedBox.shrink(),
+      error: (_, __) => const SizedBox.shrink(),
       loading: () => LoadingAnimationWidget.staggeredDotsWave(
         color: LightColors.primary,
         size: 12,

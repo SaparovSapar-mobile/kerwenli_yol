@@ -56,7 +56,7 @@ class HomeMediaCard extends StatelessWidget {
                       bottom: 6,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [ViewCount(), VideoDuration()],
+                        children: [ViewCount(viewCount: media.viewNumber,), VideoDuration()],
                       ),
                     ),
                   ],

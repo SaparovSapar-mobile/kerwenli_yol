@@ -60,6 +60,7 @@ class HomeCategoryCard extends ConsumerWidget {
         AxisDirection.left,
       ),
       child: Container(
+        width: 160,
         padding: EdgeInsets.symmetric(horizontal: 5, vertical: 9),
         margin: isFirst != null && isLast != null
             ? EdgeInsets.only(left: isFirst! ? 16 : 0, right: isLast! ? 16 : 0)
@@ -71,8 +72,8 @@ class HomeCategoryCard extends ConsumerWidget {
         child: Row(
           children: [
             Container(
-              height: 31,
-              width: 31,
+              height: 35,
+              width: 35,
               padding: EdgeInsets.all(7),
               decoration: BoxDecoration(
                 color: inBgColor,
@@ -81,11 +82,13 @@ class HomeCategoryCard extends ConsumerWidget {
               child: showImageMethod(image, 5, null),
             ),
             SizedBox(width: 5),
-            Text(
-              formatTwoLines10(name),
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-              style: textStyle,
+            Expanded(
+              child: Text(
+                name,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: textStyle,
+              ),
             ),
           ],
         ),

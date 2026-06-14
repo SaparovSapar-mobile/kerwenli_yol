@@ -18,7 +18,7 @@ class HomeMoreButton extends ConsumerWidget {
         ? LightColors.textTitleLight
         : DarkColors.textTitleDark;
 
-    final TextStyle textStyle = AppTextStyles.semiBold14;
+    final TextStyle textStyle = AppTextStyles.semiBold16;
 
     return ListTile(
       onTap: onTap,

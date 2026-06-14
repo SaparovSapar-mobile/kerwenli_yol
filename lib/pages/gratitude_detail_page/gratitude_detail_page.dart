@@ -106,7 +106,7 @@ class GratitudeDetailPage extends ConsumerWidget {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              ViewCount(fontSize: 10),
+                              // ViewCount(fontSize: 10, viewCount: ,),
                               ShowDate(date: data.createdAt, fontSize: 10),
                             ],
                           ),

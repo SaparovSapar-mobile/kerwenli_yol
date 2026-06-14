@@ -27,6 +27,8 @@ import 'package:kerwenli_yol/providers/api/sponsor.dart';
 import 'package:kerwenli_yol/providers/parts/scroll_to_top.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 
+import '../../models/default_params.dart';
+
 class HomePage extends ConsumerWidget {
   const HomePage({super.key});
 
@@ -48,6 +50,22 @@ class HomePage extends ConsumerWidget {
         ref.invalidate(fetchMarksProvider);
         ref.invalidate(fetchSponsorsProvider);
         ref.invalidate(fetchGradtitudesProvider);
+
+        // Ждём пока все данные придут
+        await Future.wait([
+          ref.read(fetchBannersProvider.future),
+          ref.read(fetchCategoriesProvider.future),
+          ref.read(fetchBestCompaniesProvider.future),
+          ref.read(fetchVipCompaniesProvider.future),
+          ref.read(fetchNewProductsProvider.future),
+          ref.read(fetchTravelsProvider.future),
+          ref.read(fetchMediasProvider(DefaultParams()).future),
+          ref.read(fetchNewsProvider(DefaultParams()).future),
+          ref.read(fetchMarkTypesProvider.future),
+          ref.read(fetchMarksProvider(DefaultParams() as String).future),
+          ref.read(fetchSponsorsProvider(DefaultParams()).future),
+          ref.read(fetchGradtitudesProvider(DefaultParams()).future),
+        ]);
       },
 
       backgroundColor: Colors.white,

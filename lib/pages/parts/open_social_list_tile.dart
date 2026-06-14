@@ -26,7 +26,7 @@ class OpenSocialListTile extends ConsumerWidget {
         ? LightColors.bgPageLight
         : DarkColors.bgPageDark;
 
-    final TextStyle textStyle = AppTextStyles.regular10;
+    final TextStyle textStyle = AppTextStyles.regular12;
 
     return ListTile(
       onTap: onTap,

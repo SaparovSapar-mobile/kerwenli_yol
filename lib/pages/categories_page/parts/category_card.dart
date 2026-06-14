@@ -12,9 +12,9 @@ import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
 
 class CategoryCard extends ConsumerWidget {
-  const CategoryCard({super.key, required this.category});
-
   final CategoryModel category;
+
+  const CategoryCard({super.key, required this.category});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -31,7 +31,7 @@ class CategoryCard extends ConsumerWidget {
         : DarkColors.textTitleDark;
 
     // ======= Text Styles ========
-    final TextStyle titleStyle = AppTextStyles.medium12;
+    final TextStyle titleStyle = AppTextStyles.medium14;
 
     final String selectedCategory = ref.watch(categoryProvider);
     final String categoryId = category.id;

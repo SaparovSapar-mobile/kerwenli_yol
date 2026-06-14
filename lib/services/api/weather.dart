@@ -1,27 +1,21 @@
 import 'dart:convert';
-
 import 'package:http/http.dart' as http;
-import 'package:kerwenli_yol/helpers/methods/static_data.dart';
 import 'package:kerwenli_yol/models/weather.dart';
 
 class WeatherApiService {
-  Future<WeatherModel> getWeatherByCoordinates(double lat, double lon) async {
-    final Uri uri = Uri.parse(weatherApiUrl).replace(
-      queryParameters: {
-        'lat': lat,
-        'lon': lon,
-        'appid': weatherApiKey,
-        'units': 'metric',
-        'lang': 'tr',
-      },
-    );
+  static const String _apiKey = 'ace700fb8088d6d1f1f2f54c21eea966';
+  static const String _baseUrl = 'https://api.openweathermap.org/data/2.5/weather';
 
-    try {
-      final http.Response response = await http.get(uri);
-      final dynamic jsonData = json.decode(response.body);
-      return WeatherModel.fromJson(jsonData);
-    } catch (e) {
-      rethrow;
+  Future<WeatherModel> getWeatherByCoordinates(double lat, double lon) async {
+    final uri = Uri.parse(
+      '$_baseUrl?lat=$lat&lon=$lon&appid=$_apiKey&units=metric',
+    );
+    final response = await http.get(uri);
+
+    if (response.statusCode == 200) {
+      return WeatherModel.fromJson(jsonDecode(response.body));
+    } else {
+      throw Exception('Ошибка: ${response.statusCode}');
     }
   }
 }

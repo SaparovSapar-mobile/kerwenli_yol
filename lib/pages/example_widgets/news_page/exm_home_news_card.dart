@@ -90,7 +90,7 @@ class ExmHomeNewsCard extends ConsumerWidget {
                   SizedBox(height: 2),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [ViewCount(fontSize: 8), ShowDate()],
+                    children: [ ShowDate()],
                   ),
                 ],
               ),

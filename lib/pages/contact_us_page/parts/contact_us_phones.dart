@@ -16,7 +16,7 @@ class ContactUsPhones extends ConsumerWidget {
     final AppLocalizations lang = AppLocalizations.of(context)!;
 
     // ========= Text Styles =======
-    final TextStyle textStyle = AppTextStyles.medium10;
+    final TextStyle textStyle = AppTextStyles.semiBold14;
 
     final AsyncValue<ContactUsModel?> resultApi = ref.watch(
       fetchContactUsProvider,

@@ -13,7 +13,9 @@ class SelectionButton extends ConsumerWidget {
     this.horizontalMargin,
   });
 
-  final String title1, title2;
+  final String 
+  title1,
+   title2;
   final double? horizontalMargin;
 
   @override
@@ -54,7 +56,9 @@ class SelectionButton extends ConsumerWidget {
         ),
         labelStyle: titleStyle1,
         unselectedLabelStyle: titleStyle2,
-        tabs: [Text(title1), Text(title2)],
+        tabs: [
+          Text(title1),
+         Text(title2)],
       ),
     );
   }

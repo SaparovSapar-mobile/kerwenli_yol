@@ -21,14 +21,14 @@ class CompanyStatus extends ConsumerWidget {
     final Color openColor = isLight ? LightColors.success : DarkColors.success;
 
     Color textColor = closedColor;
-    String text = 'Yapyk';
+    String text = 'Ýapyk';
     if (isOpen) {
       textColor = openColor;
       text = lang.open;
     }
 
     final TextStyle textStyle = AppTextStyles.medium10.copyWith(
-      fontSize: fontSize ?? 6,
+      fontSize: fontSize ?? 8,
       color: textColor,
     );
 

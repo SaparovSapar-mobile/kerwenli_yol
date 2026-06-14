@@ -13,25 +13,33 @@ import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
 import 'package:pinput/pinput.dart';
 
-class OtpInput extends ConsumerWidget {
+class OtpInput extends ConsumerStatefulWidget {
   const OtpInput({
     super.key,
+    required this.otpController,
     required this.forRegister,
     required this.email,
     required this.phone,
     required this.fullName,
     required this.password,
   });
-
+  final TextEditingController otpController;
   final bool forRegister;
   final String email, phone, fullName, password;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final AppLocalizations lang = AppLocalizations.of(context)!;
+  ConsumerState<OtpInput> createState() => _OtpInputState();
+}
 
-    // ========= Colors ==========
+class _OtpInputState extends ConsumerState<OtpInput> {
+  @override
+  Widget build(BuildContext context) {
+    final AppLocalizations lang = AppLocalizations.of(context)!;
     final bool isLight = isLightTheme(context, ref);
+    // Определяем длину OTP
+    final int otpLength = widget.phone.isNotEmpty ? 4 : 6;
+
+    // ... все цвета и стили как были ...
     final Color bgColor = isLight
         ? LightColors.bgPageLight
         : DarkColors.bgPageDark;
@@ -61,7 +69,6 @@ class OtpInput extends ConsumerWidget {
         border: Border.all(color: borderColor),
       ),
     );
-
     return Container(
       width: double.infinity,
       padding: EdgeInsets.all(16),
@@ -70,11 +77,10 @@ class OtpInput extends ConsumerWidget {
         borderRadius: BorderRadius.circular(12),
       ),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        mainAxisSize: MainAxisSize.min,
         children: [
           Pinput(
-            length: 4,
+            length: otpLength,
+            controller: widget.otpController,
             defaultPinTheme: pinTheme,
             focusedPinTheme: pinTheme.copyWith(
               decoration: pinTheme.decoration!.copyWith(
@@ -82,7 +88,7 @@ class OtpInput extends ConsumerWidget {
               ),
             ),
             onCompleted: (value) {
-              if (value != '' || value.length == 6) {
+              if (value.length == 6) {
                 ref.read(otpCodeProvider.notifier).state = value;
               }
             },
@@ -91,13 +97,13 @@ class OtpInput extends ConsumerWidget {
             onResend: () async {
               ResultRegister result = ResultRegister.defaultResult();
 
-              if (forRegister) {
+              if (widget.forRegister) {
                 // ====== Ulanyjy Registr Boljak bolanda su yeri isleyar ===
                 final RegisterUserModel reqData = RegisterUserModel(
-                  email: email,
-                  name: fullName,
-                  password: password,
-                  phone: phone,
+                  email: widget.email,
+                  name: widget.fullName,
+                  password: widget.password,
+                  phone: widget.phone,
                 );
 
                 result = await ref.read(registerUserProvider(reqData).future);
@@ -113,8 +119,8 @@ class OtpInput extends ConsumerWidget {
               } else {
                 // ====== Forgot Password ucin ========
                 final SendOtpModel reqData = SendOtpModel(
-                  email: email,
-                  phone: phone,
+                  email: widget.email,
+                  phone: widget.phone,
                 );
 
                 result = await ref.read(sendOtpProvider(reqData).future);

@@ -31,12 +31,6 @@ class UserProfilePage extends ConsumerWidget {
         child: Column(
           children: [
             UserProfile(user: user, forUserPage: true),
-            SizedBox(height: 5),
-            UserProfileInfo(),
-            SizedBox(height: 5),
-            UserProfileInfoMessages(),
-            SizedBox(height: 5),
-            UserProfileInfoViews(),
           ],
         ),
       ),

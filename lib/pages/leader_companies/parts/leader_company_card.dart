@@ -24,7 +24,7 @@ class LeaderCompanyCard extends ConsumerWidget {
         : DarkColors.bgPageDark;
 
     // ========= Text Styles =========
-    final TextStyle textStyle = AppTextStyles.semiBold10;
+    final TextStyle textStyle = AppTextStyles.medium12;
 
     final String name = translateText(
       ref,
@@ -45,7 +45,7 @@ class LeaderCompanyCard extends ConsumerWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 32, vertical: 17),
+            padding: EdgeInsets.symmetric(horizontal: 32, vertical: 14),
             decoration: BoxDecoration(
               color: bgColor,
               borderRadius: BorderRadius.circular(6),

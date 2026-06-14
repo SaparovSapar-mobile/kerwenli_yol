@@ -77,7 +77,7 @@ class CompanyCard extends ConsumerWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                ViewCount(fontSize: 12),
+                ViewCount(fontSize: 12, viewCount: company.viewsCount,),
                 HomeVipCompanyRating(fontSize: 12),
               ],
             ),

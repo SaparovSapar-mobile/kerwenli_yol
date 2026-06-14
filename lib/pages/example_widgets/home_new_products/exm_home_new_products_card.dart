@@ -69,7 +69,7 @@ class ExmHomeNewProductsCard extends ConsumerWidget {
             SizedBox(height: 5),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [ViewCount(), HomeVipCompanyRating()],
+              children: [HomeVipCompanyRating()],
             ),
           ],
         ),

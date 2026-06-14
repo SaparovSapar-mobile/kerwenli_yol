@@ -9,32 +9,34 @@ class PhotosCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Navigator.of(context).push(
-        MaterialPageRoute(
-          fullscreenDialog: true,
-          builder: (_) => PhotosViewer(
-            images: const [
-              "assets/examples/foto.png",
-              "assets/examples/foto.png",
-              "assets/examples/foto.png",
-              "assets/examples/foto.png",
-              "assets/examples/foto.png",
-              "assets/examples/foto.png",
-            ],
-            initialIndex: 0,
-          ),
-        ),
-      ),
+      onTap: () {},
+      // => Navigator.of(context).push(
+      //   MaterialPageRoute(
+      //     fullscreenDialog: true,
+      //     builder: (_) => PhotosViewer(
+      //       images: const [
+      //         "assets/examples/foto.png",
+      //         "assets/examples/foto.png",
+      //         "assets/examples/foto.png",
+      //         "assets/examples/foto.png",
+      //         "assets/examples/foto.png",
+      //         "assets/examples/foto.png",
+      //       ],
+      //       initialIndex: 0,
+      //     ),
+      //   ),
+      // ),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(6),
         child: Stack(
           alignment: Alignment.center,
           children: [
-            SizedBox(
-              height: 112,
-              child: ShowImage(image: 'assets/examples/foto.png'),
-            ),
-            Positioned(left: 5, bottom: 5, child: PhotosIcon()),
+            
+          //   SizedBox(
+          //     height: 112,
+          //     child: ShowImage(image: 'assets/examples/foto.png'),
+          //   ),
+          //   Positioned(left: 5, bottom: 5, child: PhotosIcon()),
           ],
         ),
       ),

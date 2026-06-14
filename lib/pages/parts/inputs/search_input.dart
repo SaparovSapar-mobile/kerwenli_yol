@@ -12,12 +12,26 @@ import 'package:kerwenli_yol/providers/parts/file_upload.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
+import 'dart:async'; // 👈 добавь
 
-class SearchInput extends ConsumerWidget {
+class SearchInput extends ConsumerStatefulWidget { // 👈 StatefulWidget
   const SearchInput({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<SearchInput> createState() => _SearchInputState();
+}
+
+class _SearchInputState extends ConsumerState<SearchInput> {
+  Timer? _debounce; // 👈 таймер для debounce
+
+  @override
+  void dispose() {
+    _debounce?.cancel();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final AppLocalizations lang = AppLocalizations.of(context)!;
 
     // ======= Colors ======
@@ -62,28 +76,28 @@ class SearchInput extends ConsumerWidget {
               padding: WidgetStateProperty.all<EdgeInsetsGeometry>(
                 const EdgeInsets.only(left: 16),
               ),
-              onChanged: (value) async {
+              onChanged: (value) {
+                // 👇 Обновляем UI сразу — без сохранения в историю
                 ref.read(isVisualSearchModeProvider.notifier).state = false;
                 ref.read(visualSearchResultProvider.notifier).state = null;
-
-                await createSearch(value, SearchTypeEnum.all);
-
                 ref.read(searchECommerceTextProvider.notifier).state = value;
                 ref.read(eCommerceSearchProvider.notifier).state = value;
-                ref.read(openSearchECommerceHistoryProvider.notifier).state =
-                    false;
+                ref.read(openSearchECommerceHistoryProvider.notifier).state = false;
+
+                // 👇 Отменяем предыдущий таймер
+                _debounce?.cancel();
               },
               onSubmitted: (value) async {
+                // 👇 Сохраняем в историю ТОЛЬКО при нажатии Enter/Submit
                 if (value.isNotEmpty) {
                   ref.read(isVisualSearchModeProvider.notifier).state = false;
                   ref.read(visualSearchResultProvider.notifier).state = null;
 
-                  await createSearch(value, SearchTypeEnum.all);
+                  await createSearch(value, SearchTypeEnum.all); // ✅ только здесь
 
                   ref.read(searchECommerceTextProvider.notifier).state = value;
                   ref.read(eCommerceSearchProvider.notifier).state = value;
-                  ref.read(openSearchECommerceHistoryProvider.notifier).state =
-                      false;
+                  ref.read(openSearchECommerceHistoryProvider.notifier).state = false;
 
                   ref.invalidate(getSearchsProvider);
                   ref.invalidate(fetchSearchProvider);
@@ -93,18 +107,12 @@ class SearchInput extends ConsumerWidget {
                 if (hasSearchText)
                   IconButton(
                     onPressed: () {
-                      ref.read(isVisualSearchModeProvider.notifier).state =
-                          false;
-                      ref.read(visualSearchResultProvider.notifier).state =
-                          null;
-
+                      _debounce?.cancel(); // 👈 отменяем таймер при очистке
+                      ref.read(isVisualSearchModeProvider.notifier).state = false;
+                      ref.read(visualSearchResultProvider.notifier).state = null;
                       ref.read(eCommerceSearchProvider.notifier).state = '';
                       ref.read(searchECommerceTextProvider.notifier).state = '';
-                      ref
-                              .read(openSearchECommerceHistoryProvider.notifier)
-                              .state =
-                          true;
-
+                      ref.read(openSearchECommerceHistoryProvider.notifier).state = true;
                       ref.invalidate(fetchSearchProvider);
                     },
                     icon: Icon(Icons.cancel, color: iconColor, size: 20),

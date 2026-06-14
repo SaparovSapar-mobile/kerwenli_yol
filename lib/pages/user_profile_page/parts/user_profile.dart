@@ -31,7 +31,7 @@ class UserProfile extends ConsumerWidget {
         : DarkColors.textTitleDark;
 
     // ========= Text Styles ==========
-    final TextStyle nameStyle = AppTextStyles.medium12;
+    final TextStyle nameStyle = AppTextStyles.semiBold16;
     final TextStyle titleStyle = AppTextStyles.medium20;
 
     return Container(
@@ -59,18 +59,31 @@ class UserProfile extends ConsumerWidget {
             dense: true,
             visualDensity: VisualDensity.compact,
             title: Text(lang.myPage, style: titleStyle),
-            trailing: forUserPage
-                ? Icon(Icons.border_color_outlined, size: 16, color: iconColor)
-                : Icon(Icons.arrow_forward_ios, size: 16, color: iconColor),
+            trailing: Icon(
+              Icons.drive_file_rename_outline,
+              size: 24,
+              color: iconColor,
+            ),
           ),
           SizedBox(height: 5),
           Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              SizedBox(
-                height: 46,
-                width: 46,
-                child: showImageMethod(user.image, 10, null),
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Color(0xFFF6F8FD),
+                ),
+                height: 57,
+                width: 57,
+                child: user.image == null
+                    ? showImageMethod(user.image, 10, null)
+                    : Center(
+                        child: Text(
+                          user.name.substring(0, 1),
+                          style: TextStyle(fontSize: 25),
+                        ),
+                      ),
               ),
               SizedBox(width: 5),
               Expanded(
@@ -84,10 +97,15 @@ class UserProfile extends ConsumerWidget {
                       style: nameStyle,
                     ),
                     SizedBox(height: 2),
-                    HomeVipCompanyCardCategories(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      iconSize: 8,
+                    Row(
+                      children: [
+                        Text("Müşderi", style: AppTextStyles.medium14),
+                      ],
                     ),
+                    // HomeVipCompanyCardCategories(
+                    //   mainAxisAlignment: MainAxisAlignment.start,
+                    //   iconSize: 8,
+                    // ),
                   ],
                 ),
               ),

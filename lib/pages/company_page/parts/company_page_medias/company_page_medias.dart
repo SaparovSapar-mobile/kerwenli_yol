@@ -29,14 +29,16 @@ class CompanyPageMedias extends ConsumerWidget {
       child: Column(
         children: [
           CompanyPagePartTabbar(
-            tabTexts: [lang.shortVideos, lang.videos, lang.photoReport],
+            tabTexts: [
+              // lang.shortVideos,
+             lang.videos, lang.photoReport],
           ),
           Expanded(
             child: Container(
               color: tabbarViewBgColor,
               child: TabBarView(
                 children: [
-                  CompanyMediasGridview(companyId: companyId),
+                  // CompanyMediasGridview(companyId: companyId),
                   WideosGridView(),
                   PhotosGridView(),
                 ],

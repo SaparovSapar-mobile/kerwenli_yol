@@ -3,6 +3,9 @@ import 'package:kerwenli_yol/models/company.dart';
 import 'package:kerwenli_yol/pages/parts/card_bookmark_button.dart';
 import 'package:kerwenli_yol/pages/parts/card_top_texts/card_top_texts.dart';
 
+import '../../../../../../helpers/methods/static_data.dart';
+import '../../../../../parts/show_image.dart';
+
 class HomeVipCompanyCardImage extends StatelessWidget {
   const HomeVipCompanyCardImage({
     super.key,
@@ -46,12 +49,35 @@ class HomeVipCompanyCardImage extends StatelessWidget {
                   ),
 
                   // Company Image
+                  // Company Image
+                  // Company Image
                   Center(
-                    child: Icon(
-                      Icons.add_a_photo_outlined,
-                      size: 14,
-                      color: Color(0xFF9CB7FF),
-                    ),
+                    child: company.photo.isEmpty
+                        ? Icon(
+                            Icons.add_a_photo_outlined,
+                            size: 14,
+                            color: Color(0xFF9CB7FF),
+                          )
+                        : Image.network(
+                            '$pathUrl${company.photo}',
+                            width: 100,
+                            height: 100,
+                            fit: BoxFit.cover,
+                            errorBuilder: (context, error, stackTrace) => Icon(
+                              Icons.add_a_photo_outlined,
+                              size: 14,
+                              color: Color(0xFF9CB7FF),
+                            ),
+                            loadingBuilder: (context, child, loadingProgress) {
+                              if (loadingProgress == null) return child;
+                              return Center(
+                                child: CircularProgressIndicator(
+                                  strokeWidth: 2,
+                                  color: Color(0xFF9CB7FF),
+                                ),
+                              );
+                            },
+                          ),
                   ),
                 ],
               ),

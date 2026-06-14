@@ -50,8 +50,10 @@ class CompanyModel {
       publicationLabelEn;
   final bool isFollowed, isBookmarked;
   final TranslationModel categoryName;
+  final int viewsCount;
 
   CompanyModel({
+    required this.viewsCount,
     required this.uuid,
     required this.individualUuid,
     required this.photo,
@@ -68,6 +70,7 @@ class CompanyModel {
 
   factory CompanyModel.fromJson(Map<String, dynamic> json) {
     return CompanyModel(
+      viewsCount: json['views_count'],
       uuid: json['uuid'] ?? '',
       individualUuid: json['individual_uuid'] ?? '',
       photo: json['photo'] ?? '',
@@ -88,6 +91,7 @@ class CompanyModel {
 
 class CompanyDetailModel {
   final String id;
+  final int viewsCount;
   final MainInfoModel mainInfo;
   final TranslationModel businessName, description, address, categoryName;
   final CompContactModel contact;
@@ -102,6 +106,7 @@ class CompanyDetailModel {
 
   CompanyDetailModel({
     required this.id,
+    required this.viewsCount,
     required this.mainInfo,
     required this.businessName,
     required this.description,
@@ -122,6 +127,7 @@ class CompanyDetailModel {
   factory CompanyDetailModel.defaultValue() {
     return CompanyDetailModel(
       id: '',
+      viewsCount: 0,
       mainInfo: MainInfoModel.defaultValue(),
       businessName: TranslationModel.defaultValue(),
       categoryName: TranslationModel.defaultValue(),
@@ -143,6 +149,7 @@ class CompanyDetailModel {
   factory CompanyDetailModel.fromJson(Map<String, dynamic> json) {
     return CompanyDetailModel(
       id: json['uuid'] ?? '',
+      viewsCount: json['views_count'] ?? 0,
       mainInfo: json['main_info'] == null
           ? MainInfoModel.defaultValue()
           : MainInfoModel.fromJson(json['main_info']),

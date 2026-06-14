@@ -110,7 +110,7 @@ class ExnProductPageBody extends ConsumerWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      ViewCount(fontSize: 13),
+                      // ViewCount(fontSize: 13, viewCount: ,),
                       HomeVipCompanyRating(fontSize: 13),
                     ],
                   ),

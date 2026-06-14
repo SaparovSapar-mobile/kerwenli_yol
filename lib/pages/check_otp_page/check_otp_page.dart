@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:kerwenli_yol/helpers/functions/theme.dart';
-import 'package:kerwenli_yol/helpers/methods/parts/app_bar_methods.dart';
-import 'package:kerwenli_yol/l10n/app_localizations.dart';
-import 'package:kerwenli_yol/pages/check_otp_page/parts/check_otp_button.dart';
-import 'package:kerwenli_yol/pages/check_otp_page/parts/otp_input.dart';
-import 'package:kerwenli_yol/pages/onboard_page/parts/theme_switcher_button.dart';
-import 'package:kerwenli_yol/pages/parts/back_leading_button.dart';
-import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
-import 'package:kerwenli_yol/styles/colors/light_colors.dart';
-import 'package:kerwenli_yol/styles/text_styles.dart';
 
-class CheckOtpPage extends ConsumerWidget {
+import '../../helpers/functions/theme.dart';
+import '../../helpers/methods/parts/app_bar_methods.dart';
+import '../../l10n/app_localizations.dart';
+import '../../styles/colors/dark_colors.dart';
+import '../../styles/colors/light_colors.dart';
+import '../../styles/text_styles.dart';
+import '../onboard_page/parts/theme_switcher_button.dart';
+import '../parts/back_leading_button.dart';
+import 'parts/check_otp_button.dart';
+import 'parts/otp_input.dart';
+
+class CheckOtpPage extends ConsumerStatefulWidget {
   const CheckOtpPage({
     super.key,
     required this.text,
@@ -26,15 +27,31 @@ class CheckOtpPage extends ConsumerWidget {
   final bool forRegister;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final AppLocalizations lang = AppLocalizations.of(context)!;
+  ConsumerState<CheckOtpPage> createState() => _CheckOtpPageState();
+}
 
+class _CheckOtpPageState extends ConsumerState<CheckOtpPage> {
+  late final TextEditingController _otpController;
+
+  @override
+  void initState() {
+    super.initState();
+    _otpController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    _otpController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final AppLocalizations lang = AppLocalizations.of(context)!;
     final bool isLight = isLightTheme(context, ref);
     final Color bgColor = isLight
         ? LightColors.bgBlogLight
         : DarkColors.bgBlogDark;
-
-    final TextStyle textStyle = AppTextStyles.semiBold16;
 
     return Scaffold(
       appBar: AppBar(
@@ -55,21 +72,24 @@ class CheckOtpPage extends ConsumerWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text(text, style: textStyle),
+            Text(widget.text, style: AppTextStyles.semiBold16),
             SizedBox(height: 24),
             OtpInput(
-              forRegister: forRegister,
-              email: email,
-              phone: phone,
-              fullName: fullName,
-              password: password,
+              
+              otpController: _otpController, // ✅
+              forRegister: widget.forRegister,
+              email: widget.email,
+              phone: widget.phone,
+              fullName: widget.fullName,
+              password: widget.password,
             ),
             SizedBox(height: 16),
             CheckOtpButton(
-              email: email,
-              phone: phone,
-              password: password,
-              forRegister: forRegister,
+              otpController: _otpController, // ✅
+              email: widget.email,
+              phone: widget.phone,
+              password: widget.password,
+              forRegister: widget.forRegister,
             ),
           ],
         ),

@@ -23,7 +23,7 @@ class HomeMedia extends ConsumerWidget {
       fetchMediasProvider(arg),
     );
 
-    return resultApi.when(
+    return resultApi.when( 
       data: (data) {
         if (data.isEmpty) {
           return const SizedBox.shrink();

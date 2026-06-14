@@ -32,16 +32,16 @@ class HomePartners extends ConsumerWidget {
         return Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            HomeMoreButton(
-              text: lang.ourPartners,
-              onTap: () =>
-                  goToPage(context, SponsorsPage(), AxisDirection.left),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 5, bottom: 10),
-              child: HomePartnerList(sponsors: data),
-            ),
-            AppBarBottomLine(thickness: 10),
+            // HomeMoreButton(
+            //   text: lang.ourPartners,
+            //   onTap: () =>
+            //       goToPage(context, SponsorsPage(), AxisDirection.left),
+            // ),
+            // Padding(
+            //   padding: const EdgeInsets.only(top: 5, bottom: 10),
+            //   child: HomePartnerList(sponsors: data),
+            // ),
+            // AppBarBottomLine(thickness: 10),
           ],
         );
       },

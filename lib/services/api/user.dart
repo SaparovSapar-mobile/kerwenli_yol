@@ -38,6 +38,7 @@ class UserApiService {
   }
 
   // === Check OTP for Email ===
+  // === Check OTP for Email ===
   Future<bool> verifyEmail(CheckOtpModel reqData) async {
     final Uri uri = Uri.parse('$apiUrl/client/verify-email');
 
@@ -47,16 +48,28 @@ class UserApiService {
         headers: {'Content-Type': 'application/json'},
         body: json.encode(reqData.toJson()),
       );
+
+      print('statusCode: ${response.statusCode}');
+      print('body: ${response.body}');
+
       final dynamic jsonData = json.decode(response.body);
 
-      return response.statusCode == 200 && jsonData['status'];
+      // Проверяем оба варианта — bool true ИЛИ строка 'success'
+      final dynamic status = jsonData['status'];
+      final bool isSuccess = status == true || status == 'success';
+
+      print('status value: $status, isSuccess: $isSuccess');
+
+      return response.statusCode == 200 && isSuccess;
     } catch (e) {
+      print('verifyEmail ERROR: $e');
       rethrow;
     }
   }
 
   // === Register User ===
   Future<ResultRegister> registerUser(RegisterUserModel reqData) async {
+    print('registerUser reqData: ${reqData.toJson()}'); 
     final Uri uri = Uri.parse('$apiUrl/client/register');
 
     try {
@@ -66,7 +79,9 @@ class UserApiService {
         body: json.encode(reqData.toJson()),
       );
       final dynamic jsonData = json.decode(response.body);
-
+      print("Status code: ${response.statusCode}");
+      print('registerUser body: ${response.body}');
+      print('jsonData status: ${jsonData['status']}');
       return ResultRegister(
         success: response.statusCode == 200 && jsonData['status'],
         message: jsonData['message'] ?? '',

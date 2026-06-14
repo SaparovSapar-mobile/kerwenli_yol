@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/navigation.dart';
@@ -7,6 +8,8 @@ import 'package:kerwenli_yol/pages/company_page/company_page.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
+
+import '../../../../../helpers/methods/static_data.dart';
 
 class HomeLeaderCompanyCard extends ConsumerWidget {
   const HomeLeaderCompanyCard({
@@ -30,7 +33,7 @@ class HomeLeaderCompanyCard extends ConsumerWidget {
         : DarkColors.bgPageDark;
 
     // ========= Text Styles ==========
-    final TextStyle textStyle = AppTextStyles.medium10;
+    final TextStyle textStyle = AppTextStyles.medium12;
 
     return GestureDetector(
       onTap: () => goToPage(
@@ -39,24 +42,29 @@ class HomeLeaderCompanyCard extends ConsumerWidget {
         AxisDirection.left,
       ),
       child: Container(
-        width: 90,
         margin: isFirst != null && isLast != null
-            ? EdgeInsets.only(left: isFirst! ? 16 : 0, right: isLast! ? 16 : 0)
+            ? EdgeInsets.only(left: isFirst! ? 12 : 0, right: isLast! ? 0 : 0)
             : null,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 25, vertical: 13),
               decoration: BoxDecoration(
                 color: bgColor,
-                borderRadius: BorderRadius.circular(5),
+                border: Border.all(color: bgColor, width: 2),
+                borderRadius: BorderRadius.circular(10),
               ),
-              child: SizedBox(
-                height: 29,
-                width: 38,
-                child: showImageMethod(image, 0, null),
+              child: ClipRRect(
+                borderRadius: BorderRadiusGeometry.circular(5),
+                child: CachedNetworkImage(
+                  imageUrl: '$pathUrl/$image',
+                  height: 70,
+                width: 88,
+                  fit: BoxFit.cover,
+                  errorWidget: (context, url, error) => errImage,
+                  placeholder: (context, url) => errImage,
+                ),
               ),
             ),
             SizedBox(height: 2),

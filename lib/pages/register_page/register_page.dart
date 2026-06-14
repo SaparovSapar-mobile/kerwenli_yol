@@ -69,7 +69,9 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
               children: [
                 AppBarBottomLine(),
                 SizedBox(height: 24),
-                SelectionButton(title1: lang.phoneNumber, title2: lang.email),
+                SelectionButton(
+                  title1: lang.phoneNumber, 
+                  title2: lang.email),
                 SizedBox(height: 16),
               ],
             ),

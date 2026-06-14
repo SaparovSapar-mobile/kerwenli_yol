@@ -24,7 +24,7 @@ class ContactUsEmails extends ConsumerWidget {
         : DarkColors.bgBlogDark;
 
     // ========= Text Styles =======
-    final TextStyle textStyle = AppTextStyles.medium10;
+    final TextStyle textStyle = AppTextStyles.semiBold14;
 
     final AsyncValue<ContactUsModel?> resultApi = ref.watch(
       fetchContactUsProvider,

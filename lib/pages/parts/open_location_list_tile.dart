@@ -5,6 +5,7 @@ import 'package:kerwenli_yol/l10n/app_localizations.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class OpenLocationListTile extends ConsumerWidget {
   const OpenLocationListTile({super.key, this.text});
@@ -29,7 +30,12 @@ class OpenLocationListTile extends ConsumerWidget {
     final TextStyle textStyle = AppTextStyles.regular10;
 
     return ListTile(
-      onTap: () {},
+      onTap: () async {
+        final uri = Uri.parse(
+          'https://www.google.com/maps/place//@37.955853,58.425542,730m/data=!3m1!1e3!4m6!1m5!3m4!2zMzfCsDU3JzIwLjciTiA1OMKwMjUnMzIuMCJF!8m2!3d37.95575!4d58.4255556',
+        );
+        await launchUrl(uri, mode: LaunchMode.externalApplication);
+      },
       contentPadding: EdgeInsets.zero,
       dense: true,
       visualDensity: VisualDensity.compact,

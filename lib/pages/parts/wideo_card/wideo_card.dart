@@ -22,34 +22,34 @@ class WideoCard extends StatelessWidget {
             child: Stack(
               alignment: Alignment.center,
               children: [
-                SizedBox(
-                  height: 112,
-                  child: ShowImage(image: 'assets/examples/media_example.jpg'),
-                ),
-                PlayMediaButton(),
-                Positioned(
-                  left: 6,
-                  right: 6,
-                  bottom: 6,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      ViewCount(fontSize: 10),
-                      VideoDuration(icon: Icons.play_circle, fontSize: 10),
-                    ],
-                  ),
-                ),
+                // SizedBox(
+                //   height: 112,
+                //   child: ShowImage(image: 'assets/examples/media_example.jpg'),
+                // ),
+                // PlayMediaButton(),
+                // Positioned(
+                //   left: 6,
+                //   right: 6,
+                //   bottom: 6,
+                //   child: Row(
+                //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //     children: [
+                //       // ViewCount(fontSize: 10x, viewCount: ,),
+                //       VideoDuration(icon: Icons.play_circle, fontSize: 10),
+                //     ],
+                //   ),
+                // ),
               ],
             ),
           ),
         ),
         SizedBox(height: 6),
-        Text(
-          'Okuwçylary hem talyplary begendirjek habar',
-          maxLines: 2,
-          overflow: TextOverflow.ellipsis,
-          style: textStyle,
-        ),
+        // Text(
+        //   'Okuwçylary hem talyplary begendirjek habar',
+        //   maxLines: 2,
+        //   overflow: TextOverflow.ellipsis,
+        //   style: textStyle,
+        // ),
       ],
     );
   }

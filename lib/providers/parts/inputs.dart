@@ -11,9 +11,8 @@ final AutoDisposeStateProvider<bool> clearPhoneProvider =
 final AutoDisposeStateProvider<bool> showPassProvider =
     StateProvider.autoDispose<bool>((ref) => false);
 
-final StateProvider<String> otpCodeProvider = StateProvider<String>(
-  (ref) => '',
-);
+final AutoDisposeStateProvider<String> otpCodeProvider =
+    StateProvider.autoDispose<String>((ref) => '');
 
 final AutoDisposeStateProvider<int> passCodeCounterProvider =
     StateProvider.autoDispose<int>((ref) => 0);

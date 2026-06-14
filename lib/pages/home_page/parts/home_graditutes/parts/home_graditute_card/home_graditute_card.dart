@@ -105,7 +105,7 @@ class HomeGradituteCard extends ConsumerWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                ViewCount(),
+                // ViewCount(viewCount: ,),
                 ShowDate(date: gratitude.createdAt),
               ],
             ),

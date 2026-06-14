@@ -50,6 +50,7 @@ class FollowedCompaniesListView extends ConsumerWidget {
               final FollowedCompanyModel c = response[indexInPage];
               final TranslationModel p = c.publicationLabel;
               final CompanyModel company = CompanyModel(
+                viewsCount: 0,
                 uuid: '',
                 individualUuid: c.id,
                 photo: c.logoImg,

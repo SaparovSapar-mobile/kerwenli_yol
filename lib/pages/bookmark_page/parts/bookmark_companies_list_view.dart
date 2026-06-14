@@ -48,6 +48,7 @@ class BookmarkCompaniesListView extends ConsumerWidget {
 
               final CompanyDetailModel c = response[indexInPage];
               final CompanyModel company = CompanyModel(
+                viewsCount: 0,
                 uuid: '',
                 individualUuid: c.id,
                 photo: c.mainInfo.logoImg,

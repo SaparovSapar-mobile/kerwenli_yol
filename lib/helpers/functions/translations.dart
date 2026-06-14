@@ -46,7 +46,7 @@ String translateImage(
 }
 
 String formatTwoLines10(String text) {
-  const int maxPerLine = 10;
+  const int maxPerLine = 20;
   const int maxTotal = maxPerLine * 2; // 20
 
   // Güvenli trim

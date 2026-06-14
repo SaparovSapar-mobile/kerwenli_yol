@@ -33,6 +33,7 @@ class HomeSecondBanner extends ConsumerWidget {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
               child: HomeBanner(
+                isBig: true,
                 banners: slot4,
                 height: banner1Height,
                 width: double.infinity,

@@ -5,10 +5,11 @@ import 'package:kerwenli_yol/pages/parts/inputs/input_part/input_part.dart';
 import 'package:kerwenli_yol/providers/parts/inputs.dart';
 
 class EmailInput extends StatelessWidget {
-  const EmailInput({super.key, required this.ctrl, this.readOnly});
 
   final TextEditingController ctrl;
   final bool? readOnly;
+
+  const EmailInput({super.key, required this.ctrl, this.readOnly});
 
   @override
   Widget build(BuildContext context) {

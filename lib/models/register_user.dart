@@ -11,7 +11,12 @@ class RegisterUserModel {
   });
 
   Map<String, dynamic> toJson() {
-    return {'email': email, 'name': name, 'password': password, 'phone': phone};
+    return {
+      'email': email,
+      'name': name,
+      'password': password,
+      'phone': phone.startsWith('+993') ? phone : '+993$phone',
+    };
   }
 }
 

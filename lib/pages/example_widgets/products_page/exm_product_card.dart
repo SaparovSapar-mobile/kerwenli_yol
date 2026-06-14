@@ -79,7 +79,7 @@ class ExmProductCard extends ConsumerWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                ViewCount(fontSize: 12),
+                // ViewCount(fontSize: 12, viewCount: product.v,),
                 HomeVipCompanyRating(fontSize: 12),
               ],
             ),

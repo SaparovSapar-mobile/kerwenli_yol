@@ -26,7 +26,7 @@ const double vipCompanyCardHeight = 202;
 const double userProfileInfoCardHeight = 90;
 
 const double homeCategoriesCardHeight = 48;
-const double homeBestCompaniesCardHeight = 84;
+const double homeBestCompaniesCardHeight = 94;
 
 const double banner1Height = 122;
 const double banner2Height = 64;

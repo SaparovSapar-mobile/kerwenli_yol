@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kerwenli_yol/pages/parts/categories_header/categories_header_without_expanded.dart';
+import 'package:kerwenli_yol/pages/parts/categories_header/categories_header_with.dart';
 
 class CategoriesHeader extends StatelessWidget {
   const CategoriesHeader({
@@ -14,7 +14,7 @@ class CategoriesHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: CategoriesHeaderWithoutExpanded(
+      child: CategoriesHeaderWith(
         categories: categories,
         childWidget: childWidget,
       ),

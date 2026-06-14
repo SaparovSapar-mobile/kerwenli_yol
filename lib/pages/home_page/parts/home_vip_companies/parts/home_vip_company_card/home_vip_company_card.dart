@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/navigation.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
@@ -36,8 +37,11 @@ class HomeVipCompanyCard extends ConsumerWidget {
         ? LightColors.bgPageLight
         : DarkColors.bgPageDark;
 
+    final sw = MediaQuery.of(context).size.width;
+    final sh = MediaQuery.of(context).size.height;
+
     // ======== Text Styles ============
-    final TextStyle nameStyle = AppTextStyles.medium10;
+    final TextStyle nameStyle = AppTextStyles.medium12;
 
     EdgeInsetsGeometry? margin;
     if (isFirst != null && isLast != null) {
@@ -79,11 +83,14 @@ class HomeVipCompanyCard extends ConsumerWidget {
               company: company,
             ),
             SizedBox(height: 5),
-            Text(
-              name,
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-              style: nameStyle,
+            SizedBox(
+              height: 27,
+              child: Text(
+                name,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: nameStyle,
+              ),
             ),
             CompanyStatus(isOpen: false),
             SizedBox(height: 2),
@@ -91,7 +98,7 @@ class HomeVipCompanyCard extends ConsumerWidget {
             SizedBox(height: 5),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [ViewCount(), HomeVipCompanyRating()],
+              children: [ViewCount(viewCount: company.viewsCount,), HomeVipCompanyRating()],
             ),
           ],
         ),

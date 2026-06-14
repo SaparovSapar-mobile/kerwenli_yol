@@ -17,80 +17,91 @@ class CompaniesGridView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final bool hasData = ref.watch(hasCompaniesProvider);
-    final bool loading = ref.watch(loadCompaniesProvider);
-    final bool hasErr = ref.watch(hasErrCompaniesProvider);
+    final CompanyParams firstArg = CompanyParams(
+      page: 1,
+      pageSize: pageSize,
+      categoryId: categoryId,
+      userId: '',
+    );
 
-    Widget returnWidget;
+    final AsyncValue<List<CompanyDetailModel>> firstPage = ref.watch(
+      fetchCompaniesByCategoryIdProvider(firstArg),
+    );
 
-    if (!hasData) {
-      returnWidget = NoResult();
-    } else if (!hasErr) {
-      return GridView.builder(
-        padding: EdgeInsets.symmetric(horizontal: 16),
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          crossAxisSpacing: 10,
-          mainAxisSpacing: 10,
-          mainAxisExtent: companyCardHeight,
-        ),
-        itemBuilder: (context, index) {
-          final page = index ~/ pageSize + 1;
-          final indexInPage = index % pageSize;
-
-          final CompanyParams arg = CompanyParams(
-            page: page,
-            pageSize: pageSize,
-            categoryId: categoryId,
-            userId: '',
-          );
-          final AsyncValue<List<CompanyDetailModel>> resultApi = ref.watch(
-            fetchCompaniesByCategoryIdProvider(arg),
-          );
-
-          return resultApi.when(
-            data: (response) {
-              if (indexInPage >= response.length) {
-                return null;
-              }
-
-              final CompanyDetailModel c = response[indexInPage];
-              final CompanyModel company = CompanyModel(
-                uuid: '',
-                individualUuid: c.id,
-                photo: c.mainInfo.logoImg,
-                nameTm: c.businessName.tm,
-                nameRu: c.businessName.ru,
-                nameEn: c.businessName.en,
-                isBookmarked: c.isBookmarked,
-                isFollowed: c.isFollowed,
-                categoryName: c.categoryName,
-                publicationLabelTm: '',
-                publicationLabelRu: '',
-                publicationLabelEn: '',
-              );
-              return CompanyCard(company: company);
-            },
-            error: (error, stackTrace) => const SizedBox.shrink(),
-            loading: () {
-              if (!loading) {
-                Future.delayed(
-                  const Duration(),
-                  () => ref.read(loadCompaniesProvider.notifier).state = true,
-                );
-              }
-              return null;
-            },
-          );
-        },
-      );
-    } else {
-      returnWidget = SomeError(
+    return firstPage.when(
+      loading: () => loadWidget,
+      error: (error, stackTrace) => SomeError(
         ref: ref,
         apiProviders: [fetchCompaniesByCategoryIdProvider],
-      );
-    }
+      ),
+      data: (firstData) {
+        if (firstData.isEmpty) return NoResult();
 
-    return Stack(children: [returnWidget, if (loading) loadWidget]);
+        final bool hasErr = ref.watch(hasErrCompaniesProvider);
+        if (hasErr) {
+          return SomeError(
+            ref: ref,
+            apiProviders: [fetchCompaniesByCategoryIdProvider],
+          );
+        }
+
+        final int totalItems = firstData.length;
+
+        return GridView.builder(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            crossAxisSpacing: 10,
+            mainAxisSpacing: 10,
+            mainAxisExtent: companyCardHeight,
+          ),
+          itemCount: totalItems,
+          itemBuilder: (context, index) {
+            final int page = index ~/ pageSize + 1;
+            final int indexInPage = index % pageSize;
+
+            final CompanyParams arg = CompanyParams(
+              page: page,
+              pageSize: pageSize,
+              categoryId: categoryId,
+              userId: '',
+            );
+
+            final AsyncValue<List<CompanyDetailModel>> resultApi = ref.watch(
+              fetchCompaniesByCategoryIdProvider(arg),
+            );
+
+            return resultApi.when(
+              data: (response) {
+                if (indexInPage >= response.length) return null;
+
+                final CompanyDetailModel c = response[indexInPage];
+                final CompanyModel company = CompanyModel(
+                  viewsCount: 0,
+                  uuid: '',
+                  individualUuid: c.id,
+                  photo: c.mainInfo.logoImg,
+                  nameTm: c.businessName.tm,
+                  nameRu: c.businessName.ru,
+                  nameEn: c.businessName.en,
+                  isBookmarked: c.isBookmarked,
+                  isFollowed: c.isFollowed,
+                  categoryName: c.categoryName,
+                  publicationLabelTm: '',
+                  publicationLabelRu: '',
+                  publicationLabelEn: '',
+                );
+                return CompanyCard(company: company);
+              },
+              error: (error, stackTrace) => SomeError(
+                ref: ref,
+                apiProviders: [fetchCompaniesByCategoryIdProvider],
+              ),
+              loading: () => loadWidget,
+            );
+          },
+        );
+      },
+    );
   }
 }

@@ -154,9 +154,16 @@ class AppTextStyles {
     fontWeight: FontWeight.w700,
   );
 
+static const semiBold6 = TextStyle(
+    // textXSSemiBold
+    fontSize: 6,
+    height: 1.20,
+    fontWeight: FontWeight.w600,
+  );
+
   static const semiBold10 = TextStyle(
     // textXSSemiBold
-    fontSize: 10,
+    fontSize: 12,
     height: 1.20,
     fontWeight: FontWeight.w600,
   );
