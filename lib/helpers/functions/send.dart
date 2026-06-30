@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:kerwenli_yol/enums/social_type.dart';
 import 'package:url_launcher/url_launcher.dart';
 

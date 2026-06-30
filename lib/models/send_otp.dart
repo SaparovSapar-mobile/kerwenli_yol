@@ -1,9 +1,9 @@
-class SendOtpModel {
-  final String email, phone;
+class ForgotModel {
+  final String login;
 
-  SendOtpModel({required this.email, required this.phone});
+  ForgotModel({required this.login});
 
   Map<String, dynamic> toJson() {
-    return {'email': email, 'phone': phone};
+    return {'login': login};
   }
 }

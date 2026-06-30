@@ -3,12 +3,13 @@ import 'package:http/http.dart' as http;
 import 'package:kerwenli_yol/models/weather.dart';
 
 class WeatherApiService {
-  static const String _apiKey = 'ace700fb8088d6d1f1f2f54c21eea966';
-  static const String _baseUrl = 'https://api.openweathermap.org/data/2.5/weather';
+  static const String _baseUrl = 'https://api.open-meteo.com/v1/forecast';
 
   Future<WeatherModel> getWeatherByCoordinates(double lat, double lon) async {
     final uri = Uri.parse(
-      '$_baseUrl?lat=$lat&lon=$lon&appid=$_apiKey&units=metric',
+      '$_baseUrl?latitude=$lat&longitude=$lon'
+      '&current=temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m,is_day'
+      '&timezone=auto',
     );
     final response = await http.get(uri);
 

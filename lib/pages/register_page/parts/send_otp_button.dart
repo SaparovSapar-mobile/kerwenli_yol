@@ -11,6 +11,8 @@ import 'package:kerwenli_yol/providers/api/user.dart';
 import 'package:kerwenli_yol/providers/pages/register_page.dart';
 import 'package:kerwenli_yol/providers/parts/inputs.dart';
 
+import '../../check_otp_page/parts/widget.dart';
+
 class SendOtpButton extends ConsumerWidget {
   const SendOtpButton({
     super.key,
@@ -70,7 +72,6 @@ class SendOtpButton extends ConsumerWidget {
         if (forRegister) {
           // ====== Ulanyjy Registr Boljak bolanda su yeri isleyar ===
           final RegisterUserModel reqData = RegisterUserModel(
-            email: userEmail,
             name: fullName,
             password: userPassword,
             phone: userPhone,
@@ -89,10 +90,11 @@ class SendOtpButton extends ConsumerWidget {
           }
         } else {
           // ====== Forgot Password ucin ========
-          final SendOtpModel reqData = SendOtpModel(
-            email: userEmail,
-            phone: userPhone,
-          );
+          final String login = userEmail.isNotEmpty
+              ? userEmail
+              : formatLogin(userPhone);
+
+          final ForgotModel reqData = ForgotModel(login: login);
 
           result = await ref.read(sendOtpProvider(reqData).future);
         }

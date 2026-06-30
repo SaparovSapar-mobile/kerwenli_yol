@@ -8,7 +8,6 @@ import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home
 import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/parts/home_vip_company_card_categories.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/parts/home_vip_company_rating.dart';
 import 'package:kerwenli_yol/pages/parts/card_bookmark_button.dart';
-import 'package:kerwenli_yol/pages/parts/view_count.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';

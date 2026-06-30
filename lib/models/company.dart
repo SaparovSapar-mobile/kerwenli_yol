@@ -51,6 +51,9 @@ class CompanyModel {
   final bool isFollowed, isBookmarked;
   final TranslationModel categoryName;
   final int viewsCount;
+  // ✅ новые поля
+  final List<dynamic> workingTime;
+  final List<dynamic> subcategoryNames;
 
   CompanyModel({
     required this.viewsCount,
@@ -66,11 +69,14 @@ class CompanyModel {
     required this.publicationLabelTm,
     required this.publicationLabelRu,
     required this.publicationLabelEn,
+    // ✅
+    this.workingTime = const [],
+    this.subcategoryNames = const [],
   });
 
   factory CompanyModel.fromJson(Map<String, dynamic> json) {
     return CompanyModel(
-      viewsCount: json['views_count'],
+      viewsCount: json['views_count'] ?? 0,
       uuid: json['uuid'] ?? '',
       individualUuid: json['individual_uuid'] ?? '',
       photo: json['photo'] ?? '',
@@ -79,12 +85,17 @@ class CompanyModel {
       nameEn: json['name_en'] ?? '',
       isFollowed: json['is_followed'] ?? false,
       isBookmarked: json['is_bookmarked'] ?? false,
-      categoryName: json['category_name'] == null
-          ? TranslationModel.defaultValue()
-          : TranslationModel.fromJson(json['category_name']),
+      categoryName: TranslationModel.fromDynamic(json['category_name']),
       publicationLabelTm: json['publication_label_tm'] ?? '',
       publicationLabelRu: json['publication_label_ru'] ?? '',
       publicationLabelEn: json['publication_label_en'] ?? '',
+      // ✅ парсим из JSON
+      workingTime: json['working_time'] is List
+          ? List<dynamic>.from(json['working_time'])
+          : [],
+      subcategoryNames: json['subcategory_names'] is List
+          ? List<dynamic>.from(json['subcategory_names'])
+          : [],
     );
   }
 }
@@ -153,18 +164,10 @@ class CompanyDetailModel {
       mainInfo: json['main_info'] == null
           ? MainInfoModel.defaultValue()
           : MainInfoModel.fromJson(json['main_info']),
-      businessName: json['business_name'] == null
-          ? TranslationModel.defaultValue()
-          : TranslationModel.fromJson(json['business_name']),
-      description: json['description'] == null
-          ? TranslationModel.defaultValue()
-          : TranslationModel.fromJson(json['description']),
-      categoryName: json['category_name'] == null
-          ? TranslationModel.defaultValue()
-          : TranslationModel.fromJson(json['category_name']),
-      address: json['address'] == null
-          ? TranslationModel.defaultValue()
-          : TranslationModel.fromJson(json['address']),
+      businessName: TranslationModel.fromDynamic(json['business_name']),
+      description: TranslationModel.fromDynamic(json['description']),
+      categoryName: TranslationModel.fromDynamic(json['category_name']),
+      address: TranslationModel.fromDynamic(json['address']),
       contact: json['contact'] == null
           ? CompContactModel.defaultValue()
           : CompContactModel.fromJson(json['contact']),
@@ -249,7 +252,7 @@ class MainInfoModel {
       invoiceDate: json['invoice_date'] ?? '',
       categoryId: json['category_id'] ?? '',
       publicationId: json['publication_id'] ?? '',
-      countryId: json['country_id'] ?? '',
+      countryId: json['country_uuid'] ?? '',
       sub: json['sub'] ?? [],
     );
   }

@@ -1,10 +1,9 @@
 import 'package:equatable/equatable.dart';
 
 class RegisterUserModel {
-  final String email, name, password, phone;
+  final String name, password, phone;
 
   RegisterUserModel({
-    required this.email,
     required this.name,
     required this.password,
     required this.phone,
@@ -12,7 +11,6 @@ class RegisterUserModel {
 
   Map<String, dynamic> toJson() {
     return {
-      'email': email,
       'name': name,
       'password': password,
       'phone': phone.startsWith('+993') ? phone : '+993$phone',

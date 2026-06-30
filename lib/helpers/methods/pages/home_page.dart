@@ -60,11 +60,6 @@ AppBar homePageAppBar(BuildContext context) {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text('${getCurrentDate()} | ', style: dateStyle),
-                        Image.asset(
-                          "assets/icon/cloud.png",
-                          width: 14,
-                          height: 14,
-                        ),
                         // Text(' 13° Ашхабад', style: dateStyle),
                         WeatherPart(dateStyle: dateStyle),
                       ],
@@ -93,7 +88,12 @@ class WeatherPart extends ConsumerWidget {
     return resultApi.when(
       data: (data) {
         final temp = data.temperature.round();
-        return Text(' $temp° ${data.cityName}', style: dateStyle);
+        return Row(
+          children: [
+            Icon(data.iconData, size: 16, color: Colors.yellow[300]),
+            Text(' $temp°', style: dateStyle),
+          ],
+        );
       },
       error: (_, __) => const SizedBox.shrink(),
       loading: () => LoadingAnimationWidget.staggeredDotsWave(

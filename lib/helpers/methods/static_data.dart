@@ -8,6 +8,7 @@ final String weatherApiKey = dotenv.env['WEATHER_API_KEY']!;
 final String weatherApiUrl = dotenv.env['WEATHER_API_URL']!;
 
 const double companyCardHeight = 292;
+const double companyCardHeight2 = 262;
 const double companyListCardHeight = 132;
 
 const double productListCardHeight = 127;
@@ -26,7 +27,7 @@ const double vipCompanyCardHeight = 202;
 const double userProfileInfoCardHeight = 90;
 
 const double homeCategoriesCardHeight = 48;
-const double homeBestCompaniesCardHeight = 94;
+const double homeBestCompaniesCardHeight = 125;
 
 const double banner1Height = 122;
 const double banner2Height = 64;
@@ -55,5 +56,5 @@ List<String> bookmarkHeaders(BuildContext context) {
 List<String> searchTabs(BuildContext context) {
   final AppLocalizations lang = AppLocalizations.of(context)!;
 
-  return [lang.products, 'Firmalar', lang.news, 'Markalar', 'Medialar'];
+  return ['Kärhanalar','Medialar',  lang.products,  lang.news ];
 }

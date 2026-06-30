@@ -12,6 +12,8 @@ import 'package:kerwenli_yol/providers/database/user.dart';
 import 'package:kerwenli_yol/providers/parts/inputs.dart';
 import 'package:kerwenli_yol/providers/settings.dart';
 
+import '../../check_otp_page/parts/widget.dart';
+
 class LoginButton extends ConsumerWidget {
   const LoginButton({
     super.key,
@@ -55,7 +57,7 @@ class LoginButton extends ConsumerWidget {
 
         String login = email;
         if (email == '') {
-          login = phone;
+          login = formatLogin(phone);
         }
         final LoginUserModel reqDataLogin = LoginUserModel(
           login: login,

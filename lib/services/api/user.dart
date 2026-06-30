@@ -13,6 +13,9 @@ class UserApiService {
   // === Login User ===
   Future<UserModel> loginUser(LoginUserModel reqData) async {
     final Uri uri = Uri.parse('$apiUrl/client/login');
+    print('============================= login');
+    print('uri: $uri');
+    print('reqData.toJson(): ${reqData.toJson()}');
 
     try {
       final http.Response response = await http.post(
@@ -21,7 +24,8 @@ class UserApiService {
         body: json.encode(reqData.toJson()),
       );
       final dynamic jsonData = json.decode(response.body);
-
+      print('statusCode: ${response.statusCode}');
+      print('body: ${response.body}');
       if (response.statusCode == 200 && jsonData['status']) {
         final dynamic data = jsonData['data'];
 
@@ -37,6 +41,32 @@ class UserApiService {
     }
   }
 
+  // === Confirm Phone OTP (Registration) ===
+Future<bool> confirmPhoneOtp({
+  required String phone,
+  required String code,
+}) async {
+  final Uri uri = Uri.parse('$apiUrl/client/phone/confirm');
+
+  try {
+    final http.Response response = await http.post(
+      uri,
+      headers: {'Content-Type': 'application/json'},
+      body: json.encode({'phone': phone, 'code': code}),
+    );
+
+    print('confirmPhoneOtp status: ${response.statusCode}');
+    print('confirmPhoneOtp body: ${response.body}');
+
+    final dynamic jsonData = json.decode(response.body);
+    final dynamic status = jsonData['status'];
+    return response.statusCode == 200 && (status == true || status == 'success');
+  } catch (e) {
+    print('confirmPhoneOtp ERROR: $e');
+    rethrow;
+  }
+}
+
   // === Check OTP for Email ===
   // === Check OTP for Email ===
   Future<bool> verifyEmail(CheckOtpModel reqData) async {
@@ -49,8 +79,8 @@ class UserApiService {
         body: json.encode(reqData.toJson()),
       );
 
-      print('statusCode: ${response.statusCode}');
-      print('body: ${response.body}');
+      // print('statusCode: ${response.statusCode}');
+      // print('body: ${response.body}');
 
       final dynamic jsonData = json.decode(response.body);
 
@@ -69,8 +99,8 @@ class UserApiService {
 
   // === Register User ===
   Future<ResultRegister> registerUser(RegisterUserModel reqData) async {
-    print('registerUser reqData: ${reqData.toJson()}'); 
-    final Uri uri = Uri.parse('$apiUrl/client/register');
+    print('registerUser reqData: ${reqData.toJson()}');
+    final Uri uri = Uri.parse('$apiUrl/client/phone/register');
 
     try {
       final http.Response response = await http.post(
@@ -92,9 +122,8 @@ class UserApiService {
   }
 
   // === Send Otp Code for Forgot Passoword ===
-  Future<ResultRegister> sendOtp(SendOtpModel reqData) async {
-    // final Uri uri = Uri.parse('$apiUrl/client/forgot-password');
-    final Uri uri = Uri.parse('$apiUrl/client/send-otp');
+  Future<ResultRegister> forgotPass(ForgotModel reqData) async {
+    final Uri uri = Uri.parse('$apiUrl/client/forgot-password');
     print('============================= sendOtp');
     print('uri: $uri');
     print('reqData.toJson(): ${reqData.toJson()}');

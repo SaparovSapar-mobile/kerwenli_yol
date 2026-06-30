@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/navigation.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
@@ -29,19 +28,15 @@ class HomeVipCompanyCard extends ConsumerWidget {
   final List<String> cardTopTypes;
   final CompanyModel company;
 
-  @override
+  // Вычисляем открыто/закрыто по working_time
+  
+
+    @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // ======== Colors ============
     final bool isLight = isLightTheme(context, ref);
     final Color borderColor = isLight
         ? LightColors.bgPageLight
         : DarkColors.bgPageDark;
-
-    final sw = MediaQuery.of(context).size.width;
-    final sh = MediaQuery.of(context).size.height;
-
-    // ======== Text Styles ============
-    final TextStyle nameStyle = AppTextStyles.medium12;
 
     EdgeInsetsGeometry? margin;
     if (isFirst != null && isLast != null) {
@@ -59,6 +54,9 @@ class HomeVipCompanyCard extends ConsumerWidget {
       company.nameEn,
     );
 
+    final String? subcategoryName = _getSubcategoryName(ref);
+    final bool isOpen = computeIsOpen(company);
+
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTap: () => goToPage(
@@ -69,7 +67,7 @@ class HomeVipCompanyCard extends ConsumerWidget {
       child: Container(
         width: vipCompanyCardWidth,
         margin: margin,
-        padding: EdgeInsets.only(left: 6, top: 12, right: 6, bottom: 6),
+        padding: const EdgeInsets.only(left: 6, top: 12, right: 6, bottom: 6),
         decoration: BoxDecoration(
           border: Border.all(color: borderColor),
           borderRadius: BorderRadius.circular(5),
@@ -82,27 +80,87 @@ class HomeVipCompanyCard extends ConsumerWidget {
               cardTopTypes: cardTopTypes,
               company: company,
             ),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
             SizedBox(
               height: 27,
               child: Text(
                 name,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
-                style: nameStyle,
+                style: AppTextStyles.medium12,
               ),
             ),
-            CompanyStatus(isOpen: false),
-            SizedBox(height: 2),
-            HomeVipCompanyCardCategories(),
-            SizedBox(height: 5),
+            CompanyStatus(isOpen: isOpen), // ✅ динамически
+            const SizedBox(height: 2),
+            HomeVipCompanyCardCategories(
+              category: subcategoryName, // ✅ из данных
+            ),
+            const SizedBox(height: 5),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [ViewCount(viewCount: company.viewsCount,), HomeVipCompanyRating()],
+              children: [
+                ViewCount(viewCount: company.viewsCount),
+                HomeVipCompanyRating(),
+              ],
             ),
           ],
         ),
       ),
     );
   }
+
+  String? _getSubcategoryName(WidgetRef ref) {
+    if (company.subcategoryNames.isEmpty) return null;
+    final sub = company.subcategoryNames.first as Map<String, dynamic>;
+    return translateText(
+      ref,
+      sub['name_tm'] ?? '',
+      sub['name_ru'] ?? '',
+      sub['name_en'] ?? '',
+      sub['name_en'] ?? '',
+    );
+  }
 }
+
+
+bool computeIsOpen(CompanyModel company) {
+    final now = DateTime.now();
+    final todayName = englishDayName(now.weekday); // e.g. "Monday"
+
+    for (final wt in company.workingTime) {
+      final String dayEn = (wt['day']?['en'] ?? '').toString().trim();
+      if (dayEn.toLowerCase() == todayName.toLowerCase()) {
+        final String open = wt['open'] ?? '';
+        final String close = wt['close'] ?? '';
+        if (open.isEmpty || close.isEmpty) return false;
+
+        final openTime = parseTime(open);
+        final closeTime = parseTime(close);
+        final nowMinutes = now.hour * 60 + now.minute;
+
+        return nowMinutes >= openTime && nowMinutes < closeTime;
+      }
+    }
+    return false; // если сегодня выходной или нет данных
+  }
+
+  String englishDayName(int weekday) {
+    const days = [
+      'Monday',
+      'Tuesday',
+      'Wednesday',
+      'Thursday',
+      'Friday',
+      'Saturday',
+      'Sunday',
+    ];
+    return days[weekday - 1];
+  }
+
+  int parseTime(String time) {
+    // "09:00" → 540
+    final parts = time.split(':');
+    if (parts.length != 2) return 0;
+    return (int.tryParse(parts[0]) ?? 0) * 60 + (int.tryParse(parts[1]) ?? 0);
+  }
+

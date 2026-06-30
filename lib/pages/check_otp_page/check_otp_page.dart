@@ -7,6 +7,7 @@ import '../../l10n/app_localizations.dart';
 import '../../styles/colors/dark_colors.dart';
 import '../../styles/colors/light_colors.dart';
 import '../../styles/text_styles.dart';
+import '../new_password_input/new_password.dart';
 import '../onboard_page/parts/theme_switcher_button.dart';
 import '../parts/back_leading_button.dart';
 import 'parts/check_otp_button.dart';
@@ -23,7 +24,8 @@ class CheckOtpPage extends ConsumerStatefulWidget {
     required this.fullName,
   });
 
-  final String text, email, phone, password, fullName;
+  final String text, email, phone, fullName;
+  final String password;
   final bool forRegister;
 
   @override
@@ -32,6 +34,7 @@ class CheckOtpPage extends ConsumerStatefulWidget {
 
 class _CheckOtpPageState extends ConsumerState<CheckOtpPage> {
   late final TextEditingController _otpController;
+  final TextEditingController newPasswordController = TextEditingController();
 
   @override
   void initState() {
@@ -75,13 +78,12 @@ class _CheckOtpPageState extends ConsumerState<CheckOtpPage> {
             Text(widget.text, style: AppTextStyles.semiBold16),
             SizedBox(height: 24),
             OtpInput(
-              
               otpController: _otpController, // ✅
               forRegister: widget.forRegister,
               email: widget.email,
               phone: widget.phone,
               fullName: widget.fullName,
-              password: widget.password,
+              password: widget.password!,
             ),
             SizedBox(height: 16),
             CheckOtpButton(

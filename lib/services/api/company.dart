@@ -9,10 +9,10 @@ import 'package:kerwenli_yol/models/send_msg_to_company.dart';
 
 class CompanyApiService {
   // fetch best companies -----------------------------
-  Future<List<CompanyModel>> fetchBestCompanies(String userId) async {
+  Future<List<CompanyModel>> fetchBestCompanies() async {
     final Uri uri = Uri.parse(
       '$apiUrl/client/best-companies',
-    ).replace(queryParameters: {'user_uuid': userId});
+    );
 
     try {
       final http.Response response = await http.get(uri);
@@ -139,8 +139,8 @@ class CompanyApiService {
     try {
       debugPrint('COMPANIES REQUEST URL: $uri');
       final http.Response response = await http.get(uri);
-      // debugPrint('COMPANIES STATUS CODE: ${response.statusCode}');
-      // debugPrint('COMPANIES RESPONSE: ${response.body}');
+      debugPrint('COMPANIES STATUS CODE: ${response.statusCode}');
+      debugPrint('COMPANIES RESPONSE: ${response.body}');
 
       final dynamic jsonData = json.decode(response.body);
 

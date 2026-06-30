@@ -5,7 +5,6 @@ import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/helpers/methods/image_and_video.dart';
 import 'package:kerwenli_yol/l10n/app_localizations.dart';
 import 'package:kerwenli_yol/models/user.dart';
-import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/parts/home_vip_company_card_categories.dart';
 import 'package:kerwenli_yol/pages/user_profile_page/user_profile_page.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
@@ -45,10 +44,6 @@ class UserProfile extends ConsumerWidget {
         children: [
           ListTile(
             onTap: () {
-              if (forUserPage) {
-                return;
-              }
-
               goToPage(
                 context,
                 UserProfilePage(user: user),

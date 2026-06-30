@@ -37,11 +37,11 @@ class SearchResult extends ConsumerWidget {
             Expanded(
               child: TabBarView(
                 children: [
-                  SearchProducts(products: visualResult.products),
                   SearchCompanies(companies: visualResult.companies),
-                  SearchNews(news: visualResult.news),
-                  SearchMarks(marks: visualResult.marks),
                   SearchMedias(medias: visualResult.media),
+                  SearchProducts(products: visualResult.products),
+                  SearchNews(news: visualResult.news),
+                  // SearchMarks(marks: visualResult.marks),
                 ],
               ),
             )
@@ -51,11 +51,11 @@ class SearchResult extends ConsumerWidget {
                 return Expanded(
                   child: TabBarView(
                     children: [
-                      SearchProducts(products: data.products),
                       SearchCompanies(companies: data.companies),
-                      SearchNews(news: data.news),
-                      SearchMarks(marks: data.marks),
                       SearchMedias(medias: data.media),
+                      SearchProducts(products: data.products),
+                      SearchNews(news: data.news),
+                      // SearchMarks(marks: data.marks),
                     ],
                   ),
                 );

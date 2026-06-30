@@ -34,16 +34,19 @@ class HomeLeaderCompanyCard extends ConsumerWidget {
 
     // ========= Text Styles ==========
     final TextStyle textStyle = AppTextStyles.medium12;
-
     return GestureDetector(
-      onTap: () => goToPage(
-        context,
-        CompanyPage(companyId: companyId),
-        AxisDirection.left,
-      ),
+      onTap: () {
+        print('Company iddd: $companyId');
+
+        goToPage(
+          context,
+          CompanyPage(companyId: companyId),
+          AxisDirection.left,
+        );
+      },
       child: Container(
         margin: isFirst != null && isLast != null
-            ? EdgeInsets.only(left: isFirst! ? 12 : 0, right: isLast! ? 0 : 0)
+            ? EdgeInsets.only(left: isFirst! ? 12 : 12, right: isLast! ? 12 : 0)
             : null,
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -59,15 +62,15 @@ class HomeLeaderCompanyCard extends ConsumerWidget {
                 borderRadius: BorderRadiusGeometry.circular(5),
                 child: CachedNetworkImage(
                   imageUrl: '$pathUrl/$image',
-                  height: 70,
-                width: 88,
+                  height: 90,
+                  width: 140,
                   fit: BoxFit.cover,
                   errorWidget: (context, url, error) => errImage,
                   placeholder: (context, url) => errImage,
                 ),
               ),
             ),
-            SizedBox(height: 2),
+            SizedBox(height: 10),
             Text(
               name,
               maxLines: 2,

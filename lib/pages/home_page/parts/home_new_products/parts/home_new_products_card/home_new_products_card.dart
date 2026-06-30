@@ -14,6 +14,9 @@ import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
 
+import '../../../home_vip_companies/parts/home_vip_company_card/home_vip_company_card.dart';
+import '../../../home_vip_companies/parts/home_vip_company_card/parts/company_status.dart';
+
 class HomeNewProductsCard extends ConsumerWidget {
   const HomeNewProductsCard({
     super.key,
@@ -27,6 +30,7 @@ class HomeNewProductsCard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+
     // ======== Colors ======
     final bool isLight = isLightTheme(context, ref);
     final Color borderColor = isLight
@@ -85,6 +89,10 @@ class HomeNewProductsCard extends ConsumerWidget {
                 style: nameStyle,
               ),
             ),
+            SizedBox(height: 2),
+
+            CompanyStatus(isOpen: true, fontSize: 9),
+
             SizedBox(height: 2),
             HomeVipCompanyCardCategories(category: categoryName),
             SizedBox(height: 5),

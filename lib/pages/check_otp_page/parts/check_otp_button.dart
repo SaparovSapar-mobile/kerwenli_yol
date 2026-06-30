@@ -17,6 +17,8 @@ import 'package:kerwenli_yol/providers/database/user.dart';
 import 'package:kerwenli_yol/providers/parts/inputs.dart';
 import 'package:kerwenli_yol/providers/settings.dart';
 
+import 'widget.dart';
+
 class CheckOtpButton extends ConsumerWidget {
   const CheckOtpButton({
     super.key,
@@ -56,18 +58,24 @@ class CheckOtpButton extends ConsumerWidget {
         print('=== OTP прошёл проверку, идём дальше');
 
         if (forRegister) {
-          // ======== Check otp code ==============
-          final CheckOtpModel reqData = CheckOtpModel(
-            email: email,
-            phone: phone,
-            otpCode: otpCode,
-          );
+          bool verified = false;
 
-          print('=== verifyEmail reqData: ${reqData.toJson()}');
-          print('=== вызываем verifyEmail');
-          final bool verified = await ref.read(
-            verifyEmailProvider(reqData).future,
-          );
+          if (phone.isNotEmpty) {
+            // ✅ телефон → /client/phone/confirm
+            verified = await ref.read(
+              confirmPhoneOtpProvider(
+                ConfirmPhoneOtpParams(phone: formatLogin(phone), code: otpCode),
+              ).future,
+            );
+          } else {
+            // ✅ email → /client/verify-email
+            final CheckOtpModel reqData = CheckOtpModel(
+              email: email,
+              phone: '',
+              otpCode: otpCode,
+            );
+            verified = await ref.read(verifyEmailProvider(reqData).future);
+          }
           print('=== verifyEmail результат: $verified');
 
           if (!verified) {
@@ -81,7 +89,7 @@ class CheckOtpButton extends ConsumerWidget {
           // ======== Login User ==========
           String login = email;
           if (email == '') {
-            login = phone;
+            login = formatLogin(phone);
           }
           print('=== вызываем loginUser: login="$login", password="$password"');
 

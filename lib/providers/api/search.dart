@@ -9,18 +9,20 @@ final Provider<SearchApiService> searchApiProvider = Provider<SearchApiService>(
   (ref) => SearchApiService(),
 );
 
-final FutureProvider<SearchModel> fetchSearchProvider =
-    FutureProvider<SearchModel>((ref) async {
-      SearchModel result = SearchModel.defaultValue();
+final AutoDisposeFutureProvider<SearchModel> fetchSearchProvider =
+    FutureProvider.autoDispose<SearchModel>((ref) async {
+      final String q = ref.watch(eCommerceSearchProvider);
+
+      // Не делай запрос если строка пустая
+      if (q.trim().isEmpty) {
+        return SearchModel.defaultValue();
+      }
 
       try {
-        final String q = ref.watch(eCommerceSearchProvider);
-        result = await ref.read(searchApiProvider).fetchSearch(q);
+        return await ref.read(searchApiProvider).fetchSearch(q);
       } catch (e) {
         rethrow;
       }
-
-      return result;
     });
 
 final AutoDisposeFutureProviderFamily<SearchModel?, File> visualSearchProvider =

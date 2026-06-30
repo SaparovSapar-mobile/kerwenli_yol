@@ -13,6 +13,8 @@ import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
 import 'package:pinput/pinput.dart';
 
+import 'widget.dart';
+
 class OtpInput extends ConsumerStatefulWidget {
   const OtpInput({
     super.key,
@@ -100,7 +102,6 @@ class _OtpInputState extends ConsumerState<OtpInput> {
               if (widget.forRegister) {
                 // ====== Ulanyjy Registr Boljak bolanda su yeri isleyar ===
                 final RegisterUserModel reqData = RegisterUserModel(
-                  email: widget.email,
                   name: widget.fullName,
                   password: widget.password,
                   phone: widget.phone,
@@ -118,10 +119,11 @@ class _OtpInputState extends ConsumerState<OtpInput> {
                 }
               } else {
                 // ====== Forgot Password ucin ========
-                final SendOtpModel reqData = SendOtpModel(
-                  email: widget.email,
-                  phone: widget.phone,
-                );
+                final String login = widget.email.isNotEmpty
+                    ? widget.email
+                    : formatLogin(widget.phone);
+
+                final ForgotModel reqData = ForgotModel(login: login);
 
                 result = await ref.read(sendOtpProvider(reqData).future);
               }

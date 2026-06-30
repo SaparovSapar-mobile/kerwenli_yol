@@ -4,7 +4,6 @@ import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/helpers/functions/translations.dart';
 import 'package:kerwenli_yol/models/contact_us.dart';
 import 'package:kerwenli_yol/pages/parts/open_location_list_tile.dart';
-import 'package:kerwenli_yol/pages/parts/show_image.dart';
 import 'package:kerwenli_yol/providers/api/contact_us.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';

@@ -13,7 +13,7 @@ class WideoCard extends StatelessWidget {
     TextStyle textStyle = AppTextStyles.semiBold10;
 
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start, 
       mainAxisSize: MainAxisSize.min,
       children: [
         Expanded(

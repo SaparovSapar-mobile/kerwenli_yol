@@ -7,6 +7,20 @@ import 'package:kerwenli_yol/models/update_password.dart';
 import 'package:kerwenli_yol/models/user.dart';
 import 'package:kerwenli_yol/services/api/user.dart';
 
+// модель для phone confirm
+class ConfirmPhoneOtpParams {
+  final String phone, code;
+  const ConfirmPhoneOtpParams({required this.phone, required this.code});
+}
+
+final AutoDisposeFutureProviderFamily<bool, ConfirmPhoneOtpParams>
+confirmPhoneOtpProvider = FutureProvider.autoDispose
+    .family<bool, ConfirmPhoneOtpParams>((ref, arg) async {
+      return await ref
+          .read(userApiProvider)
+          .confirmPhoneOtp(phone: arg.phone, code: arg.code);
+    });
+
 final Provider<UserApiService> userApiProvider = Provider<UserApiService>(
   (ref) => UserApiService(),
 );
@@ -24,13 +38,13 @@ registerUserProvider = FutureProvider.autoDispose
       return result;
     });
 
-final AutoDisposeFutureProviderFamily<ResultRegister, SendOtpModel>
+final AutoDisposeFutureProviderFamily<ResultRegister, ForgotModel>
 sendOtpProvider = FutureProvider.autoDispose
-    .family<ResultRegister, SendOtpModel>((ref, arg) async {
+    .family<ResultRegister, ForgotModel>((ref, arg) async {
       ResultRegister result = ResultRegister.defaultResult();
 
       try {
-        result = await ref.read(userApiProvider).sendOtp(arg);
+        result = await ref.read(userApiProvider).forgotPass(arg);
       } catch (e) {
         rethrow;
       }

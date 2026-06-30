@@ -11,40 +11,37 @@ class CategoryApiService {
     final Uri uri = Uri.parse('$apiUrl/client/categories');
 
     try {
-      // debugPrint('REQUEST URL: $uri');
+      print('CATEGORIES REQUEST URL: $uri');
 
       final http.Response response = await http.get(uri);
 
-      // debugPrint('STATUS CODE: ${response.statusCode}');
-      // debugPrint('RESPONSE BODY: ${response.body}');
+      print('CATEGORIES STATUS CODE: ${response.statusCode}');
+      print('CATEGORIES RESPONSE BODY: ${response.body}');
 
       final dynamic jsonData = json.decode(response.body);
 
       if (response.statusCode == 200 && jsonData['status']) {
         final dynamic datas = jsonData['data'];
 
-
         if (datas == null || (datas is List && datas.isEmpty)) {
-          // debugPrint('NO DATA FOUND');
+          print('NO DATA FOUND');
           return [];
         }
 
         final List<dynamic> data = datas as List;
 
-        // debugPrint('CATEGORY COUNT: ${data.length}');
+        print('CATEGORY COUNT: ${data.length}');
 
         return data
-            .map<CategoryModel>(
-              (propJson) => CategoryModel.fromJson(propJson),
-            )
+            .map<CategoryModel>((propJson) => CategoryModel.fromJson(propJson))
             .toList();
       }
 
-      // debugPrint('REQUEST FAILED');
+      print('REQUEST FAILED: status=${jsonData['status']}');
       return [];
     } catch (e, stackTrace) {
-      // debugPrint('ERROR: $e');
-      // debugPrint('STACKTRACE: $stackTrace');
+      print('CATEGORY ERROR: $e');
+      print('STACKTRACE: $stackTrace');
       rethrow;
     }
   }
@@ -56,34 +53,31 @@ class CategoryApiService {
     final Uri uri = Uri.parse(
       '$apiUrl/client/categories/individual/$companyId',
     );
-
+    print("objectttttt: $uri");
     try {
       // debugPrint('REQUEST URL: $uri');
 
       final http.Response response = await http.get(uri);
 
-      // debugPrint('STATUS CODE: ${response.statusCode}');
-      // debugPrint('RESPONSE BODY: ${response.body}');
+      debugPrint('STATUS CODEeee: ${response.statusCode}');
+      debugPrint('RESPONSE BODYyyy: ${response.body}');
 
       final dynamic jsonData = json.decode(response.body);
 
       if (response.statusCode == 200 && jsonData['status']) {
         final dynamic datas = jsonData['data'];
 
-
         if (datas == null || (datas is List && datas.isEmpty)) {
-          // debugPrint('NO DATA FOUND');
+          debugPrint('NO DATA FOUNDdddd');
           return [];
         }
 
         final List<dynamic> data = datas as List;
 
-        // debugPrint('CATEGORY COUNT: ${data.length}');
+        debugPrint('CATEGORY COUNTtttt: ${data.length}');
 
         return data
-            .map<CategoryModel>(
-              (propJson) => CategoryModel.fromJson(propJson),
-            )
+            .map<CategoryModel>((propJson) => CategoryModel.fromJson(propJson))
             .toList();
       }
 

@@ -101,7 +101,7 @@ final FutureProvider<List<CompanyModel>> fetchBestCompaniesProvider =
 
       try {
         final String userId = await ref.watch(getUserIdProvider.future);
-        datas = await ref.read(companyApiProvider).fetchBestCompanies(userId);
+        datas = await ref.read(companyApiProvider).fetchBestCompanies();
 
         // Eger user id bar bolsa we maglumat bos dal bolsa
         // we api - den is_bookmarked we is_followed  maglumatlar true gelse
@@ -148,7 +148,7 @@ fetchCompaniesByCategoryIdProvider = FutureProvider.family
         datas = await ref
             .read(companyApiProvider)
             .fetchCompaniesByCategoryId(params);
-
+        print('=== datas.length AFTER FETCH: ${datas.length}');
         if (arg.page == 1) {
           ref.read(hasCompaniesProvider.notifier).state = datas.isNotEmpty;
           ref.read(hasErrCompaniesProvider.notifier).state = false;
@@ -182,6 +182,7 @@ fetchCompaniesByCategoryIdProvider = FutureProvider.family
           }
         }
       } catch (e) {
+        print('=== fetchCompaniesByCategoryId ERROR: $e');
         ref.read(hasErrCompaniesProvider.notifier).state = e
             .toString()
             .isNotEmpty;

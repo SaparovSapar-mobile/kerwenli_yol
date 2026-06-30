@@ -1,8 +1,9 @@
 import 'package:flutter/widgets.dart';
 import 'package:kerwenli_yol/helpers/methods/static_data.dart';
 import 'package:kerwenli_yol/models/company.dart';
-import 'package:kerwenli_yol/pages/companies_page/parts/company_card/company_card.dart';
 import 'package:kerwenli_yol/pages/parts/no_result.dart';
+
+import '../../companies_page/parts/search_card/search_card.dart';
 
 class SearchCompanies extends StatelessWidget {
   const SearchCompanies({super.key, required this.companies});
@@ -20,10 +21,10 @@ class SearchCompanies extends StatelessWidget {
           crossAxisCount: 2,
           crossAxisSpacing: 10,
           mainAxisSpacing: 10,
-          mainAxisExtent: companyCardHeight,
+          mainAxisExtent: companyCardHeight2,
         ),
         itemCount: companies.length,
-        itemBuilder: (context, index) => CompanyCard(company: companies[index]),
+        itemBuilder: (context, index) => SearchCompanyCard(company: companies[index]),
       );
     } else {
       return NoResult();

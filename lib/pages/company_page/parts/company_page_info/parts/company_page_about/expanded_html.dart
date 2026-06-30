@@ -11,7 +11,6 @@ class ExpandableHtmlText extends StatefulWidget {
 
 class _ExpandableHtmlTextState extends State<ExpandableHtmlText> {
   bool _expanded = false;
-  bool _hasOverflow = false;
 
   static final _style = {
     "*": Style(

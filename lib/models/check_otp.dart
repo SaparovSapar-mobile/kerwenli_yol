@@ -9,7 +9,7 @@ class CheckOtpModel {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = {'code': otpCode};
-
+ 
     if (email.isNotEmpty) data['email'] = email;
     if (phone.isNotEmpty) data['phone'] = phone;
 

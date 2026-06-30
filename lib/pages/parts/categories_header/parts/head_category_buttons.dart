@@ -34,7 +34,7 @@ class HeadCategoryButtons extends ConsumerWidget {
     final TextStyle textStyle = AppTextStyles.semiBold12;
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 10),
       child: ButtonsTabBar(
         contentPadding: EdgeInsets.symmetric(vertical: 9, horizontal: 12),
         backgroundColor: activeBgColor,
