@@ -12,6 +12,7 @@ import 'package:kerwenli_yol/models/favorite.dart';
 import 'package:kerwenli_yol/pages/login_page/login_page.dart';
 import 'package:kerwenli_yol/providers/api/favorite.dart';
 import 'package:kerwenli_yol/providers/database/favorite.dart';
+import 'package:kerwenli_yol/services/analytics_service.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
@@ -76,6 +77,10 @@ class CompanySubscribeButton extends ConsumerWidget {
               }
             } else {
               // ref.invalidate(fetchBookmarkedCompaniesProvider);
+              AnalyticsService().logToggleFollow(
+                followed: !data,
+                companyId: companyId,
+              );
             }
           },
           child: Container(

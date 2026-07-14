@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kerwenli_yol/helpers/functions/company_status.dart';
 import 'package:kerwenli_yol/helpers/functions/navigation.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/helpers/functions/translations.dart';
@@ -122,45 +123,4 @@ class HomeVipCompanyCard extends ConsumerWidget {
   }
 }
 
-
-bool computeIsOpen(CompanyModel company) {
-    final now = DateTime.now();
-    final todayName = englishDayName(now.weekday); // e.g. "Monday"
-
-    for (final wt in company.workingTime) {
-      final String dayEn = (wt['day']?['en'] ?? '').toString().trim();
-      if (dayEn.toLowerCase() == todayName.toLowerCase()) {
-        final String open = wt['open'] ?? '';
-        final String close = wt['close'] ?? '';
-        if (open.isEmpty || close.isEmpty) return false;
-
-        final openTime = parseTime(open);
-        final closeTime = parseTime(close);
-        final nowMinutes = now.hour * 60 + now.minute;
-
-        return nowMinutes >= openTime && nowMinutes < closeTime;
-      }
-    }
-    return false; // если сегодня выходной или нет данных
-  }
-
-  String englishDayName(int weekday) {
-    const days = [
-      'Monday',
-      'Tuesday',
-      'Wednesday',
-      'Thursday',
-      'Friday',
-      'Saturday',
-      'Sunday',
-    ];
-    return days[weekday - 1];
-  }
-
-  int parseTime(String time) {
-    // "09:00" → 540
-    final parts = time.split(':');
-    if (parts.length != 2) return 0;
-    return (int.tryParse(parts[0]) ?? 0) * 60 + (int.tryParse(parts[1]) ?? 0);
-  }
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/enums/card_top_text_type.dart';
+import 'package:kerwenli_yol/helpers/functions/company_status.dart';
 import 'package:kerwenli_yol/helpers/functions/navigation.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/helpers/functions/translations.dart';
@@ -58,6 +59,8 @@ class CompanyListCard extends ConsumerWidget {
       categoryName.en,
     );
 
+    final bool isOpen = computeIsOpen(company);
+
     return GestureDetector(
       onTap: () => goToPage(
         context,
@@ -74,7 +77,7 @@ class CompanyListCard extends ConsumerWidget {
         child: Row(
           children: [
             CompanyCardImage(
-              cardTopTypes: forBm ? [] : [CardTopTextType.vip],
+              cardTopTypes:[] ,
               height: 100,
               width: 100,
               bookmarkButtonWith: 20,
@@ -116,7 +119,7 @@ class CompanyListCard extends ConsumerWidget {
                       ],
                     ),
                   ),
-                  CompanyStatus(isOpen: false, fontSize: 9),
+                  CompanyStatus(isOpen: isOpen, fontSize: 9),
                   SizedBox(height: 2),
                   HomeVipCompanyCardCategories(
                     iconSize: 10,
@@ -128,7 +131,7 @@ class CompanyListCard extends ConsumerWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       ViewCount(fontSize: 12, viewCount: company.viewsCount),
-                      HomeVipCompanyRating(fontSize: 12),
+                     HomeVipCompanyRating(fontSize: 12, rating: company.averageRating),
                     ],
                   ),
                 ],

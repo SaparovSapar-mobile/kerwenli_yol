@@ -11,6 +11,7 @@ import 'package:kerwenli_yol/firebase_options.dart';
 import 'package:kerwenli_yol/l10n/app_localizations.dart';
 import 'package:kerwenli_yol/pages/home.dart';
 import 'package:kerwenli_yol/providers/settings.dart';
+import 'package:kerwenli_yol/services/analytics_service.dart';
 import 'package:kerwenli_yol/styles/theme/theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:kerwenli_yol/l10n/tk_material_localizations.dart';
@@ -80,6 +81,7 @@ class MyApp extends ConsumerWidget {
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      navigatorObservers: [AnalyticsService().observer],
       themeMode: themeMode,
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,

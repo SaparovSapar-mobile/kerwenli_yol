@@ -57,7 +57,7 @@ class GradituteCard extends ConsumerWidget {
     return GestureDetector(
       onTap: () => goToPage(
         context,
-        GratitudeDetailPage(gratitudeId: gratitude.id),
+        GratitudeDetailPage(gratitudeId: gratitude.id, viewsCount: gratitude.viewsCount,),
         AxisDirection.left,
       ),
       child: Container(
@@ -108,7 +108,7 @@ class GradituteCard extends ConsumerWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      // ViewCount(viewCount: gratitude.vie,),
+                      ViewCount(viewCount: gratitude.viewsCount,),
                       ShowDate(date: gratitude.createdAt),
                     ],
                   ),

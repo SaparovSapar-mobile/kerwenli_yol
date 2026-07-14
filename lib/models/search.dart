@@ -83,6 +83,13 @@ class SearchModel {
                 'name_ru': businessName?['ru'] ?? '',
                 'name_en': businessName?['en'] ?? '',
                 'category_name': raw['category_name'],
+                'views_count': raw['views_count'] ?? raw['viewsCount'] ?? 0,
+                'is_followed': raw['is_followed'] ?? false,
+                'is_bookmarked': raw['is_bookmarked'] ?? false,
+                // ✅ working_time теперь пробрасывается в CompanyModel,
+                // иначе статус "Açyk/Ýapyk" в поиске всегда был пустым
+                'working_time': raw['working_time'],
+                'subcategory_names': raw['subcategory_names'],
               });
             }).toList(),
       news: newsData == null || newsData.isEmpty

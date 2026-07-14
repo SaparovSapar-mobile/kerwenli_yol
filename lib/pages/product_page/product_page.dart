@@ -9,6 +9,7 @@ import 'package:kerwenli_yol/pages/parts/internet_status_bar/internet_status_bar
 import 'package:kerwenli_yol/pages/parts/shimmer_effects/product_page_shimmer.dart';
 import 'package:kerwenli_yol/pages/product_page/parts/product_page_body.dart';
 import 'package:kerwenli_yol/providers/api/product.dart';
+import 'package:kerwenli_yol/services/analytics_service.dart';
 
 class ProductPage extends ConsumerWidget {
   const ProductPage({super.key, required this.productId});
@@ -20,6 +21,20 @@ class ProductPage extends ConsumerWidget {
     final AsyncValue<ProductModel> resultApi = ref.watch(
       fetchProductProvider(productId),
     );
+
+    ref.listen<AsyncValue<ProductModel>>(fetchProductProvider(productId), (
+      previous,
+      next,
+    ) {
+      final ProductModel? data = next.value;
+      if (data != null && data.id != '') {
+        AnalyticsService().logViewProduct(
+          productId: data.id,
+          productName: data.nameEn,
+          companyName: data.companyName.en,
+        );
+      }
+    });
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -44,6 +59,7 @@ class ProductPage extends ConsumerWidget {
             children: [
               InternetStatusBar(),
               CompanyPageTop(
+                companyId: productId,
                 text: compName,
                 showBottomLine: false,
                 onPressed: () {},

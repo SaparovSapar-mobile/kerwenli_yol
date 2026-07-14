@@ -11,6 +11,7 @@ import 'package:kerwenli_yol/providers/api/user.dart';
 import 'package:kerwenli_yol/providers/database/user.dart';
 import 'package:kerwenli_yol/providers/parts/inputs.dart';
 import 'package:kerwenli_yol/providers/settings.dart';
+import 'package:kerwenli_yol/services/analytics_service.dart';
 
 import '../../check_otp_page/parts/widget.dart';
 
@@ -86,6 +87,8 @@ class LoginButton extends ConsumerWidget {
             token: respUser.token,
           ),
         );
+
+        AnalyticsService().logLogin(email == '' ? 'phone' : 'email');
 
         ref.read(loginBtnPressProvider.notifier).state = false;
         ref.invalidate(getUserProvider);

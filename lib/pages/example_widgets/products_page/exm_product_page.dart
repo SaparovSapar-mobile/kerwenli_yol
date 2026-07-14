@@ -18,11 +18,12 @@ class ExmProductPage extends StatelessWidget {
       body: Column(
         children: [
           InternetStatusBar(),
-          CompanyPageTop(
-            text: 'Haryt ady',
-            showBottomLine: false,
-            onPressed: () {},
-          ),
+          // CompanyPageTop(
+          //  companyId: product.,
+          //   text: 'Haryt ady',
+          //   showBottomLine: false,
+          //   onPressed: () {},
+          // ),
           ExnProductPageBody(product: product),
         ],
       ),

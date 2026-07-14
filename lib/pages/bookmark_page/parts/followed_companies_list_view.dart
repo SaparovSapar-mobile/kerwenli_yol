@@ -63,6 +63,20 @@ class FollowedCompaniesListView extends ConsumerWidget {
                 publicationLabelTm: p.tm,
                 publicationLabelRu: p.ru,
                 publicationLabelEn: p.en,
+                workingTime: c.workingTimes
+                    .map(
+                      (wt) => {
+                        'day': {
+                          'tm': wt.day.tm,
+                          'ru': wt.day.ru,
+                          'en': wt.day.en,
+                        },
+                        'open': wt.open,
+                        'close': wt.close,
+                      },
+                    )
+                    .toList(),
+                averageRating: c.averageRating,
               );
               return CompanyListCard(company: company);
             },

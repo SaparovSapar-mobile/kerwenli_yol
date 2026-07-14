@@ -11,8 +11,9 @@ class HomeGradituteList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: homeGratutitudesHeight,
+      height: homeGratutitudesHeight + 2,
       child: ListView.separated(
+        clipBehavior: Clip.none,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) => HomeGradituteCard(
           isFirst: index == 0,

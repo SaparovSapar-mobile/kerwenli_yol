@@ -90,7 +90,7 @@ class WeatherPart extends ConsumerWidget {
         final temp = data.temperature.round();
         return Row(
           children: [
-            Icon(data.iconData, size: 16, color: Colors.yellow[300]),
+            Icon(data.iconData, size: 16, color: Color(0xFF262626)),
             Text(' $temp°', style: dateStyle),
           ],
         );

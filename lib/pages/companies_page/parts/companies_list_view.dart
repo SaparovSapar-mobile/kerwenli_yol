@@ -84,6 +84,20 @@ class CompaniesListView extends ConsumerWidget {
                   publicationLabelTm: '',
                   publicationLabelRu: '',
                   publicationLabelEn: '',
+                  workingTime: c.workingTimes
+                      .map(
+                        (wt) => {
+                          'day': {
+                            'tm': wt.day.tm,
+                            'ru': wt.day.ru,
+                            'en': wt.day.en,
+                          },
+                          'open': wt.open,
+                          'close': wt.close,
+                        },
+                      )
+                      .toList(),
+                  averageRating: c.averageRating,
                 );
                 return CompanyListCard(company: company);
               },

@@ -46,7 +46,7 @@ class HomeLeaderCompanyCard extends ConsumerWidget {
       },
       child: Container(
         margin: isFirst != null && isLast != null
-            ? EdgeInsets.only(left: isFirst! ? 12 : 12, right: isLast! ? 12 : 0)
+            ? EdgeInsets.only(left: isFirst! ? 8 : 8, right: isLast! ? 8 : 0)
             : null,
         child: Column(
           mainAxisSize: MainAxisSize.min,

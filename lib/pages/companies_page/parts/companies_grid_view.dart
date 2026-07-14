@@ -77,8 +77,8 @@ class CompaniesGridView extends ConsumerWidget {
 
                 final CompanyDetailModel c = response[indexInPage];
                 final CompanyModel company = CompanyModel(
-                  viewsCount: 0,
-                  uuid: '',
+                  viewsCount: c.viewsCount,
+                  uuid: c.id,
                   individualUuid: c.id,
                   photo: c.mainInfo.logoImg,
                   nameTm: c.businessName.tm,
@@ -90,6 +90,20 @@ class CompaniesGridView extends ConsumerWidget {
                   publicationLabelTm: '',
                   publicationLabelRu: '',
                   publicationLabelEn: '',
+                  workingTime: c.workingTimes
+                      .map(
+                        (wt) => {
+                          'day': {
+                            'tm': wt.day.tm,
+                            'ru': wt.day.ru,
+                            'en': wt.day.en,
+                          },
+                          'open': wt.open,
+                          'close': wt.close,
+                        },
+                      )
+                      .toList(),
+                  averageRating: c.averageRating,
                 );
                 return CompanyCard(company: company);
               },

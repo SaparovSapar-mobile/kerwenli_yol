@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kerwenli_yol/helpers/functions/company_status.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/helpers/functions/translations.dart';
 import 'package:kerwenli_yol/helpers/methods/image_and_video.dart';
@@ -50,6 +51,8 @@ class CompanyPageInfoCard extends ConsumerWidget {
       catName.en,
     );
 
+    final bool isOpen = computeIsOpenFromWorkingTimes(company.workingTimes);
+
     return Container(
       padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
       decoration: BoxDecoration(
@@ -82,7 +85,7 @@ class CompanyPageInfoCard extends ConsumerWidget {
                   category: categoryName,
                 ),
                 SizedBox(height: 4),
-                CompanyStatus(isOpen: false),
+                CompanyStatus(isOpen: isOpen),
                 SizedBox(height: 4),
                 Row(
                   mainAxisSize: MainAxisSize.max,

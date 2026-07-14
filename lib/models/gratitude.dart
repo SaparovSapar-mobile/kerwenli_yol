@@ -1,4 +1,5 @@
 class GratitudeModel {
+  final int viewsCount;
   final String id,
       coverImg,
       nameTm,
@@ -10,6 +11,7 @@ class GratitudeModel {
       createdAt;
 
   GratitudeModel({
+    required this.viewsCount,
     required this.id,
     required this.coverImg,
     required this.nameTm,
@@ -32,6 +34,7 @@ class GratitudeModel {
       descriptionRu: '',
       descriptionEn: '',
       createdAt: '',
+      viewsCount: 0,
     );
   }
 
@@ -42,10 +45,11 @@ class GratitudeModel {
       nameTm: json['name_tm'] ?? '',
       nameRu: json['name_ru'] ?? '',
       nameEn: json['name_en'] ?? '',
-      descriptionTm: json['description_tm'] ?? '',
-      descriptionRu: json['description_ru'] ?? '',
-      descriptionEn: json['description_en'] ?? '',
+      descriptionTm: json['desc_tm'] ?? '',
+      descriptionRu: json['desc_ru'] ?? '',
+      descriptionEn: json['desc_en'] ?? '',
       createdAt: json['created_at'] ?? '',
+      viewsCount: json['views_count'] ?? json['views'] ?? 0, // добавь
     );
   }
 }

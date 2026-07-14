@@ -13,10 +13,12 @@ class HpsList extends ConsumerWidget {
     super.key,
     required this.scrollController,
     required this.markTypeId,
+    this.isSecondHalf = false,
   });
 
   final ScrollController scrollController;
   final String markTypeId;
+  final bool isSecondHalf;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -25,7 +27,17 @@ class HpsList extends ConsumerWidget {
     );
 
     return resultApi.when(
-      data: (data) {
+      data: (allData) {
+        if (allData.isEmpty) {
+          return SizedBox.shrink();
+        }
+
+        // İki setire bölünýär: 1-nji setir - birinji ýarym, 2-nji setir - galan ýarym
+        final int half = (allData.length / 2).ceil();
+        final List<MarkModel> data = isSecondHalf
+            ? allData.sublist(half)
+            : allData.sublist(0, half);
+
         if (data.isEmpty) {
           return SizedBox.shrink();
         }

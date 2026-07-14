@@ -90,10 +90,6 @@ class HomeNewProductsCard extends ConsumerWidget {
               ),
             ),
             SizedBox(height: 2),
-
-            CompanyStatus(isOpen: true, fontSize: 9),
-
-            SizedBox(height: 2),
             HomeVipCompanyCardCategories(category: categoryName),
             SizedBox(height: 5),
             Row(

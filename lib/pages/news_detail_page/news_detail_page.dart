@@ -72,6 +72,7 @@ class NewsDetailPage extends ConsumerWidget {
             children: [
               InternetStatusBar(),
               CompanyPageTop(
+                companyId: newsId,
                 text: lang.news,
                 onPressed: () {},
                 showBottomLine: false,

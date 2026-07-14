@@ -5,6 +5,7 @@ import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/helpers/functions/translations.dart';
 import 'package:kerwenli_yol/helpers/methods/static_data.dart';
 import 'package:kerwenli_yol/models/product.dart';
+import 'package:kerwenli_yol/models/translation.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_new_products/parts/home_new_products_card/parts/home_new_products_card_images.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/parts/home_vip_company_card_categories.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/parts/home_vip_company_rating.dart';
@@ -36,6 +37,15 @@ class ProductListCard extends ConsumerWidget {
       product.nameRu,
       product.nameEn,
       product.nameEn,
+    );
+
+    final TranslationModel category = product.categoryName;
+    final String categoryName = translateText(
+      ref,
+      category.tm,
+      category.ru,
+      category.en,
+      category.en,
     );
 
     return GestureDetector(
@@ -81,6 +91,7 @@ class ProductListCard extends ConsumerWidget {
                         HomeVipCompanyCardCategories(
                           iconSize: 9,
                           mainAxisAlignment: MainAxisAlignment.start,
+                          category: categoryName,
                         ),
                       ],
                     ),

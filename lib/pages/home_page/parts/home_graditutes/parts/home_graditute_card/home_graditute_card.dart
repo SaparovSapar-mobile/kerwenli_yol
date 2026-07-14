@@ -61,15 +61,17 @@ class HomeGradituteCard extends ConsumerWidget {
     return GestureDetector(
       onTap: () => goToPage(
         context,
-        GratitudeDetailPage(gratitudeId: gratitude.id),
+        GratitudeDetailPage(gratitudeId: gratitude.id, viewsCount: gratitude.viewsCount,),
         AxisDirection.left,
       ),
       child: Container(
         width: homeGratutitudeWidth,
-        margin: isFirst != null && isLast != null
-            ? EdgeInsets.only(left: isFirst! ? 16 : 0, right: isLast! ? 16 : 0)
-            : null,
-        padding: EdgeInsets.all(5),
+        margin: EdgeInsets.only(
+          bottom: 50,
+          left: isFirst == true ? 16 : 0,
+          right: isLast == true ? 16 : 0,
+        ),
+        padding: EdgeInsets.all(10),
         decoration: BoxDecoration(
           border: Border.all(color: borderColor),
           borderRadius: BorderRadius.circular(4),
@@ -105,7 +107,7 @@ class HomeGradituteCard extends ConsumerWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                // ViewCount(viewCount: ,),
+                ViewCount(viewCount: gratitude.viewsCount),
                 ShowDate(date: gratitude.createdAt),
               ],
             ),

@@ -18,9 +18,10 @@ import 'package:kerwenli_yol/styles/text_styles.dart';
 import 'package:flutter_html/flutter_html.dart';
 
 class GratitudeDetailPage extends ConsumerWidget {
-  const GratitudeDetailPage({super.key, required this.gratitudeId});
+  const GratitudeDetailPage({super.key, required this.gratitudeId, required this.viewsCount});
 
   final String gratitudeId;
+  final int viewsCount;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -34,9 +35,7 @@ class GratitudeDetailPage extends ConsumerWidget {
     final Color innerBgColor = isLight
         ? LightColors.bgBlogLight
         : DarkColors.bgBlogDark;
-    final Color borderColor = isLight
-        ? LightColors.textDescriptionLight
-        : DarkColors.textDescriptionDark;
+    final Color borderColor = Color(0xFFE1E1E1);
 
     // ============= Text Styles ===========
     final TextStyle nameStyle = AppTextStyles.semiBold16;
@@ -73,6 +72,7 @@ class GratitudeDetailPage extends ConsumerWidget {
             children: [
               InternetStatusBar(),
               CompanyPageTop(
+                companyId: gratitudeId,
                 text: lang.acknowledgements,
                 onPressed: () {},
                 showBottomLine: false,
@@ -93,20 +93,25 @@ class GratitudeDetailPage extends ConsumerWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Container(
-                            height: 124.19668579101562,
-                            width: 124.19668579101562,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6.81),
-                              border: Border.all(color: borderColor),
-                            ),
-                            child: showImageMethod(data.coverImg, 6, null),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Container(
+                                height: 124.19668579101562,
+                                width: 124.19668579101562,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(6.81),
+                                  border: Border.all(color: borderColor),
+                                ),
+                                child: showImageMethod(data.coverImg, 6, null),
+                              ),
+                            ],
                           ),
-                          SizedBox(height: 60),
+                          SizedBox(height: 40),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              // ViewCount(fontSize: 10, viewCount: ,),
+                              ViewCount(fontSize: 10, viewCount: viewsCount,),
                               ShowDate(date: data.createdAt, fontSize: 10),
                             ],
                           ),

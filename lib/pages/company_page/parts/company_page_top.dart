@@ -3,20 +3,23 @@ import 'package:kerwenli_yol/helpers/methods/parts/app_bar_methods.dart';
 import 'package:kerwenli_yol/pages/parts/back_leading_button.dart';
 import 'package:kerwenli_yol/pages/parts/more_button.dart';
 import 'package:kerwenli_yol/pages/parts/share_button.dart';
+import 'package:share_plus/share_plus.dart';
 
 class CompanyPageTop extends StatelessWidget {
   const CompanyPageTop({
     super.key,
     required this.text,
+    required this.companyId,
     required this.showBottomLine,
     required this.onPressed,
     this.leftPadding,
   });
 
-  final String text;
+  final String text, companyId;
   final bool showBottomLine;
   final void Function() onPressed;
   final double? leftPadding;
+  
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +37,13 @@ class CompanyPageTop extends StatelessWidget {
               Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  ShareButton(onPressed: () {}),
+                  ShareButton(
+                    onPressed: () {
+                      Share.share(
+                        'https://tajirtrade.com.tm/companies/$companyId',
+                      );
+                    },
+                  ),
                   SizedBox(width: 20),
                   MoreButton(onPressed: onPressed),
                 ],

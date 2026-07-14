@@ -10,6 +10,9 @@ import 'package:kerwenli_yol/models/working_time.dart';
 class FollowedCompanyModel {
   final String id, logoImg, categoryId;
   final TranslationModel businessName, categoryName, publicationLabel;
+  final List<WorkingTimeModel> workingTimes; // ← добавить
+  final double averageRating; // ← добавить
+  final int viewsCount;
 
   FollowedCompanyModel({
     required this.id,
@@ -18,6 +21,9 @@ class FollowedCompanyModel {
     required this.businessName,
     required this.categoryName,
     required this.publicationLabel,
+    this.workingTimes = const [], // ← добавить
+    this.averageRating = 0, // ← добавить
+    this.viewsCount = 0,
   });
 
   factory FollowedCompanyModel.fromJson(Map<String, dynamic> json) {
@@ -34,6 +40,15 @@ class FollowedCompanyModel {
       publicationLabel: json['publication_label'] == null
           ? TranslationModel.defaultValue()
           : TranslationModel.fromJson(json['publication_label']),
+      workingTimes: json['working_time'] == null || json['working_time'] == []
+          ? []
+          : List<WorkingTimeModel>.from(
+              json['working_time'].map(
+                (dataJson) => WorkingTimeModel.fromJson(dataJson),
+              ),
+            ),
+      averageRating: (json['average_rating'] ?? 0).toDouble(),
+      viewsCount: json['views_count'] ?? 0,
     );
   }
 }
@@ -54,10 +69,14 @@ class CompanyModel {
   // ✅ новые поля
   final List<dynamic> workingTime;
   final List<dynamic> subcategoryNames;
+  final double averageRating;
+  final int ratingsCount;
 
   CompanyModel({
     required this.viewsCount,
     required this.uuid,
+    this.averageRating = 0,
+    this.ratingsCount = 0,
     required this.individualUuid,
     required this.photo,
     required this.nameTm,
@@ -96,6 +115,8 @@ class CompanyModel {
       subcategoryNames: json['subcategory_names'] is List
           ? List<dynamic>.from(json['subcategory_names'])
           : [],
+      averageRating: (json['average_rating'] ?? 0).toDouble(),
+      ratingsCount: json['ratings_count'] ?? 0,
     );
   }
 }
@@ -114,10 +135,12 @@ class CompanyDetailModel {
   final VrModel vr;
   final TaxiNumberModel taxiNumber;
   final bool isFollowed, isBookmarked;
+  final double averageRating;
 
   CompanyDetailModel({
     required this.id,
     required this.viewsCount,
+    this.averageRating = 0,
     required this.mainInfo,
     required this.businessName,
     required this.description,
@@ -139,6 +162,7 @@ class CompanyDetailModel {
     return CompanyDetailModel(
       id: '',
       viewsCount: 0,
+      averageRating: 0,
       mainInfo: MainInfoModel.defaultValue(),
       businessName: TranslationModel.defaultValue(),
       categoryName: TranslationModel.defaultValue(),
@@ -172,6 +196,7 @@ class CompanyDetailModel {
           ? CompContactModel.defaultValue()
           : CompContactModel.fromJson(json['contact']),
       banners: json['banners'] ?? [],
+      averageRating: (json['average_rating'] ?? 0).toDouble(),
       opportunity: json['opportunity'] == null
           ? OpportunityModel.defaultValue()
           : OpportunityModel.fromJson(json['opportunity']),

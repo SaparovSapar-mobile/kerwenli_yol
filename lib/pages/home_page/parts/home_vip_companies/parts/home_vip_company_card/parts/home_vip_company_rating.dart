@@ -6,10 +6,16 @@ import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
 
 class HomeVipCompanyRating extends ConsumerWidget {
-  const HomeVipCompanyRating({super.key, this.bGColor, this.fontSize});
+  const HomeVipCompanyRating({
+    super.key,
+    this.bGColor,
+    this.fontSize,
+    this.rating,
+  });
 
   final Color? bGColor;
   final double? fontSize;
+  final double? rating;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -23,7 +29,9 @@ class HomeVipCompanyRating extends ConsumerWidget {
     final TextStyle textStyle = AppTextStyles.medium10.copyWith(
       fontSize: fontSize ?? 8,
     );
-
+    final String ratingText = rating != null
+        ? rating!.toStringAsFixed(1)
+        : '4.7';
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 3, vertical: 2),
       decoration: BoxDecoration(
@@ -33,7 +41,7 @@ class HomeVipCompanyRating extends ConsumerWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text('4.7', style: textStyle),
+          Text(ratingText, style: textStyle),
           SizedBox(width: 5),
           Icon(Icons.star, size: fontSize ?? 8, color: iconColor),
         ],

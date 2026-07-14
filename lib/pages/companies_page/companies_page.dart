@@ -36,7 +36,6 @@ class CompaniesPage extends ConsumerWidget {
               isGridProvider: isGridCompaniesProvider,
             ),
             Expanded(
-              // ← вот сюда добавь Expanded
               child: Consumer(
                 builder: (context, ref, _) {
                   final bool isGridCompanies = ref.watch(

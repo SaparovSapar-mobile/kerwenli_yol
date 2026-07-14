@@ -7,6 +7,8 @@ import 'package:kerwenli_yol/helpers/functions/translations.dart';
 import 'package:kerwenli_yol/models/company.dart';
 import 'package:kerwenli_yol/pages/companies_page/parts/company_card/parts/company_card_image.dart';
 import 'package:kerwenli_yol/pages/company_page/company_page.dart';
+import 'package:kerwenli_yol/helpers/functions/company_status.dart';
+import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/parts/company_status.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/parts/home_vip_company_card_categories.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
@@ -40,6 +42,9 @@ class SearchCompanyCard extends ConsumerWidget {
       company.categoryName.en,
     );
 
+    // ✅ статус "Açyk/Ýapyk" считаем так же, как в HomeVipCompanyCard
+    final bool isOpen = computeIsOpen(company);
+
     return GestureDetector(
       onTap: () => goToPage(
         context,
@@ -68,7 +73,9 @@ class SearchCompanyCard extends ConsumerWidget {
               overflow: TextOverflow.ellipsis,
               style: AppTextStyles.medium16,
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 2),
+            CompanyStatus(isOpen: isOpen, fontSize: 9),
+            SizedBox(height: 2),
             HomeVipCompanyCardCategories(
               iconSize: 10,
               category: category,

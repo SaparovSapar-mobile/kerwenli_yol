@@ -14,23 +14,22 @@ class GratitudeApiService {
 
     try {
       final http.Response response = await http.get(uri);
-      final dynamic jsonData = json.decode(response.body);
+
+      // сначала посмотри что реально приходит
+      print('GRATITUDES RESPONSE: ${response.body}');
 
       if (response.statusCode == 200) {
-        final dynamic datas = jsonData;
-        if (datas == []) {
-          return [];
-        }
+        final dynamic jsonData = json.decode(response.body);
 
-        final List<dynamic> data = datas as List;
+        // данные внутри "data"
+        final List<dynamic> data = jsonData['data'] as List;
         return data
-            .map<GratitudeModel>(
-              (propJson) => GratitudeModel.fromJson(propJson),
-            )
+            .map<GratitudeModel>((e) => GratitudeModel.fromJson(e))
             .toList();
       }
       return [];
     } catch (e) {
+      print('GRATITUDES ERROR: $e');
       rethrow;
     }
   }
@@ -44,6 +43,7 @@ class GratitudeApiService {
       final dynamic jsonData = json.decode(response.body);
 
       if (response.statusCode == 200) {
+        print('GRATITUDE JSON id: $jsonData');
         final dynamic data = jsonData;
 
         if (data != null) {

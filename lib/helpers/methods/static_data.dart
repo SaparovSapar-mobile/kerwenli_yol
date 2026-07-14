@@ -40,7 +40,7 @@ const mediaCardImageHeight = 202.0;
 const homeSponsorsHeight = 56.0;
 const homeSponsorsWidth = 170.0;
 
-const homeGratutitudesHeight = 110.0;
+const homeGratutitudesHeight = 150.0;
 const homeGratutitudeWidth = 190.0;
 
 const homeMarkTypeHeight = 44.0;

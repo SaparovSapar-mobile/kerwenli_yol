@@ -9,6 +9,7 @@ import 'package:kerwenli_yol/pages/parts/circle_button.dart';
 import 'package:kerwenli_yol/providers/api/search.dart';
 import 'package:kerwenli_yol/providers/pages/search_page.dart';
 import 'package:kerwenli_yol/providers/parts/file_upload.dart';
+import 'package:kerwenli_yol/services/analytics_service.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
@@ -94,6 +95,7 @@ class _SearchInputState extends ConsumerState<SearchInput> {
                   ref.read(visualSearchResultProvider.notifier).state = null;
 
                   await createSearch(value, SearchTypeEnum.all); // ✅ только здесь
+                  AnalyticsService().logSearch(value);
 
                   ref.read(searchECommerceTextProvider.notifier).state = value;
                   ref.read(eCommerceSearchProvider.notifier).state = value;

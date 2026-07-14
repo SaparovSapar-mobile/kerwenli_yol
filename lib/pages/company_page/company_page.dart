@@ -13,6 +13,7 @@ import 'package:kerwenli_yol/pages/company_page/parts/company_page_top.dart';
 import 'package:kerwenli_yol/pages/parts/internet_status_bar/internet_status_bar.dart';
 import 'package:kerwenli_yol/pages/parts/shimmer_effects/company_page_shimmer.dart';
 import 'package:kerwenli_yol/providers/api/company.dart';
+import 'package:kerwenli_yol/services/analytics_service.dart';
 
 class CompanyPage extends ConsumerWidget {
   const CompanyPage({super.key, required this.companyId});
@@ -26,6 +27,20 @@ class CompanyPage extends ConsumerWidget {
     final AsyncValue<CompanyDetailModel> resultApi = ref.watch(
       fetchCompanyProvider(companyId),
     );
+
+    ref.listen<AsyncValue<CompanyDetailModel>>(fetchCompanyProvider(companyId), (
+      previous,
+      next,
+    ) {
+      final CompanyDetailModel? data = next.value;
+      if (data != null && data.id != '') {
+        AnalyticsService().logViewCompany(
+          companyId: data.id,
+          companyName: data.businessName.en,
+          categoryName: data.categoryName.en,
+        );
+      }
+    });
 
     // e51afda8-856c-4514-ab30-d7e3c5e588c6
 
@@ -45,6 +60,7 @@ class CompanyPage extends ConsumerWidget {
                 InternetStatusBar(),
                 // ========= Fixed ===========
                 CompanyPageTop(
+                  companyId: companyId,
                   text: lang.company,
                   showBottomLine: true,
                   onPressed: () =>

@@ -240,6 +240,7 @@ class _HomeMarksSliderState extends State<HomeMarksSlider>
                   HpsList(
                     scrollController: _scrollControllers[secondCtrlIndex],
                     markTypeId: markTypeId,
+                    isSecondHalf: true,
                   ),
                 ],
               );
