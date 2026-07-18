@@ -33,6 +33,27 @@ class MediaApiService {
     }
   }
 
+  // fetch media by id (also registers a view on the backend) --------
+  Future<MediaModel?> fetchMedia(String id) async {
+    final Uri uri = Uri.parse('$apiUrl/client/media/$id');
+
+    try {
+      final http.Response response = await http.get(uri);
+      final dynamic jsonData = json.decode(response.body);
+
+      if (response.statusCode == 200 && jsonData['status']) {
+        final dynamic data = jsonData['data'];
+        if (data == null) {
+          return null;
+        }
+        return MediaModel.fromJson(data);
+      }
+      return null;
+    } catch (e) {
+      return null;
+    }
+  }
+
   // fetch medias by company id --------------------------------------
   Future<List<MediaModel>> fetchMediasByCompanyId(MediaParams arg) async {
     final Uri uri = Uri.parse('$apiUrl/client/media/company/${arg.companyId}')

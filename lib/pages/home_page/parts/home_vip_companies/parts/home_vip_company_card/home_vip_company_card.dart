@@ -101,7 +101,7 @@ class HomeVipCompanyCard extends ConsumerWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 ViewCount(viewCount: company.viewsCount),
-                HomeVipCompanyRating(),
+                HomeVipCompanyRating(rating: company.averageRating),
               ],
             ),
           ],

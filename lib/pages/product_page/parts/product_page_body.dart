@@ -10,6 +10,7 @@ import 'package:kerwenli_yol/models/translation.dart';
 import 'package:kerwenli_yol/pages/company_page/parts/company_page_info/parts/company_info/parts/company_info_key_value.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_new_products/parts/home_new_products_card/parts/home_new_products_card_images.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/parts/home_vip_company_card_categories.dart';
+import 'package:kerwenli_yol/pages/parts/like_count.dart';
 import 'package:kerwenli_yol/pages/parts/primary_button.dart';
 import 'package:kerwenli_yol/pages/parts/view_count.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
@@ -141,7 +142,7 @@ class ProductPageBody extends ConsumerWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       ViewCount(fontSize: 13, viewCount: product.viewCount),
-                      // HomeVipCompanyRating(fontSize: 13),
+                      LikeCount(fontSize: 13, likeCount: product.likesCount),
                     ],
                   ),
                 ],

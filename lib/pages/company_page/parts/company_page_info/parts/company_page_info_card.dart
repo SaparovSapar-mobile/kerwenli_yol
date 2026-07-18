@@ -92,7 +92,7 @@ class CompanyPageInfoCard extends ConsumerWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     ViewCount(bGColor: bGColor, viewCount: company.viewsCount,),
-                    HomeVipCompanyRating(bGColor: bGColor),
+                    HomeVipCompanyRating(bGColor: bGColor, rating: company.averageRating),
                   ],
                 ),
               ],

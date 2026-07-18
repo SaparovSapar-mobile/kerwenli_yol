@@ -15,75 +15,87 @@ class BookmarkCompaniesListView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final bool hasData = ref.watch(hasBCompaniesProvider);
-    final bool loading = ref.watch(loadBCompaniesProvider);
-    final bool hasErr = ref.watch(hasErrBCompaniesProvider);
+    final CompanyParams firstArg = CompanyParams(
+      page: 1,
+      pageSize: pageSize,
+      userId: '',
+      categoryId: '',
+    );
 
-    Widget returnWidget;
+    final AsyncValue<List<CompanyDetailModel>> firstPage = ref.watch(
+      fetchBookmarkedCompaniesProvider(firstArg),
+    );
 
-    if (!hasData) {
-      returnWidget = NoResult();
-    } else if (!hasErr) {
-      returnWidget = ListView.builder(
-        padding: EdgeInsets.symmetric(horizontal: 16),
-        itemBuilder: (context, index) {
-          final page = index ~/ pageSize + 1;
-          final indexInPage = index % pageSize;
-
-          final CompanyParams arg = CompanyParams(
-            page: page,
-            pageSize: pageSize,
-            userId: '',
-            categoryId: '',
-          );
-          final AsyncValue<List<CompanyDetailModel>> resultApi = ref.watch(
-            fetchBookmarkedCompaniesProvider(arg),
-          );
-
-          return resultApi.when(
-            data: (response) {
-              if (indexInPage >= response.length) {
-                return null;
-              }
-
-              final CompanyDetailModel c = response[indexInPage];
-              final CompanyModel company = CompanyModel(
-                viewsCount: 0,
-                uuid: '',
-                individualUuid: c.id,
-                photo: c.mainInfo.logoImg,
-                nameTm: c.businessName.tm,
-                nameRu: c.businessName.ru,
-                nameEn: c.businessName.en,
-                isBookmarked: c.isBookmarked,
-                isFollowed: c.isFollowed,
-                categoryName: c.categoryName,
-                publicationLabelTm: '',
-                publicationLabelRu: '',
-                publicationLabelEn: '',
-              );
-              return CompanyListCard(company: company, forBookMark: true);
-            },
-            error: (error, stackTrace) => const SizedBox.shrink(),
-            loading: () {
-              if (!loading) {
-                Future.delayed(
-                  const Duration(),
-                  () => ref.read(loadBCompaniesProvider.notifier).state = true,
-                );
-              }
-              return null;
-            },
-          );
-        },
-      );
-    } else {
-      returnWidget = SomeError(
+    return firstPage.when(
+      loading: () => loadWidget,
+      error: (error, stackTrace) => SomeError(
         ref: ref,
         apiProviders: [fetchBookmarkedCompaniesProvider],
-      );
-    }
+      ),
+      data: (firstData) {
+        if (firstData.isEmpty) return NoResult();
 
-    return Stack(children: [returnWidget, if (loading) loadWidget]);
+        final bool hasErr = ref.watch(hasErrBCompaniesProvider);
+        if (hasErr) {
+          return SomeError(
+            ref: ref,
+            apiProviders: [fetchBookmarkedCompaniesProvider],
+          );
+        }
+
+        final int totalItems = firstData.length;
+
+        return ListView.builder(
+          padding: EdgeInsets.symmetric(horizontal: 16),
+          itemCount: totalItems,
+          itemBuilder: (context, index) {
+            final page = index ~/ pageSize + 1;
+            final indexInPage = index % pageSize;
+
+            final CompanyParams arg = CompanyParams(
+              page: page,
+              pageSize: pageSize,
+              userId: '',
+              categoryId: '',
+            );
+            final AsyncValue<List<CompanyDetailModel>> resultApi = ref.watch(
+              fetchBookmarkedCompaniesProvider(arg),
+            );
+
+            return resultApi.when(
+              data: (response) {
+                if (indexInPage >= response.length) {
+                  return null;
+                }
+
+                final CompanyDetailModel c = response[indexInPage];
+                final CompanyModel company = CompanyModel(
+                  viewsCount: c.viewsCount,
+                  uuid: '',
+                  individualUuid: c.id,
+                  photo: c.mainInfo.logoImg,
+                  nameTm: c.businessName.tm,
+                  nameRu: c.businessName.ru,
+                  nameEn: c.businessName.en,
+                  isBookmarked: c.isBookmarked,
+                  isFollowed: c.isFollowed,
+                  categoryName: c.categoryName,
+                  publicationLabelTm: '',
+                  publicationLabelRu: '',
+                  publicationLabelEn: '',
+                  averageRating: c.averageRating,
+                );
+                return CompanyListCard(company: company, forBookMark: true);
+              },
+              error: (error, stackTrace) => SomeError(
+                ref: ref,
+                apiProviders: [fetchBookmarkedCompaniesProvider],
+              ),
+              loading: () => loadWidget,
+            );
+          },
+        );
+      },
+    );
   }
 }

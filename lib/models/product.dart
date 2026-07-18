@@ -16,6 +16,7 @@ class ProductModel {
       descriptionRu,
       descriptionEn;
   final int viewCount;
+  final int likesCount;
   final List<PublicationModel> publications;
   final List<dynamic> galleryImages, videos;
   final num price;
@@ -31,6 +32,7 @@ class ProductModel {
     required this.coverImage,
     required this.categoryId,
     required this.viewCount,
+    this.likesCount = 0,
     required this.publications,
     required this.companyId,
     required this.invoiceDate,
@@ -84,7 +86,8 @@ class ProductModel {
       descriptionEn: json['description_en'] ?? '',
       coverImage: json['cover_image'] ?? '',
       categoryId: json['category_uuid'] ?? '',
-      viewCount: json['view_count'] ?? 0,
+      viewCount: json['views_count'] ?? 0,
+      likesCount: json['likes_count'] ?? 0,
       publications: json['publications'] == null || json['publications'] == []
           ? []
           : List<PublicationModel>.from(

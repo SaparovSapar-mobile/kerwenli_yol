@@ -7,7 +7,7 @@ import 'package:kerwenli_yol/models/product.dart';
 import 'package:kerwenli_yol/models/translation.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_new_products/parts/home_new_products_card/parts/home_new_products_card_images.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/parts/home_vip_company_card_categories.dart';
-import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/parts/home_vip_company_rating.dart';
+import 'package:kerwenli_yol/pages/parts/like_count.dart';
 import 'package:kerwenli_yol/pages/parts/view_count.dart';
 import 'package:kerwenli_yol/pages/product_page/product_page.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
@@ -102,7 +102,7 @@ class ProductCard extends ConsumerWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 ViewCount(fontSize: 12, viewCount: product.viewCount),
-                HomeVipCompanyRating(fontSize: 12),
+                LikeCount(fontSize: 12, likeCount: product.likesCount),
               ],
             ),
           ],

@@ -49,6 +49,8 @@ class _HomeMarksSliderState extends State<HomeMarksSlider>
   void _onTabChanged() {
     if (_tabCtrl.indexIsChanging) return;
 
+    setState(() {});
+
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted) return;
       _startForTab(_tabCtrl.index);
@@ -99,6 +101,10 @@ class _HomeMarksSliderState extends State<HomeMarksSlider>
 
     _startControllerIfNeeded(firstCtrlIndex, toMax: true);
     _startControllerIfNeeded(secondCtrlIndex, toMax: false);
+  }
+
+  void _stopAutoScroll(int controllerIndex) {
+    _startedControllerIndexes.remove(controllerIndex);
   }
 
   void _startControllerIfNeeded(int controllerIndex, {required bool toMax}) {
@@ -221,9 +227,8 @@ class _HomeMarksSliderState extends State<HomeMarksSlider>
         // HpsTabs(tabCtrl: _tabCtrl, markTypes: widget.markTypes),
         SizedBox(
           height: 2 * homeBestCompaniesCardHeight + 5,
-          child: TabBarView(
-            controller: _tabCtrl,
-            physics: const NeverScrollableScrollPhysics(),
+          child: IndexedStack(
+            index: _tabCtrl.index,
             children: List.generate(_tabLength, (tabIndex) {
               final int firstCtrlIndex = tabIndex * 2;
               final int secondCtrlIndex = firstCtrlIndex + 1;
@@ -232,15 +237,33 @@ class _HomeMarksSliderState extends State<HomeMarksSlider>
               return Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  HpsList(
-                    scrollController: _scrollControllers[firstCtrlIndex],
-                    markTypeId: markTypeId,
+                  NotificationListener<ScrollNotification>(
+                    onNotification: (notification) {
+                      if (notification is ScrollStartNotification &&
+                          notification.dragDetails != null) {
+                        _stopAutoScroll(firstCtrlIndex);
+                      }
+                      return false;
+                    },
+                    child: HpsList(
+                      scrollController: _scrollControllers[firstCtrlIndex],
+                      markTypeId: markTypeId,
+                    ),
                   ),
                   const SizedBox(height: 5),
-                  HpsList(
-                    scrollController: _scrollControllers[secondCtrlIndex],
-                    markTypeId: markTypeId,
-                    isSecondHalf: true,
+                  NotificationListener<ScrollNotification>(
+                    onNotification: (notification) {
+                      if (notification is ScrollStartNotification &&
+                          notification.dragDetails != null) {
+                        _stopAutoScroll(secondCtrlIndex);
+                      }
+                      return false;
+                    },
+                    child: HpsList(
+                      scrollController: _scrollControllers[secondCtrlIndex],
+                      markTypeId: markTypeId,
+                      isSecondHalf: true,
+                    ),
                   ),
                 ],
               );

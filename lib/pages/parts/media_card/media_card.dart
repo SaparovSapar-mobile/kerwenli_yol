@@ -6,6 +6,7 @@ import 'package:kerwenli_yol/pages/home_page/parts/home_media/parts/home_media_c
 import 'package:kerwenli_yol/pages/parts/show_video.dart';
 import 'package:kerwenli_yol/pages/parts/video_duration.dart';
 import 'package:kerwenli_yol/pages/parts/view_count.dart';
+import 'package:kerwenli_yol/services/api/media.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
 
 class MediaCard extends StatelessWidget {
@@ -18,13 +19,16 @@ class MediaCard extends StatelessWidget {
     final TextStyle textStyle = AppTextStyles.semiBold10;
 
     return GestureDetector(
-      onTap: () => Navigator.of(context).push(
-        MaterialPageRoute(
-          fullscreenDialog: true,
-          builder: (_) =>
-              ShowVideo(videoUrl: media.videoPaths.first, autoPlay: true),
-        ),
-      ),
+      onTap: () {
+        MediaApiService().fetchMedia(media.id);
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            fullscreenDialog: true,
+            builder: (_) =>
+                ShowVideo(videoUrl: media.videoPaths.first, autoPlay: true),
+          ),
+        );
+      },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
