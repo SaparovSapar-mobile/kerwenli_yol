@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "610908001478",
+    "project_id": "kerwenli-yol-app",
+    "storage_bucket": "kerwenli-yol-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:610908001478:android:70b70208f2eedc9e5d73c7",
+        "android_client_info": {
+          "package_name": "tm.abb.tajirtrade"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKlWP9CYjimukhyBiw2dJTKJ8zt2k-e50"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

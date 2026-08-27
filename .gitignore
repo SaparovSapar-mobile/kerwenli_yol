@@ -47,11 +47,7 @@ app.*.map.json
 # My private folders and files
 .env
 assets/*
-android/app/google-services.json
 android/key.properties
-/ios/Runner/GoogleService-Info.plist
-firebase.json
-/lib/firebase_options.dart
 
 # FVM Version Cache
 .fvm/
