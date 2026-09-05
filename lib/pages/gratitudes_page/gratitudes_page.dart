@@ -4,6 +4,9 @@ import 'package:kerwenli_yol/l10n/app_localizations.dart';
 import 'package:kerwenli_yol/pages/companies_page/parts/header_companies.dart';
 import 'package:kerwenli_yol/pages/gratitudes_page/parts/gratitudes_list_view.dart';
 import 'package:kerwenli_yol/pages/parts/internet_status_bar/internet_status_bar.dart';
+import 'package:kerwenli_yol/pages/parts/app_refresh_indicator.dart';
+import 'package:kerwenli_yol/providers/api/gratitude.dart';
+import 'package:kerwenli_yol/providers/pages/gratitudes_page.dart';
 
 class GratitudesPage extends StatelessWidget {
   const GratitudesPage({super.key});
@@ -19,7 +22,17 @@ class GratitudesPage extends StatelessWidget {
         children: [
           InternetStatusBar(),
           HeaderCompanies(text: lang.acknowledgements, leftPadding: 0),
-          Expanded(child: GratitudesListView()),
+          Expanded(
+            child: AppRefreshIndicator(
+              providers: [
+                fetchGradtitudesProvider,
+                hasGratitudesProvider,
+                hasErrGratitudesProvider,
+                loadGratitudesProvider,
+              ],
+              child: GratitudesListView(),
+            ),
+          ),
         ],
       ),
     );

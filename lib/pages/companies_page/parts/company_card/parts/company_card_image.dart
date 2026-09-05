@@ -65,7 +65,14 @@ class CompanyCardImage extends StatelessWidget {
               ),
               child: Stack(
                 children: [
-                  // Bookmark box (sağ üst)
+                  // ======= Card Image ========
+                  SizedBox(
+                    height: height ?? 156,
+                    width: width,
+                    child: showImageMethod(image, 0, null),
+                  ),
+
+                  // Bookmark box (sağ üst) - всегда поверх картинки
                   if (!forBm)
                     Positioned(
                       right: 7,
@@ -78,13 +85,6 @@ class CompanyCardImage extends StatelessWidget {
                         borderRadius: bookmarkButtonBorderRadius ?? 8,
                       ),
                     ),
-
-                  // ======= Card Image ========
-                  SizedBox(
-                    height: height ?? 156,
-                    width: width,
-                    child: showImageMethod(image, 0, null),
-                  ),
                 ],
               ),
             ),

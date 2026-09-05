@@ -67,10 +67,16 @@ class CardBookmarkButton extends ConsumerWidget {
         }
 
         return GestureDetector(
+          // без этого тап ловит только сама иконка, а не вся кнопка
+          behavior: HitTestBehavior.opaque,
           onTap: () async {
+            if (companyId.isEmpty) return;
+
             final String userId = await getUserId();
-            if (userId.isEmpty && context.mounted) {
-              goToPage(context, LoginPage(), AxisDirection.left);
+            if (userId.isEmpty) {
+              if (context.mounted) {
+                goToPage(context, LoginPage(), AxisDirection.left);
+              }
               return;
             }
 

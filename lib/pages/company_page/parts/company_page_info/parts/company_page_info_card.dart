@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/company_status.dart';
+import 'package:kerwenli_yol/helpers/functions/navigation.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/helpers/functions/translations.dart';
 import 'package:kerwenli_yol/helpers/methods/image_and_video.dart';
+import 'package:kerwenli_yol/helpers/methods/pages/bottom_sheets.dart';
 import 'package:kerwenli_yol/models/company.dart';
 import 'package:kerwenli_yol/models/translation.dart';
+import 'package:kerwenli_yol/models/user.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/parts/company_status.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/parts/home_vip_company_card_categories.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/parts/home_vip_company_rating.dart';
+import 'package:kerwenli_yol/pages/login_page/login_page.dart';
 import 'package:kerwenli_yol/pages/parts/view_count.dart';
+import 'package:kerwenli_yol/providers/database/user.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
@@ -92,7 +97,27 @@ class CompanyPageInfoCard extends ConsumerWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     ViewCount(bGColor: bGColor, viewCount: company.viewsCount,),
-                    HomeVipCompanyRating(bGColor: bGColor, rating: company.averageRating),
+                    GestureDetector(
+                      onTap: () async {
+                        final UserModel resultDb = await ref.read(
+                          getUserProvider.future,
+                        );
+                        final bool hasUser = resultDb.id != '';
+
+                        if (!context.mounted) return;
+
+                        if (!hasUser) {
+                          goToPage(context, LoginPage(), AxisDirection.left);
+                          return;
+                        }
+
+                        showRateCompanyBottomSheet(context, company.id);
+                      },
+                      child: HomeVipCompanyRating(
+                        bGColor: bGColor,
+                        rating: company.averageRating,
+                      ),
+                    ),
                   ],
                 ),
               ],

@@ -13,12 +13,16 @@ class CompanyPageTop extends StatelessWidget {
     required this.showBottomLine,
     required this.onPressed,
     this.leftPadding,
+    this.shareUrl,
+    this.showMoreButton = true,
   });
 
   final String text, companyId;
   final bool showBottomLine;
   final void Function() onPressed;
   final double? leftPadding;
+  final String? shareUrl;
+  final bool showMoreButton;
   
 
   @override
@@ -40,12 +44,13 @@ class CompanyPageTop extends StatelessWidget {
                   ShareButton(
                     onPressed: () {
                       Share.share(
-                        'https://tajirtrade.com.tm/companies/$companyId',
+                        shareUrl ??
+                            'https://tajirtrade.com.tm/companies/$companyId',
                       );
                     },
                   ),
-                  SizedBox(width: 20),
-                  MoreButton(onPressed: onPressed),
+                  if (showMoreButton) SizedBox(width: 20),
+                  if (showMoreButton) MoreButton(onPressed: onPressed),
                 ],
               ),
             ],

@@ -85,6 +85,11 @@ Future<void> uploadImage(WidgetRef ref, File file, BuildContext context) async {
     ref.read(visualSearchResultProvider.notifier).state = result;
     ref.read(isVisualSearchModeProvider.notifier).state = true;
 
+    if (result != null && result.query.isNotEmpty) {
+      ref.read(searchECommerceTextProvider.notifier).state = result.query;
+      ref.read(eCommerceSearchProvider.notifier).state = result.query;
+    }
+
     // BUNU EKLEYİN
     ref.read(openSearchECommerceHistoryProvider.notifier).state = false;
   } catch (e) {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kerwenli_yol/helpers/functions/haptics.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/helpers/methods/snackbars.dart';
 import 'package:kerwenli_yol/l10n/app_localizations.dart';
@@ -99,6 +100,7 @@ class _PassCodeInputState extends ConsumerState<PassCodeInput> {
             String firstPassCode = ref.read(firstPassCodeProvider);
 
             if (_ctrl.text != firstPassCode) {
+              errorVibration();
               showErrorSnackbar(
                 context,
                 lang.pleaseEnterTheInformationCompletelyAndCorrectly,

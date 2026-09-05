@@ -237,28 +237,16 @@ class _HomeMarksSliderState extends State<HomeMarksSlider>
               return Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  NotificationListener<ScrollNotification>(
-                    onNotification: (notification) {
-                      if (notification is ScrollStartNotification &&
-                          notification.dragDetails != null) {
-                        _stopAutoScroll(firstCtrlIndex);
-                      }
-                      return false;
-                    },
+                  Listener(
+                    onPointerDown: (_) => _stopAutoScroll(firstCtrlIndex),
                     child: HpsList(
                       scrollController: _scrollControllers[firstCtrlIndex],
                       markTypeId: markTypeId,
                     ),
                   ),
                   const SizedBox(height: 5),
-                  NotificationListener<ScrollNotification>(
-                    onNotification: (notification) {
-                      if (notification is ScrollStartNotification &&
-                          notification.dragDetails != null) {
-                        _stopAutoScroll(secondCtrlIndex);
-                      }
-                      return false;
-                    },
+                  Listener(
+                    onPointerDown: (_) => _stopAutoScroll(secondCtrlIndex),
                     child: HpsList(
                       scrollController: _scrollControllers[secondCtrlIndex],
                       markTypeId: markTypeId,

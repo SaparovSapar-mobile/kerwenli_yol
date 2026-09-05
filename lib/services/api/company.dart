@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:kerwenli_yol/helpers/methods/static_data.dart';
 import 'package:kerwenli_yol/models/company.dart';
+import 'package:kerwenli_yol/models/rate_company.dart';
 import 'package:kerwenli_yol/models/send_msg_to_company.dart';
 
 class CompanyApiService {
@@ -121,14 +122,18 @@ class CompanyApiService {
     }
   }
 
-  // fetch companies by category id ---------------------------------
+  // fetch companies by category id (or by subcategory id) -----------
   Future<List<CompanyDetailModel>> fetchCompaniesByCategoryId(
     CompanyParams arg,
   ) async {
+    final bool bySubCategory =
+        arg.subCategoryId != null && arg.subCategoryId!.isNotEmpty;
+    final String path = bySubCategory
+        ? '/client/individuals/by-subcategory/${arg.subCategoryId}'
+        : '/client/individuals/by-category/${arg.categoryId}';
+
     final Uri uri =
-        Uri.parse(
-          '$apiUrl/client/individuals/by-category/${arg.categoryId}',
-        ).replace(
+        Uri.parse('$apiUrl$path').replace(
           queryParameters: {
             'p': arg.page.toString(),
             'l': arg.pageSize.toString(),
@@ -240,17 +245,36 @@ class CompanyApiService {
       rethrow;
     }
   }
+
+  // rate a company ---------------------------------
+  Future<bool> rateCompany(RateCompanyModel data) async {
+    final Uri uri = Uri.parse('$apiUrl/client/rate');
+
+    try {
+      final http.Response response = await http.post(
+        uri,
+        body: json.encode(data.toJson()),
+      );
+      final dynamic jsonData = json.decode(response.body);
+
+      return response.statusCode == 200 && jsonData['status'];
+    } catch (e) {
+      rethrow;
+    }
+  }
 }
 
 class CompanyParams extends Equatable {
   final int page, pageSize;
   final String userId, categoryId;
+  final String? subCategoryId;
 
   const CompanyParams({
     required this.page,
     required this.pageSize,
     required this.userId,
     required this.categoryId,
+    this.subCategoryId,
   });
 
   CompanyParams copyWith({
@@ -258,15 +282,23 @@ class CompanyParams extends Equatable {
     int? pageSize,
     String? userId,
     String? categoryId,
+    String? subCategoryId,
   }) {
     return CompanyParams(
       page: page ?? this.page,
       pageSize: pageSize ?? this.pageSize,
       userId: userId ?? this.userId,
       categoryId: categoryId ?? this.categoryId,
+      subCategoryId: subCategoryId ?? this.subCategoryId,
     );
   }
 
   @override
-  List<Object?> get props => [page, pageSize, userId, categoryId];
+  List<Object?> get props => [
+    page,
+    pageSize,
+    userId,
+    categoryId,
+    subCategoryId,
+  ];
 }

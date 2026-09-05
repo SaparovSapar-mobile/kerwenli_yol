@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
-import 'package:kerwenli_yol/notifiers/inputs.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
@@ -9,14 +8,14 @@ import 'package:kerwenli_yol/styles/text_styles.dart';
 class FilterListTile extends ConsumerWidget {
   const FilterListTile({
     super.key,
-    required this.value,
     required this.title,
-    required this.filtersProvider,
+    required this.isActive,
+    required this.onChanged,
   });
 
-  final int value;
   final String title;
-  final StateNotifierProvider<CategoriesNotifier, List<int>> filtersProvider;
+  final bool isActive;
+  final void Function(bool value) onChanged;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -27,11 +26,11 @@ class FilterListTile extends ConsumerWidget {
     final Color activeColor = isLight
         ? LightColors.primary
         : DarkColors.primary;
+    final Color boxBorderColor = isLight
+        ? LightColors.textTitleLight
+        : DarkColors.textTitleDark;
 
     final TextStyle titleStyle = AppTextStyles.medium14;
-
-    final List<int> selectedFilters = ref.watch(filtersProvider);
-    final bool isActive = selectedFilters.contains(value);
 
     return Container(
       decoration: BoxDecoration(
@@ -39,11 +38,13 @@ class FilterListTile extends ConsumerWidget {
       ),
       child: CheckboxListTile(
         contentPadding: EdgeInsets.only(left: 0),
+        controlAffinity: ListTileControlAffinity.trailing,
         activeColor: activeColor,
+        side: BorderSide(width: 1.5, color: boxBorderColor),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
         title: Text(title, style: titleStyle),
         value: isActive,
-        onChanged: (v) =>
-            ref.read(filtersProvider.notifier).addOrRemoveCategory(value),
+        onChanged: (v) => onChanged(v ?? false),
       ),
     );
   }

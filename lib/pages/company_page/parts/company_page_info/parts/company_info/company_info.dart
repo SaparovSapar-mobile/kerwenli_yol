@@ -127,14 +127,28 @@ class CompanyInfo extends ConsumerWidget {
                   }),
                 ],
               ),
-            SizedBox(height: 20),
-            // Text(lang.ourBrands, style: textStyle),
-            // SizedBox(height: 15),
-            // CompanyInfoBrandsList(),
-            // SizedBox(height: 20),
-            // Text(lang.ourAwards, style: textStyle),
-            // SizedBox(height: 15),
-            // CompanyInfoSertificatesList(),
+            if (company.brands.isNotEmpty)
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(height: 20),
+                  Text(lang.ourBrands, style: textStyle),
+                  SizedBox(height: 15),
+                  CompanyInfoBrandsList(brands: company.brands),
+                ],
+              ),
+            if (company.awards.isNotEmpty)
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(height: 20),
+                  Text(lang.ourAwards, style: textStyle),
+                  SizedBox(height: 15),
+                  CompanyInfoSertificatesList(awards: company.awards),
+                ],
+              ),
           ],
         ),
       ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kerwenli_yol/helpers/functions/haptics.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/helpers/methods/snackbars.dart';
 import 'package:kerwenli_yol/l10n/app_localizations.dart';
@@ -84,6 +85,7 @@ class _MainPassCodeInputState extends ConsumerState<MainPassCodeInput> {
             int passCode = ref.read(passCodeProvider);
 
             if (passCode.toString() != _ctrl.text) {
+              errorVibration();
               showErrorSnackbar(context, lang.enterYourPINCodeCorrectly);
               _ctrl.clear();
               return;

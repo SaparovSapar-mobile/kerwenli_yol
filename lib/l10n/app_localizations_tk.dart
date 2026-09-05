@@ -67,9 +67,9 @@ class AppLocalizationsTk extends AppLocalizations {
 
   @override
   String get allView => 'Ählisini görmek';
-  
+
   @override
-  String get vipCompanies => 'VIP Kärhanalar';
+  String get vipCompanies => 'VIP Karhanalar';
 
   @override
   String get newProducts => 'Täze önümler';
@@ -163,6 +163,12 @@ class AppLocalizationsTk extends AppLocalizations {
 
   @override
   String get myPage => 'Meniň sahypam';
+
+  @override
+  String get edit => 'Üýtgetmek';
+
+  @override
+  String get profileUpdated => 'Maglumatlar üstünlikli täzelendi';
 
   @override
   String get settings => 'Sazlamalar';
@@ -403,4 +409,7 @@ class AppLocalizationsTk extends AppLocalizations {
 
   @override
   String get searchHistory => 'Gözlenenler';
+
+  @override
+  String get rateCompany => 'Kärhana baha bermek';
 }

@@ -6,6 +6,7 @@ import 'package:kerwenli_yol/pages/parts/delete_account/delete_account.dart';
 import 'package:kerwenli_yol/pages/parts/filter_bottom_sheet/filter_bottom_sheet.dart';
 import 'package:kerwenli_yol/pages/parts/log_out_bottom_sheet/log_out_bottom_sheet.dart';
 import 'package:kerwenli_yol/pages/parts/message_bs/message_bs.dart';
+import 'package:kerwenli_yol/pages/parts/rate_company_bs/rate_company_bs.dart';
 import 'package:kerwenli_yol/pages/parts/select_image_bs/select_image_bs.dart';
 import 'package:kerwenli_yol/pages/parts/select_language/select_language.dart';
 import 'package:kerwenli_yol/pages/parts/select_theme/select_theme.dart';
@@ -107,4 +108,14 @@ Future<void> showMessageBottomSheet(
   context: context,
   builder: (context) =>
       MessageBs(title: title, image: image, companyId: companyId),
+);
+
+Future<void> showRateCompanyBottomSheet(
+  BuildContext context,
+  String companyId,
+) async => await showModalBottomSheet(
+  backgroundColor: Colors.transparent,
+  isScrollControlled: true,
+  context: context,
+  builder: (context) => RateCompanyBs(companyId: companyId),
 );

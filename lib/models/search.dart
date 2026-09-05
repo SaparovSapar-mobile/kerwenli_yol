@@ -10,6 +10,7 @@ class SearchModel {
   final List<NewsModel> news;
   final List<MarkModel> marks;
   final List<MediaModel> media;
+  final String query;
 
   SearchModel({
     required this.products,
@@ -17,6 +18,7 @@ class SearchModel {
     required this.news,
     required this.marks,
     required this.media,
+    this.query = '',
   });
 
   factory SearchModel.fromVisualJson(Map<String, dynamic> json) {
@@ -24,6 +26,7 @@ class SearchModel {
     final List<dynamic>? companiesData = json['companies'] as List?;
 
     return SearchModel(
+      query: json['query'] as String? ?? '',
       products: productsData == null || productsData.isEmpty
           ? []
           : productsData
@@ -36,6 +39,7 @@ class SearchModel {
               // Конвертируем плоскую структуру в ту что ждёт CompanyModel.fromJson
               return CompanyModel.fromJson({
                 'uuid': raw['uuid'],
+                'individual_uuid': raw['individual_uuid'] ?? raw['uuid'],
                 'photo': raw['logo_img'], // logo_img -> photo
                 'name_tm': raw['business_name_tm'],
                 'name_ru': raw['business_name_ru'],
@@ -46,6 +50,12 @@ class SearchModel {
                   'en': raw['category_name_en'],
                   'tr': raw['category_name_tr'],
                 },
+                'views_count': raw['views_count'] ?? 0,
+                'is_followed': raw['is_followed'] ?? false,
+                'is_bookmarked': raw['is_bookmarked'] ?? false,
+                'average_rating': raw['average_rating'] ?? 0,
+                'ratings_count': raw['ratings_count'] ?? 0,
+                'working_time': raw['working_time'],
               });
             }).toList(),
       news: [],
@@ -78,6 +88,7 @@ class SearchModel {
 
               return CompanyModel.fromJson({
                 'uuid': raw['uuid'],
+                'individual_uuid': raw['individual_uuid'] ?? raw['uuid'],
                 'photo': raw['logo_img'], // если есть main_info
                 'name_tm': businessName?['tm'] ?? '',
                 'name_ru': businessName?['ru'] ?? '',
@@ -86,6 +97,8 @@ class SearchModel {
                 'views_count': raw['views_count'] ?? raw['viewsCount'] ?? 0,
                 'is_followed': raw['is_followed'] ?? false,
                 'is_bookmarked': raw['is_bookmarked'] ?? false,
+                'average_rating': raw['average_rating'] ?? 0,
+                'ratings_count': raw['ratings_count'] ?? 0,
                 // ✅ working_time теперь пробрасывается в CompanyModel,
                 // иначе статус "Açyk/Ýapyk" в поиске всегда был пустым
                 'working_time': raw['working_time'],

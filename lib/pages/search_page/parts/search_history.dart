@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/database/functions/search.dart';
 import 'package:kerwenli_yol/enums/search_type.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
-import 'package:kerwenli_yol/helpers/methods/static_methods.dart';
 import 'package:kerwenli_yol/l10n/app_localizations.dart';
 import 'package:kerwenli_yol/pages/search_page/parts/search_history_card.dart';
 import 'package:kerwenli_yol/providers/pages/search_page.dart';
@@ -37,6 +36,13 @@ class SearchHistory extends ConsumerWidget {
       getSearchsProvider(searcType),
     );
 
+    final List<String> data = resultDB.value ?? [];
+    final bool hasHistory = resultDB.hasValue && data.isNotEmpty;
+
+    if (!hasHistory) {
+      return const SizedBox.shrink();
+    }
+
     return Container(
       margin: EdgeInsets.only(left: 16, top: 6, right: 16),
       padding: EdgeInsets.all(10),
@@ -50,24 +56,13 @@ class SearchHistory extends ConsumerWidget {
           Text('${lang.searchHistory} :', style: titleStyle),
           SizedBox(height: 8),
           Expanded(
-            child: resultDB.when(
-              data: (data) {
-                if (data.isEmpty) {
-                  return const SizedBox.shrink();
-                }
-
-                return ListView.separated(
-                  itemBuilder: (context, index) => SearchHistoryCard(
-                    searchText: data[index],
-                    searcType: searcType,
-                  ),
-                  separatorBuilder: (context, index) =>
-                      const SizedBox(height: 23),
-                  itemCount: data.length,
-                );
-              },
-              error: (_, _) => const SizedBox.shrink(),
-              loading: () => loadWidget,
+            child: ListView.separated(
+              itemBuilder: (context, index) => SearchHistoryCard(
+                searchText: data[index],
+                searcType: searcType,
+              ),
+              separatorBuilder: (context, index) => const SizedBox(height: 23),
+              itemCount: data.length,
             ),
           ),
           Padding(

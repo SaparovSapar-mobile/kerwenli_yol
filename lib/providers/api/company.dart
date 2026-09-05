@@ -3,6 +3,7 @@ import 'package:kerwenli_yol/database/functions/favorite.dart';
 import 'package:kerwenli_yol/enums/favorite_type.dart';
 import 'package:kerwenli_yol/models/company.dart';
 import 'package:kerwenli_yol/models/favorite.dart';
+import 'package:kerwenli_yol/models/rate_company.dart';
 import 'package:kerwenli_yol/models/send_msg_to_company.dart';
 import 'package:kerwenli_yol/providers/database/user.dart';
 import 'package:kerwenli_yol/providers/pages/companies_page.dart';
@@ -319,6 +320,19 @@ sendMessageToCompanyProvider = FutureProvider.autoDispose
 
       try {
         result = await ref.read(companyApiProvider).sendMessageToCompany(arg);
+      } catch (e) {
+        rethrow;
+      }
+      return result;
+    });
+
+final AutoDisposeFutureProviderFamily<bool, RateCompanyModel>
+rateCompanyProvider = FutureProvider.autoDispose
+    .family<bool, RateCompanyModel>((ref, arg) async {
+      bool result = false;
+
+      try {
+        result = await ref.read(companyApiProvider).rateCompany(arg);
       } catch (e) {
         rethrow;
       }

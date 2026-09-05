@@ -62,7 +62,8 @@ class HomePage extends ConsumerWidget {
           ref.read(fetchMediasProvider(DefaultParams()).future),
           ref.read(fetchNewsProvider(DefaultParams()).future),
           ref.read(fetchMarkTypesProvider.future),
-          ref.read(fetchMarksProvider(DefaultParams() as String).future),
+          // fetchMarksProvider - семейство по String (id типа марки),
+          // ждать конкретный тут нечего: хватает invalidate выше
           ref.read(fetchSponsorsProvider(DefaultParams()).future),
           ref.read(fetchGradtitudesProvider(DefaultParams()).future),
         ]);

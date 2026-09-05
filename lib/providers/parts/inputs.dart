@@ -27,6 +27,15 @@ final AutoDisposeStateProvider<bool> checkOTPCodeBtnPressProvider =
     StateProvider.autoDispose<bool>((ref) => false);
 final AutoDisposeStateProvider<bool> loginBtnPressProvider =
     StateProvider.autoDispose<bool>((ref) => false);
+final AutoDisposeStateProvider<bool> saveProfileBtnPressProvider =
+    StateProvider.autoDispose<bool>((ref) => false);
+
+/// выбранные в фильтре подкатегории (uuid)
+final StateNotifierProvider<SubCategoryFiltersNotifier, List<String>>
+subCategoryFiltersProvider =
+    StateNotifierProvider<SubCategoryFiltersNotifier, List<String>>(
+      (ref) => SubCategoryFiltersNotifier(),
+    );
 
 final StateNotifierProvider<CategoriesNotifier, List<int>> categoriesProvider =
     StateNotifierProvider<CategoriesNotifier, List<int>>(

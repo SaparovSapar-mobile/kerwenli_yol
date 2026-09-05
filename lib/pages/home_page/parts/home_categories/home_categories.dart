@@ -6,6 +6,7 @@ import 'package:kerwenli_yol/l10n/app_localizations.dart';
 import 'package:kerwenli_yol/models/category.dart';
 import 'package:kerwenli_yol/pages/categories_page/categories_page.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_categories/parts/home_categories_list.dart';
+import 'package:kerwenli_yol/pages/parts/fetch_error_retry.dart';
 import 'package:kerwenli_yol/pages/parts/home_more_button.dart';
 import 'package:kerwenli_yol/pages/parts/shimmer_effects/home_categories_shimmer/home_categories_shimmer.dart';
 import 'package:kerwenli_yol/providers/api/category.dart';
@@ -43,7 +44,9 @@ class HomeCategories extends ConsumerWidget {
           ],
         );
       },
-      error: (_, _) => const SizedBox.shrink(),
+      error: (_, _) => FetchErrorRetry(
+        onRetry: () => ref.invalidate(fetchCategoriesProvider),
+      ),
       loading: () => HomeCategoriesShimmer(),
     );
   }

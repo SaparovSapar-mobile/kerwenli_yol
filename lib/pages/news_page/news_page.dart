@@ -4,6 +4,9 @@ import 'package:kerwenli_yol/l10n/app_localizations.dart';
 import 'package:kerwenli_yol/pages/companies_page/parts/header_companies.dart';
 import 'package:kerwenli_yol/pages/news_page/parts/news_list_view.dart';
 import 'package:kerwenli_yol/pages/parts/internet_status_bar/internet_status_bar.dart';
+import 'package:kerwenli_yol/pages/parts/app_refresh_indicator.dart';
+import 'package:kerwenli_yol/providers/api/news.dart';
+import 'package:kerwenli_yol/providers/pages/news_page.dart';
 
 class NewsPage extends StatelessWidget {
   const NewsPage({super.key});
@@ -19,7 +22,17 @@ class NewsPage extends StatelessWidget {
         children: [
           InternetStatusBar(),
           HeaderCompanies(text: lang.news, leftPadding: 0),
-          Expanded(child: NewsListView()),
+          Expanded(
+            child: AppRefreshIndicator(
+              providers: [
+                fetchNewsProvider,
+                hasNewsProvider,
+                hasErrNewsProvider,
+                loadNewsProvider,
+              ],
+              child: NewsListView(),
+            ),
+          ),
         ],
       ),
     );

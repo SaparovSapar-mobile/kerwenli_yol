@@ -63,7 +63,10 @@ class _MessageBsState extends State<MessageBs> {
                   }
 
                   if (data.phone != '') {
-                    _phoneCtrl.text = data.phone;
+                    // в поле уже есть префикс "+993 |", поэтому код страны убираем
+                    _phoneCtrl.text = data.phone
+                        .replaceAll(RegExp(r'[\s-]'), '')
+                        .replaceFirst(RegExp(r'^\+?993'), '');
                   }
 
                   return DefaultTabController(

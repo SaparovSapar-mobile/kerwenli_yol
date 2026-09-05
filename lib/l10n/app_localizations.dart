@@ -411,6 +411,18 @@ abstract class AppLocalizations {
   /// **'My Page'**
   String get myPage;
 
+  /// No description provided for @edit.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
+  String get edit;
+
+  /// No description provided for @profileUpdated.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile updated successfully'**
+  String get profileUpdated;
+
   /// No description provided for @settings.
   ///
   /// In en, this message translates to:
@@ -890,6 +902,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Search history'**
   String get searchHistory;
+
+  /// No description provided for @rateCompany.
+  ///
+  /// In en, this message translates to:
+  /// **'Rate the company'**
+  String get rateCompany;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

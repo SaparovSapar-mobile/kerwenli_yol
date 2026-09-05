@@ -5,7 +5,7 @@ import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/helpers/methods/image_and_video.dart';
 import 'package:kerwenli_yol/l10n/app_localizations.dart';
 import 'package:kerwenli_yol/models/user.dart';
-import 'package:kerwenli_yol/pages/user_profile_page/user_profile_page.dart';
+import 'package:kerwenli_yol/pages/edit_profile_page/edit_profile_page.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
@@ -46,7 +46,7 @@ class UserProfile extends ConsumerWidget {
             onTap: () {
               goToPage(
                 context,
-                UserProfilePage(user: user),
+                EditProfilePage(user: user),
                 AxisDirection.left,
               );
             },

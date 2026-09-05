@@ -77,6 +77,8 @@ class NewsDetailPage extends ConsumerWidget {
                 onPressed: () {},
                 showBottomLine: false,
                 leftPadding: 0,
+                shareUrl: 'https://tajirtrade.com.tm/news/$newsId',
+                showMoreButton: false,
               ),
               SizedBox(height: 6),
               Expanded(

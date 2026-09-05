@@ -15,7 +15,7 @@ class BannerApiService {
 
       if (response.statusCode == 200 && jsonData['status']) {
         final dynamic datas = jsonData['data'];
-        if (datas == []) {
+        if (datas == null || (datas is List && datas.isEmpty)) {
           return [];
         }
 
@@ -25,7 +25,9 @@ class BannerApiService {
             .toList();
       }
       return [];
-    } catch (e) {
+    } catch (e, stackTrace) {
+      print('BANNER ERROR: $e');
+      print('STACKTRACE: $stackTrace');
       rethrow;
     }
   }

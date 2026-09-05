@@ -8,7 +8,7 @@ final String weatherApiKey = dotenv.env['WEATHER_API_KEY']!;
 final String weatherApiUrl = dotenv.env['WEATHER_API_URL']!;
 
 const double companyCardHeight = 292;
-const double companyCardHeight2 = 262;
+const double companyCardHeight2 = 292;
 const double companyListCardHeight = 132;
 
 const double productListCardHeight = 127;

@@ -9,7 +9,7 @@
     "forContact":"Для связи",
     "socialMedia":"Социальные сети",
     "selectLanguage":"Выберите язык",
-    "allCategory":"Все категории",;
+    "allCategory":"Все категории",
     "search":"Поиск",
     "bookmark":"Закладки",
     "logIn":"Войти",
@@ -51,6 +51,8 @@
     "contactUs":"Связаться с нами",
     "contacts":"Контакты",
     "myPage":"Моя страница",
+    "edit":"Редактировать",
+    "profileUpdated":"Данные успешно обновлены",
     "settings":"Настройки",
     "signOut":"Выход из системы",
     "name":"Имя",
@@ -131,5 +133,6 @@
     "allYourDataWillAlsoDeleted":"Все ваши данные также будут удалены",
     "additionalInformation":"Дополнительная информация",
     "submitComplaint":"Подать жалобу",
-    "searchHistory":"История поиска"
+    "searchHistory":"История поиска",
+    "rateCompany":"Оценить компанию"
 }

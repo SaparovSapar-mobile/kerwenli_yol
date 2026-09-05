@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kerwenli_yol/helpers/functions/navigation.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
+import 'package:kerwenli_yol/pages/settings_page/settings_page.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 
@@ -14,7 +16,7 @@ class HomeTopNotificationButton extends ConsumerWidget {
     Color iconColor = isLight ? LightColors.primary : DarkColors.primary;
 
     return GestureDetector(
-      onTap: () {},
+      onTap: () => goToPage(context, SettingsPage(), AxisDirection.left),
       child: Container(
         padding: EdgeInsets.all(8.5),
         decoration: BoxDecoration(

@@ -68,7 +68,7 @@ class _ShowVideoState extends State<ShowVideo> {
                 color: Colors.grey[200],
                 child: Center(
                   child: Text(
-                    'Yalnyslyk yuze cykdy',
+                    'Ýalňyşlyk ýüze çykdy',
                     style: TextStyle(color: Colors.red, fontSize: 16),
                   ),
                 ),
@@ -83,13 +83,12 @@ class _ShowVideoState extends State<ShowVideo> {
               color: Colors.grey[200],
               child: Center(
                 child: Text(
-                  'Yalnyslyk yuze cykdy',
+                 'Ýalňyşlyk ýüze çykdy',
                   style: TextStyle(color: Colors.red, fontSize: 16),
                 ),
               ),
             );
           }
-
           return loadWidget;
         },
       ),

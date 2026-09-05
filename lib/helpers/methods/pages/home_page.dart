@@ -85,12 +85,18 @@ class WeatherPart extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final AsyncValue<WeatherModel> resultApi = ref.watch(weatherProvider);
+
+    final bool isLight = isLightTheme(context, ref);
+    final Color iconColor = isLight
+        ? const Color(0xFF262626)
+        : Colors.white.withValues(alpha: .3);
+
     return resultApi.when(
       data: (data) {
         final temp = data.temperature.round();
         return Row(
           children: [
-            Icon(data.iconData, size: 16, color: Color(0xFF262626)),
+            Icon(data.iconData, size: 16, color: iconColor),
             Text(' $temp°', style: dateStyle),
           ],
         );

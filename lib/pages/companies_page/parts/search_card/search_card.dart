@@ -10,6 +10,7 @@ import 'package:kerwenli_yol/pages/company_page/company_page.dart';
 import 'package:kerwenli_yol/helpers/functions/company_status.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/parts/company_status.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/parts/home_vip_company_card_categories.dart';
+import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/parts/home_vip_company_rating.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
@@ -48,23 +49,23 @@ class SearchCompanyCard extends ConsumerWidget {
     return GestureDetector(
       onTap: () => goToPage(
         context,
-        CompanyPage(companyId: company.uuid), // uuid напрямую, не individualUuid
+        CompanyPage(companyId: company.individualUuid),
         AxisDirection.left,
       ),
       child: Container(
-        padding: EdgeInsets.only(left: 9, top: 18, right: 9, bottom: 0),
+        padding: EdgeInsets.only(left: 9, top: 18, right: 9, bottom: 9),
         decoration: BoxDecoration(
           border: Border.all(color: borderColor),
           borderRadius: BorderRadius.circular(8),
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start, 
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CompanyCardImage(
               cardTopTypes: [],
               image: company.photo,
-              companyId: company.uuid,
+              companyId: company.individualUuid,
             ),
             SizedBox(height: 5),
             Text(
@@ -79,6 +80,14 @@ class SearchCompanyCard extends ConsumerWidget {
             HomeVipCompanyCardCategories(
               iconSize: 10,
               category: category,
+            ),
+            SizedBox(height: 5),
+            Align(
+              alignment: Alignment.centerRight,
+              child: HomeVipCompanyRating(
+                fontSize: 12,
+                rating: company.averageRating,
+              ),
             ),
           ],
         ),

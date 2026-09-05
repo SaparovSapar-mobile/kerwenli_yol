@@ -6,6 +6,9 @@ import 'package:kerwenli_yol/pages/bookmark_page/parts/followed_companies_list_v
 import 'package:kerwenli_yol/pages/bookmark_page/parts/liked_products_list_view.dart';
 import 'package:kerwenli_yol/pages/parts/categories_header/parts/head_category_buttons.dart';
 import 'package:kerwenli_yol/pages/parts/internet_status_bar/internet_status_bar.dart';
+import 'package:kerwenli_yol/pages/parts/app_refresh_indicator.dart';
+import 'package:kerwenli_yol/providers/api/company.dart';
+import 'package:kerwenli_yol/providers/api/product.dart';
 
 class BookmarksPage extends StatelessWidget {
   const BookmarksPage({super.key});
@@ -25,9 +28,18 @@ class BookmarksPage extends StatelessWidget {
           Expanded(
             child: TabBarView(
               children: [
-                LikedProductsListView(),
-                BookmarkCompaniesListView(),
-                FollowedCompaniesListView(),
+                AppRefreshIndicator(
+                  providers: [fetchLikedProductsProvider],
+                  child: LikedProductsListView(),
+                ),
+                AppRefreshIndicator(
+                  providers: [fetchBookmarkedCompaniesProvider],
+                  child: BookmarkCompaniesListView(),
+                ),
+                AppRefreshIndicator(
+                  providers: [fetchFollowedCompaniesProvider],
+                  child: FollowedCompaniesListView(),
+                ),
               ],
             ),
           ),

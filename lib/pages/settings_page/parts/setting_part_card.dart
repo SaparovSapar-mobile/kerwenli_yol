@@ -16,6 +16,7 @@ class SettingPartCard extends ConsumerWidget {
     required this.icon,
     this.onTap,
     this.settingProvider,
+    this.onSettingChanged,
   });
 
   final int index;
@@ -24,6 +25,7 @@ class SettingPartCard extends ConsumerWidget {
   final IconData icon;
   final void Function()? onTap;
   final StateNotifierProvider<PrefNotifier<bool>, bool>? settingProvider;
+  final void Function(bool value)? onSettingChanged;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -65,7 +67,9 @@ class SettingPartCard extends ConsumerWidget {
 
           // ====== eger switch ulanmak gerek bolsa =======
           if (settingProvider != null) {
-            ref.read(settingProvider!.notifier).update(!openSetting);
+            final bool newValue = !openSetting;
+            ref.read(settingProvider!.notifier).update(newValue);
+            onSettingChanged?.call(newValue);
           }
 
           // ========== eger ontap ulanmak gerek bolsa =======
@@ -99,6 +103,7 @@ class SettingPartCard extends ConsumerWidget {
                     ref.read(settingProvider!.notifier).update(v);
                     ref.read(selectedSettingPartIndexProvider.notifier).state =
                         index;
+                    onSettingChanged?.call(v);
                   },
                 ),
               )

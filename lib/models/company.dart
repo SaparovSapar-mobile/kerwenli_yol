@@ -1,3 +1,5 @@
+import 'package:kerwenli_yol/models/award.dart';
+import 'package:kerwenli_yol/models/brand.dart';
 import 'package:kerwenli_yol/models/maps.dart';
 import 'package:kerwenli_yol/models/opportunity.dart';
 import 'package:kerwenli_yol/models/qr_code.dart';
@@ -136,6 +138,8 @@ class CompanyDetailModel {
   final TaxiNumberModel taxiNumber;
   final bool isFollowed, isBookmarked;
   final double averageRating;
+  final List<BrandModel> brands;
+  final List<AwardModel> awards;
 
   CompanyDetailModel({
     required this.id,
@@ -156,6 +160,8 @@ class CompanyDetailModel {
     required this.isFollowed,
     required this.isBookmarked,
     required this.categoryName,
+    this.brands = const [],
+    this.awards = const [],
   });
 
   factory CompanyDetailModel.defaultValue() {
@@ -221,6 +227,18 @@ class CompanyDetailModel {
           : TaxiNumberModel.fromJson(json['taxi_number']),
       isFollowed: json['is_followed'] ?? false,
       isBookmarked: json['is_bookmarked'] ?? false,
+      brands: json['brands'] == null
+          ? []
+          : List<BrandModel>.from(
+              (json['brands'] as List).map((e) => BrandModel.fromJson(e)),
+            ),
+      awards: json['awards'] == null
+          ? []
+          : List<AwardModel>.from(
+              (json['awards'] as List).map(
+                (e) => AwardModel.fromJson(e as Map<String, dynamic>),
+              ),
+            ),
     );
   }
 }

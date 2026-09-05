@@ -17,6 +17,7 @@ import 'package:kerwenli_yol/pages/parts/show_image.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'expanded_html.dart';
 
@@ -137,7 +138,14 @@ class CompanyPageAbout extends ConsumerWidget {
             OpenSocialListTile(
               icon: 'location.png',
               text: parse(address).body!.text,
-              onTap: () {},
+              onTap: hasMap
+                  ? () async {
+                      await launchUrl(
+                        Uri.parse(compMap.url),
+                        mode: LaunchMode.externalApplication,
+                      );
+                    }
+                  : () {},
             ),
             SizedBox(height: 20),
             Text(lang.socialMediaLinks, style: textStyle),
@@ -204,16 +212,24 @@ class CompanyPageAbout extends ConsumerWidget {
             Text(lang.ourLocationMap, style: textStyle),
             SizedBox(height: 10),
             if (hasMap)
-              SizedBox(
-                width: double.maxFinite,
-                height: 150,
-                child: ShowImage(
-                  image: 'assets/examples/cropped_map.png',
-                  borderRadius: 10,
+              GestureDetector(
+                onTap: () async {
+                  await launchUrl(
+                    Uri.parse(compMap.url),
+                    mode: LaunchMode.externalApplication,
+                  );
+                },
+                child: SizedBox(
+                  width: double.maxFinite,
+                  height: 150,
+                  child: ShowImage(
+                    image: 'assets/examples/cropped_map.png',
+                    borderRadius: 10,
+                  ),
                 ),
               ),
             SizedBox(height: 20),
-            OpenLocationListTile(),
+            OpenLocationListTile(url: compMap.url),
           ],
         ),
       ),

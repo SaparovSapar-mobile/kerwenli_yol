@@ -220,7 +220,7 @@ class ProductPageBody extends ConsumerWidget {
                       context,
                       lang.sendRequest,
                       'messages.png',
-                      '',
+                      product.companyId,
                     ),
                   ),
                 ],

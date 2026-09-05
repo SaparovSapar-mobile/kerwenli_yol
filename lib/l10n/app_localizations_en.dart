@@ -165,6 +165,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get myPage => 'My Page';
 
   @override
+  String get edit => 'Edit';
+
+  @override
+  String get profileUpdated => 'Profile updated successfully';
+
+  @override
   String get settings => 'Settings';
 
   @override
@@ -403,4 +409,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get searchHistory => 'Search history';
+
+  @override
+  String get rateCompany => 'Rate the company';
 }

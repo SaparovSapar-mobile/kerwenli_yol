@@ -51,6 +51,8 @@
     "contactUs":"Bizimle iletişime geçin",
     "contacts":"İletişim bilgileri",
     "myPage":"Sayfam",
+    "edit":"Düzenle",
+    "profileUpdated":"Bilgiler başarıyla güncellendi",
     "settings":"Ayarlar",
     "signOut":"Çıkış yap",
     "name":"Isim",
@@ -131,5 +133,6 @@
     "allYourDataWillAlsoDeleted":"Tüm verileriniz de silinecektir",
     "additionalInformation":"Ek Bilgiler",
     "submitComplaint":"Şikayet bildir",
-    "searchHistory":"Arama geçmişi"
+    "searchHistory":"Arama geçmişi",
+    "rateCompany":"Firmayı değerlendir"
 }

@@ -165,6 +165,12 @@ class AppLocalizationsTr extends AppLocalizations {
   String get myPage => 'Sayfam';
 
   @override
+  String get edit => 'Düzenle';
+
+  @override
+  String get profileUpdated => 'Bilgiler başarıyla güncellendi';
+
+  @override
   String get settings => 'Ayarlar';
 
   @override
@@ -403,4 +409,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get searchHistory => 'Arama geçmişi';
+
+  @override
+  String get rateCompany => 'Firmayı değerlendir';
 }

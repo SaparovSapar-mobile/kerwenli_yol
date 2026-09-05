@@ -24,16 +24,30 @@ class SearchInput extends ConsumerStatefulWidget { // 👈 StatefulWidget
 
 class _SearchInputState extends ConsumerState<SearchInput> {
   Timer? _debounce; // 👈 таймер для debounce
+  final TextEditingController _controller = TextEditingController();
 
   @override
   void dispose() {
     _debounce?.cancel();
+    _controller.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     final AppLocalizations lang = AppLocalizations.of(context)!;
+
+    // 👇 Синхронизируем поле ввода с провайдером (нужно для авто-заполнения
+    // после AI-распознавания по фото — иначе текст только в состоянии,
+    // но не отображается в SearchBar)
+    ref.listen<String>(searchECommerceTextProvider, (previous, next) {
+      if (_controller.text != next) {
+        _controller.value = TextEditingValue(
+          text: next,
+          selection: TextSelection.collapsed(offset: next.length),
+        );
+      }
+    });
 
     // ======= Colors ======
     final bool isLight = isLightTheme(context, ref);
@@ -63,6 +77,7 @@ class _SearchInputState extends ConsumerState<SearchInput> {
           // ======== Search Input =========
           Expanded(
             child: SearchBar(
+              controller: _controller,
               backgroundColor: WidgetStateProperty.all<Color>(bgColor),
               elevation: WidgetStateProperty.all<double>(0),
               shape: WidgetStatePropertyAll(

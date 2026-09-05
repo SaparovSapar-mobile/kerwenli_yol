@@ -21,12 +21,13 @@ class OpportunityModel {
 }
 
 class OpportunityTrModel {
-  final String labelTm, labelRu, labelEn;
+  final String labelTm, labelRu, labelEn, opportunityIcon;
 
   OpportunityTrModel({
     required this.labelTm,
     required this.labelRu,
     required this.labelEn,
+    this.opportunityIcon = '',
   });
 
   factory OpportunityTrModel.fromJson(Map<String, dynamic> json) {
@@ -34,6 +35,7 @@ class OpportunityTrModel {
       labelTm: json['label_tm'] ?? '',
       labelRu: json['label_ru'] ?? '',
       labelEn: json['label_en'] ?? '',
+      opportunityIcon: json['opportunity_icon'] ?? '',
     );
   }
 

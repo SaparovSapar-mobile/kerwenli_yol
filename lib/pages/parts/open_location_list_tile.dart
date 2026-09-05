@@ -8,9 +8,10 @@ import 'package:kerwenli_yol/styles/text_styles.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class OpenLocationListTile extends ConsumerWidget {
-  const OpenLocationListTile({super.key, this.text});
+  const OpenLocationListTile({super.key, this.text, this.url});
 
   final String? text;
+  final String? url;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -31,10 +32,10 @@ class OpenLocationListTile extends ConsumerWidget {
 
     return ListTile(
       onTap: () async {
-        final uri = Uri.parse(
-          'https://www.google.com/maps/place//@37.955853,58.425542,730m/data=!3m1!1e3!4m6!1m5!3m4!2zMzfCsDU3JzIwLjciTiA1OMKwMjUnMzIuMCJF!8m2!3d37.95575!4d58.4255556',
-        );
-        await launchUrl(uri, mode: LaunchMode.externalApplication);
+        final String mapUrl = url != null && url!.isNotEmpty
+            ? url!
+            : 'https://www.google.com/maps/place//@37.955853,58.425542,730m/data=!3m1!1e3!4m6!1m5!3m4!2zMzfCsDU3JzIwLjciTiA1OMKwMjUnMzIuMCJF!8m2!3d37.95575!4d58.4255556';
+        await launchUrl(Uri.parse(mapUrl), mode: LaunchMode.externalApplication);
       },
       contentPadding: EdgeInsets.zero,
       dense: true,

@@ -58,7 +58,13 @@ class CompanyFeatures extends ConsumerWidget {
                   e.labelEn,
                 );
 
-                return CompanyFeaturePart(text: name, image: 'router.png');
+                return e.opportunityIcon.isNotEmpty
+                    ? CompanyFeaturePart(
+                        text: name,
+                        image: e.opportunityIcon,
+                        isNetworkImage: true,
+                      )
+                    : CompanyFeaturePart(text: name, image: 'router.png');
               }),
           ],
         ),

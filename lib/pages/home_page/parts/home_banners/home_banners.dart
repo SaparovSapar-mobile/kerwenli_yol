@@ -5,6 +5,7 @@ import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/helpers/methods/static_data.dart';
 import 'package:kerwenli_yol/models/banner.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_banners/parts/home_banner.dart';
+import 'package:kerwenli_yol/pages/parts/fetch_error_retry.dart';
 import 'package:kerwenli_yol/pages/parts/shimmer_effects/banner_shimmer.dart';
 import 'package:kerwenli_yol/providers/api/banner.dart';
 
@@ -81,7 +82,8 @@ class HomeBanners extends ConsumerWidget {
             ],
           );
         },
-        error: (_, _) => const SizedBox.shrink(),
+        error: (_, _) =>
+            FetchErrorRetry(onRetry: () => ref.invalidate(fetchBannersProvider)),
         loading: () => BannerShimmer(),
       ),
     );

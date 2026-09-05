@@ -11,9 +11,14 @@ import 'package:kerwenli_yol/providers/pages/companies_page.dart';
 import 'package:kerwenli_yol/services/api/company.dart';
 
 class CompaniesGridView extends ConsumerWidget {
-  const CompaniesGridView({super.key, required this.categoryId});
+  const CompaniesGridView({
+    super.key,
+    required this.categoryId,
+    this.subCategoryId,
+  });
 
   final String categoryId;
+  final String? subCategoryId;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -21,6 +26,7 @@ class CompaniesGridView extends ConsumerWidget {
       page: 1,
       pageSize: pageSize,
       categoryId: categoryId,
+      subCategoryId: subCategoryId,
       userId: '',
     );
 
@@ -64,6 +70,7 @@ class CompaniesGridView extends ConsumerWidget {
               page: page,
               pageSize: pageSize,
               categoryId: categoryId,
+              subCategoryId: subCategoryId,
               userId: '',
             );
 

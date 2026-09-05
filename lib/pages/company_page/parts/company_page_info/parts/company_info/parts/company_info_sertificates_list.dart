@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:kerwenli_yol/pages/parts/sertificate_card.dart';
+import 'package:kerwenli_yol/models/award.dart';
+import 'package:kerwenli_yol/pages/parts/show_image.dart';
 
 class CompanyInfoSertificatesList extends StatelessWidget {
-  const CompanyInfoSertificatesList({super.key});
+  const CompanyInfoSertificatesList({super.key, required this.awards});
+
+  final List<AwardModel> awards;
 
   @override
   Widget build(BuildContext context) {
@@ -10,9 +13,18 @@ class CompanyInfoSertificatesList extends StatelessWidget {
       height: 90,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) => SertificateCard(),
+        itemBuilder: (context, index) {
+          final AwardModel award = awards[index];
+
+          return SizedBox(
+            width: 65,
+            child: award.img.isEmpty
+                ? const SizedBox.shrink()
+                : ShowNetwImage(image: award.img, borderRadius: 8),
+          );
+        },
         separatorBuilder: (context, index) => SizedBox(width: 5),
-        itemCount: 10,
+        itemCount: awards.length,
       ),
     );
   }

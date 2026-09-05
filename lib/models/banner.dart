@@ -1,6 +1,6 @@
 class BannerModel {
   final int orderNumber;
-  final String url, imageTm, imageRu, imageEn, type;
+  final String url, imageTm, imageRu, imageEn, type, companyUuid;
 
   BannerModel({
     required this.orderNumber,
@@ -9,6 +9,7 @@ class BannerModel {
     required this.imageRu,
     required this.imageEn,
     required this.type,
+    this.companyUuid = '',
   });
 
   factory BannerModel.fromJson(Map<String, dynamic> json) {
@@ -19,6 +20,7 @@ class BannerModel {
       imageRu: json['image_ru'] ?? '',
       imageEn: json['image_en'] ?? '',
       type: json['type_name'] ?? '',
+      companyUuid: json['company_uuid'] ?? '',
     );
   }
 }

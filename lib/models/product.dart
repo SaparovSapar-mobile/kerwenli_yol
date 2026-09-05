@@ -105,12 +105,8 @@ class ProductModel {
       category: json['categories'] == null
           ? CategoryModel.defaultValue()
           : CategoryModel.fromJson(json['categories']),
-      categoryName: json['category_name'] == null
-          ? TranslationModel.defaultValue()
-          : TranslationModel.fromJson(json['category_name']),
-      companyName: json['company_name'] == null
-          ? TranslationModel.defaultValue()
-          : TranslationModel.fromJson(json['company_name']),
+      categoryName: TranslationModel.fromDynamic(json['category_name']),
+      companyName: TranslationModel.fromDynamic(json['company_name']),
     );
   }
 }

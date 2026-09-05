@@ -165,6 +165,12 @@ class AppLocalizationsRu extends AppLocalizations {
   String get myPage => 'Моя страница';
 
   @override
+  String get edit => 'Редактировать';
+
+  @override
+  String get profileUpdated => 'Данные успешно обновлены';
+
+  @override
   String get settings => 'Настройки';
 
   @override
@@ -403,4 +409,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get searchHistory => 'История поиска';
+
+  @override
+  String get rateCompany => 'Оценить компанию';
 }

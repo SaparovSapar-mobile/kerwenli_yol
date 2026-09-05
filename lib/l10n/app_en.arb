@@ -51,6 +51,8 @@
     "contactUs":"Contact Us",
     "contacts":"Contacts",
     "myPage":"My Page",
+    "edit":"Edit",
+    "profileUpdated":"Profile updated successfully",
     "settings":"Settings",
     "signOut":"Sign Out",
     "name":"Name",
@@ -131,5 +133,6 @@
     "allYourDataWillAlsoDeleted":"All your data will also be deleted",
     "additionalInformation":"Additional information",
     "submitComplaint":"Submit a complaint",
-    "searchHistory":"Search history"
+    "searchHistory":"Search history",
+    "rateCompany":"Rate the company"
 }

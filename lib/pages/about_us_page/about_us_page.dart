@@ -44,7 +44,6 @@ class AboutUsPage extends ConsumerWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   BackLeadingButton(text: lang.back, leftPadding: 0),
-                  AboutUsPart(icon: Icons.info, text: lang.aboutTheCompany),
                   AboutUsTexts(),
                 ],
               ),

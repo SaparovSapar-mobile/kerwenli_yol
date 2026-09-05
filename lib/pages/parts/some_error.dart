@@ -42,7 +42,7 @@ class SomeError extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsetsGeometry.symmetric(vertical: 20),
-            child: Text('Nasazlyk Yuze cykdy', style: textStyle),
+            child: Text('Näsazlyk ýüze çykdy', style: textStyle),
           ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(

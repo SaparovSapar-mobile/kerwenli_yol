@@ -8,6 +8,7 @@ import 'package:kerwenli_yol/pages/parts/no_result.dart';
 import 'package:kerwenli_yol/providers/api/category.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
+import 'package:kerwenli_yol/pages/parts/app_refresh_indicator.dart';
 
 class CategoriesList extends ConsumerWidget {
   const CategoriesList({super.key});
@@ -28,26 +29,31 @@ class CategoriesList extends ConsumerWidget {
     );
 
     return Expanded(
-      child: Container(
-        color: bgColor,
-        padding: EdgeInsets.symmetric(vertical: 14, horizontal: 10),
+      child: AppRefreshIndicator(
+        providers: [fetchCategoriesProvider],
+        onRefresh: (ref) async =>
+            await ref.read(fetchCategoriesProvider.future),
         child: Container(
-          padding: EdgeInsets.all(9),
-          color: bgInnerColor,
-          child: resultApi.when(
-            data: (data) {
-              if (data.isEmpty) {
-                return NoResult();
-              }
+          color: bgColor,
+          padding: EdgeInsets.symmetric(vertical: 14, horizontal: 10),
+          child: Container(
+            padding: EdgeInsets.all(9),
+            color: bgInnerColor,
+            child: resultApi.when(
+              data: (data) {
+                if (data.isEmpty) {
+                  return NoResult();
+                }
 
-              return ListView.builder(
-                itemBuilder: (context, index) =>
-                    CategoryCard(category: data[index]),
-                itemCount: data.length,
-              );
-            },
-            error: (error, stackTrace) => const SizedBox.shrink(),
-            loading: () => loadWidget,
+                return ListView.builder(
+                  itemBuilder: (context, index) =>
+                      CategoryCard(category: data[index]),
+                  itemCount: data.length,
+                );
+              },
+              error: (error, stackTrace) => const SizedBox.shrink(),
+              loading: () => loadWidget,
+            ),
           ),
         ),
       ),

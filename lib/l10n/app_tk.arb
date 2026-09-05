@@ -23,7 +23,7 @@
     "newProducts":"Täze önümler",
     "export":"Eksport",
     "shortVideos":"Gysga videolar",
-    "localBrands":"Yerli markalary",
+    "localBrands":"Ýerli markalary",
     "all":"Hemmesi",
     "ourPartners":"Hyzmadaslarymyz",
     "acknowledgements":"Minnetdarlyklar",
@@ -51,6 +51,8 @@
     "contactUs":"Biz bilen habarlaşmak",
     "contacts":"Kontaktlar",
     "myPage":"Meniň sahypam",
+    "edit":"Üýtgetmek",
+    "profileUpdated":"Maglumatlar üstünlikli täzelendi",
     "settings":"Sazlamalar",
     "signOut":"Ulgamdan çykmak",
     "name":"Ady",
@@ -131,5 +133,6 @@
     "allYourDataWillAlsoDeleted":"Şonuň bilen birlikde ähli maglumatlaryň hem pozular",
     "additionalInformation":"Goşmaça maglumat",
     "submitComplaint":"Nägilelik bildirmek",
-    "searchHistory":"Gözlenenler"
+    "searchHistory":"Gözlenenler",
+    "rateCompany":"Kärhana baha bermek"
 }

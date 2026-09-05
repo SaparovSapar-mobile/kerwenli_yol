@@ -41,6 +41,15 @@ class CompanyCard extends ConsumerWidget {
       company.nameEn,
     );
 
+    // ====== Category (с сервера, не статика) ======
+    final String category = translateText(
+      ref,
+      company.categoryName.tm,
+      company.categoryName.ru,
+      company.categoryName.en,
+      company.categoryName.en,
+    );
+
     final bool isOpen = computeIsOpen(company);
 
     return GestureDetector(
@@ -75,7 +84,7 @@ class CompanyCard extends ConsumerWidget {
             ),
             CompanyStatus(isOpen: isOpen, fontSize: 9),
             SizedBox(height: 2),
-            HomeVipCompanyCardCategories(iconSize: 10),
+            HomeVipCompanyCardCategories(iconSize: 10, category: category),
             SizedBox(height: 5),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
