@@ -240,6 +240,18 @@ fetchBookmarkedCompaniesProvider = FutureProvider.family
 
       try {
         final String userId = await ref.watch(getUserIdProvider.future);
+
+        // см. комментарий в fetchLikedProductsProvider: пустой id даёт
+        // 404 текстом и ломает json.decode
+        if (userId.isEmpty) {
+          if (arg.page == 1) {
+            ref.read(hasBCompaniesProvider.notifier).state = false;
+            ref.read(hasErrBCompaniesProvider.notifier).state = false;
+          }
+          ref.read(loadBCompaniesProvider.notifier).state = false;
+          return result;
+        }
+
         CompanyParams params = arg.copyWith(userId: userId);
 
         result = await ref
@@ -280,6 +292,18 @@ fetchFollowedCompaniesProvider = FutureProvider.family
 
       try {
         final String userId = await ref.watch(getUserIdProvider.future);
+
+        // см. комментарий в fetchLikedProductsProvider: пустой id даёт
+        // 404 текстом и ломает json.decode
+        if (userId.isEmpty) {
+          if (arg.page == 1) {
+            ref.read(hasFCompaniesProvider.notifier).state = false;
+            ref.read(hasErrFCompaniesProvider.notifier).state = false;
+          }
+          ref.read(loadFCompaniesProvider.notifier).state = false;
+          return result;
+        }
+
         CompanyParams params = arg.copyWith(userId: userId);
 
         result = await ref
@@ -327,14 +351,15 @@ sendMessageToCompanyProvider = FutureProvider.autoDispose
     });
 
 final AutoDisposeFutureProviderFamily<bool, RateCompanyModel>
-rateCompanyProvider = FutureProvider.autoDispose
-    .family<bool, RateCompanyModel>((ref, arg) async {
-      bool result = false;
+rateCompanyProvider = FutureProvider.autoDispose.family<bool, RateCompanyModel>(
+  (ref, arg) async {
+    bool result = false;
 
-      try {
-        result = await ref.read(companyApiProvider).rateCompany(arg);
-      } catch (e) {
-        rethrow;
-      }
-      return result;
-    });
+    try {
+      result = await ref.read(companyApiProvider).rateCompany(arg);
+    } catch (e) {
+      rethrow;
+    }
+    return result;
+  },
+);

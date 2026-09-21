@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/navigation.dart';
 import 'package:kerwenli_yol/helpers/methods/parts/app_bar_methods.dart';
 import 'package:kerwenli_yol/l10n/app_localizations.dart';
-import 'package:kerwenli_yol/models/new_product.dart';
 import 'package:kerwenli_yol/models/product.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_new_products/parts/home_new_products_list.dart';
 import 'package:kerwenli_yol/pages/new_products_page/new_products_page.dart';
@@ -18,19 +17,14 @@ class HomeNewProducts extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final AppLocalizations lang = AppLocalizations.of(context)!;
 
-    final AsyncValue<List<NewProductModel>> resultApi = ref.watch(
-      fetchNewProductsProvider,
+    final AsyncValue<List<ProductModel>> resultApi = ref.watch(
+      fetchAllProductsProvider,
     );
 
     return resultApi.when(
-      data: (data) {
-        if (data.isEmpty) {
+      data: (products) {
+        if (products.isEmpty) {
           return const SizedBox.shrink();
-        }
-
-        List<ProductModel> products = [];
-        for (NewProductModel element in data) {
-          products.addAll(element.products);
         }
 
         return Column(
@@ -42,6 +36,7 @@ class HomeNewProducts extends ConsumerWidget {
                 context,
                 NewProductsPage(products: products),
                 AxisDirection.left,
+                name: 'new_products',
               ),
             ),
             Padding(

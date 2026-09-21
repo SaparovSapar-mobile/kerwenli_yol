@@ -53,3 +53,5 @@ android/*.keystore
 
 # FVM Version Cache
 .fvm/
+# iOS build artifacts
+ios/build/

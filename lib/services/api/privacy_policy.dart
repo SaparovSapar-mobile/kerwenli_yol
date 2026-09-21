@@ -7,7 +7,7 @@ import 'package:kerwenli_yol/models/privacy_policy.dart';
 class PrivacyPolicyApiService {
   // fetch privacy policy -------------------------------------
   Future<PrivacyPolicyModel?> fetchPrivacyPolicy() async {
-    final Uri uri = Uri.parse('$apiUrl/admin/privacy');
+    final Uri uri = Uri.parse('$apiUrl/client/privacy');
 
     try {
       final http.Response response = await http.get(uri);

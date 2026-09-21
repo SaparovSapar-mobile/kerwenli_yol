@@ -42,30 +42,31 @@ class UserApiService {
   }
 
   // === Confirm Phone OTP (Registration) ===
-Future<bool> confirmPhoneOtp({
-  required String phone,
-  required String code,
-}) async {
-  final Uri uri = Uri.parse('$apiUrl/client/phone/confirm');
+  Future<bool> confirmPhoneOtp({
+    required String phone,
+    required String code,
+  }) async {
+    final Uri uri = Uri.parse('$apiUrl/client/phone/confirm');
 
-  try {
-    final http.Response response = await http.post(
-      uri,
-      headers: {'Content-Type': 'application/json'},
-      body: json.encode({'phone': phone, 'code': code}),
-    );
+    try {
+      final http.Response response = await http.post(
+        uri,
+        headers: {'Content-Type': 'application/json'},
+        body: json.encode({'phone': phone, 'code': code}),
+      );
 
-    print('confirmPhoneOtp status: ${response.statusCode}');
-    print('confirmPhoneOtp body: ${response.body}');
+      print('confirmPhoneOtp status: ${response.statusCode}');
+      print('confirmPhoneOtp body: ${response.body}');
 
-    final dynamic jsonData = json.decode(response.body);
-    final dynamic status = jsonData['status'];
-    return response.statusCode == 200 && (status == true || status == 'success');
-  } catch (e) {
-    print('confirmPhoneOtp ERROR: $e');
-    rethrow;
+      final dynamic jsonData = json.decode(response.body);
+      final dynamic status = jsonData['status'];
+      return response.statusCode == 200 &&
+          (status == true || status == 'success');
+    } catch (e) {
+      print('confirmPhoneOtp ERROR: $e');
+      rethrow;
+    }
   }
-}
 
   // === Check OTP for Email ===
   // === Check OTP for Email ===
@@ -100,7 +101,14 @@ Future<bool> confirmPhoneOtp({
   // === Register User ===
   Future<ResultRegister> registerUser(RegisterUserModel reqData) async {
     print('registerUser reqData: ${reqData.toJson()}');
-    final Uri uri = Uri.parse('$apiUrl/client/phone/register');
+    // Регистрация по email и по телефону - разные эндпоинты.
+    // /client/phone/register шлёт код через SMS-шлюз и про email не знает,
+    // поэтому при регистрации с почтой письмо не приходило вообще.
+    final Uri uri = Uri.parse(
+      reqData.isByEmail
+          ? '$apiUrl/client/register'
+          : '$apiUrl/client/phone/register',
+    );
 
     try {
       final http.Response response = await http.post(

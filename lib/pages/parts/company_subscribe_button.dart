@@ -54,7 +54,7 @@ class CompanySubscribeButton extends ConsumerWidget {
           onTap: () async {
             final String userId = await getUserId();
             if (userId.isEmpty && context.mounted) {
-              goToPage(context, LoginPage(), AxisDirection.left);
+              goToPage(context, LoginPage(), AxisDirection.left, name: 'login');
               return;
             }
 

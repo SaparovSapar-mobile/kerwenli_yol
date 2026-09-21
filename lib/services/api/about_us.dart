@@ -11,18 +11,25 @@ class AboutUsApiService {
 
     try {
       final http.Response response = await http.get(uri);
+      final bool ok = response.statusCode >= 200 && response.statusCode < 300;
+      if (!ok) return AboutUsModel.defaultValue();
+
       final dynamic jsonData = json.decode(response.body);
-
-      if (response.statusCode == 200 && jsonData['status']) {
-        final dynamic datas = jsonData['data'];
-
-        if (datas != null) {
-          final List<dynamic> data = datas as List;
-          return AboutUsModel.fromJson(data.first);
-        }
-
+      if (jsonData is! Map || jsonData['status'] != true) {
         return AboutUsModel.defaultValue();
       }
+
+      final dynamic datas = jsonData['data'];
+      if (datas is List && datas.isNotEmpty && datas.first is Map) {
+        return AboutUsModel.fromJson(
+          Map<String, dynamic>.from(datas.first as Map),
+        );
+      }
+      // на случай, если сервер начнёт отдавать объект вместо списка
+      if (datas is Map) {
+        return AboutUsModel.fromJson(Map<String, dynamic>.from(datas));
+      }
+
       return AboutUsModel.defaultValue();
     } catch (e) {
       rethrow;

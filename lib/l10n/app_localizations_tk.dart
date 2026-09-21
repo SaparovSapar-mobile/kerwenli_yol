@@ -168,6 +168,9 @@ class AppLocalizationsTk extends AppLocalizations {
   String get edit => 'Üýtgetmek';
 
   @override
+  String get qrCode => 'QR kod';
+
+  @override
   String get profileUpdated => 'Maglumatlar üstünlikli täzelendi';
 
   @override
@@ -412,4 +415,7 @@ class AppLocalizationsTk extends AppLocalizations {
 
   @override
   String get rateCompany => 'Kärhana baha bermek';
+
+  @override
+  String get loginToSeeNotifications => 'Bildirişleri görmek üçin ulgama giriň';
 }

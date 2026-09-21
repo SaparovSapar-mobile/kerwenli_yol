@@ -5,6 +5,7 @@ import 'package:kerwenli_yol/database/functions/user.dart';
 import 'package:kerwenli_yol/pages/parts/primary_button.dart';
 import 'package:kerwenli_yol/providers/database/favorite.dart';
 import 'package:kerwenli_yol/providers/database/user.dart';
+import 'package:kerwenli_yol/services/analytics_service.dart';
 
 class LogOutButton extends ConsumerWidget {
   const LogOutButton({super.key});
@@ -16,6 +17,8 @@ class LogOutButton extends ConsumerWidget {
       onPressed: () async {
         await deleteUser();
         await deleteAllFavorites();
+        // отвязываем события аналитики от ушедшего пользователя
+        AnalyticsService().setUserId(null);
         ref.invalidate(getUserProvider);
         ref.invalidate(hasInFavoritesProvider);
         if (context.mounted) {

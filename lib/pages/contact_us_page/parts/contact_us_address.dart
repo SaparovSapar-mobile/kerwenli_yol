@@ -73,9 +73,7 @@ class ContactUsAddress extends ConsumerWidget {
                     ),
                 ),
               ),
-              OpenLocationListTile(
-                text: address,
-              ),
+              OpenLocationListTile(text: address),
             ],
           ),
         );

@@ -96,7 +96,7 @@ class CompanyPageInfoCard extends ConsumerWidget {
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    ViewCount(bGColor: bGColor, viewCount: company.viewsCount,),
+                    ViewCount(bGColor: bGColor, viewCount: company.viewsCount),
                     GestureDetector(
                       onTap: () async {
                         final UserModel resultDb = await ref.read(
@@ -107,7 +107,12 @@ class CompanyPageInfoCard extends ConsumerWidget {
                         if (!context.mounted) return;
 
                         if (!hasUser) {
-                          goToPage(context, LoginPage(), AxisDirection.left);
+                          goToPage(
+                            context,
+                            LoginPage(),
+                            AxisDirection.left,
+                            name: 'login',
+                          );
                           return;
                         }
 

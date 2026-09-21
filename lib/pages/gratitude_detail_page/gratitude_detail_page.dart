@@ -18,7 +18,11 @@ import 'package:kerwenli_yol/styles/text_styles.dart';
 import 'package:flutter_html/flutter_html.dart';
 
 class GratitudeDetailPage extends ConsumerWidget {
-  const GratitudeDetailPage({super.key, required this.gratitudeId, required this.viewsCount});
+  const GratitudeDetailPage({
+    super.key,
+    required this.gratitudeId,
+    required this.viewsCount,
+  });
 
   final String gratitudeId;
   final int viewsCount;
@@ -111,7 +115,7 @@ class GratitudeDetailPage extends ConsumerWidget {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              ViewCount(fontSize: 10, viewCount: viewsCount,),
+                              ViewCount(fontSize: 10, viewCount: viewsCount),
                               ShowDate(date: data.createdAt, fontSize: 10),
                             ],
                           ),

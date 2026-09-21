@@ -8,18 +8,51 @@ class AnalyticsService {
 
   final FirebaseAnalytics _analytics = FirebaseAnalytics.instance;
 
-  FirebaseAnalyticsObserver get observer =>
-      FirebaseAnalyticsObserver(analytics: _analytics);
+  /// Один обсервер на всё приложение. Раньше это был геттер, который создавал
+  /// новый FirebaseAnalyticsObserver при каждом обращении, а MyApp.build
+  /// перезапускается при смене темы и языка.
+  late final FirebaseAnalyticsObserver observer = FirebaseAnalyticsObserver(
+    analytics: _analytics,
+  );
+
+  /// uuid, для которых событие уже отправлено в этой сессии - защита от
+  /// повторного нажатия кнопки и повторной проверки OTP.
+  String? _lastSignUpId;
+  String? _lastLoginId;
+
+  /// Только внутренний uuid из бэкенда. Телефон, имя и почту сюда передавать
+  /// нельзя - это персональные данные, правила Google их запрещают.
+  /// null - пользователь вышел из аккаунта.
+  Future<void> setUserId(String? id) {
+    final String? value = (id == null || id.isEmpty) ? null : id;
+    if (value == null) {
+      _lastSignUpId = null;
+      _lastLoginId = null;
+    }
+    return _analytics.setUserId(id: value);
+  }
+
+  Future<void> logScreen(String name) {
+    return _analytics.logScreenView(screenName: name);
+  }
 
   Future<void> logSearch(String searchTerm) {
     return _analytics.logSearch(searchTerm: searchTerm);
   }
 
-  Future<void> logLogin(String method) {
+  Future<void> logLogin(String method, {String? userId}) {
+    if (userId != null && userId.isNotEmpty) {
+      if (_lastLoginId == userId) return Future.value();
+      _lastLoginId = userId;
+    }
     return _analytics.logLogin(loginMethod: method);
   }
 
-  Future<void> logSignUp(String method) {
+  Future<void> logSignUp(String method, {String? userId}) {
+    if (userId != null && userId.isNotEmpty) {
+      if (_lastSignUpId == userId) return Future.value();
+      _lastSignUpId = userId;
+    }
     return _analytics.logSignUp(signUpMethod: method);
   }
 

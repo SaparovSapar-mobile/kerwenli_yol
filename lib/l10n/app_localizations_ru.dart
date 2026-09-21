@@ -168,6 +168,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get edit => 'Редактировать';
 
   @override
+  String get qrCode => 'QR код';
+
+  @override
   String get profileUpdated => 'Данные успешно обновлены';
 
   @override
@@ -412,4 +415,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get rateCompany => 'Оценить компанию';
+
+  @override
+  String get loginToSeeNotifications => 'Войдите в систему, чтобы видеть уведомления';
 }

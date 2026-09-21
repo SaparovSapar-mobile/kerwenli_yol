@@ -51,6 +51,7 @@ class SearchCompanyCard extends ConsumerWidget {
         context,
         CompanyPage(companyId: company.individualUuid),
         AxisDirection.left,
+        name: 'company_profile',
       ),
       child: Container(
         padding: EdgeInsets.only(left: 9, top: 18, right: 9, bottom: 9),
@@ -77,10 +78,7 @@ class SearchCompanyCard extends ConsumerWidget {
             SizedBox(height: 2),
             CompanyStatus(isOpen: isOpen, fontSize: 9),
             SizedBox(height: 2),
-            HomeVipCompanyCardCategories(
-              iconSize: 10,
-              category: category,
-            ),
+            HomeVipCompanyCardCategories(iconSize: 10, category: category),
             SizedBox(height: 5),
             Align(
               alignment: Alignment.centerRight,

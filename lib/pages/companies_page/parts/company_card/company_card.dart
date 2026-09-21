@@ -57,6 +57,7 @@ class CompanyCard extends ConsumerWidget {
         context,
         CompanyPage(companyId: company.individualUuid),
         AxisDirection.left,
+        name: 'company_profile',
       ),
       child: Container(
         padding: EdgeInsets.only(left: 9, top: 18, right: 9, bottom: 9),
@@ -89,8 +90,11 @@ class CompanyCard extends ConsumerWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                ViewCount(fontSize: 12, viewCount: company.viewsCount,),
-                HomeVipCompanyRating(fontSize: 12, rating: company.averageRating,),
+                ViewCount(fontSize: 12, viewCount: company.viewsCount),
+                HomeVipCompanyRating(
+                  fontSize: 12,
+                  rating: company.averageRating,
+                ),
               ],
             ),
           ],

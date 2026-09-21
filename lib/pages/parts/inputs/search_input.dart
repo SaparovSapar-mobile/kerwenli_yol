@@ -15,7 +15,8 @@ import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
 import 'dart:async'; // 👈 добавь
 
-class SearchInput extends ConsumerStatefulWidget { // 👈 StatefulWidget
+class SearchInput extends ConsumerStatefulWidget {
+  // 👈 StatefulWidget
   const SearchInput({super.key});
 
   @override
@@ -98,7 +99,8 @@ class _SearchInputState extends ConsumerState<SearchInput> {
                 ref.read(visualSearchResultProvider.notifier).state = null;
                 ref.read(searchECommerceTextProvider.notifier).state = value;
                 ref.read(eCommerceSearchProvider.notifier).state = value;
-                ref.read(openSearchECommerceHistoryProvider.notifier).state = false;
+                ref.read(openSearchECommerceHistoryProvider.notifier).state =
+                    false;
 
                 // 👇 Отменяем предыдущий таймер
                 _debounce?.cancel();
@@ -109,12 +111,16 @@ class _SearchInputState extends ConsumerState<SearchInput> {
                   ref.read(isVisualSearchModeProvider.notifier).state = false;
                   ref.read(visualSearchResultProvider.notifier).state = null;
 
-                  await createSearch(value, SearchTypeEnum.all); // ✅ только здесь
+                  await createSearch(
+                    value,
+                    SearchTypeEnum.all,
+                  ); // ✅ только здесь
                   AnalyticsService().logSearch(value);
 
                   ref.read(searchECommerceTextProvider.notifier).state = value;
                   ref.read(eCommerceSearchProvider.notifier).state = value;
-                  ref.read(openSearchECommerceHistoryProvider.notifier).state = false;
+                  ref.read(openSearchECommerceHistoryProvider.notifier).state =
+                      false;
 
                   ref.invalidate(getSearchsProvider);
                   ref.invalidate(fetchSearchProvider);
@@ -125,11 +131,16 @@ class _SearchInputState extends ConsumerState<SearchInput> {
                   IconButton(
                     onPressed: () {
                       _debounce?.cancel(); // 👈 отменяем таймер при очистке
-                      ref.read(isVisualSearchModeProvider.notifier).state = false;
-                      ref.read(visualSearchResultProvider.notifier).state = null;
+                      ref.read(isVisualSearchModeProvider.notifier).state =
+                          false;
+                      ref.read(visualSearchResultProvider.notifier).state =
+                          null;
                       ref.read(eCommerceSearchProvider.notifier).state = '';
                       ref.read(searchECommerceTextProvider.notifier).state = '';
-                      ref.read(openSearchECommerceHistoryProvider.notifier).state = true;
+                      ref
+                              .read(openSearchECommerceHistoryProvider.notifier)
+                              .state =
+                          true;
                       ref.invalidate(fetchSearchProvider);
                     },
                     icon: Icon(Icons.cancel, color: iconColor, size: 20),

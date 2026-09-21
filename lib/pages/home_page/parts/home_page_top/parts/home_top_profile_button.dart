@@ -39,12 +39,13 @@ class HomeTopProfileButton extends ConsumerWidget {
                 context,
                 UserProfilePage(user: data),
                 AxisDirection.left,
+                name: 'profile',
               );
               return;
             }
 
             if (context.mounted) {
-              goToPage(context, LoginPage(), AxisDirection.left);
+              goToPage(context, LoginPage(), AxisDirection.left, name: 'login');
             }
           },
           child: Container(

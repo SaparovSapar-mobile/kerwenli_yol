@@ -29,9 +29,25 @@ class SearchModel {
       query: json['query'] as String? ?? '',
       products: productsData == null || productsData.isEmpty
           ? []
-          : productsData
-                .map((e) => ProductModel.fromJson(e as Map<String, dynamic>))
-                .toList(),
+          : productsData.map((e) {
+              final Map<String, dynamic> raw = e as Map<String, dynamic>;
+              // Visual-search отдаёт товары плоско и без счётчиков:
+              // нет views_count, likes_count, is_liked, category_name,
+              // а имя компании разложено на company_name_tm/ru/en/tr.
+              // Собираем company_name обратно в объект, счётчики
+              // дотягиваются в visualSearchProvider по uuid.
+              return ProductModel.fromJson({
+                ...raw,
+                'company_name':
+                    raw['company_name'] ??
+                    {
+                      'tm': raw['company_name_tm'] ?? '',
+                      'ru': raw['company_name_ru'] ?? '',
+                      'en': raw['company_name_en'] ?? '',
+                      'tr': raw['company_name_tr'] ?? '',
+                    },
+              });
+            }).toList(),
       companies: companiesData == null || companiesData.isEmpty
           ? []
           : companiesData.map((e) {

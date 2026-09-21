@@ -13,18 +13,36 @@ import 'package:kerwenli_yol/pages/parts/internet_status_bar/internet_status_bar
 import 'package:kerwenli_yol/pages/parts/scroll_to_top_button.dart';
 import 'package:kerwenli_yol/pages/search_page/search_page.dart';
 import 'package:kerwenli_yol/pages/settings_page/settings_page.dart';
+import 'package:kerwenli_yol/providers/pages/bookmarks_page.dart';
 import 'package:kerwenli_yol/providers/pages/bottom_navigation.dart';
 import 'package:kerwenli_yol/providers/pages/search_page.dart';
 import 'package:kerwenli_yol/providers/parts/scroll_to_top.dart';
+import 'package:kerwenli_yol/services/analytics_service.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
+
+/// Имена вкладок для Google Analytics. Вкладки живут в IndexedStack, а не в
+/// Navigator, поэтому FirebaseAnalyticsObserver их переключения не видит -
+/// screen_view отправляем вручную.
+const List<String> _tabScreenNames = ['home', 'search', 'bookmarks', 'settings'];
+
+/// Стартовую вкладку логируем один раз за запуск приложения.
+bool _startTabLogged = false;
 
 class BottomNavigationPage extends ConsumerWidget {
   const BottomNavigationPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    if (!_startTabLogged) {
+      _startTabLogged = true;
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        final int index = ref.read(selectedBottomIndexProvider);
+        AnalyticsService().logScreen(_tabScreenNames[index]);
+      });
+    }
+
     final AppLocalizations lang = AppLocalizations.of(context)!;
 
     // ======= Colors =========
@@ -128,6 +146,7 @@ class BottomNavigationPage extends ConsumerWidget {
           currentIndex: selectedIndex,
           onTap: (value) async {
             ref.read(selectedBottomIndexProvider.notifier).state = value;
+            AnalyticsService().logScreen(_tabScreenNames[value]);
 
             // Eger user Search sahypada dal bolsa
             // onda search history acyk bolmaly
@@ -137,6 +156,12 @@ class BottomNavigationPage extends ConsumerWidget {
               ref.read(openSearchECommerceHistoryProvider.notifier).state =
                   true;
               await cleanCacheDirectory();
+            }
+
+            // то же самое для закладок: уходим со страницы - поиск закрыт
+            if (value != 2) {
+              ref.read(bookmarkSearchProvider.notifier).state = '';
+              ref.read(bookmarkSearchOpenProvider.notifier).state = false;
             }
           },
         ),

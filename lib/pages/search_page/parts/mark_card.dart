@@ -36,6 +36,7 @@ class MarkCard extends ConsumerWidget {
         context,
         CompanyPage(companyId: mark.companyId),
         AxisDirection.left,
+        name: 'company_profile',
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,

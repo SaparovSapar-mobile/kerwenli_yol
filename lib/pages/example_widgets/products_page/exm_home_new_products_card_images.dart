@@ -201,7 +201,7 @@ class _HomeNewProductsCardImagesState
                       Positioned(
                         left: 10,
                         bottom: 10,
-                        child: ZoomImagesButton(),
+                        child: ZoomImagesButton(images: const []),
                       )
                     else
                       const SizedBox.shrink(),

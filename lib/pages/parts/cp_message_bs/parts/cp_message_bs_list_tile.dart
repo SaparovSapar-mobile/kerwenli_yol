@@ -76,7 +76,7 @@ class CpMessageBsListTile extends ConsumerWidget {
           final UserModel resultDb = await ref.read(getUserProvider.future);
           final bool hasUser = resultDb.id != '';
           if (!hasUser && context.mounted) {
-            goToPage(context, LoginPage(), AxisDirection.left);
+            goToPage(context, LoginPage(), AxisDirection.left, name: 'login');
             return;
           }
 

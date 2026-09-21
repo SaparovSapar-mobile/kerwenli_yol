@@ -4,7 +4,9 @@ import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/helpers/methods/pages/bottom_sheets.dart';
 import 'package:kerwenli_yol/helpers/methods/parts/app_bar_methods.dart';
 import 'package:kerwenli_yol/l10n/app_localizations.dart';
+import 'package:kerwenli_yol/pages/bookmark_page/parts/bookmark_search_field.dart';
 import 'package:kerwenli_yol/pages/parts/circle_button.dart';
+import 'package:kerwenli_yol/providers/pages/bookmarks_page.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 
@@ -34,26 +36,40 @@ AppBar bookmarsPageAppBar(BuildContext context) {
             ),
             child: Column(
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(lang.bookmark),
-                    SizedBox(
-                      height: 38,
-                      child: Row(
-                        children: [
-                          CircleButton(icon: Icons.search, onTap: () {}),
-                          SizedBox(width: 10),
-                          CircleButton(
-                            icon: Icons.more_vert,
-                            onTap: () =>
-                                showBookmarkSettingBottomSheet(context),
-                          ),
-                        ],
+                // при открытом поиске поле занимает всю строку вместо
+                // заголовка и кнопок - высота шапки не меняется
+                if (ref.watch(bookmarkSearchOpenProvider))
+                  const BookmarkSearchField()
+                else
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(lang.bookmark),
+                      SizedBox(
+                        height: 38,
+                        child: Row(
+                          children: [
+                            CircleButton(
+                              icon: Icons.search,
+                              onTap: () =>
+                                  ref
+                                          .read(
+                                            bookmarkSearchOpenProvider.notifier,
+                                          )
+                                          .state =
+                                      true,
+                            ),
+                            SizedBox(width: 10),
+                            CircleButton(
+                              icon: Icons.more_vert,
+                              onTap: () =>
+                                  showBookmarkSettingBottomSheet(context),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
-                ),
+                    ],
+                  ),
                 AppBarBottomLine(thickness: 2),
               ],
             ),

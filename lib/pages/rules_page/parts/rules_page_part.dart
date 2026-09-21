@@ -13,7 +13,9 @@ class RulesPagePart extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final AsyncValue<ContactUsModel?> resultApi = ref.watch(fetchContactUsProvider);
+    final AsyncValue<ContactUsModel?> resultApi = ref.watch(
+      fetchContactUsProvider,
+    );
 
     return resultApi.when(
       data: (data) {

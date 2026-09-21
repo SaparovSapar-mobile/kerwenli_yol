@@ -58,6 +58,7 @@ class HomeCategoryCard extends ConsumerWidget {
         context,
         CompaniesPage(categoryId: category.id),
         AxisDirection.left,
+        name: 'companies',
       ),
       child: Container(
         width: 160,

@@ -7,7 +7,12 @@ import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
 
 class ViewCount extends ConsumerWidget {
-  const ViewCount({super.key, this.bGColor, required this.viewCount, this.fontSize});
+  const ViewCount({
+    super.key,
+    this.bGColor,
+    required this.viewCount,
+    this.fontSize,
+  });
 
   final Color? bGColor;
   final double? fontSize;

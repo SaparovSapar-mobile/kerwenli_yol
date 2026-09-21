@@ -14,7 +14,7 @@ class RulesTopPart extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         BackLeadingButton(text: lang.back, leftPadding: 0),
-        AboutUsPart(icon: Icons.verified_user, text: "Gizlinlik syýasaty",),
+        AboutUsPart(icon: Icons.verified_user, text: "Gizlinlik syýasaty"),
       ],
     );
   }

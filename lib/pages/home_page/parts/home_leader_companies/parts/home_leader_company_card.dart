@@ -42,6 +42,7 @@ class HomeLeaderCompanyCard extends ConsumerWidget {
           context,
           CompanyPage(companyId: companyId),
           AxisDirection.left,
+          name: 'company_profile',
         );
       },
       child: Container(

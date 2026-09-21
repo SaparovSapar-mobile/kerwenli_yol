@@ -48,6 +48,7 @@ class UserProfile extends ConsumerWidget {
                 context,
                 EditProfilePage(user: user),
                 AxisDirection.left,
+                name: 'profile_edit',
               );
             },
             contentPadding: EdgeInsets.zero,

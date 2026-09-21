@@ -75,6 +75,7 @@ class SendOtpButton extends ConsumerWidget {
             name: fullName,
             password: userPassword,
             phone: userPhone,
+            email: userEmail,
           );
 
           result = await ref.read(registerUserProvider(reqData).future);

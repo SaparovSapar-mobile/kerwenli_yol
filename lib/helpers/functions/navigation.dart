@@ -2,15 +2,34 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 
-goToPage(BuildContext context, Widget page, AxisDirection direction) {
+/// [name] - имя экрана для аналитики. FirebaseAnalyticsObserver шлёт
+/// screen_view только для маршрутов с именем, поэтому раньше в Google
+/// Analytics не было видно ни одного экрана приложения.
+/// Если имя не задано, берётся название класса виджета (CompanyPage и т.п.).
+/// Возвращает future маршрута - завершается, когда страницу закрыли.
+/// Нужно, чтобы вызывающий мог обновить данные после возврата.
+Future<dynamic> goToPage(
+  BuildContext context,
+  Widget page,
+  AxisDirection direction, {
+  String? name,
+}) {
+  final RouteSettings settings = RouteSettings(
+    name: name ?? page.runtimeType.toString(),
+  );
+
   Route buildRoute(Widget page) {
     if (Platform.isIOS) {
-      return CupertinoPageRoute(builder: (_) => page);
+      return CupertinoPageRoute(builder: (_) => page, settings: settings);
     }
-    return CustomPageRoute(child: page, direction: AxisDirection.left);
+    return CustomPageRoute(
+      child: page,
+      direction: AxisDirection.left,
+      settings: settings,
+    );
   }
 
-  Navigator.push(context, buildRoute(page));
+  return Navigator.push(context, buildRoute(page));
 }
 
 class CustomCupertinoPageRoute extends CupertinoPageRoute {
@@ -38,12 +57,15 @@ class CustomPageRoute extends PageRouteBuilder {
   final Widget child;
   final AxisDirection direction;
 
-  CustomPageRoute({required this.child, this.direction = AxisDirection.right})
-    : super(
-        transitionDuration: const Duration(milliseconds: 200),
-        reverseTransitionDuration: const Duration(milliseconds: 200),
-        pageBuilder: (context, animation, secondaryAnimation) => child,
-      );
+  CustomPageRoute({
+    required this.child,
+    this.direction = AxisDirection.right,
+    super.settings,
+  }) : super(
+         transitionDuration: const Duration(milliseconds: 200),
+         reverseTransitionDuration: const Duration(milliseconds: 200),
+         pageBuilder: (context, animation, secondaryAnimation) => child,
+       );
 
   @override
   Widget buildTransitions(

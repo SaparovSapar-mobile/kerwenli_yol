@@ -75,7 +75,12 @@ class CardBookmarkButton extends ConsumerWidget {
             final String userId = await getUserId();
             if (userId.isEmpty) {
               if (context.mounted) {
-                goToPage(context, LoginPage(), AxisDirection.left);
+                goToPage(
+                  context,
+                  LoginPage(),
+                  AxisDirection.left,
+                  name: 'login',
+                );
               }
               return;
             }

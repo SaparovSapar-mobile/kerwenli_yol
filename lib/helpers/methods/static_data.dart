@@ -58,3 +58,9 @@ List<String> searchTabs(BuildContext context) {
 
   return ['Kärhanalar','Medialar',  lang.products,  lang.news ];
 }
+
+List<String> notificationTabs(BuildContext context) {
+  final AppLocalizations lang = AppLocalizations.of(context)!;
+
+  return ['Bildiriş', 'Kärhanalar', lang.products, lang.news];
+}

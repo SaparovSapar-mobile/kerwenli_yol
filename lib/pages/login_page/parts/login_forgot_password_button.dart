@@ -30,8 +30,12 @@ class LoginForgotPasswordButton extends ConsumerWidget {
       alignment: Alignment.centerLeft,
       child: TextButton(
         style: TextButton.styleFrom(padding: EdgeInsets.only(left: 0)),
-        onPressed: () =>
-            goToPage(context, ForgotPasswordPage(), AxisDirection.left),
+        onPressed: () => goToPage(
+          context,
+          ForgotPasswordPage(),
+          AxisDirection.left,
+          name: 'forgot_password',
+        ),
         child: Text(lang.forgotPassword, style: textStyle),
       ),
     );

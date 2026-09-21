@@ -71,24 +71,20 @@ class _ExpandableHtmlTextState extends State<ExpandableHtmlText> {
                   heightFactor: 1.0,
                   child: ConstrainedBox(
                     constraints: BoxConstraints(
-                      maxHeight: 12 * 1.20 * 4 + 8, // fontSize * lineHeight * lines + padding
+                      maxHeight:
+                          12 * 1.20 * 4 +
+                          8, // fontSize * lineHeight * lines + padding
                     ),
                     child: OverflowBox(
                       alignment: Alignment.topLeft,
                       maxHeight: double.infinity,
-                      child: Html(
-                        data: widget.desc,
-                        style: style,
-                      ),
+                      child: Html(data: widget.desc, style: style),
                     ),
                   ),
                 ),
               )
             else
-              Html(
-                data: widget.desc,
-                style: style,
-              ),
+              Html(data: widget.desc, style: style),
             if (isOverflow)
               GestureDetector(
                 onTap: () => setState(() => _expanded = !_expanded),
@@ -102,7 +98,7 @@ class _ExpandableHtmlTextState extends State<ExpandableHtmlText> {
                       fontWeight: FontWeight.w500,
                       color: Color(0xFF007AFF),
                     ),
-                  ), 
+                  ),
                 ),
               ),
           ],

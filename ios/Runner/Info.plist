@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 	<dict>
+		<key>CADisableMinimumFrameDurationOnPhone</key>
+		<true/>
 		<key>CFBundleDevelopmentRegion</key>
 		<string>$(DEVELOPMENT_LANGUAGE)</string>
 		<key>CFBundleDisplayName</key>
@@ -20,14 +22,42 @@
 		<string>$(FLUTTER_BUILD_NAME)</string>
 		<key>CFBundleSignature</key>
 		<string>????</string>
+		<key>CFBundleURLTypes</key>
+		<array>
+			<dict>
+				<key>CFBundleTypeRole</key>
+				<string>Editor</string>
+				<key>CFBundleURLName</key>
+				<string>tm.abb.tajirtrade</string>
+				<key>CFBundleURLSchemes</key>
+				<array>
+					<string>tajirtrade</string>
+				</array>
+			</dict>
+		</array>
 		<key>CFBundleVersion</key>
 		<string>$(FLUTTER_BUILD_NUMBER)</string>
+		<key>LSApplicationQueriesSchemes</key>
+		<array>
+			<string>sms</string>
+			<string>tel</string>
+		</array>
 		<key>LSRequiresIPhoneOS</key>
+		<true/>
+		<key>NSCameraUsageDescription</key>
+		<string>This app uses the camera to allow users to take profile photos and to capture images when creating new listings.</string>
+		<key>NSLocationWhenInUseUsageDescription</key>
+		<string>We need location permission to show you the weather and the nearest companies based on your location.</string>
+		<key>NSPhotoLibraryUsageDescription</key>
+		<string>This app uses the camera to allow users to take profile photos and to capture images when creating new listings.</string>
+		<key>UIApplicationSupportsIndirectInputEvents</key>
 		<true/>
 		<key>UILaunchStoryboardName</key>
 		<string>LaunchScreen</string>
 		<key>UIMainStoryboardFile</key>
 		<string>Main</string>
+		<key>UIStatusBarHidden</key>
+		<false/>
 		<key>UISupportedInterfaceOrientations</key>
 		<array>
 			<string>UIInterfaceOrientationPortrait</string>
@@ -41,31 +71,9 @@
 			<string>UIInterfaceOrientationLandscapeLeft</string>
 			<string>UIInterfaceOrientationLandscapeRight</string>
 		</array>
-		<key>CADisableMinimumFrameDurationOnPhone</key>
-		<true/>
-		<key>UIApplicationSupportsIndirectInputEvents</key>
-		<true/>
-		<key>UIStatusBarHidden</key>
-		<false/>
-
-		 <!-- Start My Code -->
-		<key>LSApplicationQueriesSchemes</key>
-		<array>
-			<string>sms</string>
-			<string>tel</string>
-		</array>
-
-		<key>UIBackgroundModes</key>
-		<array>
-			<string>location</string>
-		</array>
-		<key>NSLocationWhenInUseUsageDescription</key>
-		<string>We need location permission to show you the weather and the nearest companies based on your location.</string>
-
-		<key>NSCameraUsageDescription</key>
-		<string>This app uses the camera to allow users to take profile photos and to capture images when creating new listings.</string>
-		<key>NSPhotoLibraryUsageDescription</key>
-		<string>This app uses the camera to allow users to take profile photos and to capture images when creating new listings</string>
-		 <!-- End My Code -->
-	</dict>
+		<!-- Экраны репортим сами из Flutter, иначе Firebase шлёт
+	     единственный FlutterViewController на всё приложение. -->
+	<key>FirebaseAutomaticScreenReportingEnabled</key>
+	<false/>
+</dict>
 </plist>

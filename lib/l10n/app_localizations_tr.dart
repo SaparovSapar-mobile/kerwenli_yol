@@ -168,6 +168,9 @@ class AppLocalizationsTr extends AppLocalizations {
   String get edit => 'Düzenle';
 
   @override
+  String get qrCode => 'QR kod';
+
+  @override
   String get profileUpdated => 'Bilgiler başarıyla güncellendi';
 
   @override
@@ -412,4 +415,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get rateCompany => 'Firmayı değerlendir';
+
+  @override
+  String get loginToSeeNotifications => 'Bildirimleri görmek için giriş yapın';
 }

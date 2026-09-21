@@ -37,6 +37,46 @@ class ProductApiService {
     }
   }
 
+  // fetch all products -----------------------------
+  /// GET /client/products - полный список товаров, как на сайте.
+  /// Раньше главная брала /client/new-products, но там лежат рекламные
+  /// кампании со сроком действия, а не товары: на сервере их всего 4 штуки,
+  /// все с истёкшим end_date, поэтому список на главной был почти пустой.
+  /// Без p/l сервер отдаёт только первые 20, поэтому просим явно.
+  Future<List<ProductModel>> fetchAllProducts({
+    required String userId,
+    int page = 1,
+    int pageSize = 100,
+  }) async {
+    final Uri uri = Uri.parse('$apiUrl/client/products').replace(
+      queryParameters: {
+        'p': page.toString(),
+        'l': pageSize.toString(),
+        'user_uuid': userId,
+      },
+    );
+
+    try {
+      final http.Response response = await http.get(uri);
+      final dynamic jsonData = json.decode(response.body);
+
+      if (response.statusCode == 200 && jsonData['status'] == true) {
+        final dynamic datas = jsonData['data'];
+
+        if (datas == null || datas is! List) {
+          return [];
+        }
+
+        return datas
+            .map<ProductModel>((propJson) => ProductModel.fromJson(propJson))
+            .toList();
+      }
+      return [];
+    } catch (e) {
+      rethrow;
+    }
+  }
+
   // fetch company products -----------------------------
   Future<List<ProductModel>> fetchLikedProducts(ProductParams arg) async {
     final Uri uri = Uri.parse('$apiUrl/client/likes/${arg.userId}').replace(

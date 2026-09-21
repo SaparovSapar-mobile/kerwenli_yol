@@ -23,7 +23,7 @@ class HomeMedia extends ConsumerWidget {
       fetchMediasProvider(arg),
     );
 
-    return resultApi.when( 
+    return resultApi.when(
       data: (data) {
         if (data.isEmpty) {
           return const SizedBox.shrink();
@@ -34,7 +34,12 @@ class HomeMedia extends ConsumerWidget {
           children: [
             HomeMoreButton(
               text: lang.media,
-              onTap: () => goToPage(context, MediasPage(), AxisDirection.left),
+              onTap: () => goToPage(
+                context,
+                MediasPage(),
+                AxisDirection.left,
+                name: 'medias',
+              ),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 5, bottom: 10),

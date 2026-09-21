@@ -105,6 +105,7 @@ class _OtpInputState extends ConsumerState<OtpInput> {
                   name: widget.fullName,
                   password: widget.password,
                   phone: widget.phone,
+                  email: widget.email,
                 );
 
                 result = await ref.read(registerUserProvider(reqData).future);

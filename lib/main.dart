@@ -1,4 +1,5 @@
 import 'dart:io';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +13,7 @@ import 'package:kerwenli_yol/l10n/app_localizations.dart';
 import 'package:kerwenli_yol/pages/home.dart';
 import 'package:kerwenli_yol/providers/settings.dart';
 import 'package:kerwenli_yol/services/analytics_service.dart';
+import 'package:kerwenli_yol/services/deep_link_service.dart';
 import 'package:kerwenli_yol/styles/theme/theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:kerwenli_yol/l10n/tk_material_localizations.dart';
@@ -46,7 +48,10 @@ void main() async {
   // 5. .env файл
   await dotenv.load(fileName: ".env");
 
-  // 6. Только теперь запускаем приложение
+  // 6. Слушатель диплинков (QR-код компании)
+  await DeepLinkService.instance.init();
+
+  // 7. Только теперь запускаем приложение
   runApp(const ProviderScope(child: MyApp()));
 }
 
@@ -81,6 +86,8 @@ class MyApp extends ConsumerWidget {
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      // нужен, чтобы открывать страницу компании по ссылке из QR
+      navigatorKey: rootNavigatorKey,
       navigatorObservers: [AnalyticsService().observer],
       themeMode: themeMode,
       theme: AppTheme.lightTheme,

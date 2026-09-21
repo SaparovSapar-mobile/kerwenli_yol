@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:kerwenli_yol/helpers/methods/image_and_video.dart';
+import 'package:kerwenli_yol/helpers/methods/static_data.dart';
 import 'package:kerwenli_yol/models/product.dart';
 import 'package:kerwenli_yol/models/publication_model.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_banners/parts/banner_dots.dart';
@@ -211,7 +212,15 @@ class _HomeNewProductsCardImagesState extends State<HomeNewProductsCardImages> {
                       Positioned(
                         left: 10,
                         bottom: 10,
-                        child: ZoomImagesButton(),
+                        child: ZoomImagesButton(
+                          // те же картинки, что в карусели, но полными
+                          // ссылками - PhotosViewer грузит их по сети
+                          images: images
+                              .where((e) => e.isNotEmpty)
+                              .map((e) => '$pathUrl/$e')
+                              .toList(),
+                          initialIndex: _currentIndex,
+                        ),
                       )
                     else
                       const SizedBox.shrink(),

@@ -2,13 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
 
 class VideoDuration extends StatelessWidget {
-  const VideoDuration({super.key, this.icon, this.fontSize});
+  const VideoDuration({
+    super.key,
+    required this.duration,
+    this.icon,
+    this.fontSize,
+  });
 
+  /// Готовая строка вида "02:20". Приходит из MediaModel.duration.
+  final String duration;
   final IconData? icon;
   final double? fontSize;
 
   @override
   Widget build(BuildContext context) {
+    // Длительности нет - не показываем плашку вообще.
+    // Раньше тут стояло жёстко "03:00" и врало на каждом видео.
+    if (duration.isEmpty) return const SizedBox.shrink();
+
     // ======= Colors ======
     Color bgColor = Colors.black26;
     Color iconColor = Color(0xFFFFFFFF);
@@ -36,7 +47,7 @@ class VideoDuration extends StatelessWidget {
             )
           else
             const SizedBox.shrink(),
-          Text('03:00', style: textStyle),
+          Text(duration, style: textStyle),
         ],
       ),
     );

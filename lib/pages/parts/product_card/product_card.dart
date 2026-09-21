@@ -52,6 +52,7 @@ class ProductCard extends ConsumerWidget {
         context,
         ProductPage(productId: product.id),
         AxisDirection.left,
+        name: 'product_detail',
       ),
       child: Container(
         padding: EdgeInsets.only(left: 9, top: 18, right: 9, bottom: 9),

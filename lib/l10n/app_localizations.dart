@@ -417,6 +417,12 @@ abstract class AppLocalizations {
   /// **'Edit'**
   String get edit;
 
+  /// No description provided for @qrCode.
+  ///
+  /// In en, this message translates to:
+  /// **'QR code'**
+  String get qrCode;
+
   /// No description provided for @profileUpdated.
   ///
   /// In en, this message translates to:
@@ -908,6 +914,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Rate the company'**
   String get rateCompany;
+
+  /// No description provided for @loginToSeeNotifications.
+  ///
+  /// In en, this message translates to:
+  /// **'Log in to see your notifications'**
+  String get loginToSeeNotifications;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

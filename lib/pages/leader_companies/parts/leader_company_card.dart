@@ -39,6 +39,7 @@ class LeaderCompanyCard extends ConsumerWidget {
         context,
         CompanyPage(companyId: company.individualUuid),
         AxisDirection.left,
+        name: 'company_profile',
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,

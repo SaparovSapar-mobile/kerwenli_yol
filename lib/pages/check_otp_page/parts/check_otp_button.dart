@@ -17,6 +17,7 @@ import 'package:kerwenli_yol/providers/database/user.dart';
 import 'package:kerwenli_yol/providers/parts/inputs.dart';
 import 'package:kerwenli_yol/providers/settings.dart';
 import 'package:kerwenli_yol/services/analytics_service.dart';
+import 'package:kerwenli_yol/services/notification_service.dart';
 
 import 'widget.dart';
 
@@ -127,7 +128,15 @@ class CheckOtpButton extends ConsumerWidget {
             ),
           );
 
-          AnalyticsService().logSignUp(phone.isNotEmpty ? 'phone' : 'email');
+          // только внутренний uuid, без телефона и имени.
+          // userId гасит повтор события при повторной проверке OTP
+          AnalyticsService().setUserId(respUser.id);
+          // регистрируем устройство для адресных пушей
+          NotificationService().registerDeviceOnServer(respUser.id);
+          AnalyticsService().logSignUp(
+            phone.isNotEmpty ? 'phone' : 'email',
+            userId: respUser.id,
+          );
 
           ref.read(checkOTPCodeBtnPressProvider.notifier).state = false;
           ref.invalidate(getUserProvider);
@@ -176,7 +185,7 @@ class CheckOtpButton extends ConsumerWidget {
         ref.read(checkOTPCodeBtnPressProvider.notifier).state = false;
 
         if (context.mounted) {
-          goToPage(context, LoginPage(), AxisDirection.left);
+          goToPage(context, LoginPage(), AxisDirection.left, name: 'login');
         }
       },
     );

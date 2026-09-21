@@ -11,9 +11,7 @@ import 'package:kerwenli_yol/models/send_msg_to_company.dart';
 class CompanyApiService {
   // fetch best companies -----------------------------
   Future<List<CompanyModel>> fetchBestCompanies() async {
-    final Uri uri = Uri.parse(
-      '$apiUrl/client/best-companies',
-    );
+    final Uri uri = Uri.parse('$apiUrl/client/best-companies');
 
     try {
       final http.Response response = await http.get(uri);
@@ -132,14 +130,13 @@ class CompanyApiService {
         ? '/client/individuals/by-subcategory/${arg.subCategoryId}'
         : '/client/individuals/by-category/${arg.categoryId}';
 
-    final Uri uri =
-        Uri.parse('$apiUrl$path').replace(
-          queryParameters: {
-            'p': arg.page.toString(),
-            'l': arg.pageSize.toString(),
-            'user_uuid': arg.userId,
-          },
-        );
+    final Uri uri = Uri.parse('$apiUrl$path').replace(
+      queryParameters: {
+        'p': arg.page.toString(),
+        'l': arg.pageSize.toString(),
+        'user_uuid': arg.userId,
+      },
+    );
 
     try {
       debugPrint('COMPANIES REQUEST URL: $uri');

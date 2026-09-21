@@ -53,6 +53,7 @@ class EditProfileForm extends ConsumerWidget {
                       context,
                       const ForgotPasswordPage(),
                       AxisDirection.left,
+                      name: 'forgot_password',
                     ),
                   ),
                   const SizedBox(height: 16),

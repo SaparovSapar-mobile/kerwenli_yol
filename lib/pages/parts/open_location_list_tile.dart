@@ -35,7 +35,10 @@ class OpenLocationListTile extends ConsumerWidget {
         final String mapUrl = url != null && url!.isNotEmpty
             ? url!
             : 'https://www.google.com/maps/place//@37.955853,58.425542,730m/data=!3m1!1e3!4m6!1m5!3m4!2zMzfCsDU3JzIwLjciTiA1OMKwMjUnMzIuMCJF!8m2!3d37.95575!4d58.4255556';
-        await launchUrl(Uri.parse(mapUrl), mode: LaunchMode.externalApplication);
+        await launchUrl(
+          Uri.parse(mapUrl),
+          mode: LaunchMode.externalApplication,
+        );
       },
       contentPadding: EdgeInsets.zero,
       dense: true,

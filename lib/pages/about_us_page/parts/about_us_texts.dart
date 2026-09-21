@@ -21,7 +21,7 @@ class AboutUsTexts extends ConsumerWidget {
 
     return resultApi.when(
       data: (data) {
-        if (data.nameTm == "") {
+        if (data.isEmpty) {
           return SizedBox.shrink();
         }
 
@@ -30,7 +30,7 @@ class AboutUsTexts extends ConsumerWidget {
           data.nameTm,
           data.nameRu,
           data.nameEn,
-          data.nameEn,
+          data.nameTr,
         );
 
         final String desc = translateText(
@@ -38,7 +38,7 @@ class AboutUsTexts extends ConsumerWidget {
           data.descriptionTm,
           data.descriptionRu,
           data.descriptionEn,
-          data.descriptionEn,
+          data.descriptionTr,
         );
 
         return Expanded(
@@ -47,13 +47,17 @@ class AboutUsTexts extends ConsumerWidget {
               Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  SizedBox(
-                    width: 50,
-                    height: 50,
-                    child: showImageMethod(data.basePhoto, 10.0, null),
-                  ),
-                  SizedBox(width: 5),
-                  Text(name, style: nameStyle),
+                  // логотипа в ответе сервера нет - без этой проверки
+                  // остаётся пустой квадрат 50x50
+                  if (data.basePhoto.isNotEmpty) ...[
+                    SizedBox(
+                      width: 50,
+                      height: 50,
+                      child: showImageMethod(data.basePhoto, 10.0, null),
+                    ),
+                    SizedBox(width: 5),
+                  ],
+                  Flexible(child: Text(name, style: nameStyle)),
                 ],
               ),
               SizedBox(height: 5),
@@ -68,8 +72,10 @@ class AboutUsTexts extends ConsumerWidget {
                   ),
                 },
               ),
-              SizedBox(height: 10),
-              AboutUsPhotos(photos: data.photos),
+              if (data.photos.isNotEmpty) ...[
+                SizedBox(height: 10),
+                AboutUsPhotos(photos: data.photos),
+              ],
             ],
           ),
         );

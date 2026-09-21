@@ -30,7 +30,8 @@ class CompanyPageMedias extends ConsumerWidget {
           CompanyPagePartTabbar(
             tabTexts: [
               // lang.shortVideos,
-             lang.videos, lang.photoReport],
+              lang.videos, lang.photoReport,
+            ],
           ),
           Expanded(
             child: Container(

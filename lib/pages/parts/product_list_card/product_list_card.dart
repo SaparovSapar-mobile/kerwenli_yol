@@ -53,6 +53,7 @@ class ProductListCard extends ConsumerWidget {
         context,
         ProductPage(productId: product.id),
         AxisDirection.left,
+        name: 'product_detail',
       ),
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 10),
@@ -99,7 +100,7 @@ class ProductListCard extends ConsumerWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      ViewCount(fontSize: 10, viewCount: product.viewCount,),
+                      ViewCount(fontSize: 10, viewCount: product.viewCount),
                       LikeCount(fontSize: 10, likeCount: product.likesCount),
                     ],
                   ),

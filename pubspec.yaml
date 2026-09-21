@@ -16,7 +16,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 # In Windows, build-name is used as the major, minor, and patch parts
 # of the product and file versions while build-number is used as the build suffix.
-version: 1.0.9+10
+version: 2.1.2+21
 
 environment:
   sdk: ^3.8.1
@@ -57,6 +57,7 @@ dependencies:
   # shimmer: ^3.0.0
   shimmer_animation: ^2.2.2+1
   url_launcher: ^6.3.2
+  package_info_plus: ^9.0.0
   chewie: ^1.13.0
   video_player: ^2.10.1
   # animated_switcher_plus: ^1.4.0
@@ -76,6 +77,7 @@ dependencies:
   webview_flutter: ^4.13.1
   firebase_analytics: ^12.4.3
   share_plus: ^12.0.2
+  app_links: ^6.4.1
 
 dev_dependencies:
   flutter_test:
@@ -137,3 +139,22 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+
+# Сплеш-экран. Пересобрать после правок:
+#   dart run flutter_native_splash:create
+flutter_native_splash:
+  color: "#FF781A"
+  background_image: "assets/images/splash_bg.png"
+  image: "assets/images/splash_logo.png"
+  branding: "assets/images/splash_branding.png"
+  branding_mode: bottom
+  branding_bottom_padding: 24
+  android: true
+  ios: true
+  web: false
+  # На Android 12+ систему рисует ОС: только круглая иконка по центру,
+  # надпись туда не влезает и обрезается. Поэтому тут логотип без текста.
+  android_12:
+    image: "assets/images/splash_android12.png"
+    color: "#FF781A"
+    icon_background_color: "#FF781A"

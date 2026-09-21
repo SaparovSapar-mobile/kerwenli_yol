@@ -27,6 +27,7 @@ class OnboardLoginOrRegisterPart extends ConsumerWidget {
     final AppLocalizations lang = AppLocalizations.of(context)!;
 
     final bool isLight = isLightTheme(context, ref);
+
     final Color titleColor = isLight
         ? LightColors.textTitleLight
         : DarkColors.textTitleDark;
@@ -51,8 +52,12 @@ class OnboardLoginOrRegisterPart extends ConsumerWidget {
         SizedBox(height: 47),
         PrimaryButton(
           text: lang.signUp,
-          onPressed: () =>
-              goToPage(context, RegisterPage(), AxisDirection.left),
+          onPressed: () => goToPage(
+            context,
+            RegisterPage(),
+            AxisDirection.left,
+            name: 'register',
+          ),
         ),
         SizedBox(height: 10),
         BgPageLightButton(

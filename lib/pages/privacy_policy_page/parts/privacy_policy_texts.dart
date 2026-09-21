@@ -26,7 +26,7 @@ class PrivacyPolicyTexts extends ConsumerWidget {
           data.descriptionTm,
           data.descriptionRu,
           data.descriptionEn,
-          data.descriptionEn,
+          data.descriptionTr,
         );
 
         return Expanded(

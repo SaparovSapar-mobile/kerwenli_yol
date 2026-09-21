@@ -35,6 +35,7 @@ class CompanyInfoBrandsList extends ConsumerWidget {
                     context,
                     CompanyPage(companyId: brand.individualUuid),
                     AxisDirection.left,
+                    name: 'company_profile',
                   ),
             child: SizedBox(
               width: 65,

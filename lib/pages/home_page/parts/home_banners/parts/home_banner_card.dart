@@ -36,6 +36,7 @@ class HomeBannerCard extends ConsumerWidget {
             context,
             CompanyPage(companyId: banner.companyUuid),
             AxisDirection.left,
+            name: 'company_profile',
           );
         }
       },

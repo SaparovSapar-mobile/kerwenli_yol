@@ -106,7 +106,12 @@ class CompanyModel {
       nameEn: json['name_en'] ?? '',
       isFollowed: json['is_followed'] ?? false,
       isBookmarked: json['is_bookmarked'] ?? false,
-      categoryName: TranslationModel.fromDynamic(json['category_name']),
+      // Часть эндпоинтов (например /client/vip-companies) отдаёт
+      // category_names массивом вместо category_name объекта - из-за этого
+      // категория была пустой. fromDynamic разбирает оба варианта.
+      categoryName: TranslationModel.fromDynamic(
+        json['category_name'] ?? json['category_names'],
+      ),
       publicationLabelTm: json['publication_label_tm'] ?? '',
       publicationLabelRu: json['publication_label_ru'] ?? '',
       publicationLabelEn: json['publication_label_en'] ?? '',
@@ -196,7 +201,12 @@ class CompanyDetailModel {
           : MainInfoModel.fromJson(json['main_info']),
       businessName: TranslationModel.fromDynamic(json['business_name']),
       description: TranslationModel.fromDynamic(json['description']),
-      categoryName: TranslationModel.fromDynamic(json['category_name']),
+      // Часть эндпоинтов (например /client/vip-companies) отдаёт
+      // category_names массивом вместо category_name объекта - из-за этого
+      // категория была пустой. fromDynamic разбирает оба варианта.
+      categoryName: TranslationModel.fromDynamic(
+        json['category_name'] ?? json['category_names'],
+      ),
       address: TranslationModel.fromDynamic(json['address']),
       contact: json['contact'] == null
           ? CompContactModel.defaultValue()

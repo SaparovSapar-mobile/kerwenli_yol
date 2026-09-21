@@ -66,6 +66,7 @@ class CompanyListCard extends ConsumerWidget {
         context,
         CompanyPage(companyId: company.individualUuid),
         AxisDirection.left,
+        name: 'company_profile',
       ),
       child: Container(
         height: companyListCardHeight,
@@ -77,7 +78,7 @@ class CompanyListCard extends ConsumerWidget {
         child: Row(
           children: [
             CompanyCardImage(
-              cardTopTypes:[] ,
+              cardTopTypes: [],
               height: 100,
               width: 100,
               bookmarkButtonWith: 20,
@@ -131,7 +132,10 @@ class CompanyListCard extends ConsumerWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       ViewCount(fontSize: 12, viewCount: company.viewsCount),
-                     HomeVipCompanyRating(fontSize: 12, rating: company.averageRating),
+                      HomeVipCompanyRating(
+                        fontSize: 12,
+                        rating: company.averageRating,
+                      ),
                     ],
                   ),
                 ],

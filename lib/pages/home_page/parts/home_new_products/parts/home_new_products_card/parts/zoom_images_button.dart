@@ -6,7 +6,16 @@ import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 
 class ZoomImagesButton extends ConsumerWidget {
-  const ZoomImagesButton({super.key});
+  const ZoomImagesButton({
+    super.key,
+    required this.images,
+    this.initialIndex = 0,
+  });
+
+  /// Полные ссылки на картинки товара. Раньше тут был жёстко прописан
+  /// assets/examples/foto.png - открывалась заглушка вместо товара.
+  final List<String> images;
+  final int initialIndex;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -18,22 +27,17 @@ class ZoomImagesButton extends ConsumerWidget {
     Color bgColor = isLight ? LightColors.bgBlogLight : DarkColors.bgBlogDark;
 
     return GestureDetector(
-      onTap: () => Navigator.of(context).push(
-        MaterialPageRoute(
-          fullscreenDialog: true,
-          builder: (_) => PhotosViewer(
-            images: const [
-              "assets/examples/foto.png",
-              "assets/examples/foto.png",
-              "assets/examples/foto.png",
-              "assets/examples/foto.png",
-              "assets/examples/foto.png",
-              "assets/examples/foto.png",
-            ],
-            initialIndex: 0,
-          ),
-        ),
-      ),
+      onTap: images.isEmpty
+          ? null
+          : () => Navigator.of(context).push(
+              MaterialPageRoute(
+                fullscreenDialog: true,
+                builder: (_) => PhotosViewer(
+                  images: images,
+                  initialIndex: initialIndex.clamp(0, images.length - 1),
+                ),
+              ),
+            ),
       child: Container(
         width: 24,
         height: 24,

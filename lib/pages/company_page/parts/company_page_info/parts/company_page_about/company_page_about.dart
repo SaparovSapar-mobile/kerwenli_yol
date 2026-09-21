@@ -14,6 +14,10 @@ import 'package:kerwenli_yol/pages/company_page/company_banners/parts/company_ba
 import 'package:kerwenli_yol/pages/parts/open_location_list_tile.dart';
 import 'package:kerwenli_yol/pages/parts/open_social_list_tile.dart';
 import 'package:kerwenli_yol/pages/parts/show_image.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:kerwenli_yol/helpers/methods/static_data.dart';
+import 'package:kerwenli_yol/services/deep_link_service.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
@@ -85,6 +89,18 @@ class CompanyPageAbout extends ConsumerWidget {
     // ======= company map =======
     final MapsModel compMap = company.maps;
     final bool hasMap = compMap.url != '';
+
+    // ======= company qr code =======
+    // QR генерируем сами; при сканировании открывается эта же страница
+    // в приложении по ссылке tajirtrade://company/<uuid>
+    final String qrData = companyDeepLink(company.id);
+    final bool hasQrCode = company.id.isNotEmpty;
+
+    // логотип компании в центр QR-кода
+    final String qrLogo = company.mainInfo.logoImg;
+    final ImageProvider? qrLogoImage = qrLogo.isEmpty
+        ? null
+        : CachedNetworkImageProvider('$pathUrl$qrLogo');
 
     return Container(
       padding: EdgeInsets.all(10),
@@ -171,7 +187,7 @@ class CompanyPageAbout extends ConsumerWidget {
                       icon: 'instagram.png',
                       text: e.value,
                       onTap: () async {
-                        await openSocial(e.value, SocialType.instagram); 
+                        await openSocial(e.value, SocialType.instagram);
                       },
                     );
                     break;
@@ -208,6 +224,47 @@ class CompanyPageAbout extends ConsumerWidget {
 
                 return rWidget;
               }),
+
+            // ======= QR код компании =======
+            if (hasQrCode) ...[
+              SizedBox(height: 20),
+              Text(lang.qrCode, style: textStyle),
+              SizedBox(height: 10),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Container(
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    // QR читается только на светлом фоне, поэтому подложка
+                    // белая в обеих темах
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: QrImageView(
+                    data: qrData,
+                    version: QrVersions.auto,
+                    size: 120,
+                    backgroundColor: Colors.white,
+                    // логотип перекрывает часть кода, поэтому максимальная
+                    // избыточность - иначе QR перестанет сканироваться
+                    errorCorrectionLevel: QrErrorCorrectLevel.H,
+                    embeddedImage: qrLogoImage,
+                    embeddedImageStyle: const QrEmbeddedImageStyle(
+                      size: Size(30, 30),
+                    ),
+                    eyeStyle: const QrEyeStyle(
+                      eyeShape: QrEyeShape.square,
+                      color: Colors.black,
+                    ),
+                    dataModuleStyle: const QrDataModuleStyle(
+                      dataModuleShape: QrDataModuleShape.square,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+
             SizedBox(height: 20),
             Text(lang.ourLocationMap, style: textStyle),
             SizedBox(height: 10),

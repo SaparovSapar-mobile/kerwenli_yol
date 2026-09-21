@@ -28,19 +28,19 @@ class CompanyPage extends ConsumerWidget {
       fetchCompanyProvider(companyId),
     );
 
-    ref.listen<AsyncValue<CompanyDetailModel>>(fetchCompanyProvider(companyId), (
-      previous,
-      next,
-    ) {
-      final CompanyDetailModel? data = next.value;
-      if (data != null && data.id != '') {
-        AnalyticsService().logViewCompany(
-          companyId: data.id,
-          companyName: data.businessName.en,
-          categoryName: data.categoryName.en,
-        );
-      }
-    });
+    ref.listen<AsyncValue<CompanyDetailModel>>(
+      fetchCompanyProvider(companyId),
+      (previous, next) {
+        final CompanyDetailModel? data = next.value;
+        if (data != null && data.id != '') {
+          AnalyticsService().logViewCompany(
+            companyId: data.id,
+            companyName: data.businessName.en,
+            categoryName: data.categoryName.en,
+          );
+        }
+      },
+    );
 
     // e51afda8-856c-4514-ab30-d7e3c5e588c6
 

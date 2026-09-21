@@ -36,6 +36,7 @@ class HomeVirtuals extends ConsumerWidget {
                 context,
                 VipCompaniesPage(vipCompanies: data),
                 AxisDirection.left,
+                name: 'vip_companies',
               ),
             ),
             Padding(

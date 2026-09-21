@@ -86,6 +86,7 @@ class HomeNewsCard extends ConsumerWidget {
         context,
         NewsDetailPage(newsId: news.id),
         AxisDirection.left,
+        name: 'news_detail',
       ),
       child: Container(
         width: width,

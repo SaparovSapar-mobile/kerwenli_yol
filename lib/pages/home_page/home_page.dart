@@ -42,7 +42,7 @@ class HomePage extends ConsumerWidget {
         ref.invalidate(fetchCategoriesProvider);
         ref.invalidate(fetchBestCompaniesProvider);
         ref.invalidate(fetchVipCompaniesProvider);
-        ref.invalidate(fetchNewProductsProvider);
+        ref.invalidate(fetchAllProductsProvider);
         ref.invalidate(fetchTravelsProvider);
         ref.invalidate(fetchMediasProvider);
         ref.invalidate(fetchNewsProvider);
@@ -57,7 +57,7 @@ class HomePage extends ConsumerWidget {
           ref.read(fetchCategoriesProvider.future),
           ref.read(fetchBestCompaniesProvider.future),
           ref.read(fetchVipCompaniesProvider.future),
-          ref.read(fetchNewProductsProvider.future),
+          ref.read(fetchAllProductsProvider.future),
           ref.read(fetchTravelsProvider.future),
           ref.read(fetchMediasProvider(DefaultParams()).future),
           ref.read(fetchNewsProvider(DefaultParams()).future),

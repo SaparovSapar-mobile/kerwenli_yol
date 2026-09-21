@@ -56,10 +56,7 @@ class CardTopText extends StatelessWidget {
         color: cardColor,
         borderRadius: BorderRadius.circular(2),
       ),
-      child: Text(
-        text,
-        style: textStyle.copyWith(color: Colors.white),
-      ),
+      child: Text(text, style: textStyle.copyWith(color: Colors.white)),
     );
   }
 }

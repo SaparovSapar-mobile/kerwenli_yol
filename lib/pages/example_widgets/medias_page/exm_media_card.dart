@@ -33,7 +33,7 @@ class ExmMediaCard extends StatelessWidget {
                   bottom: 6,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [VideoDuration()],
+                    children: [VideoDuration(duration: '')],
                   ),
                 ),
               ],

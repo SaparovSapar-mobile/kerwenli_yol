@@ -168,6 +168,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get edit => 'Edit';
 
   @override
+  String get qrCode => 'QR code';
+
+  @override
   String get profileUpdated => 'Profile updated successfully';
 
   @override
@@ -412,4 +415,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get rateCompany => 'Rate the company';
+
+  @override
+  String get loginToSeeNotifications => 'Log in to see your notifications';
 }

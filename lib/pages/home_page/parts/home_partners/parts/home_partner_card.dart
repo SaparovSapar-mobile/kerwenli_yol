@@ -62,6 +62,7 @@ class HomePartnerCard extends ConsumerWidget {
         context,
         CompanyPage(companyId: sponsor.companyId),
         AxisDirection.left,
+        name: 'company_profile',
       ),
       child: Container(
         width: width,

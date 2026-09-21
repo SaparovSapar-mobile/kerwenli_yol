@@ -7,6 +7,7 @@ import 'package:kerwenli_yol/models/banner.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_banners/parts/home_banner.dart';
 import 'package:kerwenli_yol/pages/parts/shimmer_effects/second_banner_shimmer.dart';
 import 'package:kerwenli_yol/providers/api/banner.dart';
+import 'package:kerwenli_yol/helpers/functions/responsive.dart';
 
 class HomeSecondBanner extends ConsumerWidget {
   const HomeSecondBanner({super.key});
@@ -35,7 +36,7 @@ class HomeSecondBanner extends ConsumerWidget {
               child: HomeBanner(
                 isBig: true,
                 banners: slot4,
-                height: banner1Height,
+                height: bannerHeight1(context),
                 width: double.infinity,
                 borderRadius: 8,
                 dotsLeft: 4,

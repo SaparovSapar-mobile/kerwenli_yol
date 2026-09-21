@@ -30,9 +30,8 @@ class HomeVipCompanyCard extends ConsumerWidget {
   final CompanyModel company;
 
   // Вычисляем открыто/закрыто по working_time
-  
 
-    @override
+  @override
   Widget build(BuildContext context, WidgetRef ref) {
     final bool isLight = isLightTheme(context, ref);
     final Color borderColor = isLight
@@ -64,6 +63,7 @@ class HomeVipCompanyCard extends ConsumerWidget {
         context,
         CompanyPage(companyId: company.individualUuid),
         AxisDirection.left,
+        name: 'company_profile',
       ),
       child: Container(
         width: vipCompanyCardWidth,
@@ -122,5 +122,3 @@ class HomeVipCompanyCard extends ConsumerWidget {
     );
   }
 }
-
-

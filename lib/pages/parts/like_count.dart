@@ -7,7 +7,12 @@ import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:kerwenli_yol/styles/text_styles.dart';
 
 class LikeCount extends ConsumerWidget {
-  const LikeCount({super.key, this.bGColor, required this.likeCount, this.fontSize});
+  const LikeCount({
+    super.key,
+    this.bGColor,
+    required this.likeCount,
+    this.fontSize,
+  });
 
   final Color? bGColor;
   final double? fontSize;

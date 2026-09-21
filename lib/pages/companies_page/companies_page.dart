@@ -14,7 +14,11 @@ import 'package:kerwenli_yol/pages/parts/app_refresh_indicator.dart';
 import 'package:kerwenli_yol/providers/api/company.dart';
 
 class CompaniesPage extends ConsumerWidget {
-  const CompaniesPage({super.key, required this.categoryId, this.subCategoryId});
+  const CompaniesPage({
+    super.key,
+    required this.categoryId,
+    this.subCategoryId,
+  });
 
   final String categoryId;
   final String? subCategoryId;

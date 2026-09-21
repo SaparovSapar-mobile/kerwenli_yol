@@ -5,6 +5,7 @@ import 'package:kerwenli_yol/helpers/methods/static_data.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
+import 'package:kerwenli_yol/helpers/functions/responsive.dart';
 
 class BannerShimmer extends ConsumerWidget {
   const BannerShimmer({super.key});
@@ -29,7 +30,7 @@ class BannerShimmer extends ConsumerWidget {
           Container(
             alignment: Alignment.center,
             width: double.maxFinite,
-            height: banner1Height,
+            height: bannerHeight1(context),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(5),
               color: highlightColor,
@@ -46,7 +47,7 @@ class BannerShimmer extends ConsumerWidget {
               Container(
                 alignment: Alignment.center,
                 width: width,
-                height: banner2Height,
+                height: bannerHeight2(context),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5),
                   color: highlightColor,
@@ -61,7 +62,7 @@ class BannerShimmer extends ConsumerWidget {
               Container(
                 alignment: Alignment.center,
                 width: width,
-                height: banner2Height,
+                height: bannerHeight2(context),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5),
                   color: highlightColor,

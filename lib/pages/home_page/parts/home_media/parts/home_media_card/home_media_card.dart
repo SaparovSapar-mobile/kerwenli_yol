@@ -34,9 +34,7 @@ class HomeMediaCard extends ConsumerWidget {
       media.categoryName.en,
     );
     final String subcategoryNames = media.subcategories
-        .map(
-          (e) => translateText(ref, e.nameTm, e.nameRu, e.nameEn, e.nameTr),
-        )
+        .map((e) => translateText(ref, e.nameTm, e.nameRu, e.nameEn, e.nameTr))
         .where((e) => e.isNotEmpty)
         .join(', ');
     final String title = [
@@ -80,7 +78,10 @@ class HomeMediaCard extends ConsumerWidget {
                       bottom: 6,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [ViewCount(viewCount: media.viewNumber,), VideoDuration()],
+                        children: [
+                          ViewCount(viewCount: media.viewNumber),
+                          VideoDuration(duration: media.duration),
+                        ],
                       ),
                     ),
                   ],

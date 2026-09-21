@@ -9,10 +9,6 @@ class RateCompanyModel {
   });
 
   Map<String, dynamic> toJson() {
-    return {
-      'company_uuid': companyId,
-      'user_uuid': userId,
-      'rating': rating,
-    };
+    return {'company_uuid': companyId, 'user_uuid': userId, 'rating': rating};
   }
 }

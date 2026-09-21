@@ -34,7 +34,12 @@ class HomeNews extends ConsumerWidget {
           children: [
             HomeMoreButton(
               text: lang.news,
-              onTap: () => goToPage(context, NewsPage(), AxisDirection.left),
+              onTap: () => goToPage(
+                context,
+                NewsPage(),
+                AxisDirection.left,
+                name: 'news',
+              ),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 6, bottom: 10),

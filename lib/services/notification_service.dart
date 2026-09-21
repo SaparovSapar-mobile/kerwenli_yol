@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
@@ -6,6 +7,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:http/http.dart' as http;
 import 'package:kerwenli_yol/helpers/methods/static_data.dart';
+import 'package:kerwenli_yol/services/api/notification.dart';
 import 'package:path_provider/path_provider.dart';
 
 class NotificationService {
@@ -125,6 +127,46 @@ class NotificationService {
     final String? token = await _firebaseMessaging.getToken();
     return token ?? '';
   }
+
+  /// Регистрация устройства на сервере: POST /admin/notifications/register-token.
+  /// Без этого адресные пуши конкретному человеку не доходят - работает
+  /// только рассылка на топик. Метод getDeviceToken раньше не вызывался
+  /// нигде, то есть токен на сервер не уходил ни разу.
+  ///
+  /// Вызывать при запуске приложения и после входа в аккаунт.
+  /// Разрешение спрашиваем здесь же: без него на iOS и на Android 13+
+  /// пуши не придут, каким бы правильным ни был токен.
+  Future<void> registerDeviceOnServer(String userUuid) async {
+    if (userUuid.isEmpty) return;
+
+    try {
+      await _requestPermission();
+
+      final String token = await getDeviceToken();
+      if (token.isEmpty) return;
+
+      final String platform = Platform.isIOS ? 'ios' : 'android';
+      await NotificationApiService().registerDeviceToken(
+        userUuid: userUuid,
+        token: token,
+        platform: platform,
+      );
+
+      // токен может смениться сам - переотправляем новый
+      _tokenRefreshSub?.cancel();
+      _tokenRefreshSub = _firebaseMessaging.onTokenRefresh.listen((fresh) {
+        NotificationApiService().registerDeviceToken(
+          userUuid: userUuid,
+          token: fresh,
+          platform: platform,
+        );
+      });
+    } catch (e) {
+      debugPrint('registerDeviceOnServer: $e');
+    }
+  }
+
+  StreamSubscription<String>? _tokenRefreshSub;
 
   /// 5. Bildirim listener'ları kur
   Future<void> _setupFCMListeners(BuildContext context) async {

@@ -8,6 +8,7 @@ import 'package:kerwenli_yol/pages/home_page/parts/home_banners/parts/home_banne
 import 'package:kerwenli_yol/pages/parts/fetch_error_retry.dart';
 import 'package:kerwenli_yol/pages/parts/shimmer_effects/banner_shimmer.dart';
 import 'package:kerwenli_yol/providers/api/banner.dart';
+import 'package:kerwenli_yol/helpers/functions/responsive.dart';
 
 class HomeBanners extends ConsumerWidget {
   const HomeBanners({super.key});
@@ -40,7 +41,7 @@ class HomeBanners extends ConsumerWidget {
               HomeBanner(
                 isBig: true,
                 banners: slot1,
-                height: banner1Height,
+                height: bannerHeight1(context),
                 width: double.infinity,
                 borderRadius: 10,
                 dotsLeft: 7,
@@ -55,7 +56,7 @@ class HomeBanners extends ConsumerWidget {
                   HomeBanner(
                     isBig: false,
                     banners: slot2,
-                    height: banner2Height,
+                    height: bannerHeight2(context),
                     width: width,
                     borderRadius: 6,
                     dotsLeft: 4,
@@ -68,7 +69,7 @@ class HomeBanners extends ConsumerWidget {
                   HomeBanner(
                     isBig: false,
                     banners: slot3,
-                    height: banner2Height,
+                    height: bannerHeight2(context),
                     width: width,
                     borderRadius: 6,
                     dotsLeft: 4,
@@ -82,8 +83,9 @@ class HomeBanners extends ConsumerWidget {
             ],
           );
         },
-        error: (_, _) =>
-            FetchErrorRetry(onRetry: () => ref.invalidate(fetchBannersProvider)),
+        error: (_, _) => FetchErrorRetry(
+          onRetry: () => ref.invalidate(fetchBannersProvider),
+        ),
         loading: () => BannerShimmer(),
       ),
     );

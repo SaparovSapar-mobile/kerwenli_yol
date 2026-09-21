@@ -3,8 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kerwenli_yol/helpers/functions/navigation.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
 import 'package:kerwenli_yol/helpers/functions/translations.dart';
-import 'package:kerwenli_yol/models/category.dart';
 import 'package:kerwenli_yol/models/product.dart';
+import 'package:kerwenli_yol/models/translation.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_new_products/parts/home_new_products_card/parts/home_new_products_card_images.dart';
 import 'package:kerwenli_yol/pages/home_page/parts/home_vip_companies/parts/home_vip_company_card/parts/home_vip_company_card_categories.dart';
 import 'package:kerwenli_yol/pages/parts/like_count.dart';
@@ -30,7 +30,6 @@ class HomeNewProductsCard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-
     // ======== Colors ======
     final bool isLight = isLightTheme(context, ref);
     final Color borderColor = isLight
@@ -50,13 +49,16 @@ class HomeNewProductsCard extends ConsumerWidget {
     );
 
     // ========= category name =======
-    final CategoryModel category = product.category;
+    // берём category_name, а не categories: второго поля в ответе
+    // /client/products нет, поэтому плашка оставалась пустой.
+    // ProductListCard читает его же - теперь карточки одинаковые
+    final TranslationModel category = product.categoryName;
     final String categoryName = translateText(
       ref,
-      category.nameTm,
-      category.nameRu,
-      category.nameEn,
-      category.nameEn,
+      category.tm,
+      category.ru,
+      category.en,
+      category.en,
     );
 
     return GestureDetector(
@@ -64,6 +66,7 @@ class HomeNewProductsCard extends ConsumerWidget {
         context,
         ProductPage(productId: product.id),
         AxisDirection.left,
+        name: 'product_detail',
       ),
       child: Container(
         width: 112,

@@ -67,6 +67,7 @@ class CategoryCard extends ConsumerWidget {
         context,
         CompaniesPage(categoryId: categoryId, subCategoryId: subCategoryId),
         AxisDirection.left,
+        name: 'companies',
       );
     }
 
@@ -101,7 +102,9 @@ class CategoryCard extends ConsumerWidget {
               ),
             )
           : Theme(
-              data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+              data: Theme.of(
+                context,
+              ).copyWith(dividerColor: Colors.transparent),
               child: ExpansionTile(
                 onExpansionChanged: (_) =>
                     ref.read(categoryProvider.notifier).state = categoryId,

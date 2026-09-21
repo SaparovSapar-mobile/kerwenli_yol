@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kerwenli_yol/helpers/functions/store.dart';
 import 'package:kerwenli_yol/helpers/functions/theme.dart';
+import 'package:kerwenli_yol/helpers/methods/snackbars.dart';
+import 'package:kerwenli_yol/l10n/app_localizations.dart';
+import 'package:kerwenli_yol/providers/parts/app_version.dart';
 import 'package:kerwenli_yol/providers/pages/settings_page.dart';
 import 'package:kerwenli_yol/styles/colors/dark_colors.dart';
 import 'package:kerwenli_yol/styles/colors/light_colors.dart';
@@ -13,6 +17,11 @@ class SettingUpdateAppButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final AppLocalizations lang = AppLocalizations.of(context)!;
+
+    // версия берётся из pubspec, руками её править не надо
+    final String version = ref.watch(appVersionProvider).value ?? '';
+
     // =========== Colors =============
     final bool isLight = isLightTheme(context, ref);
     Color leadingBgColor = isLight
@@ -41,8 +50,15 @@ class SettingUpdateAppButton extends ConsumerWidget {
         borderRadius: BorderRadius.circular(8),
       ),
       child: ListTile(
-        onTap: () {
+        onTap: () async {
           ref.read(selectedSettingPartIndexProvider.notifier).state = index;
+
+          // открываем Play Market / App Store, а если магазина нет -
+          // ту же страницу в браузере (см. openStorePage)
+          final bool opened = await openStorePage();
+          if (!opened && context.mounted) {
+            showErrorSnackbar(context, lang.somethingWentWrong);
+          }
         },
         dense: true,
         visualDensity: VisualDensity.compact,
@@ -60,7 +76,10 @@ class SettingUpdateAppButton extends ConsumerWidget {
           ),
         ),
         title: Text('Programmany tazelemek', style: titleStyle),
-        subtitle: Text('Version 2.14.0', style: subTitleStyle),
+        subtitle: Text(
+          version.isEmpty ? '' : 'Version $version',
+          style: subTitleStyle,
+        ),
         trailing: Container(
           padding: EdgeInsets.all(6),
           decoration: BoxDecoration(
