@@ -47,7 +47,7 @@ class HomeTopNotificationButton extends ConsumerWidget {
           ),
           if (unread > 0)
             Positioned(
-              top: -4,
+              top: -3,
               right: -4,
               child: Container(
                 padding: const EdgeInsets.symmetric(horizontal: 4),

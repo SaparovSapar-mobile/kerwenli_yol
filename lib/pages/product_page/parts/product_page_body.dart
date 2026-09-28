@@ -38,17 +38,41 @@ class ProductPageBody extends ConsumerWidget {
     // ======= Text Styles =======
     final TextStyle nameStyle = AppTextStyles.medium16;
     final TextStyle descTitleStyle = AppTextStyles.semiBold12;
-    final TextStyle descStyle = AppTextStyles.regular12;
 
-    String priceText = 'ylalasykly';
-    if (product.price != 0) {
+    /// Характеристики приходят как {tm, ru, en}. Пустая строка означает,
+    /// что компания поле не заполнила - такую строку не показываем совсем.
+    String textOf(TranslationModel m) =>
+        translateText(ref, m.tm, m.ru, m.en, m.en).trim();
+
+    // цену раньше брали из json['price'], которого сервер не отдаёт:
+    // она всегда была 0, и подставлялось захардкоженное 'ylalasykly'
+    String priceText = textOf(product.fcaPrice);
+    if (priceText.isEmpty && product.price != 0) {
       priceText = product.price.toString();
     }
+
+    final String minQuantity = textOf(product.minimumOrderQuantity);
+    final String capacity = textOf(product.capacityPerMonth);
+    final String delivery = textOf(product.orderCondition);
+    final String payTerms = textOf(product.paymentTerms);
+    // ["TMT", "TMT", "TMT"] уже свёрнуто в модели до ["TMT"]
+    final String payCurrency = product.payment.join(', ');
+
+    final String typeText = textOf(product.type);
+    final String packagingText = textOf(product.packaging);
+    final String shelfLife = textOf(product.expirationDate);
+    final String volumeText = textOf(product.volume);
+    final bool hasAdditionalInfo = <String>[
+      typeText,
+      packagingText,
+      shelfLife,
+      volumeText,
+    ].any((String e) => e.isNotEmpty);
 
     final String description = translateText(
       ref,
       product.descriptionTm,
-      product.descriptionEn,
+      product.descriptionRu,
       product.descriptionEn,
       product.descriptionEn,
     );
@@ -113,30 +137,36 @@ class ProductPageBody extends ConsumerWidget {
                     category: catName,
                   ),
                   SizedBox(height: 10),
-                  CompanyInfoKeyValue(
-                    keyText: lang.fCAPrice,
-                    valueText: priceText,
-                  ),
-                  CompanyInfoKeyValue(
-                    keyText: lang.minimumOrderQuantity,
-                    valueText: '1 600 sany',
-                  ),
-                  CompanyInfoKeyValue(
-                    keyText: lang.monthlyProductionCapacity,
-                    valueText: '10 000 kg',
-                  ),
-                  CompanyInfoKeyValue(
-                    keyText: lang.deliveryTerms,
-                    valueText: 'FCA, FOB, CIP, CIF',
-                  ),
-                  CompanyInfoKeyValue(
-                    keyText: lang.paymentCurrency,
-                    valueText: 'TMT, USD, EURO',
-                  ),
-                  CompanyInfoKeyValue(
-                    keyText: lang.paymentTerms,
-                    valueText: 'S.W.I.F.T',
-                  ),
+                  if (priceText.isNotEmpty)
+                    CompanyInfoKeyValue(
+                      keyText: lang.fCAPrice,
+                      valueText: priceText,
+                    ),
+                  if (minQuantity.isNotEmpty)
+                    CompanyInfoKeyValue(
+                      keyText: lang.minimumOrderQuantity,
+                      valueText: minQuantity,
+                    ),
+                  if (capacity.isNotEmpty)
+                    CompanyInfoKeyValue(
+                      keyText: lang.monthlyProductionCapacity,
+                      valueText: capacity,
+                    ),
+                  if (delivery.isNotEmpty)
+                    CompanyInfoKeyValue(
+                      keyText: lang.deliveryTerms,
+                      valueText: delivery,
+                    ),
+                  if (payCurrency.isNotEmpty)
+                    CompanyInfoKeyValue(
+                      keyText: lang.paymentCurrency,
+                      valueText: payCurrency,
+                    ),
+                  if (payTerms.isNotEmpty)
+                    CompanyInfoKeyValue(
+                      keyText: lang.paymentTerms,
+                      valueText: payTerms,
+                    ),
                   SizedBox(height: 10),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -190,30 +220,31 @@ class ProductPageBody extends ConsumerWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text(lang.additionalInformation, style: descTitleStyle),
-                  SizedBox(height: 5),
-                  CompanyInfoKeyValue(
-                    keyText: '${lang.type}:',
-                    valueText: 'Şetdaly çaga püresi Ýeserje 90gr',
-                  ),
-                  CompanyInfoKeyValue(
-                    keyText: '${lang.packaging}:',
-                    valueText: 'Polietilen',
-                  ),
-                  CompanyInfoKeyValue(
-                    keyText: '${lang.shelfLife}:',
-                    valueText: '12 aý',
-                  ),
-                  CompanyInfoKeyValue(
-                    keyText: '${lang.volume}:',
-                    valueText: 'Gutyda 16 sany',
-                  ),
-                  SizedBox(height: 5),
-                  Text(
-                    'Töleg şertleri: 100% göterimi öňünden bank ulgamynyň üsti bilen tölemek şertinde.',
-                    style: descStyle.copyWith(fontStyle: FontStyle.italic),
-                  ),
-                  SizedBox(height: 10),
+                  if (hasAdditionalInfo) ...[
+                    Text(lang.additionalInformation, style: descTitleStyle),
+                    SizedBox(height: 5),
+                    if (typeText.isNotEmpty)
+                      CompanyInfoKeyValue(
+                        keyText: '${lang.type}:',
+                        valueText: typeText,
+                      ),
+                    if (packagingText.isNotEmpty)
+                      CompanyInfoKeyValue(
+                        keyText: '${lang.packaging}:',
+                        valueText: packagingText,
+                      ),
+                    if (shelfLife.isNotEmpty)
+                      CompanyInfoKeyValue(
+                        keyText: '${lang.shelfLife}:',
+                        valueText: shelfLife,
+                      ),
+                    if (volumeText.isNotEmpty)
+                      CompanyInfoKeyValue(
+                        keyText: '${lang.volume}:',
+                        valueText: volumeText,
+                      ),
+                    SizedBox(height: 10),
+                  ],
                   PrimaryButton(
                     text: lang.sendRequest,
                     onPressed: () => showMessageBottomSheet(

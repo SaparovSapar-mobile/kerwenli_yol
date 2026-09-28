@@ -233,11 +233,17 @@ class CompanyApiService {
     try {
       final http.Response response = await http.post(
         uri,
+        // остальные POST-запросы в проекте заголовок ставят, этот - нет
+        headers: {'Content-Type': 'application/json'},
         body: json.encode(msg.toJson()),
       );
       final dynamic jsonData = json.decode(response.body);
 
-      return response.statusCode == 200 && jsonData['status'];
+      // сервер на создание записи отвечает 201, а не 200 - ровно на этом
+      // не работал "Hat yazmak": письмо уходило, а приложение показывало
+      // "Nasazlyk yuze chykdy"
+      final bool ok = response.statusCode >= 200 && response.statusCode < 300;
+      return ok && jsonData['status'] == true;
     } catch (e) {
       rethrow;
     }
